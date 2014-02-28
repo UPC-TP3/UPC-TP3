@@ -5,7 +5,13 @@ using System.Text;
 
 namespace CI.SIC.BE
 {
-    class ConsultorioBE
+    [Serializable]
+    public class ConsultorioBE
     {
+        public string Id_consultorio { get; set; }
+        public string Descripcion { get; set; }
+        public string Nro_consultorio { get; set; }
+        public int Id_local { get; set; }
+        public int Id_tpo_examen { get; set; }
     }
 }
