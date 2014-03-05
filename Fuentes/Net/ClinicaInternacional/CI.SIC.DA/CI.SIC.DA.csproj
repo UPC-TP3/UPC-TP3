@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EvaluacionDA.cs" />
     <Compile Include="Util\BaseDA.cs" />
+    <Compile Include="Util\DataReaderExtensions.cs" />
     <Compile Include="Util\DBProvider.cs" />
     <Compile Include="HabitacionDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,6 +54,10 @@
     <ProjectReference Include="..\CI.SIC.BE\CI.SIC.BE.csproj">
       <Project>{2DCFBFA6-309F-4511-BB9F-8B12A668D131}</Project>
       <Name>CI.SIC.BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CI.SIC.CC\CI.SIC.CC.csproj">
+      <Project>{DFC40592-730B-4361-882A-04BB088A6EF6}</Project>
+      <Name>CI.SIC.CC</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

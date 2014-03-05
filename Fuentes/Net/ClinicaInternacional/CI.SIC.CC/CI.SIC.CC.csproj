@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2DCFBFA6-309F-4511-BB9F-8B12A668D131}</ProjectGuid>
+    <ProjectGuid>{DFC40592-730B-4361-882A-04BB088A6EF6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CI.SIC.BE</RootNamespace>
-    <AssemblyName>CI.SIC.BE</AssemblyName>
+    <RootNamespace>CI.SIC.CC</RootNamespace>
+    <AssemblyName>CI.SIC.CC</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,13 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsultorioBE.cs" />
-    <Compile Include="EvaluacionBE.cs" />
-    <Compile Include="EvaluacionDetalleBE.cs" />
-    <Compile Include="HabitacionBE.cs" />
-    <Compile Include="LocalBE.cs" />
-    <Compile Include="MedicoBE.cs" />
-    <Compile Include="PacienteBE.cs" />
+    <Compile Include="Configuraciones.cs" />
+    <Compile Include="Enumeraciones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
