@@ -6,4 +6,9 @@
 
 # Ignore all compile files.
 /CI.SIC.AP/Bin
-/CI.SIC.AP/obj
+/CI.SIC.BE/bin
+/CI.SIC.BE/obj
+/CI.SIC.BL/bin
+/CI.SIC.BL/obj
+/CI.SIC.DA/bin
+/CI.SIC.DA/obj
