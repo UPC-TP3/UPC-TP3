@@ -8,7 +8,7 @@ namespace CI.SIC.BE
     [Serializable]
     public class ConsultorioBE
     {
-        public string Id_consultorio { get; set; }
+        public int Id_consultorio { get; set; }
         public string Descripcion { get; set; }
         public string Nro_consultorio { get; set; }
         public int Id_local { get; set; }
