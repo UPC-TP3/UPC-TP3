@@ -25,3 +25,12 @@ D:\UPC\11vo\TP3\Proyecto\Codigo\ClinicaInternacional\UPC-TP3.git\Fuentes\Net\Cli
 D:\UPC\11vo\TP3\Proyecto\Codigo\ClinicaInternacional\UPC-TP3.git\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.csprojResolveAssemblyReference.cache
 D:\UPC\11vo\TP3\Proyecto\Codigo\ClinicaInternacional\UPC-TP3.git\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.dll
 D:\UPC\11vo\TP3\Proyecto\Codigo\ClinicaInternacional\UPC-TP3.git\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.pdb
+D:\Pedro\UPC-TP3\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BL.dll
+D:\Pedro\UPC-TP3\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BL.pdb
+D:\Pedro\UPC-TP3\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BE.dll
+D:\Pedro\UPC-TP3\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.DA.dll
+D:\Pedro\UPC-TP3\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BE.pdb
+D:\Pedro\UPC-TP3\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.DA.pdb
+D:\Pedro\UPC-TP3\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.csprojResolveAssemblyReference.cache
+D:\Pedro\UPC-TP3\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.dll
+D:\Pedro\UPC-TP3\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.pdb
