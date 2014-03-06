@@ -6,10 +6,13 @@
 <head runat="server">
     <title>Clínica Internacional - UC & CQ</title>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    
     <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
     <div id="main_container">
         <div id="header">
             <div id="logo"><a href="#"><img src="../Imagenes/bannerCI.png" alt="" title="" border="0" /></a></div>

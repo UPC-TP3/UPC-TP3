@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EvaluacionDA.cs" />
+    <Compile Include="EvaluacionDetalleDA.cs" />
+    <Compile Include="InstalacionDA.cs" />
     <Compile Include="Util\BaseDA.cs" />
     <Compile Include="Util\DataReaderExtensions.cs" />
     <Compile Include="Util\DBProvider.cs" />

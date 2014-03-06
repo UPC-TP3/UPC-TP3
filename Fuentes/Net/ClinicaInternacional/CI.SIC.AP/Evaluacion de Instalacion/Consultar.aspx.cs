@@ -21,4 +21,12 @@ public partial class EvaluacionDeInstalacionConsultar : Page
         grvLista.DataSource = new EvaluacionBL().Listar();
         grvLista.DataBind();
     }
+    protected void grvLista_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName.Equals("Editar"))
+        {
+            var idEvaluacion = e.CommandArgument.ToString();
+            Response.Redirect(string.Format("Registrar.aspx?ID={0}",idEvaluacion));
+        }
+    }
 }
