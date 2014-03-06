@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsultorioBE.cs" />
+    <Compile Include="EAgendaMedica.cs" />
+    <Compile Include="ECita.cs" />
+    <Compile Include="EPaciente.cs" />
     <Compile Include="EvaluacionBE.cs" />
     <Compile Include="EvaluacionDetalleBE.cs" />
     <Compile Include="HabitacionBE.cs" />

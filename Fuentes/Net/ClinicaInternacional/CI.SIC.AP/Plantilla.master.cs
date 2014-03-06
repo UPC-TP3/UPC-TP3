@@ -21,7 +21,7 @@ public partial class Plantilla : System.Web.UI.MasterPage
         menu += "</ul></li>";
 
         menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Citas");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/RegistrarGestionAmbulatoria.aspx", "Citas");
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionCitas/ReprogramarCitas.aspx", "Citas");
         menu += "</ul></li>";
 
         lstMenu.Text = menu;

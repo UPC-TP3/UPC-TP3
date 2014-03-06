@@ -34,6 +34,9 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,6 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EvaluacionDA.cs" />
+    <Compile Include="SGH_Model.Designer.cs" />
+    <Compile Include="SGH_Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SGH_Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Util\BaseDA.cs" />
     <Compile Include="Util\DataReaderExtensions.cs" />
     <Compile Include="Util\DBProvider.cs" />
@@ -60,7 +69,13 @@
       <Name>CI.SIC.CC</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="SGH_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SGH_Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
