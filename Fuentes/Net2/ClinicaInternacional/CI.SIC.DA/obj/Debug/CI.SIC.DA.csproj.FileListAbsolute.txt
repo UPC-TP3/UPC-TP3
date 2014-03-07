@@ -43,3 +43,11 @@ D:\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.BE.pdb
 D:\ClinicaInternacional\CI.SIC.DA\obj\Debug\ResolveAssemblyReference.cache
 D:\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.dll
 D:\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.pdb
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.DA.dll.config
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.DA.dll
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.DA.pdb
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.BE.dll
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.BE.pdb
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.DA\obj\Debug\ResolveAssemblyReference.cache
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.dll
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.pdb

@@ -70,7 +70,7 @@
 
         function btnBuscarMedico_onclick() {
 
-            window.open('BuscarAgendaMedica.aspx', null, 'left=400, top=100, height=450, width= 700, status=no, resizable=no, scrollbars=no, location= no');
+            window.open('BuscarAgendaMedica.aspx', null, 'left=400, top=100, height=450, width= 700, status=no, resizable=si, scrollbars=si, location= no');
 
 
         }

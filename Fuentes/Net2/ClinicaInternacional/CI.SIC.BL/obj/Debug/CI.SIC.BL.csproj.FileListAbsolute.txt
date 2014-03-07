@@ -43,3 +43,12 @@ C:\Documents and Settings\Cesar\Mis documentos\Dropbox\TP3\Trabajo\FuenteModific
 C:\Documents and Settings\Cesar\Mis documentos\Dropbox\TP3\Trabajo\FuenteModificada\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\Cesar\Mis documentos\Dropbox\TP3\Trabajo\FuenteModificada\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.dll
 C:\Documents and Settings\Cesar\Mis documentos\Dropbox\TP3\Trabajo\FuenteModificada\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.pdb
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BL.dll
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BL.pdb
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BE.dll
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.DA.dll
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BE.pdb
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.DA.pdb
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.BL\obj\Debug\ResolveAssemblyReference.cache
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.dll
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.pdb

@@ -21,3 +21,8 @@ C:\Documents and Settings\Cesar\Mis documentos\Dropbox\TP3\Trabajo\FuenteModific
 C:\Documents and Settings\Cesar\Mis documentos\Dropbox\TP3\Trabajo\FuenteModificada\Fuentes\Net\ClinicaInternacional\CI.SIC.BE\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\Cesar\Mis documentos\Dropbox\TP3\Trabajo\FuenteModificada\Fuentes\Net\ClinicaInternacional\CI.SIC.BE\obj\Debug\CI.SIC.BE.dll
 C:\Documents and Settings\Cesar\Mis documentos\Dropbox\TP3\Trabajo\FuenteModificada\Fuentes\Net\ClinicaInternacional\CI.SIC.BE\obj\Debug\CI.SIC.BE.pdb
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.BE\bin\Debug\CI.SIC.BE.dll
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.BE\bin\Debug\CI.SIC.BE.pdb
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.BE\obj\Debug\ResolveAssemblyReference.cache
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.BE\obj\Debug\CI.SIC.BE.dll
+D:\UPC-TP3\Fuentes\Net2\ClinicaInternacional\CI.SIC.BE\obj\Debug\CI.SIC.BE.pdb
