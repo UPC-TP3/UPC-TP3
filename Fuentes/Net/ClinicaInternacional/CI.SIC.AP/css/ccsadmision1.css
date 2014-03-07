@@ -152,9 +152,9 @@ td.btnMant input
 
 .Espaciofiltro div.separador{width:50%; }
 .Espaciofiltro, .Espaciofiltro div{float:left; }
-.Espaciofiltro{width:100%; background:#FFFFFF; margin: 10px 0 0 0; padding:10px 0 10px 00px;}
+.Espaciofiltro{width:100%; background:#FFFFFF; margin: 0px 0 0 0; padding:3px 0 3px 00px;}
 
-.width_total{width:699px;}
+.width_total{width:100%;}
 
 .ValidacionMensaje
 {

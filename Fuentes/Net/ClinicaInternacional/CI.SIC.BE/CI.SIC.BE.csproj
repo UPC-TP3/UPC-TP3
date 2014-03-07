@@ -40,15 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CamaBE.cs" />
     <Compile Include="ConsultorioBE.cs" />
-    <Compile Include="EAgendaMedica.cs" />
-    <Compile Include="ECita.cs" />
-    <Compile Include="EPaciente.cs" />
     <Compile Include="EvaluacionBE.cs" />
     <Compile Include="EvaluacionDetalleBE.cs" />
     <Compile Include="HabitacionBE.cs" />
+    <Compile Include="IngresoHospitalizacionBE.cs" />
     <Compile Include="LocalBE.cs" />
     <Compile Include="MedicoBE.cs" />
+    <Compile Include="OrdenHospitalizacionBE.cs" />
     <Compile Include="PacienteBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

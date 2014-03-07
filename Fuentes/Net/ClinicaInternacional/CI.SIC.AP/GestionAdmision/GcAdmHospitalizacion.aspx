@@ -28,6 +28,11 @@
             return resp;
         }
 
+        function ValidarRegistro() { 
+        
+
+        }
+        
         //        function CleanControles() {
         //            $("#<%=txtNroOrdenHosp.ClientID%>").val("");
         //            $("#<%=txtFecOrden.ClientID%>").val("");
@@ -50,6 +55,8 @@
         //            $("#<%=ddlTipoDoc.ClientID%>").attr("selectedIndex", 0);
         //            $("#<%=ddlSexo.ClientID%>").attr("selectedIndex", 0);
         //        }
+
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="Server">
@@ -306,8 +313,8 @@
                                 </td>
                                 <td style="width: 20%;">
                                     <asp:TextBox ID="txtCartaGarantia" runat="server" MaxLength="10"></asp:TextBox>
-                                     <ext:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" Enabled="true" ValidChars=".° "
-                                        FilterType="Numbers" TargetControlID="txtCartaGarantia">
+                                    <ext:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" Enabled="true"
+                                        ValidChars=".° " FilterType="Numbers" TargetControlID="txtCartaGarantia">
                                     </ext:FilteredTextBoxExtender>
                                 </td>
                             </tr>
@@ -339,9 +346,12 @@
                             </tr>
                             <tr>
                                 <td colspan="6">
-                                <asp:HiddenField ID="hdfIDPaciente" runat="server" />
-                                  <asp:Button ID="btnRegistrar" runat="server"  text="Registrar" 
-                                        onclick="btnRegistrar_Click" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <asp:HiddenField ID="hdfIDPaciente" runat="server" />
+                                    <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click" />
                                 </td>
                             </tr>
                         </table>

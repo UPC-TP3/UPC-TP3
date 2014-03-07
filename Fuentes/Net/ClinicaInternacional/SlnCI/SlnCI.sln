@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CI.SIC.AP", "..\CI.SIC.AP", "{89EE134E-92FE-4D08-8099-3826F607698E}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CI.SIC.AP", "..\CI.SIC.AP\", "{89EE134E-92FE-4D08-8099-3826F607698E}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		ProjectReferences = "{0F70079F-E8EE-4DEF-AE84-00DED94FD120}|CI.SIC.BL.dll;{2DCFBFA6-309F-4511-BB9F-8B12A668D131}|CI.SIC.BE.dll;{1CDF8E0C-CB47-4ACA-A0EB-4AC13A0F23D8}|CI.SIC.DA.dll;{DFC40592-730B-4361-882A-04BB088A6EF6}|CI.SIC.CC.dll;"
@@ -19,7 +19,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CI.SIC.AP", "..\CI.SIC.AP",
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "55164"
+		VWDPort = "49012"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject

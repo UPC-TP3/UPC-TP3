@@ -4,25 +4,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Clínica Internacional - UC & CQ</title>
-    
     <link href="css/ccsadmision1.css" rel="stylesheet" type="text/css" />
     <link href="css/ccsadmision2.css" rel="stylesheet" type="text/css" />
     <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-
-
     <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder> 
+    </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
+    <asp:ScriptManager runat="Server" EnablePartialRendering="true" ID="ScriptManager1"
+        EnableScriptGlobalization="true" EnableScriptLocalization="true" EnablePageMethods="true"
+        AsyncPostBackTimeout="600" AsyncPostBackErrorMessage="Ocurrió un error en el sistema, Vuelva a intentarlo mas tarde.">
+        <Scripts>
+            <asp:ScriptReference Path="js/jquery.min.js" />
+            <asp:ScriptReference Path="js/jquery.dd.js" />
+            <asp:ScriptReference Path="js/chrome.js" />
+        </Scripts>
+    </asp:ScriptManager>
     <div id="main_container">
         <div id="header">
             <div id="logo">
                 <a href="#">
                     <img src="../Imagenes/bannerCI.png" alt="" title="" border="0" /></a></div>
         </div>
-        
         <div id="main_content">
             <div class="wrapper2">
                 <div class="col_01">
@@ -44,10 +49,9 @@
                 <asp:ContentPlaceHolder ID="Contenido" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
-             <ul class="breadcrumb">
-        	    
-        	    <li class="actual">
-        	        <asp:ContentPlaceHolder ID="PaginaActual" runat="server">        	            
+            <ul class="breadcrumb">
+                <li class="actual">
+                    <asp:ContentPlaceHolder ID="PaginaActual" runat="server">
                     </asp:ContentPlaceHolder>
                 </li>
             </ul>
