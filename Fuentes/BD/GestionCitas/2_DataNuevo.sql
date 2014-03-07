@@ -46,11 +46,6 @@ insert into TB_Consultorio (NumeroConsultorio,Piso,CodigoLocal) values ('200','2
 insert into TB_Consultorio (NumeroConsultorio,Piso,CodigoLocal) values ('201','2',5)
 insert into TB_Consultorio (NumeroConsultorio,Piso,CodigoLocal) values ('202','2',5)
 
-insert into TB_TipoAnalisis (Descripcion,TipoResultado) values ('Tipo analisis 1', 'TipoResultado 1')
-insert into TB_TipoAnalisis (Descripcion,TipoResultado) values ('Tipo analisis 2', 'TipoResultado 2')
-insert into TB_TipoAnalisis (Descripcion,TipoResultado) values ('Tipo analisis 3', 'TipoResultado 3')
-insert into TB_TipoAnalisis (Descripcion,TipoResultado) values ('Tipo analisis 4', 'TipoResultado 4')
-insert into TB_TipoAnalisis (Descripcion,TipoResultado) values ('Tipo analisis 5', 'TipoResultado 5')
 
 
 insert into TB_Medicamento (Descripcion, Laboratorio, Observaciones) values ('Medicamento 1','Laboratorio 1','Obs 1')
@@ -60,11 +55,6 @@ insert into TB_Medicamento (Descripcion, Laboratorio, Observaciones) values ('Me
 insert into TB_Medicamento (Descripcion, Laboratorio, Observaciones) values ('Medicamento 5','Laboratorio 5','Obs 5')
 
 
-insert into TB_MotivoInternamiento (DescripcionInternamiento) values ('Motivo 1')
-insert into TB_MotivoInternamiento (DescripcionInternamiento) values ('Motivo 2')
-insert into TB_MotivoInternamiento (DescripcionInternamiento) values ('Motivo 3')
-insert into TB_MotivoInternamiento (DescripcionInternamiento) values ('Motivo 4')
-insert into TB_MotivoInternamiento (DescripcionInternamiento) values ('Motivo 5')
 
 
 insert TB_Estado_Cita  values (1,'Registrado')
