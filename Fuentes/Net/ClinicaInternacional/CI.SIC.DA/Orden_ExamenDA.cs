@@ -14,7 +14,7 @@ namespace CI.SIC.DA
             //var lista = new Orden_ExamenBE();
             Orden_ExamenBE lista= null;
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("@id_orden_atencion", pId_orden_examen);
+            parameters.Add("@id_orden_examen", pId_orden_examen);
 
             using (IDataReader reader = SqlHelper.Instance.ExecuteReader("pa_Registro_Orden_Examen", parameters))
             {
@@ -23,7 +23,7 @@ namespace CI.SIC.DA
                     lista= (new Orden_ExamenBE
                     {
                         Fecha = reader.GetDateTime(reader.GetOrdinal("Fecha")),
-                        Id_orden_atencion = reader.GetInt32(reader.GetOrdinal("Id_orden_atencion")),
+                        Id_orden_atencion = reader.GetInt32(reader.GetOrdinal("Id_orden_interna")),
                         Id_historia = reader.GetInt32(reader.GetOrdinal("Id_historia")),
                         Paciente = reader.GetString(reader.GetOrdinal("Paciente")),
                         Medico = reader.GetString(reader.GetOrdinal("Medico")),

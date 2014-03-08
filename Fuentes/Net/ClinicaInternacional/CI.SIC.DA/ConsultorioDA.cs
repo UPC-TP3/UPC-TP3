@@ -18,6 +18,8 @@ namespace CI.SIC.DA
 
             if (pTipo == "T")
                 lista.Add(new ConsultorioBE { Id_consultorio = 0, Descripcion = "Todos", Nro_consultorio= "Todos" });
+            if (pTipo == "S")
+                lista.Add(new ConsultorioBE { Id_consultorio = 0, Descripcion = "Seleccione", Nro_consultorio= "Seleccione" });
 
             using (IDataReader reader = SqlHelper.Instance.ExecuteReader("pa_Lista_Consultorio", parameters))
             {

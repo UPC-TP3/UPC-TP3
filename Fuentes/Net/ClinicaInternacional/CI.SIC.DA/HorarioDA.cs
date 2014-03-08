@@ -9,12 +9,15 @@ namespace CI.SIC.DA
 {
     public class HorarioDA : BaseDA<HorarioDA>
     {
-        public List<HorarioBE> Listado(int pId_consultorio)
+        public List<HorarioBE> Listado(string pTipo, int pId_consultorio)
         {
             var lista = new List<HorarioBE>();
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@id_consultorio", pId_consultorio);
             //parameters.Add("@fecha", pFecha);
+
+            //if (pTipo == "S")
+            //    lista.Add(new HorarioBE { Id_horario = 0, Medico = "", Fecha = "Seleccione" });
 
             using (IDataReader reader = SqlHelper.Instance.ExecuteReader("pa_Lista_Horario", parameters))
             {

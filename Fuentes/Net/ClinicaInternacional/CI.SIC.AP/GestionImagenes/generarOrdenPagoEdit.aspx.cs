@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using CI.SIC.BE;
 using CI.SIC.BL;
 
-public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Page
+public partial class GestionImagenes_generarOrdenPagoEdit : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -67,49 +67,44 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
             if (Request["accion"] != null)
             {
                 hidAccion.Value = Request["accion"].ToString();
-                if (hidAccion.Value == "A")
-                {
-                    lblTitulo.Text = "Anulación de Programación de exámenes";
-                    btnOrden_pago.Visible = false;
-                    btnProgramar.Visible = false;
-                    btnReProgramar.Visible = false;
+                //if (hidAccion.Value == "A")
+                //{
+                //    lblTitulo.Text = "Anulación de Programación de exámenes";
+                //    btnOrden_pago.Visible = false;
+                //    btnProgramar.Visible = false;
+                //    btnReProgramar.Visible = false;
+                //    btnAnular.Visible = true;
+                //    btnConsultar.Visible=false;
 
-                    if (txtEstado_orden_examen.Text.Substring(0, 1) == "C")
-                    {
-                        btnAnular.Visible = false;
-                    }
-                    else
-                    {
-                        btnAnular.Visible = true;
-                    }
+                //    cboLocal.Enabled = false;
+                //    cboConsultorio.Enabled = false;
+                //    cboHorario.Enabled = false;
+                //}
+                
+                btnProgramar.Visible = false;
+                btnReProgramar.Visible = false;
+                btnAnular.Visible = false;
+                btnConsultar.Visible = false;
+                cboLocal.Enabled = false;
+                cboConsultorio.Enabled = false;
+                cboHorario.Enabled = false;
 
-                    btnConsultar.Visible=false;
-
-                    cboLocal.Enabled = false;
-                    cboConsultorio.Enabled = false;
-                    cboHorario.Enabled = false;
-                }
                 if (hidAccion.Value == "M")
                 {
-                    lblTitulo.Text = "Reprogramación de Exámenes";
-                    btnOrden_pago.Visible = false;
+                    lblTitulo.Text = "Generación Orden de Pago";
+                    btnOrden_pago.Visible = true;
                     btnProgramar.Visible = false;
-                    btnReProgramar.Visible = true;
+                    btnReProgramar.Visible = false;
                     btnAnular.Visible = false;
                     btnConsultar.Visible=false;
                 }
             }
-            else
-            {
-                lblTitulo.Text = "Programación de Exámenes";
-                btnOrden_pago.Visible = false;
-                btnProgramar.Visible = true;
-                btnReProgramar.Visible = false;
-                btnAnular.Visible = false;
-                btnConsultar.Visible = false;
-                btnConsultar.Visible = true;
-            }
 
+
+            if (txtEstado_orden_examen.Text.Substring(0,1) == "C")
+            {
+                btnOrden_pago.Visible = false;
+            }
         }
     }
 
@@ -256,7 +251,10 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
         eOrden_Pago.Importe = Convert.ToDecimal(txtPrecio.Text);
 
         if (oOrden_Pago.Nuevo(eOrden_Pago) == true)
+        {
             lblMensaje.Text = "Se generó Orden de Pago";
+            Response.Redirect("generarOrdenPago.aspx");
+        }
         else
             lblMensaje.Text = "No se puedo generar Orden de Pago";
 
@@ -292,64 +290,5 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
             txtEspecialista.Text = "";
         }
  
-    }
-    protected void btnAnular_Click(object sender, EventArgs e)
-    {
-        Programacion_ExamenBL oProgramacion_Examen = new Programacion_ExamenBL();
-        Programacion_ExamenBE eProgramacion_Examen = new Programacion_ExamenBE();
-
-        eProgramacion_Examen.Id_orden_examen = Convert.ToInt32(txtId_orden_examen.Text);
-        eProgramacion_Examen.Id_horario = Convert.ToInt32(cboHorario.SelectedValue);
-        eProgramacion_Examen.Estado = "G";
-
-        if (oProgramacion_Examen.Nuevo(eProgramacion_Examen) == true)
-            Response.Redirect("programacionImagenes.aspx");
-        else
-            lblMensaje.Text = "No se pudo registrar Programación";
-
-    }
-    protected void btnReProgramar_Click(object sender, EventArgs e)
-    {
-        if (cboLocal.SelectedValue == "")
-        {
-            lblMensaje.Text = "Seleccione Local";
-            cboLocal.Focus();
-            return;
-        }
-        if (cboConsultorio.SelectedValue == "")
-        {
-            lblMensaje.Text = "Seleccione Consultorio";
-            cboConsultorio.Focus();
-            return;
-        }
-        if (cboHorario.SelectedValue == "")
-        {
-            lblMensaje.Text = "Seleccione Horario";
-            cboHorario.Focus();
-            return;
-        }
-        //if (txtEstado_programacion.Text != "")
-        //{
-        //    lblMensaje.Text = "Ya se ha programado Examen";
-        //    return;
-        //}
-
-        if (txtMotivoR.Text.Trim() == "")
-        {
-            lblMensaje.Text = "Registre motivo de Reprogramación";
-            return;
-        }
-
-        Programacion_ExamenBL oProgramacion_Examen = new Programacion_ExamenBL();
-        Programacion_ExamenBE eProgramacion_Examen = new Programacion_ExamenBE();
-
-        eProgramacion_Examen.Id_orden_examen = Convert.ToInt32(txtId_orden_examen.Text);
-        eProgramacion_Examen.Id_horario = Convert.ToInt32(cboHorario.SelectedValue);
-        eProgramacion_Examen.Estado = "R";
-
-        if (oProgramacion_Examen.Reprogramacion(eProgramacion_Examen) == true)
-            Response.Redirect("programacionImagenes.aspx");
-        else
-            lblMensaje.Text = "No se pudo registrar Programación";
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" CodeFile="programacionImagenesEdit.aspx.cs" Inherits="GestionImagenes_programacionImagenesEdit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" CodeFile="generarOrdenPagoEdit.aspx.cs" Inherits="GestionImagenes_generarOrdenPagoEdit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style type="text/css">
@@ -31,7 +31,8 @@
             <td>
                 &nbsp;</td>
             <td>
-                <asp:Label ID="lblTitulo" runat="server" Font-Bold="True" Font-Size="12pt"></asp:Label>
+                <asp:Label ID="lblTitulo" runat="server" Font-Bold="False" 
+                    CssClass="recibo_dig" Font-Italic="False"></asp:Label>
             </td>
             <td>
                 &nbsp;</td>
@@ -43,7 +44,7 @@
                 <table style="width:100%;">
                     <tr>
                         <td colspan="4">
-                            <div>
+                            <div class="divSpanDP">
                                 Orden de Examen</div>
                         </td>
                     </tr>
@@ -106,7 +107,7 @@
                         <td>
                             Paciente</td>
                         <td>
-                            <asp:TextBox ID="txtPaciente" runat="server" Width="259px" ReadOnly="True" 
+                            <asp:TextBox ID="txtPaciente" runat="server" Width="300px" ReadOnly="True" 
                                 CssClass="caja_texto_enabled"></asp:TextBox>
                         </td>
                         <td>
@@ -155,7 +156,7 @@
                     </tr>
                     <tr>
                         <td colspan="4">
-                            <div>
+                            <div class="divSpanDP">
                                 Programación</div>
                         </td>
                     </tr>
@@ -216,28 +217,6 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:Label ID="lblMotivoR" runat="server" Text="Motivo Reprogramación"></asp:Label>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txtMotivoR" runat="server" Width="290px"></asp:TextBox>
-                        </td>
-                        <td>
-                            &nbsp;</td>
-                        <td>
-                            &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            &nbsp;</td>
-                        <td>
-                            &nbsp;</td>
-                        <td>
-                            &nbsp;</td>
-                        <td>
-                            &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>
                             &nbsp;</td>
                         <td colspan="3">
                             <table style="width:100%;">
@@ -248,11 +227,10 @@
                                     </td>
                                     <td>
                             <asp:Button ID="btnReProgramar" runat="server" 
-                                Text="Re-Programar" onclick="btnReProgramar_Click"/>
+                                Text="Re-Programar" onclick="btnProgramar_Click" />
                                     </td>
                                     <td>
-                                        <asp:Button ID="btnAnular" runat="server" onclick="btnAnular_Click" 
-                                            Text="Anular" />
+                                        <asp:Button ID="btnAnular" runat="server" Text="Anular" />
                                     </td>
                                     <td>
                             <asp:Button ID="btnOrden_pago" runat="server" 

@@ -25,5 +25,7 @@ namespace CI.SIC.BE
         public string GA_Sexo { get; set; }
         public int ID_TipoDocumento { get; set; }
         public string correo { get; set; }
+        public string Nombres { get; set; }
+        public string Estado { get; set; }
    }
 }

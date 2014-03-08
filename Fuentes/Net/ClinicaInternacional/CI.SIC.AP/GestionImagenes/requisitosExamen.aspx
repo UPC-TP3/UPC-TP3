@@ -1,12 +1,28 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" CodeFile="requisitosExamen.aspx.cs" Inherits="GestionImagenes_requisitosExamen" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
+    <style type="text/css">
+        .col_04 span
+        {
+            padding: 0px 0px 0px 0px;
+            text-align: inherit;
+        }
+        .ValidacionMensaje
+        {
+            font-size: 11px;
+            color: Red;
+        }
+    </style>
+</asp:Content>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="Contenido" Runat="Server">
+    <div class="col_04">
     <table style="width: 100%;">
         <tr>
             <td>
                 &nbsp;</td>
-            <td>
-                &nbsp;</td>
+            <td class="recibo_dig">
+                Requisitos</td>
             <td>
                 &nbsp;</td>
         </tr>
@@ -27,7 +43,8 @@
                         <td>
                             Fecha orden</td>
                         <td>
-                            <asp:TextBox ID="txtFecha_examen" runat="server" Width="83px" ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtFecha_examen" runat="server" Width="83px" ReadOnly="True" 
+                                CssClass="caja_texto_enabled"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -35,19 +52,21 @@
                             Orden atención</td>
                         <td>
                             <asp:TextBox ID="txtId_orden_atencion" runat="server" Width="84px" 
-                                ReadOnly="True"></asp:TextBox>
+                                ReadOnly="True" CssClass="caja_texto_enabled"></asp:TextBox>
                         </td>
                         <td>
                             Tipo atención</td>
                         <td>
-                            <asp:TextBox ID="txtTipo_atencion" runat="server" Width="135px" ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtTipo_atencion" runat="server" Width="135px" ReadOnly="True" 
+                                CssClass="caja_texto_enabled"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             Historia clínica</td>
                         <td>
-                            <asp:TextBox ID="txtId_historia" runat="server" Width="84px" ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtId_historia" runat="server" Width="84px" ReadOnly="True" 
+                                CssClass="caja_texto_enabled"></asp:TextBox>
                         </td>
                         <td>
                             &nbsp;</td>
@@ -58,25 +77,29 @@
                         <td>
                             Paciente</td>
                         <td>
-                            <asp:TextBox ID="txtPaciente" runat="server" Width="300px" ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtPaciente" runat="server" Width="300px" ReadOnly="True" 
+                                CssClass="caja_texto_enabled"></asp:TextBox>
                         </td>
                         <td>
                             Médico</td>
                         <td>
-                            <asp:TextBox ID="txtMedico" runat="server" Width="223px" ReadOnly="True"></asp:TextBox>
+                            <asp:TextBox ID="txtMedico" runat="server" Width="223px" ReadOnly="True" 
+                                CssClass="caja_texto_enabled"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             Tipo examen</td>
                         <td>
-                            <asp:DropDownList ID="cboTipo_examen" runat="server" Enabled="False">
+                            <asp:DropDownList ID="cboTipo_examen" runat="server" Enabled="False" 
+                                CssClass="caja_texto_enabled">
                             </asp:DropDownList>
                         </td>
                         <td>
                             Examen</td>
                         <td>
-                            <asp:TextBox ID="txtExamen" runat="server" ReadOnly="True" Width="216px"></asp:TextBox>
+                            <asp:TextBox ID="txtExamen" runat="server" ReadOnly="True" Width="216px" 
+                                CssClass="caja_texto_enabled"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -90,14 +113,10 @@
                             &nbsp;</td>
                     </tr>
                     <tr>
-                        <td>
-                            Requisitos</td>
-                        <td>
-                            &nbsp;</td>
-                        <td>
-                            &nbsp;</td>
-                        <td>
-                            &nbsp;</td>
+                        <td colspan="4">
+                            <div class="divSpanDP">
+                                Requisitos</div>
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -133,5 +152,8 @@
                 &nbsp;</td>
         </tr>
     </table>
+    </div>
 </asp:Content>
 
+<asp:Content ID="Content3" ContentPlaceHolderID="PaginaActual" runat="Server">
+</asp:Content>

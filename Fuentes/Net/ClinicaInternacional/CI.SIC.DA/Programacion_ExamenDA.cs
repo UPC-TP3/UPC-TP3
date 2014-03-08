@@ -9,7 +9,7 @@ namespace CI.SIC.DA
 {
     public class Programacion_ExamenDA : BaseDA<Programacion_ExamenDA>
     {
-        public List<Programacion_ExamenBE> Listado(int pId_orden_examen, int pId_consultorio, string pFecha, string pPaciente)
+        public List<Programacion_ExamenBE> Listado(int pId_orden_examen, int pId_consultorio, string pFecha, string pPaciente, int pId_orden_interna, int pId_historia)
         {
             var lista = new List<Programacion_ExamenBE>();
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -17,6 +17,8 @@ namespace CI.SIC.DA
             parameters.Add("@id_consultorio", pId_consultorio);
             parameters.Add("@fecha", pFecha);
             parameters.Add("@paciente", pPaciente);
+            parameters.Add("@id_orden_interna", pId_orden_interna);
+            parameters.Add("@id_historia", pId_historia);
 
             using (IDataReader reader = SqlHelper.Instance.ExecuteReader("pa_Lista_Programacion_Examenes", parameters))
             {
@@ -43,10 +45,11 @@ namespace CI.SIC.DA
         }
 
 
-        public Programacion_ExamenBE Registro(int pId_orden_examen)
+        public Programacion_ExamenBE Registro(int pId_programacion, int pId_orden_examen)
         {
             Programacion_ExamenBE lista = null;
             Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@id_programacion", pId_programacion);
             parameters.Add("@id_orden_examen", pId_orden_examen);
 
             using (IDataReader reader = SqlHelper.Instance.ExecuteReader("pa_Registro_Programacion_Examen", parameters))
@@ -78,6 +81,38 @@ namespace CI.SIC.DA
         }
 
         public bool Nuevo(Programacion_ExamenBE pProgramacion_ExamenBE)
+        {
+            try
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+
+                parameters.Add("@id_orden_examen", pProgramacion_ExamenBE.Id_orden_examen);
+                parameters.Add("@id_horario", pProgramacion_ExamenBE.Id_horario);
+                parameters.Add("@estado", pProgramacion_ExamenBE.Estado);
+
+                int rpta = SqlHelper.Instance.ExecuteNonQuery("pa_Nuevo_Programacion_Examen", parameters);
+                return (rpta > 0) ? true : false;
+            }
+            catch { throw; }
+        }
+
+        public bool Anular(Programacion_ExamenBE pProgramacion_ExamenBE)
+        {
+            try
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+                parameters.Add("@id_orden_examen", pProgramacion_ExamenBE.Id_orden_examen);
+                parameters.Add("@id_horario", pProgramacion_ExamenBE.Id_horario);
+
+                int rpta = SqlHelper.Instance.ExecuteNonQuery("pa_Anular_Programacion_Examen", parameters);
+                return (rpta > 0) ? true : false;
+            }
+            catch { throw; }
+        }
+
+        public bool Reprogramacion(Programacion_ExamenBE pProgramacion_ExamenBE)
         {
             try
             {

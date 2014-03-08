@@ -18,6 +18,8 @@ namespace CI.SIC.DA
 
             if (pTipo == "T")
                 lista.Add(new LocalBE { Id_local = 0, Nombre = "Todos" });
+            if (pTipo == "S")
+                lista.Add(new LocalBE { Id_local = 0, Nombre = "Seleccione" });
 
             using (IDataReader reader = SqlHelper.Instance.ExecuteReader("pa_Lista_Local", parameters))
             {
