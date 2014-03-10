@@ -1,4 +1,4 @@
-��CREATE DATABASE [BD_ClinicaInternacional]
+﻿CREATE DATABASE [BD_ClinicaInternacional]
 
 GO
 
@@ -240,13 +240,13 @@ CREATE TABLE [dbo].[TB_INFORME_EQUIPO](
 
 	[GM_Fecha_Informe] [char](8) NULL,
 
-	[GM_Descripci�n_Actividades] [varchar](100) NULL,
+	[GM_Descripcion_Actividades] [varchar](100) NULL,
 
 	[GM_Observaciones] [varchar](100) NULL,
 
 	[GM_Estado] [int] NULL,
 
-	[GM_Descripci�n_Repuestos] [varchar](100) NULL,
+	[GM_Descripcion_Repuestos] [varchar](100) NULL,
 
 PRIMARY KEY CLUSTERED 
 
@@ -417,7 +417,7 @@ CREATE TABLE [dbo].[TB_CENTRO_COSTO](
 
 	[ID_CentroCosto] [int] IDENTITY(1,1) NOT NULL,
 
-	[Descripci�n_CC] [varchar](100) NULL,
+	[Descripcion_CC] [varchar](100) NULL,
 
 	[Estado] [int] NULL,
 
@@ -457,7 +457,7 @@ CREATE TABLE [dbo].[TB_ACTIVO](
 
 	[Tipo_Activo] [varchar](100) NULL,
 
-	[Descripci�n] [varchar](100) NULL,
+	[Descripcion] [varchar](100) NULL,
 
 	[Cantidad] [int] NULL,
 
@@ -539,11 +539,11 @@ CREATE TABLE [dbo].[TB_FICHA_EQUIPO](
 
 	[ID_Ficha_Equipo] [int] IDENTITY(1,1) NOT NULL,
 
-	[GM_Ubicaci�n] [varchar](100) NULL,
+	[GM_Ubicacion] [varchar](100) NULL,
 
-	[GM_Fecha_�ltimo_Mantenimiento] [char](8) NULL,
+	[GM_Fecha_ultimo_Mantenimiento] [char](8) NULL,
 
-	[GM_Fecha_Ultima_Reparaci�n] [char](8) NULL,
+	[GM_Fecha_Ultima_Reparacion] [char](8) NULL,
 
 	[GM_NroPeriodo_Mantenimiento] [int] NULL,
 
@@ -854,7 +854,7 @@ CREATE TABLE [dbo].[TB_TIPO_EXAMEN_MEDICO](
 
 	[descripcion] [varchar](50) NULL,
 
-	[GE_Descripci�nGeneral] [varchar](200) NULL,
+	[GE_DescripcionGeneral] [varchar](200) NULL,
 
  CONSTRAINT [PK_TB_TIPO_EXAMEN_MEDICO] PRIMARY KEY CLUSTERED 
 
@@ -1048,7 +1048,7 @@ CREATE TABLE [dbo].[TB_SOLICITUD_MANTENIMIENTO](
 
 	[GM_Detalle_Servicio] [varchar](100) NULL,
 
-	[GM_Observaci�n] [varchar](100) NULL,
+	[GM_Observacion] [varchar](100) NULL,
 
 	[GM_Estado] [int] NULL,
 
@@ -1162,9 +1162,9 @@ CREATE TABLE [dbo].[TB_ORDEN_TRABAJO](
 
 	[ID_Orden_Trabajo] [int] IDENTITY(1,1) NOT NULL,
 
-	[GM_Fecha_Creaci�n] [char](8) NULL,
+	[GM_Fecha_Creacion] [char](8) NULL,
 
-	[GM_Fecha_Asignaci�n] [char](8) NULL,
+	[GM_Fecha_Asignacion] [char](8) NULL,
 
 	[GM_Fecha_Inicio] [char](8) NULL,
 
@@ -1176,7 +1176,7 @@ CREATE TABLE [dbo].[TB_ORDEN_TRABAJO](
 
 	[GM_Indicaciones] [varchar](100) NULL,
 
-	[GM_Tipo_Atenci�n] [varchar](100) NULL,
+	[GM_Tipo_Atencion] [varchar](100) NULL,
 
 	[GM_Estado] [int] NULL,
 
@@ -1288,7 +1288,7 @@ CREATE TABLE [dbo].[TB_PLAN_MANTENIMIENTO](
 
 	[ID_PlanMantenimiento] [int] IDENTITY(1,1) NOT NULL,
 
-	[GM_Fecha_Creaci�n] [char](8) NULL,
+	[GM_Fecha_Creacion] [char](8) NULL,
 
 	[GM_Periodo_Inicio] [char](8) NULL,
 
@@ -1334,9 +1334,9 @@ CREATE TABLE [dbo].[TB_INFORME_EQUIPO_DET](
 
 	[ID_InformeEquipo] [int] NULL,
 
-	[GM_Fecha_Ejecuci�n] [char](8) NULL,
+	[GM_Fecha_Ejecucion] [char](8) NULL,
 
-	[GM_Tiempo_Ejecuci�n] [int] NULL,
+	[GM_Tiempo_Ejecucion] [int] NULL,
 
 	[GM_Motivo_Rechazo] [varchar](100) NULL,
 
@@ -1448,7 +1448,7 @@ CREATE TABLE [dbo].[TB_ORDEN_TRABAJO_DET](
 
 	[ID_Orden_Trabajo] [int] NULL,
 
-	[GM_Tiempo_Atenci�n] [int] NULL,
+	[GM_Tiempo_Atencion] [int] NULL,
 
 	[GM_Fecha_Rechazo] [char](8) NULL,
 
@@ -2377,7 +2377,7 @@ CREATE TABLE [dbo].[TB_PRESCRIPCION_MEDICA](
 
 	[ID_Consulta] [int] NOT NULL,
 
- CONSTRAINT [PK_T_CL_ES_GC_Prescripci�n_M�dica] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_T_CL_ES_GC_Prescripcion_Medica] PRIMARY KEY CLUSTERED 
 
 (
 
@@ -2997,13 +2997,13 @@ GO
 
 /****** Object:  ForeignKey [FK_T_CL_ES_GC_Prescripci�n_M�dica57]    ******/
 
-ALTER TABLE [dbo].[TB_PRESCRIPCION_MEDICA]  WITH CHECK ADD  CONSTRAINT [FK_T_CL_ES_GC_Prescripci�n_M�dica57] FOREIGN KEY([ID_Paciente])
+ALTER TABLE [dbo].[TB_PRESCRIPCION_MEDICA]  WITH CHECK ADD  CONSTRAINT [FK_T_CL_ES_GC_Prescripcion_Medica57] FOREIGN KEY([ID_Paciente])
 
 REFERENCES [dbo].[TB_PACIENTE] ([ID_Paciente])
 
 GO
 
-ALTER TABLE [dbo].[TB_PRESCRIPCION_MEDICA] CHECK CONSTRAINT [FK_T_CL_ES_GC_Prescripci�n_M�dica57]
+ALTER TABLE [dbo].[TB_PRESCRIPCION_MEDICA] CHECK CONSTRAINT [FK_T_CL_ES_GC_Prescripcion_Medica57]
 
 GO
 
@@ -3150,9 +3150,11 @@ ALTER TABLE [dbo].[TB_INFORME_ADMINSITRATIVO]  WITH CHECK ADD  CONSTRAINT [FK_TB
 REFERENCES [dbo].[TB_TIPO_INFORME_ADMINISTRATIVO] ([ID_Tipo_Informe])
 GO
 
+/* Sentencia incompleta
 ALTER TABLE [dbo].[TB_TIPO_INFORME_ADMINISTRATIVO] CHECK CONSTRAINT [FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO]
 
 GO
+*/
 
 /****** Object:  ForeignKey [FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO]    ******/
 ALTER TABLE [dbo].[TB_INFORME_ADMINSITRATIVO]  WITH CHECK ADD  CONSTRAINT [FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO] FOREIGN KEY([ID_Empleado])
@@ -3278,7 +3280,7 @@ CREATE TABLE [dbo].[TB_Atencion_Emergencia](
 
 (
 
-	[GE_ATENCION] ASC
+	[ID_ATENCION] ASC
 
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 

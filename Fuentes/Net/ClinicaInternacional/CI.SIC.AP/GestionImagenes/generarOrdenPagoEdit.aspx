@@ -25,7 +25,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
-<div class="col_04">
+    <div class="col_04">
     <table style="width:100%;">
         <tr>
             <td>
