@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER Procedure [dbo].[pa_Registro_Programacion_Examen]
+CREATE Procedure [dbo].[pa_Registro_Programacion_Examen]
 @id_programacion int,
 @id_orden_examen int
 As
@@ -19,14 +19,13 @@ Where @id_orden_examen in (p.ID_Orden_Examen_Medico, 0) and @id_programacion in 
 
 Go
 
-USE [BD_ClinicaInternacional]
-GO
+
 /****** Object:  StoredProcedure [dbo].[pa_Registro_Orden_Examen]    Script Date: 03/06/2014 19:26:08 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER Procedure [dbo].[pa_Registro_Orden_Examen]
+CREATE Procedure [dbo].[pa_Registro_Orden_Examen]
 @id_orden_examen int
 As
 Set Nocount On
@@ -47,14 +46,13 @@ Where o.ID_Orden_Examen_Medico= @id_orden_examen
 
 Go
 
-USE [BD_ClinicaInternacional]
-GO
+
 /****** Object:  StoredProcedure [dbo].[pa_Registro_Horario]    Script Date: 03/06/2014 19:26:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER Procedure [dbo].[pa_Registro_Horario]
+CREATE Procedure [dbo].[pa_Registro_Horario]
 @id_horario int
 As
 Set Nocount On
@@ -64,14 +62,13 @@ Where ID_MedicoTurno= @id_horario
 
 Go
 
-USE [BD_ClinicaInternacional]
-GO
+
 /****** Object:  StoredProcedure [dbo].[pa_Nuevo_Programacion_Examen]    Script Date: 03/06/2014 19:26:04 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER Procedure [dbo].[pa_Nuevo_Programacion_Examen]
+CREATE Procedure [dbo].[pa_Nuevo_Programacion_Examen]
 @id_orden_examen int, 
 @id_horario int, 
 @estado varchar(1)
@@ -93,14 +90,13 @@ else
 Go
 
 
-USE [BD_ClinicaInternacional]
-GO
+
 /****** Object:  StoredProcedure [dbo].[pa_Nuevo_Orden_Pago]    Script Date: 03/06/2014 19:26:02 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER Procedure [dbo].[pa_Nuevo_Orden_Pago]
+CREATE Procedure [dbo].[pa_Nuevo_Orden_Pago]
 @id_orden_examen int, 
 @estado varchar(1), 
 @importe decimal(10,2)
@@ -116,14 +112,13 @@ Update TB_PROGRAMACION_ATENCION_EXAMENES Set estado= 'D' Where ID_Orden_Examen_M
 Go
 
 
-USE [BD_ClinicaInternacional]
-GO
+
 /****** Object:  StoredProcedure [dbo].[pa_Lista_Tipo_Examen]    Script Date: 03/06/2014 19:26:00 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER Procedure [dbo].[pa_Lista_Tipo_Examen]
+CREATE Procedure [dbo].[pa_Lista_Tipo_Examen]
 As
 Select ID_Tipo_Examen as id_tpo_examen, descripcion From TB_TIPO_EXAMEN_MEDICO
 Order By descripcion
@@ -133,14 +128,13 @@ Order By descripcion
 Go
 
 
-USE [BD_ClinicaInternacional]
-GO
+
 /****** Object:  StoredProcedure [dbo].[pa_Lista_Programacion_Examenes]    Script Date: 03/06/2014 19:25:58 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER Procedure [dbo].[pa_Lista_Programacion_Examenes]
+CREATE Procedure [dbo].[pa_Lista_Programacion_Examenes]
 @id_orden_examen int,
 @id_consultorio int,
 @fecha varchar(8),
@@ -182,14 +176,13 @@ Go
 
 
 
-USE [BD_ClinicaInternacional]
-GO
+
 /****** Object:  StoredProcedure [dbo].[pa_Lista_Local]    Script Date: 03/06/2014 19:25:56 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER Procedure [dbo].[pa_Lista_Local]
+CREATE Procedure [dbo].[pa_Lista_Local]
 As
 Select * From TB_LOCAL
 Order By nombre
@@ -199,14 +192,13 @@ Order By nombre
 
 Go
 
-USE [BD_ClinicaInternacional]
-GO
+
 /****** Object:  StoredProcedure [dbo].[pa_Lista_Horario]    Script Date: 03/06/2014 19:25:54 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER Procedure [dbo].[pa_Lista_Horario]
+CREATE Procedure [dbo].[pa_Lista_Horario]
 @id_consultorio int
 As
 Set Nocount On
@@ -221,14 +213,13 @@ Order By h.fecha
 Go
 
 
-USE [BD_ClinicaInternacional]
-GO
+
 /****** Object:  StoredProcedure [dbo].[pa_Lista_Examen_Requisito]    Script Date: 03/06/2014 19:25:52 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER Procedure [dbo].[pa_Lista_Examen_Requisito]
+CREATE Procedure [dbo].[pa_Lista_Examen_Requisito]
 @id_examen int
 As
 Set Nocount On
@@ -242,14 +233,13 @@ Where e.ID_Catalogo_Examen= @id_examen
 Go
 
 
-USE [BD_ClinicaInternacional]
-GO
+
 /****** Object:  StoredProcedure [dbo].[pa_Lista_Consultorio]    Script Date: 03/06/2014 19:25:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER Procedure [dbo].[pa_Lista_Consultorio]
+CREATE Procedure [dbo].[pa_Lista_Consultorio]
 @id_local int,
 @id_tpo_examen int
 As
@@ -263,14 +253,13 @@ Order By descripcion
 Go
 
 
-USE [BD_ClinicaInternacional]
-GO
+
 /****** Object:  StoredProcedure [dbo].[pa_Anular_Programacion_Examen]    Script Date: 03/06/2014 19:25:42 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER Procedure [dbo].[pa_Anular_Programacion_Examen]
+CREATE Procedure [dbo].[pa_Anular_Programacion_Examen]
 @id_orden_examen int, 
 @id_horario int
 As

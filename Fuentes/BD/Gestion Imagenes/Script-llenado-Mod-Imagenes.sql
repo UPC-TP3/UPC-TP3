@@ -189,7 +189,7 @@ Insert Into TB_ORDEN_INTERNA (ID_Tipo_Atencion, ID_Paciente, ID_Historia) Values
 Insert Into TB_ORDEN_INTERNA (ID_Tipo_Atencion, ID_Paciente, ID_Historia) Values ('A',6,6)
 Insert Into TB_ORDEN_INTERNA (ID_Tipo_Atencion, ID_Paciente, ID_Historia) Values ('H',7,7)
 Insert Into TB_ORDEN_INTERNA (ID_Tipo_Atencion, ID_Paciente, ID_Historia) Values ('A',8,8)
-
+Insert Into TB_ORDEN_INTERNA (ID_Tipo_Atencion, ID_Paciente, ID_Historia) Values ('H',9,9)
 
 
 Insert Into TB_ORDEN_EXAMEN_MEDICO (ID_Medico, ID_Orden_Interna, fecha, ID_Catalogo_Examen, estado) Values (1,9, GETDATE(), 5, 'G')
