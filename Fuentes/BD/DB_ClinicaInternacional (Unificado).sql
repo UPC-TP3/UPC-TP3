@@ -18,8 +18,8 @@ CREATE TABLE [dbo].[TB_MEDICO](
 	[email] [varchar](60) NULL,
 	[telefono] [varchar](50) NULL,
 	[Direccion] [varchar](255) NOT NULL,
-	[Celular] [varchar](255) NOT NULL,
-	[TelefonoDomicilio] [varchar](255) NOT NULL,
+	[Celular] [varchar](255) NULL,
+	[TelefonoDomicilio] [varchar](255) NULL,
 	[FechaCertificacion] [varchar](100) NULL,
 	[CentroEstudios] [varchar](100) NULL,
 	[CodigoColegiatura] [varchar](20) NULL,
@@ -525,17 +525,18 @@ SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[TB_PACIENTE](
 	[ID_Paciente] [int] IDENTITY(1,1) NOT NULL,
+	[dni_paciente] [varchar](11) NOT NULL,	
 	[DocumentoIdentidad] [varchar](255) NOT NULL,
-	[EstadoCivil] [varchar](255) NOT NULL,
-	[FechaNacimiento] [datetime] NOT NULL,
+	[EstadoCivil] [varchar](255) NULL,
+	[FechaNacimiento] [datetime] NULL,
 	[Celular] [varchar](255) NULL,
-	[TelefonoDomicilio] [varchar](255) NOT NULL,
-	[ID_Pais] [int] NOT NULL,
-	[ID_Departamento] [int] NOT NULL,
-	[ID_Provincia] [int] NOT NULL,
-	[ID_Distrito] [int] NOT NULL,
-	[Direccion] [varchar](255) NOT NULL,
-	[ID_Sexo] [int] NOT NULL,
+	[TelefonoDomicilio] [varchar](255) NULL,
+	[ID_Pais] [int] NULL,
+	[ID_Departamento] [int] NULL,
+	[ID_Provincia] [int] NULL,
+	[ID_Distrito] [int] NULL,
+	[Direccion] [varchar](255) NULL,
+	[ID_Sexo] [int] NULL,
 	[Ocupacion] [varchar](255) NULL,
 	[ID_TipoDocumento] [int] NOT NULL,
 	[nombres] [varchar](50) NULL,
@@ -1871,3 +1872,7 @@ REFERENCES [dbo].[TB_MEDICO] ([ID_Medico])
 GO
 ALTER TABLE [dbo].[TB_TURNO_ATENCION] CHECK CONSTRAINT [FK_TB_TURNOATENCION_00TB_MEDICO]
 GO
+
+
+Insert Into TB_TIPO_DOCUMENTO (Nombre) Values ('DNI')
+Go
