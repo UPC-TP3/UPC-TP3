@@ -1,3 +1,6 @@
+Use BD_ClinicaInternacional
+Go
+
 Insert Into TB_LOCAL (nombre, direccion) Values ('Sede 1','Av. Guardia Civil 120');
 Insert Into TB_LOCAL (nombre, direccion) Values ('Sede 2','Av. España 200');
 Insert Into TB_LOCAL (nombre, direccion) Values ('Sede 3','Av. Polo 345');
@@ -8,6 +11,25 @@ Insert Into TB_ESPECIALIDAD (descripcion) values ('Especialidad3')
 Insert Into TB_ESPECIALIDAD (descripcion) values ('Especialidad4')
 
 
+Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, Direccion) Values ('Juan','Bazán','55443', '')
+Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, Direccion) Values ('Carlos','Ponce','11223', '')
+Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, Direccion) Values ('María','Santander','54321', '')
+Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, Direccion) Values ('David','Paredes','12345', '')
+Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, Direccion) Values ('David','Puente','12345', '')
+Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, Direccion) Values ('María','Rivas','34567', '')
+Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, Direccion) Values ('Nicolás','Barrientos','65432', '')
+Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, Direccion) Values ('Luana','Velasco','89786', '')
+Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, Direccion) Values ('Ninoska','Rojas','65456', '')
+Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, Direccion) Values ('David','Chura','67546', '')
+Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, Direccion) Values ('Leandro','Alegria','54365', '')
+Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, Direccion) Values ('Armando','Soto','16378', '')
+Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, Direccion) Values ('Paolo','Armaro','51327', '')
+Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, Direccion) Values ('Claudio','Castro','89765', '')
+Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, Direccion) Values ('Elena','Gerónimo','45637', '')
+
+
+
+/*
 Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, GA_Nombre, GA_Direccion, GA_Correo, GA_Celular, GA_TelefonoDomicilio) Values ('Juan','Bazán','55443','','','','','')
 Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, GA_Nombre, GA_Direccion, GA_Correo, GA_Celular, GA_TelefonoDomicilio) Values ('Carlos','Ponce','11223','','','','','')
 Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, GA_Nombre, GA_Direccion, GA_Correo, GA_Celular, GA_TelefonoDomicilio) Values ('María','Santander','54321','','','','','')
@@ -23,7 +45,7 @@ Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, GA_Nombre, GA_Direccion,
 Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, GA_Nombre, GA_Direccion, GA_Correo, GA_Celular, GA_TelefonoDomicilio) Values ('Paolo','Armaro','51327','','','','','')
 Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, GA_Nombre, GA_Direccion, GA_Correo, GA_Celular, GA_TelefonoDomicilio) Values ('Claudio','Castro','89765','','','','','')
 Insert Into TB_MEDICO (nom_medico, ape_medico, num_cmp, GA_Nombre, GA_Direccion, GA_Correo, GA_Celular, GA_TelefonoDomicilio) Values ('Elena','Gerónimo','45637','','','','','')
-
+*/
 
 Insert Into TB_MEDICOESPECIALIDAD (ID_Medico, ID_Especialidad) Values (1,1)
 Insert Into TB_MEDICOESPECIALIDAD (ID_Medico, ID_Especialidad) Values (2,2)
@@ -145,15 +167,19 @@ Insert Into TB_CATALOGO_REQUISITO (ID_Catalogo_Examen, ID_Requisito) Values (4,1
 
 
 
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('34567890', 'César',	'Quispe', 'Sánchez',1, '34567890')
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('32454678', 'Pawl',	'Sánchez','Paz',1, '32454678')
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('12324577', 'Imelda',	'Paz','Chapoñán',1, '12324577')
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('85769345', 'Alex',	'Chapoñán','Vivanco',1, '85769345')
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('35465097', 'Claudia',	'Vivanco','Guerra',1, '35465097')
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('23486978', 'Alberto',	'Guerra','Colonio',1, '23486978')
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('09876345', 'Carla',	'Colonio','Hijar',1, '09876345')
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('87837456', 'Julissa',	'Hijar','Cruz',1, '87837456')
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('23435678', 'José',	'Cruz','Quispe',1, '23435678')
 
 
 
-
-Insert Into TB_TIPO_DOCUMENTO (GA_Nombre) Values ('')
-
-
-
-
+/*
 Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, GA_Nombre, GA_DocumentoIdentidad, GA_EstadoCivil, GA_FechaNacimiento,GA_TelefonoDomicilio, GA_Pais, GA_Departamento, GA_Provincia, GA_Distrito, GA_Direccion, GA_Sexo, ID_TipoDocumento) Values ('34567890', 'César',	'Quispe', 'Sánchez','','','','','','','','','','','',1)
 Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, GA_Nombre, GA_DocumentoIdentidad, GA_EstadoCivil, GA_FechaNacimiento,GA_TelefonoDomicilio, GA_Pais, GA_Departamento, GA_Provincia, GA_Distrito, GA_Direccion, GA_Sexo, ID_TipoDocumento) Values ('32454678', 'Pawl',	'Sánchez','Paz','','','','','','','','','','','',1)
 Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, GA_Nombre, GA_DocumentoIdentidad, GA_EstadoCivil, GA_FechaNacimiento,GA_TelefonoDomicilio, GA_Pais, GA_Departamento, GA_Provincia, GA_Distrito, GA_Direccion, GA_Sexo, ID_TipoDocumento) Values ('12324577', 'Imelda',	'Paz','Chapoñán','','','','','','','','','','','',1)
@@ -163,19 +189,18 @@ Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, GA_Nom
 Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, GA_Nombre, GA_DocumentoIdentidad, GA_EstadoCivil, GA_FechaNacimiento,GA_TelefonoDomicilio, GA_Pais, GA_Departamento, GA_Provincia, GA_Distrito, GA_Direccion, GA_Sexo, ID_TipoDocumento) Values ('09876345', 'Carla',	'Colonio','Hijar','','','','','','','','','','','',1)
 Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, GA_Nombre, GA_DocumentoIdentidad, GA_EstadoCivil, GA_FechaNacimiento,GA_TelefonoDomicilio, GA_Pais, GA_Departamento, GA_Provincia, GA_Distrito, GA_Direccion, GA_Sexo, ID_TipoDocumento) Values ('87837456', 'Julissa',	'Hijar','Cruz','','','','','','','','','','','',1)
 Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, GA_Nombre, GA_DocumentoIdentidad, GA_EstadoCivil, GA_FechaNacimiento,GA_TelefonoDomicilio, GA_Pais, GA_Departamento, GA_Provincia, GA_Distrito, GA_Direccion, GA_Sexo, ID_TipoDocumento) Values ('23435678', 'José',	'Cruz','Quispe','','','','','','','','','','','',1)
+*/
 
 
-
-
-Insert Into TB_HISTORIA_CLINICA (ID_Paciente, GA_FechaRegistro,GA_Antecedentes) values (1, GETDATE(), '')
-Insert Into TB_HISTORIA_CLINICA (ID_Paciente, GA_FechaRegistro,GA_Antecedentes) values (2, GETDATE(), '')
-Insert Into TB_HISTORIA_CLINICA (ID_Paciente, GA_FechaRegistro,GA_Antecedentes) values (3, GETDATE(), '')
-Insert Into TB_HISTORIA_CLINICA (ID_Paciente, GA_FechaRegistro,GA_Antecedentes) values (4, GETDATE(), '')
-Insert Into TB_HISTORIA_CLINICA (ID_Paciente, GA_FechaRegistro,GA_Antecedentes) values (5, GETDATE(), '')
-Insert Into TB_HISTORIA_CLINICA (ID_Paciente, GA_FechaRegistro,GA_Antecedentes) values (6, GETDATE(), '')
-Insert Into TB_HISTORIA_CLINICA (ID_Paciente, GA_FechaRegistro,GA_Antecedentes) values (7, GETDATE(), '')
-Insert Into TB_HISTORIA_CLINICA (ID_Paciente, GA_FechaRegistro,GA_Antecedentes) values (8, GETDATE(), '')
-Insert Into TB_HISTORIA_CLINICA (ID_Paciente, GA_FechaRegistro,GA_Antecedentes) values (9, GETDATE(), '')
+Insert Into TB_HISTORIA_CLINICA (ID_Paciente, FechaRegistro, Antecedentes, ID_GrupoSanguineo) values (1, GETDATE(), '', 1)
+Insert Into TB_HISTORIA_CLINICA (ID_Paciente, FechaRegistro, Antecedentes, ID_GrupoSanguineo) values (2, GETDATE(), '', 1)
+Insert Into TB_HISTORIA_CLINICA (ID_Paciente, FechaRegistro, Antecedentes, ID_GrupoSanguineo) values (3, GETDATE(), '', 1)
+Insert Into TB_HISTORIA_CLINICA (ID_Paciente, FechaRegistro, Antecedentes, ID_GrupoSanguineo) values (4, GETDATE(), '', 1)
+Insert Into TB_HISTORIA_CLINICA (ID_Paciente, FechaRegistro, Antecedentes, ID_GrupoSanguineo) values (5, GETDATE(), '', 1)
+Insert Into TB_HISTORIA_CLINICA (ID_Paciente, FechaRegistro, Antecedentes, ID_GrupoSanguineo) values (6, GETDATE(), '', 1)
+Insert Into TB_HISTORIA_CLINICA (ID_Paciente, FechaRegistro, Antecedentes, ID_GrupoSanguineo) values (7, GETDATE(), '', 1)
+Insert Into TB_HISTORIA_CLINICA (ID_Paciente, FechaRegistro, Antecedentes, ID_GrupoSanguineo) values (8, GETDATE(), '', 1)
+Insert Into TB_HISTORIA_CLINICA (ID_Paciente, FechaRegistro, Antecedentes, ID_GrupoSanguineo) values (9, GETDATE(), '', 1)
 
 
 
