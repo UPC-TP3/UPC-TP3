@@ -101,7 +101,7 @@ CREATE Procedure [dbo].[pa_Nuevo_Orden_Pago]
 @estado varchar(1), 
 @importe decimal(10,2)
 As
-Insert Into TB_ORDEN_SERVICIO (fecha, ID_Orden_Examen_Medico, estado, importe)
+Insert Into TB_ORDEN_SERVICIO (FechaSolicitud, ID_Orden_Examen_Medico, estado, Total)
 Values (GETDATE(), @id_orden_examen, @estado, @importe)
 
 Update TB_ORDEN_EXAMEN_MEDICO Set estado= 'C' Where ID_Orden_Examen_Medico= @id_orden_examen
