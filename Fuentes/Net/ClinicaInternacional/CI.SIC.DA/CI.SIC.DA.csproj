@@ -42,9 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Catalogo_ExamenDA.cs" />
+    <Compile Include="ConsultorioDA.cs" />
     <Compile Include="EvaluacionDA.cs" />
+<<<<<<< HEAD
     <Compile Include="EvaluacionDetalleDA.cs" />
     <Compile Include="InstalacionDA.cs" />
+=======
+    <Compile Include="HorarioDA.cs" />
+    <Compile Include="IngresoHospitalizacionDAO.cs" />
+    <Compile Include="LocalDA.cs" />
+    <Compile Include="OrdenHospitalizacionDAO.cs" />
+    <Compile Include="Orden_ExamenDA.cs" />
+    <Compile Include="Orden_PagoDA.cs" />
+    <Compile Include="PacienteDA.cs" />
+    <Compile Include="PacienteDAO.cs" />
+    <Compile Include="Programacion_ExamenDA.cs" />
+    <Compile Include="Tipo_ExamenDA.cs" />
+>>>>>>> refs/remotes/origin/master
     <Compile Include="Util\BaseDA.cs" />
     <Compile Include="Util\DataReaderExtensions.cs" />
     <Compile Include="Util\DBProvider.cs" />

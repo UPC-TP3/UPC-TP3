@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Configuration;
 
     public class Constantes
     {
@@ -19,4 +20,9 @@ using System.Web;
         };
 
 
+        public static class Mensajes
+        {
+            public static string msgOrdenInternamientoNull = ConfigurationManager.AppSettings["msgOrdenHospitNull"].ToString();
+
+        }
     }

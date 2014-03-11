@@ -40,8 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Catalogo_ExamenBL.cs" />
+    <Compile Include="ConsultorioBL.cs" />
     <Compile Include="EvaluacionBL.cs" />
+<<<<<<< HEAD
     <Compile Include="InstalacionBL.cs" />
+=======
+    <Compile Include="HorarioBL.cs" />
+    <Compile Include="IngresoHospitalizacion.cs" />
+    <Compile Include="LocalBL.cs" />
+    <Compile Include="OrdenHospitalizacionBL.cs" />
+    <Compile Include="Orden_ExamenBL.cs" />
+    <Compile Include="Orden_PagoBL.cs" />
+    <Compile Include="PacienteBL.cs" />
+    <Compile Include="Programacion_ExamenBL.cs" />
+    <Compile Include="Tipo_ExamenBL.cs" />
+>>>>>>> refs/remotes/origin/master
     <Compile Include="Util\BaseBL.cs" />
     <Compile Include="HabitacionBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
