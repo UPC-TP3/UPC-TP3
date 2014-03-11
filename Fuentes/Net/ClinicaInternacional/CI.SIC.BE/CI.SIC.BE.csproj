@@ -43,18 +43,17 @@
     <Compile Include="CamaBE.cs" />
     <Compile Include="Catalogo_ExamenBE.cs" />
     <Compile Include="ConsultorioBE.cs" />
+    <Compile Include="EAgendaMedica.cs" />
+    <Compile Include="ECita.cs" />
+    <Compile Include="EPaciente.cs" />
     <Compile Include="EspecialidadBE.cs" />
     <Compile Include="EvaluacionBE.cs" />
     <Compile Include="EvaluacionDetalleBE.cs" />
     <Compile Include="Examen_RequisitoBE.cs" />
     <Compile Include="HabitacionBE.cs" />
-<<<<<<< HEAD
-    <Compile Include="InstalacionBE.cs" />
-=======
     <Compile Include="Historia_ClinicaBE.cs" />
     <Compile Include="HorarioBE.cs" />
     <Compile Include="IngresoHospitalizacionBE.cs" />
->>>>>>> refs/remotes/origin/master
     <Compile Include="LocalBE.cs" />
     <Compile Include="MedicoBE.cs" />
     <Compile Include="Medico_EspecialidadBE.cs" />

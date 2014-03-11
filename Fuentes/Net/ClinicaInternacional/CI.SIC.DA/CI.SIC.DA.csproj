@@ -34,6 +34,9 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,10 +48,6 @@
     <Compile Include="Catalogo_ExamenDA.cs" />
     <Compile Include="ConsultorioDA.cs" />
     <Compile Include="EvaluacionDA.cs" />
-<<<<<<< HEAD
-    <Compile Include="EvaluacionDetalleDA.cs" />
-    <Compile Include="InstalacionDA.cs" />
-=======
     <Compile Include="HorarioDA.cs" />
     <Compile Include="IngresoHospitalizacionDAO.cs" />
     <Compile Include="LocalDA.cs" />
@@ -58,8 +57,12 @@
     <Compile Include="PacienteDA.cs" />
     <Compile Include="PacienteDAO.cs" />
     <Compile Include="Programacion_ExamenDA.cs" />
+    <Compile Include="SGH_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SGH_Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Tipo_ExamenDA.cs" />
->>>>>>> refs/remotes/origin/master
     <Compile Include="Util\BaseDA.cs" />
     <Compile Include="Util\DataReaderExtensions.cs" />
     <Compile Include="Util\DBProvider.cs" />
@@ -77,7 +80,15 @@
       <Name>CI.SIC.CC</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EntityDeploy Include="SGH_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SGH_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -9,11 +9,6 @@ namespace CI.SIC.BL
         public IList<EvaluacionBE> Listar()
         {            
             return EvaluacionDA.Instancia.Listar();
-        }
-
-        public EvaluacionBE Obtener(int id)
-        {
-            return EvaluacionDA.Instancia.Obtener(id);
-        }  
+        }    
     }
 }

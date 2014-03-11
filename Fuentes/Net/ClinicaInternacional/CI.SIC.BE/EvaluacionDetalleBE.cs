@@ -6,7 +6,5 @@ namespace CI.SIC.BE
         public int IdEvaluacionDetalle { get; set; }
         public int IdVerificacion { get; set; }
         public bool Conformidad { get; set; }
-
-        public string Item { get; set; }
     }
 }
