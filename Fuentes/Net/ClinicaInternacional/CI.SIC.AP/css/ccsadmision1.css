@@ -1,0 +1,325 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+font-weight: 500;
+font-style: inherit;
+font-size: 100%;
+font-family: Arial, Helvetica, sans-serif,verdana;
+vertical-align: baseline;
+}
+
+ol, ul {
+list-style: none;
+}
+/*
+table {
+border-collapse: separate;
+border-spacing: 0;
+    width: 57px;
+}
+*/
+
+caption, th, td {
+/*text-align: left;*/
+font-weight: normal;
+}
+
+.modalBackground
+{
+    background-color: Gray;
+    filter: alpha(opacity=70);
+    opacity: 0.7;
+}
+.modalPopup
+{
+    background-color: #ffffdd;
+    border-width: 3px;
+    border-style: solid;
+    border-color: Gray;
+    padding: 3px;
+    width: 250px;
+}
+
+.bt_downloadPlantilla { float:left; background:url(../img/img-excel.png) no-repeat 0 0; width:30px; height:30px; display:block; border:none; cursor:pointer; margin:0 0 0 5px;}
+.bt_agregar3 { float:left; background:url(../img/img-add.png) no-repeat 0 0; width:30px; height:30px; display:block; border:none; cursor:pointer; margin:0 0 0 5px;}
+.bt_guardar3 { float:left; background:url(../img/img-save.png) no-repeat 0 0; width:30px; height:30px; display:block; border:none; cursor:pointer; margin:0 0 0 5px;}
+.bt_cancelar { float:left; background:url(../img/img-cancel.png) no-repeat 0 0; width:30px; height:30px; display:block; border:none; cursor:pointer; margin:0 0 0 5px;}
+
+.GrivView
+{
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:12px;
+    color:#515559;
+    border-collapse: separate !important;
+}
+
+.GrivView tr td, 
+.GrivView tr th {
+    height:23px;
+    vertical-align:middle;
+    border-bottom:dotted 1px #d9d9d9;
+    padding:0 12px;
+    /*text-align:left;*/
+}
+
+.GrivView tr td.colum1a {
+    /*text-align:left !important;*/
+    width:auto;
+    padding:0 10px;
+}
+
+.GrivView tr.tits td,
+.GrivView tr.tits th {
+    background:#6ba8ba!important;
+    /*text-align:center;*/
+    color:#fff;
+    font-size:11px;
+    font-weight:600;
+    padding:0px;
+}
+
+.GrivView tr.tits th {
+    text-align:left;
+}
+
+.GrivView td.colum,
+.GrivView th.colum {
+    background:#fff;
+    width:85px;
+    border:solid #fff;
+    border-width:0 1px;
+    border-bottom:dotted 1px #d9d9d9;
+    /*text-align:center;*/
+}
+
+.ocultarCelda
+{ display:none; }
+
+.col_04 span{ padding:0px 0px 0px 0px;text-align: inherit;}
+        
+.lockedBackground 
+{
+    background-color: #06789F;
+    filter: alpha(opacity=7);
+    opacity: 0.07;
+    z-index:99998;
+    position:absolute;
+    width:99%;
+    height:97%;
+    display:none;
+    margin-top:6px;
+}
+
+td.btnMant
+{
+    min-width:55px;
+    max-width:55px;
+}
+        
+td.btnMant input
+{
+    width:20px;
+    height:20px;
+}
+        
+.GrivView tr td
+{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+        
+.AutoTextBox input
+{ width:100%; }
+        
+.selectedTreeNode
+{ color: #ccc; }
+        
+.selectedTreeNodeOut
+{ color: #0086c3; }
+
+.Tabla_filtro_txt{font-size:12px; font-weight:600; width:auto; float:left; margin: 0 0 0 1px; _margin: 0 0 0 10px;color:#515559;}
+
+.Espaciofiltro div.separador{width:50%; }
+.Espaciofiltro, .Espaciofiltro div{float:left; }
+.Espaciofiltro{width:100%; background:#FFFFFF; margin: 0px 0 0 0; padding:3px 0 3px 00px;}
+
+.width_total{width:100%;}
+
+.ValidacionMensaje
+{
+    font-size: 11px;
+    color: Red;
+}
+.hideItem { display:none; }
+
+.main-nnclave3199{
+    width: 320px;
+    height: 150px;
+    font-family:Arial,Helvetica,sans-serif;
+    padding:0;
+    margin:0px;
+    font-size:12px;
+    background-color:#FFF;
+    color:#515559;
+}
+
+.ubi-main-nnclave3{
+    padding: 13px 13px 13px 22px;
+    overflow: hidden;
+}
+
+.mensaje-3199
+{
+	width:auto;
+	height:45px;
+	padding-left:42px;
+	padding-top: 10px;
+    font-size: 16px;
+	background-color: transparent;
+	background-image: url(../img/check.gif);
+	background-repeat: no-repeat;
+	background-position: left;
+	font-family:Verdana, Geneva, sans-serif;
+	text-align:center ;
+} 
+
+.ubi-btn-nnclave3199
+{
+	overflow: hidden;
+    padding: 11px 90px;
+}
+
+.BGProcessing
+{
+    filter: alpha(opacity=50); opacity: 0.5;
+    background: Gray url(../img/ajax-process.gif) no-repeat center 400px;
+    width: 100%;
+    display: none;
+    visibility: hidden;
+    position: fixed;
+    z-index: 99999;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+}
+
+.modalBackgroundOffLineIMG{background-image: url(../img/ApCOL-Mantenimiento.png); height:441px;left:25%;position:fixed;top:25%;width:700px;z-index:99999;}
+.modalBackgroundOffLine{background-color:Gray; opacity: .75;-moz-opacity: 0.75;filter: alpha(opacity=50);height:100%;left:0;position:fixed;top:0;width:100%;z-index:90000;}
+
+.ListSearchExtenderPrompt
+{
+    color:#515559;    
+}
+.btn_continuar
+{
+    background : #f0f0f0 0px 0px;
+    border-bottom: #d0d0d0 1px solid;
+    border-collapse: separate;
+    border-left: #d0d0d0 1px solid;
+    border-right : #d0d0d0 1px solid;
+    border-spacing : 0;
+    border-top : #d0d0d0 1px solid;
+    color: #515559;
+    font-family:Arial, Helvetica, Sans-Serif, verdana;
+    font-size: 100%;
+    font-style:inherit;
+    font-weight:normal;
+    list-style-image:none;
+    list-style-type:none;
+    text-align:left;
+    width:70px;  
+}
+.celestelogin
+{
+    float:left; 
+    width:460px; 
+    height:220px; 
+    background:#edf2f5; 
+    margin: 15px 0 0 0; 
+    padding:20px 0 0px 0px;
+ }
+ .mod_aviso 
+ {
+     float:left; 
+     width:182px; 
+     background:#edf3f4 url(../img/bg_mod_aviso.gif) no-repeat 0 0; 
+     padding:20px 18px 5px;
+ }
+ .mod_aviso h3
+ { 
+     font-weight:bold; 
+     font-family:Verdana, Geneva, sans-serif; 
+     font-size:14px; 
+     adding-top:2px;
+ }
+ .mod_aviso p  
+ {
+     float:left; 
+     font-size:12px; 
+     font-family:Arial, Helvetica, sans-serif; 
+     text-align:left; color:#515559; padding:13px 0 30px 0;
+ }
+ 
+ td .uploader
+ {
+     margin-left: -4px;  
+     float:left;  
+ }
+ 
+ td.align_ie
+ {
+    vertical-align:top;    
+ }
+ 
+ .bt_importar { background:url(../img/bt_importar.gif) no-repeat 0 0; width:84px; height:31px; display:block; border:none; cursor:pointer;}
+ 
+ .bg_gv_over { background:#0086C3; opacity: .20;-moz-opacity: 0.20; filter: alpha(opacity=20); }
+ 
+ .parrafo_111,.celeste_azul,.subtit_c44 { float:none; }
+
+ 
+ /* overrides for ui-tab styles */
+#widget-docs ul.ui-tabs-nav { padding:0 0 0 8px; }
+#widget-docs .ui-tabs-nav li { margin:5px 5px 0 0; }
+
+#widget-docs .ui-tabs-nav li a:link,
+#widget-docs .ui-tabs-nav li a:visited,
+#widget-docs .ui-tabs-nav li a:hover,
+#widget-docs .ui-tabs-nav li a:active { font-size:14px; padding:4px 1.2em 3px; color:#fff; }
+
+#widget-docs .ui-tabs-nav li.ui-tabs-selected a:link,
+#widget-docs .ui-tabs-nav li.ui-tabs-selected a:visited,
+#widget-docs .ui-tabs-nav li.ui-tabs-selected a:hover,
+#widget-docs .ui-tabs-nav li.ui-tabs-selected a:active { color:#e6820E; }
+
+#widget-docs .ui-tabs-panel { padding:20px 9px; font-size:12px; line-height:1.4; color:#000; }
+
+#widget-docs .ui-widget-content a:link,
+#widget-docs .ui-widget-content a:visited { color:#1b75bb; text-decoration:none; }
+#widget-docs .ui-widget-content a:hover,
+#widget-docs .ui-widget-content a:active { color:#0b559b; }
+
+
+/*edit jquery.ui.theme*/
+.ui-widget-header { border: none;}
+.ui-widget-header .ui-state-active { border-left:none; border-right:none;border-top:none;}
+.ui-widget-header .ui-state-default { border-left:none; border-right:none;border-top:none;}
+.ui-state-default a:link { color: #0086c3;}
+.ui-widget-content { background: none; border-bottom: none; border-left:none; border-right:none;border-top:none;}
+/*edit jquery.ui.tabs*/
+.ui-tabs .ui-tabs-nav li a { padding-left: 3em; padding-right: 3em;}
+.ui-tabs .ui-tabs-nav li { top: 0px;}
+.ui-tabs .ui-tabs-nav { margin-left: 25px;}
+.ui-tabs .ui-tabs-panel { padding-left: 3em; padding-top: 3.5em}
