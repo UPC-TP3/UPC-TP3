@@ -15,22 +15,16 @@ public partial class Plantilla : System.Web.UI.MasterPage
     {
         string menu = string.Empty;
         menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Admisión");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/RegistrarGestionAmbulatoria.aspx", "Ambulatoria");
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/RegistrarGestionAmbulatoria.aspx", "Ambulatorio");
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmEmergencia.aspx", "Emergencia");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmHospitalizacion.aspx", "Hospitalizacion");
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmHospitalizacion.aspx", "Hospitalización");
         menu += "</ul></li>";
 
-        menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Gestion de Citas");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionCitas/ReprogramarCitas.aspx", "Mantenimiento de Citas");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionCitas/frmAgendaMedica.aspx", "Registrar Consulta Medica");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionCitas/frmCitaDomicilio.aspx", "Generar Consulta Domiciliaria");
+        menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Órdenes");
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "Ordenes/OrdHospitalizacion.aspx", "Hospitalización");
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "Ordenes/OrdCartaGarantia.aspx", "Carta Garantía");
         menu += "</ul></li>";
 
-        menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Citas");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/requisitosExamen.aspx", "Requisitos Exámenes");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/programacionImagenes.aspx", "Programación Exámenes");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/generarOrdenPago.aspx", "Ordenes de Pago");
-        menu += "</ul></li>";
         lstMenu.Text = menu;
     }
 }
