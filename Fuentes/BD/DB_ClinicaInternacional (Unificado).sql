@@ -525,9 +525,7 @@ SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[TB_PACIENTE](
 	[ID_Paciente] [int] IDENTITY(1,1) NOT NULL,
-	[dni_paciente] [varchar](11) NOT NULL,	
-	[DocumentoIdentidad] [varchar](255) NOT NULL,
-	[EstadoCivil] [varchar](255) NULL,
+	[dni_paciente] [varchar](11) NOT NULL,
 	[FechaNacimiento] [datetime] NULL,
 	[Celular] [varchar](255) NULL,
 	[TelefonoDomicilio] [varchar](255) NULL,
@@ -1406,11 +1404,11 @@ REFERENCES [dbo].[TB_MEDICO] ([ID_Medico])
 GO
 ALTER TABLE [dbo].[TB_AGENDA_MEDICA] CHECK CONSTRAINT [FK_TB_AgendaMedica_TB_MEDICO]
 GO
-/****** Object:  ForeignKey [FK__TB_ANALIS__ID_Co__114A936A]    ******/
+/****** Object:  ForeignKey [FK__TB_ANALIS__ID_Co__18EBB532]    ******/
 ALTER TABLE [dbo].[TB_ANALISIS]  WITH CHECK ADD FOREIGN KEY([ID_Consulta])
 REFERENCES [dbo].[TB_CONSULTA] ([ID_Consulta])
 GO
-/****** Object:  ForeignKey [FK__TB_ANALIS__ID_Ti__123EB7A3]    ******/
+/****** Object:  ForeignKey [FK__TB_ANALIS__ID_Ti__19DFD96B]    ******/
 ALTER TABLE [dbo].[TB_ANALISIS]  WITH CHECK ADD FOREIGN KEY([ID_TipoAnalisis])
 REFERENCES [dbo].[TB_TIPO_ANALISIS] ([ID_TipoAnalisis])
 GO
@@ -1678,7 +1676,7 @@ REFERENCES [dbo].[TB_TIPO_INFORME_ADMINISTRATIVO] ([ID_Tipo_Informe])
 GO
 ALTER TABLE [dbo].[TB_INFORME_ADMINSITRATIVO] CHECK CONSTRAINT [FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO]
 GO
-/****** Object:  ForeignKey [FK__TB_INFORM__ID_In__282DF8C2]    ******/
+/****** Object:  ForeignKey [FK__TB_INFORM__ID_In__44CA3770]    ******/
 ALTER TABLE [dbo].[TB_INFORME_EQUIPO_DET]  WITH CHECK ADD FOREIGN KEY([ID_InformeEquipo])
 REFERENCES [dbo].[TB_INFORME_EQUIPO] ([ID_InformeEquipo])
 GO
@@ -1808,7 +1806,7 @@ REFERENCES [dbo].[TB_ORDEN_EXAMEN_MEDICO] ([ID_Orden_Examen_Medico])
 GO
 ALTER TABLE [dbo].[TB_ORDEN_SERVICIO] CHECK CONSTRAINT [FK_TB_ORDEN_SERVICIO_TB_ORDEN_EXAMEN_MEDICO1]
 GO
-/****** Object:  ForeignKey [FK__TB_ORDEN___ID_Or__3864608B]    ******/
+/****** Object:  ForeignKey [FK__TB_ORDEN___ID_Or__59C55456]    ******/
 ALTER TABLE [dbo].[TB_ORDEN_TRABAJO_DET]  WITH CHECK ADD FOREIGN KEY([ID_Orden_Trabajo])
 REFERENCES [dbo].[TB_ORDEN_TRABAJO] ([ID_Orden_Trabajo])
 GO
@@ -1872,7 +1870,3 @@ REFERENCES [dbo].[TB_MEDICO] ([ID_Medico])
 GO
 ALTER TABLE [dbo].[TB_TURNO_ATENCION] CHECK CONSTRAINT [FK_TB_TURNOATENCION_00TB_MEDICO]
 GO
-
-
-Insert Into TB_TIPO_DOCUMENTO (Nombre) Values ('DNI')
-Go
