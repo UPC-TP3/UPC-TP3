@@ -24,7 +24,7 @@
             width: 346px;
         }
 
-    </style>
+        </style>
 
 <%--     <script type="text/javascript">
          $(document).ready(function () {
@@ -201,6 +201,7 @@
                         <td>
                             &nbsp;</td>
                         <td colspan="3">
+                            <asp:Image ID="Image1" runat="server" />
                             &nbsp;</td>
                     </tr>
                     <tr>

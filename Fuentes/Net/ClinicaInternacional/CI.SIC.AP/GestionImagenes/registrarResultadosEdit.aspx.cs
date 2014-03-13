@@ -24,12 +24,14 @@ public partial class GestionImagenes_registrarResultadosEdit : System.Web.UI.Pag
 
             LocalBL oLocal = new LocalBL();
 
+            Image1.Visible = false;
 
             if (Request["accion"] != null)
             {
                 hidAccion.Value = Request["accion"];
                 lblTitulo.Text = "Consulta de Resultado de Informe";
                 btnGrabar.Visible = false;
+                fupImagen.Visible = false;
                 //Programacion_ExamenBL oProgramacion = new Programacion_ExamenBL();
                 //Programacion_ExamenBE eProgramacion;
                 //eProgramacion = oProgramacion.Registro(Convert.ToInt32(Request["id"].ToString().Trim()), 0);
@@ -53,6 +55,7 @@ public partial class GestionImagenes_registrarResultadosEdit : System.Web.UI.Pag
             {
                 lblTitulo.Text = "Resultado de Informe de Examen";
                 btnGrabar.Visible = true;
+                fupImagen.Visible = true;
             }
 
             //if (Request["accion"] != null)
@@ -109,20 +112,40 @@ public partial class GestionImagenes_registrarResultadosEdit : System.Web.UI.Pag
 
             if (hidAccion.Value != "C")
             {
+
+                Image1.ImageUrl= "";
                 btnGrabar.Visible = false;
                 lblMensaje.Text = "Resultado de examen ya fue registrado";
+            }
+            else
+            {
+                if (eInformeResultado.Imagen != "")
+                {
+                    Image1.Visible = true;
+
+                    //Image1.ImageUrl = @"file:\\" + @"D:\personal\UPC\tp3\proyecto\sistema\examenes\" + eInformeResultado.Imagen;
+                    Image1.ImageUrl = "examenes/" + eInformeResultado.Imagen;
+                    //Image1.ImageUrl = @"file:///C:/Users/Public/Pictures/ban-seguros.png";
+                    //Image1.DataBind();
+                    
+                }
             }
         }
         else
         {
-            txtFecha_resultado.Text = "";
+            
             txtEstado_resultado.Text = "";
             txtResultado.Text = "";
             txtObservaciones.Text = "";
 
             if (hidAccion.Value == "C")
             {
+                Image1.Visible = false;
                 lblMensaje.Text = "Resultado de examen no ha sido registrado";
+            }
+            else
+            {
+                txtFecha_resultado.Text = DateTime.Now.ToString("dd/MM/yyyy");
             }
         }
     }
@@ -195,13 +218,19 @@ public partial class GestionImagenes_registrarResultadosEdit : System.Web.UI.Pag
         eInformeResultado.Resultado = txtResultado.Text;
         eInformeResultado.Observacion = txtObservaciones.Text;
         eInformeResultado.Estado = "R";
-
         if (fupImagen.FileName != "")
-        { 
-        }
+            eInformeResultado.Imagen = fupImagen.FileName;
 
         if (oInformeResultado.Nuevo(eInformeResultado) == true)
+        {
+            if (fupImagen.FileName != "")
+            {
+                //System.IO.File.Copy(fupImagen.PostedFile.FileName, @"D:\personal\UPC\tp3\proyecto\sistema\examenes\" + fupImagen.FileName, true);
+                System.IO.File.Copy(fupImagen.PostedFile.FileName, @"D:\personal\UPC\tp3\proyecto\sistema\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.AP\GestionImagenes\examenes\" + fupImagen.FileName, true);
+                
+            }
             Response.Redirect("gestionImagenes.aspx");
+        }
         else
             lblMensaje.Text = "No se pudieron registrar Resultados";
 
