@@ -234,16 +234,22 @@ public partial class GestionImagenes_requisitosExamen : System.Web.UI.Page
             eProgramacion.Comentarios = "cumple requisitos";
 
             if (oProgramacion.Modificar(eProgramacion))
+            {
                 lblMensaje.Text = "Paciente cumple los requisitos. Examen puede ser realizado.";
+                btnVerificar.Visible = false;
+            }
             else
-                lblMensaje.Text= "No se pudo realizar Verificación";
+                lblMensaje.Text = "No se pudo realizar Verificación";
         }
         else {
             eProgramacion.Estado = "O";
             eProgramacion.Comentarios = "No cumple requisitos: " + cCumple;
 
             if (oProgramacion.Modificar(eProgramacion))
-                lblMensaje.Text= "Paciente no cumple los requisitos. Examen debe ser reprogramado.";
+            {
+                btnVerificar.Visible = false;
+                lblMensaje.Text = "Paciente no cumple los requisitos. Examen debe ser reprogramado.";
+            }
             else
                 lblMensaje.Text = "No se pudo realizar Verificación";
         }

@@ -115,6 +115,7 @@ public partial class GestionImagenes_registrarResultadosEdit : System.Web.UI.Pag
 
                 Image1.ImageUrl= "";
                 btnGrabar.Visible = false;
+                Image1.Visible = false;
                 lblMensaje.Text = "Resultado de examen ya fue registrado";
             }
             else
@@ -188,6 +189,7 @@ public partial class GestionImagenes_registrarResultadosEdit : System.Web.UI.Pag
             }
             else
             {
+                Image1.Visible = false;
                 lblMensaje.Text = "Orden de examen no existe";
             }
         }

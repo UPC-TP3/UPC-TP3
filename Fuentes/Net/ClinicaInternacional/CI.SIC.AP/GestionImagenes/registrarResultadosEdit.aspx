@@ -200,8 +200,10 @@
                     <tr>
                         <td>
                             &nbsp;</td>
-                        <td colspan="3">
+                        <td colspan="3" >
+ 
                             <asp:Image ID="Image1" runat="server" />
+  
                             &nbsp;</td>
                     </tr>
                     <tr>

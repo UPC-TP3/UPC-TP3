@@ -219,13 +219,9 @@
                         <td>
                             <asp:Label ID="lblMotivoR" runat="server" Text="Motivo Reprogramación"></asp:Label>
                         </td>
-                        <td>
-                            <asp:TextBox ID="txtMotivoR" runat="server" Width="290px"></asp:TextBox>
+                        <td colspan="3">
+                            <asp:TextBox ID="txtMotivoR" runat="server" Width="459px"></asp:TextBox>
                         </td>
-                        <td>
-                            &nbsp;</td>
-                        <td>
-                            &nbsp;</td>
                     </tr>
                     <tr>
                         <td>

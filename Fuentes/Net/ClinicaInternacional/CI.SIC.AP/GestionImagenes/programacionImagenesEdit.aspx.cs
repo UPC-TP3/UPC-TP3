@@ -77,6 +77,8 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
                     btnOrden_pago.Visible = false;
                     btnProgramar.Visible = false;
                     btnReProgramar.Visible = false;
+                    lblMotivoR.Visible = false;
+                    txtMotivoR.Visible = false;
 
                     if (txtEstado_orden_examen.Text.Substring(0, 1) == "C")
                     {
@@ -101,6 +103,8 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
                     txtMotivoR.Visible = true;
                     lblMotivoR.Visible = true;
                     btnReProgramar.Visible = true;
+                    lblMotivoR.Visible = true;
+                    txtMotivoR.Visible = true;
                     btnAnular.Visible = false;
                     btnConsultar.Visible=false;
                 }
@@ -111,6 +115,8 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
                 btnOrden_pago.Visible = false;
                 btnProgramar.Visible = true;
                 btnReProgramar.Visible = false;
+                lblMotivoR.Visible = false;
+                txtMotivoR.Visible = false;
                 btnAnular.Visible = false;
                 btnConsultar.Visible = false;
                 btnConsultar.Visible = true;
@@ -302,6 +308,8 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
             txtEspecialista.Text = eProgramacion.Especialista;
 
             btnReProgramar.Visible = true;
+            lblMotivoR.Visible = true;
+            txtMotivoR.Visible = true;
             btnProgramar.Visible = false;
         }
         else
@@ -314,6 +322,8 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
             txtEspecialista.Text = "";
 
             btnReProgramar.Visible = false;
+            lblMotivoR.Visible = false;
+            txtMotivoR.Visible = false;
             btnProgramar.Visible = true;
         }
  
@@ -370,6 +380,8 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
 
         eProgramacion_Examen.Id_orden_examen = Convert.ToInt32(txtId_orden_examen.Text);
         eProgramacion_Examen.Id_horario = Convert.ToInt32(cboHorario.SelectedValue);
+        eProgramacion_Examen.Comentarios = txtMotivoR.Text;
+        eProgramacion_Examen.Id_programacion = Convert.ToInt32(hidProgramacion.Value);
         eProgramacion_Examen.Estado = "R";
 
         if (oProgramacion_Examen.Reprogramacion(eProgramacion_Examen) == true)
