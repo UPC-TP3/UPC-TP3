@@ -320,20 +320,21 @@ CREATE Procedure [dbo].[pa_Nuevo_Informe_Resultado]
 @id_orden_examen int, 
 @resultado varchar(250),
 @observacion varchar(250),
-@estado varchar(1)
+@estado varchar(1),
+@imagen varchar(100)
 As
-Insert Into TB_INFORME_RESULTADO (ID_Orden_Examen_Medico, fecha, resultado, observacion, estado)
-Values (@id_orden_examen, GETDATE(), @resultado, @observacion, @estado)
+Insert Into TB_INFORME_RESULTADO (ID_Orden_Examen_Medico, fecha, resultado, observacion, estado, imagen)
+Values (@id_orden_examen, GETDATE(), @resultado, @observacion, @estado, @imagen)
 
 
 Go
 
-Create Procedure pa_Registro_Informe_Resultado
+CREATE Procedure pa_Registro_Informe_Resultado
 @id_orden_examen int
 As
 Set Nocount On
 Select ID_InformeResultado as id_informe, ID_Orden_Examen_Medico as id_orden_examen, fecha, resultado, observacion,
-case estado when 'R' then 'Registrado' else '' end as estado 
+case estado when 'R' then 'Registrado' else '' end as estado, isnull(imagen,'') as imagen 
 From TB_INFORME_RESULTADO
 Where ID_Orden_Examen_Medico= @id_orden_examen
 
