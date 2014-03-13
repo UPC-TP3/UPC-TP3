@@ -20,6 +20,7 @@ namespace CI.SIC.DA
                 parameters.Add("@resultado", pInformeResultadoBE.Resultado);
                 parameters.Add("@observacion", pInformeResultadoBE.Observacion);
                 parameters.Add("@estado", pInformeResultadoBE.Estado);
+                parameters.Add("@imagen", pInformeResultadoBE.Imagen);
 
                 int rpta = SqlHelper.Instance.ExecuteNonQuery("pa_Nuevo_Informe_Resultado", parameters);
 
@@ -44,7 +45,8 @@ namespace CI.SIC.DA
                         Id_orden_examen = reader.GetInt32(reader.GetOrdinal("Id_orden_examen")),
                         Resultado = reader.GetString(reader.GetOrdinal("Resultado")),
                         Observacion = reader.GetString(reader.GetOrdinal("Observacion")),
-                        Estado = reader.GetString(reader.GetOrdinal("Estado"))
+                        Estado = reader.GetString(reader.GetOrdinal("Estado")),
+                        Imagen = reader.GetString(reader.GetOrdinal("Imagen"))
                     });
                 }
             }
