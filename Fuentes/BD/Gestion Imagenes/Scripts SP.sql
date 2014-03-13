@@ -279,3 +279,57 @@ UPdate TB_ORDEN_SERVICIO Set estado= 'X' Where ID_Orden_Examen_Medico= @id_orden
 Go
 
 
+Go
+
+
+Create Procedure pa_Obtener_Correlativo
+@tabla varchar(50)
+As
+Set Nocount On
+SELECT IDENT_CURRENT(@tabla)
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[pa_Modificar_Programacion_Examen]    Script Date: 03/12/2014 19:35:04 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE Procedure [dbo].[pa_Modificar_Programacion_Examen]
+@id_programacion int, 
+@estado varchar(1),
+@comentarios varchar(200)
+As
+
+Update TB_PROGRAMACION_ATENCION_EXAMENES
+Set estado= @estado, comentarios= @comentarios
+Where ID_Programacion= @id_programacion
+
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE Procedure [dbo].[pa_Nuevo_Informe_Resultado]
+@id_orden_examen int, 
+@resultado varchar(250),
+@observacion varchar(250),
+@estado varchar(1)
+As
+Insert Into TB_INFORME_RESULTADO (ID_Orden_Examen_Medico, fecha, resultado, observacion, estado)
+Values (@id_orden_examen, GETDATE(), @resultado, @observacion, @estado)
+
+
+Go
+
+Create Procedure pa_Registro_Informe_Resultado
+@id_orden_examen int
+As
+Set Nocount On
+Select ID_InformeResultado as id_informe, ID_Orden_Examen_Medico as id_orden_examen, fecha, resultado, observacion,
+case estado when 'R' then 'Registrado' else '' end as estado 
+From TB_INFORME_RESULTADO
+Where ID_Orden_Examen_Medico= @id_orden_examen
+

@@ -167,15 +167,15 @@ Insert Into TB_CATALOGO_REQUISITO (ID_Catalogo_Examen, ID_Requisito) Values (4,1
 
 
 
-Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('34567890', 'César',	'Quispe', 'Sánchez',1, '34567890')
-Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('32454678', 'Pawl',	'Sánchez','Paz',1, '32454678')
-Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('12324577', 'Imelda',	'Paz','Chapoñán',1, '12324577')
-Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('85769345', 'Alex',	'Chapoñán','Vivanco',1, '85769345')
-Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('35465097', 'Claudia',	'Vivanco','Guerra',1, '35465097')
-Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('23486978', 'Alberto',	'Guerra','Colonio',1, '23486978')
-Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('09876345', 'Carla',	'Colonio','Hijar',1, '09876345')
-Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('87837456', 'Julissa',	'Hijar','Cruz',1, '87837456')
-Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento, DocumentoIdentidad) Values ('23435678', 'José',	'Cruz','Quispe',1, '23435678')
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento) Values ('34567890', 'César',	'Quispe', 'Sánchez',1)
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento) Values ('32454678', 'Pawl',	'Sánchez','Paz',1)
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento) Values ('12324577', 'Imelda',	'Paz','Chapoñán',1)
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento) Values ('85769345', 'Alex',	'Chapoñán','Vivanco',1)
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento) Values ('35465097', 'Claudia',	'Vivanco','Guerra',1)
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento) Values ('23486978', 'Alberto',	'Guerra','Colonio',1)
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento) Values ('09876345', 'Carla',	'Colonio','Hijar',1)
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento) Values ('87837456', 'Julissa',	'Hijar','Cruz',1)
+Insert Into TB_PACIENTE (dni_paciente, nombres, ApellidoPat, ApellidoMat, ID_TipoDocumento) Values ('23435678', 'José',	'Cruz','Quispe',1)
 
 
 
