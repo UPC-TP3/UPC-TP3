@@ -1,6 +1,9 @@
 Use BD_ClinicaInternacional
 Go
 
+if (select COUNT(*) from TB_TIPO_DOCUMENTO)=0
+	Insert Into TB_TIPO_DOCUMENTO (Nombre) values ('DNI')
+
 Insert Into TB_LOCAL (nombre, direccion) Values ('Sede 1','Av. Guardia Civil 120');
 Insert Into TB_LOCAL (nombre, direccion) Values ('Sede 2','Av. España 200');
 Insert Into TB_LOCAL (nombre, direccion) Values ('Sede 3','Av. Polo 345');

@@ -10,7 +10,7 @@ CREATE Procedure [dbo].[pa_Registro_Programacion_Examen]
 @id_orden_examen int
 As
 Set Nocount On
-Select p.ID_Programacion, p.ID_Orden_Examen_Medico as id_orden_examen, case p.estado when 'G' then 'Generado' when 'D' then 'Pagado' else '' end as estado,
+Select p.ID_Programacion, p.ID_Orden_Examen_Medico as id_orden_examen, case p.estado when 'G' then 'Generado' when 'D' then 'Pagado' when 'R' then 'Reprogramado' else '' end as estado,
 h.id_consultorio, h.ID_MedicoTurno as id_horario, c.id_local, (m.nom_medico+' '+m.ape_medico) as especialista
 From TB_PROGRAMACION_ATENCION_EXAMENES p Inner Join TB_MEDICO_DE_TURNO h On (p.ID_MedicoTurno= h.ID_MedicoTurno)
 Inner Join TB_CONSULTORIO c On (h.id_consultorio= c.id_consultorio)
@@ -71,13 +71,19 @@ GO
 CREATE Procedure [dbo].[pa_Nuevo_Programacion_Examen]
 @id_orden_examen int, 
 @id_horario int, 
-@estado varchar(1)
+@estado varchar(1),
+@id_programacion int=0,
+@comentario varchar(250)=''
 As
 
 if @estado= 'R'
 	begin
 		Update TB_PROGRAMACION_ATENCION_EXAMENES
-		Set ID_MedicoTurno= @id_horario
+		Set estado= 'X', comentarios= @comentario
+		Where ID_Programacion= @id_programacion
+		
+		Insert Into TB_PROGRAMACION_ATENCION_EXAMENES (ID_Orden_Examen_Medico, ID_MedicoTurno, estado)
+		Values (@id_orden_examen, @id_horario, @estado)
 	end
 else
 	begin
@@ -86,6 +92,7 @@ else
 
 		Update TB_ORDEN_EXAMEN_MEDICO Set estado= 'P' Where ID_Orden_Examen_Medico= @id_orden_examen
 	end
+
 
 Go
 
@@ -147,7 +154,7 @@ As
 Set @paciente= REPLACE(@paciente,' ','%')
 
 		Select p.ID_Programacion, p.ID_Orden_Examen_Medico as id_orden_examen, p.ID_MedicoTurno as id_horario, 
-		case p.estado when 'G' then 'Generada' when 'D' then 'Pagado' else '' end as estado,
+		case p.estado when 'G' then 'Generada' when 'D' then 'Pagado' when 'R' then 'Reprogramado' when 'X' then 'Anulado' else '' end as estado,
 		c.descripcion as consultorio, e.nom_examen as examen, a.id_historia, pa.nombres + ', '+ pa.ApellidoPat+' '+ pa.ApellidoMat as paciente,
 		m.nom_medico +' '+m.ape_medico as especialista, ho.fecha, l.nombre as Local
 		From TB_PROGRAMACION_ATENCION_EXAMENES p 
