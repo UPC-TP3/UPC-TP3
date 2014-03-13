@@ -76,7 +76,7 @@
                             Fecha orden</td>
                         <td>
                             <asp:TextBox ID="txtFecha_examen" runat="server" Width="83px" ReadOnly="True" 
-                                CssClass="caja_texto_enabled"></asp:TextBox>
+                                CssClass="no_edit"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -84,7 +84,7 @@
                             Estado</td>
                         <td>
                             <asp:TextBox ID="txtEstado_orden_examen" runat="server" Width="95px" 
-                                ReadOnly="True" CssClass="caja_texto_enabled"></asp:TextBox>
+                                ReadOnly="True" CssClass="no_edit"></asp:TextBox>
                         </td>
                         <td>
                             &nbsp;</td>
@@ -96,13 +96,13 @@
                             Orden atención</td>
                         <td>
                             <asp:TextBox ID="txtId_orden_atencion" runat="server" Width="84px" 
-                                ReadOnly="True" CssClass="caja_texto_enabled"></asp:TextBox>
+                                ReadOnly="True" CssClass="no_edit"></asp:TextBox>
                         </td>
                         <td>
                             Tipo atención</td>
                         <td>
                             <asp:TextBox ID="txtTipo_atencion" runat="server" Width="142px" ReadOnly="True" 
-                                CssClass="caja_texto_enabled"></asp:TextBox>
+                                CssClass="no_edit"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -110,7 +110,7 @@
                             Historia clínica</td>
                         <td>
                             <asp:TextBox ID="txtId_historia" runat="server" Width="84px" ReadOnly="True" 
-                                CssClass="caja_texto_enabled"></asp:TextBox>
+                                CssClass="no_edit"></asp:TextBox>
                         </td>
                         <td>
                             &nbsp;</td>
@@ -122,13 +122,13 @@
                             Paciente</td>
                         <td>
                             <asp:TextBox ID="txtPaciente" runat="server" Width="300px" ReadOnly="True" 
-                                CssClass="caja_texto_enabled"></asp:TextBox>
+                                CssClass="no_edit"></asp:TextBox>
                         </td>
                         <td>
                             Médico</td>
                         <td>
                             <asp:TextBox ID="txtMedico" runat="server" Width="223px" ReadOnly="True" 
-                                CssClass="caja_texto_enabled"></asp:TextBox>
+                                CssClass="no_edit"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -136,14 +136,14 @@
                             Tipo examen</td>
                         <td>
                             <asp:DropDownList ID="cboTipo_examen" runat="server" Enabled="False" 
-                                CssClass="caja_texto_enabled">
+                                CssClass="no_edit">
                             </asp:DropDownList>
                         </td>
                         <td>
                             Examen</td>
                         <td>
                             <asp:TextBox ID="txtExamen" runat="server" ReadOnly="True" Width="216px" 
-                                CssClass="caja_texto_enabled"></asp:TextBox>
+                                CssClass="no_edit"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -216,7 +216,8 @@
                                 <tr>
                                     <td>
                             <asp:Button ID="btnGrabar" runat="server" 
-                                Text="Grabar" onclick="btnProgramar_Click" />
+                                Text="Grabar" onclick="btnProgramar_Click" 
+                                            onclientclick="javascript:return confirm(&quot;Seguro de grabar los resultados?&quot;)" />
                                     </td>
                                     <td>
                                         &nbsp;</td>

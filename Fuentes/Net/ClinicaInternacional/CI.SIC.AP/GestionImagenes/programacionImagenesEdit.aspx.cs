@@ -222,6 +222,13 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
     }
     protected void btnProgramar_Click(object sender, EventArgs e)
     {
+        if (txtId_orden_examen.Text.Trim() == "")
+        {
+            lblMensaje.Text = "Ingrese Orden de Examen";
+            txtId_orden_examen.Focus();
+            return;
+        }
+
         if (cboLocal.SelectedValue == "" || cboLocal.SelectedValue == "0")
         {
             lblMensaje.Text = "Seleccione Local";
@@ -345,6 +352,13 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
     }
     protected void btnReProgramar_Click(object sender, EventArgs e)
     {
+        if (txtId_orden_examen.Text.Trim() == "")
+        {
+            lblMensaje.Text = "Ingrese Orden de Examen";
+            txtId_orden_examen.Focus();
+            return;
+        }
+
         if (cboLocal.SelectedValue == "")
         {
             lblMensaje.Text = "Seleccione Local";

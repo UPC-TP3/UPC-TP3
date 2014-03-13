@@ -44,7 +44,7 @@
                             Fecha orden</td>
                         <td>
                             <asp:TextBox ID="txtFecha_examen" runat="server" Width="83px" ReadOnly="True" 
-                                CssClass="caja_texto_enabled"></asp:TextBox>
+                                CssClass="no_edit"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -52,7 +52,7 @@
                             Estado</td>
                         <td>
                             <asp:TextBox ID="txtEstado_orden_examen" runat="server" Width="95px" 
-                                ReadOnly="True" CssClass="caja_texto_enabled"></asp:TextBox>
+                                ReadOnly="True" CssClass="no_edit"></asp:TextBox>
                         </td>
                         <td>
                             &nbsp;</td>
@@ -64,13 +64,13 @@
                             Orden atención</td>
                         <td>
                             <asp:TextBox ID="txtId_orden_atencion" runat="server" Width="84px" 
-                                ReadOnly="True" CssClass="caja_texto_enabled"></asp:TextBox>
+                                ReadOnly="True" CssClass="no_edit"></asp:TextBox>
                         </td>
                         <td>
                             Tipo atención</td>
                         <td>
                             <asp:TextBox ID="txtTipo_atencion" runat="server" Width="135px" ReadOnly="True" 
-                                CssClass="caja_texto_enabled"></asp:TextBox>
+                                CssClass="no_edit"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -78,7 +78,7 @@
                             Historia clínica</td>
                         <td>
                             <asp:TextBox ID="txtId_historia" runat="server" Width="84px" ReadOnly="True" 
-                                CssClass="caja_texto_enabled"></asp:TextBox>
+                                CssClass="no_edit"></asp:TextBox>
                         </td>
                         <td>
                             &nbsp;</td>
@@ -90,13 +90,13 @@
                             Paciente</td>
                         <td>
                             <asp:TextBox ID="txtPaciente" runat="server" Width="300px" ReadOnly="True" 
-                                CssClass="caja_texto_enabled"></asp:TextBox>
+                                CssClass="no_edit"></asp:TextBox>
                         </td>
                         <td>
                             Médico</td>
                         <td>
                             <asp:TextBox ID="txtMedico" runat="server" Width="223px" ReadOnly="True" 
-                                CssClass="caja_texto_enabled"></asp:TextBox>
+                                CssClass="no_edit"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -104,7 +104,7 @@
                             Tipo examen</td>
                         <td>
                             <asp:DropDownList ID="cboTipo_examen" runat="server" Enabled="False" 
-                                CssClass="caja_texto_enabled">
+                                CssClass="no_edit">
                             </asp:DropDownList>
                         </td>
                         <td>
@@ -218,7 +218,8 @@
                             &nbsp;</td>
                         <td colspan="3">
                             <asp:Button ID="btnVerificar" runat="server" Text="Verificar" 
-                                onclick="btnVerificar_Click" />
+                                onclick="btnVerificar_Click" 
+                                onclientclick="javascript:return confirm(&quot;Seguro de realizar la Verificación?&quot;)" />
                         </td>
                     </tr>
                 </table>

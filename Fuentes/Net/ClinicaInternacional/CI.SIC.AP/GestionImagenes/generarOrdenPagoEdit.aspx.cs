@@ -203,6 +203,13 @@ public partial class GestionImagenes_generarOrdenPagoEdit : System.Web.UI.Page
     }
     protected void btnProgramar_Click(object sender, EventArgs e)
     {
+        if (txtId_orden_examen.Text.Trim() == "")
+        {
+            lblMensaje.Text = "Ingrese Orden de Examen";
+            txtId_orden_examen.Focus();
+            return;
+        }
+
         if (cboLocal.SelectedValue == "")
         {
             lblMensaje.Text = "Seleccione Local";
@@ -246,6 +253,13 @@ public partial class GestionImagenes_generarOrdenPagoEdit : System.Web.UI.Page
     }
     protected void btnOrden_pago_Click(object sender, EventArgs e)
     {
+        if (txtId_orden_examen.Text.Trim() == "")
+        {
+            lblMensaje.Text = "Ingrese Orden de Examen";
+            txtId_orden_examen.Focus();
+            return;
+        }
+
         Orden_PagoBL oOrden_Pago = new Orden_PagoBL();
         Orden_PagoBE eOrden_Pago = new Orden_PagoBE();
 
