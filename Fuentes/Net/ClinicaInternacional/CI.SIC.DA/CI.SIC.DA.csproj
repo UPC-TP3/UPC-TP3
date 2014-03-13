@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Catalogo_ExamenDA.cs" />
+    <Compile Include="ConsultorioDA.cs" />
     <Compile Include="DAO_Especialidad.cs" />
     <Compile Include="DAO_MaestroTablas.cs" />
     <Compile Include="DAO_Medico.cs" />
@@ -49,6 +51,14 @@
     <Compile Include="DAO_CartaGarantia.cs" />
     <Compile Include="DAO_Hospitalizacion.cs" />
     <Compile Include="DAO_Paciente.cs" />
+    <Compile Include="HorarioDA.cs" />
+    <Compile Include="InformeResultadoDA.cs" />
+    <Compile Include="LocalDA.cs" />
+    <Compile Include="Orden_ExamenDA.cs" />
+    <Compile Include="Orden_PagoDA.cs" />
+    <Compile Include="PacienteDA.cs" />
+    <Compile Include="Programacion_ExamenDA.cs" />
+    <Compile Include="Tipo_ExamenDA.cs" />
     <Compile Include="Util\BaseDA.cs" />
     <Compile Include="Util\DataReaderExtensions.cs" />
     <Compile Include="Util\DBProvider.cs" />
