@@ -9,10 +9,10 @@ namespace CI.SIC.BL
 {
     public class HorarioBL : BaseBL<HorarioBL>
     {
-        public List<HorarioBE> Listado(string pTipo, int pId_consultorio)
+        public List<HorarioBE> Listado(string pTipo, int pId_consultorio, int pId_orden_examen)
         {
             List<HorarioBE> result = null;
-            result = HorarioDA.Instancia.Listado(pTipo, pId_consultorio);
+            result = HorarioDA.Instancia.Listado(pTipo, pId_consultorio, pId_orden_examen);
             return result;
         }
 

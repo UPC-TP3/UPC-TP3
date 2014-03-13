@@ -28,5 +28,7 @@ namespace CI.SIC.BE
         public string Examen { get; set; }
         public string Paciente { get; set; }
 
+        public string Comentarios { get; set; }
+
     }
 }

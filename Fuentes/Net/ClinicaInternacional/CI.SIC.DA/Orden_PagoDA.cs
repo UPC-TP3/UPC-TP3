@@ -21,7 +21,25 @@ namespace CI.SIC.DA
                 parameters.Add("@importe", pOrden_PagoBE.Importe);
 
                 int rpta = SqlHelper.Instance.ExecuteNonQuery("pa_Nuevo_Orden_Pago", parameters);
+                
                 return (rpta > 0) ? true : false;
+            }
+            catch { throw; }
+        }
+
+        public int Correlativo()
+        {
+            try
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+
+                parameters.Add("@tabla", "TB_ORDEN_SERVICIO");
+
+
+                int rpta = Convert.ToInt32(SqlHelper.Instance.ExecuteScalar("pa_Obtener_Correlativo", parameters));
+
+                return rpta;
             }
             catch { throw; }
         }

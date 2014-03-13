@@ -16,5 +16,12 @@ namespace CI.SIC.BL
 
             return result;
         }
+
+        public int Correlativo()
+        {
+            int result = 0;
+            result = Orden_PagoDA.Instancia.Correlativo();
+            return result;
+        }
     }
 }

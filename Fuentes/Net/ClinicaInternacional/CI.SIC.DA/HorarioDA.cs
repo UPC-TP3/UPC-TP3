@@ -9,15 +9,15 @@ namespace CI.SIC.DA
 {
     public class HorarioDA : BaseDA<HorarioDA>
     {
-        public List<HorarioBE> Listado(string pTipo, int pId_consultorio)
+        public List<HorarioBE> Listado(string pTipo, int pId_consultorio, int pId_orden_examen)
         {
             var lista = new List<HorarioBE>();
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@id_consultorio", pId_consultorio);
-            //parameters.Add("@fecha", pFecha);
+            parameters.Add("@id_orden_examen", pId_orden_examen);
 
-            //if (pTipo == "S")
-            //    lista.Add(new HorarioBE { Id_horario = 0, Medico = "", Fecha = "Seleccione" });
+            if (pTipo == "S")
+                lista.Add(new HorarioBE { Id_horario = 0, Medico = "", Fecha = "Seleccione" });
 
             using (IDataReader reader = SqlHelper.Instance.ExecuteReader("pa_Lista_Horario", parameters))
             {
@@ -26,7 +26,7 @@ namespace CI.SIC.DA
                     lista.Add(new HorarioBE
                     {
                         Id_horario = reader.GetInt32(reader.GetOrdinal("Id_horario")),
-                        Fecha = reader.GetDateTime(reader.GetOrdinal("Fecha")),
+                        Fecha = Convert.ToString(reader.GetDateTime(reader.GetOrdinal("Fecha"))),
                         Medico = reader.GetString(reader.GetOrdinal("Medico"))
                     });
                 }
@@ -46,7 +46,7 @@ namespace CI.SIC.DA
                 {
                     lista = (new HorarioBE
                     {
-                        Fecha = reader.GetDateTime(reader.GetOrdinal("Fecha")),
+                        Fecha = Convert.ToString(reader.GetDateTime(reader.GetOrdinal("Fecha"))),
                         Medico = reader.GetString(reader.GetOrdinal("Medico")),
                         Id_consultorio = reader.GetInt32(reader.GetOrdinal("Id_consultorio")),
                         Id_medico = reader.GetInt32(reader.GetOrdinal("Id_medico"))

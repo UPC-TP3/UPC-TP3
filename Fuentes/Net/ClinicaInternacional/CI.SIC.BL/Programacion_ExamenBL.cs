@@ -19,7 +19,13 @@ namespace CI.SIC.BL
             return result;
         }
 
+        public bool Modificar(Programacion_ExamenBE pProgramacion_ExamenBE)
+        {
+            bool result = false;
+            result = Programacion_ExamenDA.Instancia.Modificar(pProgramacion_ExamenBE);
 
+            return result;
+        }
 
         public bool Nuevo(Programacion_ExamenBE pProgramacion_ExamenBE)
         {

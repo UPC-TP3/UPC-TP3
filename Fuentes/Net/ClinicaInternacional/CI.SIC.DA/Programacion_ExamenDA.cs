@@ -44,7 +44,6 @@ namespace CI.SIC.DA
             return lista;
         }
 
-
         public Programacion_ExamenBE Registro(int pId_programacion, int pId_orden_examen)
         {
             Programacion_ExamenBE lista = null;
@@ -58,7 +57,7 @@ namespace CI.SIC.DA
                 {
                     lista= (new Programacion_ExamenBE
                     {
-                        //Id_programacion = reader.GetInt32(reader.GetOrdinal("Id_programacion")),
+                        Id_programacion = reader.GetInt32(reader.GetOrdinal("Id_programacion")),
                         //Id_consultorio = reader.GetInt32(reader.GetOrdinal("Id_consultorio")),
                         Id_orden_examen = reader.GetInt32(reader.GetOrdinal("Id_orden_examen")),
                         Id_consultorio = reader.GetInt32(reader.GetOrdinal("Id_consultorio")),
@@ -110,6 +109,22 @@ namespace CI.SIC.DA
                 return (rpta > 0) ? true : false;
             }
             catch { throw; }
+        }
+
+        public bool Modificar(Programacion_ExamenBE pProgramacion_ExamenBE)
+        {
+            try
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+                parameters.Add("@id_programacion", pProgramacion_ExamenBE.Id_programacion);
+                parameters.Add("@estado", pProgramacion_ExamenBE.Estado);
+                parameters.Add("@comentarios", pProgramacion_ExamenBE.Comentarios);
+
+                int rpta = SqlHelper.Instance.ExecuteNonQuery("pa_Modificar_Programacion_Examen", parameters);
+                return (rpta > 0) ? true : false;
+            }
+            catch { throw; } 
         }
 
         public bool Reprogramacion(Programacion_ExamenBE pProgramacion_ExamenBE)

@@ -12,6 +12,7 @@ namespace CI.SIC.BE
         public int Id_consultorio { get; set; }
         public int Id_medico { get; set; }
         public string Medico { get; set; }
-        public DateTime Fecha { get; set; }
+        //public DateTime Fecha { get; set; }
+        public string Fecha { get; set; }
     }
 }
