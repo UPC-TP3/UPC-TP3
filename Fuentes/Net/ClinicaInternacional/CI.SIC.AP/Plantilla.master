@@ -8,9 +8,6 @@
     <link href="css/ccsadmision2.css" rel="stylesheet" type="text/css" />
     <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <script src="js/jquery-ui-1.8.17.js" type="text/javascript"></script>
-    <script src="js/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="js/jquery.min.js" type="text/javascript"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -23,6 +20,7 @@
             <asp:ScriptReference Path="js/jquery.min.js" />
             <asp:ScriptReference Path="js/jquery.dd.js" />
             <asp:ScriptReference Path="js/chrome.js" />
+            <asp:ScriptReference Path="js/jquery-1.7.1.js" />
         </Scripts>
     </asp:ScriptManager>
     <div id="main_container">

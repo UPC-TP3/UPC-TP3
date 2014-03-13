@@ -26,17 +26,19 @@
 
         </style>
 
-<%--     <script type="text/javascript">
-         $(document).ready(function () {
+             <script type="text/javascript">
+//                 $(document).ready(function () {
 
-             $('#btnConsultar').click(function () {
-                 return confirm("Seguro de Anular Contrato");
-             })
-         });
-    </script>--%>
+//                     $('#btnConsultar').click(function () {
+//                         return confirm("Seguro de Anular Contrato");
+//                     })
+//                 });
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
+
+
     <div class="col_04">
     <table style="width:100%;">
         <tr>
