@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using CI.SIC.BL;
 using CI.SIC.BE;
+using System.Globalization;
 
 public partial class GestionAdmision_GcAdmHospitalizacion : System.Web.UI.Page
 {
@@ -103,10 +104,19 @@ public partial class GestionAdmision_GcAdmHospitalizacion : System.Web.UI.Page
         ddlCama.DataBind();
 
     }
+    static public Boolean IsFecha(string cadenaFecha)
+    {
+        CultureInfo es = new CultureInfo("es-ES");
+        DateTime fechaTemp;
+
+        return DateTime.TryParseExact(cadenaFecha, "dd/MM/yyyy HH:mm:ss", es, DateTimeStyles.AdjustToUniversal, out fechaTemp);
+    }
+
     protected void btnGetOrden_Click(object sender, EventArgs e)
     {
         try
         {
+            var EstOrden = 0;
             if (txtNroOrdenHosp.Text != "")
             {
                 int codOrden = Convert.ToInt32(txtNroOrdenHosp.Text.ToString());
@@ -115,39 +125,57 @@ public partial class GestionAdmision_GcAdmHospitalizacion : System.Web.UI.Page
 
                 if (oOrden != null)
                 {
-                    txtFecOrden.Text = oOrden.FechaOrden.ToString();
-                    ddlMotivo.SelectedIndex = oOrden.ID_Motivo_Hospitalizacion;
-                    ddlSedeOrden.SelectedIndex = oOrden.ID_Local;
-                    txtPrevision.Text = oOrden.Prevision.ToString();
-                    ddlSede.SelectedIndex = oOrden.ID_Local;
-                    txtConsulta.Text = oOrden.ID_Consulta.ToString();
-                    txtProgramada.Text = oOrden.FechaHora.ToString();
-                    txtNroDiasHosp.Text = oOrden.NroDiasHospitalizacion.ToString();
-                    ddlMedTratante.SelectedIndex = oOrden.ID_MedicoTratante;
-                    ddlMedTurno.SelectedIndex = oOrden.ID_MedicoTurno;
-                    txtIndicacion.Text = oOrden.Tratamiento.ToString();
-
-                    if (oOrden.ID_Paciente != 0)
+                    EstOrden = Convert.ToInt32(oOrden.Motivo);
+                    if (EstOrden == 1)
                     {
-                        hdfIDPaciente.Value = oOrden.ID_Paciente.ToString();
-                        BE_Paciente oPaciente = BL_Paciente.Instancia.GetPacienteXIdPaciente(oOrden.ID_Paciente, "");
+                        var FecProgramacion = Convert.ToDateTime(oOrden.FechaHora);
+                        var oFecActual = DateTime.Now;
 
-                        if (oPaciente != null)
+                        //if (FecProgramacion < oFecActual)
+                        //{
+                        //    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "filtro", "alert('La Fecha y hora de programación: "+ FecProgramacion + " es menor a la fecha actual, debe regularizar la fecha y hora de programación de la Orden.');", true);
+                        //    return;
+                        //}
+
+                        txtFecOrden.Text = oOrden.FechaOrden.ToString();
+                        ddlMotivo.SelectedIndex = oOrden.ID_Motivo_Hospitalizacion;
+                        ddlSedeOrden.SelectedIndex = oOrden.ID_Local;
+                        txtPrevision.Text = oOrden.Prevision.ToString();
+                        ddlSede.SelectedIndex = oOrden.ID_Local;
+                        txtConsulta.Text = oOrden.ID_Consulta.ToString();
+                        txtProgramada.Text = oOrden.FechaHora.ToString();
+                        txtNroDiasHosp.Text = oOrden.NroDiasHospitalizacion.ToString();
+                        ddlMedTratante.SelectedIndex = oOrden.ID_MedicoTratante;
+                        ddlMedTurno.SelectedIndex = oOrden.ID_MedicoTurno;
+                        txtIndicacion.Text = oOrden.Tratamiento.ToString();
+
+                        if (oOrden.ID_Paciente != 0)
                         {
-                            ddlTipoDoc.SelectedIndex = oPaciente.ID_TipoDocumento;
-                            txtNroDoc.Text = oPaciente.dni_paciente.ToString();
-                            txtNombre.Text = oPaciente.Nombres.ToString();
-                            txtApPat.Text = oPaciente.ApellidoPat.ToString();
-                            txtApMat.Text = oPaciente.ApellidoMat.ToString();
-                            ddlSexo.SelectedIndex = oPaciente.ID_Sexo;
-                            txtTelefono.Text = oPaciente.Celular;
-                            txtCorreo.Text = oPaciente.correo;
-                            txtFecNac.Text = oPaciente.FechaNacimiento.ToString();
-                            txtDireccion.Text = oPaciente.Direccion.ToString();
-                            txtCorreo.Text = oPaciente.correo.ToString();
+                            hdfIDPaciente.Value = oOrden.ID_Paciente.ToString();
+                            BE_Paciente oPaciente = BL_Paciente.Instancia.GetPacienteXIdPaciente(oOrden.ID_Paciente, "");
 
+                            if (oPaciente != null)
+                            {
+                                ddlTipoDoc.SelectedIndex = oPaciente.ID_TipoDocumento;
+                                txtNroDoc.Text = oPaciente.dni_paciente.ToString();
+                                txtNombre.Text = oPaciente.Nombres.ToString();
+                                txtApPat.Text = oPaciente.ApellidoPat.ToString();
+                                txtApMat.Text = oPaciente.ApellidoMat.ToString();
+                                ddlSexo.SelectedIndex = oPaciente.ID_Sexo;
+                                txtTelefono.Text = oPaciente.Celular;
+                                txtCorreo.Text = oPaciente.correo;
+                                txtFecNac.Text = oPaciente.FechaNacimiento.ToString();
+                                txtDireccion.Text = oPaciente.Direccion.ToString();
+                                txtCorreo.Text = oPaciente.correo.ToString();
+
+                            }
                         }
                     }
+                    if (EstOrden == 3)
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "La orden de hospitalización ya se encuentra activada" + "');LimpiarCampos();", true);
+                    }
+
                 }
                 else
                 {
@@ -162,34 +190,69 @@ public partial class GestionAdmision_GcAdmHospitalizacion : System.Web.UI.Page
         }
     }
 
+    public bool ValidarCarta(int Carta)
+    {
+        var resp = true;
 
+        BE_CartaGarantia _oCarta = BL_CartaGarantia.Instancia.GetCartaGarantiaXCodigo(Carta);       
+
+        if (_oCarta != null)
+        {
+            var fecActual = DateTime.Now;
+            if (_oCarta.FecFinVigencia < fecActual)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "La vigencia de la Carta de Garantía se encuentra caducada" + "');", true);
+
+                //var idCliente = _oCarta.ID_Paciente;
+
+                resp = false;
+            }
+        }
+        else
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "No se encuentra Carta Garantía con el código ingresado" + "');", true);
+            resp = false;
+        }
+
+
+        return resp;
+    }
 
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
         BE_HojaHospitaliza _bean = new BE_HojaHospitaliza();
 
-        _bean.ID_Orden_Hospitalizacion = Convert.ToInt32(txtNroOrdenHosp.Text.Trim());
-        _bean.FechaIngreso = Convert.ToDateTime(txtFecIngreso.Text);
-        _bean.TipoOrden = ddlTipoOrden.SelectedIndex;
-        _bean.ID_Procedencia = ddlProcedencia.SelectedIndex;
-        _bean.ID_Local = ddlSede.SelectedIndex;
-        _bean.Tratamiento = txtTratamiento.Text;
-        _bean.FechaAlta = Convert.ToDateTime(txtFecAlta.Text);
-        _bean.ID_Especialidad = ddlEspecialidad.SelectedIndex;
-        _bean.ID_Cama = ddlCama.SelectedIndex;
-        _bean.ID_Paciente = Convert.ToInt32(hdfIDPaciente.Value);
-        _bean.ID_Carta = txtCartaGarantia.Text == "" ? 0 : Convert.ToInt32(txtCartaGarantia.Text);
+        bool valida = true;
 
-        BL_Hospitalizacion obj = new BL_Hospitalizacion();
+        if (ddlProcedencia.SelectedIndex == 1)
+            if (ValidarCarta(Convert.ToInt32(txtCartaGarantia.Text.Trim())))
+                valida = true;
+            else
+                valida = false;
 
-        var resul = obj.insertIngresoHosp(_bean);
+        if (valida)
+        {
+            _bean.ID_Orden_Hospitalizacion = Convert.ToInt32(txtNroOrdenHosp.Text.Trim());
+            _bean.FechaIngreso = Convert.ToDateTime(txtFecIngreso.Text);
+            _bean.TipoOrden = ddlTipoOrden.SelectedIndex;
+            _bean.ID_Procedencia = ddlProcedencia.SelectedIndex;
+            _bean.ID_Local = ddlSede.SelectedIndex;
+            _bean.Tratamiento = txtTratamiento.Text;
+            _bean.FechaAlta = Convert.ToDateTime(txtFecAlta.Text);
+            _bean.ID_Especialidad = ddlEspecialidad.SelectedIndex;
+            _bean.ID_Cama = ddlCama.SelectedIndex;
+            _bean.ID_Paciente = Convert.ToInt32(hdfIDPaciente.Value);
+            _bean.ID_Carta = txtCartaGarantia.Text == "" ? 0 : Convert.ToInt32(txtCartaGarantia.Text);
 
-        if (resul)
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "Se registro la operacion" + "');", true);
-        else
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "No se registro la operacion" + "');", true);
+            BL_Hospitalizacion obj = new BL_Hospitalizacion();
 
+            var resul = obj.insertIngresoHosp(_bean);
 
-        //Response.Redirect("~/Home/Default.aspx");
+            if (resul)
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "Se registro la operacion" + "');LimpiarCampos();", true);
+            else
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "No se registro la operacion" + "');", true);
+        }
+
     }
 }

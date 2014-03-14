@@ -231,6 +231,16 @@ font-weight:bold
     
 }  
 
+.botonesIndividual 
+{     
+    background:#fff url(images/bg_formulario.png) bottom left repeat-x;
+    border-bottom:1px solid #BDBCBD;
+    border-left:1px solid #BDBCBD;
+    border-right:1px solid #BDBCBD;
+    vertical-align:bottom; float: none;   
+     
+}  
+
 /*Estilos para Formularios de Listados */
 .fila { height:30px; overflow:hidden; padding: 7px 0px 0px; position:relative; }
 
