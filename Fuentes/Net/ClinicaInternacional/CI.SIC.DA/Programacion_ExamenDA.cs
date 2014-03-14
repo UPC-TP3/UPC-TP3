@@ -57,7 +57,7 @@ namespace CI.SIC.DA
                 {
                     lista= (new Programacion_ExamenBE
                     {
-                        //Id_programacion = reader.GetInt32(reader.GetOrdinal("Id_programacion")),
+                        Id_programacion = reader.GetInt32(reader.GetOrdinal("Id_programacion")),
                         //Id_consultorio = reader.GetInt32(reader.GetOrdinal("Id_consultorio")),
                         Id_orden_examen = reader.GetInt32(reader.GetOrdinal("Id_orden_examen")),
                         Id_consultorio = reader.GetInt32(reader.GetOrdinal("Id_consultorio")),
