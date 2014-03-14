@@ -23,6 +23,7 @@
             <asp:ScriptReference Path="js/jquery.min.js" />
             <asp:ScriptReference Path="js/jquery.dd.js" />
             <asp:ScriptReference Path="js/chrome.js" />
+            <asp:ScriptReference Path="js/Util.js" />
         </Scripts>
     </asp:ScriptManager>
     <div id="main_container">
