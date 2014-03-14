@@ -4,9 +4,9 @@ Go
 if (select COUNT(*) from TB_TIPO_DOCUMENTO)=0
 	Insert Into TB_TIPO_DOCUMENTO (Nombre) values ('DNI')
 
-Insert Into TB_LOCAL (nombre, direccion) Values ('Sede 1','Av. Guardia Civil 120');
-Insert Into TB_LOCAL (nombre, direccion) Values ('Sede 2','Av. España 200');
-Insert Into TB_LOCAL (nombre, direccion) Values ('Sede 3','Av. Polo 345');
+Insert Into TB_LOCAL (nombre, direccion) Values ('Sede Lima','Av. España 120');
+Insert Into TB_LOCAL (nombre, direccion) Values ('Med. San Isidro','Av. Begonias 200');
+Insert Into TB_LOCAL (nombre, direccion) Values ('Med. El Polo','Av. Polo 345');
 
 Insert Into TB_ESPECIALIDAD (descripcion) values ('Hematología')
 Insert Into TB_ESPECIALIDAD (descripcion) values ('Ginecólogo')
@@ -66,18 +66,18 @@ Insert Into TB_TIPO_EXAMEN_MEDICO (descripcion) Values ('Electro encefalografía'
 
 
 
-Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Consultorio 1', '1-A',1,1,2)
-Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Consultorio 2', '2-A',1,2,2)
-Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Consultorio 3', '3-A',1,3,2)
-Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Consultorio 4', '4-A',1,4,2)
-Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Consultorio 5', '1-B',2,1,1)
-Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Consultorio 6', '2-B',2,2,1)
-Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Consultorio 7', '3-B',2,3,3)
-Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Consultorio 8', '4-B',2,4,3)
-Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Consultorio 9', '1-C',3,1,1)
-Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Consultorio 10', '2-C',3,2,1)
-Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Consultorio 11', '3-C',3,3,1)
-Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Consultorio 12', '4-C',3,4,1)
+Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Sala 1', '1-A',1,1,2)
+Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Sala 2', '2-A',1,2,2)
+Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Sala 3', '3-A',1,3,2)
+Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Sala 4', '4-A',1,4,2)
+Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Sala 5', '1-B',2,1,1)
+Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Sala 6', '2-B',2,2,1)
+Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Sala 7', '3-B',2,3,3)
+Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Sala 8', '4-B',2,4,3)
+Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Sala 9', '1-C',3,1,1)
+Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Sala 10', '2-C',3,2,1)
+Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Sala 11', '3-C',3,3,1)
+Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Examen, Piso) Values ('Sala 12', '4-C',3,4,1)
 
 
 

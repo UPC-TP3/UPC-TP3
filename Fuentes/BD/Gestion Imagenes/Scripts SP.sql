@@ -10,7 +10,7 @@ CREATE Procedure [dbo].[pa_Registro_Programacion_Examen]
 @id_orden_examen int
 As
 Set Nocount On
-Select p.ID_Programacion, p.ID_Orden_Examen_Medico as id_orden_examen, case p.estado when 'G' then 'Generado' when 'D' then 'Pagado' when 'R' then 'Reprogramado' else '' end as estado,
+Select p.ID_Programacion, p.ID_Orden_Examen_Medico as id_orden_examen, case p.estado when 'G' then 'Generado' when 'D' then 'Pagado' when 'R' then 'Reprogramado' when 'O' then 'Observado' else '' end as estado,
 h.id_consultorio, h.ID_MedicoTurno as id_horario, c.id_local, (m.nom_medico+' '+m.ape_medico) as especialista
 From TB_PROGRAMACION_ATENCION_EXAMENES p Inner Join TB_MEDICO_DE_TURNO h On (p.ID_MedicoTurno= h.ID_MedicoTurno)
 Inner Join TB_CONSULTORIO c On (h.id_consultorio= c.id_consultorio)
