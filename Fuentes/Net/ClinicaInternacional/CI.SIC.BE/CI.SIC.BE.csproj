@@ -56,7 +56,14 @@
     <Compile Include="BE_Comprobante_Pago.cs" />
     <Compile Include="Catalogo_ExamenBE.cs" />
     <Compile Include="ConsultorioBE.cs" />
+    <Compile Include="EAgendaMedica.cs" />
+    <Compile Include="ECita.cs" />
+    <Compile Include="ECitaDomiciliaria.cs" />
+    <Compile Include="EEspecialidad.cs" />
+    <Compile Include="EMedico.cs" />
+    <Compile Include="EPaciente.cs" />
     <Compile Include="EspecialidadBE.cs" />
+    <Compile Include="ETurnoCita.cs" />
     <Compile Include="Examen_RequisitoBE.cs" />
     <Compile Include="Historia_ClinicaBE.cs" />
     <Compile Include="HorarioBE.cs" />

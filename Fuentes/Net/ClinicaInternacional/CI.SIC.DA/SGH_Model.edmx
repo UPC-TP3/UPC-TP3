@@ -1,0 +1,1666 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_SGHModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DB_SGHModelStoreContainer">
+          <EntitySet Name="TB_Agenda_Medica" EntityType="DB_SGHModel.Store.TB_Agenda_Medica" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_Analisis" EntityType="DB_SGHModel.Store.TB_Analisis" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_Cita" EntityType="DB_SGHModel.Store.TB_Cita" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_Consulta" EntityType="DB_SGHModel.Store.TB_Consulta" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_Consultorio" EntityType="DB_SGHModel.Store.TB_Consultorio" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_Especialidad" EntityType="DB_SGHModel.Store.TB_Especialidad" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_Estado_Cita" EntityType="DB_SGHModel.Store.TB_Estado_Cita" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_Local" EntityType="DB_SGHModel.Store.TB_Local" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_Medicamento" EntityType="DB_SGHModel.Store.TB_Medicamento" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_Medico" EntityType="DB_SGHModel.Store.TB_Medico" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_Motivo_Hospitalizacion" EntityType="DB_SGHModel.Store.TB_Motivo_Hospitalizacion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_Orden_Hopitalizacion" EntityType="DB_SGHModel.Store.TB_Orden_Hopitalizacion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_Paciente" EntityType="DB_SGHModel.Store.TB_Paciente" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_Prescripcion_Medica" EntityType="DB_SGHModel.Store.TB_Prescripcion_Medica" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_Tipo_Analisis" EntityType="DB_SGHModel.Store.TB_Tipo_Analisis" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TB_Turno_Citas" EntityType="DB_SGHModel.Store.TB_Turno_Citas" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__Cita__CodigoAgen__33D4B598" Association="DB_SGHModel.Store.FK__Cita__CodigoAgen__33D4B598">
+            <End Role="TB_Agenda_Medica" EntitySet="TB_Agenda_Medica" />
+            <End Role="TB_Cita" EntitySet="TB_Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cita__CodigoMedi__36B12243" Association="DB_SGHModel.Store.FK__Cita__CodigoMedi__36B12243">
+            <End Role="TB_Medico" EntitySet="TB_Medico" />
+            <End Role="TB_Cita" EntitySet="TB_Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cita__CodigoPaci__37A5467C" Association="DB_SGHModel.Store.FK__Cita__CodigoPaci__37A5467C">
+            <End Role="TB_Paciente" EntitySet="TB_Paciente" />
+            <End Role="TB_Cita" EntitySet="TB_Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consulta__Codigo__3B75D760" Association="DB_SGHModel.Store.FK__Consulta__Codigo__3B75D760">
+            <End Role="TB_Cita" EntitySet="TB_Cita" />
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Agenda__Codig__32E0915F" Association="DB_SGHModel.Store.FK__TB_Agenda__Codig__32E0915F">
+            <End Role="TB_Medico" EntitySet="TB_Medico" />
+            <End Role="TB_Agenda_Medica" EntitySet="TB_Agenda_Medica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Agenda__Codig__33D4B598" Association="DB_SGHModel.Store.FK__TB_Agenda__Codig__33D4B598">
+            <End Role="TB_Medico" EntitySet="TB_Medico" />
+            <End Role="TB_Agenda_Medica" EntitySet="TB_Agenda_Medica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Analis__Codig__34C8D9D1" Association="DB_SGHModel.Store.FK__TB_Analis__Codig__34C8D9D1">
+            <End Role="TB_Tipo_Analisis" EntitySet="TB_Tipo_Analisis" />
+            <End Role="TB_Analisis" EntitySet="TB_Analisis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Analis__Codig__35BCFE0A" Association="DB_SGHModel.Store.FK__TB_Analis__Codig__35BCFE0A">
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+            <End Role="TB_Analisis" EntitySet="TB_Analisis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Analis__Codig__36B12243" Association="DB_SGHModel.Store.FK__TB_Analis__Codig__36B12243">
+            <End Role="TB_Tipo_Analisis" EntitySet="TB_Tipo_Analisis" />
+            <End Role="TB_Analisis" EntitySet="TB_Analisis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Analis__Codig__37A5467C" Association="DB_SGHModel.Store.FK__TB_Analis__Codig__37A5467C">
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+            <End Role="TB_Analisis" EntitySet="TB_Analisis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__3D5E1FD2" Association="DB_SGHModel.Store.FK__TB_Consul__Codig__3D5E1FD2">
+            <End Role="TB_Paciente" EntitySet="TB_Paciente" />
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__3E52440B" Association="DB_SGHModel.Store.FK__TB_Consul__Codig__3E52440B">
+            <End Role="TB_Consultorio" EntitySet="TB_Consultorio" />
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__3F466844" Association="DB_SGHModel.Store.FK__TB_Consul__Codig__3F466844">
+            <End Role="TB_Medico" EntitySet="TB_Medico" />
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__403A8C7D" Association="DB_SGHModel.Store.FK__TB_Consul__Codig__403A8C7D">
+            <End Role="TB_Paciente" EntitySet="TB_Paciente" />
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__412EB0B6" Association="DB_SGHModel.Store.FK__TB_Consul__Codig__412EB0B6">
+            <End Role="TB_Consultorio" EntitySet="TB_Consultorio" />
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__4222D4EF" Association="DB_SGHModel.Store.FK__TB_Consul__Codig__4222D4EF">
+            <End Role="TB_Medico" EntitySet="TB_Medico" />
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__4316F928" Association="DB_SGHModel.Store.FK__TB_Consul__Codig__4316F928">
+            <End Role="TB_Local" EntitySet="TB_Local" />
+            <End Role="TB_Consultorio" EntitySet="TB_Consultorio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__440B1D61" Association="DB_SGHModel.Store.FK__TB_Consul__Codig__440B1D61">
+            <End Role="TB_Local" EntitySet="TB_Local" />
+            <End Role="TB_Consultorio" EntitySet="TB_Consultorio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Medico__Codig__44FF419A" Association="DB_SGHModel.Store.FK__TB_Medico__Codig__44FF419A">
+            <End Role="TB_Especialidad" EntitySet="TB_Especialidad" />
+            <End Role="TB_Medico" EntitySet="TB_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Medico__Codig__45F365D3" Association="DB_SGHModel.Store.FK__TB_Medico__Codig__45F365D3">
+            <End Role="TB_Especialidad" EntitySet="TB_Especialidad" />
+            <End Role="TB_Medico" EntitySet="TB_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Prescr__Codig__46E78A0C" Association="DB_SGHModel.Store.FK__TB_Prescr__Codig__46E78A0C">
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+            <End Role="TB_Prescripcion_Medica" EntitySet="TB_Prescripcion_Medica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Prescr__Codig__47DBAE45" Association="DB_SGHModel.Store.FK__TB_Prescr__Codig__47DBAE45">
+            <End Role="TB_Medicamento" EntitySet="TB_Medicamento" />
+            <End Role="TB_Prescripcion_Medica" EntitySet="TB_Prescripcion_Medica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Prescr__Codig__48CFD27E" Association="DB_SGHModel.Store.FK__TB_Prescr__Codig__48CFD27E">
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+            <End Role="TB_Prescripcion_Medica" EntitySet="TB_Prescripcion_Medica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Prescr__Codig__49C3F6B7" Association="DB_SGHModel.Store.FK__TB_Prescr__Codig__49C3F6B7">
+            <End Role="TB_Medicamento" EntitySet="TB_Medicamento" />
+            <End Role="TB_Prescripcion_Medica" EntitySet="TB_Prescripcion_Medica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cita_EstadoCita" Association="DB_SGHModel.Store.FK_Cita_EstadoCita">
+            <End Role="TB_Estado_Cita" EntitySet="TB_Estado_Cita" />
+            <End Role="TB_Cita" EntitySet="TB_Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_Agenda_Medica_TB_Turno_Citas" Association="DB_SGHModel.Store.FK_TB_Agenda_Medica_TB_Turno_Citas">
+            <End Role="TB_Turno_Citas" EntitySet="TB_Turno_Citas" />
+            <End Role="TB_Agenda_Medica" EntitySet="TB_Agenda_Medica" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TB_Agenda_Medica">
+          <Key>
+            <PropertyRef Name="CodigoAgenda" />
+          </Key>
+          <Property Name="CodigoAgenda" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="HoraInicio" Type="datetime" />
+          <Property Name="HoraFin" Type="datetime" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="CodigoMedico" Type="int" Nullable="false" />
+          <Property Name="NumeroConsultorio" Type="nchar" MaxLength="10" />
+          <Property Name="IdTurno" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_Analisis">
+          <Key>
+            <PropertyRef Name="CodigoAnalisis" />
+          </Key>
+          <Property Name="CodigoAnalisis" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FechaSolicitud" Type="datetime" />
+          <Property Name="FechaAnalisis" Type="datetime" />
+          <Property Name="Resultado" Type="varchar" MaxLength="50" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="100" />
+          <Property Name="CodigoConsulta" Type="int" Nullable="false" />
+          <Property Name="CodigoTipoAnalisis" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_Cita">
+          <Key>
+            <PropertyRef Name="CodigoCita" />
+          </Key>
+          <Property Name="CodigoCita" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FechaCita" Type="date" />
+          <Property Name="CodigoPaciente" Type="int" Nullable="false" />
+          <Property Name="CodigoMedico" Type="int" Nullable="false" />
+          <Property Name="CodigoAgenda" Type="int" Nullable="false" />
+          <Property Name="IdEstado" Type="int" />
+          <Property Name="AtencionLocal" Type="bit" />
+          <Property Name="DireccionDomicilio" Type="varchar" MaxLength="100" />
+          <Property Name="ReferenciaDomicilio" Type="varchar(max)" />
+          <Property Name="SintomasPaciente" Type="varchar(max)" />
+          <Property Name="Aseguradora" Type="varchar" MaxLength="50" />
+          <Property Name="Cobertura" Type="money" />
+        </EntityType>
+        <EntityType Name="TB_Consulta">
+          <Key>
+            <PropertyRef Name="CodigoConsulta" />
+          </Key>
+          <Property Name="CodigoConsulta" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FechaHoraInicio" Type="datetime" Nullable="false" />
+          <Property Name="FechaHoraFin" Type="datetime" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="100" />
+          <Property Name="CodigoMedico" Type="int" Nullable="false" />
+          <Property Name="CodigoCita" Type="int" Nullable="false" />
+          <Property Name="CodigoConsultorio" Type="int" Nullable="false" />
+          <Property Name="CodigoPaciente" Type="int" Nullable="false" />
+          <Property Name="Diagnostico" Type="varchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="TB_Consultorio">
+          <Key>
+            <PropertyRef Name="CodigoConsultorio" />
+          </Key>
+          <Property Name="CodigoConsultorio" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroConsultorio" Type="varchar" MaxLength="20" />
+          <Property Name="Piso" Type="varchar" MaxLength="20" />
+          <Property Name="CodigoLocal" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_Especialidad">
+          <Key>
+            <PropertyRef Name="CodigoEspecialidad" />
+          </Key>
+          <Property Name="CodigoEspecialidad" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TB_Estado_Cita">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="int" Nullable="false" />
+          <Property Name="DesEstado" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TB_Local">
+          <Key>
+            <PropertyRef Name="CodigoLocal" />
+          </Key>
+          <Property Name="CodigoLocal" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NombreLocal" Type="varchar" MaxLength="100" />
+          <Property Name="DireccionLocal" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="TB_Medicamento">
+          <Key>
+            <PropertyRef Name="CodigoMedicamento" />
+          </Key>
+          <Property Name="CodigoMedicamento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="Laboratorio" Type="varchar" MaxLength="100" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TB_Medico">
+          <Key>
+            <PropertyRef Name="CodigoMedico" />
+          </Key>
+          <Property Name="CodigoMedico" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="varchar" MaxLength="100" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="100" />
+          <Property Name="CodigoEspecialidad" Type="int" />
+          <Property Name="NumeroColegiatura" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TB_Motivo_Hospitalizacion">
+          <Key>
+            <PropertyRef Name="CodigoMotivo" />
+          </Key>
+          <Property Name="CodigoMotivo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DescripcionInternamiento" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TB_Orden_Hopitalizacion">
+          <Key>
+            <PropertyRef Name="CodigoOrden" />
+          </Key>
+          <Property Name="CodigoOrden" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FechaHora" Type="datetime" Nullable="false" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="100" />
+          <Property Name="FechaHoraAlta" Type="datetime" />
+          <Property Name="CodigoMotivo" Type="int" Nullable="false" />
+          <Property Name="CodigoConsulta" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_Paciente">
+          <Key>
+            <PropertyRef Name="CodigoPaciente" />
+          </Key>
+          <Property Name="CodigoPaciente" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="varchar" MaxLength="100" />
+          <Property Name="ApellidoPat" Type="varchar" MaxLength="100" />
+          <Property Name="ApellidoMat" Type="varchar" MaxLength="100" />
+          <Property Name="Direccion" Type="varchar" MaxLength="100" />
+          <Property Name="FechaNacimiento" Type="datetime" />
+          <Property Name="Telefono" Type="varchar" MaxLength="15" />
+          <Property Name="TelefonoCasa" Type="varchar" MaxLength="15" />
+          <Property Name="Dni" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TB_Prescripcion_Medica">
+          <Key>
+            <PropertyRef Name="CodigoReceta" />
+          </Key>
+          <Property Name="CodigoReceta" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Dosis" Type="varchar" MaxLength="50" />
+          <Property Name="Frecuencia" Type="varchar" MaxLength="50" />
+          <Property Name="CodigoMedicamento" Type="int" Nullable="false" />
+          <Property Name="CodigoConsulta" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_Tipo_Analisis">
+          <Key>
+            <PropertyRef Name="CodigoTipoAnalisis" />
+          </Key>
+          <Property Name="CodigoTipoAnalisis" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="TipoResultado" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TB_Turno_Citas">
+          <Key>
+            <PropertyRef Name="IdTurno" />
+          </Key>
+          <Property Name="IdTurno" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="HoraInicio" Type="datetime" />
+          <Property Name="HoraFinal" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Cita__CodigoAgen__33D4B598">
+          <End Role="TB_Agenda_Medica" Type="DB_SGHModel.Store.TB_Agenda_Medica" Multiplicity="1" />
+          <End Role="TB_Cita" Type="DB_SGHModel.Store.TB_Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Agenda_Medica">
+              <PropertyRef Name="CodigoAgenda" />
+            </Principal>
+            <Dependent Role="TB_Cita">
+              <PropertyRef Name="CodigoAgenda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cita__CodigoMedi__36B12243">
+          <End Role="TB_Medico" Type="DB_SGHModel.Store.TB_Medico" Multiplicity="1" />
+          <End Role="TB_Cita" Type="DB_SGHModel.Store.TB_Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Medico">
+              <PropertyRef Name="CodigoMedico" />
+            </Principal>
+            <Dependent Role="TB_Cita">
+              <PropertyRef Name="CodigoMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cita__CodigoPaci__37A5467C">
+          <End Role="TB_Paciente" Type="DB_SGHModel.Store.TB_Paciente" Multiplicity="1" />
+          <End Role="TB_Cita" Type="DB_SGHModel.Store.TB_Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Paciente">
+              <PropertyRef Name="CodigoPaciente" />
+            </Principal>
+            <Dependent Role="TB_Cita">
+              <PropertyRef Name="CodigoPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consulta__Codigo__3B75D760">
+          <End Role="TB_Cita" Type="DB_SGHModel.Store.TB_Cita" Multiplicity="1" />
+          <End Role="TB_Consulta" Type="DB_SGHModel.Store.TB_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Cita">
+              <PropertyRef Name="CodigoCita" />
+            </Principal>
+            <Dependent Role="TB_Consulta">
+              <PropertyRef Name="CodigoCita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Agenda__Codig__32E0915F">
+          <End Role="TB_Medico" Type="DB_SGHModel.Store.TB_Medico" Multiplicity="1" />
+          <End Role="TB_Agenda_Medica" Type="DB_SGHModel.Store.TB_Agenda_Medica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Medico">
+              <PropertyRef Name="CodigoMedico" />
+            </Principal>
+            <Dependent Role="TB_Agenda_Medica">
+              <PropertyRef Name="CodigoMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Agenda__Codig__33D4B598">
+          <End Role="TB_Medico" Type="DB_SGHModel.Store.TB_Medico" Multiplicity="1" />
+          <End Role="TB_Agenda_Medica" Type="DB_SGHModel.Store.TB_Agenda_Medica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Medico">
+              <PropertyRef Name="CodigoMedico" />
+            </Principal>
+            <Dependent Role="TB_Agenda_Medica">
+              <PropertyRef Name="CodigoMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Analis__Codig__34C8D9D1">
+          <End Role="TB_Tipo_Analisis" Type="DB_SGHModel.Store.TB_Tipo_Analisis" Multiplicity="1" />
+          <End Role="TB_Analisis" Type="DB_SGHModel.Store.TB_Analisis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Tipo_Analisis">
+              <PropertyRef Name="CodigoTipoAnalisis" />
+            </Principal>
+            <Dependent Role="TB_Analisis">
+              <PropertyRef Name="CodigoTipoAnalisis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Analis__Codig__35BCFE0A">
+          <End Role="TB_Consulta" Type="DB_SGHModel.Store.TB_Consulta" Multiplicity="1" />
+          <End Role="TB_Analisis" Type="DB_SGHModel.Store.TB_Analisis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Consulta">
+              <PropertyRef Name="CodigoConsulta" />
+            </Principal>
+            <Dependent Role="TB_Analisis">
+              <PropertyRef Name="CodigoConsulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Analis__Codig__36B12243">
+          <End Role="TB_Tipo_Analisis" Type="DB_SGHModel.Store.TB_Tipo_Analisis" Multiplicity="1" />
+          <End Role="TB_Analisis" Type="DB_SGHModel.Store.TB_Analisis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Tipo_Analisis">
+              <PropertyRef Name="CodigoTipoAnalisis" />
+            </Principal>
+            <Dependent Role="TB_Analisis">
+              <PropertyRef Name="CodigoTipoAnalisis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Analis__Codig__37A5467C">
+          <End Role="TB_Consulta" Type="DB_SGHModel.Store.TB_Consulta" Multiplicity="1" />
+          <End Role="TB_Analisis" Type="DB_SGHModel.Store.TB_Analisis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Consulta">
+              <PropertyRef Name="CodigoConsulta" />
+            </Principal>
+            <Dependent Role="TB_Analisis">
+              <PropertyRef Name="CodigoConsulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__3D5E1FD2">
+          <End Role="TB_Paciente" Type="DB_SGHModel.Store.TB_Paciente" Multiplicity="1" />
+          <End Role="TB_Consulta" Type="DB_SGHModel.Store.TB_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Paciente">
+              <PropertyRef Name="CodigoPaciente" />
+            </Principal>
+            <Dependent Role="TB_Consulta">
+              <PropertyRef Name="CodigoPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__3E52440B">
+          <End Role="TB_Consultorio" Type="DB_SGHModel.Store.TB_Consultorio" Multiplicity="1" />
+          <End Role="TB_Consulta" Type="DB_SGHModel.Store.TB_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Consultorio">
+              <PropertyRef Name="CodigoConsultorio" />
+            </Principal>
+            <Dependent Role="TB_Consulta">
+              <PropertyRef Name="CodigoConsultorio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__3F466844">
+          <End Role="TB_Medico" Type="DB_SGHModel.Store.TB_Medico" Multiplicity="1" />
+          <End Role="TB_Consulta" Type="DB_SGHModel.Store.TB_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Medico">
+              <PropertyRef Name="CodigoMedico" />
+            </Principal>
+            <Dependent Role="TB_Consulta">
+              <PropertyRef Name="CodigoMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__403A8C7D">
+          <End Role="TB_Paciente" Type="DB_SGHModel.Store.TB_Paciente" Multiplicity="1" />
+          <End Role="TB_Consulta" Type="DB_SGHModel.Store.TB_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Paciente">
+              <PropertyRef Name="CodigoPaciente" />
+            </Principal>
+            <Dependent Role="TB_Consulta">
+              <PropertyRef Name="CodigoPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__412EB0B6">
+          <End Role="TB_Consultorio" Type="DB_SGHModel.Store.TB_Consultorio" Multiplicity="1" />
+          <End Role="TB_Consulta" Type="DB_SGHModel.Store.TB_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Consultorio">
+              <PropertyRef Name="CodigoConsultorio" />
+            </Principal>
+            <Dependent Role="TB_Consulta">
+              <PropertyRef Name="CodigoConsultorio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__4222D4EF">
+          <End Role="TB_Medico" Type="DB_SGHModel.Store.TB_Medico" Multiplicity="1" />
+          <End Role="TB_Consulta" Type="DB_SGHModel.Store.TB_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Medico">
+              <PropertyRef Name="CodigoMedico" />
+            </Principal>
+            <Dependent Role="TB_Consulta">
+              <PropertyRef Name="CodigoMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__4316F928">
+          <End Role="TB_Local" Type="DB_SGHModel.Store.TB_Local" Multiplicity="0..1" />
+          <End Role="TB_Consultorio" Type="DB_SGHModel.Store.TB_Consultorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Local">
+              <PropertyRef Name="CodigoLocal" />
+            </Principal>
+            <Dependent Role="TB_Consultorio">
+              <PropertyRef Name="CodigoLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__440B1D61">
+          <End Role="TB_Local" Type="DB_SGHModel.Store.TB_Local" Multiplicity="0..1" />
+          <End Role="TB_Consultorio" Type="DB_SGHModel.Store.TB_Consultorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Local">
+              <PropertyRef Name="CodigoLocal" />
+            </Principal>
+            <Dependent Role="TB_Consultorio">
+              <PropertyRef Name="CodigoLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Medico__Codig__44FF419A">
+          <End Role="TB_Especialidad" Type="DB_SGHModel.Store.TB_Especialidad" Multiplicity="0..1" />
+          <End Role="TB_Medico" Type="DB_SGHModel.Store.TB_Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Especialidad">
+              <PropertyRef Name="CodigoEspecialidad" />
+            </Principal>
+            <Dependent Role="TB_Medico">
+              <PropertyRef Name="CodigoEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Medico__Codig__45F365D3">
+          <End Role="TB_Especialidad" Type="DB_SGHModel.Store.TB_Especialidad" Multiplicity="0..1" />
+          <End Role="TB_Medico" Type="DB_SGHModel.Store.TB_Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Especialidad">
+              <PropertyRef Name="CodigoEspecialidad" />
+            </Principal>
+            <Dependent Role="TB_Medico">
+              <PropertyRef Name="CodigoEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Prescr__Codig__46E78A0C">
+          <End Role="TB_Consulta" Type="DB_SGHModel.Store.TB_Consulta" Multiplicity="1" />
+          <End Role="TB_Prescripcion_Medica" Type="DB_SGHModel.Store.TB_Prescripcion_Medica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Consulta">
+              <PropertyRef Name="CodigoConsulta" />
+            </Principal>
+            <Dependent Role="TB_Prescripcion_Medica">
+              <PropertyRef Name="CodigoConsulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Prescr__Codig__47DBAE45">
+          <End Role="TB_Medicamento" Type="DB_SGHModel.Store.TB_Medicamento" Multiplicity="1" />
+          <End Role="TB_Prescripcion_Medica" Type="DB_SGHModel.Store.TB_Prescripcion_Medica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Medicamento">
+              <PropertyRef Name="CodigoMedicamento" />
+            </Principal>
+            <Dependent Role="TB_Prescripcion_Medica">
+              <PropertyRef Name="CodigoMedicamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Prescr__Codig__48CFD27E">
+          <End Role="TB_Consulta" Type="DB_SGHModel.Store.TB_Consulta" Multiplicity="1" />
+          <End Role="TB_Prescripcion_Medica" Type="DB_SGHModel.Store.TB_Prescripcion_Medica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Consulta">
+              <PropertyRef Name="CodigoConsulta" />
+            </Principal>
+            <Dependent Role="TB_Prescripcion_Medica">
+              <PropertyRef Name="CodigoConsulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Prescr__Codig__49C3F6B7">
+          <End Role="TB_Medicamento" Type="DB_SGHModel.Store.TB_Medicamento" Multiplicity="1" />
+          <End Role="TB_Prescripcion_Medica" Type="DB_SGHModel.Store.TB_Prescripcion_Medica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Medicamento">
+              <PropertyRef Name="CodigoMedicamento" />
+            </Principal>
+            <Dependent Role="TB_Prescripcion_Medica">
+              <PropertyRef Name="CodigoMedicamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cita_EstadoCita">
+          <End Role="TB_Estado_Cita" Type="DB_SGHModel.Store.TB_Estado_Cita" Multiplicity="0..1" />
+          <End Role="TB_Cita" Type="DB_SGHModel.Store.TB_Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Estado_Cita">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="TB_Cita">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_Agenda_Medica_TB_Turno_Citas">
+          <End Role="TB_Turno_Citas" Type="DB_SGHModel.Store.TB_Turno_Citas" Multiplicity="1" />
+          <End Role="TB_Agenda_Medica" Type="DB_SGHModel.Store.TB_Agenda_Medica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Turno_Citas">
+              <PropertyRef Name="IdTurno" />
+            </Principal>
+            <Dependent Role="TB_Agenda_Medica">
+              <PropertyRef Name="IdTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_SGHModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DB_SGHEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB_Agenda_Medica" EntityType="DB_SGHModel.TB_Agenda_Medica" />
+          <EntitySet Name="TB_Analisis" EntityType="DB_SGHModel.TB_Analisis" />
+          <EntitySet Name="TB_Cita" EntityType="DB_SGHModel.TB_Cita" />
+          <EntitySet Name="TB_Consulta" EntityType="DB_SGHModel.TB_Consulta" />
+          <EntitySet Name="TB_Consultorio" EntityType="DB_SGHModel.TB_Consultorio" />
+          <EntitySet Name="TB_Especialidad" EntityType="DB_SGHModel.TB_Especialidad" />
+          <EntitySet Name="TB_Estado_Cita" EntityType="DB_SGHModel.TB_Estado_Cita" />
+          <EntitySet Name="TB_Local" EntityType="DB_SGHModel.TB_Local" />
+          <EntitySet Name="TB_Medicamento" EntityType="DB_SGHModel.TB_Medicamento" />
+          <EntitySet Name="TB_Medico" EntityType="DB_SGHModel.TB_Medico" />
+          <EntitySet Name="TB_Motivo_Hospitalizacion" EntityType="DB_SGHModel.TB_Motivo_Hospitalizacion" />
+          <EntitySet Name="TB_Orden_Hopitalizacion" EntityType="DB_SGHModel.TB_Orden_Hopitalizacion" />
+          <EntitySet Name="TB_Paciente" EntityType="DB_SGHModel.TB_Paciente" />
+          <EntitySet Name="TB_Prescripcion_Medica" EntityType="DB_SGHModel.TB_Prescripcion_Medica" />
+          <EntitySet Name="TB_Tipo_Analisis" EntityType="DB_SGHModel.TB_Tipo_Analisis" />
+          <AssociationSet Name="FK__Cita__CodigoAgen__33D4B5981" Association="DB_SGHModel.FK__Cita__CodigoAgen__33D4B5981">
+            <End Role="TB_Agenda_Medica" EntitySet="TB_Agenda_Medica" />
+            <End Role="TB_Cita" EntitySet="TB_Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Agenda__Codig__32E0915F" Association="DB_SGHModel.FK__TB_Agenda__Codig__32E0915F">
+            <End Role="TB_Medico" EntitySet="TB_Medico" />
+            <End Role="TB_Agenda_Medica" EntitySet="TB_Agenda_Medica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Agenda__Codig__33D4B598" Association="DB_SGHModel.FK__TB_Agenda__Codig__33D4B598">
+            <End Role="TB_Medico" EntitySet="TB_Medico" />
+            <End Role="TB_Agenda_Medica" EntitySet="TB_Agenda_Medica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Analis__Codig__34C8D9D1" Association="DB_SGHModel.FK__TB_Analis__Codig__34C8D9D1">
+            <End Role="TB_Tipo_Analisis" EntitySet="TB_Tipo_Analisis" />
+            <End Role="TB_Analisis" EntitySet="TB_Analisis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Analis__Codig__35BCFE0A" Association="DB_SGHModel.FK__TB_Analis__Codig__35BCFE0A">
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+            <End Role="TB_Analisis" EntitySet="TB_Analisis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Analis__Codig__36B12243" Association="DB_SGHModel.FK__TB_Analis__Codig__36B12243">
+            <End Role="TB_Tipo_Analisis" EntitySet="TB_Tipo_Analisis" />
+            <End Role="TB_Analisis" EntitySet="TB_Analisis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Analis__Codig__37A5467C" Association="DB_SGHModel.FK__TB_Analis__Codig__37A5467C">
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+            <End Role="TB_Analisis" EntitySet="TB_Analisis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cita__CodigoMedi__36B122431" Association="DB_SGHModel.FK__Cita__CodigoMedi__36B122431">
+            <End Role="TB_Medico" EntitySet="TB_Medico" />
+            <End Role="TB_Cita" EntitySet="TB_Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cita__CodigoPaci__37A5467C1" Association="DB_SGHModel.FK__Cita__CodigoPaci__37A5467C1">
+            <End Role="TB_Paciente" EntitySet="TB_Paciente" />
+            <End Role="TB_Cita" EntitySet="TB_Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consulta__Codigo__3B75D7601" Association="DB_SGHModel.FK__Consulta__Codigo__3B75D7601">
+            <End Role="TB_Cita" EntitySet="TB_Cita" />
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cita_EstadoCita1" Association="DB_SGHModel.FK_Cita_EstadoCita1">
+            <End Role="TB_Estado_Cita" EntitySet="TB_Estado_Cita" />
+            <End Role="TB_Cita" EntitySet="TB_Cita" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__3D5E1FD2" Association="DB_SGHModel.FK__TB_Consul__Codig__3D5E1FD2">
+            <End Role="TB_Paciente" EntitySet="TB_Paciente" />
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__3E52440B" Association="DB_SGHModel.FK__TB_Consul__Codig__3E52440B">
+            <End Role="TB_Consultorio" EntitySet="TB_Consultorio" />
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__3F466844" Association="DB_SGHModel.FK__TB_Consul__Codig__3F466844">
+            <End Role="TB_Medico" EntitySet="TB_Medico" />
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__403A8C7D" Association="DB_SGHModel.FK__TB_Consul__Codig__403A8C7D">
+            <End Role="TB_Paciente" EntitySet="TB_Paciente" />
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__412EB0B6" Association="DB_SGHModel.FK__TB_Consul__Codig__412EB0B6">
+            <End Role="TB_Consultorio" EntitySet="TB_Consultorio" />
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__4222D4EF" Association="DB_SGHModel.FK__TB_Consul__Codig__4222D4EF">
+            <End Role="TB_Medico" EntitySet="TB_Medico" />
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Prescr__Codig__46E78A0C" Association="DB_SGHModel.FK__TB_Prescr__Codig__46E78A0C">
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+            <End Role="TB_Prescripcion_Medica" EntitySet="TB_Prescripcion_Medica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Prescr__Codig__48CFD27E" Association="DB_SGHModel.FK__TB_Prescr__Codig__48CFD27E">
+            <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+            <End Role="TB_Prescripcion_Medica" EntitySet="TB_Prescripcion_Medica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__4316F928" Association="DB_SGHModel.FK__TB_Consul__Codig__4316F928">
+            <End Role="TB_Local" EntitySet="TB_Local" />
+            <End Role="TB_Consultorio" EntitySet="TB_Consultorio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Consul__Codig__440B1D61" Association="DB_SGHModel.FK__TB_Consul__Codig__440B1D61">
+            <End Role="TB_Local" EntitySet="TB_Local" />
+            <End Role="TB_Consultorio" EntitySet="TB_Consultorio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Medico__Codig__44FF419A" Association="DB_SGHModel.FK__TB_Medico__Codig__44FF419A">
+            <End Role="TB_Especialidad" EntitySet="TB_Especialidad" />
+            <End Role="TB_Medico" EntitySet="TB_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Medico__Codig__45F365D3" Association="DB_SGHModel.FK__TB_Medico__Codig__45F365D3">
+            <End Role="TB_Especialidad" EntitySet="TB_Especialidad" />
+            <End Role="TB_Medico" EntitySet="TB_Medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Prescr__Codig__47DBAE45" Association="DB_SGHModel.FK__TB_Prescr__Codig__47DBAE45">
+            <End Role="TB_Medicamento" EntitySet="TB_Medicamento" />
+            <End Role="TB_Prescripcion_Medica" EntitySet="TB_Prescripcion_Medica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Prescr__Codig__49C3F6B7" Association="DB_SGHModel.FK__TB_Prescr__Codig__49C3F6B7">
+            <End Role="TB_Medicamento" EntitySet="TB_Medicamento" />
+            <End Role="TB_Prescripcion_Medica" EntitySet="TB_Prescripcion_Medica" />
+          </AssociationSet>
+          <EntitySet Name="TB_Turno_Citas" EntityType="DB_SGHModel.TB_Turno_Citas" />
+          <AssociationSet Name="FK_TB_Agenda_Medica_TB_Turno_Citas" Association="DB_SGHModel.FK_TB_Agenda_Medica_TB_Turno_Citas">
+            <End Role="TB_Turno_Citas" EntitySet="TB_Turno_Citas" />
+            <End Role="TB_Agenda_Medica" EntitySet="TB_Agenda_Medica" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TB_Agenda_Medica">
+          <Key>
+            <PropertyRef Name="CodigoAgenda" />
+          </Key>
+          <Property Type="Int32" Name="CodigoAgenda" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Fecha" />
+          <Property Type="DateTime" Name="HoraInicio" />
+          <Property Type="DateTime" Name="HoraFin" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="Int32" Name="CodigoMedico" Nullable="false" />
+          <Property Type="String" Name="NumeroConsultorio" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="TB_Cita" Relationship="DB_SGHModel.FK__Cita__CodigoAgen__33D4B5981" FromRole="TB_Agenda_Medica" ToRole="TB_Cita" />
+          <NavigationProperty Name="TB_Medico" Relationship="DB_SGHModel.FK__TB_Agenda__Codig__32E0915F" FromRole="TB_Agenda_Medica" ToRole="TB_Medico" />
+          <NavigationProperty Name="TB_Medico1" Relationship="DB_SGHModel.FK__TB_Agenda__Codig__33D4B598" FromRole="TB_Agenda_Medica" ToRole="TB_Medico" />
+          <Property Type="Int32" Name="IdTurno" Nullable="false" />
+          <NavigationProperty Name="TB_Turno_Citas" Relationship="DB_SGHModel.FK_TB_Agenda_Medica_TB_Turno_Citas" FromRole="TB_Agenda_Medica" ToRole="TB_Turno_Citas" />
+        </EntityType>
+        <EntityType Name="TB_Analisis">
+          <Key>
+            <PropertyRef Name="CodigoAnalisis" />
+          </Key>
+          <Property Type="Int32" Name="CodigoAnalisis" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="FechaSolicitud" />
+          <Property Type="DateTime" Name="FechaAnalisis" />
+          <Property Type="String" Name="Resultado" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Observaciones" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CodigoConsulta" Nullable="false" />
+          <Property Type="Int32" Name="CodigoTipoAnalisis" Nullable="false" />
+          <NavigationProperty Name="TB_Tipo_Analisis" Relationship="DB_SGHModel.FK__TB_Analis__Codig__34C8D9D1" FromRole="TB_Analisis" ToRole="TB_Tipo_Analisis" />
+          <NavigationProperty Name="TB_Consulta" Relationship="DB_SGHModel.FK__TB_Analis__Codig__35BCFE0A" FromRole="TB_Analisis" ToRole="TB_Consulta" />
+          <NavigationProperty Name="TB_Tipo_Analisis1" Relationship="DB_SGHModel.FK__TB_Analis__Codig__36B12243" FromRole="TB_Analisis" ToRole="TB_Tipo_Analisis" />
+          <NavigationProperty Name="TB_Consulta1" Relationship="DB_SGHModel.FK__TB_Analis__Codig__37A5467C" FromRole="TB_Analisis" ToRole="TB_Consulta" />
+        </EntityType>
+        <EntityType Name="TB_Cita">
+          <Key>
+            <PropertyRef Name="CodigoCita" />
+          </Key>
+          <Property Type="Int32" Name="CodigoCita" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="FechaCita" />
+          <Property Type="Int32" Name="CodigoPaciente" Nullable="false" />
+          <Property Type="Int32" Name="CodigoMedico" Nullable="false" />
+          <Property Type="Int32" Name="CodigoAgenda" Nullable="false" />
+          <Property Type="Int32" Name="IdEstado" />
+          <NavigationProperty Name="TB_Agenda_Medica" Relationship="DB_SGHModel.FK__Cita__CodigoAgen__33D4B5981" FromRole="TB_Cita" ToRole="TB_Agenda_Medica" />
+          <NavigationProperty Name="TB_Medico" Relationship="DB_SGHModel.FK__Cita__CodigoMedi__36B122431" FromRole="TB_Cita" ToRole="TB_Medico" />
+          <NavigationProperty Name="TB_Paciente" Relationship="DB_SGHModel.FK__Cita__CodigoPaci__37A5467C1" FromRole="TB_Cita" ToRole="TB_Paciente" />
+          <NavigationProperty Name="TB_Consulta" Relationship="DB_SGHModel.FK__Consulta__Codigo__3B75D7601" FromRole="TB_Cita" ToRole="TB_Consulta" />
+          <NavigationProperty Name="TB_Estado_Cita" Relationship="DB_SGHModel.FK_Cita_EstadoCita1" FromRole="TB_Cita" ToRole="TB_Estado_Cita" />
+          <Property Type="Boolean" Name="AtencionLocal" />
+          <Property Type="String" Name="DireccionDomicilio" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ReferenciaDomicilio" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SintomasPaciente" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Aseguradora" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="Cobertura" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="TB_Consulta">
+          <Key>
+            <PropertyRef Name="CodigoConsulta" />
+          </Key>
+          <Property Type="Int32" Name="CodigoConsulta" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="FechaHoraInicio" Nullable="false" />
+          <Property Type="DateTime" Name="FechaHoraFin" />
+          <Property Type="String" Name="Observaciones" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CodigoMedico" Nullable="false" />
+          <Property Type="Int32" Name="CodigoCita" Nullable="false" />
+          <Property Type="Int32" Name="CodigoConsultorio" Nullable="false" />
+          <Property Type="Int32" Name="CodigoPaciente" Nullable="false" />
+          <Property Type="String" Name="Diagnostico" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_Analisis" Relationship="DB_SGHModel.FK__TB_Analis__Codig__35BCFE0A" FromRole="TB_Consulta" ToRole="TB_Analisis" />
+          <NavigationProperty Name="TB_Analisis1" Relationship="DB_SGHModel.FK__TB_Analis__Codig__37A5467C" FromRole="TB_Consulta" ToRole="TB_Analisis" />
+          <NavigationProperty Name="TB_Cita" Relationship="DB_SGHModel.FK__Consulta__Codigo__3B75D7601" FromRole="TB_Consulta" ToRole="TB_Cita" />
+          <NavigationProperty Name="TB_Paciente" Relationship="DB_SGHModel.FK__TB_Consul__Codig__3D5E1FD2" FromRole="TB_Consulta" ToRole="TB_Paciente" />
+          <NavigationProperty Name="TB_Consultorio" Relationship="DB_SGHModel.FK__TB_Consul__Codig__3E52440B" FromRole="TB_Consulta" ToRole="TB_Consultorio" />
+          <NavigationProperty Name="TB_Medico" Relationship="DB_SGHModel.FK__TB_Consul__Codig__3F466844" FromRole="TB_Consulta" ToRole="TB_Medico" />
+          <NavigationProperty Name="TB_Paciente1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__403A8C7D" FromRole="TB_Consulta" ToRole="TB_Paciente" />
+          <NavigationProperty Name="TB_Consultorio1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__412EB0B6" FromRole="TB_Consulta" ToRole="TB_Consultorio" />
+          <NavigationProperty Name="TB_Medico1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__4222D4EF" FromRole="TB_Consulta" ToRole="TB_Medico" />
+          <NavigationProperty Name="TB_Prescripcion_Medica" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__46E78A0C" FromRole="TB_Consulta" ToRole="TB_Prescripcion_Medica" />
+          <NavigationProperty Name="TB_Prescripcion_Medica1" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__48CFD27E" FromRole="TB_Consulta" ToRole="TB_Prescripcion_Medica" />
+        </EntityType>
+        <EntityType Name="TB_Consultorio">
+          <Key>
+            <PropertyRef Name="CodigoConsultorio" />
+          </Key>
+          <Property Type="Int32" Name="CodigoConsultorio" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NumeroConsultorio" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Piso" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CodigoLocal" />
+          <NavigationProperty Name="TB_Consulta" Relationship="DB_SGHModel.FK__TB_Consul__Codig__3E52440B" FromRole="TB_Consultorio" ToRole="TB_Consulta" />
+          <NavigationProperty Name="TB_Consulta1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__412EB0B6" FromRole="TB_Consultorio" ToRole="TB_Consulta" />
+          <NavigationProperty Name="TB_Local" Relationship="DB_SGHModel.FK__TB_Consul__Codig__4316F928" FromRole="TB_Consultorio" ToRole="TB_Local" />
+          <NavigationProperty Name="TB_Local1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__440B1D61" FromRole="TB_Consultorio" ToRole="TB_Local" />
+        </EntityType>
+        <EntityType Name="TB_Especialidad">
+          <Key>
+            <PropertyRef Name="CodigoEspecialidad" />
+          </Key>
+          <Property Type="Int32" Name="CodigoEspecialidad" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descripcion" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_Medico" Relationship="DB_SGHModel.FK__TB_Medico__Codig__44FF419A" FromRole="TB_Especialidad" ToRole="TB_Medico" />
+          <NavigationProperty Name="TB_Medico1" Relationship="DB_SGHModel.FK__TB_Medico__Codig__45F365D3" FromRole="TB_Especialidad" ToRole="TB_Medico" />
+        </EntityType>
+        <EntityType Name="TB_Estado_Cita">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Type="Int32" Name="IdEstado" Nullable="false" />
+          <Property Type="String" Name="DesEstado" />
+          <NavigationProperty Name="TB_Cita" Relationship="DB_SGHModel.FK_Cita_EstadoCita1" FromRole="TB_Estado_Cita" ToRole="TB_Cita" />
+        </EntityType>
+        <EntityType Name="TB_Local">
+          <Key>
+            <PropertyRef Name="CodigoLocal" />
+          </Key>
+          <Property Type="Int32" Name="CodigoLocal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="NombreLocal" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DireccionLocal" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_Consultorio" Relationship="DB_SGHModel.FK__TB_Consul__Codig__4316F928" FromRole="TB_Local" ToRole="TB_Consultorio" />
+          <NavigationProperty Name="TB_Consultorio1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__440B1D61" FromRole="TB_Local" ToRole="TB_Consultorio" />
+        </EntityType>
+        <EntityType Name="TB_Medicamento">
+          <Key>
+            <PropertyRef Name="CodigoMedicamento" />
+          </Key>
+          <Property Type="Int32" Name="CodigoMedicamento" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descripcion" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Laboratorio" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Observaciones" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_Prescripcion_Medica" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__47DBAE45" FromRole="TB_Medicamento" ToRole="TB_Prescripcion_Medica" />
+          <NavigationProperty Name="TB_Prescripcion_Medica1" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__49C3F6B7" FromRole="TB_Medicamento" ToRole="TB_Prescripcion_Medica" />
+        </EntityType>
+        <EntityType Name="TB_Medico">
+          <Key>
+            <PropertyRef Name="CodigoMedico" />
+          </Key>
+          <Property Type="Int32" Name="CodigoMedico" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nombres" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Apellidos" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CodigoEspecialidad" />
+          <Property Type="String" Name="NumeroColegiatura" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_Agenda_Medica" Relationship="DB_SGHModel.FK__TB_Agenda__Codig__32E0915F" FromRole="TB_Medico" ToRole="TB_Agenda_Medica" />
+          <NavigationProperty Name="TB_Agenda_Medica1" Relationship="DB_SGHModel.FK__TB_Agenda__Codig__33D4B598" FromRole="TB_Medico" ToRole="TB_Agenda_Medica" />
+          <NavigationProperty Name="TB_Cita" Relationship="DB_SGHModel.FK__Cita__CodigoMedi__36B122431" FromRole="TB_Medico" ToRole="TB_Cita" />
+          <NavigationProperty Name="TB_Consulta" Relationship="DB_SGHModel.FK__TB_Consul__Codig__3F466844" FromRole="TB_Medico" ToRole="TB_Consulta" />
+          <NavigationProperty Name="TB_Consulta1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__4222D4EF" FromRole="TB_Medico" ToRole="TB_Consulta" />
+          <NavigationProperty Name="TB_Especialidad" Relationship="DB_SGHModel.FK__TB_Medico__Codig__44FF419A" FromRole="TB_Medico" ToRole="TB_Especialidad" />
+          <NavigationProperty Name="TB_Especialidad1" Relationship="DB_SGHModel.FK__TB_Medico__Codig__45F365D3" FromRole="TB_Medico" ToRole="TB_Especialidad" />
+        </EntityType>
+        <EntityType Name="TB_Motivo_Hospitalizacion">
+          <Key>
+            <PropertyRef Name="CodigoMotivo" />
+          </Key>
+          <Property Type="Int32" Name="CodigoMotivo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="DescripcionInternamiento" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_Orden_Hopitalizacion">
+          <Key>
+            <PropertyRef Name="CodigoOrden" />
+          </Key>
+          <Property Type="Int32" Name="CodigoOrden" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="FechaHora" Nullable="false" />
+          <Property Type="String" Name="Observaciones" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FechaHoraAlta" />
+          <Property Type="Int32" Name="CodigoMotivo" Nullable="false" />
+          <Property Type="Int32" Name="CodigoConsulta" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_Paciente">
+          <Key>
+            <PropertyRef Name="CodigoPaciente" />
+          </Key>
+          <Property Type="Int32" Name="CodigoPaciente" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Nombres" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ApellidoPat" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ApellidoMat" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Direccion" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FechaNacimiento" />
+          <Property Type="String" Name="Telefono" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TelefonoCasa" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Dni" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_Cita" Relationship="DB_SGHModel.FK__Cita__CodigoPaci__37A5467C1" FromRole="TB_Paciente" ToRole="TB_Cita" />
+          <NavigationProperty Name="TB_Consulta" Relationship="DB_SGHModel.FK__TB_Consul__Codig__3D5E1FD2" FromRole="TB_Paciente" ToRole="TB_Consulta" />
+          <NavigationProperty Name="TB_Consulta1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__403A8C7D" FromRole="TB_Paciente" ToRole="TB_Consulta" />
+        </EntityType>
+        <EntityType Name="TB_Prescripcion_Medica">
+          <Key>
+            <PropertyRef Name="CodigoReceta" />
+          </Key>
+          <Property Type="Int32" Name="CodigoReceta" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Dosis" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Frecuencia" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CodigoMedicamento" Nullable="false" />
+          <Property Type="Int32" Name="CodigoConsulta" Nullable="false" />
+          <NavigationProperty Name="TB_Consulta" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__46E78A0C" FromRole="TB_Prescripcion_Medica" ToRole="TB_Consulta" />
+          <NavigationProperty Name="TB_Consulta1" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__48CFD27E" FromRole="TB_Prescripcion_Medica" ToRole="TB_Consulta" />
+          <NavigationProperty Name="TB_Medicamento" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__47DBAE45" FromRole="TB_Prescripcion_Medica" ToRole="TB_Medicamento" />
+          <NavigationProperty Name="TB_Medicamento1" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__49C3F6B7" FromRole="TB_Prescripcion_Medica" ToRole="TB_Medicamento" />
+        </EntityType>
+        <EntityType Name="TB_Tipo_Analisis">
+          <Key>
+            <PropertyRef Name="CodigoTipoAnalisis" />
+          </Key>
+          <Property Type="Int32" Name="CodigoTipoAnalisis" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descripcion" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TipoResultado" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_Analisis" Relationship="DB_SGHModel.FK__TB_Analis__Codig__34C8D9D1" FromRole="TB_Tipo_Analisis" ToRole="TB_Analisis" />
+          <NavigationProperty Name="TB_Analisis1" Relationship="DB_SGHModel.FK__TB_Analis__Codig__36B12243" FromRole="TB_Tipo_Analisis" ToRole="TB_Analisis" />
+        </EntityType>
+        <Association Name="FK__Cita__CodigoAgen__33D4B5981">
+          <End Type="DB_SGHModel.TB_Agenda_Medica" Role="TB_Agenda_Medica" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Cita" Role="TB_Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Agenda_Medica">
+              <PropertyRef Name="CodigoAgenda" />
+            </Principal>
+            <Dependent Role="TB_Cita">
+              <PropertyRef Name="CodigoAgenda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Agenda__Codig__32E0915F">
+          <End Type="DB_SGHModel.TB_Medico" Role="TB_Medico" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Agenda_Medica" Role="TB_Agenda_Medica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Medico">
+              <PropertyRef Name="CodigoMedico" />
+            </Principal>
+            <Dependent Role="TB_Agenda_Medica">
+              <PropertyRef Name="CodigoMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Agenda__Codig__33D4B598">
+          <End Type="DB_SGHModel.TB_Medico" Role="TB_Medico" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Agenda_Medica" Role="TB_Agenda_Medica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Medico">
+              <PropertyRef Name="CodigoMedico" />
+            </Principal>
+            <Dependent Role="TB_Agenda_Medica">
+              <PropertyRef Name="CodigoMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Analis__Codig__34C8D9D1">
+          <End Type="DB_SGHModel.TB_Tipo_Analisis" Role="TB_Tipo_Analisis" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Analisis" Role="TB_Analisis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Tipo_Analisis">
+              <PropertyRef Name="CodigoTipoAnalisis" />
+            </Principal>
+            <Dependent Role="TB_Analisis">
+              <PropertyRef Name="CodigoTipoAnalisis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Analis__Codig__35BCFE0A">
+          <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Analisis" Role="TB_Analisis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Consulta">
+              <PropertyRef Name="CodigoConsulta" />
+            </Principal>
+            <Dependent Role="TB_Analisis">
+              <PropertyRef Name="CodigoConsulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Analis__Codig__36B12243">
+          <End Type="DB_SGHModel.TB_Tipo_Analisis" Role="TB_Tipo_Analisis" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Analisis" Role="TB_Analisis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Tipo_Analisis">
+              <PropertyRef Name="CodigoTipoAnalisis" />
+            </Principal>
+            <Dependent Role="TB_Analisis">
+              <PropertyRef Name="CodigoTipoAnalisis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Analis__Codig__37A5467C">
+          <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Analisis" Role="TB_Analisis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Consulta">
+              <PropertyRef Name="CodigoConsulta" />
+            </Principal>
+            <Dependent Role="TB_Analisis">
+              <PropertyRef Name="CodigoConsulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cita__CodigoMedi__36B122431">
+          <End Type="DB_SGHModel.TB_Medico" Role="TB_Medico" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Cita" Role="TB_Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Medico">
+              <PropertyRef Name="CodigoMedico" />
+            </Principal>
+            <Dependent Role="TB_Cita">
+              <PropertyRef Name="CodigoMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cita__CodigoPaci__37A5467C1">
+          <End Type="DB_SGHModel.TB_Paciente" Role="TB_Paciente" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Cita" Role="TB_Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Paciente">
+              <PropertyRef Name="CodigoPaciente" />
+            </Principal>
+            <Dependent Role="TB_Cita">
+              <PropertyRef Name="CodigoPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consulta__Codigo__3B75D7601">
+          <End Type="DB_SGHModel.TB_Cita" Role="TB_Cita" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Cita">
+              <PropertyRef Name="CodigoCita" />
+            </Principal>
+            <Dependent Role="TB_Consulta">
+              <PropertyRef Name="CodigoCita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cita_EstadoCita1">
+          <End Type="DB_SGHModel.TB_Estado_Cita" Role="TB_Estado_Cita" Multiplicity="0..1" />
+          <End Type="DB_SGHModel.TB_Cita" Role="TB_Cita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Estado_Cita">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="TB_Cita">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__3D5E1FD2">
+          <End Type="DB_SGHModel.TB_Paciente" Role="TB_Paciente" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Paciente">
+              <PropertyRef Name="CodigoPaciente" />
+            </Principal>
+            <Dependent Role="TB_Consulta">
+              <PropertyRef Name="CodigoPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__3E52440B">
+          <End Type="DB_SGHModel.TB_Consultorio" Role="TB_Consultorio" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Consultorio">
+              <PropertyRef Name="CodigoConsultorio" />
+            </Principal>
+            <Dependent Role="TB_Consulta">
+              <PropertyRef Name="CodigoConsultorio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__3F466844">
+          <End Type="DB_SGHModel.TB_Medico" Role="TB_Medico" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Medico">
+              <PropertyRef Name="CodigoMedico" />
+            </Principal>
+            <Dependent Role="TB_Consulta">
+              <PropertyRef Name="CodigoMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__403A8C7D">
+          <End Type="DB_SGHModel.TB_Paciente" Role="TB_Paciente" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Paciente">
+              <PropertyRef Name="CodigoPaciente" />
+            </Principal>
+            <Dependent Role="TB_Consulta">
+              <PropertyRef Name="CodigoPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__412EB0B6">
+          <End Type="DB_SGHModel.TB_Consultorio" Role="TB_Consultorio" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Consultorio">
+              <PropertyRef Name="CodigoConsultorio" />
+            </Principal>
+            <Dependent Role="TB_Consulta">
+              <PropertyRef Name="CodigoConsultorio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__4222D4EF">
+          <End Type="DB_SGHModel.TB_Medico" Role="TB_Medico" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Medico">
+              <PropertyRef Name="CodigoMedico" />
+            </Principal>
+            <Dependent Role="TB_Consulta">
+              <PropertyRef Name="CodigoMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Prescr__Codig__46E78A0C">
+          <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Prescripcion_Medica" Role="TB_Prescripcion_Medica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Consulta">
+              <PropertyRef Name="CodigoConsulta" />
+            </Principal>
+            <Dependent Role="TB_Prescripcion_Medica">
+              <PropertyRef Name="CodigoConsulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Prescr__Codig__48CFD27E">
+          <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Prescripcion_Medica" Role="TB_Prescripcion_Medica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Consulta">
+              <PropertyRef Name="CodigoConsulta" />
+            </Principal>
+            <Dependent Role="TB_Prescripcion_Medica">
+              <PropertyRef Name="CodigoConsulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__4316F928">
+          <End Type="DB_SGHModel.TB_Local" Role="TB_Local" Multiplicity="0..1" />
+          <End Type="DB_SGHModel.TB_Consultorio" Role="TB_Consultorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Local">
+              <PropertyRef Name="CodigoLocal" />
+            </Principal>
+            <Dependent Role="TB_Consultorio">
+              <PropertyRef Name="CodigoLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Consul__Codig__440B1D61">
+          <End Type="DB_SGHModel.TB_Local" Role="TB_Local" Multiplicity="0..1" />
+          <End Type="DB_SGHModel.TB_Consultorio" Role="TB_Consultorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Local">
+              <PropertyRef Name="CodigoLocal" />
+            </Principal>
+            <Dependent Role="TB_Consultorio">
+              <PropertyRef Name="CodigoLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Medico__Codig__44FF419A">
+          <End Type="DB_SGHModel.TB_Especialidad" Role="TB_Especialidad" Multiplicity="0..1" />
+          <End Type="DB_SGHModel.TB_Medico" Role="TB_Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Especialidad">
+              <PropertyRef Name="CodigoEspecialidad" />
+            </Principal>
+            <Dependent Role="TB_Medico">
+              <PropertyRef Name="CodigoEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Medico__Codig__45F365D3">
+          <End Type="DB_SGHModel.TB_Especialidad" Role="TB_Especialidad" Multiplicity="0..1" />
+          <End Type="DB_SGHModel.TB_Medico" Role="TB_Medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Especialidad">
+              <PropertyRef Name="CodigoEspecialidad" />
+            </Principal>
+            <Dependent Role="TB_Medico">
+              <PropertyRef Name="CodigoEspecialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Prescr__Codig__47DBAE45">
+          <End Type="DB_SGHModel.TB_Medicamento" Role="TB_Medicamento" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Prescripcion_Medica" Role="TB_Prescripcion_Medica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Medicamento">
+              <PropertyRef Name="CodigoMedicamento" />
+            </Principal>
+            <Dependent Role="TB_Prescripcion_Medica">
+              <PropertyRef Name="CodigoMedicamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Prescr__Codig__49C3F6B7">
+          <End Type="DB_SGHModel.TB_Medicamento" Role="TB_Medicamento" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Prescripcion_Medica" Role="TB_Prescripcion_Medica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Medicamento">
+              <PropertyRef Name="CodigoMedicamento" />
+            </Principal>
+            <Dependent Role="TB_Prescripcion_Medica">
+              <PropertyRef Name="CodigoMedicamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TB_Turno_Citas">
+          <Key>
+            <PropertyRef Name="IdTurno" />
+          </Key>
+          <Property Type="Int32" Name="IdTurno" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="HoraInicio" />
+          <Property Type="DateTime" Name="HoraFinal" />
+          <NavigationProperty Name="TB_Agenda_Medica" Relationship="DB_SGHModel.FK_TB_Agenda_Medica_TB_Turno_Citas" FromRole="TB_Turno_Citas" ToRole="TB_Agenda_Medica" />
+        </EntityType>
+        <Association Name="FK_TB_Agenda_Medica_TB_Turno_Citas">
+          <End Type="DB_SGHModel.TB_Turno_Citas" Role="TB_Turno_Citas" Multiplicity="1" />
+          <End Type="DB_SGHModel.TB_Agenda_Medica" Role="TB_Agenda_Medica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_Turno_Citas">
+              <PropertyRef Name="IdTurno" />
+            </Principal>
+            <Dependent Role="TB_Agenda_Medica">
+              <PropertyRef Name="IdTurno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_SGHModelStoreContainer" CdmEntityContainer="DB_SGHEntities">
+          <EntitySetMapping Name="TB_Agenda_Medica">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Agenda_Medica">
+              <MappingFragment StoreEntitySet="TB_Agenda_Medica">
+                <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+                <ScalarProperty Name="NumeroConsultorio" ColumnName="NumeroConsultorio" />
+                <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="CodigoAgenda" ColumnName="CodigoAgenda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Analisis">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Analisis">
+              <MappingFragment StoreEntitySet="TB_Analisis">
+                <ScalarProperty Name="CodigoTipoAnalisis" ColumnName="CodigoTipoAnalisis" />
+                <ScalarProperty Name="CodigoConsulta" ColumnName="CodigoConsulta" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+                <ScalarProperty Name="FechaAnalisis" ColumnName="FechaAnalisis" />
+                <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+                <ScalarProperty Name="CodigoAnalisis" ColumnName="CodigoAnalisis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Cita">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Cita">
+              <MappingFragment StoreEntitySet="TB_Cita">
+                <ScalarProperty Name="Cobertura" ColumnName="Cobertura" />
+                <ScalarProperty Name="Aseguradora" ColumnName="Aseguradora" />
+                <ScalarProperty Name="SintomasPaciente" ColumnName="SintomasPaciente" />
+                <ScalarProperty Name="ReferenciaDomicilio" ColumnName="ReferenciaDomicilio" />
+                <ScalarProperty Name="DireccionDomicilio" ColumnName="DireccionDomicilio" />
+                <ScalarProperty Name="AtencionLocal" ColumnName="AtencionLocal" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="CodigoAgenda" ColumnName="CodigoAgenda" />
+                <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
+                <ScalarProperty Name="CodigoPaciente" ColumnName="CodigoPaciente" />
+                <ScalarProperty Name="FechaCita" ColumnName="FechaCita" />
+                <ScalarProperty Name="CodigoCita" ColumnName="CodigoCita" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Consulta">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Consulta">
+              <MappingFragment StoreEntitySet="TB_Consulta">
+                <ScalarProperty Name="Diagnostico" ColumnName="Diagnostico" />
+                <ScalarProperty Name="CodigoPaciente" ColumnName="CodigoPaciente" />
+                <ScalarProperty Name="CodigoConsultorio" ColumnName="CodigoConsultorio" />
+                <ScalarProperty Name="CodigoCita" ColumnName="CodigoCita" />
+                <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="FechaHoraFin" ColumnName="FechaHoraFin" />
+                <ScalarProperty Name="FechaHoraInicio" ColumnName="FechaHoraInicio" />
+                <ScalarProperty Name="CodigoConsulta" ColumnName="CodigoConsulta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Consultorio">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Consultorio">
+              <MappingFragment StoreEntitySet="TB_Consultorio">
+                <ScalarProperty Name="CodigoLocal" ColumnName="CodigoLocal" />
+                <ScalarProperty Name="Piso" ColumnName="Piso" />
+                <ScalarProperty Name="NumeroConsultorio" ColumnName="NumeroConsultorio" />
+                <ScalarProperty Name="CodigoConsultorio" ColumnName="CodigoConsultorio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Especialidad">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Especialidad">
+              <MappingFragment StoreEntitySet="TB_Especialidad">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CodigoEspecialidad" ColumnName="CodigoEspecialidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Estado_Cita">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Estado_Cita">
+              <MappingFragment StoreEntitySet="TB_Estado_Cita">
+                <ScalarProperty Name="DesEstado" ColumnName="DesEstado" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Local">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Local">
+              <MappingFragment StoreEntitySet="TB_Local">
+                <ScalarProperty Name="DireccionLocal" ColumnName="DireccionLocal" />
+                <ScalarProperty Name="NombreLocal" ColumnName="NombreLocal" />
+                <ScalarProperty Name="CodigoLocal" ColumnName="CodigoLocal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Medicamento">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Medicamento">
+              <MappingFragment StoreEntitySet="TB_Medicamento">
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CodigoMedicamento" ColumnName="CodigoMedicamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Medico">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Medico">
+              <MappingFragment StoreEntitySet="TB_Medico">
+                <ScalarProperty Name="NumeroColegiatura" ColumnName="NumeroColegiatura" />
+                <ScalarProperty Name="CodigoEspecialidad" ColumnName="CodigoEspecialidad" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Motivo_Hospitalizacion">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Motivo_Hospitalizacion">
+              <MappingFragment StoreEntitySet="TB_Motivo_Hospitalizacion">
+                <ScalarProperty Name="DescripcionInternamiento" ColumnName="DescripcionInternamiento" />
+                <ScalarProperty Name="CodigoMotivo" ColumnName="CodigoMotivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Orden_Hopitalizacion">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Orden_Hopitalizacion">
+              <MappingFragment StoreEntitySet="TB_Orden_Hopitalizacion">
+                <ScalarProperty Name="CodigoConsulta" ColumnName="CodigoConsulta" />
+                <ScalarProperty Name="CodigoMotivo" ColumnName="CodigoMotivo" />
+                <ScalarProperty Name="FechaHoraAlta" ColumnName="FechaHoraAlta" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+                <ScalarProperty Name="CodigoOrden" ColumnName="CodigoOrden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Paciente">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Paciente">
+              <MappingFragment StoreEntitySet="TB_Paciente">
+                <ScalarProperty Name="Dni" ColumnName="Dni" />
+                <ScalarProperty Name="TelefonoCasa" ColumnName="TelefonoCasa" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="ApellidoMat" ColumnName="ApellidoMat" />
+                <ScalarProperty Name="ApellidoPat" ColumnName="ApellidoPat" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="CodigoPaciente" ColumnName="CodigoPaciente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Prescripcion_Medica">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Prescripcion_Medica">
+              <MappingFragment StoreEntitySet="TB_Prescripcion_Medica">
+                <ScalarProperty Name="CodigoConsulta" ColumnName="CodigoConsulta" />
+                <ScalarProperty Name="CodigoMedicamento" ColumnName="CodigoMedicamento" />
+                <ScalarProperty Name="Frecuencia" ColumnName="Frecuencia" />
+                <ScalarProperty Name="Dosis" ColumnName="Dosis" />
+                <ScalarProperty Name="CodigoReceta" ColumnName="CodigoReceta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Tipo_Analisis">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Tipo_Analisis">
+              <MappingFragment StoreEntitySet="TB_Tipo_Analisis">
+                <ScalarProperty Name="TipoResultado" ColumnName="TipoResultado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CodigoTipoAnalisis" ColumnName="CodigoTipoAnalisis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Turno_Citas">
+            <EntityTypeMapping TypeName="DB_SGHModel.TB_Turno_Citas">
+              <MappingFragment StoreEntitySet="TB_Turno_Citas">
+                <ScalarProperty Name="HoraFinal" ColumnName="HoraFinal" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="SGH_Model">
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Agenda_Medica" Width="1.625" PointX="1.75" PointY="14.125" Height="2.5783902994791674" />
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Analisis" Width="1.625" PointX="4.875" PointY="12.875" Height="2.7427376302083388" />
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Cita" Width="1.625" PointX="4" PointY="5.125" Height="3.7288216145833353" />
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Consulta" Width="1.625" PointX="6.25" PointY="4.375" Height="4.2218636067708388" />
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Consultorio" Width="1.625" PointX="11.125" PointY="15.625" Height="2.2496956380208388" />
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Especialidad" Width="1.625" PointX="4.625" PointY="16.75" Height="1.5923063151041674" />
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Estado_Cita" Width="1.625" PointX="1.75" PointY="9.625" Height="1.427958984374996" />
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Local" Width="1.625" PointX="8.875" PointY="15.875" Height="1.7566536458333388" />
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Medicamento" Width="1.625" PointX="5.625" PointY="9.25" Height="1.9210009765625102" />
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Medico" Width="1.625" PointX="6.875" PointY="16" Height="2.907084960937496" />
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Motivo_Hospitalizacion" Width="1.625" PointX="9" PointY="2" Height="1.2636116536458246" />
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Orden_Hopitalizacion" Width="1.625" PointX="2.5" PointY="2.5" Height="1.9210009765625102" />
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Paciente" Width="1.625" PointX="1.75" PointY="5" Height="2.9070849609375102" />
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Prescripcion_Medica" Width="1.625" PointX="7.875" PointY="13" Height="2.414042968749996" />
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Tipo_Analisis" Width="1.625" PointX="6.25" PointY="1.625" Height="1.7566536458333388" />
+        <AssociationConnector Association="DB_SGHModel.FK__Cita__CodigoAgen__33D4B5981" >
+          <ConnectorPoint PointX="3.375" PointY="16.015597839355472" />
+          <ConnectorPoint PointX="4.0729129166666675" PointY="16.015597839355472" />
+          <ConnectorPoint PointX="4.2395795833333336" PointY="16.015597839355472" />
+          <ConnectorPoint PointX="4.50000125" PointY="16.015597839355472" />
+          <ConnectorPoint PointX="4.50000125" PointY="8.8538216145833353" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Agenda__Codig__32E0915F" >
+          <ConnectorPoint PointX="6.875" PointY="16.581729024251302" />
+          <ConnectorPoint PointX="4.2395795833333336" PointY="16.581729024251302" />
+          <ConnectorPoint PointX="4.0729129166666675" PointY="16.581729024251302" />
+          <ConnectorPoint PointX="3.375" PointY="16.581729024251302" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Agenda__Codig__33D4B598" >
+          <ConnectorPoint PointX="6.875" PointY="16.298663431803387" />
+          <ConnectorPoint PointX="4.2395795833333336" PointY="16.298663431803387" />
+          <ConnectorPoint PointX="4.0729129166666675" PointY="16.298663431803387" />
+          <ConnectorPoint PointX="3.375" PointY="16.298663431803387" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Analis__Codig__34C8D9D1" >
+          <ConnectorPoint PointX="6.25" PointY="2.5033268229166694" />
+          <ConnectorPoint PointX="5.875" PointY="2.5033268229166694" />
+          <ConnectorPoint PointX="5.875" PointY="9" />
+          <ConnectorPoint PointX="5.375" PointY="9" />
+          <ConnectorPoint PointX="5.375" PointY="12.5" />
+          <ConnectorPoint PointX="5.6875" PointY="12.5" />
+          <ConnectorPoint PointX="5.6875" PointY="12.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Analis__Codig__35BCFE0A" >
+          <ConnectorPoint PointX="7.5625" PointY="8.5968636067708388" />
+          <ConnectorPoint PointX="7.5625" PointY="14.246368815104169" />
+          <ConnectorPoint PointX="6.833333333333333" PointY="14.246368815104169" />
+          <ConnectorPoint PointX="6.666666666666667" PointY="14.246368815104169" />
+          <ConnectorPoint PointX="6.5" PointY="14.246368815104169" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Analis__Codig__36B12243" >
+          <ConnectorPoint PointX="6.25" PointY="2.9737422343750048" />
+          <ConnectorPoint PointX="5.9375" PointY="2.9737422343750048" />
+          <ConnectorPoint PointX="5.9375" PointY="9" />
+          <ConnectorPoint PointX="5.375" PointY="9" />
+          <ConnectorPoint PointX="5.375" PointY="12.25" />
+          <ConnectorPoint PointX="6.125002" PointY="12.25" />
+          <ConnectorPoint PointX="6.125002" PointY="12.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Analis__Codig__37A5467C" >
+          <ConnectorPoint PointX="7.4062475" PointY="8.5968636067708388" />
+          <ConnectorPoint PointX="7.4062475" PointY="13.529431907552084" />
+          <ConnectorPoint PointX="6.833333333333333" PointY="13.529431907552084" />
+          <ConnectorPoint PointX="6.666666666666667" PointY="13.529431907552084" />
+          <ConnectorPoint PointX="6.5" PointY="13.529431907552084" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__Cita__CodigoMedi__36B122431" >
+          <ConnectorPoint PointX="6.875" PointY="18.655945638020832" />
+          <ConnectorPoint PointX="4.1562462500000006" PointY="18.655945638020832" />
+          <ConnectorPoint PointX="4.1562462500000006" PointY="8.8538216145833353" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__Cita__CodigoPaci__37A5467C1" >
+          <ConnectorPoint PointX="3.375" PointY="6.5160424804687551" />
+          <ConnectorPoint PointX="4" PointY="6.5160424804687551" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__Consulta__Codigo__3B75D7601" >
+          <ConnectorPoint PointX="5.625" PointY="6.8609318033854194" />
+          <ConnectorPoint PointX="5.791666666666667" PointY="6.8609318033854185" />
+          <ConnectorPoint PointX="6.083333333333333" PointY="6.8609318033854194" />
+          <ConnectorPoint PointX="6.25" PointY="6.8609318033854194" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK_Cita_EstadoCita1" >
+          <ConnectorPoint PointX="3.375" PointY="10.338979492187498" />
+          <ConnectorPoint PointX="4.0729129166666675" PointY="10.338979492187498" />
+          <ConnectorPoint PointX="4.2395795833333336" PointY="10.338979492187498" />
+          <ConnectorPoint PointX="4.3749975" PointY="10.338979492187498" />
+          <ConnectorPoint PointX="4.3749975" PointY="8.8538216145833353" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Consul__Codig__3D5E1FD2" >
+          <ConnectorPoint PointX="3.375" PointY="5.03125" />
+          <ConnectorPoint PointX="5.791666666666667" PointY="5.0312499999999991" />
+          <ConnectorPoint PointX="6.020833333333333" PointY="5.03125" />
+          <ConnectorPoint PointX="6.25" PointY="5.03125" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Consul__Codig__3E52440B" >
+          <ConnectorPoint PointX="12.15625125" PointY="15.625" />
+          <ConnectorPoint PointX="12.15625125" PointY="6.9520558599853537" />
+          <ConnectorPoint PointX="8.8411475833333331" PointY="6.9520558599853528" />
+          <ConnectorPoint PointX="8.6744809166666652" PointY="6.9520558599853537" />
+          <ConnectorPoint PointX="7.875" PointY="6.9520558599853537" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Consul__Codig__3F466844" >
+          <ConnectorPoint PointX="7.75" PointY="16" />
+          <ConnectorPoint PointX="7.75" PointY="8.5968636067708388" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Consul__Codig__403A8C7D" >
+          <ConnectorPoint PointX="2.09375" PointY="5" />
+          <ConnectorPoint PointX="2.09375" PointY="4.7417499882812546" />
+          <ConnectorPoint PointX="5.791666666666667" PointY="4.7417499882812537" />
+          <ConnectorPoint PointX="6.020833333333333" PointY="4.7417499882812546" />
+          <ConnectorPoint PointX="6.25" PointY="4.7417499882812546" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Consul__Codig__412EB0B6" >
+          <ConnectorPoint PointX="11.4999975" PointY="15.625" />
+          <ConnectorPoint PointX="11.4999975" PointY="7.4368104048665415" />
+          <ConnectorPoint PointX="8.8411475833333331" PointY="7.4368104048665407" />
+          <ConnectorPoint PointX="8.6744809166666652" PointY="7.4368104048665415" />
+          <ConnectorPoint PointX="7.875" PointY="7.4368104048665415" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Consul__Codig__4222D4EF" >
+          <ConnectorPoint PointX="7.48437375" PointY="16" />
+          <ConnectorPoint PointX="7.48437375" PointY="8.8468636067708388" />
+          <ConnectorPoint PointX="6" PointY="8.8468636067708388" />
+          <ConnectorPoint PointX="6" PointY="5.94609090169271" />
+          <ConnectorPoint PointX="6.25" PointY="5.94609090169271" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Prescr__Codig__46E78A0C" >
+          <ConnectorPoint PointX="7.875" PointY="7.7764099053955134" />
+          <ConnectorPoint PointX="8.1757781249999972" PointY="7.7764099053955134" />
+          <ConnectorPoint PointX="8.1757781249999972" PointY="13" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Prescr__Codig__48CFD27E" >
+          <ConnectorPoint PointX="7.875" PointY="8.1160094059244852" />
+          <ConnectorPoint PointX="8.0924447916666633" PointY="8.1160094059244852" />
+          <ConnectorPoint PointX="8.2591114583333312" PointY="8.1160094059244852" />
+          <ConnectorPoint PointX="8.2968725" PointY="8.1160094059244852" />
+          <ConnectorPoint PointX="8.2968725" PointY="13" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Consul__Codig__4316F928" >
+          <ConnectorPoint PointX="10.5" PointY="16.753326822916669" />
+          <ConnectorPoint PointX="11.125" PointY="16.753326822916669" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Consul__Codig__440B1D61" >
+          <ConnectorPoint PointX="10.5" PointY="16.251663411458335" />
+          <ConnectorPoint PointX="11.125" PointY="16.251663411458335" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Medico__Codig__44FF419A" >
+          <ConnectorPoint PointX="6.25" PointY="17.546153157552084" />
+          <ConnectorPoint PointX="6.875" PointY="17.546153157552084" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Medico__Codig__45F365D3" >
+          <ConnectorPoint PointX="6.25" PointY="17.085576578776042" />
+          <ConnectorPoint PointX="6.875" PointY="17.085576578776042" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Prescr__Codig__47DBAE45" >
+          <ConnectorPoint PointX="7.25" PointY="10.210500488281255" />
+          <ConnectorPoint PointX="7.3229141666666671" PointY="10.210500488281253" />
+          <ConnectorPoint PointX="7.6458333333333321" PointY="10.210500488281255" />
+          <ConnectorPoint PointX="7.666666666666667" PointY="10.210500488281255" />
+          <ConnectorPoint PointX="7.833333333333333" PointY="10.210500488281255" />
+          <ConnectorPoint PointX="8.0924447916666633" PointY="10.210500488281253" />
+          <ConnectorPoint PointX="8.3802058333333331" PointY="10.210500488281255" />
+          <ConnectorPoint PointX="8.6744809166666652" PointY="10.210500488281255" />
+          <ConnectorPoint PointX="8.8411475833333331" PointY="10.210500488281255" />
+          <ConnectorPoint PointX="9.1406275" PointY="10.210500488281255" />
+          <ConnectorPoint PointX="9.1406275" PointY="13" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_SGHModel.FK__TB_Prescr__Codig__49C3F6B7" >
+          <ConnectorPoint PointX="7.25" PointY="10.722003232421884" />
+          <ConnectorPoint PointX="7.3229141666666671" PointY="10.722003232421882" />
+          <ConnectorPoint PointX="7.6458333333333321" PointY="10.722003232421884" />
+          <ConnectorPoint PointX="7.666666666666667" PointY="10.722003232421884" />
+          <ConnectorPoint PointX="7.833333333333333" PointY="10.722003232421884" />
+          <ConnectorPoint PointX="8.0546837499999988" PointY="10.722003232421884" />
+          <ConnectorPoint PointX="8.0546837499999988" PointY="13" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DB_SGHModel.TB_Turno_Citas" Width="1.5" PointX="8.375" PointY="4.875" Height="1.5923063151041674" />
+        <AssociationConnector Association="DB_SGHModel.FK_TB_Agenda_Medica_TB_Turno_Citas" >
+          <ConnectorPoint PointX="8.75781425" PointY="6.4673063151041674" />
+          <ConnectorPoint PointX="8.75781425" PointY="12.75" />
+          <ConnectorPoint PointX="8.3802058333333331" PointY="12.749999999999998" />
+          <ConnectorPoint PointX="7.9713504166666658" PointY="12.75" />
+          <ConnectorPoint PointX="7.833333333333333" PointY="12.75" />
+          <ConnectorPoint PointX="7.666666666666667" PointY="12.75" />
+          <ConnectorPoint PointX="7.645833333333333" PointY="12.749999999999998" />
+          <ConnectorPoint PointX="7.3229141666666662" PointY="12.75" />
+          <ConnectorPoint PointX="6.75" PointY="12.75" />
+          <ConnectorPoint PointX="6.75" PointY="15.867737630208339" />
+          <ConnectorPoint PointX="4.5833345833333334" PointY="15.867737630208339" />
+          <ConnectorPoint PointX="4.4166679166666674" PointY="15.867737630208339" />
+          <ConnectorPoint PointX="4.2395795833333336" PointY="15.867737630208339" />
+          <ConnectorPoint PointX="4.0729129166666675" PointY="15.867737630208339" />
+          <ConnectorPoint PointX="3.75" PointY="15.867737630208339" />
+          <ConnectorPoint PointX="3.75" PointY="15.039046919677734" />
+          <ConnectorPoint PointX="3.375" PointY="15.039046919677734" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

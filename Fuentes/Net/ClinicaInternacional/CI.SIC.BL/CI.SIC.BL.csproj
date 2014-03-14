@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BAgendaMedica.cs" />
+    <Compile Include="BCita.cs" />
+    <Compile Include="BCitaDomiciliaria.cs" />
+    <Compile Include="BEspecialidad.cs" />
     <Compile Include="BL_Cama.cs" />
     <Compile Include="BL_CartaGarantia.cs" />
     <Compile Include="BL_Especialidad.cs" />
@@ -49,6 +54,9 @@
     <Compile Include="BL_Paciente.cs" />
     <Compile Include="BL_TipoDocumento.cs" />
     <Compile Include="BL_Comprobante_Pago.cs" />
+    <Compile Include="BMedico.cs" />
+    <Compile Include="BPaciente.cs" />
+    <Compile Include="BTurnoCita.cs" />
     <Compile Include="Catalogo_ExamenBL.cs" />
     <Compile Include="ConsultorioBL.cs" />
     <Compile Include="HorarioBL.cs" />

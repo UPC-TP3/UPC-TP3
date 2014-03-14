@@ -1,0 +1,190 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using CI.SIC.BL;
+using CI.SIC.BE;
+
+
+public partial class GestionCitas_FrmAgendaRegistro : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+          
+          
+            if (!IsPostBack)
+            {
+                CargarCombo();
+
+                if (Request.QueryString["CodigoAgenda"] != null)
+                {
+                    var codigoAgenda = Convert.ToString(Request.QueryString["CodigoAgenda"]);
+                    hdnCodigoAgenda.Value = codigoAgenda;
+                    var agendaMedica = new BAgendaMedica().Obtener(Convert.ToInt32(codigoAgenda));
+                    if (agendaMedica != null)
+                    {
+                        hdnCodigoMedico.Value = agendaMedica.CodigoMedico.ToString();
+                        lblNombres.Text = agendaMedica.NombresMedico;
+                        lblApellidos.Text = agendaMedica.ApellidosMedico;
+                        lblEspecialidad.Text = agendaMedica.DescripcionEspecialidad;
+                        txtFecha.Text = agendaMedica.Fecha.Value.ToString("yyyy-MM-dd");
+                        txtHoraInicio.Text = agendaMedica.HoraInicio.Value.ToString("HH:mm");
+                        txtHoraFin.Text = agendaMedica.HoraFin.Value.ToString("HH:mm");
+                        txtConsultorio.Text = agendaMedica.NumeroConsultorio;
+                        chkEstado.Checked = agendaMedica.Estado;
+                        cboTurnos.SelectedValue = agendaMedica.IdTurno.ToString(); 
+                    }
+                }
+                else
+                {
+                    var codigoMedico = Convert.ToString(Request.QueryString["CodigoMedico"]);
+                    var medico = new BMedico().Obtener(Convert.ToInt32(codigoMedico));
+                    if (medico != null)
+                    {
+                        hdnCodigoMedico.Value = codigoMedico;
+                        lblNombres.Text = medico.Nombres;
+                        lblApellidos.Text = medico.Apellidos;
+                        lblEspecialidad.Text = medico.DescripcionEspecialidad;
+                        lblColegiatura.Text = medico.NumeroColegiatura;                        
+                    }
+                }
+            }
+        }
+
+        protected void btnGrabar_Click(object sender, EventArgs e)
+        {
+            DateTime? fechaInicio = null;
+            DateTime? fechaFin = null;
+
+            if (!string.IsNullOrEmpty(txtFecha.Text))
+            {
+                fechaInicio = new DateTime(
+                    Convert.ToInt32(txtFecha.Text.Substring(0, 4)),
+                    Convert.ToInt32(txtFecha.Text.Substring(5, 2)),
+                    Convert.ToInt32(txtFecha.Text.Substring(8, 2))
+                    );
+
+                if (!string.IsNullOrEmpty(txtHoraInicio.Text))
+                    fechaInicio = new DateTime(
+                        Convert.ToInt32(txtFecha.Text.Substring(0, 4)),
+                        Convert.ToInt32(txtFecha.Text.Substring(5, 2)),
+                        Convert.ToInt32(txtFecha.Text.Substring(8, 2)),
+                        Convert.ToInt32(txtHoraInicio.Text.Substring(0, 2)),
+                        Convert.ToInt32(txtHoraInicio.Text.Substring(3, 2)), 0
+                        );
+
+                if (!string.IsNullOrEmpty(txtHoraFin.Text))
+                    fechaFin = new DateTime(
+                        Convert.ToInt32(txtFecha.Text.Substring(0, 4)),
+                        Convert.ToInt32(txtFecha.Text.Substring(5, 2)),
+                        Convert.ToInt32(txtFecha.Text.Substring(8, 2)),
+                        Convert.ToInt32(txtHoraFin.Text.Substring(0, 2)),
+                        Convert.ToInt32(txtHoraFin.Text.Substring(3, 2)), 0
+                        );
+            }
+
+            if (hdnCodigoAgenda.Value == "0")
+            {
+                hdnCodigoAgenda.Value = new BAgendaMedica().Insertar(new EAgendaMedica
+                    {
+                        Fecha = fechaInicio,
+                        HoraInicio = fechaInicio,
+                        HoraFin = fechaFin,
+                        NumeroConsultorio = txtConsultorio.Text, 
+                        Estado = chkEstado.Checked,
+                        CodigoMedico = Convert.ToInt32(hdnCodigoMedico.Value),
+                        IdTurno = Convert.ToInt32(cboTurnos.SelectedValue)
+                    }).ToString();
+
+                Response.Redirect("FrmAgendaDetalle.aspx?CodigoMedico=" + hdnCodigoAgenda.Value);
+            }
+            else
+            {
+                
+                new BAgendaMedica().Actualizar(new EAgendaMedica
+                    {
+                        
+                        CodigoAgenda = Convert.ToInt32(hdnCodigoAgenda.Value),
+                        Fecha = fechaInicio,
+                        HoraInicio = fechaInicio,
+                        HoraFin = fechaFin,
+                        NumeroConsultorio = txtConsultorio.Text, 
+                        Estado = chkEstado.Checked,
+                        CodigoMedico = Convert.ToInt32(hdnCodigoMedico.Value),
+                        IdTurno = Convert.ToInt32(cboTurnos.SelectedValue) 
+                    });
+
+                Response.Redirect("frmAgendaMedica.aspx");
+                
+            }
+
+            
+
+            ClientScript.RegisterStartupScript(GetType(), "alert",
+                                             "<script language=JavaScript>alert('El registro ha sido creado.');</script>");
+
+           // Response.Redirect("FrmAgendaDetalle.aspx?CodigoMedico=" + hdnCodigoAgenda.Value);
+
+            //Limpiar();
+
+        }
+
+        protected void txtHoraInicio_TextChanged(object sender, EventArgs e)
+        {        
+            if (!string.IsNullOrEmpty(txtFecha.Text))
+            {
+                var fecha = new DateTime(
+                           Convert.ToInt32(txtFecha.Text.Substring(0, 4)),
+                           Convert.ToInt32(txtFecha.Text.Substring(5, 2)),
+                           Convert.ToInt32(txtFecha.Text.Substring(8, 2))
+                           );
+
+                if (!string.IsNullOrEmpty(txtHoraInicio.Text))
+                {
+                    var inicio = new DateTime(fecha.Year, fecha.Month, fecha.Day,
+                                              Convert.ToInt32(txtHoraInicio.Text.Substring(0, 2)),
+                                              Convert.ToInt32(txtHoraInicio.Text.Substring(3, 2)), 0
+                        );
+                    txtHoraFin.Text = inicio.AddMinutes(30.0).ToString("HH:mm");
+                }
+                else
+                    txtHoraFin.Text = string.Empty;
+            }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {            
+            Response.Redirect("FrmAgendaDetalle.aspx?CodigoMedico=" + Request.QueryString["CodigoMedico"]);
+        }
+
+        private void Limpiar()
+        {
+            hdnCodigoAgenda.Value = "0";
+            txtFecha.Text = string.Empty;
+            txtHoraInicio.Text = string.Empty;
+            txtHoraFin.Text = string.Empty;
+            txtConsultorio.Text = string.Empty;
+            chkEstado.Checked = true;
+        }
+
+        private void CargarCombo()
+        {
+
+            BTurnoCita turnos = new BTurnoCita();
+            cboTurnos.DataSource = turnos.Listar();
+            cboTurnos.DataTextField = "HoraInicio";
+            cboTurnos.DataValueField = "IdTurno";
+            cboTurnos.DataBind();
+
+        }
+
+
+        protected void cboTurnos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtHoraInicio.Text = cboTurnos.SelectedValue;
+            txtHoraInicio.Text = "HOLA";
+        }
+}
