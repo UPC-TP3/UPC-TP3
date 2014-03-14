@@ -15,6 +15,8 @@ namespace CI.SIC.DA
             {
                 Dictionary<string, object> parameters = new Dictionary<string, object>();
 
+                if (pInformeResultadoBE.Imagen == null)
+                    pInformeResultadoBE.Imagen = "";
 
                 parameters.Add("@id_orden_examen", pInformeResultadoBE.Id_orden_examen);
                 parameters.Add("@resultado", pInformeResultadoBE.Resultado);

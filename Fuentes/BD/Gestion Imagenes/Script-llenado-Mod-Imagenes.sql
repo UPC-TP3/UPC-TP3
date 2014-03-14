@@ -129,8 +129,8 @@ Insert Into TB_CATALOGO_REQUISITO (ID_Catalogo_Examen, ID_Requisito) Values (4,1
   into @ID_Consultorio
     while @@fetch_status = 0
     begin
-		set @rgto= 1
-		while @rgto < 10
+		set @rgto= 0
+		while @rgto <= 10
 		begin
 			set @fecha= GETDATE() + @rgto
 			--lect convert(varchar(8), GETDATE(), 112) + ' 09:00'

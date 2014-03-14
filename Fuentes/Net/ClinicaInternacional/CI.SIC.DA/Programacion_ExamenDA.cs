@@ -137,6 +137,8 @@ namespace CI.SIC.DA
                 parameters.Add("@id_orden_examen", pProgramacion_ExamenBE.Id_orden_examen);
                 parameters.Add("@id_horario", pProgramacion_ExamenBE.Id_horario);
                 parameters.Add("@estado", pProgramacion_ExamenBE.Estado);
+                parameters.Add("@id_programacion", pProgramacion_ExamenBE.Id_programacion);
+                parameters.Add("@comentario", pProgramacion_ExamenBE.Comentarios);
 
                 int rpta = SqlHelper.Instance.ExecuteNonQuery("pa_Nuevo_Programacion_Examen", parameters);
                 return (rpta > 0) ? true : false;

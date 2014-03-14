@@ -232,6 +232,10 @@
                 &nbsp;</td>
             <td>
                 <asp:Label ID="lblMensaje" runat="server" Font-Bold="True" ForeColor="Red"></asp:Label>
+                <asp:RangeValidator 
+                    ID="RangeValidator1" runat="server" ControlToValidate="txtId_orden_examen" 
+                    ErrorMessage="Debe ser numérico" Font-Bold="True" ForeColor="Red" 
+                    MaximumValue="99999" MinimumValue="1" SetFocusOnError="True" Type="Integer"></asp:RangeValidator>
             </td>
             <td>
                 &nbsp;</td>
