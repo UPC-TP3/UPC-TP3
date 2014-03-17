@@ -71,6 +71,13 @@ public partial class GestionImagenes_requisitosExamen : System.Web.UI.Page
             else
             {
                 lblMensaje.Text = "Orden de examen no existe";
+                grvListado.Visible = false;
+                cboLocal.SelectedValue = "0";
+                cboConsultorio.SelectedValue = "0";
+                cboHorario.SelectedValue = "0";
+                txtEstado_programacion.Text = "";
+                txtEspecialista.Text = "";
+                btnVerificar.Visible = false;
             }
         }
     }
@@ -180,6 +187,12 @@ public partial class GestionImagenes_requisitosExamen : System.Web.UI.Page
         {
             grvListado.Visible = false;
             lblMensaje.Text = "Orden de examen no existe";
+            cboLocal.SelectedValue = "0";
+            cboConsultorio.SelectedValue = "0";
+            cboHorario.SelectedValue = "0";
+            txtEstado_programacion.Text = "";
+            txtEspecialista.Text = "";
+            btnVerificar.Visible = false;
         }   
     }
 
