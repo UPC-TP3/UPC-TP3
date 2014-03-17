@@ -55,14 +55,14 @@
             if (oProcedencia == '1') {
                 if (Carta == '') { msg = msg + "- Debe ingresar Nro Carta Garantía \n"; }
             }
-            
+
             if (isDateFecIni(FecIngreso) == false) {
                 est = false;
             }
 
             if (isDateFecFin(FecAlta) == false) {
                 est = false;
-            }           
+            }
 
             if (validaFechas(FecIngreso, FecAlta) == true) {
                 msg = msg + "- La Fecha de Ingreso no puede ser mayor a la Fecha de Alta, por favor corregir \n";
@@ -120,7 +120,7 @@
 
             var f = new Date();
             var ano = f.getFullYear()
-          
+
 
             var xAnio = fecha.substring(6, 10);
             var yAnio = fecha2.substring(6, 10);
@@ -198,32 +198,36 @@
                                 <table border="0" cellspacing="3" cellpadding="0" class="Tabla_filtro_txt" style="width: 100%">
                                     <tr>
                                         <td style="width: 15%; padding: 0  0  0  0;">
-                                            <div class="block_center">Nro.Orden:</div> 
+                                            <div class="block_center">
+                                                Nro.Orden:</div>
                                         </td>
                                         <td style="width: 15%;">
-                                           <table border="0" cellpadding="0" cellspacing="0">
-                                           <tr>
-                                            <td><asp:TextBox ID="txtNroOrdenHosp" runat="server" MaxLength="10"></asp:TextBox>
-                                            <ext:FilteredTextBoxExtender ID="fteNroOrden" runat="server" Enabled="true" ValidChars=".° "
-                                                FilterType="Numbers" TargetControlID="txtNroOrdenHosp">
-                                            </ext:FilteredTextBoxExtender></td>
-                                            <td valign="bottom"><asp:UpdatePanel ID="updOrden" runat="server" UpdateMode="Conditional">
-                                                <ContentTemplate>                                                
-                                                    <asp:Button CssClass="botonesIndividual" ToolTip="Obtener Nro.Orden" ID="btnGetOrden" Width="30px" runat="server" Text="..." OnClientClick="return ValidarDatos();"
-                                                        OnClick="btnGetOrden_Click" />                                                      
-                                                </ContentTemplate>
-                                                <Triggers>
-                                                    <asp:AsyncPostBackTrigger ControlID="btnControl" EventName="Click" />
-                                                </Triggers>
-                                            </asp:UpdatePanel></td>
-                                           </tr>
-                                           </table> 
-                                            
+                                            <table border="0" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td>
+                                                        <asp:TextBox ID="txtNroOrdenHosp" runat="server" MaxLength="10"></asp:TextBox>
+                                                        <ext:FilteredTextBoxExtender ID="fteNroOrden" runat="server" Enabled="true" ValidChars=".° "
+                                                            FilterType="Numbers" TargetControlID="txtNroOrdenHosp">
+                                                        </ext:FilteredTextBoxExtender>
+                                                    </td>
+                                                    <td valign="bottom">
+                                                        <asp:UpdatePanel ID="updOrden" runat="server" UpdateMode="Conditional">
+                                                            <ContentTemplate>
+                                                                <asp:Button CssClass="botonesIndividual" ToolTip="Obtener Nro.Orden" ID="btnGetOrden"
+                                                                    Width="30px" runat="server" Text="..." OnClientClick="return ValidarDatos();"
+                                                                    OnClick="btnGetOrden_Click" />
+                                                            </ContentTemplate>
+                                                            <Triggers>
+                                                                <asp:AsyncPostBackTrigger ControlID="btnControl" EventName="Click" />
+                                                            </Triggers>
+                                                        </asp:UpdatePanel>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </td>
                                         <td style="width: 15%; padding: 0px 5px 0px 0px;">
                                         </td>
                                         <td style="width: 20%">
-                                            
                                             <asp:Button ID="btnControl" runat="server" Visible="false" OnClientClick="return ValidarDatos();" />
                                         </td>
                                         <td style="width: 15%">
@@ -233,20 +237,23 @@
                                     </tr>
                                     <tr>
                                         <td style="width: 15; padding: 0  0  0  0;">
-                                            <div class="block_center">Fecha Orden:</div> 
+                                            <div class="block_center">
+                                                Fecha Orden:</div>
                                         </td>
                                         <td style="width: 15%;">
                                             <asp:TextBox ID="txtFecOrden" runat="server" Enabled="false"></asp:TextBox>
                                         </td>
                                         <td style="width: 15%; padding: 0px 5px 0px 0px;">
-                                            <div class="block_center">Motivo:</div> 
+                                            <div class="block_center">
+                                                Motivo:</div>
                                         </td>
                                         <td style="width: 20%">
                                             <asp:DropDownList ID="ddlMotivo" runat="server" Enabled="false">
                                             </asp:DropDownList>
                                         </td>
                                         <td style="width: 15%">
-                                            <div class="block_center">Previsión:</div> 
+                                            <div class="block_center">
+                                                Previsión:</div>
                                         </td>
                                         <td style="width: 20%;">
                                             <asp:TextBox ID="txtPrevision" runat="server" Enabled="false"></asp:TextBox>
@@ -261,13 +268,15 @@
                                             </asp:DropDownList>
                                         </td>
                                         <td style="width: 10%;">
-                                            <div class="block_center">Consulta:</div> 
+                                            <div class="block_center">
+                                                Consulta:</div>
                                         </td>
                                         <td style="width: 20%">
                                             <asp:TextBox ID="txtConsulta" runat="server" Enabled="false"></asp:TextBox>
                                         </td>
                                         <td style="width: 15%">
-                                            <div class="block_center">Fecha y Hora Programada:</div> 
+                                            <div class="block_center">
+                                                Fecha y Hora Programada:</div>
                                         </td>
                                         <td style="width: 20%;">
                                             <asp:TextBox ID="txtProgramada" runat="server" Enabled="false"></asp:TextBox>
@@ -275,13 +284,15 @@
                                     </tr>
                                     <tr>
                                         <td style="width: 10%; padding: 0  0  0  0;">
-                                            <div class="block_center">Días Hospitalización:</div> 
+                                            <div class="block_center">
+                                                Días Hospitalización:</div>
                                         </td>
                                         <td style="width: 15%;">
                                             <asp:TextBox ID="txtNroDiasHosp" runat="server" Enabled="false"></asp:TextBox>
                                         </td>
                                         <td style="width: 10%;">
-                                            <div class="block_center">Médico Tratante:</div> 
+                                            <div class="block_center">
+                                                Médico Tratante:</div>
                                         </td>
                                         <td style="width: 20%">
                                             <asp:DropDownList ID="ddlMedTratante" runat="server" Style="width: 100%; font-size: 11px;"
@@ -289,7 +300,8 @@
                                             </asp:DropDownList>
                                         </td>
                                         <td style="width: 15%">
-                                            <div class="block_center">Médico Turno:</div> 
+                                            <div class="block_center">
+                                                Médico Turno:</div>
                                         </td>
                                         <td style="width: 20%;">
                                             <asp:DropDownList ID="ddlMedTurno" runat="server" Style="width: 100%; font-size: 11px;"
@@ -299,7 +311,8 @@
                                     </tr>
                                     <tr>
                                         <td style="width: 15%;">
-                                            <div class="block_center">Indicaciones:</div> 
+                                            <div class="block_center">
+                                                Indicaciones:</div>
                                         </td>
                                         <td colspan="5">
                                             <asp:TextBox ID="txtIndicacion" runat="server" Enabled="false" Style="width: 99%"></asp:TextBox>
@@ -308,7 +321,7 @@
                                 </table>
                             </ContentTemplate>
                             <Triggers>
-                           <asp:AsyncPostBackTrigger ControlID="btnRegistrar" />
+                                <asp:AsyncPostBackTrigger ControlID="btnRegistrar" />
                             </Triggers>
                         </asp:UpdatePanel>
                         <div class="box_tit reg_title" id="divSpanDP" runat="server" style="width: 98%">
@@ -318,12 +331,14 @@
                                 <table border="0" cellspacing="0" cellpadding="0" class="Tabla_filtro_txt" style="width: 95%">
                                     <tr>
                                         <td style="width: 30%">
-                                            <div class="block_center">Tipo De documento:</div> 
+                                            <div class="block_center">
+                                                Tipo De documento:</div>
                                         </td>
                                         <td style="width: 5%">
                                         </td>
                                         <td style="width: 30%">
-                                            <div class="block_center">Nro. Documento:</div> 
+                                            <div class="block_center">
+                                                Nro. Documento:</div>
                                         </td>
                                         <td style="width: 5%">
                                         </td>
@@ -348,17 +363,20 @@
                                     </tr>
                                     <tr>
                                         <td style="width: 30%">
-                                            <div class="block_center">Nombre:</div> 
+                                            <div class="block_center">
+                                                Nombre:</div>
                                         </td>
                                         <td style="width: 5%">
                                         </td>
                                         <td style="width: 30%">
-                                            <div class="block_center">Apellido Paterno:</div> 
+                                            <div class="block_center">
+                                                Apellido Paterno:</div>
                                         </td>
                                         <td style="width: 5%">
                                         </td>
                                         <td style="width: 30%">
-                                            <div class="block_center">Apellido Materno:</div> 
+                                            <div class="block_center">
+                                                Apellido Materno:</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -378,17 +396,20 @@
                                     </tr>
                                     <tr>
                                         <td style="width: 30%">
-                                            <div class="block_center">Sexo:</div> 
+                                            <div class="block_center">
+                                                Sexo:</div>
                                         </td>
                                         <td style="width: 5%">
                                         </td>
                                         <td style="width: 30%">
-                                            <div class="block_center">Celular:</div> 
+                                            <div class="block_center">
+                                                Celular:</div>
                                         </td>
                                         <td style="width: 5%">
                                         </td>
                                         <td style="width: 30%">
-                                            <div class="block_center">Correo electrónico:</div> 
+                                            <div class="block_center">
+                                                Correo electrónico:</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -409,12 +430,14 @@
                                     </tr>
                                     <tr>
                                         <td style="width: 30%">
-                                            <div class="block_center">Fecha Nacimiento:</div> 
+                                            <div class="block_center">
+                                                Fecha Nacimiento:</div>
                                         </td>
                                         <td style="width: 5%">
                                         </td>
                                         <td colspan="3">
-                                            <div class="block_center">Dirección:</div> 
+                                            <div class="block_center">
+                                                Dirección:</div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -441,7 +464,8 @@
                         <table border="0" cellspacing="3" cellpadding="0" class="Tabla_filtro_txt" style="width: 100%">
                             <tr>
                                 <td style="width: 15%; padding: 0  0  0  0;">
-                                    <div class="block_center">Fec. Ingreso:</div> 
+                                    <div class="block_center">
+                                        Fec. Ingreso:</div>
                                 </td>
                                 <td style="width: 15%;">
                                     <asp:TextBox ID="txtFecIngreso" runat="server"></asp:TextBox>
@@ -452,14 +476,16 @@
                                         Format="dd/MM/yyyy" PopupPosition="BottomLeft" />
                                 </td>
                                 <td style="width: 15%; padding: 0px 5px 0px 0px;">
-                                    <div class="block_center">Tipo Orden:</div> 
+                                    <div class="block_center">
+                                        Tipo Orden:</div>
                                 </td>
                                 <td style="width: 20%">
                                     <asp:DropDownList ID="ddlTipoOrden" runat="server" Style="width: 100%">
                                     </asp:DropDownList>
                                 </td>
                                 <td style="width: 15%">
-                                    <div class="block_center">Procedencia:</div> 
+                                    <div class="block_center">
+                                        Procedencia:</div>
                                 </td>
                                 <td style="width: 20%;">
                                     <asp:DropDownList ID="ddlProcedencia" runat="server" Style="width: 100%">
@@ -468,20 +494,23 @@
                             </tr>
                             <tr>
                                 <td style="width: 15%; padding: 0  0  0  0;">
-                                    <div class="block_center">Sede:</div> 
+                                    <div class="block_center">
+                                        Sede:</div>
                                 </td>
                                 <td style="width: 15%;">
                                     <asp:DropDownList ID="ddlSede" runat="server" Style="width: 100%">
                                     </asp:DropDownList>
                                 </td>
                                 <td style="width: 15%; padding: 0px 5px 0px 0px;">
-                                    <div class="block_center">Tratamiento:</div> 
+                                    <div class="block_center">
+                                        Tratamiento:</div>
                                 </td>
                                 <td style="width: 20%">
                                     <asp:TextBox ID="txtTratamiento" runat="server"></asp:TextBox>
                                 </td>
                                 <td style="width: 15%">
-                                    <div class="block_center">Fec. Alta:</div> 
+                                    <div class="block_center">
+                                        Fec. Alta:</div>
                                 </td>
                                 <td style="width: 20%;">
                                     <asp:TextBox ID="txtFecAlta" runat="server"></asp:TextBox>
@@ -494,21 +523,24 @@
                             </tr>
                             <tr>
                                 <td style="width: 15%; padding: 0  0  0  0;">
-                                    <div class="block_center">Especialidad:</div> 
+                                    <div class="block_center">
+                                        Especialidad:</div>
                                 </td>
                                 <td style="width: 15%;">
                                     <asp:DropDownList ID="ddlEspecialidad" runat="server" Style="width: 98%">
                                     </asp:DropDownList>
                                 </td>
                                 <td style="width: 15%; padding: 0px 5px 0px 0px;">
-                                    <div class="block_center">Cama:</div> 
+                                    <div class="block_center">
+                                        Cama:</div>
                                 </td>
                                 <td style="width: 20%">
                                     <asp:DropDownList ID="ddlCama" runat="server" Style="width: 98%">
                                     </asp:DropDownList>
                                 </td>
                                 <td style="width: 15%">
-                                    <div class="block_center">Carta Garantía:</div> 
+                                    <div class="block_center">
+                                        Carta Garantía:</div>
                                 </td>
                                 <td style="width: 20%;">
                                     <asp:TextBox ID="txtCartaGarantia" runat="server" MaxLength="10"></asp:TextBox>
@@ -530,10 +562,9 @@
                 </div>
             </div>
         </div>
-        <div class="botones" style="text-align:center">                              
+        <div class="botones" style="text-align: center">
             <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click"
-                OnClientClick="return ValidarRegistro();"   /></div>
-        
+                OnClientClick="return ValidarRegistro();" /></div>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PaginaActual" runat="Server">

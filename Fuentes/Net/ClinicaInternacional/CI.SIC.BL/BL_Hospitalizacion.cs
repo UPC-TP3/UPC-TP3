@@ -34,5 +34,30 @@ namespace CI.SIC.BL
             }
         }
 
+        public List<BE_OrdenHospitaliza> getOrdenes( string fecIni, string fecFin)
+        {
+            try
+            {
+                return DAO_Hospitalizacion.Instancia.getOrdenes(fecIni, fecFin);
+            }
+            catch (Exception)
+            {                
+                throw;
+            }
+        }
+
+        public bool insertOrdenHospital(BE_OrdenHospitaliza objOrden)
+        {
+            try
+            {
+                return DAO_Hospitalizacion.Instancia.insertOrdenHospital(objOrden);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
     }
 }

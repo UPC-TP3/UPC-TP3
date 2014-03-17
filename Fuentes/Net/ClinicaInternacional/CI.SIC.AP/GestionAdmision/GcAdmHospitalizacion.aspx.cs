@@ -125,7 +125,7 @@ public partial class GestionAdmision_GcAdmHospitalizacion : System.Web.UI.Page
 
                 if (oOrden != null)
                 {
-                    EstOrden = Convert.ToInt32(oOrden.Motivo);
+                    EstOrden = Convert.ToInt32(oOrden.ID_Estado);
                     if (EstOrden == 1)
                     {
                         var FecProgramacion = Convert.ToDateTime(oOrden.FechaHora);
@@ -198,15 +198,19 @@ public partial class GestionAdmision_GcAdmHospitalizacion : System.Web.UI.Page
 
         if (_oCarta != null)
         {
+            var idCliente = _oCarta.ID_Paciente;
             var fecActual = DateTime.Now;
             if (_oCarta.FecFinVigencia < fecActual)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "La vigencia de la Carta de Garantía se encuentra caducada" + "');", true);
-
-                //var idCliente = _oCarta.ID_Paciente;
-
+                //
                 resp = false;
             }
+
+            //if (idCliente = 0)
+            //{ 
+            
+            //}
         }
         else
         {

@@ -215,7 +215,7 @@ td.btnMant input
     height: 100%;
 }
 
-.modalBackgroundOffLineIMG{background-image: url(../img/ApCOL-Mantenimiento.png); height:441px;left:25%;position:fixed;top:25%;width:700px;z-index:99999;}
+.modalBackgroundOffLineIMG{ height:441px;left:25%;position:fixed;top:25%;width:700px;z-index:99999;}
 .modalBackgroundOffLine{background-color:Gray; opacity: .75;-moz-opacity: 0.75;filter: alpha(opacity=50);height:100%;left:0;position:fixed;top:0;width:100%;z-index:90000;}
 
 .ListSearchExtenderPrompt
