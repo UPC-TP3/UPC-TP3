@@ -67,7 +67,7 @@ namespace CI.SIC.DA
             {
                 return false;
                 throw;
-            }         
+            }
         }
 
 
@@ -101,7 +101,6 @@ namespace CI.SIC.DA
                     objOrden.ID_Paciente = reader.GetInt32(reader.GetOrdinal("ID_Paciente"));
                     objOrden.FechaHora = reader.GetDateTime(reader.GetOrdinal("FechaHora"));
                     objOrden.Observaciones = reader.GetString(reader.GetOrdinal("Observaciones"));
-                    objOrden.FechaHoraAlta = reader.GetDateTime(reader.GetOrdinal("FechaHoraAlta"));
                     objOrden.ID_Motivo_Hospitalizacion = reader.GetInt32(reader.GetOrdinal("ID_Motivo_Hospitalizacion"));
                     objOrden.ID_Consulta = reader.GetInt32(reader.GetOrdinal("ID_Consulta"));
                     objOrden.ID_Local = reader.GetInt32(reader.GetOrdinal("ID_Local"));
@@ -122,7 +121,7 @@ namespace CI.SIC.DA
             return objOrden;
         }
 
-        public List<BE_OrdenHospitaliza> getOrdenes( string fecIni, string fecFin)
+        public List<BE_OrdenHospitaliza> getOrdenes(string fecIni, string fecFin)
         {
             List<BE_OrdenHospitaliza> _ListOrden = new List<BE_OrdenHospitaliza>();
             var cn = new SqlConnection(Configuraciones.CadenaConexion);
@@ -146,7 +145,7 @@ namespace CI.SIC.DA
                     {
                         ID_Orden_Hospitalizacion = reader.GetInt32(reader.GetOrdinal("ID_Orden_Hospitalizacion")),
                         FechaOrden = reader.GetDateTime(reader.GetOrdinal("FechaOrden")),
-                        Prevision = reader.GetString(reader.GetOrdinal("Prevision")),                        
+                        Prevision = reader.GetString(reader.GetOrdinal("Prevision")),
                         Tratamiento = reader.GetString(reader.GetOrdinal("Tratamiento")),
                         NroDiasHospitalizacion = reader.GetInt32(reader.GetOrdinal("NroDiasHospitalizacion")),
                         ExamenesPreOperatorios = reader.GetString(reader.GetOrdinal("ExamenesPreOperatorios")),

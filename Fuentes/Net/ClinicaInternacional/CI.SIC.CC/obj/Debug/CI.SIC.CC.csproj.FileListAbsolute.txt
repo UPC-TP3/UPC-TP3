@@ -2,3 +2,7 @@ D:\Pedro\UPC-TP3\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\bin\Debug\CI
 D:\Pedro\UPC-TP3\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\bin\Debug\CI.SIC.CC.pdb
 D:\Pedro\UPC-TP3\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\obj\Debug\CI.SIC.CC.dll
 D:\Pedro\UPC-TP3\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\obj\Debug\CI.SIC.CC.pdb
+D:\UPC\TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\bin\Debug\CI.SIC.CC.dll
+D:\UPC\TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\bin\Debug\CI.SIC.CC.pdb
+D:\UPC\TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\obj\Debug\CI.SIC.CC.dll
+D:\UPC\TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\obj\Debug\CI.SIC.CC.pdb

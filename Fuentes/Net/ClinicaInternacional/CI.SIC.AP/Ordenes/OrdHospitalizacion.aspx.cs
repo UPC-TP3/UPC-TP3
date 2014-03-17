@@ -261,6 +261,13 @@ public partial class Ordenes_OrdHospitalizacion : System.Web.UI.Page
             oOrden.ID_Consulta = Convert.ToInt32(txtIdConsulta.Text.Trim());
             oOrden.ID_Local = ddlSede.SelectedIndex;
 
+             var oFecActual = DateTime.Now;
+             if (oOrden.FechaHora < oFecActual)
+             {
+                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "filtro", "alert('La Fecha y hora de programación de la hospitalización: " + oOrden.FechaHora + " es menor a la fecha actual, debe ingresar una fecha y hora de programación de la Orden, posterior a la fecha actual.');", true);
+                 return;
+             }
+            
 
             var resul = BL_Hospitalizacion.Instancia.insertOrdenHospital(oOrden);
 

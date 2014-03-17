@@ -45,14 +45,20 @@
     <Compile Include="BCita.cs" />
     <Compile Include="BCitaDomiciliaria.cs" />
     <Compile Include="BEspecialidad.cs" />
+    <Compile Include="BL_Cama.cs" />
     <Compile Include="BL_CartaGarantia.cs" />
+    <Compile Include="BL_Especialidad.cs" />
     <Compile Include="BL_Hospitalizacion.cs" />
+    <Compile Include="BL_MaestroTablas.cs" />
+    <Compile Include="BL_Medico.cs" />
     <Compile Include="BL_Paciente.cs" />
     <Compile Include="BL_TipoDocumento.cs" />
     <Compile Include="BL_Comprobante_Pago.cs" />
     <Compile Include="BMedico.cs" />
     <Compile Include="BPaciente.cs" />
     <Compile Include="BTurnoCita.cs" />
+    <Compile Include="Catalogo_ExamenBL.cs" />
+    <Compile Include="ConsultorioBL.cs" />
     <Compile Include="GestionEmergencia\AtencionMedicaBL.cs" />
     <Compile Include="GestionEmergencia\CamaBL.cs" />
     <Compile Include="GestionEmergencia\EvaluacionBL.cs" />
@@ -66,8 +72,11 @@
     <Compile Include="GestionEmergencia\VerificacionBL.cs" />
     <Compile Include="HorarioBL.cs" />
     <Compile Include="InformeResultadoBL.cs" />
+    <Compile Include="LocalBL.cs" />
+    <Compile Include="Orden_ExamenBL.cs" />
     <Compile Include="Orden_PagoBL.cs" />
     <Compile Include="Programacion_ExamenBL.cs" />
+    <Compile Include="Tipo_ExamenBL.cs" />
     <Compile Include="Util\BaseBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

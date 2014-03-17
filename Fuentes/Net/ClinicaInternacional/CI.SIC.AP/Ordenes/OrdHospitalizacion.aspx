@@ -47,7 +47,7 @@
 
             if (oTipoDoc == '0') {
                 alert('Debe seleccionar el tipo de documento');
-                resp = false;               
+                resp = false;
             }
 
 
@@ -161,10 +161,10 @@
                     </div>
                     <div class="separador">
                         <asp:ImageButton runat="server" ID="imgBtnFiltrar" OnClick="imgBtnBuscar_Click" onmouseover="imgBtnFiltrar_Mouseover(this);"
-                            onmouseout="imgBtnFiltrar_Mouseout(this);" ImageUrl= "~/css/img/img_filtro.gif" />
+                            onmouseout="imgBtnFiltrar_Mouseout(this);" ImageUrl="~/css/img/img_filtro.gif" />
                         <asp:ImageButton runat="server" ID="imgBtnBorrarFiltro" OnClientClick="imgBtnBorrarFiltro_Click();"
-                             onmouseover="imgBtnBorrarFiltro_Mouseover(this);"
-                            onmouseout="imgBtnBorrarFiltro_Mouseout(this);" CausesValidation="false" ImageUrl="~/css/img/img_borrarfiltro.gif" />
+                            onmouseover="imgBtnBorrarFiltro_Mouseover(this);" onmouseout="imgBtnBorrarFiltro_Mouseout(this);"
+                            CausesValidation="false" ImageUrl="~/css/img/img_borrarfiltro.gif" />
                     </div>
                     <div class="box_c2" style="margin-top: 15px; width: 680px;">
                         <div class="f5f6f6_01_1">
@@ -182,11 +182,9 @@
                             </p>
                             <asp:UpdatePanel ID="updDetalle" runat="server" style="padding-left: 29px;" UpdateMode="Conditional">
                                 <ContentTemplate>
-                                    <asp:Panel ID="pngv" runat="server" Width="650px" ScrollBars="Horizontal" >
-                                        <asp:GridView ID="gvOrdenes" runat="server" CssClass="GrivView" AllowPaging="True"  PageIndex="20"
-                                            ShowFooter="True" AutoGenerateColumns="False" Width="100%" OnPageIndexChanging="gvOrdenes_PageIndexChanging">
-                                            <EmptyDataTemplate>
-                                                No existen registros</EmptyDataTemplate>
+                                    <asp:Panel ID="pngv" runat="server" Width="650px" ScrollBars="Horizontal">
+                                        <asp:GridView ID="gvOrdenes" runat="server" CssClass="GrivView" AllowPaging="True" CellPadding="1" CellSpacing="3"
+                                            PageIndex="20" ShowFooter="True" AutoGenerateColumns="False" Width="100%" OnPageIndexChanging="gvOrdenes_PageIndexChanging">
                                             <Columns>
                                                 <asp:BoundField DataField="ID_Orden_Hospitalizacion" HeaderText="Nro Orden" />
                                                 <asp:BoundField DataField="FechaOrden" HeaderText="Fecha Registro" />
@@ -195,6 +193,13 @@
                                                 <asp:BoundField DataField="MedTratante" HeaderText="Médico Tratante" />
                                                 <asp:BoundField DataField="MedTurno" HeaderText="Médico Turno" />
                                             </Columns>
+                                            <HeaderStyle CssClass="tits"></HeaderStyle>
+                                            <AlternatingRowStyle CssClass="bg_f6f7f9" HorizontalAlign="Left" />
+                                            <RowStyle HorizontalAlign="Left" />
+                                            <PagerSettings Mode="NextPreviousFirstLast" />
+                                            <PagerStyle CssClass="pager_gvLineas" />
+                                            <EmptyDataTemplate>
+                                                No existen registros</EmptyDataTemplate>
                                         </asp:GridView>
                                     </asp:Panel>
                                 </ContentTemplate>
@@ -209,25 +214,25 @@
                             </div>
                         </div>
                     </div>
-                    <asp:Panel ID="pnlRegAct" runat="server" CssClass="cuadrodes" Style="width: 740px;">
+                    <asp:Panel ID="pnlRegAct" runat="server" CssClass="cuadrodes" Style="width: 720px;">
                         <div class="ubi-main-popclave">
-                            <div class="close-popclave" style="width: 650px;">
-                                <div class="ubi-close-popclave" style="width: 650px;">
+                            <div class="close-popclave" style="width: 680px;">
+                                <div class="ubi-close-popclave" style="width: 680px;">
                                     <a href="#" onclick="hideModalPopup('bmpRegAct');">cerrar</a>
                                 </div>
                             </div>
-                            <div id="tituloCuenta" class="lineblu" style="position: relative; width: 700px;">
+                            <div id="tituloCuenta" class="lineblu" style="position: relative; width: 670px;">
                                 <h2 style="font-weight: bold;">
                                     <asp:Label ID="lbl1" runat="server" CssClass="reg_establ" Style="color: White;" Text="Actualizar Orden"></asp:Label>
                                 </h2>
                             </div>
                             <div class="txt_linese" style="padding-left: 0px; padding-bottom: 0px; width: 700px;">
                                 <div class="">
-                                    <div class="cont_c02_detalle2 width700" style="display: table; width: 650px">
+                                    <div class="cont_c02_detalle2 width700" style="display: table; width: 687px">
                                         <asp:UpdatePanel ID="updOrden" runat="server" UpdateMode="Conditional">
                                             <ContentTemplate>
                                                 <table border="0" cellspacing="3" cellpadding="0" class="Tabla_filtro_txt" style="width: 645">
-                                                <asp:HiddenField ID="hdfIDPaciente" runat="server" />
+                                                    <asp:HiddenField ID="hdfIDPaciente" runat="server" />
                                                     <tr>
                                                         <td style="width: 20%" class="block_center">
                                                             Tipo Doc.:
@@ -242,14 +247,14 @@
                                                             Documento:
                                                         </td>
                                                         <td style="width: 15%">
-                                                            <asp:TextBox ID="txtNroDoc" runat="server"></asp:TextBox>
+                                                            <asp:TextBox ID="txtNroDoc" runat="server" style="width: 70%"></asp:TextBox>
                                                             <asp:Button CssClass="botonesIndividual" ToolTip="Obtener Nro.Orden" ID="btnGetOrden"
-                                                                Width="30px" runat="server" Text="..." OnClick="btnGetOrden_Click" />
+                                                                Width="20px" runat="server" Text="..." OnClick="btnGetOrden_Click"  style="width: 20%" />
                                                         </td>
                                                         <td style="width: 20%" class="block_center">
                                                             Sexo:
                                                         </td>
-                                                        <td style="width: 15%" >
+                                                        <td style="width: 15%">
                                                             <asp:DropDownList ID="ddlSexo" Enabled="false" runat="server" Style="width: 99%">
                                                                 <asp:ListItem Value="M" Text="Masculino"></asp:ListItem>
                                                                 <asp:ListItem Value="F" Text="Femenino"></asp:ListItem>
@@ -267,13 +272,13 @@
                                                             Ap. Paterno:
                                                         </td>
                                                         <td style="width: 15%">
-                                                            <asp:TextBox ID="txtPaterno" runat="server" Enabled="false" ></asp:TextBox>
+                                                            <asp:TextBox ID="txtPaterno" runat="server" Enabled="false"></asp:TextBox>
                                                         </td>
                                                         <td style="width: 20%" class="block_center">
                                                             Ap. Materno:
                                                         </td>
                                                         <td style="width: 15%">
-                                                            <asp:TextBox ID="txtMaterno" runat="server"  Enabled="false"></asp:TextBox>
+                                                            <asp:TextBox ID="txtMaterno" runat="server" Enabled="false"></asp:TextBox>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -284,13 +289,16 @@
                                         </asp:UpdatePanel>
                                         <asp:Button ID="btnControl" runat="server" Visible="false" OnClientClick="return ValidarDatos();" />
                                     </div>
-                                    <div style="font-weight: 600;">
+                                    <div>
+                                   
+
+                                    </div>
+                                    <div style="font-weight: 600; padding: 10px 0px 10px 0px;">
                                         Datos Orden de Hospitalización
                                     </div>
                                     <div class="cont_c02_detalle2 width700" style="display: table; width: 650px">
                                         <asp:UpdatePanel ID="uplDatosOrden" runat="server">
                                             <ContentTemplate>
-                                                
                                                 <table border="0" cellspacing="3" cellpadding="0" class="Tabla_filtro_txt" style="width: 645">
                                                     <tr>
                                                         <td style="width: 15%" class="block_center">
