@@ -1,0 +1,39 @@
+<%-- Botones ZX --%>
+<asp:ImageButton runat="server" SkinID="Calendario"  ImageUrl="calendar.gif" />
+<asp:ImageButton runat="server" SkinID="Word" ImageUrl="IconWord16.gif" />
+<asp:ImageButton runat="server" SkinID="PDF" ImageUrl="IconWord16.gif" />
+<asp:ImageButton runat="server" SkinID="Delete" ImageUrl="delete.gif" />
+<asp:ImageButton runat="server" SkinID="Ampliacion" ImageUrl="ico_Ampliacion.gif" />
+<asp:ImageButton runat="server" SkinID="Adjuntar" ImageUrl="icono_adjuntar.jpg"  />
+<asp:ImageButton runat="server" SkinID="collapse"  ImageUrl="collapse_blue.jpg" />
+<asp:ImageButton runat="server" SkinID="expand"  ImageUrl="expand_blue.jpg" />
+<asp:ImageButton runat="server" SkinID="Eliminar"  ImageUrl="ico_Borrar.gif"  />
+<asp:ImageButton runat="server" SkinID="DerivarConsulta" ImageUrl="xpexecutive1.GIF" />
+<asp:ImageButton runat="server" SkinID="Modificar" ImageUrl="ico_Edita.gif" />
+<asp:ImageButton runat="server" SkinID="Lupa" ImageUrl="ico_Show.gif" ImageAlign="AbsMiddle" />
+<asp:ImageButton runat="server" SkinID="Activar" ImageUrl="E_2.GIF"  />
+<asp:ImageButton runat="server" SkinID="ico_PDF" ImageUrl="PDF.GIF"  />
+<asp:ImageButton runat="server" SkinID="Asignar"  ImageUrl="ico_Autorizado.gif" />
+<asp:ImageButton runat="server" SkinID="BotonSolicitante"  ImageUrl="ico_CopiarSolicitante.png" ImageAlign="AbsMiddle" />
+<asp:ImageButton runat="server" SkinID="Historial" ImageUrl="ico_Historial.jpg" />
+<asp:ImageButton runat="server" SkinID="HistAvance"  ImageUrl="ico_HistAvance.gif" />
+<%-- Default button appearance --%>
+<asp:Label SkinID="ClienteTop" runat="server" CssClass="ClienteTop"></asp:Label>
+<%-- Default button appearance --%>
+<asp:Button runat="server" CssClass="button"/>
+<%-- Default DropDownList appearance --%>
+<asp:DropDownList runat="server" Height="21px" CssClass="stlCajaTexto"/>
+<%-- Default GridView --%>
+<asp:GridView SkinID="GridZX11" runat="server" GridLines="None" BackColor="White" BorderColor="#DEDFDE" CellPadding="2" >
+	<RowStyle CssClass="stlPaginaTexto" BackColor="WhiteSmoke" />
+    <HeaderStyle CssClass="ms-formlabel DataGridFixedHeader"  BackColor="#6699CC" ForeColor="White" />
+    <AlternatingRowStyle BackColor="White" />
+    <PagerStyle CssClass="stlPaginaTexto" Font-Bold="True" />
+    <PagerSettings Mode="NumericFirstLast" />
+    <FooterStyle CssClass="stlPaginaTexto" BackColor="WhiteSmoke"></FooterStyle>
+</asp:GridView>
+
+<asp:GridView SkinID="GridZX" runat="server" >
+	<HeaderStyle CssClass="stlTituloBarraPagina" />
+    <RowStyle CssClass="stlPaginaTexto" />
+</asp:GridView>
