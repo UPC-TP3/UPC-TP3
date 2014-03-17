@@ -10,3 +10,14 @@ D:\UPC\TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.DA.pdb
 D:\UPC\TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.CC.pdb
 D:\UPC\TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.dll
 D:\UPC\TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.pdb
+C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BL.dll
+C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BL.pdb
+C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BE.dll
+C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.DA.dll
+C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.CC.dll
+C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BE.pdb
+C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.DA.pdb
+C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.CC.pdb
+C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.csprojResolveAssemblyReference.cache
+C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.dll
+C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.pdb

@@ -43,14 +43,17 @@
     <Compile Include="BE_Cama.cs" />
     <Compile Include="BE_CartaGarantia.cs" />
     <Compile Include="BE_Especialidad.cs" />
+    <Compile Include="BE_EvaluarSolicitudMantenimiento.cs" />
     <Compile Include="BE_HistoriaClinica.cs" />
     <Compile Include="BE_HojaHospitaliza.cs" />
     <Compile Include="BE_MaestroTabla.cs" />
     <Compile Include="BE_Medico.cs" />
     <Compile Include="BE_MotivoHospita.cs" />
+    <Compile Include="BE_OrdendeTrabajo.cs" />
     <Compile Include="BE_OrdenHospitaliza.cs" />
     <Compile Include="BE_Paciente.cs" />
     <Compile Include="BE_Sede.cs" />
+    <Compile Include="BE_SolicitudMantenimiento.cs" />
     <Compile Include="BE_TipoDocumento.cs" />
     <Compile Include="BE_Cita.cs" />
     <Compile Include="BE_Comprobante_Pago.cs" />

@@ -48,10 +48,13 @@
     <Compile Include="BL_Cama.cs" />
     <Compile Include="BL_CartaGarantia.cs" />
     <Compile Include="BL_Especialidad.cs" />
+    <Compile Include="BL_EvaluarSolicitudMantenimiento.cs" />
     <Compile Include="BL_Hospitalizacion.cs" />
     <Compile Include="BL_MaestroTablas.cs" />
     <Compile Include="BL_Medico.cs" />
+    <Compile Include="BL_OrdenTrabajo.cs" />
     <Compile Include="BL_Paciente.cs" />
+    <Compile Include="BL_SolicitudMantenimiento.cs" />
     <Compile Include="BL_TipoDocumento.cs" />
     <Compile Include="BL_Comprobante_Pago.cs" />
     <Compile Include="BMedico.cs" />
