@@ -13,7 +13,7 @@
             color: Red;
         }
     </style>
-
+<script language="javascript" type="text/javascript" src="../js/jquery-1.7.1.js" ></script>
 <%--     <script type="text/javascript">
          $(document).ready(function () {
 
@@ -25,6 +25,30 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#<%= btnOrden_pago.ClientID %>').click(function () {
+            if ($('#<%= txtId_orden_examen.ClientID %>').val() == "") {
+                alert("Ingrese Orden de Examen");
+                $('#<%= txtId_orden_examen.ClientID %>').focus();
+                return false;
+            }
+            if ($('#<%= txtId_historia.ClientID %>').val() == "") {
+                alert("Orden de Examen Inválido");
+                $('#<%= txtId_orden_examen.ClientID %>').focus();
+                return false;
+            }
+
+            return confirm("Seguro de Generar la Orden de Pago?");
+
+        })
+
+
+
+    });
+    </script>
+
     <div class="col_04">
     <table style="width:100%;">
         <tr>
@@ -169,7 +193,7 @@
                             </asp:DropDownList>
                         </td>
                         <td>
-                            Consultorio</td>
+                            Sala</td>
                         <td>
                             <asp:DropDownList ID="cboConsultorio" runat="server" 
                                 onselectedindexchanged="cboConsultorio_SelectedIndexChanged" 
@@ -234,8 +258,7 @@
                                     </td>
                                     <td>
                             <asp:Button ID="btnOrden_pago" runat="server" 
-                                Text="Generar Orden Pago" onclick="btnOrden_pago_Click" 
-                                            onclientclick="javascript:return confirm(&quot;Seguro de Generar Orden de pago?&quot;)" />
+                                Text="Generar Orden Pago" onclick="btnOrden_pago_Click" />
                                     </td>
                                     <td>
                                         <asp:Button ID="btnCerrar" runat="server" 

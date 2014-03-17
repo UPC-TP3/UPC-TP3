@@ -191,6 +191,9 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
     protected void cboConsultorio_SelectedIndexChanged(object sender, EventArgs e)
     {
         Carga_Horario();
+
+        //cboHorario.SelectedValue = DateTime.Now.ToString("dd/MM/yyyy HH:00:00");
+
         Carga_Especialista();
     }
 

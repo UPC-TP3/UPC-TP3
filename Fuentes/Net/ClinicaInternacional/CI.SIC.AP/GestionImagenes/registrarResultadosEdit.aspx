@@ -26,19 +26,46 @@
 
         </style>
 
-             <script type="text/javascript">
-//                 $(document).ready(function () {
-
-//                     $('#btnConsultar').click(function () {
-//                         return confirm("Seguro de Anular Contrato");
-//                     })
-//                 });
-    </script>
+    <script language="javascript" type="text/javascript" src="../js/jquery-1.7.1.js" ></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
 
+<script type="text/javascript">
+            $(document).ready(function () {
 
+                $('#<%= btnGrabar.ClientID %>').click(function () {
+                    if ($('#<%= txtId_orden_examen.ClientID %>').val() == "") {
+                        alert("Ingrese Orden de Examen");
+                        $('#<%= txtId_orden_examen.ClientID %>').focus();
+                        return false;
+                    }
+                    if ($('#<%= txtId_historia.ClientID %>').val() == "") {
+                        alert("Orden de Examen Inválido");
+                        $('#<%= txtId_orden_examen.ClientID %>').focus();
+                        return false;
+                    }
+
+
+                    if ($('#<%= txtResultado.ClientID %>').val() == "") {
+                        alert("Ingrese Resultados");
+                        $('#<%= txtResultado.ClientID %>').focus();
+                        return false;
+                    }
+
+                    if ($('#<%= txtObservaciones.ClientID %>').val() == "") {
+                        alert("Ingrese Observaciones");
+                        $('#<%= txtObservaciones.ClientID %>').focus();
+                        return false;
+                    }
+                    //e.preventDefault();
+                    return confirm("Seguro de Registrar Resultado?");
+
+                })
+
+
+            });
+    </script>
     <div class="col_04">
     <table style="width:100%;">
         <tr>
@@ -216,8 +243,7 @@
                                 <tr>
                                     <td>
                             <asp:Button ID="btnGrabar" runat="server" 
-                                Text="Grabar" onclick="btnProgramar_Click" 
-                                            onclientclick="javascript:return confirm(&quot;Seguro de grabar los resultados?&quot;)" />
+                                Text="Grabar" onclick="btnProgramar_Click" />
                                     </td>
                                     <td>
                                         &nbsp;</td>

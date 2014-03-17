@@ -13,6 +13,7 @@
             color: Red;
         }
     </style>
+    <script language="javascript" type="text/javascript" src="../js/jquery-1.7.1.js" ></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">

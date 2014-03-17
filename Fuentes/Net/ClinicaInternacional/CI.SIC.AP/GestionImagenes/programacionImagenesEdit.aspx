@@ -13,7 +13,7 @@
             color: Red;
         }
     </style>
-
+    <script language="javascript" type="text/javascript" src="../js/jquery-1.7.1.js" ></script>
 <%--     <script type="text/javascript">
          $(document).ready(function () {
 
@@ -25,6 +25,90 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                $('#<%= btnReProgramar.ClientID %>').click(function () {
+                    if ($('#<%= txtId_orden_examen.ClientID %>').val() == "") {
+                        alert("Ingrese Orden de Examen");
+                        $('#<%= txtId_orden_examen.ClientID %>').focus();
+                        return false;
+                    }
+                    if ($('#<%= txtId_historia.ClientID %>').val() == "") {
+                        alert("Orden de Examen Inválido");
+                        $('#<%= txtId_orden_examen.ClientID %>').focus();
+                        return false;
+                    }
+                    var cboL = 'select#' + '<%= cboLocal.ClientID %>';
+                    if ($(cboL).val() == "0") {
+                        alert("Seleccione Local");
+                        $(cboL).focus();
+                        return false;
+                    }
+
+                    var cboC = 'select#' + '<%= cboConsultorio.ClientID %>';
+                    if ($(cboC).val() == "0") {
+                        alert("Seleccione Sala");
+                        $(cboC).focus();
+                        return false;
+                    }
+
+                    var cboH = 'select#' + '<%= cboHorario.ClientID %>';
+                    if ($(cboH).val() == "0") {
+                        alert("Seleccione Horario");
+                        $(cboH).focus();
+                        return false;
+                    }
+
+                    if ($('#<%= txtMotivoR.ClientID %>').val() == "") {
+                        alert("Ingrese Motivo de Reprogramación");
+                        $('#<%= txtMotivoR.ClientID %>').focus();
+                        return false;
+                    }
+                    //e.preventDefault();
+                    return confirm("Seguro de Realizar la Re-Programación?");
+
+                })
+
+
+                $('#<%= btnProgramar.ClientID %>').click(function () {
+                    if ($('#<%= txtId_orden_examen.ClientID %>').val() == "") {
+                        alert("Ingrese Orden de Examen");
+                        $('#<%= txtId_orden_examen.ClientID %>').focus();
+                        return false;
+                    }
+                    if ($('#<%= txtId_historia.ClientID %>').val() == "") {
+                        alert("Orden de Examen Inválido");
+                        $('#<%= txtId_orden_examen.ClientID %>').focus();
+                        return false;
+                    }
+                    var cboL = 'select#' + '<%= cboLocal.ClientID %>';
+                    if ($(cboL).val() == "0") {
+                        alert("Seleccione Local");
+                        $(cboL).focus();
+                        return false;
+                    }
+
+                    var cboC = 'select#' + '<%= cboConsultorio.ClientID %>';
+                    if ($(cboC).val() == "0") {
+                        alert("Seleccione Sala");
+                        $(cboC).focus();
+                        return false;
+                    }
+
+                    var cboH = 'select#' + '<%= cboHorario.ClientID %>';
+                    if ($(cboH).val() == "0") {
+                        alert("Seleccione Horario");
+                        $(cboH).focus();
+                        return false;
+                    }
+                    //e.preventDefault();
+                    return confirm("Seguro de Realizar Programación?");
+
+                })
+            });
+    </script>
     <div class="col_04">
     <table style="width:100%;">
         <tr>
@@ -169,7 +253,7 @@
                             </asp:DropDownList>
                         </td>
                         <td>
-                            Consultorio</td>
+                            Sala</td>
                         <td>
                             <asp:DropDownList ID="cboConsultorio" runat="server" 
                                 onselectedindexchanged="cboConsultorio_SelectedIndexChanged" 
@@ -299,13 +383,11 @@
                                 <tr>
                                     <td>
                             <asp:Button ID="btnProgramar" runat="server" 
-                                Text="Programar" onclick="btnProgramar_Click" 
-                                            onclientclick="javascript:return confirm(&quot;Seguro de registrar la Programación?&quot;)" />
+                                Text="Programar" onclick="btnProgramar_Click" />
                                     </td>
                                     <td>
                             <asp:Button ID="btnReProgramar" runat="server" 
-                                Text="Re-Programar" onclick="btnReProgramar_Click" 
-                                            onclientclick="javascript:return confirm(&quot;Seguro de registrar la Reprogramación?&quot;)"/>
+                                Text="Re-Programar" onclick="btnReProgramar_Click"/>
                                     </td>
                                     <td>
                                         <asp:Button ID="btnAnular" runat="server" onclick="btnAnular_Click" 
