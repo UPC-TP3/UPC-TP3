@@ -38,6 +38,13 @@ public partial class Plantilla : System.Web.UI.MasterPage
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/registrarResultadosEdit.aspx?accion=C", "Consultar Resultados");
         menu += "</ul></li>";
 
+        menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Gestion de Emergencia");
+        menu += string.Format("<li><a href=\'/CI.SIC.AP/{0}\'>{1}</a></li>", "GestionEmergencia/GenerarAtencionMedica/Listado.aspx", "Generar atención medica de Emergencia");
+        menu += string.Format("<li><a href=\'/CI.SIC.AP/{0}\'>{1}</a></li>", "GestionEmergencia/EvaluacionDeAmbiente/Consultar.aspx", "Evaluación de Ambiente");
+        menu += string.Format("<li><a href=\'/CI.SIC.AP/{0}\'>{1}</a></li>", "GestionEmergencia/ActualizarEstadoCama.aspx", "Administrar Cama");
+        menu += string.Format("<li><a href=\'/CI.SIC.AP/{0}\'>{1}</a></li>", "GestionEmergencia/GenerarOrdenExamenMedico.aspx", "Generar Orden de Exámen Médico");
+        menu += string.Format("<li><a href=\'/CI.SIC.AP/{0}\'>{1}</a></li>", "GestionEmergencia/GenerarOrdenSalidaMedicamento.aspx", "Generar Orden de Salida de Medicamento");
+        menu += "</ul></li>";
 
         lstMenu.Text = menu;
     }

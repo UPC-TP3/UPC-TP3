@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_SGHModelStoreContainer" CdmEntityContainer="DB_SGHEntities">
+    <EntitySetMapping Name="TB_Agenda_Medica">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Agenda_Medica">
+        <MappingFragment StoreEntitySet="TB_Agenda_Medica">
+          <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+          <ScalarProperty Name="NumeroConsultorio" ColumnName="NumeroConsultorio" />
+          <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+          <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="CodigoAgenda" ColumnName="CodigoAgenda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Analisis">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Analisis">
+        <MappingFragment StoreEntitySet="TB_Analisis">
+          <ScalarProperty Name="CodigoTipoAnalisis" ColumnName="CodigoTipoAnalisis" />
+          <ScalarProperty Name="CodigoConsulta" ColumnName="CodigoConsulta" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+          <ScalarProperty Name="FechaAnalisis" ColumnName="FechaAnalisis" />
+          <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+          <ScalarProperty Name="CodigoAnalisis" ColumnName="CodigoAnalisis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Cita">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Cita">
+        <MappingFragment StoreEntitySet="TB_Cita">
+          <ScalarProperty Name="Cobertura" ColumnName="Cobertura" />
+          <ScalarProperty Name="Aseguradora" ColumnName="Aseguradora" />
+          <ScalarProperty Name="SintomasPaciente" ColumnName="SintomasPaciente" />
+          <ScalarProperty Name="ReferenciaDomicilio" ColumnName="ReferenciaDomicilio" />
+          <ScalarProperty Name="DireccionDomicilio" ColumnName="DireccionDomicilio" />
+          <ScalarProperty Name="AtencionLocal" ColumnName="AtencionLocal" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="CodigoAgenda" ColumnName="CodigoAgenda" />
+          <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
+          <ScalarProperty Name="CodigoPaciente" ColumnName="CodigoPaciente" />
+          <ScalarProperty Name="FechaCita" ColumnName="FechaCita" />
+          <ScalarProperty Name="CodigoCita" ColumnName="CodigoCita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Consulta">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Consulta">
+        <MappingFragment StoreEntitySet="TB_Consulta">
+          <ScalarProperty Name="Diagnostico" ColumnName="Diagnostico" />
+          <ScalarProperty Name="CodigoPaciente" ColumnName="CodigoPaciente" />
+          <ScalarProperty Name="CodigoConsultorio" ColumnName="CodigoConsultorio" />
+          <ScalarProperty Name="CodigoCita" ColumnName="CodigoCita" />
+          <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="FechaHoraFin" ColumnName="FechaHoraFin" />
+          <ScalarProperty Name="FechaHoraInicio" ColumnName="FechaHoraInicio" />
+          <ScalarProperty Name="CodigoConsulta" ColumnName="CodigoConsulta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Consultorio">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Consultorio">
+        <MappingFragment StoreEntitySet="TB_Consultorio">
+          <ScalarProperty Name="CodigoLocal" ColumnName="CodigoLocal" />
+          <ScalarProperty Name="Piso" ColumnName="Piso" />
+          <ScalarProperty Name="NumeroConsultorio" ColumnName="NumeroConsultorio" />
+          <ScalarProperty Name="CodigoConsultorio" ColumnName="CodigoConsultorio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Especialidad">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Especialidad">
+        <MappingFragment StoreEntitySet="TB_Especialidad">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="CodigoEspecialidad" ColumnName="CodigoEspecialidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Estado_Cita">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Estado_Cita">
+        <MappingFragment StoreEntitySet="TB_Estado_Cita">
+          <ScalarProperty Name="DesEstado" ColumnName="DesEstado" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Local">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Local">
+        <MappingFragment StoreEntitySet="TB_Local">
+          <ScalarProperty Name="DireccionLocal" ColumnName="DireccionLocal" />
+          <ScalarProperty Name="NombreLocal" ColumnName="NombreLocal" />
+          <ScalarProperty Name="CodigoLocal" ColumnName="CodigoLocal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Medicamento">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Medicamento">
+        <MappingFragment StoreEntitySet="TB_Medicamento">
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="CodigoMedicamento" ColumnName="CodigoMedicamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Medico">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Medico">
+        <MappingFragment StoreEntitySet="TB_Medico">
+          <ScalarProperty Name="NumeroColegiatura" ColumnName="NumeroColegiatura" />
+          <ScalarProperty Name="CodigoEspecialidad" ColumnName="CodigoEspecialidad" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Motivo_Hospitalizacion">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Motivo_Hospitalizacion">
+        <MappingFragment StoreEntitySet="TB_Motivo_Hospitalizacion">
+          <ScalarProperty Name="DescripcionInternamiento" ColumnName="DescripcionInternamiento" />
+          <ScalarProperty Name="CodigoMotivo" ColumnName="CodigoMotivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Orden_Hopitalizacion">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Orden_Hopitalizacion">
+        <MappingFragment StoreEntitySet="TB_Orden_Hopitalizacion">
+          <ScalarProperty Name="CodigoConsulta" ColumnName="CodigoConsulta" />
+          <ScalarProperty Name="CodigoMotivo" ColumnName="CodigoMotivo" />
+          <ScalarProperty Name="FechaHoraAlta" ColumnName="FechaHoraAlta" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+          <ScalarProperty Name="CodigoOrden" ColumnName="CodigoOrden" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Paciente">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Paciente">
+        <MappingFragment StoreEntitySet="TB_Paciente">
+          <ScalarProperty Name="Dni" ColumnName="Dni" />
+          <ScalarProperty Name="TelefonoCasa" ColumnName="TelefonoCasa" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="ApellidoMat" ColumnName="ApellidoMat" />
+          <ScalarProperty Name="ApellidoPat" ColumnName="ApellidoPat" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="CodigoPaciente" ColumnName="CodigoPaciente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Prescripcion_Medica">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Prescripcion_Medica">
+        <MappingFragment StoreEntitySet="TB_Prescripcion_Medica">
+          <ScalarProperty Name="CodigoConsulta" ColumnName="CodigoConsulta" />
+          <ScalarProperty Name="CodigoMedicamento" ColumnName="CodigoMedicamento" />
+          <ScalarProperty Name="Frecuencia" ColumnName="Frecuencia" />
+          <ScalarProperty Name="Dosis" ColumnName="Dosis" />
+          <ScalarProperty Name="CodigoReceta" ColumnName="CodigoReceta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Tipo_Analisis">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Tipo_Analisis">
+        <MappingFragment StoreEntitySet="TB_Tipo_Analisis">
+          <ScalarProperty Name="TipoResultado" ColumnName="TipoResultado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="CodigoTipoAnalisis" ColumnName="CodigoTipoAnalisis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Turno_Citas">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Turno_Citas">
+        <MappingFragment StoreEntitySet="TB_Turno_Citas">
+          <ScalarProperty Name="HoraFinal" ColumnName="HoraFinal" />
+          <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+          <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
