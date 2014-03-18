@@ -54,6 +54,7 @@
     <Compile Include="BL_Hospitalizacion.cs" />
     <Compile Include="BL_MaestroTablas.cs" />
     <Compile Include="BL_Medico.cs" />
+    <Compile Include="BL_OrdenProcedimiento.cs" />
     <Compile Include="BL_OrdenTrabajo.cs" />
     <Compile Include="BL_Paciente.cs" />
     <Compile Include="BL_SolicitudMantenimiento.cs" />
