@@ -14,16 +14,16 @@ namespace CI.SIC.BL
 
         public List<EPaciente> Listar()
         {
-            return _contexto.TB_Paciente.Select(paciente => new EPaciente 
+            return _contexto.TB_PACIENTE.Select(paciente => new EPaciente 
             {
-                CodigoPaciente = paciente.CodigoPaciente,
-                Nombres = paciente.Nombres,
+                CodigoPaciente = paciente.ID_Paciente,
+                Nombres = paciente.nombres,
                 ApellidoPat = paciente.ApellidoPat,
                 ApellidoMat = paciente.ApellidoMat,
                 Direccion = paciente.Direccion,
-                Telefono = paciente.Telefono,
-                TelefonoCasa = paciente.TelefonoCasa,
-                Dni = paciente.Dni 
+                Telefono = paciente.Celular,
+                TelefonoCasa = paciente.TelefonoDomicilio,
+                Dni = paciente.dni_paciente 
             }).ToList();
         }
 
@@ -31,16 +31,16 @@ namespace CI.SIC.BL
         {
 
 
-            return _contexto.TB_Paciente.Where(f => f.Dni == dni || f.ApellidoPat == apellido).Select(paciente => new EPaciente
+            return _contexto.TB_PACIENTE.Where(f => f.dni_paciente == dni || f.ApellidoPat == apellido).Select(paciente => new EPaciente
                 {
-                    CodigoPaciente = paciente.CodigoPaciente,
-                    Nombres = paciente.Nombres,
+                    CodigoPaciente = paciente.ID_Paciente,
+                    Nombres = paciente.nombres,
                     ApellidoPat = paciente.ApellidoPat,
                     ApellidoMat = paciente.ApellidoMat,
                     Direccion = paciente.Direccion,
-                    Telefono = paciente.Telefono,
-                    TelefonoCasa = paciente.TelefonoCasa,
-                    Dni = paciente.Dni
+                    Telefono = paciente.Celular,
+                    TelefonoCasa = paciente.TelefonoDomicilio,
+                    Dni = paciente.dni_paciente
                 }).ToList();
             
          
@@ -50,15 +50,15 @@ namespace CI.SIC.BL
 
         public int Insertar(EPaciente paciente)
         {
-            _contexto.AddToTB_Paciente(new TB_Paciente
+            _contexto.AddToTB_PACIENTE(new TB_PACIENTE
             {
-                Nombres = paciente.Nombres,
+                nombres = paciente.Nombres,
                 ApellidoPat = paciente.ApellidoPat,
                 ApellidoMat = paciente.ApellidoMat,
                 Direccion = paciente.Direccion,
                 FechaNacimiento = paciente.FechaNacimiento,
-                Telefono = paciente.Telefono,
-                TelefonoCasa = paciente.TelefonoCasa
+                Celular = paciente.Telefono,
+                TelefonoDomicilio = paciente.TelefonoCasa
             });
             _contexto.SaveChanges();
             return paciente.CodigoPaciente;
@@ -66,16 +66,16 @@ namespace CI.SIC.BL
 
         public EPaciente Obtener(int codigoPaciente)
         {
-            return _contexto.TB_Paciente.Where(f => f.CodigoPaciente == codigoPaciente).Select(paciente => new EPaciente
+            return _contexto.TB_PACIENTE.Where(f => f.ID_Paciente == codigoPaciente).Select(paciente => new EPaciente
             {
-                CodigoPaciente = paciente.CodigoPaciente,
-                Nombres = paciente.Nombres,
+                CodigoPaciente = paciente.ID_Paciente,
+                Nombres = paciente.nombres,
                 ApellidoPat = paciente.ApellidoPat,
                 ApellidoMat = paciente.ApellidoMat,
                 Direccion = paciente.Direccion,
-                Telefono = paciente.Telefono,
-                TelefonoCasa = paciente.TelefonoCasa,
-                Dni = paciente.Dni 
+                Telefono = paciente.Celular,
+                TelefonoCasa = paciente.TelefonoDomicilio,
+                Dni = paciente.dni_paciente 
             }).FirstOrDefault();
         }
 

@@ -14,8 +14,8 @@ namespace CI.SIC.BE
         public int CodigoPaciente { get; set; }
         public int CodigoAgenda { get; set; }
         public DateTime? FechaAgenda { get; set; }
-        public DateTime? HoraInicioAgenda { get; set; }
-        public DateTime? HoraFinAgenda { get; set; }
+        //public DateTime? HoraInicioAgenda { get; set; }
+        //public DateTime? HoraFinAgenda { get; set; }
         public bool AtencionLocal { get; set; }
         public string DireccionDomicilio { get; set; }
         public string ReferenciaDomicilio { get; set; }
@@ -28,6 +28,8 @@ namespace CI.SIC.BE
 
         public string NombresMedico { get; set; }
         public string ApellidosMedico { get; set; }
+
+        public int Id_Especialidad { get; set; }
         public string DescripcionEspecialidad { get; set; }
         public string NumeroColegiatura { get; set; }
 
@@ -36,6 +38,8 @@ namespace CI.SIC.BE
 
 
         public string NumeroConsultorio { get; set; }
-        public string Dni { get; set; }  
+        public string Dni { get; set; }
+        public string Horario_Turno { get; set; }  
+
     }
 }

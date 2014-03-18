@@ -8,42 +8,100 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region Metadatos de relaciones en EDM
 
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__Cita__CodigoAgen__33D4B5981", "TB_Agenda_Medica", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Agenda_Medica), "TB_Cita", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Cita), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Agenda__Codig__32E0915F", "TB_Medico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Medico), "TB_Agenda_Medica", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Agenda_Medica), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Agenda__Codig__33D4B598", "TB_Medico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Medico), "TB_Agenda_Medica", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Agenda_Medica), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Analis__Codig__34C8D9D1", "TB_Tipo_Analisis", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Tipo_Analisis), "TB_Analisis", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Analisis), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Analis__Codig__35BCFE0A", "TB_Consulta", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Consulta), "TB_Analisis", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Analisis), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Analis__Codig__36B12243", "TB_Tipo_Analisis", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Tipo_Analisis), "TB_Analisis", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Analisis), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Analis__Codig__37A5467C", "TB_Consulta", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Consulta), "TB_Analisis", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Analisis), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__Cita__CodigoMedi__36B122431", "TB_Medico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Medico), "TB_Cita", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Cita), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__Cita__CodigoPaci__37A5467C1", "TB_Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Paciente), "TB_Cita", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Cita), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__Consulta__Codigo__3B75D7601", "TB_Cita", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Cita), "TB_Consulta", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Consulta), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_Cita_EstadoCita1", "TB_Estado_Cita", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_Estado_Cita), "TB_Cita", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Cita), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Consul__Codig__3D5E1FD2", "TB_Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Paciente), "TB_Consulta", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Consulta), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Consul__Codig__3E52440B", "TB_Consultorio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Consultorio), "TB_Consulta", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Consulta), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Consul__Codig__3F466844", "TB_Medico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Medico), "TB_Consulta", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Consulta), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Consul__Codig__403A8C7D", "TB_Paciente", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Paciente), "TB_Consulta", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Consulta), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Consul__Codig__412EB0B6", "TB_Consultorio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Consultorio), "TB_Consulta", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Consulta), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Consul__Codig__4222D4EF", "TB_Medico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Medico), "TB_Consulta", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Consulta), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Prescr__Codig__46E78A0C", "TB_Consulta", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Consulta), "TB_Prescripcion_Medica", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Prescripcion_Medica), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Prescr__Codig__48CFD27E", "TB_Consulta", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Consulta), "TB_Prescripcion_Medica", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Prescripcion_Medica), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Consul__Codig__4316F928", "TB_Local", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_Local), "TB_Consultorio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Consultorio), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Consul__Codig__440B1D61", "TB_Local", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_Local), "TB_Consultorio", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Consultorio), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Medico__Codig__44FF419A", "TB_Especialidad", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_Especialidad), "TB_Medico", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Medico), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Medico__Codig__45F365D3", "TB_Especialidad", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_Especialidad), "TB_Medico", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Medico), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Prescr__Codig__47DBAE45", "TB_Medicamento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Medicamento), "TB_Prescripcion_Medica", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Prescripcion_Medica), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_Prescr__Codig__49C3F6B7", "TB_Medicamento", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Medicamento), "TB_Prescripcion_Medica", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Prescripcion_Medica), true)]
-[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_Agenda_Medica_TB_Turno_Citas", "TB_Turno_Citas", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_Turno_Citas), "TB_Agenda_Medica", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Agenda_Medica), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_AGENDA__ID_TU__2EDAF651", "TB_TURNO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_TURNO), "TB_AGENDA_MEDICA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_AGENDA_MEDICA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_AGENDA_MEDICA_TB_CONSULTORIO", "TB_CONSULTORIO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_CONSULTORIO), "TB_AGENDA_MEDICA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_AGENDA_MEDICA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_AgendaMedica_TB_MEDICO", "TB_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_MEDICO), "TB_AGENDA_MEDICA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_AGENDA_MEDICA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_CITA_TB_AgendaMedica", "TB_AGENDA_MEDICA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_AGENDA_MEDICA), "TB_CITA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CITA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_ANALIS__ID_Co__31B762FC", "TB_CONSULTA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_CONSULTA), "TB_ANALISIS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ANALISIS), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_ANALIS__ID_Ti__32AB8735", "TB_TIPO_ANALISIS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_TIPO_ANALISIS), "TB_ANALISIS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ANALISIS), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_INSTALACION_TB_AREA", "TB_AREA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_AREA), "TB_INSTALACION", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_INSTALACION), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_ORDEN_DE_PEDIDO_TB_AREA", "TB_AREA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_AREA), "TB_ORDEN_DE_PEDIDO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ORDEN_DE_PEDIDO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_Atencion_Emergencia_TB_CAMA", "TB_CAMA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_CAMA), "TB_Atencion_Emergencia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Atencion_Emergencia), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_Atencion_Emergencia_TB_Medico", "TB_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_MEDICO), "TB_Atencion_Emergencia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Atencion_Emergencia), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_Atencion_Emergencia_TB_PACIENTE", "TB_PACIENTE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_PACIENTE), "TB_Atencion_Emergencia", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_Atencion_Emergencia), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_T_CL_ES_GO_Cama63", "TB_HOJA_INGRESO_HOSPITALIZACION", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_HOJA_INGRESO_HOSPITALIZACION), "TB_CAMA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CAMA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_CAMA_TB_ESPECIALIDAD", "TB_ESPECIALIDAD", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_ESPECIALIDAD), "TB_CAMA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CAMA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_CARTA_GARANTIA_TB_ORDEN_DE_PROCEDIMIENTO", "TB_ORDEN_DE_PROCEDIMIENTO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_ORDEN_DE_PROCEDIMIENTO), "TB_CARTA_GARANTIA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CARTA_GARANTIA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_CARTA_GARANTIA_TB_PACIENTE", "TB_PACIENTE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_PACIENTE), "TB_CARTA_GARANTIA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CARTA_GARANTIA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_CARTA_GARANTIA", "TB_CARTA_GARANTIA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_CARTA_GARANTIA), "TB_HOJA_INGRESO_HOSPITALIZACION", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_HOJA_INGRESO_HOSPITALIZACION), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_CATALOGO_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_TIPO_EXAMEN_MEDICO), "TB_CATALOGO_EXAMEN_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CATALOGO_EXAMEN_MEDICO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_ORDEN_EXAMEN_MEDICO_TB_CATALOGO_EXAMEN_MEDICO", "TB_CATALOGO_EXAMEN_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_CATALOGO_EXAMEN_MEDICO), "TB_ORDEN_EXAMEN_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ORDEN_EXAMEN_MEDICO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_T_CL_CO_GC_Cita55", "TB_PACIENTE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_PACIENTE), "TB_CITA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CITA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_T_CL_CO_GC_Cita60", "TB_HISTORIA_CLINICA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_HISTORIA_CLINICA), "TB_CITA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CITA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_T_CL_CO_GC_Comprobante_de_Pago51", "TB_CITA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_CITA), "TB_COMPROBANTE_DE_PAGO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_COMPROBANTE_DE_PAGO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Orden_de_Pago50", "TB_CITA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_CITA), "TB_ORDEN_SERVICIO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ORDEN_SERVICIO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_T_CL_ES_GC_TurnoAtencion_T_CL_CO_GC_Cita", "TB_CITA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_CITA), "TB_TURNO_ATENCION", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_TURNO_ATENCION), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_CITA_00TB_ESPECIALIDAD", "TB_ESPECIALIDAD", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_ESPECIALIDAD), "TB_CITA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CITA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_CITA_00TB_MEDICO", "TB_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_MEDICO), "TB_CITA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CITA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_CITA_TB_Estado_Cita", "TB_ESTADO_CITA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_ESTADO_CITA), "TB_CITA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CITA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_Consulta_TB_CITA", "TB_CITA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_CITA), "TB_CONSULTA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CONSULTA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_Consulta_TB_CONSULTORIO", "TB_CONSULTORIO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_CONSULTORIO), "TB_CONSULTA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CONSULTA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_Consulta_TB_MEDICO", "TB_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_MEDICO), "TB_CONSULTA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CONSULTA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_Consulta_TB_PACIENTE", "TB_PACIENTE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_PACIENTE), "TB_CONSULTA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CONSULTA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_ORDEN_HOSPITALIZACION_TB_Consulta", "TB_CONSULTA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_CONSULTA), "TB_ORDEN_HOSPITALIZACION", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ORDEN_HOSPITALIZACION), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_PRESCRIPCION_MEDICA_TB_Consulta", "TB_CONSULTA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_CONSULTA), "TB_PRESCRIPCION_MEDICA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_PRESCRIPCION_MEDICA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_CONSULTORIO_TB_LOCAL", "TB_LOCAL", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_LOCAL), "TB_CONSULTORIO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CONSULTORIO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_CONSULTORIO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_TIPO_EXAMEN_MEDICO), "TB_CONSULTORIO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CONSULTORIO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_MEDICO_DE_TURNO_TB_CONSULTORIO", "TB_CONSULTORIO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_CONSULTORIO), "TB_MEDICO_DE_TURNO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_MEDICO_DE_TURNO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_CRONOGRAMA_EMERGENCIA_TB_EMPLEADO", "TB_EMPLEADO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_EMPLEADO), "TB_CRONOGRAMA_EMERGENCIA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CRONOGRAMA_EMERGENCIA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_CRONOGRAMA_EMERGENCIA_TB_TURNO_EMERGENCIA", "TB_TURNO_EMERGENCIA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_TURNO_EMERGENCIA), "TB_CRONOGRAMA_EMERGENCIA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CRONOGRAMA_EMERGENCIA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_DET_HISTORIA_CLINICA_TB_HISTORIA_CLINICA", "TB_HISTORIA_CLINICA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_HISTORIA_CLINICA), "TB_DET_HISTORIA_CLINICA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_DET_HISTORIA_CLINICA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_MEDICAMENTO", "TB_MEDICAMENTO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_MEDICAMENTO), "TB_DETALLE_ORDEN_DE_PEDIDO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_DETALLE_ORDEN_DE_PEDIDO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_ORDEN_DE_PEDIDO", "TB_ORDEN_DE_PEDIDO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_ORDEN_DE_PEDIDO), "TB_DETALLE_ORDEN_DE_PEDIDO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_DETALLE_ORDEN_DE_PEDIDO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_MEDICAMENTO", "TB_MEDICAMENTO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_MEDICAMENTO), "TB_DETALLE_ORDEN_DE_SALIDA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_DETALLE_ORDEN_DE_SALIDA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_ORDEN_DE_SALIDA", "TB_ORDEN_DE_SALIDA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_ORDEN_DE_SALIDA), "TB_DETALLE_ORDEN_DE_SALIDA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_DETALLE_ORDEN_DE_SALIDA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_DETORDENSERVICIO_TB_ORDEN_SERVICIO", "TB_ORDEN_SERVICIO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_ORDEN_SERVICIO), "TB_DETORDENSERVICIO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_DETORDENSERVICIO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_DETORDENSERVICIO_TB_SERVICIO", "TB_SERVICIO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_SERVICIO), "TB_DETORDENSERVICIO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_DETORDENSERVICIO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_EMPLEADO_TB_TIPO_EMPLEADO", "TB_TIPO_EMPLEADO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_TIPO_EMPLEADO), "TB_EMPLEADO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_EMPLEADO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_EMPLEADO_TB_TURNO_EMERGENCIA", "TB_TURNO_EMERGENCIA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_TURNO_EMERGENCIA), "TB_EMPLEADO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_EMPLEADO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO", "TB_EMPLEADO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_EMPLEADO), "TB_INFORME_ADMINSITRATIVO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_INFORME_ADMINSITRATIVO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_SOLICITUDES_DE_CAMBIO_TB_EMPLEADO", "TB_EMPLEADO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_EMPLEADO), "TB_SOLICITUDES_DE_CAMBIO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_SOLICITUDES_DE_CAMBIO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_ESPECIALIDAD", "TB_ESPECIALIDAD", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_ESPECIALIDAD), "TB_HOJA_INGRESO_EMERGENCIA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_HOJA_INGRESO_EMERGENCIA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ESPECIALIDAD", "TB_ESPECIALIDAD", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_ESPECIALIDAD), "TB_HOJA_INGRESO_HOSPITALIZACION", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_HOJA_INGRESO_HOSPITALIZACION), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_MEDICOESPECIALIDAD_TB_ESPECIALIDAD", "TB_ESPECIALIDAD", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_ESPECIALIDAD), "TB_MEDICOESPECIALIDAD", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_MEDICOESPECIALIDAD), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_HISTORIA_CLINICA_TB_PACIENTE1", "TB_PACIENTE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_PACIENTE), "TB_HISTORIA_CLINICA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_HISTORIA_CLINICA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_ORDEN_INTERNA_TB_HISTORIA_CLINICA", "TB_HISTORIA_CLINICA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_HISTORIA_CLINICA), "TB_ORDEN_INTERNA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ORDEN_INTERNA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Hoja_Ingreso_Emergencia54", "TB_PACIENTE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_PACIENTE), "TB_HOJA_INGRESO_EMERGENCIA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_HOJA_INGRESO_EMERGENCIA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_MEDICO", "TB_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_MEDICO), "TB_HOJA_INGRESO_EMERGENCIA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_HOJA_INGRESO_EMERGENCIA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Hooja_Ingreso_Hospitalizacion58", "TB_PACIENTE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_PACIENTE), "TB_HOJA_INGRESO_HOSPITALIZACION", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_HOJA_INGRESO_HOSPITALIZACION), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_LOCAL", "TB_LOCAL", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_LOCAL), "TB_HOJA_INGRESO_HOSPITALIZACION", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_HOJA_INGRESO_HOSPITALIZACION), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ORDEN_HOSPITALIZACION", "TB_ORDEN_HOSPITALIZACION", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_ORDEN_HOSPITALIZACION), "TB_HOJA_INGRESO_HOSPITALIZACION", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_HOJA_INGRESO_HOSPITALIZACION), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO", "TB_TIPO_INFORME_ADMINISTRATIVO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_TIPO_INFORME_ADMINISTRATIVO), "TB_INFORME_ADMINSITRATIVO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_INFORME_ADMINSITRATIVO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_INFORM__ID_In__5E8A0973", "TB_INFORME_EQUIPO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_INFORME_EQUIPO), "TB_INFORME_EQUIPO_DET", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_INFORME_EQUIPO_DET), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_INFORME_RESULTADO_TB_ORDEN_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_ORDEN_EXAMEN_MEDICO), "TB_INFORME_RESULTADO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_INFORME_RESULTADO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_LISTA_VERIFICACION_TB_INSTALACION", "TB_INSTALACION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_INSTALACION), "TB_LISTA_VERIFICACION", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_LISTA_VERIFICACION), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_ORDEN_HOSPITALIZACION_TB_LOCAL", "TB_LOCAL", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_LOCAL), "TB_ORDEN_HOSPITALIZACION", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ORDEN_HOSPITALIZACION), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_PRESCRIPCION_MEDICA_TB_MEDICAMENTO", "TB_MEDICAMENTO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_MEDICAMENTO), "TB_PRESCRIPCION_MEDICA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_PRESCRIPCION_MEDICA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_MEDICO_DE_TURNO_TB_MEDICO", "TB_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_MEDICO), "TB_MEDICO_DE_TURNO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_MEDICO_DE_TURNO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_MEDICOESPECIALIDAD_TB_MEDICO", "TB_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_MEDICO), "TB_MEDICOESPECIALIDAD", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_MEDICOESPECIALIDAD), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_ORDEN_DE_PROCEDIMIENTO_00TB_MEDICO", "TB_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_MEDICO), "TB_ORDEN_DE_PROCEDIMIENTO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ORDEN_DE_PROCEDIMIENTO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_ORDEN_EXAMEN_MEDICO_TB_MEDICO1", "TB_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_MEDICO), "TB_ORDEN_EXAMEN_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ORDEN_EXAMEN_MEDICO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_PRESCRIPCION_MEDICA_00TB_MEDICO", "TB_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_MEDICO), "TB_PRESCRIPCION_MEDICA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_PRESCRIPCION_MEDICA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_TURNOATENCION_00TB_MEDICO", "TB_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_MEDICO), "TB_TURNO_ATENCION", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_TURNO_ATENCION), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_MEDICO_DE_TURNO", "TB_MEDICO_DE_TURNO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_MEDICO_DE_TURNO), "TB_PROGRAMACION_ATENCION_EXAMENES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_PROGRAMACION_ATENCION_EXAMENES), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_ORDEN_HOSPITALIZACION_TB_MOTIVO_HOSPITALIZACION", "TB_MOTIVO_HOSPITALIZACION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_MOTIVO_HOSPITALIZACION), "TB_ORDEN_HOSPITALIZACION", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ORDEN_HOSPITALIZACION), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Orden_de_Procedimiento53", "TB_PACIENTE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_PACIENTE), "TB_ORDEN_DE_PROCEDIMIENTO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ORDEN_DE_PROCEDIMIENTO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_ORDEN_EXAMEN_MEDICO_TB_ORDEN_INTERNA", "TB_ORDEN_INTERNA", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_ORDEN_INTERNA), "TB_ORDEN_EXAMEN_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ORDEN_EXAMEN_MEDICO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_ORDEN_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_TIPO_EXAMEN_MEDICO), "TB_ORDEN_EXAMEN_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ORDEN_EXAMEN_MEDICO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_ORDEN_SERVICIO_TB_ORDEN_EXAMEN_MEDICO1", "TB_ORDEN_EXAMEN_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_ORDEN_EXAMEN_MEDICO), "TB_ORDEN_SERVICIO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ORDEN_SERVICIO), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_ORDEN_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_ORDEN_EXAMEN_MEDICO), "TB_PROGRAMACION_ATENCION_EXAMENES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_PROGRAMACION_ATENCION_EXAMENES), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Orden_Hospitalizacion56", "TB_PACIENTE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_PACIENTE), "TB_ORDEN_HOSPITALIZACION", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ORDEN_HOSPITALIZACION), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK__TB_ORDEN___ID_Or__73852659", "TB_ORDEN_TRABAJO", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_ORDEN_TRABAJO), "TB_ORDEN_TRABAJO_DET", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_ORDEN_TRABAJO_DET), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_T_CL_CO_GC_Paciente_T_CL_ES_GC_TipoDocumento", "TB_TIPO_DOCUMENTO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_TIPO_DOCUMENTO), "TB_PACIENTE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_PACIENTE), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Prescripcion_Medica57", "TB_PACIENTE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CI.SIC.DA.TB_PACIENTE), "TB_PRESCRIPCION_MEDICA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_PRESCRIPCION_MEDICA), true)]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "TB_CATALOGO_REQUISITO", "TB_CATALOGO_EXAMEN_MEDICO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_CATALOGO_EXAMEN_MEDICO), "TB_REQUISITO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_REQUISITO))]
+[assembly: EdmRelationshipAttribute("DB_SGHModel", "FK_TB_AGENDA_MEDICA_TB_ESPECIALIDAD", "TB_ESPECIALIDAD", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CI.SIC.DA.TB_ESPECIALIDAD), "TB_AGENDA_MEDICA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CI.SIC.DA.TB_AGENDA_MEDICA), true)]
 
 #endregion
 
@@ -98,426 +156,1875 @@ namespace CI.SIC.DA
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Agenda_Medica> TB_Agenda_Medica
+        public ObjectSet<sysdiagrams> sysdiagrams
         {
             get
             {
-                if ((_TB_Agenda_Medica == null))
+                if ((_sysdiagrams == null))
                 {
-                    _TB_Agenda_Medica = base.CreateObjectSet<TB_Agenda_Medica>("TB_Agenda_Medica");
+                    _sysdiagrams = base.CreateObjectSet<sysdiagrams>("sysdiagrams");
                 }
-                return _TB_Agenda_Medica;
+                return _sysdiagrams;
             }
         }
-        private ObjectSet<TB_Agenda_Medica> _TB_Agenda_Medica;
+        private ObjectSet<sysdiagrams> _sysdiagrams;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Analisis> TB_Analisis
+        public ObjectSet<TB_ACTIVIDADES_PLANIFICADAS> TB_ACTIVIDADES_PLANIFICADAS
         {
             get
             {
-                if ((_TB_Analisis == null))
+                if ((_TB_ACTIVIDADES_PLANIFICADAS == null))
                 {
-                    _TB_Analisis = base.CreateObjectSet<TB_Analisis>("TB_Analisis");
+                    _TB_ACTIVIDADES_PLANIFICADAS = base.CreateObjectSet<TB_ACTIVIDADES_PLANIFICADAS>("TB_ACTIVIDADES_PLANIFICADAS");
                 }
-                return _TB_Analisis;
+                return _TB_ACTIVIDADES_PLANIFICADAS;
             }
         }
-        private ObjectSet<TB_Analisis> _TB_Analisis;
+        private ObjectSet<TB_ACTIVIDADES_PLANIFICADAS> _TB_ACTIVIDADES_PLANIFICADAS;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Cita> TB_Cita
+        public ObjectSet<TB_ACTIVO> TB_ACTIVO
         {
             get
             {
-                if ((_TB_Cita == null))
+                if ((_TB_ACTIVO == null))
                 {
-                    _TB_Cita = base.CreateObjectSet<TB_Cita>("TB_Cita");
+                    _TB_ACTIVO = base.CreateObjectSet<TB_ACTIVO>("TB_ACTIVO");
                 }
-                return _TB_Cita;
+                return _TB_ACTIVO;
             }
         }
-        private ObjectSet<TB_Cita> _TB_Cita;
+        private ObjectSet<TB_ACTIVO> _TB_ACTIVO;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Consulta> TB_Consulta
+        public ObjectSet<TB_AGENDA_MEDICA> TB_AGENDA_MEDICA
         {
             get
             {
-                if ((_TB_Consulta == null))
+                if ((_TB_AGENDA_MEDICA == null))
                 {
-                    _TB_Consulta = base.CreateObjectSet<TB_Consulta>("TB_Consulta");
+                    _TB_AGENDA_MEDICA = base.CreateObjectSet<TB_AGENDA_MEDICA>("TB_AGENDA_MEDICA");
                 }
-                return _TB_Consulta;
+                return _TB_AGENDA_MEDICA;
             }
         }
-        private ObjectSet<TB_Consulta> _TB_Consulta;
+        private ObjectSet<TB_AGENDA_MEDICA> _TB_AGENDA_MEDICA;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Consultorio> TB_Consultorio
+        public ObjectSet<TB_ANALISIS> TB_ANALISIS
         {
             get
             {
-                if ((_TB_Consultorio == null))
+                if ((_TB_ANALISIS == null))
                 {
-                    _TB_Consultorio = base.CreateObjectSet<TB_Consultorio>("TB_Consultorio");
+                    _TB_ANALISIS = base.CreateObjectSet<TB_ANALISIS>("TB_ANALISIS");
                 }
-                return _TB_Consultorio;
+                return _TB_ANALISIS;
             }
         }
-        private ObjectSet<TB_Consultorio> _TB_Consultorio;
+        private ObjectSet<TB_ANALISIS> _TB_ANALISIS;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Especialidad> TB_Especialidad
+        public ObjectSet<TB_AREA> TB_AREA
         {
             get
             {
-                if ((_TB_Especialidad == null))
+                if ((_TB_AREA == null))
                 {
-                    _TB_Especialidad = base.CreateObjectSet<TB_Especialidad>("TB_Especialidad");
+                    _TB_AREA = base.CreateObjectSet<TB_AREA>("TB_AREA");
                 }
-                return _TB_Especialidad;
+                return _TB_AREA;
             }
         }
-        private ObjectSet<TB_Especialidad> _TB_Especialidad;
+        private ObjectSet<TB_AREA> _TB_AREA;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Estado_Cita> TB_Estado_Cita
+        public ObjectSet<TB_Atencion_Emergencia> TB_Atencion_Emergencia
         {
             get
             {
-                if ((_TB_Estado_Cita == null))
+                if ((_TB_Atencion_Emergencia == null))
                 {
-                    _TB_Estado_Cita = base.CreateObjectSet<TB_Estado_Cita>("TB_Estado_Cita");
+                    _TB_Atencion_Emergencia = base.CreateObjectSet<TB_Atencion_Emergencia>("TB_Atencion_Emergencia");
                 }
-                return _TB_Estado_Cita;
+                return _TB_Atencion_Emergencia;
             }
         }
-        private ObjectSet<TB_Estado_Cita> _TB_Estado_Cita;
+        private ObjectSet<TB_Atencion_Emergencia> _TB_Atencion_Emergencia;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Local> TB_Local
+        public ObjectSet<TB_CAMA> TB_CAMA
         {
             get
             {
-                if ((_TB_Local == null))
+                if ((_TB_CAMA == null))
                 {
-                    _TB_Local = base.CreateObjectSet<TB_Local>("TB_Local");
+                    _TB_CAMA = base.CreateObjectSet<TB_CAMA>("TB_CAMA");
                 }
-                return _TB_Local;
+                return _TB_CAMA;
             }
         }
-        private ObjectSet<TB_Local> _TB_Local;
+        private ObjectSet<TB_CAMA> _TB_CAMA;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Medicamento> TB_Medicamento
+        public ObjectSet<TB_CARTA_GARANTIA> TB_CARTA_GARANTIA
         {
             get
             {
-                if ((_TB_Medicamento == null))
+                if ((_TB_CARTA_GARANTIA == null))
                 {
-                    _TB_Medicamento = base.CreateObjectSet<TB_Medicamento>("TB_Medicamento");
+                    _TB_CARTA_GARANTIA = base.CreateObjectSet<TB_CARTA_GARANTIA>("TB_CARTA_GARANTIA");
                 }
-                return _TB_Medicamento;
+                return _TB_CARTA_GARANTIA;
             }
         }
-        private ObjectSet<TB_Medicamento> _TB_Medicamento;
+        private ObjectSet<TB_CARTA_GARANTIA> _TB_CARTA_GARANTIA;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Medico> TB_Medico
+        public ObjectSet<TB_CATALOGO_EXAMEN_MEDICO> TB_CATALOGO_EXAMEN_MEDICO
         {
             get
             {
-                if ((_TB_Medico == null))
+                if ((_TB_CATALOGO_EXAMEN_MEDICO == null))
                 {
-                    _TB_Medico = base.CreateObjectSet<TB_Medico>("TB_Medico");
+                    _TB_CATALOGO_EXAMEN_MEDICO = base.CreateObjectSet<TB_CATALOGO_EXAMEN_MEDICO>("TB_CATALOGO_EXAMEN_MEDICO");
                 }
-                return _TB_Medico;
+                return _TB_CATALOGO_EXAMEN_MEDICO;
             }
         }
-        private ObjectSet<TB_Medico> _TB_Medico;
+        private ObjectSet<TB_CATALOGO_EXAMEN_MEDICO> _TB_CATALOGO_EXAMEN_MEDICO;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Motivo_Hospitalizacion> TB_Motivo_Hospitalizacion
+        public ObjectSet<TB_CENTRO_COSTO> TB_CENTRO_COSTO
         {
             get
             {
-                if ((_TB_Motivo_Hospitalizacion == null))
+                if ((_TB_CENTRO_COSTO == null))
                 {
-                    _TB_Motivo_Hospitalizacion = base.CreateObjectSet<TB_Motivo_Hospitalizacion>("TB_Motivo_Hospitalizacion");
+                    _TB_CENTRO_COSTO = base.CreateObjectSet<TB_CENTRO_COSTO>("TB_CENTRO_COSTO");
                 }
-                return _TB_Motivo_Hospitalizacion;
+                return _TB_CENTRO_COSTO;
             }
         }
-        private ObjectSet<TB_Motivo_Hospitalizacion> _TB_Motivo_Hospitalizacion;
+        private ObjectSet<TB_CENTRO_COSTO> _TB_CENTRO_COSTO;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Orden_Hopitalizacion> TB_Orden_Hopitalizacion
+        public ObjectSet<TB_CITA> TB_CITA
         {
             get
             {
-                if ((_TB_Orden_Hopitalizacion == null))
+                if ((_TB_CITA == null))
                 {
-                    _TB_Orden_Hopitalizacion = base.CreateObjectSet<TB_Orden_Hopitalizacion>("TB_Orden_Hopitalizacion");
+                    _TB_CITA = base.CreateObjectSet<TB_CITA>("TB_CITA");
                 }
-                return _TB_Orden_Hopitalizacion;
+                return _TB_CITA;
             }
         }
-        private ObjectSet<TB_Orden_Hopitalizacion> _TB_Orden_Hopitalizacion;
+        private ObjectSet<TB_CITA> _TB_CITA;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Paciente> TB_Paciente
+        public ObjectSet<TB_COMPROBANTE_DE_PAGO> TB_COMPROBANTE_DE_PAGO
         {
             get
             {
-                if ((_TB_Paciente == null))
+                if ((_TB_COMPROBANTE_DE_PAGO == null))
                 {
-                    _TB_Paciente = base.CreateObjectSet<TB_Paciente>("TB_Paciente");
+                    _TB_COMPROBANTE_DE_PAGO = base.CreateObjectSet<TB_COMPROBANTE_DE_PAGO>("TB_COMPROBANTE_DE_PAGO");
                 }
-                return _TB_Paciente;
+                return _TB_COMPROBANTE_DE_PAGO;
             }
         }
-        private ObjectSet<TB_Paciente> _TB_Paciente;
+        private ObjectSet<TB_COMPROBANTE_DE_PAGO> _TB_COMPROBANTE_DE_PAGO;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Prescripcion_Medica> TB_Prescripcion_Medica
+        public ObjectSet<TB_CONSULTA> TB_CONSULTA
         {
             get
             {
-                if ((_TB_Prescripcion_Medica == null))
+                if ((_TB_CONSULTA == null))
                 {
-                    _TB_Prescripcion_Medica = base.CreateObjectSet<TB_Prescripcion_Medica>("TB_Prescripcion_Medica");
+                    _TB_CONSULTA = base.CreateObjectSet<TB_CONSULTA>("TB_CONSULTA");
                 }
-                return _TB_Prescripcion_Medica;
+                return _TB_CONSULTA;
             }
         }
-        private ObjectSet<TB_Prescripcion_Medica> _TB_Prescripcion_Medica;
+        private ObjectSet<TB_CONSULTA> _TB_CONSULTA;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Tipo_Analisis> TB_Tipo_Analisis
+        public ObjectSet<TB_CONSULTORIO> TB_CONSULTORIO
         {
             get
             {
-                if ((_TB_Tipo_Analisis == null))
+                if ((_TB_CONSULTORIO == null))
                 {
-                    _TB_Tipo_Analisis = base.CreateObjectSet<TB_Tipo_Analisis>("TB_Tipo_Analisis");
+                    _TB_CONSULTORIO = base.CreateObjectSet<TB_CONSULTORIO>("TB_CONSULTORIO");
                 }
-                return _TB_Tipo_Analisis;
+                return _TB_CONSULTORIO;
             }
         }
-        private ObjectSet<TB_Tipo_Analisis> _TB_Tipo_Analisis;
+        private ObjectSet<TB_CONSULTORIO> _TB_CONSULTORIO;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<TB_Turno_Citas> TB_Turno_Citas
+        public ObjectSet<TB_CRONOGRAMA_EMERGENCIA> TB_CRONOGRAMA_EMERGENCIA
         {
             get
             {
-                if ((_TB_Turno_Citas == null))
+                if ((_TB_CRONOGRAMA_EMERGENCIA == null))
                 {
-                    _TB_Turno_Citas = base.CreateObjectSet<TB_Turno_Citas>("TB_Turno_Citas");
+                    _TB_CRONOGRAMA_EMERGENCIA = base.CreateObjectSet<TB_CRONOGRAMA_EMERGENCIA>("TB_CRONOGRAMA_EMERGENCIA");
                 }
-                return _TB_Turno_Citas;
+                return _TB_CRONOGRAMA_EMERGENCIA;
             }
         }
-        private ObjectSet<TB_Turno_Citas> _TB_Turno_Citas;
+        private ObjectSet<TB_CRONOGRAMA_EMERGENCIA> _TB_CRONOGRAMA_EMERGENCIA;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_DET_HISTORIA_CLINICA> TB_DET_HISTORIA_CLINICA
+        {
+            get
+            {
+                if ((_TB_DET_HISTORIA_CLINICA == null))
+                {
+                    _TB_DET_HISTORIA_CLINICA = base.CreateObjectSet<TB_DET_HISTORIA_CLINICA>("TB_DET_HISTORIA_CLINICA");
+                }
+                return _TB_DET_HISTORIA_CLINICA;
+            }
+        }
+        private ObjectSet<TB_DET_HISTORIA_CLINICA> _TB_DET_HISTORIA_CLINICA;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_DET_ORDEN_TRABAJO> TB_DET_ORDEN_TRABAJO
+        {
+            get
+            {
+                if ((_TB_DET_ORDEN_TRABAJO == null))
+                {
+                    _TB_DET_ORDEN_TRABAJO = base.CreateObjectSet<TB_DET_ORDEN_TRABAJO>("TB_DET_ORDEN_TRABAJO");
+                }
+                return _TB_DET_ORDEN_TRABAJO;
+            }
+        }
+        private ObjectSet<TB_DET_ORDEN_TRABAJO> _TB_DET_ORDEN_TRABAJO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_DETALLE_FICHA_EQUIPO> TB_DETALLE_FICHA_EQUIPO
+        {
+            get
+            {
+                if ((_TB_DETALLE_FICHA_EQUIPO == null))
+                {
+                    _TB_DETALLE_FICHA_EQUIPO = base.CreateObjectSet<TB_DETALLE_FICHA_EQUIPO>("TB_DETALLE_FICHA_EQUIPO");
+                }
+                return _TB_DETALLE_FICHA_EQUIPO;
+            }
+        }
+        private ObjectSet<TB_DETALLE_FICHA_EQUIPO> _TB_DETALLE_FICHA_EQUIPO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_DETALLE_ORDEN_DE_PEDIDO> TB_DETALLE_ORDEN_DE_PEDIDO
+        {
+            get
+            {
+                if ((_TB_DETALLE_ORDEN_DE_PEDIDO == null))
+                {
+                    _TB_DETALLE_ORDEN_DE_PEDIDO = base.CreateObjectSet<TB_DETALLE_ORDEN_DE_PEDIDO>("TB_DETALLE_ORDEN_DE_PEDIDO");
+                }
+                return _TB_DETALLE_ORDEN_DE_PEDIDO;
+            }
+        }
+        private ObjectSet<TB_DETALLE_ORDEN_DE_PEDIDO> _TB_DETALLE_ORDEN_DE_PEDIDO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_DETALLE_ORDEN_DE_SALIDA> TB_DETALLE_ORDEN_DE_SALIDA
+        {
+            get
+            {
+                if ((_TB_DETALLE_ORDEN_DE_SALIDA == null))
+                {
+                    _TB_DETALLE_ORDEN_DE_SALIDA = base.CreateObjectSet<TB_DETALLE_ORDEN_DE_SALIDA>("TB_DETALLE_ORDEN_DE_SALIDA");
+                }
+                return _TB_DETALLE_ORDEN_DE_SALIDA;
+            }
+        }
+        private ObjectSet<TB_DETALLE_ORDEN_DE_SALIDA> _TB_DETALLE_ORDEN_DE_SALIDA;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_Detalle_Solicitud_Mantenimiento> TB_Detalle_Solicitud_Mantenimiento
+        {
+            get
+            {
+                if ((_TB_Detalle_Solicitud_Mantenimiento == null))
+                {
+                    _TB_Detalle_Solicitud_Mantenimiento = base.CreateObjectSet<TB_Detalle_Solicitud_Mantenimiento>("TB_Detalle_Solicitud_Mantenimiento");
+                }
+                return _TB_Detalle_Solicitud_Mantenimiento;
+            }
+        }
+        private ObjectSet<TB_Detalle_Solicitud_Mantenimiento> _TB_Detalle_Solicitud_Mantenimiento;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_DETORDENSERVICIO> TB_DETORDENSERVICIO
+        {
+            get
+            {
+                if ((_TB_DETORDENSERVICIO == null))
+                {
+                    _TB_DETORDENSERVICIO = base.CreateObjectSet<TB_DETORDENSERVICIO>("TB_DETORDENSERVICIO");
+                }
+                return _TB_DETORDENSERVICIO;
+            }
+        }
+        private ObjectSet<TB_DETORDENSERVICIO> _TB_DETORDENSERVICIO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_EMPLEADO> TB_EMPLEADO
+        {
+            get
+            {
+                if ((_TB_EMPLEADO == null))
+                {
+                    _TB_EMPLEADO = base.CreateObjectSet<TB_EMPLEADO>("TB_EMPLEADO");
+                }
+                return _TB_EMPLEADO;
+            }
+        }
+        private ObjectSet<TB_EMPLEADO> _TB_EMPLEADO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_ESPECIALIDAD> TB_ESPECIALIDAD
+        {
+            get
+            {
+                if ((_TB_ESPECIALIDAD == null))
+                {
+                    _TB_ESPECIALIDAD = base.CreateObjectSet<TB_ESPECIALIDAD>("TB_ESPECIALIDAD");
+                }
+                return _TB_ESPECIALIDAD;
+            }
+        }
+        private ObjectSet<TB_ESPECIALIDAD> _TB_ESPECIALIDAD;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_ESTADO_CITA> TB_ESTADO_CITA
+        {
+            get
+            {
+                if ((_TB_ESTADO_CITA == null))
+                {
+                    _TB_ESTADO_CITA = base.CreateObjectSet<TB_ESTADO_CITA>("TB_ESTADO_CITA");
+                }
+                return _TB_ESTADO_CITA;
+            }
+        }
+        private ObjectSet<TB_ESTADO_CITA> _TB_ESTADO_CITA;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_FICHA_EQUIPO> TB_FICHA_EQUIPO
+        {
+            get
+            {
+                if ((_TB_FICHA_EQUIPO == null))
+                {
+                    _TB_FICHA_EQUIPO = base.CreateObjectSet<TB_FICHA_EQUIPO>("TB_FICHA_EQUIPO");
+                }
+                return _TB_FICHA_EQUIPO;
+            }
+        }
+        private ObjectSet<TB_FICHA_EQUIPO> _TB_FICHA_EQUIPO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_HISTORIA_CLINICA> TB_HISTORIA_CLINICA
+        {
+            get
+            {
+                if ((_TB_HISTORIA_CLINICA == null))
+                {
+                    _TB_HISTORIA_CLINICA = base.CreateObjectSet<TB_HISTORIA_CLINICA>("TB_HISTORIA_CLINICA");
+                }
+                return _TB_HISTORIA_CLINICA;
+            }
+        }
+        private ObjectSet<TB_HISTORIA_CLINICA> _TB_HISTORIA_CLINICA;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_HOJA_INGRESO_EMERGENCIA> TB_HOJA_INGRESO_EMERGENCIA
+        {
+            get
+            {
+                if ((_TB_HOJA_INGRESO_EMERGENCIA == null))
+                {
+                    _TB_HOJA_INGRESO_EMERGENCIA = base.CreateObjectSet<TB_HOJA_INGRESO_EMERGENCIA>("TB_HOJA_INGRESO_EMERGENCIA");
+                }
+                return _TB_HOJA_INGRESO_EMERGENCIA;
+            }
+        }
+        private ObjectSet<TB_HOJA_INGRESO_EMERGENCIA> _TB_HOJA_INGRESO_EMERGENCIA;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_HOJA_INGRESO_HOSPITALIZACION> TB_HOJA_INGRESO_HOSPITALIZACION
+        {
+            get
+            {
+                if ((_TB_HOJA_INGRESO_HOSPITALIZACION == null))
+                {
+                    _TB_HOJA_INGRESO_HOSPITALIZACION = base.CreateObjectSet<TB_HOJA_INGRESO_HOSPITALIZACION>("TB_HOJA_INGRESO_HOSPITALIZACION");
+                }
+                return _TB_HOJA_INGRESO_HOSPITALIZACION;
+            }
+        }
+        private ObjectSet<TB_HOJA_INGRESO_HOSPITALIZACION> _TB_HOJA_INGRESO_HOSPITALIZACION;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_INFORME> TB_INFORME
+        {
+            get
+            {
+                if ((_TB_INFORME == null))
+                {
+                    _TB_INFORME = base.CreateObjectSet<TB_INFORME>("TB_INFORME");
+                }
+                return _TB_INFORME;
+            }
+        }
+        private ObjectSet<TB_INFORME> _TB_INFORME;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_INFORME_ADMINSITRATIVO> TB_INFORME_ADMINSITRATIVO
+        {
+            get
+            {
+                if ((_TB_INFORME_ADMINSITRATIVO == null))
+                {
+                    _TB_INFORME_ADMINSITRATIVO = base.CreateObjectSet<TB_INFORME_ADMINSITRATIVO>("TB_INFORME_ADMINSITRATIVO");
+                }
+                return _TB_INFORME_ADMINSITRATIVO;
+            }
+        }
+        private ObjectSet<TB_INFORME_ADMINSITRATIVO> _TB_INFORME_ADMINSITRATIVO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_INFORME_DET> TB_INFORME_DET
+        {
+            get
+            {
+                if ((_TB_INFORME_DET == null))
+                {
+                    _TB_INFORME_DET = base.CreateObjectSet<TB_INFORME_DET>("TB_INFORME_DET");
+                }
+                return _TB_INFORME_DET;
+            }
+        }
+        private ObjectSet<TB_INFORME_DET> _TB_INFORME_DET;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_INFORME_EQUIPO> TB_INFORME_EQUIPO
+        {
+            get
+            {
+                if ((_TB_INFORME_EQUIPO == null))
+                {
+                    _TB_INFORME_EQUIPO = base.CreateObjectSet<TB_INFORME_EQUIPO>("TB_INFORME_EQUIPO");
+                }
+                return _TB_INFORME_EQUIPO;
+            }
+        }
+        private ObjectSet<TB_INFORME_EQUIPO> _TB_INFORME_EQUIPO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_INFORME_EQUIPO_DET> TB_INFORME_EQUIPO_DET
+        {
+            get
+            {
+                if ((_TB_INFORME_EQUIPO_DET == null))
+                {
+                    _TB_INFORME_EQUIPO_DET = base.CreateObjectSet<TB_INFORME_EQUIPO_DET>("TB_INFORME_EQUIPO_DET");
+                }
+                return _TB_INFORME_EQUIPO_DET;
+            }
+        }
+        private ObjectSet<TB_INFORME_EQUIPO_DET> _TB_INFORME_EQUIPO_DET;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_INFORME_RESULTADO> TB_INFORME_RESULTADO
+        {
+            get
+            {
+                if ((_TB_INFORME_RESULTADO == null))
+                {
+                    _TB_INFORME_RESULTADO = base.CreateObjectSet<TB_INFORME_RESULTADO>("TB_INFORME_RESULTADO");
+                }
+                return _TB_INFORME_RESULTADO;
+            }
+        }
+        private ObjectSet<TB_INFORME_RESULTADO> _TB_INFORME_RESULTADO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_INSTALACION> TB_INSTALACION
+        {
+            get
+            {
+                if ((_TB_INSTALACION == null))
+                {
+                    _TB_INSTALACION = base.CreateObjectSet<TB_INSTALACION>("TB_INSTALACION");
+                }
+                return _TB_INSTALACION;
+            }
+        }
+        private ObjectSet<TB_INSTALACION> _TB_INSTALACION;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_LISTA_VERIFICACION> TB_LISTA_VERIFICACION
+        {
+            get
+            {
+                if ((_TB_LISTA_VERIFICACION == null))
+                {
+                    _TB_LISTA_VERIFICACION = base.CreateObjectSet<TB_LISTA_VERIFICACION>("TB_LISTA_VERIFICACION");
+                }
+                return _TB_LISTA_VERIFICACION;
+            }
+        }
+        private ObjectSet<TB_LISTA_VERIFICACION> _TB_LISTA_VERIFICACION;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_LOCAL> TB_LOCAL
+        {
+            get
+            {
+                if ((_TB_LOCAL == null))
+                {
+                    _TB_LOCAL = base.CreateObjectSet<TB_LOCAL>("TB_LOCAL");
+                }
+                return _TB_LOCAL;
+            }
+        }
+        private ObjectSet<TB_LOCAL> _TB_LOCAL;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_MAESTRO_TABLAS> TB_MAESTRO_TABLAS
+        {
+            get
+            {
+                if ((_TB_MAESTRO_TABLAS == null))
+                {
+                    _TB_MAESTRO_TABLAS = base.CreateObjectSet<TB_MAESTRO_TABLAS>("TB_MAESTRO_TABLAS");
+                }
+                return _TB_MAESTRO_TABLAS;
+            }
+        }
+        private ObjectSet<TB_MAESTRO_TABLAS> _TB_MAESTRO_TABLAS;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_MEDICAMENTO> TB_MEDICAMENTO
+        {
+            get
+            {
+                if ((_TB_MEDICAMENTO == null))
+                {
+                    _TB_MEDICAMENTO = base.CreateObjectSet<TB_MEDICAMENTO>("TB_MEDICAMENTO");
+                }
+                return _TB_MEDICAMENTO;
+            }
+        }
+        private ObjectSet<TB_MEDICAMENTO> _TB_MEDICAMENTO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_MEDICO> TB_MEDICO
+        {
+            get
+            {
+                if ((_TB_MEDICO == null))
+                {
+                    _TB_MEDICO = base.CreateObjectSet<TB_MEDICO>("TB_MEDICO");
+                }
+                return _TB_MEDICO;
+            }
+        }
+        private ObjectSet<TB_MEDICO> _TB_MEDICO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_MEDICO_DE_TURNO> TB_MEDICO_DE_TURNO
+        {
+            get
+            {
+                if ((_TB_MEDICO_DE_TURNO == null))
+                {
+                    _TB_MEDICO_DE_TURNO = base.CreateObjectSet<TB_MEDICO_DE_TURNO>("TB_MEDICO_DE_TURNO");
+                }
+                return _TB_MEDICO_DE_TURNO;
+            }
+        }
+        private ObjectSet<TB_MEDICO_DE_TURNO> _TB_MEDICO_DE_TURNO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_MEDICOESPECIALIDAD> TB_MEDICOESPECIALIDAD
+        {
+            get
+            {
+                if ((_TB_MEDICOESPECIALIDAD == null))
+                {
+                    _TB_MEDICOESPECIALIDAD = base.CreateObjectSet<TB_MEDICOESPECIALIDAD>("TB_MEDICOESPECIALIDAD");
+                }
+                return _TB_MEDICOESPECIALIDAD;
+            }
+        }
+        private ObjectSet<TB_MEDICOESPECIALIDAD> _TB_MEDICOESPECIALIDAD;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_MOTIVO_HOSPITALIZACION> TB_MOTIVO_HOSPITALIZACION
+        {
+            get
+            {
+                if ((_TB_MOTIVO_HOSPITALIZACION == null))
+                {
+                    _TB_MOTIVO_HOSPITALIZACION = base.CreateObjectSet<TB_MOTIVO_HOSPITALIZACION>("TB_MOTIVO_HOSPITALIZACION");
+                }
+                return _TB_MOTIVO_HOSPITALIZACION;
+            }
+        }
+        private ObjectSet<TB_MOTIVO_HOSPITALIZACION> _TB_MOTIVO_HOSPITALIZACION;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_ORDEN_DE_PEDIDO> TB_ORDEN_DE_PEDIDO
+        {
+            get
+            {
+                if ((_TB_ORDEN_DE_PEDIDO == null))
+                {
+                    _TB_ORDEN_DE_PEDIDO = base.CreateObjectSet<TB_ORDEN_DE_PEDIDO>("TB_ORDEN_DE_PEDIDO");
+                }
+                return _TB_ORDEN_DE_PEDIDO;
+            }
+        }
+        private ObjectSet<TB_ORDEN_DE_PEDIDO> _TB_ORDEN_DE_PEDIDO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_ORDEN_DE_PROCEDIMIENTO> TB_ORDEN_DE_PROCEDIMIENTO
+        {
+            get
+            {
+                if ((_TB_ORDEN_DE_PROCEDIMIENTO == null))
+                {
+                    _TB_ORDEN_DE_PROCEDIMIENTO = base.CreateObjectSet<TB_ORDEN_DE_PROCEDIMIENTO>("TB_ORDEN_DE_PROCEDIMIENTO");
+                }
+                return _TB_ORDEN_DE_PROCEDIMIENTO;
+            }
+        }
+        private ObjectSet<TB_ORDEN_DE_PROCEDIMIENTO> _TB_ORDEN_DE_PROCEDIMIENTO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_ORDEN_DE_SALIDA> TB_ORDEN_DE_SALIDA
+        {
+            get
+            {
+                if ((_TB_ORDEN_DE_SALIDA == null))
+                {
+                    _TB_ORDEN_DE_SALIDA = base.CreateObjectSet<TB_ORDEN_DE_SALIDA>("TB_ORDEN_DE_SALIDA");
+                }
+                return _TB_ORDEN_DE_SALIDA;
+            }
+        }
+        private ObjectSet<TB_ORDEN_DE_SALIDA> _TB_ORDEN_DE_SALIDA;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_ORDEN_EXAMEN_MEDICO> TB_ORDEN_EXAMEN_MEDICO
+        {
+            get
+            {
+                if ((_TB_ORDEN_EXAMEN_MEDICO == null))
+                {
+                    _TB_ORDEN_EXAMEN_MEDICO = base.CreateObjectSet<TB_ORDEN_EXAMEN_MEDICO>("TB_ORDEN_EXAMEN_MEDICO");
+                }
+                return _TB_ORDEN_EXAMEN_MEDICO;
+            }
+        }
+        private ObjectSet<TB_ORDEN_EXAMEN_MEDICO> _TB_ORDEN_EXAMEN_MEDICO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_ORDEN_HOSPITALIZACION> TB_ORDEN_HOSPITALIZACION
+        {
+            get
+            {
+                if ((_TB_ORDEN_HOSPITALIZACION == null))
+                {
+                    _TB_ORDEN_HOSPITALIZACION = base.CreateObjectSet<TB_ORDEN_HOSPITALIZACION>("TB_ORDEN_HOSPITALIZACION");
+                }
+                return _TB_ORDEN_HOSPITALIZACION;
+            }
+        }
+        private ObjectSet<TB_ORDEN_HOSPITALIZACION> _TB_ORDEN_HOSPITALIZACION;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_ORDEN_INTERNA> TB_ORDEN_INTERNA
+        {
+            get
+            {
+                if ((_TB_ORDEN_INTERNA == null))
+                {
+                    _TB_ORDEN_INTERNA = base.CreateObjectSet<TB_ORDEN_INTERNA>("TB_ORDEN_INTERNA");
+                }
+                return _TB_ORDEN_INTERNA;
+            }
+        }
+        private ObjectSet<TB_ORDEN_INTERNA> _TB_ORDEN_INTERNA;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_ORDEN_SERVICIO> TB_ORDEN_SERVICIO
+        {
+            get
+            {
+                if ((_TB_ORDEN_SERVICIO == null))
+                {
+                    _TB_ORDEN_SERVICIO = base.CreateObjectSet<TB_ORDEN_SERVICIO>("TB_ORDEN_SERVICIO");
+                }
+                return _TB_ORDEN_SERVICIO;
+            }
+        }
+        private ObjectSet<TB_ORDEN_SERVICIO> _TB_ORDEN_SERVICIO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_ORDEN_TRABAJO> TB_ORDEN_TRABAJO
+        {
+            get
+            {
+                if ((_TB_ORDEN_TRABAJO == null))
+                {
+                    _TB_ORDEN_TRABAJO = base.CreateObjectSet<TB_ORDEN_TRABAJO>("TB_ORDEN_TRABAJO");
+                }
+                return _TB_ORDEN_TRABAJO;
+            }
+        }
+        private ObjectSet<TB_ORDEN_TRABAJO> _TB_ORDEN_TRABAJO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_ORDEN_TRABAJO_DET> TB_ORDEN_TRABAJO_DET
+        {
+            get
+            {
+                if ((_TB_ORDEN_TRABAJO_DET == null))
+                {
+                    _TB_ORDEN_TRABAJO_DET = base.CreateObjectSet<TB_ORDEN_TRABAJO_DET>("TB_ORDEN_TRABAJO_DET");
+                }
+                return _TB_ORDEN_TRABAJO_DET;
+            }
+        }
+        private ObjectSet<TB_ORDEN_TRABAJO_DET> _TB_ORDEN_TRABAJO_DET;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_PACIENTE> TB_PACIENTE
+        {
+            get
+            {
+                if ((_TB_PACIENTE == null))
+                {
+                    _TB_PACIENTE = base.CreateObjectSet<TB_PACIENTE>("TB_PACIENTE");
+                }
+                return _TB_PACIENTE;
+            }
+        }
+        private ObjectSet<TB_PACIENTE> _TB_PACIENTE;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_PLAN_MANTENIMIENTO> TB_PLAN_MANTENIMIENTO
+        {
+            get
+            {
+                if ((_TB_PLAN_MANTENIMIENTO == null))
+                {
+                    _TB_PLAN_MANTENIMIENTO = base.CreateObjectSet<TB_PLAN_MANTENIMIENTO>("TB_PLAN_MANTENIMIENTO");
+                }
+                return _TB_PLAN_MANTENIMIENTO;
+            }
+        }
+        private ObjectSet<TB_PLAN_MANTENIMIENTO> _TB_PLAN_MANTENIMIENTO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_PRESCRIPCION_MEDICA> TB_PRESCRIPCION_MEDICA
+        {
+            get
+            {
+                if ((_TB_PRESCRIPCION_MEDICA == null))
+                {
+                    _TB_PRESCRIPCION_MEDICA = base.CreateObjectSet<TB_PRESCRIPCION_MEDICA>("TB_PRESCRIPCION_MEDICA");
+                }
+                return _TB_PRESCRIPCION_MEDICA;
+            }
+        }
+        private ObjectSet<TB_PRESCRIPCION_MEDICA> _TB_PRESCRIPCION_MEDICA;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_PROGRAMACION_ATENCION_EXAMENES> TB_PROGRAMACION_ATENCION_EXAMENES
+        {
+            get
+            {
+                if ((_TB_PROGRAMACION_ATENCION_EXAMENES == null))
+                {
+                    _TB_PROGRAMACION_ATENCION_EXAMENES = base.CreateObjectSet<TB_PROGRAMACION_ATENCION_EXAMENES>("TB_PROGRAMACION_ATENCION_EXAMENES");
+                }
+                return _TB_PROGRAMACION_ATENCION_EXAMENES;
+            }
+        }
+        private ObjectSet<TB_PROGRAMACION_ATENCION_EXAMENES> _TB_PROGRAMACION_ATENCION_EXAMENES;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_REQUISITO> TB_REQUISITO
+        {
+            get
+            {
+                if ((_TB_REQUISITO == null))
+                {
+                    _TB_REQUISITO = base.CreateObjectSet<TB_REQUISITO>("TB_REQUISITO");
+                }
+                return _TB_REQUISITO;
+            }
+        }
+        private ObjectSet<TB_REQUISITO> _TB_REQUISITO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_SERVICIO> TB_SERVICIO
+        {
+            get
+            {
+                if ((_TB_SERVICIO == null))
+                {
+                    _TB_SERVICIO = base.CreateObjectSet<TB_SERVICIO>("TB_SERVICIO");
+                }
+                return _TB_SERVICIO;
+            }
+        }
+        private ObjectSet<TB_SERVICIO> _TB_SERVICIO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_SOLICITUD_MANTENIMIENTO> TB_SOLICITUD_MANTENIMIENTO
+        {
+            get
+            {
+                if ((_TB_SOLICITUD_MANTENIMIENTO == null))
+                {
+                    _TB_SOLICITUD_MANTENIMIENTO = base.CreateObjectSet<TB_SOLICITUD_MANTENIMIENTO>("TB_SOLICITUD_MANTENIMIENTO");
+                }
+                return _TB_SOLICITUD_MANTENIMIENTO;
+            }
+        }
+        private ObjectSet<TB_SOLICITUD_MANTENIMIENTO> _TB_SOLICITUD_MANTENIMIENTO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_SOLICITUDES_DE_CAMBIO> TB_SOLICITUDES_DE_CAMBIO
+        {
+            get
+            {
+                if ((_TB_SOLICITUDES_DE_CAMBIO == null))
+                {
+                    _TB_SOLICITUDES_DE_CAMBIO = base.CreateObjectSet<TB_SOLICITUDES_DE_CAMBIO>("TB_SOLICITUDES_DE_CAMBIO");
+                }
+                return _TB_SOLICITUDES_DE_CAMBIO;
+            }
+        }
+        private ObjectSet<TB_SOLICITUDES_DE_CAMBIO> _TB_SOLICITUDES_DE_CAMBIO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_TIPO_ANALISIS> TB_TIPO_ANALISIS
+        {
+            get
+            {
+                if ((_TB_TIPO_ANALISIS == null))
+                {
+                    _TB_TIPO_ANALISIS = base.CreateObjectSet<TB_TIPO_ANALISIS>("TB_TIPO_ANALISIS");
+                }
+                return _TB_TIPO_ANALISIS;
+            }
+        }
+        private ObjectSet<TB_TIPO_ANALISIS> _TB_TIPO_ANALISIS;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_TIPO_DOCUMENTO> TB_TIPO_DOCUMENTO
+        {
+            get
+            {
+                if ((_TB_TIPO_DOCUMENTO == null))
+                {
+                    _TB_TIPO_DOCUMENTO = base.CreateObjectSet<TB_TIPO_DOCUMENTO>("TB_TIPO_DOCUMENTO");
+                }
+                return _TB_TIPO_DOCUMENTO;
+            }
+        }
+        private ObjectSet<TB_TIPO_DOCUMENTO> _TB_TIPO_DOCUMENTO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_TIPO_EMPLEADO> TB_TIPO_EMPLEADO
+        {
+            get
+            {
+                if ((_TB_TIPO_EMPLEADO == null))
+                {
+                    _TB_TIPO_EMPLEADO = base.CreateObjectSet<TB_TIPO_EMPLEADO>("TB_TIPO_EMPLEADO");
+                }
+                return _TB_TIPO_EMPLEADO;
+            }
+        }
+        private ObjectSet<TB_TIPO_EMPLEADO> _TB_TIPO_EMPLEADO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_TIPO_EXAMEN_MEDICO> TB_TIPO_EXAMEN_MEDICO
+        {
+            get
+            {
+                if ((_TB_TIPO_EXAMEN_MEDICO == null))
+                {
+                    _TB_TIPO_EXAMEN_MEDICO = base.CreateObjectSet<TB_TIPO_EXAMEN_MEDICO>("TB_TIPO_EXAMEN_MEDICO");
+                }
+                return _TB_TIPO_EXAMEN_MEDICO;
+            }
+        }
+        private ObjectSet<TB_TIPO_EXAMEN_MEDICO> _TB_TIPO_EXAMEN_MEDICO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_TIPO_INFORME_ADMINISTRATIVO> TB_TIPO_INFORME_ADMINISTRATIVO
+        {
+            get
+            {
+                if ((_TB_TIPO_INFORME_ADMINISTRATIVO == null))
+                {
+                    _TB_TIPO_INFORME_ADMINISTRATIVO = base.CreateObjectSet<TB_TIPO_INFORME_ADMINISTRATIVO>("TB_TIPO_INFORME_ADMINISTRATIVO");
+                }
+                return _TB_TIPO_INFORME_ADMINISTRATIVO;
+            }
+        }
+        private ObjectSet<TB_TIPO_INFORME_ADMINISTRATIVO> _TB_TIPO_INFORME_ADMINISTRATIVO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_TURNO> TB_TURNO
+        {
+            get
+            {
+                if ((_TB_TURNO == null))
+                {
+                    _TB_TURNO = base.CreateObjectSet<TB_TURNO>("TB_TURNO");
+                }
+                return _TB_TURNO;
+            }
+        }
+        private ObjectSet<TB_TURNO> _TB_TURNO;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_TURNO_ATENCION> TB_TURNO_ATENCION
+        {
+            get
+            {
+                if ((_TB_TURNO_ATENCION == null))
+                {
+                    _TB_TURNO_ATENCION = base.CreateObjectSet<TB_TURNO_ATENCION>("TB_TURNO_ATENCION");
+                }
+                return _TB_TURNO_ATENCION;
+            }
+        }
+        private ObjectSet<TB_TURNO_ATENCION> _TB_TURNO_ATENCION;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<TB_TURNO_EMERGENCIA> TB_TURNO_EMERGENCIA
+        {
+            get
+            {
+                if ((_TB_TURNO_EMERGENCIA == null))
+                {
+                    _TB_TURNO_EMERGENCIA = base.CreateObjectSet<TB_TURNO_EMERGENCIA>("TB_TURNO_EMERGENCIA");
+                }
+                return _TB_TURNO_EMERGENCIA;
+            }
+        }
+        private ObjectSet<TB_TURNO_EMERGENCIA> _TB_TURNO_EMERGENCIA;
 
         #endregion
+
         #region Métodos AddTo
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Agenda_Medica. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet sysdiagrams. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Agenda_Medica(TB_Agenda_Medica tB_Agenda_Medica)
+        public void AddTosysdiagrams(sysdiagrams sysdiagrams)
         {
-            base.AddObject("TB_Agenda_Medica", tB_Agenda_Medica);
+            base.AddObject("sysdiagrams", sysdiagrams);
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Analisis. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_ACTIVIDADES_PLANIFICADAS. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Analisis(TB_Analisis tB_Analisis)
+        public void AddToTB_ACTIVIDADES_PLANIFICADAS(TB_ACTIVIDADES_PLANIFICADAS tB_ACTIVIDADES_PLANIFICADAS)
         {
-            base.AddObject("TB_Analisis", tB_Analisis);
+            base.AddObject("TB_ACTIVIDADES_PLANIFICADAS", tB_ACTIVIDADES_PLANIFICADAS);
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Cita. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_ACTIVO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Cita(TB_Cita tB_Cita)
+        public void AddToTB_ACTIVO(TB_ACTIVO tB_ACTIVO)
         {
-            base.AddObject("TB_Cita", tB_Cita);
+            base.AddObject("TB_ACTIVO", tB_ACTIVO);
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Consulta. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_AGENDA_MEDICA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Consulta(TB_Consulta tB_Consulta)
+        public void AddToTB_AGENDA_MEDICA(TB_AGENDA_MEDICA tB_AGENDA_MEDICA)
         {
-            base.AddObject("TB_Consulta", tB_Consulta);
+            base.AddObject("TB_AGENDA_MEDICA", tB_AGENDA_MEDICA);
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Consultorio. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_ANALISIS. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Consultorio(TB_Consultorio tB_Consultorio)
+        public void AddToTB_ANALISIS(TB_ANALISIS tB_ANALISIS)
         {
-            base.AddObject("TB_Consultorio", tB_Consultorio);
+            base.AddObject("TB_ANALISIS", tB_ANALISIS);
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Especialidad. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_AREA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Especialidad(TB_Especialidad tB_Especialidad)
+        public void AddToTB_AREA(TB_AREA tB_AREA)
         {
-            base.AddObject("TB_Especialidad", tB_Especialidad);
+            base.AddObject("TB_AREA", tB_AREA);
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Estado_Cita. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Atencion_Emergencia. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Estado_Cita(TB_Estado_Cita tB_Estado_Cita)
+        public void AddToTB_Atencion_Emergencia(TB_Atencion_Emergencia tB_Atencion_Emergencia)
         {
-            base.AddObject("TB_Estado_Cita", tB_Estado_Cita);
+            base.AddObject("TB_Atencion_Emergencia", tB_Atencion_Emergencia);
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Local. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_CAMA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Local(TB_Local tB_Local)
+        public void AddToTB_CAMA(TB_CAMA tB_CAMA)
         {
-            base.AddObject("TB_Local", tB_Local);
+            base.AddObject("TB_CAMA", tB_CAMA);
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Medicamento. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_CARTA_GARANTIA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Medicamento(TB_Medicamento tB_Medicamento)
+        public void AddToTB_CARTA_GARANTIA(TB_CARTA_GARANTIA tB_CARTA_GARANTIA)
         {
-            base.AddObject("TB_Medicamento", tB_Medicamento);
+            base.AddObject("TB_CARTA_GARANTIA", tB_CARTA_GARANTIA);
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Medico. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_CATALOGO_EXAMEN_MEDICO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Medico(TB_Medico tB_Medico)
+        public void AddToTB_CATALOGO_EXAMEN_MEDICO(TB_CATALOGO_EXAMEN_MEDICO tB_CATALOGO_EXAMEN_MEDICO)
         {
-            base.AddObject("TB_Medico", tB_Medico);
+            base.AddObject("TB_CATALOGO_EXAMEN_MEDICO", tB_CATALOGO_EXAMEN_MEDICO);
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Motivo_Hospitalizacion. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_CENTRO_COSTO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Motivo_Hospitalizacion(TB_Motivo_Hospitalizacion tB_Motivo_Hospitalizacion)
+        public void AddToTB_CENTRO_COSTO(TB_CENTRO_COSTO tB_CENTRO_COSTO)
         {
-            base.AddObject("TB_Motivo_Hospitalizacion", tB_Motivo_Hospitalizacion);
+            base.AddObject("TB_CENTRO_COSTO", tB_CENTRO_COSTO);
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Orden_Hopitalizacion. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_CITA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Orden_Hopitalizacion(TB_Orden_Hopitalizacion tB_Orden_Hopitalizacion)
+        public void AddToTB_CITA(TB_CITA tB_CITA)
         {
-            base.AddObject("TB_Orden_Hopitalizacion", tB_Orden_Hopitalizacion);
+            base.AddObject("TB_CITA", tB_CITA);
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Paciente. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_COMPROBANTE_DE_PAGO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Paciente(TB_Paciente tB_Paciente)
+        public void AddToTB_COMPROBANTE_DE_PAGO(TB_COMPROBANTE_DE_PAGO tB_COMPROBANTE_DE_PAGO)
         {
-            base.AddObject("TB_Paciente", tB_Paciente);
+            base.AddObject("TB_COMPROBANTE_DE_PAGO", tB_COMPROBANTE_DE_PAGO);
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Prescripcion_Medica. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_CONSULTA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Prescripcion_Medica(TB_Prescripcion_Medica tB_Prescripcion_Medica)
+        public void AddToTB_CONSULTA(TB_CONSULTA tB_CONSULTA)
         {
-            base.AddObject("TB_Prescripcion_Medica", tB_Prescripcion_Medica);
+            base.AddObject("TB_CONSULTA", tB_CONSULTA);
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Tipo_Analisis. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_CONSULTORIO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Tipo_Analisis(TB_Tipo_Analisis tB_Tipo_Analisis)
+        public void AddToTB_CONSULTORIO(TB_CONSULTORIO tB_CONSULTORIO)
         {
-            base.AddObject("TB_Tipo_Analisis", tB_Tipo_Analisis);
+            base.AddObject("TB_CONSULTORIO", tB_CONSULTORIO);
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Turno_Citas. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_CRONOGRAMA_EMERGENCIA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
-        public void AddToTB_Turno_Citas(TB_Turno_Citas tB_Turno_Citas)
+        public void AddToTB_CRONOGRAMA_EMERGENCIA(TB_CRONOGRAMA_EMERGENCIA tB_CRONOGRAMA_EMERGENCIA)
         {
-            base.AddObject("TB_Turno_Citas", tB_Turno_Citas);
+            base.AddObject("TB_CRONOGRAMA_EMERGENCIA", tB_CRONOGRAMA_EMERGENCIA);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_DET_HISTORIA_CLINICA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_DET_HISTORIA_CLINICA(TB_DET_HISTORIA_CLINICA tB_DET_HISTORIA_CLINICA)
+        {
+            base.AddObject("TB_DET_HISTORIA_CLINICA", tB_DET_HISTORIA_CLINICA);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_DET_ORDEN_TRABAJO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_DET_ORDEN_TRABAJO(TB_DET_ORDEN_TRABAJO tB_DET_ORDEN_TRABAJO)
+        {
+            base.AddObject("TB_DET_ORDEN_TRABAJO", tB_DET_ORDEN_TRABAJO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_DETALLE_FICHA_EQUIPO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_DETALLE_FICHA_EQUIPO(TB_DETALLE_FICHA_EQUIPO tB_DETALLE_FICHA_EQUIPO)
+        {
+            base.AddObject("TB_DETALLE_FICHA_EQUIPO", tB_DETALLE_FICHA_EQUIPO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_DETALLE_ORDEN_DE_PEDIDO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_DETALLE_ORDEN_DE_PEDIDO(TB_DETALLE_ORDEN_DE_PEDIDO tB_DETALLE_ORDEN_DE_PEDIDO)
+        {
+            base.AddObject("TB_DETALLE_ORDEN_DE_PEDIDO", tB_DETALLE_ORDEN_DE_PEDIDO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_DETALLE_ORDEN_DE_SALIDA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_DETALLE_ORDEN_DE_SALIDA(TB_DETALLE_ORDEN_DE_SALIDA tB_DETALLE_ORDEN_DE_SALIDA)
+        {
+            base.AddObject("TB_DETALLE_ORDEN_DE_SALIDA", tB_DETALLE_ORDEN_DE_SALIDA);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_Detalle_Solicitud_Mantenimiento. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_Detalle_Solicitud_Mantenimiento(TB_Detalle_Solicitud_Mantenimiento tB_Detalle_Solicitud_Mantenimiento)
+        {
+            base.AddObject("TB_Detalle_Solicitud_Mantenimiento", tB_Detalle_Solicitud_Mantenimiento);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_DETORDENSERVICIO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_DETORDENSERVICIO(TB_DETORDENSERVICIO tB_DETORDENSERVICIO)
+        {
+            base.AddObject("TB_DETORDENSERVICIO", tB_DETORDENSERVICIO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_EMPLEADO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_EMPLEADO(TB_EMPLEADO tB_EMPLEADO)
+        {
+            base.AddObject("TB_EMPLEADO", tB_EMPLEADO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_ESPECIALIDAD. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_ESPECIALIDAD(TB_ESPECIALIDAD tB_ESPECIALIDAD)
+        {
+            base.AddObject("TB_ESPECIALIDAD", tB_ESPECIALIDAD);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_ESTADO_CITA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_ESTADO_CITA(TB_ESTADO_CITA tB_ESTADO_CITA)
+        {
+            base.AddObject("TB_ESTADO_CITA", tB_ESTADO_CITA);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_FICHA_EQUIPO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_FICHA_EQUIPO(TB_FICHA_EQUIPO tB_FICHA_EQUIPO)
+        {
+            base.AddObject("TB_FICHA_EQUIPO", tB_FICHA_EQUIPO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_HISTORIA_CLINICA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_HISTORIA_CLINICA(TB_HISTORIA_CLINICA tB_HISTORIA_CLINICA)
+        {
+            base.AddObject("TB_HISTORIA_CLINICA", tB_HISTORIA_CLINICA);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_HOJA_INGRESO_EMERGENCIA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_HOJA_INGRESO_EMERGENCIA(TB_HOJA_INGRESO_EMERGENCIA tB_HOJA_INGRESO_EMERGENCIA)
+        {
+            base.AddObject("TB_HOJA_INGRESO_EMERGENCIA", tB_HOJA_INGRESO_EMERGENCIA);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_HOJA_INGRESO_HOSPITALIZACION. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_HOJA_INGRESO_HOSPITALIZACION(TB_HOJA_INGRESO_HOSPITALIZACION tB_HOJA_INGRESO_HOSPITALIZACION)
+        {
+            base.AddObject("TB_HOJA_INGRESO_HOSPITALIZACION", tB_HOJA_INGRESO_HOSPITALIZACION);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_INFORME. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_INFORME(TB_INFORME tB_INFORME)
+        {
+            base.AddObject("TB_INFORME", tB_INFORME);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_INFORME_ADMINSITRATIVO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_INFORME_ADMINSITRATIVO(TB_INFORME_ADMINSITRATIVO tB_INFORME_ADMINSITRATIVO)
+        {
+            base.AddObject("TB_INFORME_ADMINSITRATIVO", tB_INFORME_ADMINSITRATIVO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_INFORME_DET. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_INFORME_DET(TB_INFORME_DET tB_INFORME_DET)
+        {
+            base.AddObject("TB_INFORME_DET", tB_INFORME_DET);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_INFORME_EQUIPO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_INFORME_EQUIPO(TB_INFORME_EQUIPO tB_INFORME_EQUIPO)
+        {
+            base.AddObject("TB_INFORME_EQUIPO", tB_INFORME_EQUIPO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_INFORME_EQUIPO_DET. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_INFORME_EQUIPO_DET(TB_INFORME_EQUIPO_DET tB_INFORME_EQUIPO_DET)
+        {
+            base.AddObject("TB_INFORME_EQUIPO_DET", tB_INFORME_EQUIPO_DET);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_INFORME_RESULTADO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_INFORME_RESULTADO(TB_INFORME_RESULTADO tB_INFORME_RESULTADO)
+        {
+            base.AddObject("TB_INFORME_RESULTADO", tB_INFORME_RESULTADO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_INSTALACION. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_INSTALACION(TB_INSTALACION tB_INSTALACION)
+        {
+            base.AddObject("TB_INSTALACION", tB_INSTALACION);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_LISTA_VERIFICACION. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_LISTA_VERIFICACION(TB_LISTA_VERIFICACION tB_LISTA_VERIFICACION)
+        {
+            base.AddObject("TB_LISTA_VERIFICACION", tB_LISTA_VERIFICACION);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_LOCAL. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_LOCAL(TB_LOCAL tB_LOCAL)
+        {
+            base.AddObject("TB_LOCAL", tB_LOCAL);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_MAESTRO_TABLAS. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_MAESTRO_TABLAS(TB_MAESTRO_TABLAS tB_MAESTRO_TABLAS)
+        {
+            base.AddObject("TB_MAESTRO_TABLAS", tB_MAESTRO_TABLAS);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_MEDICAMENTO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_MEDICAMENTO(TB_MEDICAMENTO tB_MEDICAMENTO)
+        {
+            base.AddObject("TB_MEDICAMENTO", tB_MEDICAMENTO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_MEDICO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_MEDICO(TB_MEDICO tB_MEDICO)
+        {
+            base.AddObject("TB_MEDICO", tB_MEDICO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_MEDICO_DE_TURNO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_MEDICO_DE_TURNO(TB_MEDICO_DE_TURNO tB_MEDICO_DE_TURNO)
+        {
+            base.AddObject("TB_MEDICO_DE_TURNO", tB_MEDICO_DE_TURNO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_MEDICOESPECIALIDAD. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_MEDICOESPECIALIDAD(TB_MEDICOESPECIALIDAD tB_MEDICOESPECIALIDAD)
+        {
+            base.AddObject("TB_MEDICOESPECIALIDAD", tB_MEDICOESPECIALIDAD);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_MOTIVO_HOSPITALIZACION. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_MOTIVO_HOSPITALIZACION(TB_MOTIVO_HOSPITALIZACION tB_MOTIVO_HOSPITALIZACION)
+        {
+            base.AddObject("TB_MOTIVO_HOSPITALIZACION", tB_MOTIVO_HOSPITALIZACION);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_ORDEN_DE_PEDIDO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_ORDEN_DE_PEDIDO(TB_ORDEN_DE_PEDIDO tB_ORDEN_DE_PEDIDO)
+        {
+            base.AddObject("TB_ORDEN_DE_PEDIDO", tB_ORDEN_DE_PEDIDO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_ORDEN_DE_PROCEDIMIENTO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_ORDEN_DE_PROCEDIMIENTO(TB_ORDEN_DE_PROCEDIMIENTO tB_ORDEN_DE_PROCEDIMIENTO)
+        {
+            base.AddObject("TB_ORDEN_DE_PROCEDIMIENTO", tB_ORDEN_DE_PROCEDIMIENTO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_ORDEN_DE_SALIDA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_ORDEN_DE_SALIDA(TB_ORDEN_DE_SALIDA tB_ORDEN_DE_SALIDA)
+        {
+            base.AddObject("TB_ORDEN_DE_SALIDA", tB_ORDEN_DE_SALIDA);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_ORDEN_EXAMEN_MEDICO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_ORDEN_EXAMEN_MEDICO(TB_ORDEN_EXAMEN_MEDICO tB_ORDEN_EXAMEN_MEDICO)
+        {
+            base.AddObject("TB_ORDEN_EXAMEN_MEDICO", tB_ORDEN_EXAMEN_MEDICO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_ORDEN_HOSPITALIZACION. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_ORDEN_HOSPITALIZACION(TB_ORDEN_HOSPITALIZACION tB_ORDEN_HOSPITALIZACION)
+        {
+            base.AddObject("TB_ORDEN_HOSPITALIZACION", tB_ORDEN_HOSPITALIZACION);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_ORDEN_INTERNA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_ORDEN_INTERNA(TB_ORDEN_INTERNA tB_ORDEN_INTERNA)
+        {
+            base.AddObject("TB_ORDEN_INTERNA", tB_ORDEN_INTERNA);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_ORDEN_SERVICIO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_ORDEN_SERVICIO(TB_ORDEN_SERVICIO tB_ORDEN_SERVICIO)
+        {
+            base.AddObject("TB_ORDEN_SERVICIO", tB_ORDEN_SERVICIO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_ORDEN_TRABAJO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_ORDEN_TRABAJO(TB_ORDEN_TRABAJO tB_ORDEN_TRABAJO)
+        {
+            base.AddObject("TB_ORDEN_TRABAJO", tB_ORDEN_TRABAJO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_ORDEN_TRABAJO_DET. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_ORDEN_TRABAJO_DET(TB_ORDEN_TRABAJO_DET tB_ORDEN_TRABAJO_DET)
+        {
+            base.AddObject("TB_ORDEN_TRABAJO_DET", tB_ORDEN_TRABAJO_DET);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_PACIENTE. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_PACIENTE(TB_PACIENTE tB_PACIENTE)
+        {
+            base.AddObject("TB_PACIENTE", tB_PACIENTE);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_PLAN_MANTENIMIENTO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_PLAN_MANTENIMIENTO(TB_PLAN_MANTENIMIENTO tB_PLAN_MANTENIMIENTO)
+        {
+            base.AddObject("TB_PLAN_MANTENIMIENTO", tB_PLAN_MANTENIMIENTO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_PRESCRIPCION_MEDICA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_PRESCRIPCION_MEDICA(TB_PRESCRIPCION_MEDICA tB_PRESCRIPCION_MEDICA)
+        {
+            base.AddObject("TB_PRESCRIPCION_MEDICA", tB_PRESCRIPCION_MEDICA);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_PROGRAMACION_ATENCION_EXAMENES. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_PROGRAMACION_ATENCION_EXAMENES(TB_PROGRAMACION_ATENCION_EXAMENES tB_PROGRAMACION_ATENCION_EXAMENES)
+        {
+            base.AddObject("TB_PROGRAMACION_ATENCION_EXAMENES", tB_PROGRAMACION_ATENCION_EXAMENES);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_REQUISITO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_REQUISITO(TB_REQUISITO tB_REQUISITO)
+        {
+            base.AddObject("TB_REQUISITO", tB_REQUISITO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_SERVICIO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_SERVICIO(TB_SERVICIO tB_SERVICIO)
+        {
+            base.AddObject("TB_SERVICIO", tB_SERVICIO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_SOLICITUD_MANTENIMIENTO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_SOLICITUD_MANTENIMIENTO(TB_SOLICITUD_MANTENIMIENTO tB_SOLICITUD_MANTENIMIENTO)
+        {
+            base.AddObject("TB_SOLICITUD_MANTENIMIENTO", tB_SOLICITUD_MANTENIMIENTO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_SOLICITUDES_DE_CAMBIO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_SOLICITUDES_DE_CAMBIO(TB_SOLICITUDES_DE_CAMBIO tB_SOLICITUDES_DE_CAMBIO)
+        {
+            base.AddObject("TB_SOLICITUDES_DE_CAMBIO", tB_SOLICITUDES_DE_CAMBIO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_TIPO_ANALISIS. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_TIPO_ANALISIS(TB_TIPO_ANALISIS tB_TIPO_ANALISIS)
+        {
+            base.AddObject("TB_TIPO_ANALISIS", tB_TIPO_ANALISIS);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_TIPO_DOCUMENTO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_TIPO_DOCUMENTO(TB_TIPO_DOCUMENTO tB_TIPO_DOCUMENTO)
+        {
+            base.AddObject("TB_TIPO_DOCUMENTO", tB_TIPO_DOCUMENTO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_TIPO_EMPLEADO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_TIPO_EMPLEADO(TB_TIPO_EMPLEADO tB_TIPO_EMPLEADO)
+        {
+            base.AddObject("TB_TIPO_EMPLEADO", tB_TIPO_EMPLEADO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_TIPO_EXAMEN_MEDICO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_TIPO_EXAMEN_MEDICO(TB_TIPO_EXAMEN_MEDICO tB_TIPO_EXAMEN_MEDICO)
+        {
+            base.AddObject("TB_TIPO_EXAMEN_MEDICO", tB_TIPO_EXAMEN_MEDICO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_TIPO_INFORME_ADMINISTRATIVO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_TIPO_INFORME_ADMINISTRATIVO(TB_TIPO_INFORME_ADMINISTRATIVO tB_TIPO_INFORME_ADMINISTRATIVO)
+        {
+            base.AddObject("TB_TIPO_INFORME_ADMINISTRATIVO", tB_TIPO_INFORME_ADMINISTRATIVO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_TURNO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_TURNO(TB_TURNO tB_TURNO)
+        {
+            base.AddObject("TB_TURNO", tB_TURNO);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_TURNO_ATENCION. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_TURNO_ATENCION(TB_TURNO_ATENCION tB_TURNO_ATENCION)
+        {
+            base.AddObject("TB_TURNO_ATENCION", tB_TURNO_ATENCION);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet TB_TURNO_EMERGENCIA. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToTB_TURNO_EMERGENCIA(TB_TURNO_EMERGENCIA tB_TURNO_EMERGENCIA)
+        {
+            base.AddObject("TB_TURNO_EMERGENCIA", tB_TURNO_EMERGENCIA);
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entidades
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Agenda_Medica")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="sysdiagrams")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Agenda_Medica : EntityObject
+    public partial class sysdiagrams : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Agenda_Medica.
+        /// Crear un nuevo objeto sysdiagrams.
         /// </summary>
-        /// <param name="codigoAgenda">Valor inicial de la propiedad CodigoAgenda.</param>
-        /// <param name="estado">Valor inicial de la propiedad Estado.</param>
-        /// <param name="codigoMedico">Valor inicial de la propiedad CodigoMedico.</param>
-        /// <param name="idTurno">Valor inicial de la propiedad IdTurno.</param>
-        public static TB_Agenda_Medica CreateTB_Agenda_Medica(global::System.Int32 codigoAgenda, global::System.Boolean estado, global::System.Int32 codigoMedico, global::System.Int32 idTurno)
+        /// <param name="name">Valor inicial de la propiedad name.</param>
+        /// <param name="principal_id">Valor inicial de la propiedad principal_id.</param>
+        /// <param name="diagram_id">Valor inicial de la propiedad diagram_id.</param>
+        public static sysdiagrams Createsysdiagrams(global::System.String name, global::System.Int32 principal_id, global::System.Int32 diagram_id)
         {
-            TB_Agenda_Medica tB_Agenda_Medica = new TB_Agenda_Medica();
-            tB_Agenda_Medica.CodigoAgenda = codigoAgenda;
-            tB_Agenda_Medica.Estado = estado;
-            tB_Agenda_Medica.CodigoMedico = codigoMedico;
-            tB_Agenda_Medica.IdTurno = idTurno;
-            return tB_Agenda_Medica;
+            sysdiagrams sysdiagrams = new sysdiagrams();
+            sysdiagrams.name = name;
+            sysdiagrams.principal_id = principal_id;
+            sysdiagrams.diagram_id = diagram_id;
+            return sysdiagrams;
         }
 
         #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                OnnameChanging(value);
+                ReportPropertyChanging("name");
+                _name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("name");
+                OnnameChanged();
+            }
+        }
+        private global::System.String _name;
+        partial void OnnameChanging(global::System.String value);
+        partial void OnnameChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 principal_id
+        {
+            get
+            {
+                return _principal_id;
+            }
+            set
+            {
+                Onprincipal_idChanging(value);
+                ReportPropertyChanging("principal_id");
+                _principal_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("principal_id");
+                Onprincipal_idChanged();
+            }
+        }
+        private global::System.Int32 _principal_id;
+        partial void Onprincipal_idChanging(global::System.Int32 value);
+        partial void Onprincipal_idChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 diagram_id
+        {
+            get
+            {
+                return _diagram_id;
+            }
+            set
+            {
+                if (_diagram_id != value)
+                {
+                    Ondiagram_idChanging(value);
+                    ReportPropertyChanging("diagram_id");
+                    _diagram_id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("diagram_id");
+                    Ondiagram_idChanged();
+                }
+            }
+        }
+        private global::System.Int32 _diagram_id;
+        partial void Ondiagram_idChanging(global::System.Int32 value);
+        partial void Ondiagram_idChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> version
+        {
+            get
+            {
+                return _version;
+            }
+            set
+            {
+                OnversionChanging(value);
+                ReportPropertyChanging("version");
+                _version = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("version");
+                OnversionChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _version;
+        partial void OnversionChanging(Nullable<global::System.Int32> value);
+        partial void OnversionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] definition
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_definition);
+            }
+            set
+            {
+                OndefinitionChanging(value);
+                ReportPropertyChanging("definition");
+                _definition = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("definition");
+                OndefinitionChanged();
+            }
+        }
+        private global::System.Byte[] _definition;
+        partial void OndefinitionChanging(global::System.Byte[] value);
+        partial void OndefinitionChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_ACTIVIDADES_PLANIFICADAS")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_ACTIVIDADES_PLANIFICADAS : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_ACTIVIDADES_PLANIFICADAS.
+        /// </summary>
+        /// <param name="iD_Actividades_Planificadas">Valor inicial de la propiedad ID_Actividades_Planificadas.</param>
+        public static TB_ACTIVIDADES_PLANIFICADAS CreateTB_ACTIVIDADES_PLANIFICADAS(global::System.Int32 iD_Actividades_Planificadas)
+        {
+            TB_ACTIVIDADES_PLANIFICADAS tB_ACTIVIDADES_PLANIFICADAS = new TB_ACTIVIDADES_PLANIFICADAS();
+            tB_ACTIVIDADES_PLANIFICADAS.ID_Actividades_Planificadas = iD_Actividades_Planificadas;
+            return tB_ACTIVIDADES_PLANIFICADAS;
+        }
+
+        #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -525,27 +2032,385 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoAgenda
+        public global::System.Int32 ID_Actividades_Planificadas
         {
             get
             {
-                return _CodigoAgenda;
+                return _ID_Actividades_Planificadas;
             }
             set
             {
-                if (_CodigoAgenda != value)
+                if (_ID_Actividades_Planificadas != value)
                 {
-                    OnCodigoAgendaChanging(value);
-                    ReportPropertyChanging("CodigoAgenda");
-                    _CodigoAgenda = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("CodigoAgenda");
-                    OnCodigoAgendaChanged();
+                    OnID_Actividades_PlanificadasChanging(value);
+                    ReportPropertyChanging("ID_Actividades_Planificadas");
+                    _ID_Actividades_Planificadas = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Actividades_Planificadas");
+                    OnID_Actividades_PlanificadasChanged();
                 }
             }
         }
-        private global::System.Int32 _CodigoAgenda;
-        partial void OnCodigoAgendaChanging(global::System.Int32 value);
-        partial void OnCodigoAgendaChanged();
+        private global::System.Int32 _ID_Actividades_Planificadas;
+        partial void OnID_Actividades_PlanificadasChanging(global::System.Int32 value);
+        partial void OnID_Actividades_PlanificadasChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Planificada
+        {
+            get
+            {
+                return _GM_Fecha_Planificada;
+            }
+            set
+            {
+                OnGM_Fecha_PlanificadaChanging(value);
+                ReportPropertyChanging("GM_Fecha_Planificada");
+                _GM_Fecha_Planificada = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Planificada");
+                OnGM_Fecha_PlanificadaChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Planificada;
+        partial void OnGM_Fecha_PlanificadaChanging(global::System.String value);
+        partial void OnGM_Fecha_PlanificadaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_Hora_Inicio
+        {
+            get
+            {
+                return _GM_Hora_Inicio;
+            }
+            set
+            {
+                OnGM_Hora_InicioChanging(value);
+                ReportPropertyChanging("GM_Hora_Inicio");
+                _GM_Hora_Inicio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_Hora_Inicio");
+                OnGM_Hora_InicioChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_Hora_Inicio;
+        partial void OnGM_Hora_InicioChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_Hora_InicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_Hora_Final
+        {
+            get
+            {
+                return _GM_Hora_Final;
+            }
+            set
+            {
+                OnGM_Hora_FinalChanging(value);
+                ReportPropertyChanging("GM_Hora_Final");
+                _GM_Hora_Final = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_Hora_Final");
+                OnGM_Hora_FinalChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_Hora_Final;
+        partial void OnGM_Hora_FinalChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_Hora_FinalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_Estado
+        {
+            get
+            {
+                return _GM_Estado;
+            }
+            set
+            {
+                OnGM_EstadoChanging(value);
+                ReportPropertyChanging("GM_Estado");
+                _GM_Estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_Estado");
+                OnGM_EstadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_Estado;
+        partial void OnGM_EstadoChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_EstadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_NroOrden
+        {
+            get
+            {
+                return _GM_NroOrden;
+            }
+            set
+            {
+                OnGM_NroOrdenChanging(value);
+                ReportPropertyChanging("GM_NroOrden");
+                _GM_NroOrden = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_NroOrden");
+                OnGM_NroOrdenChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_NroOrden;
+        partial void OnGM_NroOrdenChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_NroOrdenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_Codigo_PlanMantenimiento
+        {
+            get
+            {
+                return _GM_Codigo_PlanMantenimiento;
+            }
+            set
+            {
+                OnGM_Codigo_PlanMantenimientoChanging(value);
+                ReportPropertyChanging("GM_Codigo_PlanMantenimiento");
+                _GM_Codigo_PlanMantenimiento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_Codigo_PlanMantenimiento");
+                OnGM_Codigo_PlanMantenimientoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_Codigo_PlanMantenimiento;
+        partial void OnGM_Codigo_PlanMantenimientoChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_Codigo_PlanMantenimientoChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_ACTIVO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_ACTIVO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_ACTIVO.
+        /// </summary>
+        /// <param name="iD_Activo">Valor inicial de la propiedad ID_Activo.</param>
+        public static TB_ACTIVO CreateTB_ACTIVO(global::System.Int32 iD_Activo)
+        {
+            TB_ACTIVO tB_ACTIVO = new TB_ACTIVO();
+            tB_ACTIVO.ID_Activo = iD_Activo;
+            return tB_ACTIVO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Activo
+        {
+            get
+            {
+                return _ID_Activo;
+            }
+            set
+            {
+                if (_ID_Activo != value)
+                {
+                    OnID_ActivoChanging(value);
+                    ReportPropertyChanging("ID_Activo");
+                    _ID_Activo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Activo");
+                    OnID_ActivoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Activo;
+        partial void OnID_ActivoChanging(global::System.Int32 value);
+        partial void OnID_ActivoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Tipo_Activo
+        {
+            get
+            {
+                return _Tipo_Activo;
+            }
+            set
+            {
+                OnTipo_ActivoChanging(value);
+                ReportPropertyChanging("Tipo_Activo");
+                _Tipo_Activo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Tipo_Activo");
+                OnTipo_ActivoChanged();
+            }
+        }
+        private global::System.String _Tipo_Activo;
+        partial void OnTipo_ActivoChanging(global::System.String value);
+        partial void OnTipo_ActivoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Descripcion
+        {
+            get
+            {
+                return _Descripcion;
+            }
+            set
+            {
+                OnDescripcionChanging(value);
+                ReportPropertyChanging("Descripcion");
+                _Descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Descripcion");
+                OnDescripcionChanged();
+            }
+        }
+        private global::System.String _Descripcion;
+        partial void OnDescripcionChanging(global::System.String value);
+        partial void OnDescripcionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Cantidad
+        {
+            get
+            {
+                return _Cantidad;
+            }
+            set
+            {
+                OnCantidadChanging(value);
+                ReportPropertyChanging("Cantidad");
+                _Cantidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Cantidad");
+                OnCantidadChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Cantidad;
+        partial void OnCantidadChanging(Nullable<global::System.Int32> value);
+        partial void OnCantidadChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Estado
+        {
+            get
+            {
+                return _Estado;
+            }
+            set
+            {
+                OnEstadoChanging(value);
+                ReportPropertyChanging("Estado");
+                _Estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Estado");
+                OnEstadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Estado;
+        partial void OnEstadoChanging(Nullable<global::System.Int32> value);
+        partial void OnEstadoChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_AGENDA_MEDICA")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_AGENDA_MEDICA : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_AGENDA_MEDICA.
+        /// </summary>
+        /// <param name="iD_AgendaMedica">Valor inicial de la propiedad ID_AgendaMedica.</param>
+        /// <param name="estado">Valor inicial de la propiedad Estado.</param>
+        /// <param name="iD_Medico">Valor inicial de la propiedad ID_Medico.</param>
+        public static TB_AGENDA_MEDICA CreateTB_AGENDA_MEDICA(global::System.Int32 iD_AgendaMedica, global::System.Boolean estado, global::System.Int32 iD_Medico)
+        {
+            TB_AGENDA_MEDICA tB_AGENDA_MEDICA = new TB_AGENDA_MEDICA();
+            tB_AGENDA_MEDICA.ID_AgendaMedica = iD_AgendaMedica;
+            tB_AGENDA_MEDICA.Estado = estado;
+            tB_AGENDA_MEDICA.ID_Medico = iD_Medico;
+            return tB_AGENDA_MEDICA;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_AgendaMedica
+        {
+            get
+            {
+                return _ID_AgendaMedica;
+            }
+            set
+            {
+                if (_ID_AgendaMedica != value)
+                {
+                    OnID_AgendaMedicaChanging(value);
+                    ReportPropertyChanging("ID_AgendaMedica");
+                    _ID_AgendaMedica = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_AgendaMedica");
+                    OnID_AgendaMedicaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_AgendaMedica;
+        partial void OnID_AgendaMedicaChanging(global::System.Int32 value);
+        partial void OnID_AgendaMedicaChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -648,74 +2513,99 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoMedico
+        public global::System.Int32 ID_Medico
         {
             get
             {
-                return _CodigoMedico;
+                return _ID_Medico;
             }
             set
             {
-                OnCodigoMedicoChanging(value);
-                ReportPropertyChanging("CodigoMedico");
-                _CodigoMedico = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoMedico");
-                OnCodigoMedicoChanged();
+                OnID_MedicoChanging(value);
+                ReportPropertyChanging("ID_Medico");
+                _ID_Medico = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Medico");
+                OnID_MedicoChanged();
             }
         }
-        private global::System.Int32 _CodigoMedico;
-        partial void OnCodigoMedicoChanging(global::System.Int32 value);
-        partial void OnCodigoMedicoChanged();
+        private global::System.Int32 _ID_Medico;
+        partial void OnID_MedicoChanging(global::System.Int32 value);
+        partial void OnID_MedicoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String NumeroConsultorio
+        public Nullable<global::System.Int32> ID_Consultorio
         {
             get
             {
-                return _NumeroConsultorio;
+                return _ID_Consultorio;
             }
             set
             {
-                OnNumeroConsultorioChanging(value);
-                ReportPropertyChanging("NumeroConsultorio");
-                _NumeroConsultorio = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("NumeroConsultorio");
-                OnNumeroConsultorioChanged();
+                OnID_ConsultorioChanging(value);
+                ReportPropertyChanging("ID_Consultorio");
+                _ID_Consultorio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Consultorio");
+                OnID_ConsultorioChanged();
             }
         }
-        private global::System.String _NumeroConsultorio;
-        partial void OnNumeroConsultorioChanging(global::System.String value);
-        partial void OnNumeroConsultorioChanged();
+        private Nullable<global::System.Int32> _ID_Consultorio;
+        partial void OnID_ConsultorioChanging(Nullable<global::System.Int32> value);
+        partial void OnID_ConsultorioChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 IdTurno
+        public Nullable<global::System.Int32> ID_TURNO
         {
             get
             {
-                return _IdTurno;
+                return _ID_TURNO;
             }
             set
             {
-                OnIdTurnoChanging(value);
-                ReportPropertyChanging("IdTurno");
-                _IdTurno = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IdTurno");
-                OnIdTurnoChanged();
+                OnID_TURNOChanging(value);
+                ReportPropertyChanging("ID_TURNO");
+                _ID_TURNO = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_TURNO");
+                OnID_TURNOChanged();
             }
         }
-        private global::System.Int32 _IdTurno;
-        partial void OnIdTurnoChanging(global::System.Int32 value);
-        partial void OnIdTurnoChanged();
+        private Nullable<global::System.Int32> _ID_TURNO;
+        partial void OnID_TURNOChanging(Nullable<global::System.Int32> value);
+        partial void OnID_TURNOChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Especialidad
+        {
+            get
+            {
+                return _ID_Especialidad;
+            }
+            set
+            {
+                OnID_EspecialidadChanging(value);
+                ReportPropertyChanging("ID_Especialidad");
+                _ID_Especialidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Especialidad");
+                OnID_EspecialidadChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Especialidad;
+        partial void OnID_EspecialidadChanging(Nullable<global::System.Int32> value);
+        partial void OnID_EspecialidadChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -725,18 +2615,34 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__Cita__CodigoAgen__33D4B5981", "TB_Cita")]
-        public EntityCollection<TB_Cita> TB_Cita
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_AGENDA__ID_TU__2EDAF651", "TB_TURNO")]
+        public TB_TURNO TB_TURNO
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Cita>("DB_SGHModel.FK__Cita__CodigoAgen__33D4B5981", "TB_Cita");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TURNO>("DB_SGHModel.FK__TB_AGENDA__ID_TU__2EDAF651", "TB_TURNO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TURNO>("DB_SGHModel.FK__TB_AGENDA__ID_TU__2EDAF651", "TB_TURNO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_TURNO> TB_TURNOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TURNO>("DB_SGHModel.FK__TB_AGENDA__ID_TU__2EDAF651", "TB_TURNO");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Cita>("DB_SGHModel.FK__Cita__CodigoAgen__33D4B5981", "TB_Cita", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_TURNO>("DB_SGHModel.FK__TB_AGENDA__ID_TU__2EDAF651", "TB_TURNO", value);
                 }
             }
         }
@@ -747,16 +2653,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Agenda__Codig__32E0915F", "TB_Medico")]
-        public TB_Medico TB_Medico
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_AGENDA_MEDICA_TB_CONSULTORIO", "TB_CONSULTORIO")]
+        public TB_CONSULTORIO TB_CONSULTORIO
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Agenda__Codig__32E0915F", "TB_Medico").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTORIO>("DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_CONSULTORIO", "TB_CONSULTORIO").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Agenda__Codig__32E0915F", "TB_Medico").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTORIO>("DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_CONSULTORIO", "TB_CONSULTORIO").Value = value;
             }
         }
         /// <summary>
@@ -764,17 +2670,17 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Medico> TB_MedicoReference
+        public EntityReference<TB_CONSULTORIO> TB_CONSULTORIOReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Agenda__Codig__32E0915F", "TB_Medico");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTORIO>("DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_CONSULTORIO", "TB_CONSULTORIO");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Agenda__Codig__32E0915F", "TB_Medico", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_CONSULTORIO>("DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_CONSULTORIO", "TB_CONSULTORIO", value);
                 }
             }
         }
@@ -785,16 +2691,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Agenda__Codig__33D4B598", "TB_Medico")]
-        public TB_Medico TB_Medico1
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_AgendaMedica_TB_MEDICO", "TB_MEDICO")]
+        public TB_MEDICO TB_MEDICO
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Agenda__Codig__33D4B598", "TB_Medico").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_AgendaMedica_TB_MEDICO", "TB_MEDICO").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Agenda__Codig__33D4B598", "TB_Medico").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_AgendaMedica_TB_MEDICO", "TB_MEDICO").Value = value;
             }
         }
         /// <summary>
@@ -802,17 +2708,17 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Medico> TB_Medico1Reference
+        public EntityReference<TB_MEDICO> TB_MEDICOReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Agenda__Codig__33D4B598", "TB_Medico");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_AgendaMedica_TB_MEDICO", "TB_MEDICO");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Agenda__Codig__33D4B598", "TB_Medico", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_AgendaMedica_TB_MEDICO", "TB_MEDICO", value);
                 }
             }
         }
@@ -823,16 +2729,38 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Agenda_Medica_TB_Turno_Citas", "TB_Turno_Citas")]
-        public TB_Turno_Citas TB_Turno_Citas
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CITA_TB_AgendaMedica", "TB_CITA")]
+        public EntityCollection<TB_CITA> TB_CITA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Turno_Citas>("DB_SGHModel.FK_TB_Agenda_Medica_TB_Turno_Citas", "TB_Turno_Citas").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CITA>("DB_SGHModel.FK_TB_CITA_TB_AgendaMedica", "TB_CITA");
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Turno_Citas>("DB_SGHModel.FK_TB_Agenda_Medica_TB_Turno_Citas", "TB_Turno_Citas").Value = value;
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CITA>("DB_SGHModel.FK_TB_CITA_TB_AgendaMedica", "TB_CITA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_AGENDA_MEDICA_TB_ESPECIALIDAD", "TB_ESPECIALIDAD")]
+        public TB_ESPECIALIDAD TB_ESPECIALIDAD
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_ESPECIALIDAD", "TB_ESPECIALIDAD").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_ESPECIALIDAD", "TB_ESPECIALIDAD").Value = value;
             }
         }
         /// <summary>
@@ -840,50 +2768,52 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Turno_Citas> TB_Turno_CitasReference
+        public EntityReference<TB_ESPECIALIDAD> TB_ESPECIALIDADReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Turno_Citas>("DB_SGHModel.FK_TB_Agenda_Medica_TB_Turno_Citas", "TB_Turno_Citas");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_ESPECIALIDAD", "TB_ESPECIALIDAD");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Turno_Citas>("DB_SGHModel.FK_TB_Agenda_Medica_TB_Turno_Citas", "TB_Turno_Citas", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_ESPECIALIDAD", "TB_ESPECIALIDAD", value);
                 }
             }
         }
 
         #endregion
+
     }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Analisis")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_ANALISIS")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Analisis : EntityObject
+    public partial class TB_ANALISIS : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Analisis.
+        /// Crear un nuevo objeto TB_ANALISIS.
         /// </summary>
-        /// <param name="codigoAnalisis">Valor inicial de la propiedad CodigoAnalisis.</param>
-        /// <param name="codigoConsulta">Valor inicial de la propiedad CodigoConsulta.</param>
-        /// <param name="codigoTipoAnalisis">Valor inicial de la propiedad CodigoTipoAnalisis.</param>
-        public static TB_Analisis CreateTB_Analisis(global::System.Int32 codigoAnalisis, global::System.Int32 codigoConsulta, global::System.Int32 codigoTipoAnalisis)
+        /// <param name="iD_Analisis">Valor inicial de la propiedad ID_Analisis.</param>
+        /// <param name="iD_Consulta">Valor inicial de la propiedad ID_Consulta.</param>
+        /// <param name="iD_TipoAnalisis">Valor inicial de la propiedad ID_TipoAnalisis.</param>
+        public static TB_ANALISIS CreateTB_ANALISIS(global::System.Int32 iD_Analisis, global::System.Int32 iD_Consulta, global::System.Int32 iD_TipoAnalisis)
         {
-            TB_Analisis tB_Analisis = new TB_Analisis();
-            tB_Analisis.CodigoAnalisis = codigoAnalisis;
-            tB_Analisis.CodigoConsulta = codigoConsulta;
-            tB_Analisis.CodigoTipoAnalisis = codigoTipoAnalisis;
-            return tB_Analisis;
+            TB_ANALISIS tB_ANALISIS = new TB_ANALISIS();
+            tB_ANALISIS.ID_Analisis = iD_Analisis;
+            tB_ANALISIS.ID_Consulta = iD_Consulta;
+            tB_ANALISIS.ID_TipoAnalisis = iD_TipoAnalisis;
+            return tB_ANALISIS;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -891,27 +2821,27 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoAnalisis
+        public global::System.Int32 ID_Analisis
         {
             get
             {
-                return _CodigoAnalisis;
+                return _ID_Analisis;
             }
             set
             {
-                if (_CodigoAnalisis != value)
+                if (_ID_Analisis != value)
                 {
-                    OnCodigoAnalisisChanging(value);
-                    ReportPropertyChanging("CodigoAnalisis");
-                    _CodigoAnalisis = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("CodigoAnalisis");
-                    OnCodigoAnalisisChanged();
+                    OnID_AnalisisChanging(value);
+                    ReportPropertyChanging("ID_Analisis");
+                    _ID_Analisis = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Analisis");
+                    OnID_AnalisisChanged();
                 }
             }
         }
-        private global::System.Int32 _CodigoAnalisis;
-        partial void OnCodigoAnalisisChanging(global::System.Int32 value);
-        partial void OnCodigoAnalisisChanged();
+        private global::System.Int32 _ID_Analisis;
+        partial void OnID_AnalisisChanging(global::System.Int32 value);
+        partial void OnID_AnalisisChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -1014,50 +2944,51 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoConsulta
+        public global::System.Int32 ID_Consulta
         {
             get
             {
-                return _CodigoConsulta;
+                return _ID_Consulta;
             }
             set
             {
-                OnCodigoConsultaChanging(value);
-                ReportPropertyChanging("CodigoConsulta");
-                _CodigoConsulta = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoConsulta");
-                OnCodigoConsultaChanged();
+                OnID_ConsultaChanging(value);
+                ReportPropertyChanging("ID_Consulta");
+                _ID_Consulta = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Consulta");
+                OnID_ConsultaChanged();
             }
         }
-        private global::System.Int32 _CodigoConsulta;
-        partial void OnCodigoConsultaChanging(global::System.Int32 value);
-        partial void OnCodigoConsultaChanged();
+        private global::System.Int32 _ID_Consulta;
+        partial void OnID_ConsultaChanging(global::System.Int32 value);
+        partial void OnID_ConsultaChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoTipoAnalisis
+        public global::System.Int32 ID_TipoAnalisis
         {
             get
             {
-                return _CodigoTipoAnalisis;
+                return _ID_TipoAnalisis;
             }
             set
             {
-                OnCodigoTipoAnalisisChanging(value);
-                ReportPropertyChanging("CodigoTipoAnalisis");
-                _CodigoTipoAnalisis = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoTipoAnalisis");
-                OnCodigoTipoAnalisisChanged();
+                OnID_TipoAnalisisChanging(value);
+                ReportPropertyChanging("ID_TipoAnalisis");
+                _ID_TipoAnalisis = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_TipoAnalisis");
+                OnID_TipoAnalisisChanged();
             }
         }
-        private global::System.Int32 _CodigoTipoAnalisis;
-        partial void OnCodigoTipoAnalisisChanging(global::System.Int32 value);
-        partial void OnCodigoTipoAnalisisChanged();
+        private global::System.Int32 _ID_TipoAnalisis;
+        partial void OnID_TipoAnalisisChanging(global::System.Int32 value);
+        partial void OnID_TipoAnalisisChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1067,16 +2998,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Analis__Codig__34C8D9D1", "TB_Tipo_Analisis")]
-        public TB_Tipo_Analisis TB_Tipo_Analisis
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_ANALIS__ID_Co__31B762FC", "TB_CONSULTA")]
+        public TB_CONSULTA TB_CONSULTA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Tipo_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__34C8D9D1", "TB_Tipo_Analisis").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTA>("DB_SGHModel.FK__TB_ANALIS__ID_Co__31B762FC", "TB_CONSULTA").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Tipo_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__34C8D9D1", "TB_Tipo_Analisis").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTA>("DB_SGHModel.FK__TB_ANALIS__ID_Co__31B762FC", "TB_CONSULTA").Value = value;
             }
         }
         /// <summary>
@@ -1084,17 +3015,17 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Tipo_Analisis> TB_Tipo_AnalisisReference
+        public EntityReference<TB_CONSULTA> TB_CONSULTAReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Tipo_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__34C8D9D1", "TB_Tipo_Analisis");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTA>("DB_SGHModel.FK__TB_ANALIS__ID_Co__31B762FC", "TB_CONSULTA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Tipo_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__34C8D9D1", "TB_Tipo_Analisis", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_CONSULTA>("DB_SGHModel.FK__TB_ANALIS__ID_Co__31B762FC", "TB_CONSULTA", value);
                 }
             }
         }
@@ -1105,16 +3036,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Analis__Codig__35BCFE0A", "TB_Consulta")]
-        public TB_Consulta TB_Consulta
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_ANALIS__ID_Ti__32AB8735", "TB_TIPO_ANALISIS")]
+        public TB_TIPO_ANALISIS TB_TIPO_ANALISIS
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Analis__Codig__35BCFE0A", "TB_Consulta").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_ANALISIS>("DB_SGHModel.FK__TB_ANALIS__ID_Ti__32AB8735", "TB_TIPO_ANALISIS").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Analis__Codig__35BCFE0A", "TB_Consulta").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_ANALISIS>("DB_SGHModel.FK__TB_ANALIS__ID_Ti__32AB8735", "TB_TIPO_ANALISIS").Value = value;
             }
         }
         /// <summary>
@@ -1122,128 +3053,48 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Consulta> TB_ConsultaReference
+        public EntityReference<TB_TIPO_ANALISIS> TB_TIPO_ANALISISReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Analis__Codig__35BCFE0A", "TB_Consulta");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_ANALISIS>("DB_SGHModel.FK__TB_ANALIS__ID_Ti__32AB8735", "TB_TIPO_ANALISIS");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Analis__Codig__35BCFE0A", "TB_Consulta", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Analis__Codig__36B12243", "TB_Tipo_Analisis")]
-        public TB_Tipo_Analisis TB_Tipo_Analisis1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Tipo_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__36B12243", "TB_Tipo_Analisis").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Tipo_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__36B12243", "TB_Tipo_Analisis").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<TB_Tipo_Analisis> TB_Tipo_Analisis1Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Tipo_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__36B12243", "TB_Tipo_Analisis");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Tipo_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__36B12243", "TB_Tipo_Analisis", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Analis__Codig__37A5467C", "TB_Consulta")]
-        public TB_Consulta TB_Consulta1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Analis__Codig__37A5467C", "TB_Consulta").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Analis__Codig__37A5467C", "TB_Consulta").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<TB_Consulta> TB_Consulta1Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Analis__Codig__37A5467C", "TB_Consulta");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Analis__Codig__37A5467C", "TB_Consulta", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_TIPO_ANALISIS>("DB_SGHModel.FK__TB_ANALIS__ID_Ti__32AB8735", "TB_TIPO_ANALISIS", value);
                 }
             }
         }
 
         #endregion
+
     }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Cita")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_AREA")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Cita : EntityObject
+    public partial class TB_AREA : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Cita.
+        /// Crear un nuevo objeto TB_AREA.
         /// </summary>
-        /// <param name="codigoCita">Valor inicial de la propiedad CodigoCita.</param>
-        /// <param name="codigoPaciente">Valor inicial de la propiedad CodigoPaciente.</param>
-        /// <param name="codigoMedico">Valor inicial de la propiedad CodigoMedico.</param>
-        /// <param name="codigoAgenda">Valor inicial de la propiedad CodigoAgenda.</param>
-        public static TB_Cita CreateTB_Cita(global::System.Int32 codigoCita, global::System.Int32 codigoPaciente, global::System.Int32 codigoMedico, global::System.Int32 codigoAgenda)
+        /// <param name="iD_Area">Valor inicial de la propiedad ID_Area.</param>
+        public static TB_AREA CreateTB_AREA(global::System.Int32 iD_Area)
         {
-            TB_Cita tB_Cita = new TB_Cita();
-            tB_Cita.CodigoCita = codigoCita;
-            tB_Cita.CodigoPaciente = codigoPaciente;
-            tB_Cita.CodigoMedico = codigoMedico;
-            tB_Cita.CodigoAgenda = codigoAgenda;
-            return tB_Cita;
+            TB_AREA tB_AREA = new TB_AREA();
+            tB_AREA.ID_Area = iD_Area;
+            return tB_AREA;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1251,243 +3102,1565 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoCita
+        public global::System.Int32 ID_Area
         {
             get
             {
-                return _CodigoCita;
+                return _ID_Area;
             }
             set
             {
-                if (_CodigoCita != value)
+                if (_ID_Area != value)
                 {
-                    OnCodigoCitaChanging(value);
-                    ReportPropertyChanging("CodigoCita");
-                    _CodigoCita = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("CodigoCita");
-                    OnCodigoCitaChanged();
+                    OnID_AreaChanging(value);
+                    ReportPropertyChanging("ID_Area");
+                    _ID_Area = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Area");
+                    OnID_AreaChanged();
                 }
             }
         }
-        private global::System.Int32 _CodigoCita;
-        partial void OnCodigoCitaChanging(global::System.Int32 value);
-        partial void OnCodigoCitaChanged();
+        private global::System.Int32 _ID_Area;
+        partial void OnID_AreaChanging(global::System.Int32 value);
+        partial void OnID_AreaChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> FechaCita
+        public global::System.String GE_Nombre
         {
             get
             {
-                return _FechaCita;
+                return _GE_Nombre;
             }
             set
             {
-                OnFechaCitaChanging(value);
-                ReportPropertyChanging("FechaCita");
-                _FechaCita = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("FechaCita");
-                OnFechaCitaChanged();
+                OnGE_NombreChanging(value);
+                ReportPropertyChanging("GE_Nombre");
+                _GE_Nombre = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_Nombre");
+                OnGE_NombreChanged();
             }
         }
-        private Nullable<global::System.DateTime> _FechaCita;
-        partial void OnFechaCitaChanging(Nullable<global::System.DateTime> value);
-        partial void OnFechaCitaChanged();
+        private global::System.String _GE_Nombre;
+        partial void OnGE_NombreChanging(global::System.String value);
+        partial void OnGE_NombreChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_Ubicacion
+        {
+            get
+            {
+                return _GE_Ubicacion;
+            }
+            set
+            {
+                OnGE_UbicacionChanging(value);
+                ReportPropertyChanging("GE_Ubicacion");
+                _GE_Ubicacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_Ubicacion");
+                OnGE_UbicacionChanged();
+            }
+        }
+        private global::System.String _GE_Ubicacion;
+        partial void OnGE_UbicacionChanging(global::System.String value);
+        partial void OnGE_UbicacionChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_INSTALACION_TB_AREA", "TB_INSTALACION")]
+        public EntityCollection<TB_INSTALACION> TB_INSTALACION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_INSTALACION>("DB_SGHModel.FK_TB_INSTALACION_TB_AREA", "TB_INSTALACION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_INSTALACION>("DB_SGHModel.FK_TB_INSTALACION_TB_AREA", "TB_INSTALACION", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_DE_PEDIDO_TB_AREA", "TB_ORDEN_DE_PEDIDO")]
+        public EntityCollection<TB_ORDEN_DE_PEDIDO> TB_ORDEN_DE_PEDIDO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ORDEN_DE_PEDIDO>("DB_SGHModel.FK_TB_ORDEN_DE_PEDIDO_TB_AREA", "TB_ORDEN_DE_PEDIDO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ORDEN_DE_PEDIDO>("DB_SGHModel.FK_TB_ORDEN_DE_PEDIDO_TB_AREA", "TB_ORDEN_DE_PEDIDO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Atencion_Emergencia")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_Atencion_Emergencia : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_Atencion_Emergencia.
+        /// </summary>
+        /// <param name="iD_ATENCION">Valor inicial de la propiedad ID_ATENCION.</param>
+        /// <param name="gE_FechaIngreso">Valor inicial de la propiedad GE_FechaIngreso.</param>
+        /// <param name="iD_Medico">Valor inicial de la propiedad ID_Medico.</param>
+        /// <param name="iD_Paciente">Valor inicial de la propiedad ID_Paciente.</param>
+        public static TB_Atencion_Emergencia CreateTB_Atencion_Emergencia(global::System.Int32 iD_ATENCION, global::System.DateTime gE_FechaIngreso, global::System.Int32 iD_Medico, global::System.Int32 iD_Paciente)
+        {
+            TB_Atencion_Emergencia tB_Atencion_Emergencia = new TB_Atencion_Emergencia();
+            tB_Atencion_Emergencia.ID_ATENCION = iD_ATENCION;
+            tB_Atencion_Emergencia.GE_FechaIngreso = gE_FechaIngreso;
+            tB_Atencion_Emergencia.ID_Medico = iD_Medico;
+            tB_Atencion_Emergencia.ID_Paciente = iD_Paciente;
+            return tB_Atencion_Emergencia;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_ATENCION
+        {
+            get
+            {
+                return _ID_ATENCION;
+            }
+            set
+            {
+                if (_ID_ATENCION != value)
+                {
+                    OnID_ATENCIONChanging(value);
+                    ReportPropertyChanging("ID_ATENCION");
+                    _ID_ATENCION = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_ATENCION");
+                    OnID_ATENCIONChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_ATENCION;
+        partial void OnID_ATENCIONChanging(global::System.Int32 value);
+        partial void OnID_ATENCIONChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoPaciente
+        public global::System.DateTime GE_FechaIngreso
         {
             get
             {
-                return _CodigoPaciente;
+                return _GE_FechaIngreso;
             }
             set
             {
-                OnCodigoPacienteChanging(value);
-                ReportPropertyChanging("CodigoPaciente");
-                _CodigoPaciente = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoPaciente");
-                OnCodigoPacienteChanged();
+                OnGE_FechaIngresoChanging(value);
+                ReportPropertyChanging("GE_FechaIngreso");
+                _GE_FechaIngreso = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_FechaIngreso");
+                OnGE_FechaIngresoChanged();
             }
         }
-        private global::System.Int32 _CodigoPaciente;
-        partial void OnCodigoPacienteChanging(global::System.Int32 value);
-        partial void OnCodigoPacienteChanged();
+        private global::System.DateTime _GE_FechaIngreso;
+        partial void OnGE_FechaIngresoChanging(global::System.DateTime value);
+        partial void OnGE_FechaIngresoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoMedico
+        public global::System.Int32 ID_Medico
         {
             get
             {
-                return _CodigoMedico;
+                return _ID_Medico;
             }
             set
             {
-                OnCodigoMedicoChanging(value);
-                ReportPropertyChanging("CodigoMedico");
-                _CodigoMedico = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoMedico");
-                OnCodigoMedicoChanged();
+                OnID_MedicoChanging(value);
+                ReportPropertyChanging("ID_Medico");
+                _ID_Medico = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Medico");
+                OnID_MedicoChanged();
             }
         }
-        private global::System.Int32 _CodigoMedico;
-        partial void OnCodigoMedicoChanging(global::System.Int32 value);
-        partial void OnCodigoMedicoChanged();
+        private global::System.Int32 _ID_Medico;
+        partial void OnID_MedicoChanging(global::System.Int32 value);
+        partial void OnID_MedicoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoAgenda
+        public global::System.Int32 ID_Paciente
         {
             get
             {
-                return _CodigoAgenda;
+                return _ID_Paciente;
             }
             set
             {
-                OnCodigoAgendaChanging(value);
-                ReportPropertyChanging("CodigoAgenda");
-                _CodigoAgenda = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoAgenda");
-                OnCodigoAgendaChanged();
+                OnID_PacienteChanging(value);
+                ReportPropertyChanging("ID_Paciente");
+                _ID_Paciente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Paciente");
+                OnID_PacienteChanged();
             }
         }
-        private global::System.Int32 _CodigoAgenda;
-        partial void OnCodigoAgendaChanging(global::System.Int32 value);
-        partial void OnCodigoAgendaChanged();
+        private global::System.Int32 _ID_Paciente;
+        partial void OnID_PacienteChanging(global::System.Int32 value);
+        partial void OnID_PacienteChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> IdEstado
+        public global::System.String GE_DescripcionObservaciones
         {
             get
             {
-                return _IdEstado;
+                return _GE_DescripcionObservaciones;
             }
             set
             {
-                OnIdEstadoChanging(value);
-                ReportPropertyChanging("IdEstado");
-                _IdEstado = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IdEstado");
-                OnIdEstadoChanged();
+                OnGE_DescripcionObservacionesChanging(value);
+                ReportPropertyChanging("GE_DescripcionObservaciones");
+                _GE_DescripcionObservaciones = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_DescripcionObservaciones");
+                OnGE_DescripcionObservacionesChanged();
             }
         }
-        private Nullable<global::System.Int32> _IdEstado;
-        partial void OnIdEstadoChanging(Nullable<global::System.Int32> value);
-        partial void OnIdEstadoChanged();
+        private global::System.String _GE_DescripcionObservaciones;
+        partial void OnGE_DescripcionObservacionesChanging(global::System.String value);
+        partial void OnGE_DescripcionObservacionesChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> AtencionLocal
+        public global::System.String GE_Estado
         {
             get
             {
-                return _AtencionLocal;
+                return _GE_Estado;
             }
             set
             {
-                OnAtencionLocalChanging(value);
-                ReportPropertyChanging("AtencionLocal");
-                _AtencionLocal = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("AtencionLocal");
-                OnAtencionLocalChanged();
+                OnGE_EstadoChanging(value);
+                ReportPropertyChanging("GE_Estado");
+                _GE_Estado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_Estado");
+                OnGE_EstadoChanged();
             }
         }
-        private Nullable<global::System.Boolean> _AtencionLocal;
-        partial void OnAtencionLocalChanging(Nullable<global::System.Boolean> value);
-        partial void OnAtencionLocalChanged();
+        private global::System.String _GE_Estado;
+        partial void OnGE_EstadoChanging(global::System.String value);
+        partial void OnGE_EstadoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String DireccionDomicilio
+        public Nullable<global::System.Int32> ID_Cama
         {
             get
             {
-                return _DireccionDomicilio;
+                return _ID_Cama;
             }
             set
             {
-                OnDireccionDomicilioChanging(value);
-                ReportPropertyChanging("DireccionDomicilio");
-                _DireccionDomicilio = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("DireccionDomicilio");
-                OnDireccionDomicilioChanged();
+                OnID_CamaChanging(value);
+                ReportPropertyChanging("ID_Cama");
+                _ID_Cama = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Cama");
+                OnID_CamaChanged();
             }
         }
-        private global::System.String _DireccionDomicilio;
-        partial void OnDireccionDomicilioChanging(global::System.String value);
-        partial void OnDireccionDomicilioChanged();
+        private Nullable<global::System.Int32> _ID_Cama;
+        partial void OnID_CamaChanging(Nullable<global::System.Int32> value);
+        partial void OnID_CamaChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Atencion_Emergencia_TB_CAMA", "TB_CAMA")]
+        public TB_CAMA TB_CAMA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CAMA>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_CAMA", "TB_CAMA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CAMA>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_CAMA", "TB_CAMA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_CAMA> TB_CAMAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CAMA>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_CAMA", "TB_CAMA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_CAMA>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_CAMA", "TB_CAMA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Atencion_Emergencia_TB_Medico", "TB_MEDICO")]
+        public TB_MEDICO TB_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_Medico", "TB_MEDICO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_Medico", "TB_MEDICO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_MEDICO> TB_MEDICOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_Medico", "TB_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_Medico", "TB_MEDICO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Atencion_Emergencia_TB_PACIENTE", "TB_PACIENTE")]
+        public TB_PACIENTE TB_PACIENTE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_PACIENTE", "TB_PACIENTE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_PACIENTE", "TB_PACIENTE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_PACIENTE> TB_PACIENTEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_PACIENTE", "TB_PACIENTE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_PACIENTE", "TB_PACIENTE", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_CAMA")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_CAMA : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_CAMA.
+        /// </summary>
+        /// <param name="iD_Cama">Valor inicial de la propiedad ID_Cama.</param>
+        /// <param name="nroCama">Valor inicial de la propiedad NroCama.</param>
+        /// <param name="tipoCama">Valor inicial de la propiedad TipoCama.</param>
+        /// <param name="ubicacion">Valor inicial de la propiedad Ubicacion.</param>
+        /// <param name="estado">Valor inicial de la propiedad Estado.</param>
+        public static TB_CAMA CreateTB_CAMA(global::System.Int32 iD_Cama, global::System.String nroCama, global::System.String tipoCama, global::System.String ubicacion, global::System.String estado)
+        {
+            TB_CAMA tB_CAMA = new TB_CAMA();
+            tB_CAMA.ID_Cama = iD_Cama;
+            tB_CAMA.NroCama = nroCama;
+            tB_CAMA.TipoCama = tipoCama;
+            tB_CAMA.Ubicacion = ubicacion;
+            tB_CAMA.Estado = estado;
+            return tB_CAMA;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Cama
+        {
+            get
+            {
+                return _ID_Cama;
+            }
+            set
+            {
+                if (_ID_Cama != value)
+                {
+                    OnID_CamaChanging(value);
+                    ReportPropertyChanging("ID_Cama");
+                    _ID_Cama = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Cama");
+                    OnID_CamaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Cama;
+        partial void OnID_CamaChanging(global::System.Int32 value);
+        partial void OnID_CamaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String NroCama
+        {
+            get
+            {
+                return _NroCama;
+            }
+            set
+            {
+                OnNroCamaChanging(value);
+                ReportPropertyChanging("NroCama");
+                _NroCama = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("NroCama");
+                OnNroCamaChanged();
+            }
+        }
+        private global::System.String _NroCama;
+        partial void OnNroCamaChanging(global::System.String value);
+        partial void OnNroCamaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TipoCama
+        {
+            get
+            {
+                return _TipoCama;
+            }
+            set
+            {
+                OnTipoCamaChanging(value);
+                ReportPropertyChanging("TipoCama");
+                _TipoCama = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("TipoCama");
+                OnTipoCamaChanged();
+            }
+        }
+        private global::System.String _TipoCama;
+        partial void OnTipoCamaChanging(global::System.String value);
+        partial void OnTipoCamaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Ubicacion
+        {
+            get
+            {
+                return _Ubicacion;
+            }
+            set
+            {
+                OnUbicacionChanging(value);
+                ReportPropertyChanging("Ubicacion");
+                _Ubicacion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Ubicacion");
+                OnUbicacionChanged();
+            }
+        }
+        private global::System.String _Ubicacion;
+        partial void OnUbicacionChanging(global::System.String value);
+        partial void OnUbicacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Estado
+        {
+            get
+            {
+                return _Estado;
+            }
+            set
+            {
+                OnEstadoChanging(value);
+                ReportPropertyChanging("Estado");
+                _Estado = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Estado");
+                OnEstadoChanged();
+            }
+        }
+        private global::System.String _Estado;
+        partial void OnEstadoChanging(global::System.String value);
+        partial void OnEstadoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String ReferenciaDomicilio
+        public Nullable<global::System.Int32> ID_Hoja_Ingreso_Hospitalizacion
         {
             get
             {
-                return _ReferenciaDomicilio;
+                return _ID_Hoja_Ingreso_Hospitalizacion;
             }
             set
             {
-                OnReferenciaDomicilioChanging(value);
-                ReportPropertyChanging("ReferenciaDomicilio");
-                _ReferenciaDomicilio = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("ReferenciaDomicilio");
-                OnReferenciaDomicilioChanged();
+                OnID_Hoja_Ingreso_HospitalizacionChanging(value);
+                ReportPropertyChanging("ID_Hoja_Ingreso_Hospitalizacion");
+                _ID_Hoja_Ingreso_Hospitalizacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Hoja_Ingreso_Hospitalizacion");
+                OnID_Hoja_Ingreso_HospitalizacionChanged();
             }
         }
-        private global::System.String _ReferenciaDomicilio;
-        partial void OnReferenciaDomicilioChanging(global::System.String value);
-        partial void OnReferenciaDomicilioChanged();
+        private Nullable<global::System.Int32> _ID_Hoja_Ingreso_Hospitalizacion;
+        partial void OnID_Hoja_Ingreso_HospitalizacionChanging(Nullable<global::System.Int32> value);
+        partial void OnID_Hoja_Ingreso_HospitalizacionChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String SintomasPaciente
+        public Nullable<global::System.Int32> ID_Especialidad
         {
             get
             {
-                return _SintomasPaciente;
+                return _ID_Especialidad;
             }
             set
             {
-                OnSintomasPacienteChanging(value);
-                ReportPropertyChanging("SintomasPaciente");
-                _SintomasPaciente = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("SintomasPaciente");
-                OnSintomasPacienteChanged();
+                OnID_EspecialidadChanging(value);
+                ReportPropertyChanging("ID_Especialidad");
+                _ID_Especialidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Especialidad");
+                OnID_EspecialidadChanged();
             }
         }
-        private global::System.String _SintomasPaciente;
-        partial void OnSintomasPacienteChanging(global::System.String value);
-        partial void OnSintomasPacienteChanged();
+        private Nullable<global::System.Int32> _ID_Especialidad;
+        partial void OnID_EspecialidadChanging(Nullable<global::System.Int32> value);
+        partial void OnID_EspecialidadChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Atencion_Emergencia_TB_CAMA", "TB_Atencion_Emergencia")]
+        public EntityCollection<TB_Atencion_Emergencia> TB_Atencion_Emergencia
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Atencion_Emergencia>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_CAMA", "TB_Atencion_Emergencia");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Atencion_Emergencia>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_CAMA", "TB_Atencion_Emergencia", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GO_Cama63", "TB_HOJA_INGRESO_HOSPITALIZACION")]
+        public TB_HOJA_INGRESO_HOSPITALIZACION TB_HOJA_INGRESO_HOSPITALIZACION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_HOJA_INGRESO_HOSPITALIZACION>("DB_SGHModel.FK_T_CL_ES_GO_Cama63", "TB_HOJA_INGRESO_HOSPITALIZACION").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_HOJA_INGRESO_HOSPITALIZACION>("DB_SGHModel.FK_T_CL_ES_GO_Cama63", "TB_HOJA_INGRESO_HOSPITALIZACION").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_HOJA_INGRESO_HOSPITALIZACION> TB_HOJA_INGRESO_HOSPITALIZACIONReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_HOJA_INGRESO_HOSPITALIZACION>("DB_SGHModel.FK_T_CL_ES_GO_Cama63", "TB_HOJA_INGRESO_HOSPITALIZACION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_HOJA_INGRESO_HOSPITALIZACION>("DB_SGHModel.FK_T_CL_ES_GO_Cama63", "TB_HOJA_INGRESO_HOSPITALIZACION", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CAMA_TB_ESPECIALIDAD", "TB_ESPECIALIDAD")]
+        public TB_ESPECIALIDAD TB_ESPECIALIDAD
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_CAMA_TB_ESPECIALIDAD", "TB_ESPECIALIDAD").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_CAMA_TB_ESPECIALIDAD", "TB_ESPECIALIDAD").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_ESPECIALIDAD> TB_ESPECIALIDADReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_CAMA_TB_ESPECIALIDAD", "TB_ESPECIALIDAD");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_CAMA_TB_ESPECIALIDAD", "TB_ESPECIALIDAD", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_CARTA_GARANTIA")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_CARTA_GARANTIA : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_CARTA_GARANTIA.
+        /// </summary>
+        /// <param name="iD_Carta">Valor inicial de la propiedad ID_Carta.</param>
+        /// <param name="iD_Orden_de_Procedimiento">Valor inicial de la propiedad ID_Orden_de_Procedimiento.</param>
+        /// <param name="codPresupuesto">Valor inicial de la propiedad CodPresupuesto.</param>
+        /// <param name="iD_Paciente">Valor inicial de la propiedad ID_Paciente.</param>
+        /// <param name="codAseguradora">Valor inicial de la propiedad CodAseguradora.</param>
+        /// <param name="fecINiVigencia">Valor inicial de la propiedad FecINiVigencia.</param>
+        /// <param name="fecFinVigencia">Valor inicial de la propiedad FecFinVigencia.</param>
+        /// <param name="montoCarta">Valor inicial de la propiedad MontoCarta.</param>
+        /// <param name="detalle">Valor inicial de la propiedad Detalle.</param>
+        /// <param name="estado">Valor inicial de la propiedad Estado.</param>
+        public static TB_CARTA_GARANTIA CreateTB_CARTA_GARANTIA(global::System.Int32 iD_Carta, global::System.Int32 iD_Orden_de_Procedimiento, global::System.Int32 codPresupuesto, global::System.Int32 iD_Paciente, global::System.Int32 codAseguradora, global::System.DateTime fecINiVigencia, global::System.DateTime fecFinVigencia, global::System.Decimal montoCarta, global::System.String detalle, global::System.Int32 estado)
+        {
+            TB_CARTA_GARANTIA tB_CARTA_GARANTIA = new TB_CARTA_GARANTIA();
+            tB_CARTA_GARANTIA.ID_Carta = iD_Carta;
+            tB_CARTA_GARANTIA.ID_Orden_de_Procedimiento = iD_Orden_de_Procedimiento;
+            tB_CARTA_GARANTIA.CodPresupuesto = codPresupuesto;
+            tB_CARTA_GARANTIA.ID_Paciente = iD_Paciente;
+            tB_CARTA_GARANTIA.CodAseguradora = codAseguradora;
+            tB_CARTA_GARANTIA.FecINiVigencia = fecINiVigencia;
+            tB_CARTA_GARANTIA.FecFinVigencia = fecFinVigencia;
+            tB_CARTA_GARANTIA.MontoCarta = montoCarta;
+            tB_CARTA_GARANTIA.Detalle = detalle;
+            tB_CARTA_GARANTIA.Estado = estado;
+            return tB_CARTA_GARANTIA;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Carta
+        {
+            get
+            {
+                return _ID_Carta;
+            }
+            set
+            {
+                if (_ID_Carta != value)
+                {
+                    OnID_CartaChanging(value);
+                    ReportPropertyChanging("ID_Carta");
+                    _ID_Carta = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Carta");
+                    OnID_CartaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Carta;
+        partial void OnID_CartaChanging(global::System.Int32 value);
+        partial void OnID_CartaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Orden_de_Procedimiento
+        {
+            get
+            {
+                return _ID_Orden_de_Procedimiento;
+            }
+            set
+            {
+                OnID_Orden_de_ProcedimientoChanging(value);
+                ReportPropertyChanging("ID_Orden_de_Procedimiento");
+                _ID_Orden_de_Procedimiento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Orden_de_Procedimiento");
+                OnID_Orden_de_ProcedimientoChanged();
+            }
+        }
+        private global::System.Int32 _ID_Orden_de_Procedimiento;
+        partial void OnID_Orden_de_ProcedimientoChanging(global::System.Int32 value);
+        partial void OnID_Orden_de_ProcedimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CodPresupuesto
+        {
+            get
+            {
+                return _CodPresupuesto;
+            }
+            set
+            {
+                OnCodPresupuestoChanging(value);
+                ReportPropertyChanging("CodPresupuesto");
+                _CodPresupuesto = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CodPresupuesto");
+                OnCodPresupuestoChanged();
+            }
+        }
+        private global::System.Int32 _CodPresupuesto;
+        partial void OnCodPresupuestoChanging(global::System.Int32 value);
+        partial void OnCodPresupuestoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Paciente
+        {
+            get
+            {
+                return _ID_Paciente;
+            }
+            set
+            {
+                OnID_PacienteChanging(value);
+                ReportPropertyChanging("ID_Paciente");
+                _ID_Paciente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Paciente");
+                OnID_PacienteChanged();
+            }
+        }
+        private global::System.Int32 _ID_Paciente;
+        partial void OnID_PacienteChanging(global::System.Int32 value);
+        partial void OnID_PacienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CodAseguradora
+        {
+            get
+            {
+                return _CodAseguradora;
+            }
+            set
+            {
+                OnCodAseguradoraChanging(value);
+                ReportPropertyChanging("CodAseguradora");
+                _CodAseguradora = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CodAseguradora");
+                OnCodAseguradoraChanged();
+            }
+        }
+        private global::System.Int32 _CodAseguradora;
+        partial void OnCodAseguradoraChanging(global::System.Int32 value);
+        partial void OnCodAseguradoraChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FecINiVigencia
+        {
+            get
+            {
+                return _FecINiVigencia;
+            }
+            set
+            {
+                OnFecINiVigenciaChanging(value);
+                ReportPropertyChanging("FecINiVigencia");
+                _FecINiVigencia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FecINiVigencia");
+                OnFecINiVigenciaChanged();
+            }
+        }
+        private global::System.DateTime _FecINiVigencia;
+        partial void OnFecINiVigenciaChanging(global::System.DateTime value);
+        partial void OnFecINiVigenciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FecFinVigencia
+        {
+            get
+            {
+                return _FecFinVigencia;
+            }
+            set
+            {
+                OnFecFinVigenciaChanging(value);
+                ReportPropertyChanging("FecFinVigencia");
+                _FecFinVigencia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FecFinVigencia");
+                OnFecFinVigenciaChanged();
+            }
+        }
+        private global::System.DateTime _FecFinVigencia;
+        partial void OnFecFinVigenciaChanging(global::System.DateTime value);
+        partial void OnFecFinVigenciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal MontoCarta
+        {
+            get
+            {
+                return _MontoCarta;
+            }
+            set
+            {
+                OnMontoCartaChanging(value);
+                ReportPropertyChanging("MontoCarta");
+                _MontoCarta = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MontoCarta");
+                OnMontoCartaChanged();
+            }
+        }
+        private global::System.Decimal _MontoCarta;
+        partial void OnMontoCartaChanging(global::System.Decimal value);
+        partial void OnMontoCartaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Detalle
+        {
+            get
+            {
+                return _Detalle;
+            }
+            set
+            {
+                OnDetalleChanging(value);
+                ReportPropertyChanging("Detalle");
+                _Detalle = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Detalle");
+                OnDetalleChanged();
+            }
+        }
+        private global::System.String _Detalle;
+        partial void OnDetalleChanging(global::System.String value);
+        partial void OnDetalleChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Estado
+        {
+            get
+            {
+                return _Estado;
+            }
+            set
+            {
+                OnEstadoChanging(value);
+                ReportPropertyChanging("Estado");
+                _Estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Estado");
+                OnEstadoChanged();
+            }
+        }
+        private global::System.Int32 _Estado;
+        partial void OnEstadoChanging(global::System.Int32 value);
+        partial void OnEstadoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CARTA_GARANTIA_TB_ORDEN_DE_PROCEDIMIENTO", "TB_ORDEN_DE_PROCEDIMIENTO")]
+        public TB_ORDEN_DE_PROCEDIMIENTO TB_ORDEN_DE_PROCEDIMIENTO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_DE_PROCEDIMIENTO>("DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_ORDEN_DE_PROCEDIMIENTO", "TB_ORDEN_DE_PROCEDIMIENTO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_DE_PROCEDIMIENTO>("DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_ORDEN_DE_PROCEDIMIENTO", "TB_ORDEN_DE_PROCEDIMIENTO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_ORDEN_DE_PROCEDIMIENTO> TB_ORDEN_DE_PROCEDIMIENTOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_DE_PROCEDIMIENTO>("DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_ORDEN_DE_PROCEDIMIENTO", "TB_ORDEN_DE_PROCEDIMIENTO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ORDEN_DE_PROCEDIMIENTO>("DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_ORDEN_DE_PROCEDIMIENTO", "TB_ORDEN_DE_PROCEDIMIENTO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CARTA_GARANTIA_TB_PACIENTE", "TB_PACIENTE")]
+        public TB_PACIENTE TB_PACIENTE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_PACIENTE", "TB_PACIENTE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_PACIENTE", "TB_PACIENTE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_PACIENTE> TB_PACIENTEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_PACIENTE", "TB_PACIENTE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_PACIENTE", "TB_PACIENTE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_CARTA_GARANTIA", "TB_HOJA_INGRESO_HOSPITALIZACION")]
+        public EntityCollection<TB_HOJA_INGRESO_HOSPITALIZACION> TB_HOJA_INGRESO_HOSPITALIZACION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_HOJA_INGRESO_HOSPITALIZACION>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_CARTA_GARANTIA", "TB_HOJA_INGRESO_HOSPITALIZACION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_HOJA_INGRESO_HOSPITALIZACION>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_CARTA_GARANTIA", "TB_HOJA_INGRESO_HOSPITALIZACION", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_CATALOGO_EXAMEN_MEDICO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_CATALOGO_EXAMEN_MEDICO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_CATALOGO_EXAMEN_MEDICO.
+        /// </summary>
+        /// <param name="iD_Catalogo_Examen">Valor inicial de la propiedad ID_Catalogo_Examen.</param>
+        public static TB_CATALOGO_EXAMEN_MEDICO CreateTB_CATALOGO_EXAMEN_MEDICO(global::System.Int32 iD_Catalogo_Examen)
+        {
+            TB_CATALOGO_EXAMEN_MEDICO tB_CATALOGO_EXAMEN_MEDICO = new TB_CATALOGO_EXAMEN_MEDICO();
+            tB_CATALOGO_EXAMEN_MEDICO.ID_Catalogo_Examen = iD_Catalogo_Examen;
+            return tB_CATALOGO_EXAMEN_MEDICO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Catalogo_Examen
+        {
+            get
+            {
+                return _ID_Catalogo_Examen;
+            }
+            set
+            {
+                if (_ID_Catalogo_Examen != value)
+                {
+                    OnID_Catalogo_ExamenChanging(value);
+                    ReportPropertyChanging("ID_Catalogo_Examen");
+                    _ID_Catalogo_Examen = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Catalogo_Examen");
+                    OnID_Catalogo_ExamenChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Catalogo_Examen;
+        partial void OnID_Catalogo_ExamenChanging(global::System.Int32 value);
+        partial void OnID_Catalogo_ExamenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nom_examen
+        {
+            get
+            {
+                return _nom_examen;
+            }
+            set
+            {
+                Onnom_examenChanging(value);
+                ReportPropertyChanging("nom_examen");
+                _nom_examen = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nom_examen");
+                Onnom_examenChanged();
+            }
+        }
+        private global::System.String _nom_examen;
+        partial void Onnom_examenChanging(global::System.String value);
+        partial void Onnom_examenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> precio
+        {
+            get
+            {
+                return _precio;
+            }
+            set
+            {
+                OnprecioChanging(value);
+                ReportPropertyChanging("precio");
+                _precio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("precio");
+                OnprecioChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _precio;
+        partial void OnprecioChanging(Nullable<global::System.Decimal> value);
+        partial void OnprecioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Tipo_Examen
+        {
+            get
+            {
+                return _ID_Tipo_Examen;
+            }
+            set
+            {
+                OnID_Tipo_ExamenChanging(value);
+                ReportPropertyChanging("ID_Tipo_Examen");
+                _ID_Tipo_Examen = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Tipo_Examen");
+                OnID_Tipo_ExamenChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Tipo_Examen;
+        partial void OnID_Tipo_ExamenChanging(Nullable<global::System.Int32> value);
+        partial void OnID_Tipo_ExamenChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CATALOGO_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO")]
+        public TB_TIPO_EXAMEN_MEDICO TB_TIPO_EXAMEN_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_CATALOGO_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_CATALOGO_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_TIPO_EXAMEN_MEDICO> TB_TIPO_EXAMEN_MEDICOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_CATALOGO_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_TIPO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_CATALOGO_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_EXAMEN_MEDICO_TB_CATALOGO_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO")]
+        public EntityCollection<TB_ORDEN_EXAMEN_MEDICO> TB_ORDEN_EXAMEN_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_CATALOGO_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_CATALOGO_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "TB_CATALOGO_REQUISITO", "TB_REQUISITO")]
+        public EntityCollection<TB_REQUISITO> TB_REQUISITO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_REQUISITO>("DB_SGHModel.TB_CATALOGO_REQUISITO", "TB_REQUISITO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_REQUISITO>("DB_SGHModel.TB_CATALOGO_REQUISITO", "TB_REQUISITO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_CENTRO_COSTO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_CENTRO_COSTO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_CENTRO_COSTO.
+        /// </summary>
+        /// <param name="iD_CentroCosto">Valor inicial de la propiedad ID_CentroCosto.</param>
+        public static TB_CENTRO_COSTO CreateTB_CENTRO_COSTO(global::System.Int32 iD_CentroCosto)
+        {
+            TB_CENTRO_COSTO tB_CENTRO_COSTO = new TB_CENTRO_COSTO();
+            tB_CENTRO_COSTO.ID_CentroCosto = iD_CentroCosto;
+            return tB_CENTRO_COSTO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_CentroCosto
+        {
+            get
+            {
+                return _ID_CentroCosto;
+            }
+            set
+            {
+                if (_ID_CentroCosto != value)
+                {
+                    OnID_CentroCostoChanging(value);
+                    ReportPropertyChanging("ID_CentroCosto");
+                    _ID_CentroCosto = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_CentroCosto");
+                    OnID_CentroCostoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_CentroCosto;
+        partial void OnID_CentroCostoChanging(global::System.Int32 value);
+        partial void OnID_CentroCostoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Descripcion_CC
+        {
+            get
+            {
+                return _Descripcion_CC;
+            }
+            set
+            {
+                OnDescripcion_CCChanging(value);
+                ReportPropertyChanging("Descripcion_CC");
+                _Descripcion_CC = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Descripcion_CC");
+                OnDescripcion_CCChanged();
+            }
+        }
+        private global::System.String _Descripcion_CC;
+        partial void OnDescripcion_CCChanging(global::System.String value);
+        partial void OnDescripcion_CCChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Estado
+        {
+            get
+            {
+                return _Estado;
+            }
+            set
+            {
+                OnEstadoChanging(value);
+                ReportPropertyChanging("Estado");
+                _Estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Estado");
+                OnEstadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Estado;
+        partial void OnEstadoChanging(Nullable<global::System.Int32> value);
+        partial void OnEstadoChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_CITA")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_CITA : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_CITA.
+        /// </summary>
+        /// <param name="iD_Cita">Valor inicial de la propiedad ID_Cita.</param>
+        /// <param name="fechaHoraCita">Valor inicial de la propiedad FechaHoraCita.</param>
+        /// <param name="estado">Valor inicial de la propiedad Estado.</param>
+        /// <param name="iD_Paciente">Valor inicial de la propiedad ID_Paciente.</param>
+        /// <param name="iD_Especialidad">Valor inicial de la propiedad ID_Especialidad.</param>
+        /// <param name="iD_Medico">Valor inicial de la propiedad ID_Medico.</param>
+        /// <param name="iD_AgendaMedica">Valor inicial de la propiedad ID_AgendaMedica.</param>
+        public static TB_CITA CreateTB_CITA(global::System.Int32 iD_Cita, global::System.DateTime fechaHoraCita, global::System.String estado, global::System.Int32 iD_Paciente, global::System.Int32 iD_Especialidad, global::System.Int32 iD_Medico, global::System.Int32 iD_AgendaMedica)
+        {
+            TB_CITA tB_CITA = new TB_CITA();
+            tB_CITA.ID_Cita = iD_Cita;
+            tB_CITA.FechaHoraCita = fechaHoraCita;
+            tB_CITA.Estado = estado;
+            tB_CITA.ID_Paciente = iD_Paciente;
+            tB_CITA.ID_Especialidad = iD_Especialidad;
+            tB_CITA.ID_Medico = iD_Medico;
+            tB_CITA.ID_AgendaMedica = iD_AgendaMedica;
+            return tB_CITA;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Cita
+        {
+            get
+            {
+                return _ID_Cita;
+            }
+            set
+            {
+                if (_ID_Cita != value)
+                {
+                    OnID_CitaChanging(value);
+                    ReportPropertyChanging("ID_Cita");
+                    _ID_Cita = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Cita");
+                    OnID_CitaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Cita;
+        partial void OnID_CitaChanging(global::System.Int32 value);
+        partial void OnID_CitaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FechaHoraCita
+        {
+            get
+            {
+                return _FechaHoraCita;
+            }
+            set
+            {
+                OnFechaHoraCitaChanging(value);
+                ReportPropertyChanging("FechaHoraCita");
+                _FechaHoraCita = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaHoraCita");
+                OnFechaHoraCitaChanged();
+            }
+        }
+        private global::System.DateTime _FechaHoraCita;
+        partial void OnFechaHoraCitaChanging(global::System.DateTime value);
+        partial void OnFechaHoraCitaChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -1518,7 +4691,7 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Decimal> Cobertura
+        public Nullable<global::System.Double> Cobertura
         {
             get
             {
@@ -1533,11 +4706,324 @@ namespace CI.SIC.DA
                 OnCoberturaChanged();
             }
         }
-        private Nullable<global::System.Decimal> _Cobertura;
-        partial void OnCoberturaChanging(Nullable<global::System.Decimal> value);
+        private Nullable<global::System.Double> _Cobertura;
+        partial void OnCoberturaChanging(Nullable<global::System.Double> value);
         partial void OnCoberturaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Estado
+        {
+            get
+            {
+                return _Estado;
+            }
+            set
+            {
+                OnEstadoChanging(value);
+                ReportPropertyChanging("Estado");
+                _Estado = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Estado");
+                OnEstadoChanged();
+            }
+        }
+        private global::System.String _Estado;
+        partial void OnEstadoChanging(global::System.String value);
+        partial void OnEstadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String OrdenAtencion
+        {
+            get
+            {
+                return _OrdenAtencion;
+            }
+            set
+            {
+                OnOrdenAtencionChanging(value);
+                ReportPropertyChanging("OrdenAtencion");
+                _OrdenAtencion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("OrdenAtencion");
+                OnOrdenAtencionChanged();
+            }
+        }
+        private global::System.String _OrdenAtencion;
+        partial void OnOrdenAtencionChanging(global::System.String value);
+        partial void OnOrdenAtencionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Paciente
+        {
+            get
+            {
+                return _ID_Paciente;
+            }
+            set
+            {
+                OnID_PacienteChanging(value);
+                ReportPropertyChanging("ID_Paciente");
+                _ID_Paciente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Paciente");
+                OnID_PacienteChanged();
+            }
+        }
+        private global::System.Int32 _ID_Paciente;
+        partial void OnID_PacienteChanging(global::System.Int32 value);
+        partial void OnID_PacienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Historia
+        {
+            get
+            {
+                return _ID_Historia;
+            }
+            set
+            {
+                OnID_HistoriaChanging(value);
+                ReportPropertyChanging("ID_Historia");
+                _ID_Historia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Historia");
+                OnID_HistoriaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Historia;
+        partial void OnID_HistoriaChanging(Nullable<global::System.Int32> value);
+        partial void OnID_HistoriaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Especialidad
+        {
+            get
+            {
+                return _ID_Especialidad;
+            }
+            set
+            {
+                OnID_EspecialidadChanging(value);
+                ReportPropertyChanging("ID_Especialidad");
+                _ID_Especialidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Especialidad");
+                OnID_EspecialidadChanged();
+            }
+        }
+        private global::System.Int32 _ID_Especialidad;
+        partial void OnID_EspecialidadChanging(global::System.Int32 value);
+        partial void OnID_EspecialidadChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Medico
+        {
+            get
+            {
+                return _ID_Medico;
+            }
+            set
+            {
+                OnID_MedicoChanging(value);
+                ReportPropertyChanging("ID_Medico");
+                _ID_Medico = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Medico");
+                OnID_MedicoChanged();
+            }
+        }
+        private global::System.Int32 _ID_Medico;
+        partial void OnID_MedicoChanging(global::System.Int32 value);
+        partial void OnID_MedicoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_AgendaMedica
+        {
+            get
+            {
+                return _ID_AgendaMedica;
+            }
+            set
+            {
+                OnID_AgendaMedicaChanging(value);
+                ReportPropertyChanging("ID_AgendaMedica");
+                _ID_AgendaMedica = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_AgendaMedica");
+                OnID_AgendaMedicaChanged();
+            }
+        }
+        private global::System.Int32 _ID_AgendaMedica;
+        partial void OnID_AgendaMedicaChanging(global::System.Int32 value);
+        partial void OnID_AgendaMedicaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_EstadoCita
+        {
+            get
+            {
+                return _ID_EstadoCita;
+            }
+            set
+            {
+                OnID_EstadoCitaChanging(value);
+                ReportPropertyChanging("ID_EstadoCita");
+                _ID_EstadoCita = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_EstadoCita");
+                OnID_EstadoCitaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_EstadoCita;
+        partial void OnID_EstadoCitaChanging(Nullable<global::System.Int32> value);
+        partial void OnID_EstadoCitaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Cita_Reprogramada
+        {
+            get
+            {
+                return _ID_Cita_Reprogramada;
+            }
+            set
+            {
+                OnID_Cita_ReprogramadaChanging(value);
+                ReportPropertyChanging("ID_Cita_Reprogramada");
+                _ID_Cita_Reprogramada = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Cita_Reprogramada");
+                OnID_Cita_ReprogramadaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Cita_Reprogramada;
+        partial void OnID_Cita_ReprogramadaChanging(Nullable<global::System.Int32> value);
+        partial void OnID_Cita_ReprogramadaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Des_Ubicacion_Cita
+        {
+            get
+            {
+                return _Des_Ubicacion_Cita;
+            }
+            set
+            {
+                OnDes_Ubicacion_CitaChanging(value);
+                ReportPropertyChanging("Des_Ubicacion_Cita");
+                _Des_Ubicacion_Cita = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Des_Ubicacion_Cita");
+                OnDes_Ubicacion_CitaChanged();
+            }
+        }
+        private global::System.String _Des_Ubicacion_Cita;
+        partial void OnDes_Ubicacion_CitaChanging(global::System.String value);
+        partial void OnDes_Ubicacion_CitaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> AtencionLocal
+        {
+            get
+            {
+                return _AtencionLocal;
+            }
+            set
+            {
+                OnAtencionLocalChanging(value);
+                ReportPropertyChanging("AtencionLocal");
+                _AtencionLocal = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("AtencionLocal");
+                OnAtencionLocalChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _AtencionLocal;
+        partial void OnAtencionLocalChanging(Nullable<global::System.Boolean> value);
+        partial void OnAtencionLocalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Sintomas
+        {
+            get
+            {
+                return _Sintomas;
+            }
+            set
+            {
+                OnSintomasChanging(value);
+                ReportPropertyChanging("Sintomas");
+                _Sintomas = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Sintomas");
+                OnSintomasChanged();
+            }
+        }
+        private global::System.String _Sintomas;
+        partial void OnSintomasChanging(global::System.String value);
+        partial void OnSintomasChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ReferenciaDomicilio
+        {
+            get
+            {
+                return _ReferenciaDomicilio;
+            }
+            set
+            {
+                OnReferenciaDomicilioChanging(value);
+                ReportPropertyChanging("ReferenciaDomicilio");
+                _ReferenciaDomicilio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ReferenciaDomicilio");
+                OnReferenciaDomicilioChanged();
+            }
+        }
+        private global::System.String _ReferenciaDomicilio;
+        partial void OnReferenciaDomicilioChanging(global::System.String value);
+        partial void OnReferenciaDomicilioChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1547,16 +5033,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__Cita__CodigoAgen__33D4B5981", "TB_Agenda_Medica")]
-        public TB_Agenda_Medica TB_Agenda_Medica
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CITA_TB_AgendaMedica", "TB_AGENDA_MEDICA")]
+        public TB_AGENDA_MEDICA TB_AGENDA_MEDICA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Agenda_Medica>("DB_SGHModel.FK__Cita__CodigoAgen__33D4B5981", "TB_Agenda_Medica").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_AGENDA_MEDICA>("DB_SGHModel.FK_TB_CITA_TB_AgendaMedica", "TB_AGENDA_MEDICA").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Agenda_Medica>("DB_SGHModel.FK__Cita__CodigoAgen__33D4B5981", "TB_Agenda_Medica").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_AGENDA_MEDICA>("DB_SGHModel.FK_TB_CITA_TB_AgendaMedica", "TB_AGENDA_MEDICA").Value = value;
             }
         }
         /// <summary>
@@ -1564,17 +5050,17 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Agenda_Medica> TB_Agenda_MedicaReference
+        public EntityReference<TB_AGENDA_MEDICA> TB_AGENDA_MEDICAReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Agenda_Medica>("DB_SGHModel.FK__Cita__CodigoAgen__33D4B5981", "TB_Agenda_Medica");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_AGENDA_MEDICA>("DB_SGHModel.FK_TB_CITA_TB_AgendaMedica", "TB_AGENDA_MEDICA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Agenda_Medica>("DB_SGHModel.FK__Cita__CodigoAgen__33D4B5981", "TB_Agenda_Medica", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_AGENDA_MEDICA>("DB_SGHModel.FK_TB_CITA_TB_AgendaMedica", "TB_AGENDA_MEDICA", value);
                 }
             }
         }
@@ -1585,16 +5071,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__Cita__CodigoMedi__36B122431", "TB_Medico")]
-        public TB_Medico TB_Medico
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_CO_GC_Cita55", "TB_PACIENTE")]
+        public TB_PACIENTE TB_PACIENTE
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medico>("DB_SGHModel.FK__Cita__CodigoMedi__36B122431", "TB_Medico").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_CO_GC_Cita55", "TB_PACIENTE").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medico>("DB_SGHModel.FK__Cita__CodigoMedi__36B122431", "TB_Medico").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_CO_GC_Cita55", "TB_PACIENTE").Value = value;
             }
         }
         /// <summary>
@@ -1602,17 +5088,17 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Medico> TB_MedicoReference
+        public EntityReference<TB_PACIENTE> TB_PACIENTEReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medico>("DB_SGHModel.FK__Cita__CodigoMedi__36B122431", "TB_Medico");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_CO_GC_Cita55", "TB_PACIENTE");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Medico>("DB_SGHModel.FK__Cita__CodigoMedi__36B122431", "TB_Medico", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_CO_GC_Cita55", "TB_PACIENTE", value);
                 }
             }
         }
@@ -1623,16 +5109,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__Cita__CodigoPaci__37A5467C1", "TB_Paciente")]
-        public TB_Paciente TB_Paciente
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_CO_GC_Cita60", "TB_HISTORIA_CLINICA")]
+        public TB_HISTORIA_CLINICA TB_HISTORIA_CLINICA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Paciente>("DB_SGHModel.FK__Cita__CodigoPaci__37A5467C1", "TB_Paciente").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_HISTORIA_CLINICA>("DB_SGHModel.FK_T_CL_CO_GC_Cita60", "TB_HISTORIA_CLINICA").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Paciente>("DB_SGHModel.FK__Cita__CodigoPaci__37A5467C1", "TB_Paciente").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_HISTORIA_CLINICA>("DB_SGHModel.FK_T_CL_CO_GC_Cita60", "TB_HISTORIA_CLINICA").Value = value;
             }
         }
         /// <summary>
@@ -1640,17 +5126,17 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Paciente> TB_PacienteReference
+        public EntityReference<TB_HISTORIA_CLINICA> TB_HISTORIA_CLINICAReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Paciente>("DB_SGHModel.FK__Cita__CodigoPaci__37A5467C1", "TB_Paciente");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_HISTORIA_CLINICA>("DB_SGHModel.FK_T_CL_CO_GC_Cita60", "TB_HISTORIA_CLINICA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Paciente>("DB_SGHModel.FK__Cita__CodigoPaci__37A5467C1", "TB_Paciente", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_HISTORIA_CLINICA>("DB_SGHModel.FK_T_CL_CO_GC_Cita60", "TB_HISTORIA_CLINICA", value);
                 }
             }
         }
@@ -1661,18 +5147,18 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__Consulta__Codigo__3B75D7601", "TB_Consulta")]
-        public EntityCollection<TB_Consulta> TB_Consulta
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_CO_GC_Comprobante_de_Pago51", "TB_COMPROBANTE_DE_PAGO")]
+        public EntityCollection<TB_COMPROBANTE_DE_PAGO> TB_COMPROBANTE_DE_PAGO
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Consulta>("DB_SGHModel.FK__Consulta__Codigo__3B75D7601", "TB_Consulta");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_COMPROBANTE_DE_PAGO>("DB_SGHModel.FK_T_CL_CO_GC_Comprobante_de_Pago51", "TB_COMPROBANTE_DE_PAGO");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Consulta>("DB_SGHModel.FK__Consulta__Codigo__3B75D7601", "TB_Consulta", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_COMPROBANTE_DE_PAGO>("DB_SGHModel.FK_T_CL_CO_GC_Comprobante_de_Pago51", "TB_COMPROBANTE_DE_PAGO", value);
                 }
             }
         }
@@ -1683,16 +5169,60 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_Cita_EstadoCita1", "TB_Estado_Cita")]
-        public TB_Estado_Cita TB_Estado_Cita
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Orden_de_Pago50", "TB_ORDEN_SERVICIO")]
+        public EntityCollection<TB_ORDEN_SERVICIO> TB_ORDEN_SERVICIO
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Estado_Cita>("DB_SGHModel.FK_Cita_EstadoCita1", "TB_Estado_Cita").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ORDEN_SERVICIO>("DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Pago50", "TB_ORDEN_SERVICIO");
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Estado_Cita>("DB_SGHModel.FK_Cita_EstadoCita1", "TB_Estado_Cita").Value = value;
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ORDEN_SERVICIO>("DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Pago50", "TB_ORDEN_SERVICIO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GC_TurnoAtencion_T_CL_CO_GC_Cita", "TB_TURNO_ATENCION")]
+        public EntityCollection<TB_TURNO_ATENCION> TB_TURNO_ATENCION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_TURNO_ATENCION>("DB_SGHModel.FK_T_CL_ES_GC_TurnoAtencion_T_CL_CO_GC_Cita", "TB_TURNO_ATENCION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_TURNO_ATENCION>("DB_SGHModel.FK_T_CL_ES_GC_TurnoAtencion_T_CL_CO_GC_Cita", "TB_TURNO_ATENCION", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CITA_00TB_ESPECIALIDAD", "TB_ESPECIALIDAD")]
+        public TB_ESPECIALIDAD TB_ESPECIALIDAD
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_CITA_00TB_ESPECIALIDAD", "TB_ESPECIALIDAD").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_CITA_00TB_ESPECIALIDAD", "TB_ESPECIALIDAD").Value = value;
             }
         }
         /// <summary>
@@ -1700,56 +5230,158 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Estado_Cita> TB_Estado_CitaReference
+        public EntityReference<TB_ESPECIALIDAD> TB_ESPECIALIDADReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Estado_Cita>("DB_SGHModel.FK_Cita_EstadoCita1", "TB_Estado_Cita");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_CITA_00TB_ESPECIALIDAD", "TB_ESPECIALIDAD");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Estado_Cita>("DB_SGHModel.FK_Cita_EstadoCita1", "TB_Estado_Cita", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_CITA_00TB_ESPECIALIDAD", "TB_ESPECIALIDAD", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CITA_00TB_MEDICO", "TB_MEDICO")]
+        public TB_MEDICO TB_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_CITA_00TB_MEDICO", "TB_MEDICO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_CITA_00TB_MEDICO", "TB_MEDICO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_MEDICO> TB_MEDICOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_CITA_00TB_MEDICO", "TB_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_CITA_00TB_MEDICO", "TB_MEDICO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CITA_TB_Estado_Cita", "TB_ESTADO_CITA")]
+        public TB_ESTADO_CITA TB_ESTADO_CITA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESTADO_CITA>("DB_SGHModel.FK_TB_CITA_TB_Estado_Cita", "TB_ESTADO_CITA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESTADO_CITA>("DB_SGHModel.FK_TB_CITA_TB_Estado_Cita", "TB_ESTADO_CITA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_ESTADO_CITA> TB_ESTADO_CITAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESTADO_CITA>("DB_SGHModel.FK_TB_CITA_TB_Estado_Cita", "TB_ESTADO_CITA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ESTADO_CITA>("DB_SGHModel.FK_TB_CITA_TB_Estado_Cita", "TB_ESTADO_CITA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Consulta_TB_CITA", "TB_CONSULTA")]
+        public EntityCollection<TB_CONSULTA> TB_CONSULTA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CONSULTA>("DB_SGHModel.FK_TB_Consulta_TB_CITA", "TB_CONSULTA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CONSULTA>("DB_SGHModel.FK_TB_Consulta_TB_CITA", "TB_CONSULTA", value);
                 }
             }
         }
 
         #endregion
+
     }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Consulta")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_COMPROBANTE_DE_PAGO")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Consulta : EntityObject
+    public partial class TB_COMPROBANTE_DE_PAGO : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Consulta.
+        /// Crear un nuevo objeto TB_COMPROBANTE_DE_PAGO.
         /// </summary>
-        /// <param name="codigoConsulta">Valor inicial de la propiedad CodigoConsulta.</param>
-        /// <param name="fechaHoraInicio">Valor inicial de la propiedad FechaHoraInicio.</param>
-        /// <param name="codigoMedico">Valor inicial de la propiedad CodigoMedico.</param>
-        /// <param name="codigoCita">Valor inicial de la propiedad CodigoCita.</param>
-        /// <param name="codigoConsultorio">Valor inicial de la propiedad CodigoConsultorio.</param>
-        /// <param name="codigoPaciente">Valor inicial de la propiedad CodigoPaciente.</param>
-        public static TB_Consulta CreateTB_Consulta(global::System.Int32 codigoConsulta, global::System.DateTime fechaHoraInicio, global::System.Int32 codigoMedico, global::System.Int32 codigoCita, global::System.Int32 codigoConsultorio, global::System.Int32 codigoPaciente)
+        /// <param name="iD_Comprobante_Pago">Valor inicial de la propiedad ID_Comprobante_Pago.</param>
+        /// <param name="fechaComprobante">Valor inicial de la propiedad FechaComprobante.</param>
+        /// <param name="tipoComprobante">Valor inicial de la propiedad TipoComprobante.</param>
+        /// <param name="formaDePago">Valor inicial de la propiedad FormaDePago.</param>
+        /// <param name="montoComprobante">Valor inicial de la propiedad MontoComprobante.</param>
+        /// <param name="conceptoDePago">Valor inicial de la propiedad ConceptoDePago.</param>
+        /// <param name="iD_Cita">Valor inicial de la propiedad ID_Cita.</param>
+        public static TB_COMPROBANTE_DE_PAGO CreateTB_COMPROBANTE_DE_PAGO(global::System.Int32 iD_Comprobante_Pago, global::System.DateTime fechaComprobante, global::System.String tipoComprobante, global::System.String formaDePago, global::System.Double montoComprobante, global::System.String conceptoDePago, global::System.Int32 iD_Cita)
         {
-            TB_Consulta tB_Consulta = new TB_Consulta();
-            tB_Consulta.CodigoConsulta = codigoConsulta;
-            tB_Consulta.FechaHoraInicio = fechaHoraInicio;
-            tB_Consulta.CodigoMedico = codigoMedico;
-            tB_Consulta.CodigoCita = codigoCita;
-            tB_Consulta.CodigoConsultorio = codigoConsultorio;
-            tB_Consulta.CodigoPaciente = codigoPaciente;
-            return tB_Consulta;
+            TB_COMPROBANTE_DE_PAGO tB_COMPROBANTE_DE_PAGO = new TB_COMPROBANTE_DE_PAGO();
+            tB_COMPROBANTE_DE_PAGO.ID_Comprobante_Pago = iD_Comprobante_Pago;
+            tB_COMPROBANTE_DE_PAGO.FechaComprobante = fechaComprobante;
+            tB_COMPROBANTE_DE_PAGO.TipoComprobante = tipoComprobante;
+            tB_COMPROBANTE_DE_PAGO.FormaDePago = formaDePago;
+            tB_COMPROBANTE_DE_PAGO.MontoComprobante = montoComprobante;
+            tB_COMPROBANTE_DE_PAGO.ConceptoDePago = conceptoDePago;
+            tB_COMPROBANTE_DE_PAGO.ID_Cita = iD_Cita;
+            return tB_COMPROBANTE_DE_PAGO;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -1757,27 +5389,280 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoConsulta
+        public global::System.Int32 ID_Comprobante_Pago
         {
             get
             {
-                return _CodigoConsulta;
+                return _ID_Comprobante_Pago;
             }
             set
             {
-                if (_CodigoConsulta != value)
+                if (_ID_Comprobante_Pago != value)
                 {
-                    OnCodigoConsultaChanging(value);
-                    ReportPropertyChanging("CodigoConsulta");
-                    _CodigoConsulta = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("CodigoConsulta");
-                    OnCodigoConsultaChanged();
+                    OnID_Comprobante_PagoChanging(value);
+                    ReportPropertyChanging("ID_Comprobante_Pago");
+                    _ID_Comprobante_Pago = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Comprobante_Pago");
+                    OnID_Comprobante_PagoChanged();
                 }
             }
         }
-        private global::System.Int32 _CodigoConsulta;
-        partial void OnCodigoConsultaChanging(global::System.Int32 value);
-        partial void OnCodigoConsultaChanged();
+        private global::System.Int32 _ID_Comprobante_Pago;
+        partial void OnID_Comprobante_PagoChanging(global::System.Int32 value);
+        partial void OnID_Comprobante_PagoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FechaComprobante
+        {
+            get
+            {
+                return _FechaComprobante;
+            }
+            set
+            {
+                OnFechaComprobanteChanging(value);
+                ReportPropertyChanging("FechaComprobante");
+                _FechaComprobante = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaComprobante");
+                OnFechaComprobanteChanged();
+            }
+        }
+        private global::System.DateTime _FechaComprobante;
+        partial void OnFechaComprobanteChanging(global::System.DateTime value);
+        partial void OnFechaComprobanteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String TipoComprobante
+        {
+            get
+            {
+                return _TipoComprobante;
+            }
+            set
+            {
+                OnTipoComprobanteChanging(value);
+                ReportPropertyChanging("TipoComprobante");
+                _TipoComprobante = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("TipoComprobante");
+                OnTipoComprobanteChanged();
+            }
+        }
+        private global::System.String _TipoComprobante;
+        partial void OnTipoComprobanteChanging(global::System.String value);
+        partial void OnTipoComprobanteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FormaDePago
+        {
+            get
+            {
+                return _FormaDePago;
+            }
+            set
+            {
+                OnFormaDePagoChanging(value);
+                ReportPropertyChanging("FormaDePago");
+                _FormaDePago = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FormaDePago");
+                OnFormaDePagoChanged();
+            }
+        }
+        private global::System.String _FormaDePago;
+        partial void OnFormaDePagoChanging(global::System.String value);
+        partial void OnFormaDePagoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Double MontoComprobante
+        {
+            get
+            {
+                return _MontoComprobante;
+            }
+            set
+            {
+                OnMontoComprobanteChanging(value);
+                ReportPropertyChanging("MontoComprobante");
+                _MontoComprobante = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MontoComprobante");
+                OnMontoComprobanteChanged();
+            }
+        }
+        private global::System.Double _MontoComprobante;
+        partial void OnMontoComprobanteChanging(global::System.Double value);
+        partial void OnMontoComprobanteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ConceptoDePago
+        {
+            get
+            {
+                return _ConceptoDePago;
+            }
+            set
+            {
+                OnConceptoDePagoChanging(value);
+                ReportPropertyChanging("ConceptoDePago");
+                _ConceptoDePago = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ConceptoDePago");
+                OnConceptoDePagoChanged();
+            }
+        }
+        private global::System.String _ConceptoDePago;
+        partial void OnConceptoDePagoChanging(global::System.String value);
+        partial void OnConceptoDePagoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Cita
+        {
+            get
+            {
+                return _ID_Cita;
+            }
+            set
+            {
+                OnID_CitaChanging(value);
+                ReportPropertyChanging("ID_Cita");
+                _ID_Cita = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Cita");
+                OnID_CitaChanged();
+            }
+        }
+        private global::System.Int32 _ID_Cita;
+        partial void OnID_CitaChanging(global::System.Int32 value);
+        partial void OnID_CitaChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_CO_GC_Comprobante_de_Pago51", "TB_CITA")]
+        public TB_CITA TB_CITA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CITA>("DB_SGHModel.FK_T_CL_CO_GC_Comprobante_de_Pago51", "TB_CITA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CITA>("DB_SGHModel.FK_T_CL_CO_GC_Comprobante_de_Pago51", "TB_CITA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_CITA> TB_CITAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CITA>("DB_SGHModel.FK_T_CL_CO_GC_Comprobante_de_Pago51", "TB_CITA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_CITA>("DB_SGHModel.FK_T_CL_CO_GC_Comprobante_de_Pago51", "TB_CITA", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_CONSULTA")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_CONSULTA : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_CONSULTA.
+        /// </summary>
+        /// <param name="iD_Consulta">Valor inicial de la propiedad ID_Consulta.</param>
+        /// <param name="fechaHoraInicio">Valor inicial de la propiedad FechaHoraInicio.</param>
+        /// <param name="iD_Medico">Valor inicial de la propiedad ID_Medico.</param>
+        /// <param name="iD_Cita">Valor inicial de la propiedad ID_Cita.</param>
+        /// <param name="iD_Consultorio">Valor inicial de la propiedad ID_Consultorio.</param>
+        /// <param name="iD_Paciente">Valor inicial de la propiedad ID_Paciente.</param>
+        public static TB_CONSULTA CreateTB_CONSULTA(global::System.Int32 iD_Consulta, global::System.DateTime fechaHoraInicio, global::System.Int32 iD_Medico, global::System.Int32 iD_Cita, global::System.Int32 iD_Consultorio, global::System.Int32 iD_Paciente)
+        {
+            TB_CONSULTA tB_CONSULTA = new TB_CONSULTA();
+            tB_CONSULTA.ID_Consulta = iD_Consulta;
+            tB_CONSULTA.FechaHoraInicio = fechaHoraInicio;
+            tB_CONSULTA.ID_Medico = iD_Medico;
+            tB_CONSULTA.ID_Cita = iD_Cita;
+            tB_CONSULTA.ID_Consultorio = iD_Consultorio;
+            tB_CONSULTA.ID_Paciente = iD_Paciente;
+            return tB_CONSULTA;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Consulta
+        {
+            get
+            {
+                return _ID_Consulta;
+            }
+            set
+            {
+                if (_ID_Consulta != value)
+                {
+                    OnID_ConsultaChanging(value);
+                    ReportPropertyChanging("ID_Consulta");
+                    _ID_Consulta = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Consulta");
+                    OnID_ConsultaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Consulta;
+        partial void OnID_ConsultaChanging(global::System.Int32 value);
+        partial void OnID_ConsultaChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -1856,96 +5741,96 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoMedico
+        public global::System.Int32 ID_Medico
         {
             get
             {
-                return _CodigoMedico;
+                return _ID_Medico;
             }
             set
             {
-                OnCodigoMedicoChanging(value);
-                ReportPropertyChanging("CodigoMedico");
-                _CodigoMedico = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoMedico");
-                OnCodigoMedicoChanged();
+                OnID_MedicoChanging(value);
+                ReportPropertyChanging("ID_Medico");
+                _ID_Medico = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Medico");
+                OnID_MedicoChanged();
             }
         }
-        private global::System.Int32 _CodigoMedico;
-        partial void OnCodigoMedicoChanging(global::System.Int32 value);
-        partial void OnCodigoMedicoChanged();
+        private global::System.Int32 _ID_Medico;
+        partial void OnID_MedicoChanging(global::System.Int32 value);
+        partial void OnID_MedicoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoCita
+        public global::System.Int32 ID_Cita
         {
             get
             {
-                return _CodigoCita;
+                return _ID_Cita;
             }
             set
             {
-                OnCodigoCitaChanging(value);
-                ReportPropertyChanging("CodigoCita");
-                _CodigoCita = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoCita");
-                OnCodigoCitaChanged();
+                OnID_CitaChanging(value);
+                ReportPropertyChanging("ID_Cita");
+                _ID_Cita = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Cita");
+                OnID_CitaChanged();
             }
         }
-        private global::System.Int32 _CodigoCita;
-        partial void OnCodigoCitaChanging(global::System.Int32 value);
-        partial void OnCodigoCitaChanged();
+        private global::System.Int32 _ID_Cita;
+        partial void OnID_CitaChanging(global::System.Int32 value);
+        partial void OnID_CitaChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoConsultorio
+        public global::System.Int32 ID_Consultorio
         {
             get
             {
-                return _CodigoConsultorio;
+                return _ID_Consultorio;
             }
             set
             {
-                OnCodigoConsultorioChanging(value);
-                ReportPropertyChanging("CodigoConsultorio");
-                _CodigoConsultorio = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoConsultorio");
-                OnCodigoConsultorioChanged();
+                OnID_ConsultorioChanging(value);
+                ReportPropertyChanging("ID_Consultorio");
+                _ID_Consultorio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Consultorio");
+                OnID_ConsultorioChanged();
             }
         }
-        private global::System.Int32 _CodigoConsultorio;
-        partial void OnCodigoConsultorioChanging(global::System.Int32 value);
-        partial void OnCodigoConsultorioChanged();
+        private global::System.Int32 _ID_Consultorio;
+        partial void OnID_ConsultorioChanging(global::System.Int32 value);
+        partial void OnID_ConsultorioChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoPaciente
+        public global::System.Int32 ID_Paciente
         {
             get
             {
-                return _CodigoPaciente;
+                return _ID_Paciente;
             }
             set
             {
-                OnCodigoPacienteChanging(value);
-                ReportPropertyChanging("CodigoPaciente");
-                _CodigoPaciente = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoPaciente");
-                OnCodigoPacienteChanged();
+                OnID_PacienteChanging(value);
+                ReportPropertyChanging("ID_Paciente");
+                _ID_Paciente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Paciente");
+                OnID_PacienteChanged();
             }
         }
-        private global::System.Int32 _CodigoPaciente;
-        partial void OnCodigoPacienteChanging(global::System.Int32 value);
-        partial void OnCodigoPacienteChanged();
+        private global::System.Int32 _ID_Paciente;
+        partial void OnID_PacienteChanging(global::System.Int32 value);
+        partial void OnID_PacienteChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -1972,6 +5857,7 @@ namespace CI.SIC.DA
         partial void OnDiagnosticoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -1981,18 +5867,18 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Analis__Codig__35BCFE0A", "TB_Analisis")]
-        public EntityCollection<TB_Analisis> TB_Analisis
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_ANALIS__ID_Co__31B762FC", "TB_ANALISIS")]
+        public EntityCollection<TB_ANALISIS> TB_ANALISIS
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__35BCFE0A", "TB_Analisis");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ANALISIS>("DB_SGHModel.FK__TB_ANALIS__ID_Co__31B762FC", "TB_ANALISIS");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__35BCFE0A", "TB_Analisis", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ANALISIS>("DB_SGHModel.FK__TB_ANALIS__ID_Co__31B762FC", "TB_ANALISIS", value);
                 }
             }
         }
@@ -2003,38 +5889,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Analis__Codig__37A5467C", "TB_Analisis")]
-        public EntityCollection<TB_Analisis> TB_Analisis1
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Consulta_TB_CITA", "TB_CITA")]
+        public TB_CITA TB_CITA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__37A5467C", "TB_Analisis");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CITA>("DB_SGHModel.FK_TB_Consulta_TB_CITA", "TB_CITA").Value;
             }
             set
             {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__37A5467C", "TB_Analisis", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__Consulta__Codigo__3B75D7601", "TB_Cita")]
-        public TB_Cita TB_Cita
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Cita>("DB_SGHModel.FK__Consulta__Codigo__3B75D7601", "TB_Cita").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Cita>("DB_SGHModel.FK__Consulta__Codigo__3B75D7601", "TB_Cita").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CITA>("DB_SGHModel.FK_TB_Consulta_TB_CITA", "TB_CITA").Value = value;
             }
         }
         /// <summary>
@@ -2042,17 +5906,17 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Cita> TB_CitaReference
+        public EntityReference<TB_CITA> TB_CITAReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Cita>("DB_SGHModel.FK__Consulta__Codigo__3B75D7601", "TB_Cita");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CITA>("DB_SGHModel.FK_TB_Consulta_TB_CITA", "TB_CITA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Cita>("DB_SGHModel.FK__Consulta__Codigo__3B75D7601", "TB_Cita", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_CITA>("DB_SGHModel.FK_TB_Consulta_TB_CITA", "TB_CITA", value);
                 }
             }
         }
@@ -2063,16 +5927,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__3D5E1FD2", "TB_Paciente")]
-        public TB_Paciente TB_Paciente
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Consulta_TB_CONSULTORIO", "TB_CONSULTORIO")]
+        public TB_CONSULTORIO TB_CONSULTORIO
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Paciente>("DB_SGHModel.FK__TB_Consul__Codig__3D5E1FD2", "TB_Paciente").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTORIO>("DB_SGHModel.FK_TB_Consulta_TB_CONSULTORIO", "TB_CONSULTORIO").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Paciente>("DB_SGHModel.FK__TB_Consul__Codig__3D5E1FD2", "TB_Paciente").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTORIO>("DB_SGHModel.FK_TB_Consulta_TB_CONSULTORIO", "TB_CONSULTORIO").Value = value;
             }
         }
         /// <summary>
@@ -2080,17 +5944,17 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Paciente> TB_PacienteReference
+        public EntityReference<TB_CONSULTORIO> TB_CONSULTORIOReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Paciente>("DB_SGHModel.FK__TB_Consul__Codig__3D5E1FD2", "TB_Paciente");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTORIO>("DB_SGHModel.FK_TB_Consulta_TB_CONSULTORIO", "TB_CONSULTORIO");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Paciente>("DB_SGHModel.FK__TB_Consul__Codig__3D5E1FD2", "TB_Paciente", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_CONSULTORIO>("DB_SGHModel.FK_TB_Consulta_TB_CONSULTORIO", "TB_CONSULTORIO", value);
                 }
             }
         }
@@ -2101,16 +5965,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__3E52440B", "TB_Consultorio")]
-        public TB_Consultorio TB_Consultorio
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Consulta_TB_MEDICO", "TB_MEDICO")]
+        public TB_MEDICO TB_MEDICO
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consultorio>("DB_SGHModel.FK__TB_Consul__Codig__3E52440B", "TB_Consultorio").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_Consulta_TB_MEDICO", "TB_MEDICO").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consultorio>("DB_SGHModel.FK__TB_Consul__Codig__3E52440B", "TB_Consultorio").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_Consulta_TB_MEDICO", "TB_MEDICO").Value = value;
             }
         }
         /// <summary>
@@ -2118,17 +5982,17 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Consultorio> TB_ConsultorioReference
+        public EntityReference<TB_MEDICO> TB_MEDICOReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consultorio>("DB_SGHModel.FK__TB_Consul__Codig__3E52440B", "TB_Consultorio");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_Consulta_TB_MEDICO", "TB_MEDICO");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Consultorio>("DB_SGHModel.FK__TB_Consul__Codig__3E52440B", "TB_Consultorio", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_Consulta_TB_MEDICO", "TB_MEDICO", value);
                 }
             }
         }
@@ -2139,16 +6003,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__3F466844", "TB_Medico")]
-        public TB_Medico TB_Medico
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Consulta_TB_PACIENTE", "TB_PACIENTE")]
+        public TB_PACIENTE TB_PACIENTE
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Consul__Codig__3F466844", "TB_Medico").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_Consulta_TB_PACIENTE", "TB_PACIENTE").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Consul__Codig__3F466844", "TB_Medico").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_Consulta_TB_PACIENTE", "TB_PACIENTE").Value = value;
             }
         }
         /// <summary>
@@ -2156,17 +6020,17 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Medico> TB_MedicoReference
+        public EntityReference<TB_PACIENTE> TB_PACIENTEReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Consul__Codig__3F466844", "TB_Medico");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_Consulta_TB_PACIENTE", "TB_PACIENTE");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Consul__Codig__3F466844", "TB_Medico", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_Consulta_TB_PACIENTE", "TB_PACIENTE", value);
                 }
             }
         }
@@ -2177,34 +6041,18 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__403A8C7D", "TB_Paciente")]
-        public TB_Paciente TB_Paciente1
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_HOSPITALIZACION_TB_Consulta", "TB_ORDEN_HOSPITALIZACION")]
+        public EntityCollection<TB_ORDEN_HOSPITALIZACION> TB_ORDEN_HOSPITALIZACION
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Paciente>("DB_SGHModel.FK__TB_Consul__Codig__403A8C7D", "TB_Paciente").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Paciente>("DB_SGHModel.FK__TB_Consul__Codig__403A8C7D", "TB_Paciente").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<TB_Paciente> TB_Paciente1Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Paciente>("DB_SGHModel.FK__TB_Consul__Codig__403A8C7D", "TB_Paciente");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ORDEN_HOSPITALIZACION>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_Consulta", "TB_ORDEN_HOSPITALIZACION");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Paciente>("DB_SGHModel.FK__TB_Consul__Codig__403A8C7D", "TB_Paciente", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ORDEN_HOSPITALIZACION>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_Consulta", "TB_ORDEN_HOSPITALIZACION", value);
                 }
             }
         }
@@ -2215,145 +6063,49 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__412EB0B6", "TB_Consultorio")]
-        public TB_Consultorio TB_Consultorio1
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_PRESCRIPCION_MEDICA_TB_Consulta", "TB_PRESCRIPCION_MEDICA")]
+        public EntityCollection<TB_PRESCRIPCION_MEDICA> TB_PRESCRIPCION_MEDICA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consultorio>("DB_SGHModel.FK__TB_Consul__Codig__412EB0B6", "TB_Consultorio").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consultorio>("DB_SGHModel.FK__TB_Consul__Codig__412EB0B6", "TB_Consultorio").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<TB_Consultorio> TB_Consultorio1Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consultorio>("DB_SGHModel.FK__TB_Consul__Codig__412EB0B6", "TB_Consultorio");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_PRESCRIPCION_MEDICA>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_Consulta", "TB_PRESCRIPCION_MEDICA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Consultorio>("DB_SGHModel.FK__TB_Consul__Codig__412EB0B6", "TB_Consultorio", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__4222D4EF", "TB_Medico")]
-        public TB_Medico TB_Medico1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Consul__Codig__4222D4EF", "TB_Medico").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Consul__Codig__4222D4EF", "TB_Medico").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<TB_Medico> TB_Medico1Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Consul__Codig__4222D4EF", "TB_Medico");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Medico>("DB_SGHModel.FK__TB_Consul__Codig__4222D4EF", "TB_Medico", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Prescr__Codig__46E78A0C", "TB_Prescripcion_Medica")]
-        public EntityCollection<TB_Prescripcion_Medica> TB_Prescripcion_Medica
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Prescripcion_Medica>("DB_SGHModel.FK__TB_Prescr__Codig__46E78A0C", "TB_Prescripcion_Medica");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Prescripcion_Medica>("DB_SGHModel.FK__TB_Prescr__Codig__46E78A0C", "TB_Prescripcion_Medica", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Prescr__Codig__48CFD27E", "TB_Prescripcion_Medica")]
-        public EntityCollection<TB_Prescripcion_Medica> TB_Prescripcion_Medica1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Prescripcion_Medica>("DB_SGHModel.FK__TB_Prescr__Codig__48CFD27E", "TB_Prescripcion_Medica");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Prescripcion_Medica>("DB_SGHModel.FK__TB_Prescr__Codig__48CFD27E", "TB_Prescripcion_Medica", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_PRESCRIPCION_MEDICA>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_Consulta", "TB_PRESCRIPCION_MEDICA", value);
                 }
             }
         }
 
         #endregion
+
     }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Consultorio")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_CONSULTORIO")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Consultorio : EntityObject
+    public partial class TB_CONSULTORIO : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Consultorio.
+        /// Crear un nuevo objeto TB_CONSULTORIO.
         /// </summary>
-        /// <param name="codigoConsultorio">Valor inicial de la propiedad CodigoConsultorio.</param>
-        public static TB_Consultorio CreateTB_Consultorio(global::System.Int32 codigoConsultorio)
+        /// <param name="iD_Consultorio">Valor inicial de la propiedad ID_Consultorio.</param>
+        public static TB_CONSULTORIO CreateTB_CONSULTORIO(global::System.Int32 iD_Consultorio)
         {
-            TB_Consultorio tB_Consultorio = new TB_Consultorio();
-            tB_Consultorio.CodigoConsultorio = codigoConsultorio;
-            return tB_Consultorio;
+            TB_CONSULTORIO tB_CONSULTORIO = new TB_CONSULTORIO();
+            tB_CONSULTORIO.ID_Consultorio = iD_Consultorio;
+            return tB_CONSULTORIO;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2361,51 +6113,123 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoConsultorio
+        public global::System.Int32 ID_Consultorio
         {
             get
             {
-                return _CodigoConsultorio;
+                return _ID_Consultorio;
             }
             set
             {
-                if (_CodigoConsultorio != value)
+                if (_ID_Consultorio != value)
                 {
-                    OnCodigoConsultorioChanging(value);
-                    ReportPropertyChanging("CodigoConsultorio");
-                    _CodigoConsultorio = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("CodigoConsultorio");
-                    OnCodigoConsultorioChanged();
+                    OnID_ConsultorioChanging(value);
+                    ReportPropertyChanging("ID_Consultorio");
+                    _ID_Consultorio = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Consultorio");
+                    OnID_ConsultorioChanged();
                 }
             }
         }
-        private global::System.Int32 _CodigoConsultorio;
-        partial void OnCodigoConsultorioChanging(global::System.Int32 value);
-        partial void OnCodigoConsultorioChanged();
+        private global::System.Int32 _ID_Consultorio;
+        partial void OnID_ConsultorioChanging(global::System.Int32 value);
+        partial void OnID_ConsultorioChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String NumeroConsultorio
+        public global::System.String descripcion
         {
             get
             {
-                return _NumeroConsultorio;
+                return _descripcion;
             }
             set
             {
-                OnNumeroConsultorioChanging(value);
-                ReportPropertyChanging("NumeroConsultorio");
-                _NumeroConsultorio = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("NumeroConsultorio");
-                OnNumeroConsultorioChanged();
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
             }
         }
-        private global::System.String _NumeroConsultorio;
-        partial void OnNumeroConsultorioChanging(global::System.String value);
-        partial void OnNumeroConsultorioChanged();
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nro_consultorio
+        {
+            get
+            {
+                return _nro_consultorio;
+            }
+            set
+            {
+                Onnro_consultorioChanging(value);
+                ReportPropertyChanging("nro_consultorio");
+                _nro_consultorio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nro_consultorio");
+                Onnro_consultorioChanged();
+            }
+        }
+        private global::System.String _nro_consultorio;
+        partial void Onnro_consultorioChanging(global::System.String value);
+        partial void Onnro_consultorioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Local
+        {
+            get
+            {
+                return _ID_Local;
+            }
+            set
+            {
+                OnID_LocalChanging(value);
+                ReportPropertyChanging("ID_Local");
+                _ID_Local = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Local");
+                OnID_LocalChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Local;
+        partial void OnID_LocalChanging(Nullable<global::System.Int32> value);
+        partial void OnID_LocalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Tipo_Examen
+        {
+            get
+            {
+                return _ID_Tipo_Examen;
+            }
+            set
+            {
+                OnID_Tipo_ExamenChanging(value);
+                ReportPropertyChanging("ID_Tipo_Examen");
+                _ID_Tipo_Examen = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Tipo_Examen");
+                OnID_Tipo_ExamenChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Tipo_Examen;
+        partial void OnID_Tipo_ExamenChanging(Nullable<global::System.Int32> value);
+        partial void OnID_Tipo_ExamenChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -2430,32 +6254,9 @@ namespace CI.SIC.DA
         private global::System.String _Piso;
         partial void OnPisoChanging(global::System.String value);
         partial void OnPisoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> CodigoLocal
-        {
-            get
-            {
-                return _CodigoLocal;
-            }
-            set
-            {
-                OnCodigoLocalChanging(value);
-                ReportPropertyChanging("CodigoLocal");
-                _CodigoLocal = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoLocal");
-                OnCodigoLocalChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _CodigoLocal;
-        partial void OnCodigoLocalChanging(Nullable<global::System.Int32> value);
-        partial void OnCodigoLocalChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2465,18 +6266,18 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__3E52440B", "TB_Consulta")]
-        public EntityCollection<TB_Consulta> TB_Consulta
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_AGENDA_MEDICA_TB_CONSULTORIO", "TB_AGENDA_MEDICA")]
+        public EntityCollection<TB_AGENDA_MEDICA> TB_AGENDA_MEDICA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Consulta>("DB_SGHModel.FK__TB_Consul__Codig__3E52440B", "TB_Consulta");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_AGENDA_MEDICA>("DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_CONSULTORIO", "TB_AGENDA_MEDICA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Consulta>("DB_SGHModel.FK__TB_Consul__Codig__3E52440B", "TB_Consulta", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_AGENDA_MEDICA>("DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_CONSULTORIO", "TB_AGENDA_MEDICA", value);
                 }
             }
         }
@@ -2487,18 +6288,18 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__412EB0B6", "TB_Consulta")]
-        public EntityCollection<TB_Consulta> TB_Consulta1
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Consulta_TB_CONSULTORIO", "TB_CONSULTA")]
+        public EntityCollection<TB_CONSULTA> TB_CONSULTA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Consulta>("DB_SGHModel.FK__TB_Consul__Codig__412EB0B6", "TB_Consulta");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CONSULTA>("DB_SGHModel.FK_TB_Consulta_TB_CONSULTORIO", "TB_CONSULTA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Consulta>("DB_SGHModel.FK__TB_Consul__Codig__412EB0B6", "TB_Consulta", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CONSULTA>("DB_SGHModel.FK_TB_Consulta_TB_CONSULTORIO", "TB_CONSULTA", value);
                 }
             }
         }
@@ -2509,16 +6310,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__4316F928", "TB_Local")]
-        public TB_Local TB_Local
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CONSULTORIO_TB_LOCAL", "TB_LOCAL")]
+        public TB_LOCAL TB_LOCAL
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Local>("DB_SGHModel.FK__TB_Consul__Codig__4316F928", "TB_Local").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_LOCAL>("DB_SGHModel.FK_TB_CONSULTORIO_TB_LOCAL", "TB_LOCAL").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Local>("DB_SGHModel.FK__TB_Consul__Codig__4316F928", "TB_Local").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_LOCAL>("DB_SGHModel.FK_TB_CONSULTORIO_TB_LOCAL", "TB_LOCAL").Value = value;
             }
         }
         /// <summary>
@@ -2526,17 +6327,17 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Local> TB_LocalReference
+        public EntityReference<TB_LOCAL> TB_LOCALReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Local>("DB_SGHModel.FK__TB_Consul__Codig__4316F928", "TB_Local");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_LOCAL>("DB_SGHModel.FK_TB_CONSULTORIO_TB_LOCAL", "TB_LOCAL");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Local>("DB_SGHModel.FK__TB_Consul__Codig__4316F928", "TB_Local", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_LOCAL>("DB_SGHModel.FK_TB_CONSULTORIO_TB_LOCAL", "TB_LOCAL", value);
                 }
             }
         }
@@ -2547,16 +6348,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__440B1D61", "TB_Local")]
-        public TB_Local TB_Local1
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CONSULTORIO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO")]
+        public TB_TIPO_EXAMEN_MEDICO TB_TIPO_EXAMEN_MEDICO
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Local>("DB_SGHModel.FK__TB_Consul__Codig__440B1D61", "TB_Local").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_CONSULTORIO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Local>("DB_SGHModel.FK__TB_Consul__Codig__440B1D61", "TB_Local").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_CONSULTORIO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO").Value = value;
             }
         }
         /// <summary>
@@ -2564,46 +6365,74 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Local> TB_Local1Reference
+        public EntityReference<TB_TIPO_EXAMEN_MEDICO> TB_TIPO_EXAMEN_MEDICOReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Local>("DB_SGHModel.FK__TB_Consul__Codig__440B1D61", "TB_Local");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_CONSULTORIO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Local>("DB_SGHModel.FK__TB_Consul__Codig__440B1D61", "TB_Local", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_TIPO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_CONSULTORIO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_MEDICO_DE_TURNO_TB_CONSULTORIO", "TB_MEDICO_DE_TURNO")]
+        public EntityCollection<TB_MEDICO_DE_TURNO> TB_MEDICO_DE_TURNO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_MEDICO_DE_TURNO>("DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_CONSULTORIO", "TB_MEDICO_DE_TURNO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_MEDICO_DE_TURNO>("DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_CONSULTORIO", "TB_MEDICO_DE_TURNO", value);
                 }
             }
         }
 
         #endregion
+
     }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Especialidad")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_CRONOGRAMA_EMERGENCIA")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Especialidad : EntityObject
+    public partial class TB_CRONOGRAMA_EMERGENCIA : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Especialidad.
+        /// Crear un nuevo objeto TB_CRONOGRAMA_EMERGENCIA.
         /// </summary>
-        /// <param name="codigoEspecialidad">Valor inicial de la propiedad CodigoEspecialidad.</param>
-        public static TB_Especialidad CreateTB_Especialidad(global::System.Int32 codigoEspecialidad)
+        /// <param name="iD_CronogramaEmergencia">Valor inicial de la propiedad ID_CronogramaEmergencia.</param>
+        /// <param name="iD_TURNO">Valor inicial de la propiedad ID_TURNO.</param>
+        /// <param name="iD_Empleado">Valor inicial de la propiedad ID_Empleado.</param>
+        public static TB_CRONOGRAMA_EMERGENCIA CreateTB_CRONOGRAMA_EMERGENCIA(global::System.Int32 iD_CronogramaEmergencia, global::System.Int32 iD_TURNO, global::System.Int32 iD_Empleado)
         {
-            TB_Especialidad tB_Especialidad = new TB_Especialidad();
-            tB_Especialidad.CodigoEspecialidad = codigoEspecialidad;
-            return tB_Especialidad;
+            TB_CRONOGRAMA_EMERGENCIA tB_CRONOGRAMA_EMERGENCIA = new TB_CRONOGRAMA_EMERGENCIA();
+            tB_CRONOGRAMA_EMERGENCIA.ID_CronogramaEmergencia = iD_CronogramaEmergencia;
+            tB_CRONOGRAMA_EMERGENCIA.ID_TURNO = iD_TURNO;
+            tB_CRONOGRAMA_EMERGENCIA.ID_Empleado = iD_Empleado;
+            return tB_CRONOGRAMA_EMERGENCIA;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2611,53 +6440,105 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoEspecialidad
+        public global::System.Int32 ID_CronogramaEmergencia
         {
             get
             {
-                return _CodigoEspecialidad;
+                return _ID_CronogramaEmergencia;
             }
             set
             {
-                if (_CodigoEspecialidad != value)
+                if (_ID_CronogramaEmergencia != value)
                 {
-                    OnCodigoEspecialidadChanging(value);
-                    ReportPropertyChanging("CodigoEspecialidad");
-                    _CodigoEspecialidad = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("CodigoEspecialidad");
-                    OnCodigoEspecialidadChanged();
+                    OnID_CronogramaEmergenciaChanging(value);
+                    ReportPropertyChanging("ID_CronogramaEmergencia");
+                    _ID_CronogramaEmergencia = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_CronogramaEmergencia");
+                    OnID_CronogramaEmergenciaChanged();
                 }
             }
         }
-        private global::System.Int32 _CodigoEspecialidad;
-        partial void OnCodigoEspecialidadChanging(global::System.Int32 value);
-        partial void OnCodigoEspecialidadChanged();
+        private global::System.Int32 _ID_CronogramaEmergencia;
+        partial void OnID_CronogramaEmergenciaChanging(global::System.Int32 value);
+        partial void OnID_CronogramaEmergenciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_TURNO
+        {
+            get
+            {
+                return _ID_TURNO;
+            }
+            set
+            {
+                if (_ID_TURNO != value)
+                {
+                    OnID_TURNOChanging(value);
+                    ReportPropertyChanging("ID_TURNO");
+                    _ID_TURNO = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_TURNO");
+                    OnID_TURNOChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_TURNO;
+        partial void OnID_TURNOChanging(global::System.Int32 value);
+        partial void OnID_TURNOChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String Descripcion
+        public global::System.String GE_DIAS
         {
             get
             {
-                return _Descripcion;
+                return _GE_DIAS;
             }
             set
             {
-                OnDescripcionChanging(value);
-                ReportPropertyChanging("Descripcion");
-                _Descripcion = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Descripcion");
-                OnDescripcionChanged();
+                OnGE_DIASChanging(value);
+                ReportPropertyChanging("GE_DIAS");
+                _GE_DIAS = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_DIAS");
+                OnGE_DIASChanged();
             }
         }
-        private global::System.String _Descripcion;
-        partial void OnDescripcionChanging(global::System.String value);
-        partial void OnDescripcionChanged();
+        private global::System.String _GE_DIAS;
+        partial void OnGE_DIASChanging(global::System.String value);
+        partial void OnGE_DIASChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Empleado
+        {
+            get
+            {
+                return _ID_Empleado;
+            }
+            set
+            {
+                OnID_EmpleadoChanging(value);
+                ReportPropertyChanging("ID_Empleado");
+                _ID_Empleado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Empleado");
+                OnID_EmpleadoChanged();
+            }
+        }
+        private global::System.Int32 _ID_Empleado;
+        partial void OnID_EmpleadoChanging(global::System.Int32 value);
+        partial void OnID_EmpleadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2667,18 +6548,34 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Medico__Codig__44FF419A", "TB_Medico")]
-        public EntityCollection<TB_Medico> TB_Medico
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CRONOGRAMA_EMERGENCIA_TB_EMPLEADO", "TB_EMPLEADO")]
+        public TB_EMPLEADO TB_EMPLEADO
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Medico>("DB_SGHModel.FK__TB_Medico__Codig__44FF419A", "TB_Medico");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_EMPLEADO>("DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_EMPLEADO", "TB_EMPLEADO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_EMPLEADO>("DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_EMPLEADO", "TB_EMPLEADO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_EMPLEADO> TB_EMPLEADOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_EMPLEADO>("DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_EMPLEADO", "TB_EMPLEADO");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Medico>("DB_SGHModel.FK__TB_Medico__Codig__44FF419A", "TB_Medico", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_EMPLEADO>("DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_EMPLEADO", "TB_EMPLEADO", value);
                 }
             }
         }
@@ -2689,47 +6586,67 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Medico__Codig__45F365D3", "TB_Medico")]
-        public EntityCollection<TB_Medico> TB_Medico1
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CRONOGRAMA_EMERGENCIA_TB_TURNO_EMERGENCIA", "TB_TURNO_EMERGENCIA")]
+        public TB_TURNO_EMERGENCIA TB_TURNO_EMERGENCIA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Medico>("DB_SGHModel.FK__TB_Medico__Codig__45F365D3", "TB_Medico");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TURNO_EMERGENCIA>("DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_TURNO_EMERGENCIA", "TB_TURNO_EMERGENCIA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TURNO_EMERGENCIA>("DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_TURNO_EMERGENCIA", "TB_TURNO_EMERGENCIA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_TURNO_EMERGENCIA> TB_TURNO_EMERGENCIAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TURNO_EMERGENCIA>("DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_TURNO_EMERGENCIA", "TB_TURNO_EMERGENCIA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Medico>("DB_SGHModel.FK__TB_Medico__Codig__45F365D3", "TB_Medico", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_TURNO_EMERGENCIA>("DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_TURNO_EMERGENCIA", "TB_TURNO_EMERGENCIA", value);
                 }
             }
         }
 
         #endregion
+
     }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Estado_Cita")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_DET_HISTORIA_CLINICA")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Estado_Cita : EntityObject
+    public partial class TB_DET_HISTORIA_CLINICA : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Estado_Cita.
+        /// Crear un nuevo objeto TB_DET_HISTORIA_CLINICA.
         /// </summary>
-        /// <param name="idEstado">Valor inicial de la propiedad IdEstado.</param>
-        public static TB_Estado_Cita CreateTB_Estado_Cita(global::System.Int32 idEstado)
+        /// <param name="iD_DetHistoria">Valor inicial de la propiedad ID_DetHistoria.</param>
+        /// <param name="iD_Historia">Valor inicial de la propiedad ID_Historia.</param>
+        public static TB_DET_HISTORIA_CLINICA CreateTB_DET_HISTORIA_CLINICA(global::System.Int32 iD_DetHistoria, global::System.Int32 iD_Historia)
         {
-            TB_Estado_Cita tB_Estado_Cita = new TB_Estado_Cita();
-            tB_Estado_Cita.IdEstado = idEstado;
-            return tB_Estado_Cita;
+            TB_DET_HISTORIA_CLINICA tB_DET_HISTORIA_CLINICA = new TB_DET_HISTORIA_CLINICA();
+            tB_DET_HISTORIA_CLINICA.ID_DetHistoria = iD_DetHistoria;
+            tB_DET_HISTORIA_CLINICA.ID_Historia = iD_Historia;
+            return tB_DET_HISTORIA_CLINICA;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2737,27 +6654,2400 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 IdEstado
+        public global::System.Int32 ID_DetHistoria
         {
             get
             {
-                return _IdEstado;
+                return _ID_DetHistoria;
             }
             set
             {
-                if (_IdEstado != value)
+                if (_ID_DetHistoria != value)
                 {
-                    OnIdEstadoChanging(value);
-                    ReportPropertyChanging("IdEstado");
-                    _IdEstado = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("IdEstado");
-                    OnIdEstadoChanged();
+                    OnID_DetHistoriaChanging(value);
+                    ReportPropertyChanging("ID_DetHistoria");
+                    _ID_DetHistoria = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_DetHistoria");
+                    OnID_DetHistoriaChanged();
                 }
             }
         }
-        private global::System.Int32 _IdEstado;
-        partial void OnIdEstadoChanging(global::System.Int32 value);
-        partial void OnIdEstadoChanged();
+        private global::System.Int32 _ID_DetHistoria;
+        partial void OnID_DetHistoriaChanging(global::System.Int32 value);
+        partial void OnID_DetHistoriaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Historia
+        {
+            get
+            {
+                return _ID_Historia;
+            }
+            set
+            {
+                if (_ID_Historia != value)
+                {
+                    OnID_HistoriaChanging(value);
+                    ReportPropertyChanging("ID_Historia");
+                    _ID_Historia = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Historia");
+                    OnID_HistoriaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Historia;
+        partial void OnID_HistoriaChanging(global::System.Int32 value);
+        partial void OnID_HistoriaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Procedencia
+        {
+            get
+            {
+                return _ID_Procedencia;
+            }
+            set
+            {
+                OnID_ProcedenciaChanging(value);
+                ReportPropertyChanging("ID_Procedencia");
+                _ID_Procedencia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Procedencia");
+                OnID_ProcedenciaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Procedencia;
+        partial void OnID_ProcedenciaChanging(Nullable<global::System.Int32> value);
+        partial void OnID_ProcedenciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Consulta
+        {
+            get
+            {
+                return _ID_Consulta;
+            }
+            set
+            {
+                OnID_ConsultaChanging(value);
+                ReportPropertyChanging("ID_Consulta");
+                _ID_Consulta = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Consulta");
+                OnID_ConsultaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Consulta;
+        partial void OnID_ConsultaChanging(Nullable<global::System.Int32> value);
+        partial void OnID_ConsultaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> CodMedicoAtencion
+        {
+            get
+            {
+                return _CodMedicoAtencion;
+            }
+            set
+            {
+                OnCodMedicoAtencionChanging(value);
+                ReportPropertyChanging("CodMedicoAtencion");
+                _CodMedicoAtencion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CodMedicoAtencion");
+                OnCodMedicoAtencionChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _CodMedicoAtencion;
+        partial void OnCodMedicoAtencionChanging(Nullable<global::System.Int32> value);
+        partial void OnCodMedicoAtencionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ResulExamenes
+        {
+            get
+            {
+                return _ResulExamenes;
+            }
+            set
+            {
+                OnResulExamenesChanging(value);
+                ReportPropertyChanging("ResulExamenes");
+                _ResulExamenes = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ResulExamenes");
+                OnResulExamenesChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ResulExamenes;
+        partial void OnResulExamenesChanging(Nullable<global::System.DateTime> value);
+        partial void OnResulExamenesChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaAtencion
+        {
+            get
+            {
+                return _FechaAtencion;
+            }
+            set
+            {
+                OnFechaAtencionChanging(value);
+                ReportPropertyChanging("FechaAtencion");
+                _FechaAtencion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaAtencion");
+                OnFechaAtencionChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaAtencion;
+        partial void OnFechaAtencionChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaAtencionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Diagnostico
+        {
+            get
+            {
+                return _Diagnostico;
+            }
+            set
+            {
+                OnDiagnosticoChanging(value);
+                ReportPropertyChanging("Diagnostico");
+                _Diagnostico = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Diagnostico");
+                OnDiagnosticoChanged();
+            }
+        }
+        private global::System.String _Diagnostico;
+        partial void OnDiagnosticoChanging(global::System.String value);
+        partial void OnDiagnosticoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Tratamiento
+        {
+            get
+            {
+                return _Tratamiento;
+            }
+            set
+            {
+                OnTratamientoChanging(value);
+                ReportPropertyChanging("Tratamiento");
+                _Tratamiento = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Tratamiento");
+                OnTratamientoChanged();
+            }
+        }
+        private global::System.String _Tratamiento;
+        partial void OnTratamientoChanging(global::System.String value);
+        partial void OnTratamientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Observaciones
+        {
+            get
+            {
+                return _Observaciones;
+            }
+            set
+            {
+                OnObservacionesChanging(value);
+                ReportPropertyChanging("Observaciones");
+                _Observaciones = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Observaciones");
+                OnObservacionesChanged();
+            }
+        }
+        private global::System.String _Observaciones;
+        partial void OnObservacionesChanging(global::System.String value);
+        partial void OnObservacionesChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_DET_HISTORIA_CLINICA_TB_HISTORIA_CLINICA", "TB_HISTORIA_CLINICA")]
+        public TB_HISTORIA_CLINICA TB_HISTORIA_CLINICA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_HISTORIA_CLINICA>("DB_SGHModel.FK_TB_DET_HISTORIA_CLINICA_TB_HISTORIA_CLINICA", "TB_HISTORIA_CLINICA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_HISTORIA_CLINICA>("DB_SGHModel.FK_TB_DET_HISTORIA_CLINICA_TB_HISTORIA_CLINICA", "TB_HISTORIA_CLINICA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_HISTORIA_CLINICA> TB_HISTORIA_CLINICAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_HISTORIA_CLINICA>("DB_SGHModel.FK_TB_DET_HISTORIA_CLINICA_TB_HISTORIA_CLINICA", "TB_HISTORIA_CLINICA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_HISTORIA_CLINICA>("DB_SGHModel.FK_TB_DET_HISTORIA_CLINICA_TB_HISTORIA_CLINICA", "TB_HISTORIA_CLINICA", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_DET_ORDEN_TRABAJO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_DET_ORDEN_TRABAJO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_DET_ORDEN_TRABAJO.
+        /// </summary>
+        /// <param name="gM_DetNroOrden">Valor inicial de la propiedad GM_DetNroOrden.</param>
+        public static TB_DET_ORDEN_TRABAJO CreateTB_DET_ORDEN_TRABAJO(global::System.Int32 gM_DetNroOrden)
+        {
+            TB_DET_ORDEN_TRABAJO tB_DET_ORDEN_TRABAJO = new TB_DET_ORDEN_TRABAJO();
+            tB_DET_ORDEN_TRABAJO.GM_DetNroOrden = gM_DetNroOrden;
+            return tB_DET_ORDEN_TRABAJO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 GM_DetNroOrden
+        {
+            get
+            {
+                return _GM_DetNroOrden;
+            }
+            set
+            {
+                if (_GM_DetNroOrden != value)
+                {
+                    OnGM_DetNroOrdenChanging(value);
+                    ReportPropertyChanging("GM_DetNroOrden");
+                    _GM_DetNroOrden = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("GM_DetNroOrden");
+                    OnGM_DetNroOrdenChanged();
+                }
+            }
+        }
+        private global::System.Int32 _GM_DetNroOrden;
+        partial void OnGM_DetNroOrdenChanging(global::System.Int32 value);
+        partial void OnGM_DetNroOrdenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_NroOrden
+        {
+            get
+            {
+                return _GM_NroOrden;
+            }
+            set
+            {
+                OnGM_NroOrdenChanging(value);
+                ReportPropertyChanging("GM_NroOrden");
+                _GM_NroOrden = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_NroOrden");
+                OnGM_NroOrdenChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_NroOrden;
+        partial void OnGM_NroOrdenChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_NroOrdenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Modificacion
+        {
+            get
+            {
+                return _GM_Fecha_Modificacion;
+            }
+            set
+            {
+                OnGM_Fecha_ModificacionChanging(value);
+                ReportPropertyChanging("GM_Fecha_Modificacion");
+                _GM_Fecha_Modificacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Modificacion");
+                OnGM_Fecha_ModificacionChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Modificacion;
+        partial void OnGM_Fecha_ModificacionChanging(global::System.String value);
+        partial void OnGM_Fecha_ModificacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_CodigoSolicitante
+        {
+            get
+            {
+                return _GM_CodigoSolicitante;
+            }
+            set
+            {
+                OnGM_CodigoSolicitanteChanging(value);
+                ReportPropertyChanging("GM_CodigoSolicitante");
+                _GM_CodigoSolicitante = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_CodigoSolicitante");
+                OnGM_CodigoSolicitanteChanged();
+            }
+        }
+        private global::System.String _GM_CodigoSolicitante;
+        partial void OnGM_CodigoSolicitanteChanging(global::System.String value);
+        partial void OnGM_CodigoSolicitanteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Empleados_Asociados
+        {
+            get
+            {
+                return _GM_Empleados_Asociados;
+            }
+            set
+            {
+                OnGM_Empleados_AsociadosChanging(value);
+                ReportPropertyChanging("GM_Empleados_Asociados");
+                _GM_Empleados_Asociados = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Empleados_Asociados");
+                OnGM_Empleados_AsociadosChanged();
+            }
+        }
+        private global::System.String _GM_Empleados_Asociados;
+        partial void OnGM_Empleados_AsociadosChanging(global::System.String value);
+        partial void OnGM_Empleados_AsociadosChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Prioridad
+        {
+            get
+            {
+                return _GM_Prioridad;
+            }
+            set
+            {
+                OnGM_PrioridadChanging(value);
+                ReportPropertyChanging("GM_Prioridad");
+                _GM_Prioridad = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Prioridad");
+                OnGM_PrioridadChanged();
+            }
+        }
+        private global::System.String _GM_Prioridad;
+        partial void OnGM_PrioridadChanging(global::System.String value);
+        partial void OnGM_PrioridadChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Estado
+        {
+            get
+            {
+                return _GM_Estado;
+            }
+            set
+            {
+                OnGM_EstadoChanging(value);
+                ReportPropertyChanging("GM_Estado");
+                _GM_Estado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Estado");
+                OnGM_EstadoChanged();
+            }
+        }
+        private global::System.String _GM_Estado;
+        partial void OnGM_EstadoChanging(global::System.String value);
+        partial void OnGM_EstadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Motivo_Estado
+        {
+            get
+            {
+                return _GM_Motivo_Estado;
+            }
+            set
+            {
+                OnGM_Motivo_EstadoChanging(value);
+                ReportPropertyChanging("GM_Motivo_Estado");
+                _GM_Motivo_Estado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Motivo_Estado");
+                OnGM_Motivo_EstadoChanged();
+            }
+        }
+        private global::System.String _GM_Motivo_Estado;
+        partial void OnGM_Motivo_EstadoChanging(global::System.String value);
+        partial void OnGM_Motivo_EstadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Comentarios
+        {
+            get
+            {
+                return _GM_Comentarios;
+            }
+            set
+            {
+                OnGM_ComentariosChanging(value);
+                ReportPropertyChanging("GM_Comentarios");
+                _GM_Comentarios = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Comentarios");
+                OnGM_ComentariosChanged();
+            }
+        }
+        private global::System.String _GM_Comentarios;
+        partial void OnGM_ComentariosChanging(global::System.String value);
+        partial void OnGM_ComentariosChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_DETALLE_FICHA_EQUIPO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_DETALLE_FICHA_EQUIPO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_DETALLE_FICHA_EQUIPO.
+        /// </summary>
+        /// <param name="gM_Detalle_Ficha_Equipo">Valor inicial de la propiedad GM_Detalle_Ficha_Equipo.</param>
+        public static TB_DETALLE_FICHA_EQUIPO CreateTB_DETALLE_FICHA_EQUIPO(global::System.Int32 gM_Detalle_Ficha_Equipo)
+        {
+            TB_DETALLE_FICHA_EQUIPO tB_DETALLE_FICHA_EQUIPO = new TB_DETALLE_FICHA_EQUIPO();
+            tB_DETALLE_FICHA_EQUIPO.GM_Detalle_Ficha_Equipo = gM_Detalle_Ficha_Equipo;
+            return tB_DETALLE_FICHA_EQUIPO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 GM_Detalle_Ficha_Equipo
+        {
+            get
+            {
+                return _GM_Detalle_Ficha_Equipo;
+            }
+            set
+            {
+                if (_GM_Detalle_Ficha_Equipo != value)
+                {
+                    OnGM_Detalle_Ficha_EquipoChanging(value);
+                    ReportPropertyChanging("GM_Detalle_Ficha_Equipo");
+                    _GM_Detalle_Ficha_Equipo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("GM_Detalle_Ficha_Equipo");
+                    OnGM_Detalle_Ficha_EquipoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _GM_Detalle_Ficha_Equipo;
+        partial void OnGM_Detalle_Ficha_EquipoChanging(global::System.Int32 value);
+        partial void OnGM_Detalle_Ficha_EquipoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_Codigo_Ficha_Equipo
+        {
+            get
+            {
+                return _GM_Codigo_Ficha_Equipo;
+            }
+            set
+            {
+                OnGM_Codigo_Ficha_EquipoChanging(value);
+                ReportPropertyChanging("GM_Codigo_Ficha_Equipo");
+                _GM_Codigo_Ficha_Equipo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_Codigo_Ficha_Equipo");
+                OnGM_Codigo_Ficha_EquipoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_Codigo_Ficha_Equipo;
+        partial void OnGM_Codigo_Ficha_EquipoChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_Codigo_Ficha_EquipoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Último_Mantenimiento
+        {
+            get
+            {
+                return _GM_Fecha_Último_Mantenimiento;
+            }
+            set
+            {
+                OnGM_Fecha_Último_MantenimientoChanging(value);
+                ReportPropertyChanging("GM_Fecha_Último_Mantenimiento");
+                _GM_Fecha_Último_Mantenimiento = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Último_Mantenimiento");
+                OnGM_Fecha_Último_MantenimientoChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Último_Mantenimiento;
+        partial void OnGM_Fecha_Último_MantenimientoChanging(global::System.String value);
+        partial void OnGM_Fecha_Último_MantenimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Ultima_Reparación
+        {
+            get
+            {
+                return _GM_Fecha_Ultima_Reparación;
+            }
+            set
+            {
+                OnGM_Fecha_Ultima_ReparaciónChanging(value);
+                ReportPropertyChanging("GM_Fecha_Ultima_Reparación");
+                _GM_Fecha_Ultima_Reparación = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Ultima_Reparación");
+                OnGM_Fecha_Ultima_ReparaciónChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Ultima_Reparación;
+        partial void OnGM_Fecha_Ultima_ReparaciónChanging(global::System.String value);
+        partial void OnGM_Fecha_Ultima_ReparaciónChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_NroPeriodo_Mantenimiento
+        {
+            get
+            {
+                return _GM_NroPeriodo_Mantenimiento;
+            }
+            set
+            {
+                OnGM_NroPeriodo_MantenimientoChanging(value);
+                ReportPropertyChanging("GM_NroPeriodo_Mantenimiento");
+                _GM_NroPeriodo_Mantenimiento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_NroPeriodo_Mantenimiento");
+                OnGM_NroPeriodo_MantenimientoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_NroPeriodo_Mantenimiento;
+        partial void OnGM_NroPeriodo_MantenimientoChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_NroPeriodo_MantenimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Proximo_Mantenimiento
+        {
+            get
+            {
+                return _GM_Fecha_Proximo_Mantenimiento;
+            }
+            set
+            {
+                OnGM_Fecha_Proximo_MantenimientoChanging(value);
+                ReportPropertyChanging("GM_Fecha_Proximo_Mantenimiento");
+                _GM_Fecha_Proximo_Mantenimiento = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Proximo_Mantenimiento");
+                OnGM_Fecha_Proximo_MantenimientoChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Proximo_Mantenimiento;
+        partial void OnGM_Fecha_Proximo_MantenimientoChanging(global::System.String value);
+        partial void OnGM_Fecha_Proximo_MantenimientoChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_DETALLE_ORDEN_DE_PEDIDO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_DETALLE_ORDEN_DE_PEDIDO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_DETALLE_ORDEN_DE_PEDIDO.
+        /// </summary>
+        /// <param name="iD_OrdenPedido">Valor inicial de la propiedad ID_OrdenPedido.</param>
+        /// <param name="iD_NroItem">Valor inicial de la propiedad ID_NroItem.</param>
+        /// <param name="iD_Medicamento">Valor inicial de la propiedad ID_Medicamento.</param>
+        public static TB_DETALLE_ORDEN_DE_PEDIDO CreateTB_DETALLE_ORDEN_DE_PEDIDO(global::System.Int32 iD_OrdenPedido, global::System.Int32 iD_NroItem, global::System.Int32 iD_Medicamento)
+        {
+            TB_DETALLE_ORDEN_DE_PEDIDO tB_DETALLE_ORDEN_DE_PEDIDO = new TB_DETALLE_ORDEN_DE_PEDIDO();
+            tB_DETALLE_ORDEN_DE_PEDIDO.ID_OrdenPedido = iD_OrdenPedido;
+            tB_DETALLE_ORDEN_DE_PEDIDO.ID_NroItem = iD_NroItem;
+            tB_DETALLE_ORDEN_DE_PEDIDO.ID_Medicamento = iD_Medicamento;
+            return tB_DETALLE_ORDEN_DE_PEDIDO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_OrdenPedido
+        {
+            get
+            {
+                return _ID_OrdenPedido;
+            }
+            set
+            {
+                if (_ID_OrdenPedido != value)
+                {
+                    OnID_OrdenPedidoChanging(value);
+                    ReportPropertyChanging("ID_OrdenPedido");
+                    _ID_OrdenPedido = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_OrdenPedido");
+                    OnID_OrdenPedidoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_OrdenPedido;
+        partial void OnID_OrdenPedidoChanging(global::System.Int32 value);
+        partial void OnID_OrdenPedidoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_NroItem
+        {
+            get
+            {
+                return _ID_NroItem;
+            }
+            set
+            {
+                if (_ID_NroItem != value)
+                {
+                    OnID_NroItemChanging(value);
+                    ReportPropertyChanging("ID_NroItem");
+                    _ID_NroItem = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_NroItem");
+                    OnID_NroItemChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_NroItem;
+        partial void OnID_NroItemChanging(global::System.Int32 value);
+        partial void OnID_NroItemChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Single> GE_Cantidad
+        {
+            get
+            {
+                return _GE_Cantidad;
+            }
+            set
+            {
+                OnGE_CantidadChanging(value);
+                ReportPropertyChanging("GE_Cantidad");
+                _GE_Cantidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_Cantidad");
+                OnGE_CantidadChanged();
+            }
+        }
+        private Nullable<global::System.Single> _GE_Cantidad;
+        partial void OnGE_CantidadChanging(Nullable<global::System.Single> value);
+        partial void OnGE_CantidadChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Medicamento
+        {
+            get
+            {
+                return _ID_Medicamento;
+            }
+            set
+            {
+                OnID_MedicamentoChanging(value);
+                ReportPropertyChanging("ID_Medicamento");
+                _ID_Medicamento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Medicamento");
+                OnID_MedicamentoChanged();
+            }
+        }
+        private global::System.Int32 _ID_Medicamento;
+        partial void OnID_MedicamentoChanging(global::System.Int32 value);
+        partial void OnID_MedicamentoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_MEDICAMENTO", "TB_MEDICAMENTO")]
+        public TB_MEDICAMENTO TB_MEDICAMENTO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICAMENTO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_MEDICAMENTO", "TB_MEDICAMENTO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICAMENTO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_MEDICAMENTO", "TB_MEDICAMENTO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_MEDICAMENTO> TB_MEDICAMENTOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICAMENTO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_MEDICAMENTO", "TB_MEDICAMENTO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MEDICAMENTO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_MEDICAMENTO", "TB_MEDICAMENTO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_ORDEN_DE_PEDIDO", "TB_ORDEN_DE_PEDIDO")]
+        public TB_ORDEN_DE_PEDIDO TB_ORDEN_DE_PEDIDO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_DE_PEDIDO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_ORDEN_DE_PEDIDO", "TB_ORDEN_DE_PEDIDO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_DE_PEDIDO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_ORDEN_DE_PEDIDO", "TB_ORDEN_DE_PEDIDO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_ORDEN_DE_PEDIDO> TB_ORDEN_DE_PEDIDOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_DE_PEDIDO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_ORDEN_DE_PEDIDO", "TB_ORDEN_DE_PEDIDO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ORDEN_DE_PEDIDO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_ORDEN_DE_PEDIDO", "TB_ORDEN_DE_PEDIDO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_DETALLE_ORDEN_DE_SALIDA")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_DETALLE_ORDEN_DE_SALIDA : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_DETALLE_ORDEN_DE_SALIDA.
+        /// </summary>
+        /// <param name="iD_OrdenSalida">Valor inicial de la propiedad ID_OrdenSalida.</param>
+        /// <param name="iD_NroItem">Valor inicial de la propiedad ID_NroItem.</param>
+        /// <param name="iD_Medicamento">Valor inicial de la propiedad ID_Medicamento.</param>
+        public static TB_DETALLE_ORDEN_DE_SALIDA CreateTB_DETALLE_ORDEN_DE_SALIDA(global::System.Int32 iD_OrdenSalida, global::System.Int32 iD_NroItem, global::System.Int32 iD_Medicamento)
+        {
+            TB_DETALLE_ORDEN_DE_SALIDA tB_DETALLE_ORDEN_DE_SALIDA = new TB_DETALLE_ORDEN_DE_SALIDA();
+            tB_DETALLE_ORDEN_DE_SALIDA.ID_OrdenSalida = iD_OrdenSalida;
+            tB_DETALLE_ORDEN_DE_SALIDA.ID_NroItem = iD_NroItem;
+            tB_DETALLE_ORDEN_DE_SALIDA.ID_Medicamento = iD_Medicamento;
+            return tB_DETALLE_ORDEN_DE_SALIDA;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_OrdenSalida
+        {
+            get
+            {
+                return _ID_OrdenSalida;
+            }
+            set
+            {
+                if (_ID_OrdenSalida != value)
+                {
+                    OnID_OrdenSalidaChanging(value);
+                    ReportPropertyChanging("ID_OrdenSalida");
+                    _ID_OrdenSalida = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_OrdenSalida");
+                    OnID_OrdenSalidaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_OrdenSalida;
+        partial void OnID_OrdenSalidaChanging(global::System.Int32 value);
+        partial void OnID_OrdenSalidaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_NroItem
+        {
+            get
+            {
+                return _ID_NroItem;
+            }
+            set
+            {
+                if (_ID_NroItem != value)
+                {
+                    OnID_NroItemChanging(value);
+                    ReportPropertyChanging("ID_NroItem");
+                    _ID_NroItem = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_NroItem");
+                    OnID_NroItemChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_NroItem;
+        partial void OnID_NroItemChanging(global::System.Int32 value);
+        partial void OnID_NroItemChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Single> GE_Cantidad
+        {
+            get
+            {
+                return _GE_Cantidad;
+            }
+            set
+            {
+                OnGE_CantidadChanging(value);
+                ReportPropertyChanging("GE_Cantidad");
+                _GE_Cantidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_Cantidad");
+                OnGE_CantidadChanged();
+            }
+        }
+        private Nullable<global::System.Single> _GE_Cantidad;
+        partial void OnGE_CantidadChanging(Nullable<global::System.Single> value);
+        partial void OnGE_CantidadChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Medicamento
+        {
+            get
+            {
+                return _ID_Medicamento;
+            }
+            set
+            {
+                OnID_MedicamentoChanging(value);
+                ReportPropertyChanging("ID_Medicamento");
+                _ID_Medicamento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Medicamento");
+                OnID_MedicamentoChanged();
+            }
+        }
+        private global::System.Int32 _ID_Medicamento;
+        partial void OnID_MedicamentoChanging(global::System.Int32 value);
+        partial void OnID_MedicamentoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_MEDICAMENTO", "TB_MEDICAMENTO")]
+        public TB_MEDICAMENTO TB_MEDICAMENTO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICAMENTO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_MEDICAMENTO", "TB_MEDICAMENTO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICAMENTO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_MEDICAMENTO", "TB_MEDICAMENTO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_MEDICAMENTO> TB_MEDICAMENTOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICAMENTO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_MEDICAMENTO", "TB_MEDICAMENTO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MEDICAMENTO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_MEDICAMENTO", "TB_MEDICAMENTO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_ORDEN_DE_SALIDA", "TB_ORDEN_DE_SALIDA")]
+        public TB_ORDEN_DE_SALIDA TB_ORDEN_DE_SALIDA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_DE_SALIDA>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_ORDEN_DE_SALIDA", "TB_ORDEN_DE_SALIDA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_DE_SALIDA>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_ORDEN_DE_SALIDA", "TB_ORDEN_DE_SALIDA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_ORDEN_DE_SALIDA> TB_ORDEN_DE_SALIDAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_DE_SALIDA>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_ORDEN_DE_SALIDA", "TB_ORDEN_DE_SALIDA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ORDEN_DE_SALIDA>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_ORDEN_DE_SALIDA", "TB_ORDEN_DE_SALIDA", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Detalle_Solicitud_Mantenimiento")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_Detalle_Solicitud_Mantenimiento : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_Detalle_Solicitud_Mantenimiento.
+        /// </summary>
+        /// <param name="gM_NroDet_Solicitud">Valor inicial de la propiedad GM_NroDet_Solicitud.</param>
+        public static TB_Detalle_Solicitud_Mantenimiento CreateTB_Detalle_Solicitud_Mantenimiento(global::System.Int32 gM_NroDet_Solicitud)
+        {
+            TB_Detalle_Solicitud_Mantenimiento tB_Detalle_Solicitud_Mantenimiento = new TB_Detalle_Solicitud_Mantenimiento();
+            tB_Detalle_Solicitud_Mantenimiento.GM_NroDet_Solicitud = gM_NroDet_Solicitud;
+            return tB_Detalle_Solicitud_Mantenimiento;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 GM_NroDet_Solicitud
+        {
+            get
+            {
+                return _GM_NroDet_Solicitud;
+            }
+            set
+            {
+                if (_GM_NroDet_Solicitud != value)
+                {
+                    OnGM_NroDet_SolicitudChanging(value);
+                    ReportPropertyChanging("GM_NroDet_Solicitud");
+                    _GM_NroDet_Solicitud = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("GM_NroDet_Solicitud");
+                    OnGM_NroDet_SolicitudChanged();
+                }
+            }
+        }
+        private global::System.Int32 _GM_NroDet_Solicitud;
+        partial void OnGM_NroDet_SolicitudChanging(global::System.Int32 value);
+        partial void OnGM_NroDet_SolicitudChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_NroSolicitud
+        {
+            get
+            {
+                return _GM_NroSolicitud;
+            }
+            set
+            {
+                OnGM_NroSolicitudChanging(value);
+                ReportPropertyChanging("GM_NroSolicitud");
+                _GM_NroSolicitud = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_NroSolicitud");
+                OnGM_NroSolicitudChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_NroSolicitud;
+        partial void OnGM_NroSolicitudChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_NroSolicitudChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Tiempo_Atencion
+        {
+            get
+            {
+                return _GM_Tiempo_Atencion;
+            }
+            set
+            {
+                OnGM_Tiempo_AtencionChanging(value);
+                ReportPropertyChanging("GM_Tiempo_Atencion");
+                _GM_Tiempo_Atencion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Tiempo_Atencion");
+                OnGM_Tiempo_AtencionChanged();
+            }
+        }
+        private global::System.String _GM_Tiempo_Atencion;
+        partial void OnGM_Tiempo_AtencionChanging(global::System.String value);
+        partial void OnGM_Tiempo_AtencionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_Estado
+        {
+            get
+            {
+                return _GM_Estado;
+            }
+            set
+            {
+                OnGM_EstadoChanging(value);
+                ReportPropertyChanging("GM_Estado");
+                _GM_Estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_Estado");
+                OnGM_EstadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_Estado;
+        partial void OnGM_EstadoChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_EstadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Prioridad
+        {
+            get
+            {
+                return _GM_Prioridad;
+            }
+            set
+            {
+                OnGM_PrioridadChanging(value);
+                ReportPropertyChanging("GM_Prioridad");
+                _GM_Prioridad = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Prioridad");
+                OnGM_PrioridadChanged();
+            }
+        }
+        private global::System.String _GM_Prioridad;
+        partial void OnGM_PrioridadChanging(global::System.String value);
+        partial void OnGM_PrioridadChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Observacion
+        {
+            get
+            {
+                return _GM_Observacion;
+            }
+            set
+            {
+                OnGM_ObservacionChanging(value);
+                ReportPropertyChanging("GM_Observacion");
+                _GM_Observacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Observacion");
+                OnGM_ObservacionChanged();
+            }
+        }
+        private global::System.String _GM_Observacion;
+        partial void OnGM_ObservacionChanging(global::System.String value);
+        partial void OnGM_ObservacionChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_DETORDENSERVICIO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_DETORDENSERVICIO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_DETORDENSERVICIO.
+        /// </summary>
+        /// <param name="iD_Orden_Servicio">Valor inicial de la propiedad ID_Orden_Servicio.</param>
+        /// <param name="iD_Item">Valor inicial de la propiedad ID_Item.</param>
+        /// <param name="iD_Servicio">Valor inicial de la propiedad ID_Servicio.</param>
+        public static TB_DETORDENSERVICIO CreateTB_DETORDENSERVICIO(global::System.Int32 iD_Orden_Servicio, global::System.Int32 iD_Item, global::System.Int32 iD_Servicio)
+        {
+            TB_DETORDENSERVICIO tB_DETORDENSERVICIO = new TB_DETORDENSERVICIO();
+            tB_DETORDENSERVICIO.ID_Orden_Servicio = iD_Orden_Servicio;
+            tB_DETORDENSERVICIO.ID_Item = iD_Item;
+            tB_DETORDENSERVICIO.ID_Servicio = iD_Servicio;
+            return tB_DETORDENSERVICIO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Orden_Servicio
+        {
+            get
+            {
+                return _ID_Orden_Servicio;
+            }
+            set
+            {
+                if (_ID_Orden_Servicio != value)
+                {
+                    OnID_Orden_ServicioChanging(value);
+                    ReportPropertyChanging("ID_Orden_Servicio");
+                    _ID_Orden_Servicio = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Orden_Servicio");
+                    OnID_Orden_ServicioChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Orden_Servicio;
+        partial void OnID_Orden_ServicioChanging(global::System.Int32 value);
+        partial void OnID_Orden_ServicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Item
+        {
+            get
+            {
+                return _ID_Item;
+            }
+            set
+            {
+                if (_ID_Item != value)
+                {
+                    OnID_ItemChanging(value);
+                    ReportPropertyChanging("ID_Item");
+                    _ID_Item = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Item");
+                    OnID_ItemChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Item;
+        partial void OnID_ItemChanging(global::System.Int32 value);
+        partial void OnID_ItemChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Single> GE_Descuento
+        {
+            get
+            {
+                return _GE_Descuento;
+            }
+            set
+            {
+                OnGE_DescuentoChanging(value);
+                ReportPropertyChanging("GE_Descuento");
+                _GE_Descuento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_Descuento");
+                OnGE_DescuentoChanged();
+            }
+        }
+        private Nullable<global::System.Single> _GE_Descuento;
+        partial void OnGE_DescuentoChanging(Nullable<global::System.Single> value);
+        partial void OnGE_DescuentoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Servicio
+        {
+            get
+            {
+                return _ID_Servicio;
+            }
+            set
+            {
+                OnID_ServicioChanging(value);
+                ReportPropertyChanging("ID_Servicio");
+                _ID_Servicio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Servicio");
+                OnID_ServicioChanged();
+            }
+        }
+        private global::System.Int32 _ID_Servicio;
+        partial void OnID_ServicioChanging(global::System.Int32 value);
+        partial void OnID_ServicioChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_DETORDENSERVICIO_TB_ORDEN_SERVICIO", "TB_ORDEN_SERVICIO")]
+        public TB_ORDEN_SERVICIO TB_ORDEN_SERVICIO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_SERVICIO>("DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_ORDEN_SERVICIO", "TB_ORDEN_SERVICIO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_SERVICIO>("DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_ORDEN_SERVICIO", "TB_ORDEN_SERVICIO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_ORDEN_SERVICIO> TB_ORDEN_SERVICIOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_SERVICIO>("DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_ORDEN_SERVICIO", "TB_ORDEN_SERVICIO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ORDEN_SERVICIO>("DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_ORDEN_SERVICIO", "TB_ORDEN_SERVICIO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_DETORDENSERVICIO_TB_SERVICIO", "TB_SERVICIO")]
+        public TB_SERVICIO TB_SERVICIO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_SERVICIO>("DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_SERVICIO", "TB_SERVICIO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_SERVICIO>("DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_SERVICIO", "TB_SERVICIO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_SERVICIO> TB_SERVICIOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_SERVICIO>("DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_SERVICIO", "TB_SERVICIO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_SERVICIO>("DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_SERVICIO", "TB_SERVICIO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_EMPLEADO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_EMPLEADO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_EMPLEADO.
+        /// </summary>
+        /// <param name="iD_Empleado">Valor inicial de la propiedad ID_Empleado.</param>
+        public static TB_EMPLEADO CreateTB_EMPLEADO(global::System.Int32 iD_Empleado)
+        {
+            TB_EMPLEADO tB_EMPLEADO = new TB_EMPLEADO();
+            tB_EMPLEADO.ID_Empleado = iD_Empleado;
+            return tB_EMPLEADO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Empleado
+        {
+            get
+            {
+                return _ID_Empleado;
+            }
+            set
+            {
+                if (_ID_Empleado != value)
+                {
+                    OnID_EmpleadoChanging(value);
+                    ReportPropertyChanging("ID_Empleado");
+                    _ID_Empleado = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Empleado");
+                    OnID_EmpleadoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Empleado;
+        partial void OnID_EmpleadoChanging(global::System.Int32 value);
+        partial void OnID_EmpleadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String E_Nombre
+        {
+            get
+            {
+                return _E_Nombre;
+            }
+            set
+            {
+                OnE_NombreChanging(value);
+                ReportPropertyChanging("E_Nombre");
+                _E_Nombre = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("E_Nombre");
+                OnE_NombreChanged();
+            }
+        }
+        private global::System.String _E_Nombre;
+        partial void OnE_NombreChanging(global::System.String value);
+        partial void OnE_NombreChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String E_Apellido_Paterno
+        {
+            get
+            {
+                return _E_Apellido_Paterno;
+            }
+            set
+            {
+                OnE_Apellido_PaternoChanging(value);
+                ReportPropertyChanging("E_Apellido_Paterno");
+                _E_Apellido_Paterno = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("E_Apellido_Paterno");
+                OnE_Apellido_PaternoChanged();
+            }
+        }
+        private global::System.String _E_Apellido_Paterno;
+        partial void OnE_Apellido_PaternoChanging(global::System.String value);
+        partial void OnE_Apellido_PaternoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String E_Apellido_Materno
+        {
+            get
+            {
+                return _E_Apellido_Materno;
+            }
+            set
+            {
+                OnE_Apellido_MaternoChanging(value);
+                ReportPropertyChanging("E_Apellido_Materno");
+                _E_Apellido_Materno = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("E_Apellido_Materno");
+                OnE_Apellido_MaternoChanged();
+            }
+        }
+        private global::System.String _E_Apellido_Materno;
+        partial void OnE_Apellido_MaternoChanging(global::System.String value);
+        partial void OnE_Apellido_MaternoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String E_dni
+        {
+            get
+            {
+                return _E_dni;
+            }
+            set
+            {
+                OnE_dniChanging(value);
+                ReportPropertyChanging("E_dni");
+                _E_dni = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("E_dni");
+                OnE_dniChanged();
+            }
+        }
+        private global::System.String _E_dni;
+        partial void OnE_dniChanging(global::System.String value);
+        partial void OnE_dniChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String E_Direccion
+        {
+            get
+            {
+                return _E_Direccion;
+            }
+            set
+            {
+                OnE_DireccionChanging(value);
+                ReportPropertyChanging("E_Direccion");
+                _E_Direccion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("E_Direccion");
+                OnE_DireccionChanged();
+            }
+        }
+        private global::System.String _E_Direccion;
+        partial void OnE_DireccionChanging(global::System.String value);
+        partial void OnE_DireccionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String E_Telefono
+        {
+            get
+            {
+                return _E_Telefono;
+            }
+            set
+            {
+                OnE_TelefonoChanging(value);
+                ReportPropertyChanging("E_Telefono");
+                _E_Telefono = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("E_Telefono");
+                OnE_TelefonoChanged();
+            }
+        }
+        private global::System.String _E_Telefono;
+        partial void OnE_TelefonoChanging(global::System.String value);
+        partial void OnE_TelefonoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String E_Tipo_Empleado
+        {
+            get
+            {
+                return _E_Tipo_Empleado;
+            }
+            set
+            {
+                OnE_Tipo_EmpleadoChanging(value);
+                ReportPropertyChanging("E_Tipo_Empleado");
+                _E_Tipo_Empleado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("E_Tipo_Empleado");
+                OnE_Tipo_EmpleadoChanged();
+            }
+        }
+        private global::System.String _E_Tipo_Empleado;
+        partial void OnE_Tipo_EmpleadoChanging(global::System.String value);
+        partial void OnE_Tipo_EmpleadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> E_Fecha_Nacimiento
+        {
+            get
+            {
+                return _E_Fecha_Nacimiento;
+            }
+            set
+            {
+                OnE_Fecha_NacimientoChanging(value);
+                ReportPropertyChanging("E_Fecha_Nacimiento");
+                _E_Fecha_Nacimiento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("E_Fecha_Nacimiento");
+                OnE_Fecha_NacimientoChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _E_Fecha_Nacimiento;
+        partial void OnE_Fecha_NacimientoChanging(Nullable<global::System.DateTime> value);
+        partial void OnE_Fecha_NacimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String E_Correo
+        {
+            get
+            {
+                return _E_Correo;
+            }
+            set
+            {
+                OnE_CorreoChanging(value);
+                ReportPropertyChanging("E_Correo");
+                _E_Correo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("E_Correo");
+                OnE_CorreoChanged();
+            }
+        }
+        private global::System.String _E_Correo;
+        partial void OnE_CorreoChanging(global::System.String value);
+        partial void OnE_CorreoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Apellidos_Empleado
+        {
+            get
+            {
+                return _Apellidos_Empleado;
+            }
+            set
+            {
+                OnApellidos_EmpleadoChanging(value);
+                ReportPropertyChanging("Apellidos_Empleado");
+                _Apellidos_Empleado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Apellidos_Empleado");
+                OnApellidos_EmpleadoChanged();
+            }
+        }
+        private global::System.String _Apellidos_Empleado;
+        partial void OnApellidos_EmpleadoChanging(global::System.String value);
+        partial void OnApellidos_EmpleadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Nombres_Empleado
+        {
+            get
+            {
+                return _Nombres_Empleado;
+            }
+            set
+            {
+                OnNombres_EmpleadoChanging(value);
+                ReportPropertyChanging("Nombres_Empleado");
+                _Nombres_Empleado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Nombres_Empleado");
+                OnNombres_EmpleadoChanged();
+            }
+        }
+        private global::System.String _Nombres_Empleado;
+        partial void OnNombres_EmpleadoChanging(global::System.String value);
+        partial void OnNombres_EmpleadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Cargo_Empleado
+        {
+            get
+            {
+                return _Cargo_Empleado;
+            }
+            set
+            {
+                OnCargo_EmpleadoChanging(value);
+                ReportPropertyChanging("Cargo_Empleado");
+                _Cargo_Empleado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Cargo_Empleado");
+                OnCargo_EmpleadoChanged();
+            }
+        }
+        private global::System.String _Cargo_Empleado;
+        partial void OnCargo_EmpleadoChanging(global::System.String value);
+        partial void OnCargo_EmpleadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Correo_Empleado
+        {
+            get
+            {
+                return _Correo_Empleado;
+            }
+            set
+            {
+                OnCorreo_EmpleadoChanging(value);
+                ReportPropertyChanging("Correo_Empleado");
+                _Correo_Empleado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Correo_Empleado");
+                OnCorreo_EmpleadoChanged();
+            }
+        }
+        private global::System.String _Correo_Empleado;
+        partial void OnCorreo_EmpleadoChanging(global::System.String value);
+        partial void OnCorreo_EmpleadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Estado
+        {
+            get
+            {
+                return _Estado;
+            }
+            set
+            {
+                OnEstadoChanging(value);
+                ReportPropertyChanging("Estado");
+                _Estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Estado");
+                OnEstadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Estado;
+        partial void OnEstadoChanging(Nullable<global::System.Int32> value);
+        partial void OnEstadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_TURNOEMERGENCIA
+        {
+            get
+            {
+                return _ID_TURNOEMERGENCIA;
+            }
+            set
+            {
+                OnID_TURNOEMERGENCIAChanging(value);
+                ReportPropertyChanging("ID_TURNOEMERGENCIA");
+                _ID_TURNOEMERGENCIA = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_TURNOEMERGENCIA");
+                OnID_TURNOEMERGENCIAChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_TURNOEMERGENCIA;
+        partial void OnID_TURNOEMERGENCIAChanging(Nullable<global::System.Int32> value);
+        partial void OnID_TURNOEMERGENCIAChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Tipo_Empleado
+        {
+            get
+            {
+                return _ID_Tipo_Empleado;
+            }
+            set
+            {
+                OnID_Tipo_EmpleadoChanging(value);
+                ReportPropertyChanging("ID_Tipo_Empleado");
+                _ID_Tipo_Empleado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Tipo_Empleado");
+                OnID_Tipo_EmpleadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Tipo_Empleado;
+        partial void OnID_Tipo_EmpleadoChanging(Nullable<global::System.Int32> value);
+        partial void OnID_Tipo_EmpleadoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CRONOGRAMA_EMERGENCIA_TB_EMPLEADO", "TB_CRONOGRAMA_EMERGENCIA")]
+        public EntityCollection<TB_CRONOGRAMA_EMERGENCIA> TB_CRONOGRAMA_EMERGENCIA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CRONOGRAMA_EMERGENCIA>("DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_EMPLEADO", "TB_CRONOGRAMA_EMERGENCIA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CRONOGRAMA_EMERGENCIA>("DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_EMPLEADO", "TB_CRONOGRAMA_EMERGENCIA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_EMPLEADO_TB_TIPO_EMPLEADO", "TB_TIPO_EMPLEADO")]
+        public TB_TIPO_EMPLEADO TB_TIPO_EMPLEADO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_EMPLEADO>("DB_SGHModel.FK_TB_EMPLEADO_TB_TIPO_EMPLEADO", "TB_TIPO_EMPLEADO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_EMPLEADO>("DB_SGHModel.FK_TB_EMPLEADO_TB_TIPO_EMPLEADO", "TB_TIPO_EMPLEADO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_TIPO_EMPLEADO> TB_TIPO_EMPLEADOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_EMPLEADO>("DB_SGHModel.FK_TB_EMPLEADO_TB_TIPO_EMPLEADO", "TB_TIPO_EMPLEADO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_TIPO_EMPLEADO>("DB_SGHModel.FK_TB_EMPLEADO_TB_TIPO_EMPLEADO", "TB_TIPO_EMPLEADO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_EMPLEADO_TB_TURNO_EMERGENCIA", "TB_TURNO_EMERGENCIA")]
+        public TB_TURNO_EMERGENCIA TB_TURNO_EMERGENCIA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TURNO_EMERGENCIA>("DB_SGHModel.FK_TB_EMPLEADO_TB_TURNO_EMERGENCIA", "TB_TURNO_EMERGENCIA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TURNO_EMERGENCIA>("DB_SGHModel.FK_TB_EMPLEADO_TB_TURNO_EMERGENCIA", "TB_TURNO_EMERGENCIA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_TURNO_EMERGENCIA> TB_TURNO_EMERGENCIAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TURNO_EMERGENCIA>("DB_SGHModel.FK_TB_EMPLEADO_TB_TURNO_EMERGENCIA", "TB_TURNO_EMERGENCIA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_TURNO_EMERGENCIA>("DB_SGHModel.FK_TB_EMPLEADO_TB_TURNO_EMERGENCIA", "TB_TURNO_EMERGENCIA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO", "TB_INFORME_ADMINSITRATIVO")]
+        public EntityCollection<TB_INFORME_ADMINSITRATIVO> TB_INFORME_ADMINSITRATIVO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_INFORME_ADMINSITRATIVO>("DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO", "TB_INFORME_ADMINSITRATIVO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_INFORME_ADMINSITRATIVO>("DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO", "TB_INFORME_ADMINSITRATIVO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_SOLICITUDES_DE_CAMBIO_TB_EMPLEADO", "TB_SOLICITUDES_DE_CAMBIO")]
+        public EntityCollection<TB_SOLICITUDES_DE_CAMBIO> TB_SOLICITUDES_DE_CAMBIO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_SOLICITUDES_DE_CAMBIO>("DB_SGHModel.FK_TB_SOLICITUDES_DE_CAMBIO_TB_EMPLEADO", "TB_SOLICITUDES_DE_CAMBIO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_SOLICITUDES_DE_CAMBIO>("DB_SGHModel.FK_TB_SOLICITUDES_DE_CAMBIO_TB_EMPLEADO", "TB_SOLICITUDES_DE_CAMBIO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_ESPECIALIDAD")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_ESPECIALIDAD : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_ESPECIALIDAD.
+        /// </summary>
+        /// <param name="iD_Especialidad">Valor inicial de la propiedad ID_Especialidad.</param>
+        public static TB_ESPECIALIDAD CreateTB_ESPECIALIDAD(global::System.Int32 iD_Especialidad)
+        {
+            TB_ESPECIALIDAD tB_ESPECIALIDAD = new TB_ESPECIALIDAD();
+            tB_ESPECIALIDAD.ID_Especialidad = iD_Especialidad;
+            return tB_ESPECIALIDAD;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Especialidad
+        {
+            get
+            {
+                return _ID_Especialidad;
+            }
+            set
+            {
+                if (_ID_Especialidad != value)
+                {
+                    OnID_EspecialidadChanging(value);
+                    ReportPropertyChanging("ID_Especialidad");
+                    _ID_Especialidad = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Especialidad");
+                    OnID_EspecialidadChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Especialidad;
+        partial void OnID_EspecialidadChanging(global::System.Int32 value);
+        partial void OnID_EspecialidadChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String descripcion
+        {
+            get
+            {
+                return _descripcion;
+            }
+            set
+            {
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
+            }
+        }
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CAMA_TB_ESPECIALIDAD", "TB_CAMA")]
+        public EntityCollection<TB_CAMA> TB_CAMA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CAMA>("DB_SGHModel.FK_TB_CAMA_TB_ESPECIALIDAD", "TB_CAMA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CAMA>("DB_SGHModel.FK_TB_CAMA_TB_ESPECIALIDAD", "TB_CAMA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CITA_00TB_ESPECIALIDAD", "TB_CITA")]
+        public EntityCollection<TB_CITA> TB_CITA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CITA>("DB_SGHModel.FK_TB_CITA_00TB_ESPECIALIDAD", "TB_CITA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CITA>("DB_SGHModel.FK_TB_CITA_00TB_ESPECIALIDAD", "TB_CITA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_ESPECIALIDAD", "TB_HOJA_INGRESO_EMERGENCIA")]
+        public EntityCollection<TB_HOJA_INGRESO_EMERGENCIA> TB_HOJA_INGRESO_EMERGENCIA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_HOJA_INGRESO_EMERGENCIA>("DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_ESPECIALIDAD", "TB_HOJA_INGRESO_EMERGENCIA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_HOJA_INGRESO_EMERGENCIA>("DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_ESPECIALIDAD", "TB_HOJA_INGRESO_EMERGENCIA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ESPECIALIDAD", "TB_HOJA_INGRESO_HOSPITALIZACION")]
+        public EntityCollection<TB_HOJA_INGRESO_HOSPITALIZACION> TB_HOJA_INGRESO_HOSPITALIZACION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_HOJA_INGRESO_HOSPITALIZACION>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ESPECIALIDAD", "TB_HOJA_INGRESO_HOSPITALIZACION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_HOJA_INGRESO_HOSPITALIZACION>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ESPECIALIDAD", "TB_HOJA_INGRESO_HOSPITALIZACION", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_MEDICOESPECIALIDAD_TB_ESPECIALIDAD", "TB_MEDICOESPECIALIDAD")]
+        public EntityCollection<TB_MEDICOESPECIALIDAD> TB_MEDICOESPECIALIDAD
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_MEDICOESPECIALIDAD>("DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_ESPECIALIDAD", "TB_MEDICOESPECIALIDAD");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_MEDICOESPECIALIDAD>("DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_ESPECIALIDAD", "TB_MEDICOESPECIALIDAD", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_AGENDA_MEDICA_TB_ESPECIALIDAD", "TB_AGENDA_MEDICA")]
+        public EntityCollection<TB_AGENDA_MEDICA> TB_AGENDA_MEDICA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_AGENDA_MEDICA>("DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_ESPECIALIDAD", "TB_AGENDA_MEDICA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_AGENDA_MEDICA>("DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_ESPECIALIDAD", "TB_AGENDA_MEDICA", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_ESTADO_CITA")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_ESTADO_CITA : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_ESTADO_CITA.
+        /// </summary>
+        /// <param name="iD_EstadoCita">Valor inicial de la propiedad ID_EstadoCita.</param>
+        public static TB_ESTADO_CITA CreateTB_ESTADO_CITA(global::System.Int32 iD_EstadoCita)
+        {
+            TB_ESTADO_CITA tB_ESTADO_CITA = new TB_ESTADO_CITA();
+            tB_ESTADO_CITA.ID_EstadoCita = iD_EstadoCita;
+            return tB_ESTADO_CITA;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_EstadoCita
+        {
+            get
+            {
+                return _ID_EstadoCita;
+            }
+            set
+            {
+                if (_ID_EstadoCita != value)
+                {
+                    OnID_EstadoCitaChanging(value);
+                    ReportPropertyChanging("ID_EstadoCita");
+                    _ID_EstadoCita = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_EstadoCita");
+                    OnID_EstadoCitaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_EstadoCita;
+        partial void OnID_EstadoCitaChanging(global::System.Int32 value);
+        partial void OnID_EstadoCitaChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -2784,6 +9074,7 @@ namespace CI.SIC.DA
         partial void OnDesEstadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -2793,47 +9084,49 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_Cita_EstadoCita1", "TB_Cita")]
-        public EntityCollection<TB_Cita> TB_Cita
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CITA_TB_Estado_Cita", "TB_CITA")]
+        public EntityCollection<TB_CITA> TB_CITA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Cita>("DB_SGHModel.FK_Cita_EstadoCita1", "TB_Cita");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CITA>("DB_SGHModel.FK_TB_CITA_TB_Estado_Cita", "TB_CITA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Cita>("DB_SGHModel.FK_Cita_EstadoCita1", "TB_Cita", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CITA>("DB_SGHModel.FK_TB_CITA_TB_Estado_Cita", "TB_CITA", value);
                 }
             }
         }
 
         #endregion
+
     }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Local")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_FICHA_EQUIPO")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Local : EntityObject
+    public partial class TB_FICHA_EQUIPO : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Local.
+        /// Crear un nuevo objeto TB_FICHA_EQUIPO.
         /// </summary>
-        /// <param name="codigoLocal">Valor inicial de la propiedad CodigoLocal.</param>
-        public static TB_Local CreateTB_Local(global::System.Int32 codigoLocal)
+        /// <param name="iD_Ficha_Equipo">Valor inicial de la propiedad ID_Ficha_Equipo.</param>
+        public static TB_FICHA_EQUIPO CreateTB_FICHA_EQUIPO(global::System.Int32 iD_Ficha_Equipo)
         {
-            TB_Local tB_Local = new TB_Local();
-            tB_Local.CodigoLocal = codigoLocal;
-            return tB_Local;
+            TB_FICHA_EQUIPO tB_FICHA_EQUIPO = new TB_FICHA_EQUIPO();
+            tB_FICHA_EQUIPO.ID_Ficha_Equipo = iD_Ficha_Equipo;
+            return tB_FICHA_EQUIPO;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2841,77 +9134,431 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoLocal
+        public global::System.Int32 ID_Ficha_Equipo
         {
             get
             {
-                return _CodigoLocal;
+                return _ID_Ficha_Equipo;
             }
             set
             {
-                if (_CodigoLocal != value)
+                if (_ID_Ficha_Equipo != value)
                 {
-                    OnCodigoLocalChanging(value);
-                    ReportPropertyChanging("CodigoLocal");
-                    _CodigoLocal = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("CodigoLocal");
-                    OnCodigoLocalChanged();
+                    OnID_Ficha_EquipoChanging(value);
+                    ReportPropertyChanging("ID_Ficha_Equipo");
+                    _ID_Ficha_Equipo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Ficha_Equipo");
+                    OnID_Ficha_EquipoChanged();
                 }
             }
         }
-        private global::System.Int32 _CodigoLocal;
-        partial void OnCodigoLocalChanging(global::System.Int32 value);
-        partial void OnCodigoLocalChanged();
+        private global::System.Int32 _ID_Ficha_Equipo;
+        partial void OnID_Ficha_EquipoChanging(global::System.Int32 value);
+        partial void OnID_Ficha_EquipoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String NombreLocal
+        public global::System.String GM_Ubicacion
         {
             get
             {
-                return _NombreLocal;
+                return _GM_Ubicacion;
             }
             set
             {
-                OnNombreLocalChanging(value);
-                ReportPropertyChanging("NombreLocal");
-                _NombreLocal = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("NombreLocal");
-                OnNombreLocalChanged();
+                OnGM_UbicacionChanging(value);
+                ReportPropertyChanging("GM_Ubicacion");
+                _GM_Ubicacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Ubicacion");
+                OnGM_UbicacionChanged();
             }
         }
-        private global::System.String _NombreLocal;
-        partial void OnNombreLocalChanging(global::System.String value);
-        partial void OnNombreLocalChanged();
+        private global::System.String _GM_Ubicacion;
+        partial void OnGM_UbicacionChanging(global::System.String value);
+        partial void OnGM_UbicacionChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String DireccionLocal
+        public global::System.String GM_Fecha_ultimo_Mantenimiento
         {
             get
             {
-                return _DireccionLocal;
+                return _GM_Fecha_ultimo_Mantenimiento;
             }
             set
             {
-                OnDireccionLocalChanging(value);
-                ReportPropertyChanging("DireccionLocal");
-                _DireccionLocal = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("DireccionLocal");
-                OnDireccionLocalChanged();
+                OnGM_Fecha_ultimo_MantenimientoChanging(value);
+                ReportPropertyChanging("GM_Fecha_ultimo_Mantenimiento");
+                _GM_Fecha_ultimo_Mantenimiento = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_ultimo_Mantenimiento");
+                OnGM_Fecha_ultimo_MantenimientoChanged();
             }
         }
-        private global::System.String _DireccionLocal;
-        partial void OnDireccionLocalChanging(global::System.String value);
-        partial void OnDireccionLocalChanged();
+        private global::System.String _GM_Fecha_ultimo_Mantenimiento;
+        partial void OnGM_Fecha_ultimo_MantenimientoChanging(global::System.String value);
+        partial void OnGM_Fecha_ultimo_MantenimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Ultima_Reparacion
+        {
+            get
+            {
+                return _GM_Fecha_Ultima_Reparacion;
+            }
+            set
+            {
+                OnGM_Fecha_Ultima_ReparacionChanging(value);
+                ReportPropertyChanging("GM_Fecha_Ultima_Reparacion");
+                _GM_Fecha_Ultima_Reparacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Ultima_Reparacion");
+                OnGM_Fecha_Ultima_ReparacionChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Ultima_Reparacion;
+        partial void OnGM_Fecha_Ultima_ReparacionChanging(global::System.String value);
+        partial void OnGM_Fecha_Ultima_ReparacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_NroPeriodo_Mantenimiento
+        {
+            get
+            {
+                return _GM_NroPeriodo_Mantenimiento;
+            }
+            set
+            {
+                OnGM_NroPeriodo_MantenimientoChanging(value);
+                ReportPropertyChanging("GM_NroPeriodo_Mantenimiento");
+                _GM_NroPeriodo_Mantenimiento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_NroPeriodo_Mantenimiento");
+                OnGM_NroPeriodo_MantenimientoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_NroPeriodo_Mantenimiento;
+        partial void OnGM_NroPeriodo_MantenimientoChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_NroPeriodo_MantenimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Proximo_Mantenimiento
+        {
+            get
+            {
+                return _GM_Fecha_Proximo_Mantenimiento;
+            }
+            set
+            {
+                OnGM_Fecha_Proximo_MantenimientoChanging(value);
+                ReportPropertyChanging("GM_Fecha_Proximo_Mantenimiento");
+                _GM_Fecha_Proximo_Mantenimiento = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Proximo_Mantenimiento");
+                OnGM_Fecha_Proximo_MantenimientoChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Proximo_Mantenimiento;
+        partial void OnGM_Fecha_Proximo_MantenimientoChanging(global::System.String value);
+        partial void OnGM_Fecha_Proximo_MantenimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Caracteristicas
+        {
+            get
+            {
+                return _GM_Caracteristicas;
+            }
+            set
+            {
+                OnGM_CaracteristicasChanging(value);
+                ReportPropertyChanging("GM_Caracteristicas");
+                _GM_Caracteristicas = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Caracteristicas");
+                OnGM_CaracteristicasChanged();
+            }
+        }
+        private global::System.String _GM_Caracteristicas;
+        partial void OnGM_CaracteristicasChanging(global::System.String value);
+        partial void OnGM_CaracteristicasChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Observaciones
+        {
+            get
+            {
+                return _GM_Observaciones;
+            }
+            set
+            {
+                OnGM_ObservacionesChanging(value);
+                ReportPropertyChanging("GM_Observaciones");
+                _GM_Observaciones = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Observaciones");
+                OnGM_ObservacionesChanged();
+            }
+        }
+        private global::System.String _GM_Observaciones;
+        partial void OnGM_ObservacionesChanging(global::System.String value);
+        partial void OnGM_ObservacionesChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Numero_Equipo
+        {
+            get
+            {
+                return _GM_Numero_Equipo;
+            }
+            set
+            {
+                OnGM_Numero_EquipoChanging(value);
+                ReportPropertyChanging("GM_Numero_Equipo");
+                _GM_Numero_Equipo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Numero_Equipo");
+                OnGM_Numero_EquipoChanged();
+            }
+        }
+        private global::System.String _GM_Numero_Equipo;
+        partial void OnGM_Numero_EquipoChanging(global::System.String value);
+        partial void OnGM_Numero_EquipoChanged();
 
         #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_HISTORIA_CLINICA")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_HISTORIA_CLINICA : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_HISTORIA_CLINICA.
+        /// </summary>
+        /// <param name="iD_Historia">Valor inicial de la propiedad ID_Historia.</param>
+        /// <param name="fechaRegistro">Valor inicial de la propiedad FechaRegistro.</param>
+        /// <param name="antecedentes">Valor inicial de la propiedad Antecedentes.</param>
+        /// <param name="iD_Paciente">Valor inicial de la propiedad ID_Paciente.</param>
+        /// <param name="iD_GrupoSanguineo">Valor inicial de la propiedad ID_GrupoSanguineo.</param>
+        public static TB_HISTORIA_CLINICA CreateTB_HISTORIA_CLINICA(global::System.Int32 iD_Historia, global::System.DateTime fechaRegistro, global::System.String antecedentes, global::System.Int32 iD_Paciente, global::System.Int32 iD_GrupoSanguineo)
+        {
+            TB_HISTORIA_CLINICA tB_HISTORIA_CLINICA = new TB_HISTORIA_CLINICA();
+            tB_HISTORIA_CLINICA.ID_Historia = iD_Historia;
+            tB_HISTORIA_CLINICA.FechaRegistro = fechaRegistro;
+            tB_HISTORIA_CLINICA.Antecedentes = antecedentes;
+            tB_HISTORIA_CLINICA.ID_Paciente = iD_Paciente;
+            tB_HISTORIA_CLINICA.ID_GrupoSanguineo = iD_GrupoSanguineo;
+            return tB_HISTORIA_CLINICA;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Historia
+        {
+            get
+            {
+                return _ID_Historia;
+            }
+            set
+            {
+                if (_ID_Historia != value)
+                {
+                    OnID_HistoriaChanging(value);
+                    ReportPropertyChanging("ID_Historia");
+                    _ID_Historia = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Historia");
+                    OnID_HistoriaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Historia;
+        partial void OnID_HistoriaChanging(global::System.Int32 value);
+        partial void OnID_HistoriaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FechaRegistro
+        {
+            get
+            {
+                return _FechaRegistro;
+            }
+            set
+            {
+                OnFechaRegistroChanging(value);
+                ReportPropertyChanging("FechaRegistro");
+                _FechaRegistro = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaRegistro");
+                OnFechaRegistroChanged();
+            }
+        }
+        private global::System.DateTime _FechaRegistro;
+        partial void OnFechaRegistroChanging(global::System.DateTime value);
+        partial void OnFechaRegistroChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Antecedentes
+        {
+            get
+            {
+                return _Antecedentes;
+            }
+            set
+            {
+                OnAntecedentesChanging(value);
+                ReportPropertyChanging("Antecedentes");
+                _Antecedentes = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Antecedentes");
+                OnAntecedentesChanged();
+            }
+        }
+        private global::System.String _Antecedentes;
+        partial void OnAntecedentesChanging(global::System.String value);
+        partial void OnAntecedentesChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Descripcion
+        {
+            get
+            {
+                return _Descripcion;
+            }
+            set
+            {
+                OnDescripcionChanging(value);
+                ReportPropertyChanging("Descripcion");
+                _Descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Descripcion");
+                OnDescripcionChanged();
+            }
+        }
+        private global::System.String _Descripcion;
+        partial void OnDescripcionChanging(global::System.String value);
+        partial void OnDescripcionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaAtencion
+        {
+            get
+            {
+                return _FechaAtencion;
+            }
+            set
+            {
+                OnFechaAtencionChanging(value);
+                ReportPropertyChanging("FechaAtencion");
+                _FechaAtencion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaAtencion");
+                OnFechaAtencionChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaAtencion;
+        partial void OnFechaAtencionChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaAtencionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Paciente
+        {
+            get
+            {
+                return _ID_Paciente;
+            }
+            set
+            {
+                OnID_PacienteChanging(value);
+                ReportPropertyChanging("ID_Paciente");
+                _ID_Paciente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Paciente");
+                OnID_PacienteChanged();
+            }
+        }
+        private global::System.Int32 _ID_Paciente;
+        partial void OnID_PacienteChanging(global::System.Int32 value);
+        partial void OnID_PacienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_GrupoSanguineo
+        {
+            get
+            {
+                return _ID_GrupoSanguineo;
+            }
+            set
+            {
+                OnID_GrupoSanguineoChanging(value);
+                ReportPropertyChanging("ID_GrupoSanguineo");
+                _ID_GrupoSanguineo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_GrupoSanguineo");
+                OnID_GrupoSanguineoChanged();
+            }
+        }
+        private global::System.Int32 _ID_GrupoSanguineo;
+        partial void OnID_GrupoSanguineoChanging(global::System.Int32 value);
+        partial void OnID_GrupoSanguineoChanged();
+
+        #endregion
+
     
         #region Propiedades de navegación
     
@@ -2921,18 +9568,18 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__4316F928", "TB_Consultorio")]
-        public EntityCollection<TB_Consultorio> TB_Consultorio
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_CO_GC_Cita60", "TB_CITA")]
+        public EntityCollection<TB_CITA> TB_CITA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Consultorio>("DB_SGHModel.FK__TB_Consul__Codig__4316F928", "TB_Consultorio");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CITA>("DB_SGHModel.FK_T_CL_CO_GC_Cita60", "TB_CITA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Consultorio>("DB_SGHModel.FK__TB_Consul__Codig__4316F928", "TB_Consultorio", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CITA>("DB_SGHModel.FK_T_CL_CO_GC_Cita60", "TB_CITA", value);
                 }
             }
         }
@@ -2943,47 +9590,117 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__440B1D61", "TB_Consultorio")]
-        public EntityCollection<TB_Consultorio> TB_Consultorio1
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_DET_HISTORIA_CLINICA_TB_HISTORIA_CLINICA", "TB_DET_HISTORIA_CLINICA")]
+        public EntityCollection<TB_DET_HISTORIA_CLINICA> TB_DET_HISTORIA_CLINICA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Consultorio>("DB_SGHModel.FK__TB_Consul__Codig__440B1D61", "TB_Consultorio");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_DET_HISTORIA_CLINICA>("DB_SGHModel.FK_TB_DET_HISTORIA_CLINICA_TB_HISTORIA_CLINICA", "TB_DET_HISTORIA_CLINICA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Consultorio>("DB_SGHModel.FK__TB_Consul__Codig__440B1D61", "TB_Consultorio", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_DET_HISTORIA_CLINICA>("DB_SGHModel.FK_TB_DET_HISTORIA_CLINICA_TB_HISTORIA_CLINICA", "TB_DET_HISTORIA_CLINICA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_HISTORIA_CLINICA_TB_PACIENTE1", "TB_PACIENTE")]
+        public TB_PACIENTE TB_PACIENTE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_HISTORIA_CLINICA_TB_PACIENTE1", "TB_PACIENTE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_HISTORIA_CLINICA_TB_PACIENTE1", "TB_PACIENTE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_PACIENTE> TB_PACIENTEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_HISTORIA_CLINICA_TB_PACIENTE1", "TB_PACIENTE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_TB_HISTORIA_CLINICA_TB_PACIENTE1", "TB_PACIENTE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_INTERNA_TB_HISTORIA_CLINICA", "TB_ORDEN_INTERNA")]
+        public EntityCollection<TB_ORDEN_INTERNA> TB_ORDEN_INTERNA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ORDEN_INTERNA>("DB_SGHModel.FK_TB_ORDEN_INTERNA_TB_HISTORIA_CLINICA", "TB_ORDEN_INTERNA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ORDEN_INTERNA>("DB_SGHModel.FK_TB_ORDEN_INTERNA_TB_HISTORIA_CLINICA", "TB_ORDEN_INTERNA", value);
                 }
             }
         }
 
         #endregion
+
     }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Medicamento")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_HOJA_INGRESO_EMERGENCIA")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Medicamento : EntityObject
+    public partial class TB_HOJA_INGRESO_EMERGENCIA : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Medicamento.
+        /// Crear un nuevo objeto TB_HOJA_INGRESO_EMERGENCIA.
         /// </summary>
-        /// <param name="codigoMedicamento">Valor inicial de la propiedad CodigoMedicamento.</param>
-        public static TB_Medicamento CreateTB_Medicamento(global::System.Int32 codigoMedicamento)
+        /// <param name="iD_Hoja_Ingreso_Emergencia">Valor inicial de la propiedad ID_Hoja_Ingreso_Emergencia.</param>
+        /// <param name="fechaHoraIngreso">Valor inicial de la propiedad FechaHoraIngreso.</param>
+        /// <param name="iD_Paciente">Valor inicial de la propiedad ID_Paciente.</param>
+        /// <param name="iD_Especialidad">Valor inicial de la propiedad ID_Especialidad.</param>
+        /// <param name="iD_Medico">Valor inicial de la propiedad ID_Medico.</param>
+        public static TB_HOJA_INGRESO_EMERGENCIA CreateTB_HOJA_INGRESO_EMERGENCIA(global::System.Int32 iD_Hoja_Ingreso_Emergencia, global::System.DateTime fechaHoraIngreso, global::System.Int32 iD_Paciente, global::System.Int32 iD_Especialidad, global::System.Int32 iD_Medico)
         {
-            TB_Medicamento tB_Medicamento = new TB_Medicamento();
-            tB_Medicamento.CodigoMedicamento = codigoMedicamento;
-            return tB_Medicamento;
+            TB_HOJA_INGRESO_EMERGENCIA tB_HOJA_INGRESO_EMERGENCIA = new TB_HOJA_INGRESO_EMERGENCIA();
+            tB_HOJA_INGRESO_EMERGENCIA.ID_Hoja_Ingreso_Emergencia = iD_Hoja_Ingreso_Emergencia;
+            tB_HOJA_INGRESO_EMERGENCIA.FechaHoraIngreso = fechaHoraIngreso;
+            tB_HOJA_INGRESO_EMERGENCIA.ID_Paciente = iD_Paciente;
+            tB_HOJA_INGRESO_EMERGENCIA.ID_Especialidad = iD_Especialidad;
+            tB_HOJA_INGRESO_EMERGENCIA.ID_Medico = iD_Medico;
+            return tB_HOJA_INGRESO_EMERGENCIA;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -2991,27 +9708,2974 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoMedicamento
+        public global::System.Int32 ID_Hoja_Ingreso_Emergencia
         {
             get
             {
-                return _CodigoMedicamento;
+                return _ID_Hoja_Ingreso_Emergencia;
             }
             set
             {
-                if (_CodigoMedicamento != value)
+                if (_ID_Hoja_Ingreso_Emergencia != value)
                 {
-                    OnCodigoMedicamentoChanging(value);
-                    ReportPropertyChanging("CodigoMedicamento");
-                    _CodigoMedicamento = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("CodigoMedicamento");
-                    OnCodigoMedicamentoChanged();
+                    OnID_Hoja_Ingreso_EmergenciaChanging(value);
+                    ReportPropertyChanging("ID_Hoja_Ingreso_Emergencia");
+                    _ID_Hoja_Ingreso_Emergencia = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Hoja_Ingreso_Emergencia");
+                    OnID_Hoja_Ingreso_EmergenciaChanged();
                 }
             }
         }
-        private global::System.Int32 _CodigoMedicamento;
-        partial void OnCodigoMedicamentoChanging(global::System.Int32 value);
-        partial void OnCodigoMedicamentoChanged();
+        private global::System.Int32 _ID_Hoja_Ingreso_Emergencia;
+        partial void OnID_Hoja_Ingreso_EmergenciaChanging(global::System.Int32 value);
+        partial void OnID_Hoja_Ingreso_EmergenciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FechaHoraIngreso
+        {
+            get
+            {
+                return _FechaHoraIngreso;
+            }
+            set
+            {
+                OnFechaHoraIngresoChanging(value);
+                ReportPropertyChanging("FechaHoraIngreso");
+                _FechaHoraIngreso = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaHoraIngreso");
+                OnFechaHoraIngresoChanged();
+            }
+        }
+        private global::System.DateTime _FechaHoraIngreso;
+        partial void OnFechaHoraIngresoChanging(global::System.DateTime value);
+        partial void OnFechaHoraIngresoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Paciente
+        {
+            get
+            {
+                return _ID_Paciente;
+            }
+            set
+            {
+                OnID_PacienteChanging(value);
+                ReportPropertyChanging("ID_Paciente");
+                _ID_Paciente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Paciente");
+                OnID_PacienteChanged();
+            }
+        }
+        private global::System.Int32 _ID_Paciente;
+        partial void OnID_PacienteChanging(global::System.Int32 value);
+        partial void OnID_PacienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Especialidad
+        {
+            get
+            {
+                return _ID_Especialidad;
+            }
+            set
+            {
+                OnID_EspecialidadChanging(value);
+                ReportPropertyChanging("ID_Especialidad");
+                _ID_Especialidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Especialidad");
+                OnID_EspecialidadChanged();
+            }
+        }
+        private global::System.Int32 _ID_Especialidad;
+        partial void OnID_EspecialidadChanging(global::System.Int32 value);
+        partial void OnID_EspecialidadChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Medico
+        {
+            get
+            {
+                return _ID_Medico;
+            }
+            set
+            {
+                OnID_MedicoChanging(value);
+                ReportPropertyChanging("ID_Medico");
+                _ID_Medico = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Medico");
+                OnID_MedicoChanged();
+            }
+        }
+        private global::System.Int32 _ID_Medico;
+        partial void OnID_MedicoChanging(global::System.Int32 value);
+        partial void OnID_MedicoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MotivoIngreso
+        {
+            get
+            {
+                return _MotivoIngreso;
+            }
+            set
+            {
+                OnMotivoIngresoChanging(value);
+                ReportPropertyChanging("MotivoIngreso");
+                _MotivoIngreso = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MotivoIngreso");
+                OnMotivoIngresoChanged();
+            }
+        }
+        private global::System.String _MotivoIngreso;
+        partial void OnMotivoIngresoChanging(global::System.String value);
+        partial void OnMotivoIngresoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_ESPECIALIDAD", "TB_ESPECIALIDAD")]
+        public TB_ESPECIALIDAD TB_ESPECIALIDAD
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_ESPECIALIDAD", "TB_ESPECIALIDAD").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_ESPECIALIDAD", "TB_ESPECIALIDAD").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_ESPECIALIDAD> TB_ESPECIALIDADReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_ESPECIALIDAD", "TB_ESPECIALIDAD");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_ESPECIALIDAD", "TB_ESPECIALIDAD", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Hoja_Ingreso_Emergencia54", "TB_PACIENTE")]
+        public TB_PACIENTE TB_PACIENTE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Hoja_Ingreso_Emergencia54", "TB_PACIENTE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Hoja_Ingreso_Emergencia54", "TB_PACIENTE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_PACIENTE> TB_PACIENTEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Hoja_Ingreso_Emergencia54", "TB_PACIENTE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Hoja_Ingreso_Emergencia54", "TB_PACIENTE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_MEDICO", "TB_MEDICO")]
+        public TB_MEDICO TB_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_MEDICO", "TB_MEDICO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_MEDICO", "TB_MEDICO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_MEDICO> TB_MEDICOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_MEDICO", "TB_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_MEDICO", "TB_MEDICO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_HOJA_INGRESO_HOSPITALIZACION")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_HOJA_INGRESO_HOSPITALIZACION : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_HOJA_INGRESO_HOSPITALIZACION.
+        /// </summary>
+        /// <param name="iD_Hoja_Ingreso_Hospitalizacion">Valor inicial de la propiedad ID_Hoja_Ingreso_Hospitalizacion.</param>
+        /// <param name="fechaIngreso">Valor inicial de la propiedad FechaIngreso.</param>
+        /// <param name="fechaAlta">Valor inicial de la propiedad FechaAlta.</param>
+        /// <param name="iD_Procedencia">Valor inicial de la propiedad ID_Procedencia.</param>
+        /// <param name="tipoOrden">Valor inicial de la propiedad TipoOrden.</param>
+        /// <param name="tratamiento">Valor inicial de la propiedad Tratamiento.</param>
+        /// <param name="iD_Paciente">Valor inicial de la propiedad ID_Paciente.</param>
+        public static TB_HOJA_INGRESO_HOSPITALIZACION CreateTB_HOJA_INGRESO_HOSPITALIZACION(global::System.Int32 iD_Hoja_Ingreso_Hospitalizacion, global::System.DateTime fechaIngreso, global::System.DateTime fechaAlta, global::System.Int32 iD_Procedencia, global::System.Int32 tipoOrden, global::System.String tratamiento, global::System.Int32 iD_Paciente)
+        {
+            TB_HOJA_INGRESO_HOSPITALIZACION tB_HOJA_INGRESO_HOSPITALIZACION = new TB_HOJA_INGRESO_HOSPITALIZACION();
+            tB_HOJA_INGRESO_HOSPITALIZACION.ID_Hoja_Ingreso_Hospitalizacion = iD_Hoja_Ingreso_Hospitalizacion;
+            tB_HOJA_INGRESO_HOSPITALIZACION.FechaIngreso = fechaIngreso;
+            tB_HOJA_INGRESO_HOSPITALIZACION.FechaAlta = fechaAlta;
+            tB_HOJA_INGRESO_HOSPITALIZACION.ID_Procedencia = iD_Procedencia;
+            tB_HOJA_INGRESO_HOSPITALIZACION.TipoOrden = tipoOrden;
+            tB_HOJA_INGRESO_HOSPITALIZACION.Tratamiento = tratamiento;
+            tB_HOJA_INGRESO_HOSPITALIZACION.ID_Paciente = iD_Paciente;
+            return tB_HOJA_INGRESO_HOSPITALIZACION;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Hoja_Ingreso_Hospitalizacion
+        {
+            get
+            {
+                return _ID_Hoja_Ingreso_Hospitalizacion;
+            }
+            set
+            {
+                if (_ID_Hoja_Ingreso_Hospitalizacion != value)
+                {
+                    OnID_Hoja_Ingreso_HospitalizacionChanging(value);
+                    ReportPropertyChanging("ID_Hoja_Ingreso_Hospitalizacion");
+                    _ID_Hoja_Ingreso_Hospitalizacion = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Hoja_Ingreso_Hospitalizacion");
+                    OnID_Hoja_Ingreso_HospitalizacionChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Hoja_Ingreso_Hospitalizacion;
+        partial void OnID_Hoja_Ingreso_HospitalizacionChanging(global::System.Int32 value);
+        partial void OnID_Hoja_Ingreso_HospitalizacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FechaIngreso
+        {
+            get
+            {
+                return _FechaIngreso;
+            }
+            set
+            {
+                OnFechaIngresoChanging(value);
+                ReportPropertyChanging("FechaIngreso");
+                _FechaIngreso = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaIngreso");
+                OnFechaIngresoChanged();
+            }
+        }
+        private global::System.DateTime _FechaIngreso;
+        partial void OnFechaIngresoChanging(global::System.DateTime value);
+        partial void OnFechaIngresoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FechaAlta
+        {
+            get
+            {
+                return _FechaAlta;
+            }
+            set
+            {
+                OnFechaAltaChanging(value);
+                ReportPropertyChanging("FechaAlta");
+                _FechaAlta = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaAlta");
+                OnFechaAltaChanged();
+            }
+        }
+        private global::System.DateTime _FechaAlta;
+        partial void OnFechaAltaChanging(global::System.DateTime value);
+        partial void OnFechaAltaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Procedencia
+        {
+            get
+            {
+                return _ID_Procedencia;
+            }
+            set
+            {
+                OnID_ProcedenciaChanging(value);
+                ReportPropertyChanging("ID_Procedencia");
+                _ID_Procedencia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Procedencia");
+                OnID_ProcedenciaChanged();
+            }
+        }
+        private global::System.Int32 _ID_Procedencia;
+        partial void OnID_ProcedenciaChanging(global::System.Int32 value);
+        partial void OnID_ProcedenciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TipoOrden
+        {
+            get
+            {
+                return _TipoOrden;
+            }
+            set
+            {
+                OnTipoOrdenChanging(value);
+                ReportPropertyChanging("TipoOrden");
+                _TipoOrden = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TipoOrden");
+                OnTipoOrdenChanged();
+            }
+        }
+        private global::System.Int32 _TipoOrden;
+        partial void OnTipoOrdenChanging(global::System.Int32 value);
+        partial void OnTipoOrdenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Tratamiento
+        {
+            get
+            {
+                return _Tratamiento;
+            }
+            set
+            {
+                OnTratamientoChanging(value);
+                ReportPropertyChanging("Tratamiento");
+                _Tratamiento = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Tratamiento");
+                OnTratamientoChanged();
+            }
+        }
+        private global::System.String _Tratamiento;
+        partial void OnTratamientoChanging(global::System.String value);
+        partial void OnTratamientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Paciente
+        {
+            get
+            {
+                return _ID_Paciente;
+            }
+            set
+            {
+                OnID_PacienteChanging(value);
+                ReportPropertyChanging("ID_Paciente");
+                _ID_Paciente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Paciente");
+                OnID_PacienteChanged();
+            }
+        }
+        private global::System.Int32 _ID_Paciente;
+        partial void OnID_PacienteChanging(global::System.Int32 value);
+        partial void OnID_PacienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Orden_Hospitalizacion
+        {
+            get
+            {
+                return _ID_Orden_Hospitalizacion;
+            }
+            set
+            {
+                OnID_Orden_HospitalizacionChanging(value);
+                ReportPropertyChanging("ID_Orden_Hospitalizacion");
+                _ID_Orden_Hospitalizacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Orden_Hospitalizacion");
+                OnID_Orden_HospitalizacionChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Orden_Hospitalizacion;
+        partial void OnID_Orden_HospitalizacionChanging(Nullable<global::System.Int32> value);
+        partial void OnID_Orden_HospitalizacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Local
+        {
+            get
+            {
+                return _ID_Local;
+            }
+            set
+            {
+                OnID_LocalChanging(value);
+                ReportPropertyChanging("ID_Local");
+                _ID_Local = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Local");
+                OnID_LocalChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Local;
+        partial void OnID_LocalChanging(Nullable<global::System.Int32> value);
+        partial void OnID_LocalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Carta
+        {
+            get
+            {
+                return _ID_Carta;
+            }
+            set
+            {
+                OnID_CartaChanging(value);
+                ReportPropertyChanging("ID_Carta");
+                _ID_Carta = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Carta");
+                OnID_CartaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Carta;
+        partial void OnID_CartaChanging(Nullable<global::System.Int32> value);
+        partial void OnID_CartaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Cama
+        {
+            get
+            {
+                return _ID_Cama;
+            }
+            set
+            {
+                OnID_CamaChanging(value);
+                ReportPropertyChanging("ID_Cama");
+                _ID_Cama = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Cama");
+                OnID_CamaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Cama;
+        partial void OnID_CamaChanging(Nullable<global::System.Int32> value);
+        partial void OnID_CamaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Especialidad
+        {
+            get
+            {
+                return _ID_Especialidad;
+            }
+            set
+            {
+                OnID_EspecialidadChanging(value);
+                ReportPropertyChanging("ID_Especialidad");
+                _ID_Especialidad = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Especialidad");
+                OnID_EspecialidadChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Especialidad;
+        partial void OnID_EspecialidadChanging(Nullable<global::System.Int32> value);
+        partial void OnID_EspecialidadChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GO_Cama63", "TB_CAMA")]
+        public EntityCollection<TB_CAMA> TB_CAMA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CAMA>("DB_SGHModel.FK_T_CL_ES_GO_Cama63", "TB_CAMA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CAMA>("DB_SGHModel.FK_T_CL_ES_GO_Cama63", "TB_CAMA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_CARTA_GARANTIA", "TB_CARTA_GARANTIA")]
+        public TB_CARTA_GARANTIA TB_CARTA_GARANTIA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CARTA_GARANTIA>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_CARTA_GARANTIA", "TB_CARTA_GARANTIA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CARTA_GARANTIA>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_CARTA_GARANTIA", "TB_CARTA_GARANTIA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_CARTA_GARANTIA> TB_CARTA_GARANTIAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CARTA_GARANTIA>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_CARTA_GARANTIA", "TB_CARTA_GARANTIA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_CARTA_GARANTIA>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_CARTA_GARANTIA", "TB_CARTA_GARANTIA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ESPECIALIDAD", "TB_ESPECIALIDAD")]
+        public TB_ESPECIALIDAD TB_ESPECIALIDAD
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ESPECIALIDAD", "TB_ESPECIALIDAD").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ESPECIALIDAD", "TB_ESPECIALIDAD").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_ESPECIALIDAD> TB_ESPECIALIDADReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ESPECIALIDAD", "TB_ESPECIALIDAD");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ESPECIALIDAD", "TB_ESPECIALIDAD", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Hooja_Ingreso_Hospitalizacion58", "TB_PACIENTE")]
+        public TB_PACIENTE TB_PACIENTE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Hooja_Ingreso_Hospitalizacion58", "TB_PACIENTE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Hooja_Ingreso_Hospitalizacion58", "TB_PACIENTE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_PACIENTE> TB_PACIENTEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Hooja_Ingreso_Hospitalizacion58", "TB_PACIENTE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Hooja_Ingreso_Hospitalizacion58", "TB_PACIENTE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_LOCAL", "TB_LOCAL")]
+        public TB_LOCAL TB_LOCAL
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_LOCAL>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_LOCAL", "TB_LOCAL").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_LOCAL>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_LOCAL", "TB_LOCAL").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_LOCAL> TB_LOCALReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_LOCAL>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_LOCAL", "TB_LOCAL");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_LOCAL>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_LOCAL", "TB_LOCAL", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ORDEN_HOSPITALIZACION", "TB_ORDEN_HOSPITALIZACION")]
+        public TB_ORDEN_HOSPITALIZACION TB_ORDEN_HOSPITALIZACION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_HOSPITALIZACION>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ORDEN_HOSPITALIZACION", "TB_ORDEN_HOSPITALIZACION").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_HOSPITALIZACION>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ORDEN_HOSPITALIZACION", "TB_ORDEN_HOSPITALIZACION").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_ORDEN_HOSPITALIZACION> TB_ORDEN_HOSPITALIZACIONReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_HOSPITALIZACION>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ORDEN_HOSPITALIZACION", "TB_ORDEN_HOSPITALIZACION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ORDEN_HOSPITALIZACION>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ORDEN_HOSPITALIZACION", "TB_ORDEN_HOSPITALIZACION", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_INFORME")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_INFORME : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_INFORME.
+        /// </summary>
+        /// <param name="gM_NroInforme">Valor inicial de la propiedad GM_NroInforme.</param>
+        public static TB_INFORME CreateTB_INFORME(global::System.Int32 gM_NroInforme)
+        {
+            TB_INFORME tB_INFORME = new TB_INFORME();
+            tB_INFORME.GM_NroInforme = gM_NroInforme;
+            return tB_INFORME;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 GM_NroInforme
+        {
+            get
+            {
+                return _GM_NroInforme;
+            }
+            set
+            {
+                if (_GM_NroInforme != value)
+                {
+                    OnGM_NroInformeChanging(value);
+                    ReportPropertyChanging("GM_NroInforme");
+                    _GM_NroInforme = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("GM_NroInforme");
+                    OnGM_NroInformeChanged();
+                }
+            }
+        }
+        private global::System.Int32 _GM_NroInforme;
+        partial void OnGM_NroInformeChanging(global::System.Int32 value);
+        partial void OnGM_NroInformeChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Informe
+        {
+            get
+            {
+                return _GM_Fecha_Informe;
+            }
+            set
+            {
+                OnGM_Fecha_InformeChanging(value);
+                ReportPropertyChanging("GM_Fecha_Informe");
+                _GM_Fecha_Informe = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Informe");
+                OnGM_Fecha_InformeChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Informe;
+        partial void OnGM_Fecha_InformeChanging(global::System.String value);
+        partial void OnGM_Fecha_InformeChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Descripción_Actividades
+        {
+            get
+            {
+                return _GM_Descripción_Actividades;
+            }
+            set
+            {
+                OnGM_Descripción_ActividadesChanging(value);
+                ReportPropertyChanging("GM_Descripción_Actividades");
+                _GM_Descripción_Actividades = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Descripción_Actividades");
+                OnGM_Descripción_ActividadesChanged();
+            }
+        }
+        private global::System.String _GM_Descripción_Actividades;
+        partial void OnGM_Descripción_ActividadesChanging(global::System.String value);
+        partial void OnGM_Descripción_ActividadesChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Observaciones
+        {
+            get
+            {
+                return _GM_Observaciones;
+            }
+            set
+            {
+                OnGM_ObservacionesChanging(value);
+                ReportPropertyChanging("GM_Observaciones");
+                _GM_Observaciones = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Observaciones");
+                OnGM_ObservacionesChanged();
+            }
+        }
+        private global::System.String _GM_Observaciones;
+        partial void OnGM_ObservacionesChanging(global::System.String value);
+        partial void OnGM_ObservacionesChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_Estado
+        {
+            get
+            {
+                return _GM_Estado;
+            }
+            set
+            {
+                OnGM_EstadoChanging(value);
+                ReportPropertyChanging("GM_Estado");
+                _GM_Estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_Estado");
+                OnGM_EstadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_Estado;
+        partial void OnGM_EstadoChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_EstadoChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_INFORME_ADMINSITRATIVO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_INFORME_ADMINSITRATIVO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_INFORME_ADMINSITRATIVO.
+        /// </summary>
+        /// <param name="iD_InformeAdministrativo">Valor inicial de la propiedad ID_InformeAdministrativo.</param>
+        /// <param name="iD_Empleado">Valor inicial de la propiedad ID_Empleado.</param>
+        /// <param name="iD_Tipo_Informe">Valor inicial de la propiedad ID_Tipo_Informe.</param>
+        public static TB_INFORME_ADMINSITRATIVO CreateTB_INFORME_ADMINSITRATIVO(global::System.Int32 iD_InformeAdministrativo, global::System.Int32 iD_Empleado, global::System.Int32 iD_Tipo_Informe)
+        {
+            TB_INFORME_ADMINSITRATIVO tB_INFORME_ADMINSITRATIVO = new TB_INFORME_ADMINSITRATIVO();
+            tB_INFORME_ADMINSITRATIVO.ID_InformeAdministrativo = iD_InformeAdministrativo;
+            tB_INFORME_ADMINSITRATIVO.ID_Empleado = iD_Empleado;
+            tB_INFORME_ADMINSITRATIVO.ID_Tipo_Informe = iD_Tipo_Informe;
+            return tB_INFORME_ADMINSITRATIVO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_InformeAdministrativo
+        {
+            get
+            {
+                return _ID_InformeAdministrativo;
+            }
+            set
+            {
+                if (_ID_InformeAdministrativo != value)
+                {
+                    OnID_InformeAdministrativoChanging(value);
+                    ReportPropertyChanging("ID_InformeAdministrativo");
+                    _ID_InformeAdministrativo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_InformeAdministrativo");
+                    OnID_InformeAdministrativoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_InformeAdministrativo;
+        partial void OnID_InformeAdministrativoChanging(global::System.Int32 value);
+        partial void OnID_InformeAdministrativoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Empleado
+        {
+            get
+            {
+                return _ID_Empleado;
+            }
+            set
+            {
+                OnID_EmpleadoChanging(value);
+                ReportPropertyChanging("ID_Empleado");
+                _ID_Empleado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Empleado");
+                OnID_EmpleadoChanged();
+            }
+        }
+        private global::System.Int32 _ID_Empleado;
+        partial void OnID_EmpleadoChanging(global::System.Int32 value);
+        partial void OnID_EmpleadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Tipo_Informe
+        {
+            get
+            {
+                return _ID_Tipo_Informe;
+            }
+            set
+            {
+                OnID_Tipo_InformeChanging(value);
+                ReportPropertyChanging("ID_Tipo_Informe");
+                _ID_Tipo_Informe = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Tipo_Informe");
+                OnID_Tipo_InformeChanged();
+            }
+        }
+        private global::System.Int32 _ID_Tipo_Informe;
+        partial void OnID_Tipo_InformeChanging(global::System.Int32 value);
+        partial void OnID_Tipo_InformeChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IA_Mensaje
+        {
+            get
+            {
+                return _IA_Mensaje;
+            }
+            set
+            {
+                OnIA_MensajeChanging(value);
+                ReportPropertyChanging("IA_Mensaje");
+                _IA_Mensaje = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IA_Mensaje");
+                OnIA_MensajeChanged();
+            }
+        }
+        private global::System.String _IA_Mensaje;
+        partial void OnIA_MensajeChanging(global::System.String value);
+        partial void OnIA_MensajeChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IA_Estado
+        {
+            get
+            {
+                return _IA_Estado;
+            }
+            set
+            {
+                OnIA_EstadoChanging(value);
+                ReportPropertyChanging("IA_Estado");
+                _IA_Estado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IA_Estado");
+                OnIA_EstadoChanged();
+            }
+        }
+        private global::System.String _IA_Estado;
+        partial void OnIA_EstadoChanging(global::System.String value);
+        partial void OnIA_EstadoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO", "TB_EMPLEADO")]
+        public TB_EMPLEADO TB_EMPLEADO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_EMPLEADO>("DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO", "TB_EMPLEADO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_EMPLEADO>("DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO", "TB_EMPLEADO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_EMPLEADO> TB_EMPLEADOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_EMPLEADO>("DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO", "TB_EMPLEADO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_EMPLEADO>("DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO", "TB_EMPLEADO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO", "TB_TIPO_INFORME_ADMINISTRATIVO")]
+        public TB_TIPO_INFORME_ADMINISTRATIVO TB_TIPO_INFORME_ADMINISTRATIVO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_INFORME_ADMINISTRATIVO>("DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO", "TB_TIPO_INFORME_ADMINISTRATIVO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_INFORME_ADMINISTRATIVO>("DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO", "TB_TIPO_INFORME_ADMINISTRATIVO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_TIPO_INFORME_ADMINISTRATIVO> TB_TIPO_INFORME_ADMINISTRATIVOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_INFORME_ADMINISTRATIVO>("DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO", "TB_TIPO_INFORME_ADMINISTRATIVO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_TIPO_INFORME_ADMINISTRATIVO>("DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO", "TB_TIPO_INFORME_ADMINISTRATIVO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_INFORME_DET")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_INFORME_DET : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_INFORME_DET.
+        /// </summary>
+        /// <param name="gM_NroInforme_Det">Valor inicial de la propiedad GM_NroInforme_Det.</param>
+        public static TB_INFORME_DET CreateTB_INFORME_DET(global::System.Int32 gM_NroInforme_Det)
+        {
+            TB_INFORME_DET tB_INFORME_DET = new TB_INFORME_DET();
+            tB_INFORME_DET.GM_NroInforme_Det = gM_NroInforme_Det;
+            return tB_INFORME_DET;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 GM_NroInforme_Det
+        {
+            get
+            {
+                return _GM_NroInforme_Det;
+            }
+            set
+            {
+                if (_GM_NroInforme_Det != value)
+                {
+                    OnGM_NroInforme_DetChanging(value);
+                    ReportPropertyChanging("GM_NroInforme_Det");
+                    _GM_NroInforme_Det = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("GM_NroInforme_Det");
+                    OnGM_NroInforme_DetChanged();
+                }
+            }
+        }
+        private global::System.Int32 _GM_NroInforme_Det;
+        partial void OnGM_NroInforme_DetChanging(global::System.Int32 value);
+        partial void OnGM_NroInforme_DetChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_NroInforme
+        {
+            get
+            {
+                return _GM_NroInforme;
+            }
+            set
+            {
+                OnGM_NroInformeChanging(value);
+                ReportPropertyChanging("GM_NroInforme");
+                _GM_NroInforme = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_NroInforme");
+                OnGM_NroInformeChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_NroInforme;
+        partial void OnGM_NroInformeChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_NroInformeChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Ejecucion
+        {
+            get
+            {
+                return _GM_Fecha_Ejecucion;
+            }
+            set
+            {
+                OnGM_Fecha_EjecucionChanging(value);
+                ReportPropertyChanging("GM_Fecha_Ejecucion");
+                _GM_Fecha_Ejecucion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Ejecucion");
+                OnGM_Fecha_EjecucionChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Ejecucion;
+        partial void OnGM_Fecha_EjecucionChanging(global::System.String value);
+        partial void OnGM_Fecha_EjecucionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_Tiempo_Ejecucion
+        {
+            get
+            {
+                return _GM_Tiempo_Ejecucion;
+            }
+            set
+            {
+                OnGM_Tiempo_EjecucionChanging(value);
+                ReportPropertyChanging("GM_Tiempo_Ejecucion");
+                _GM_Tiempo_Ejecucion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_Tiempo_Ejecucion");
+                OnGM_Tiempo_EjecucionChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_Tiempo_Ejecucion;
+        partial void OnGM_Tiempo_EjecucionChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_Tiempo_EjecucionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Motivo_Ejecucion
+        {
+            get
+            {
+                return _GM_Motivo_Ejecucion;
+            }
+            set
+            {
+                OnGM_Motivo_EjecucionChanging(value);
+                ReportPropertyChanging("GM_Motivo_Ejecucion");
+                _GM_Motivo_Ejecucion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Motivo_Ejecucion");
+                OnGM_Motivo_EjecucionChanged();
+            }
+        }
+        private global::System.String _GM_Motivo_Ejecucion;
+        partial void OnGM_Motivo_EjecucionChanging(global::System.String value);
+        partial void OnGM_Motivo_EjecucionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Documento_adjunto
+        {
+            get
+            {
+                return _GM_Documento_adjunto;
+            }
+            set
+            {
+                OnGM_Documento_adjuntoChanging(value);
+                ReportPropertyChanging("GM_Documento_adjunto");
+                _GM_Documento_adjunto = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Documento_adjunto");
+                OnGM_Documento_adjuntoChanged();
+            }
+        }
+        private global::System.String _GM_Documento_adjunto;
+        partial void OnGM_Documento_adjuntoChanging(global::System.String value);
+        partial void OnGM_Documento_adjuntoChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_INFORME_EQUIPO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_INFORME_EQUIPO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_INFORME_EQUIPO.
+        /// </summary>
+        /// <param name="iD_InformeEquipo">Valor inicial de la propiedad ID_InformeEquipo.</param>
+        public static TB_INFORME_EQUIPO CreateTB_INFORME_EQUIPO(global::System.Int32 iD_InformeEquipo)
+        {
+            TB_INFORME_EQUIPO tB_INFORME_EQUIPO = new TB_INFORME_EQUIPO();
+            tB_INFORME_EQUIPO.ID_InformeEquipo = iD_InformeEquipo;
+            return tB_INFORME_EQUIPO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_InformeEquipo
+        {
+            get
+            {
+                return _ID_InformeEquipo;
+            }
+            set
+            {
+                if (_ID_InformeEquipo != value)
+                {
+                    OnID_InformeEquipoChanging(value);
+                    ReportPropertyChanging("ID_InformeEquipo");
+                    _ID_InformeEquipo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_InformeEquipo");
+                    OnID_InformeEquipoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_InformeEquipo;
+        partial void OnID_InformeEquipoChanging(global::System.Int32 value);
+        partial void OnID_InformeEquipoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Informe
+        {
+            get
+            {
+                return _GM_Fecha_Informe;
+            }
+            set
+            {
+                OnGM_Fecha_InformeChanging(value);
+                ReportPropertyChanging("GM_Fecha_Informe");
+                _GM_Fecha_Informe = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Informe");
+                OnGM_Fecha_InformeChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Informe;
+        partial void OnGM_Fecha_InformeChanging(global::System.String value);
+        partial void OnGM_Fecha_InformeChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Descripcion_Actividades
+        {
+            get
+            {
+                return _GM_Descripcion_Actividades;
+            }
+            set
+            {
+                OnGM_Descripcion_ActividadesChanging(value);
+                ReportPropertyChanging("GM_Descripcion_Actividades");
+                _GM_Descripcion_Actividades = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Descripcion_Actividades");
+                OnGM_Descripcion_ActividadesChanged();
+            }
+        }
+        private global::System.String _GM_Descripcion_Actividades;
+        partial void OnGM_Descripcion_ActividadesChanging(global::System.String value);
+        partial void OnGM_Descripcion_ActividadesChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Observaciones
+        {
+            get
+            {
+                return _GM_Observaciones;
+            }
+            set
+            {
+                OnGM_ObservacionesChanging(value);
+                ReportPropertyChanging("GM_Observaciones");
+                _GM_Observaciones = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Observaciones");
+                OnGM_ObservacionesChanged();
+            }
+        }
+        private global::System.String _GM_Observaciones;
+        partial void OnGM_ObservacionesChanging(global::System.String value);
+        partial void OnGM_ObservacionesChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_Estado
+        {
+            get
+            {
+                return _GM_Estado;
+            }
+            set
+            {
+                OnGM_EstadoChanging(value);
+                ReportPropertyChanging("GM_Estado");
+                _GM_Estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_Estado");
+                OnGM_EstadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_Estado;
+        partial void OnGM_EstadoChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_EstadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Descripcion_Repuestos
+        {
+            get
+            {
+                return _GM_Descripcion_Repuestos;
+            }
+            set
+            {
+                OnGM_Descripcion_RepuestosChanging(value);
+                ReportPropertyChanging("GM_Descripcion_Repuestos");
+                _GM_Descripcion_Repuestos = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Descripcion_Repuestos");
+                OnGM_Descripcion_RepuestosChanged();
+            }
+        }
+        private global::System.String _GM_Descripcion_Repuestos;
+        partial void OnGM_Descripcion_RepuestosChanging(global::System.String value);
+        partial void OnGM_Descripcion_RepuestosChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_INFORM__ID_In__5E8A0973", "TB_INFORME_EQUIPO_DET")]
+        public EntityCollection<TB_INFORME_EQUIPO_DET> TB_INFORME_EQUIPO_DET
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_INFORME_EQUIPO_DET>("DB_SGHModel.FK__TB_INFORM__ID_In__5E8A0973", "TB_INFORME_EQUIPO_DET");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_INFORME_EQUIPO_DET>("DB_SGHModel.FK__TB_INFORM__ID_In__5E8A0973", "TB_INFORME_EQUIPO_DET", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_INFORME_EQUIPO_DET")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_INFORME_EQUIPO_DET : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_INFORME_EQUIPO_DET.
+        /// </summary>
+        /// <param name="iD_InformeEquipoDet">Valor inicial de la propiedad ID_InformeEquipoDet.</param>
+        public static TB_INFORME_EQUIPO_DET CreateTB_INFORME_EQUIPO_DET(global::System.Int32 iD_InformeEquipoDet)
+        {
+            TB_INFORME_EQUIPO_DET tB_INFORME_EQUIPO_DET = new TB_INFORME_EQUIPO_DET();
+            tB_INFORME_EQUIPO_DET.ID_InformeEquipoDet = iD_InformeEquipoDet;
+            return tB_INFORME_EQUIPO_DET;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_InformeEquipoDet
+        {
+            get
+            {
+                return _ID_InformeEquipoDet;
+            }
+            set
+            {
+                if (_ID_InformeEquipoDet != value)
+                {
+                    OnID_InformeEquipoDetChanging(value);
+                    ReportPropertyChanging("ID_InformeEquipoDet");
+                    _ID_InformeEquipoDet = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_InformeEquipoDet");
+                    OnID_InformeEquipoDetChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_InformeEquipoDet;
+        partial void OnID_InformeEquipoDetChanging(global::System.Int32 value);
+        partial void OnID_InformeEquipoDetChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_InformeEquipo
+        {
+            get
+            {
+                return _ID_InformeEquipo;
+            }
+            set
+            {
+                OnID_InformeEquipoChanging(value);
+                ReportPropertyChanging("ID_InformeEquipo");
+                _ID_InformeEquipo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_InformeEquipo");
+                OnID_InformeEquipoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_InformeEquipo;
+        partial void OnID_InformeEquipoChanging(Nullable<global::System.Int32> value);
+        partial void OnID_InformeEquipoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Ejecucion
+        {
+            get
+            {
+                return _GM_Fecha_Ejecucion;
+            }
+            set
+            {
+                OnGM_Fecha_EjecucionChanging(value);
+                ReportPropertyChanging("GM_Fecha_Ejecucion");
+                _GM_Fecha_Ejecucion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Ejecucion");
+                OnGM_Fecha_EjecucionChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Ejecucion;
+        partial void OnGM_Fecha_EjecucionChanging(global::System.String value);
+        partial void OnGM_Fecha_EjecucionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_Tiempo_Ejecucion
+        {
+            get
+            {
+                return _GM_Tiempo_Ejecucion;
+            }
+            set
+            {
+                OnGM_Tiempo_EjecucionChanging(value);
+                ReportPropertyChanging("GM_Tiempo_Ejecucion");
+                _GM_Tiempo_Ejecucion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_Tiempo_Ejecucion");
+                OnGM_Tiempo_EjecucionChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_Tiempo_Ejecucion;
+        partial void OnGM_Tiempo_EjecucionChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_Tiempo_EjecucionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Motivo_Rechazo
+        {
+            get
+            {
+                return _GM_Motivo_Rechazo;
+            }
+            set
+            {
+                OnGM_Motivo_RechazoChanging(value);
+                ReportPropertyChanging("GM_Motivo_Rechazo");
+                _GM_Motivo_Rechazo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Motivo_Rechazo");
+                OnGM_Motivo_RechazoChanged();
+            }
+        }
+        private global::System.String _GM_Motivo_Rechazo;
+        partial void OnGM_Motivo_RechazoChanging(global::System.String value);
+        partial void OnGM_Motivo_RechazoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Documento_adjunto
+        {
+            get
+            {
+                return _GM_Documento_adjunto;
+            }
+            set
+            {
+                OnGM_Documento_adjuntoChanging(value);
+                ReportPropertyChanging("GM_Documento_adjunto");
+                _GM_Documento_adjunto = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Documento_adjunto");
+                OnGM_Documento_adjuntoChanged();
+            }
+        }
+        private global::System.String _GM_Documento_adjunto;
+        partial void OnGM_Documento_adjuntoChanging(global::System.String value);
+        partial void OnGM_Documento_adjuntoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_INFORM__ID_In__5E8A0973", "TB_INFORME_EQUIPO")]
+        public TB_INFORME_EQUIPO TB_INFORME_EQUIPO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_INFORME_EQUIPO>("DB_SGHModel.FK__TB_INFORM__ID_In__5E8A0973", "TB_INFORME_EQUIPO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_INFORME_EQUIPO>("DB_SGHModel.FK__TB_INFORM__ID_In__5E8A0973", "TB_INFORME_EQUIPO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_INFORME_EQUIPO> TB_INFORME_EQUIPOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_INFORME_EQUIPO>("DB_SGHModel.FK__TB_INFORM__ID_In__5E8A0973", "TB_INFORME_EQUIPO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_INFORME_EQUIPO>("DB_SGHModel.FK__TB_INFORM__ID_In__5E8A0973", "TB_INFORME_EQUIPO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_INFORME_RESULTADO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_INFORME_RESULTADO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_INFORME_RESULTADO.
+        /// </summary>
+        /// <param name="iD_InformeResultado">Valor inicial de la propiedad ID_InformeResultado.</param>
+        public static TB_INFORME_RESULTADO CreateTB_INFORME_RESULTADO(global::System.Int32 iD_InformeResultado)
+        {
+            TB_INFORME_RESULTADO tB_INFORME_RESULTADO = new TB_INFORME_RESULTADO();
+            tB_INFORME_RESULTADO.ID_InformeResultado = iD_InformeResultado;
+            return tB_INFORME_RESULTADO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_InformeResultado
+        {
+            get
+            {
+                return _ID_InformeResultado;
+            }
+            set
+            {
+                if (_ID_InformeResultado != value)
+                {
+                    OnID_InformeResultadoChanging(value);
+                    ReportPropertyChanging("ID_InformeResultado");
+                    _ID_InformeResultado = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_InformeResultado");
+                    OnID_InformeResultadoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_InformeResultado;
+        partial void OnID_InformeResultadoChanging(global::System.Int32 value);
+        partial void OnID_InformeResultadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Orden_Examen_Medico
+        {
+            get
+            {
+                return _ID_Orden_Examen_Medico;
+            }
+            set
+            {
+                OnID_Orden_Examen_MedicoChanging(value);
+                ReportPropertyChanging("ID_Orden_Examen_Medico");
+                _ID_Orden_Examen_Medico = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Orden_Examen_Medico");
+                OnID_Orden_Examen_MedicoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Orden_Examen_Medico;
+        partial void OnID_Orden_Examen_MedicoChanging(Nullable<global::System.Int32> value);
+        partial void OnID_Orden_Examen_MedicoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> fecha
+        {
+            get
+            {
+                return _fecha;
+            }
+            set
+            {
+                OnfechaChanging(value);
+                ReportPropertyChanging("fecha");
+                _fecha = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fecha");
+                OnfechaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _fecha;
+        partial void OnfechaChanging(Nullable<global::System.DateTime> value);
+        partial void OnfechaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String resultado
+        {
+            get
+            {
+                return _resultado;
+            }
+            set
+            {
+                OnresultadoChanging(value);
+                ReportPropertyChanging("resultado");
+                _resultado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("resultado");
+                OnresultadoChanged();
+            }
+        }
+        private global::System.String _resultado;
+        partial void OnresultadoChanging(global::System.String value);
+        partial void OnresultadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String observacion
+        {
+            get
+            {
+                return _observacion;
+            }
+            set
+            {
+                OnobservacionChanging(value);
+                ReportPropertyChanging("observacion");
+                _observacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("observacion");
+                OnobservacionChanged();
+            }
+        }
+        private global::System.String _observacion;
+        partial void OnobservacionChanging(global::System.String value);
+        partial void OnobservacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String estado
+        {
+            get
+            {
+                return _estado;
+            }
+            set
+            {
+                OnestadoChanging(value);
+                ReportPropertyChanging("estado");
+                _estado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("estado");
+                OnestadoChanged();
+            }
+        }
+        private global::System.String _estado;
+        partial void OnestadoChanging(global::System.String value);
+        partial void OnestadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String imagen
+        {
+            get
+            {
+                return _imagen;
+            }
+            set
+            {
+                OnimagenChanging(value);
+                ReportPropertyChanging("imagen");
+                _imagen = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("imagen");
+                OnimagenChanged();
+            }
+        }
+        private global::System.String _imagen;
+        partial void OnimagenChanging(global::System.String value);
+        partial void OnimagenChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_INFORME_RESULTADO_TB_ORDEN_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO")]
+        public TB_ORDEN_EXAMEN_MEDICO TB_ORDEN_EXAMEN_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_INFORME_RESULTADO_TB_ORDEN_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_INFORME_RESULTADO_TB_ORDEN_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_ORDEN_EXAMEN_MEDICO> TB_ORDEN_EXAMEN_MEDICOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_INFORME_RESULTADO_TB_ORDEN_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_INFORME_RESULTADO_TB_ORDEN_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_INSTALACION")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_INSTALACION : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_INSTALACION.
+        /// </summary>
+        /// <param name="iD_Instalacion">Valor inicial de la propiedad ID_Instalacion.</param>
+        /// <param name="iD_Area">Valor inicial de la propiedad ID_Area.</param>
+        public static TB_INSTALACION CreateTB_INSTALACION(global::System.Int32 iD_Instalacion, global::System.Int32 iD_Area)
+        {
+            TB_INSTALACION tB_INSTALACION = new TB_INSTALACION();
+            tB_INSTALACION.ID_Instalacion = iD_Instalacion;
+            tB_INSTALACION.ID_Area = iD_Area;
+            return tB_INSTALACION;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Instalacion
+        {
+            get
+            {
+                return _ID_Instalacion;
+            }
+            set
+            {
+                if (_ID_Instalacion != value)
+                {
+                    OnID_InstalacionChanging(value);
+                    ReportPropertyChanging("ID_Instalacion");
+                    _ID_Instalacion = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Instalacion");
+                    OnID_InstalacionChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Instalacion;
+        partial void OnID_InstalacionChanging(global::System.Int32 value);
+        partial void OnID_InstalacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_Disponibilidad
+        {
+            get
+            {
+                return _GE_Disponibilidad;
+            }
+            set
+            {
+                OnGE_DisponibilidadChanging(value);
+                ReportPropertyChanging("GE_Disponibilidad");
+                _GE_Disponibilidad = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_Disponibilidad");
+                OnGE_DisponibilidadChanged();
+            }
+        }
+        private global::System.String _GE_Disponibilidad;
+        partial void OnGE_DisponibilidadChanging(global::System.String value);
+        partial void OnGE_DisponibilidadChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_Resultado
+        {
+            get
+            {
+                return _GE_Resultado;
+            }
+            set
+            {
+                OnGE_ResultadoChanging(value);
+                ReportPropertyChanging("GE_Resultado");
+                _GE_Resultado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_Resultado");
+                OnGE_ResultadoChanged();
+            }
+        }
+        private global::System.String _GE_Resultado;
+        partial void OnGE_ResultadoChanging(global::System.String value);
+        partial void OnGE_ResultadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_Obervaciones
+        {
+            get
+            {
+                return _GE_Obervaciones;
+            }
+            set
+            {
+                OnGE_ObervacionesChanging(value);
+                ReportPropertyChanging("GE_Obervaciones");
+                _GE_Obervaciones = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_Obervaciones");
+                OnGE_ObervacionesChanged();
+            }
+        }
+        private global::System.String _GE_Obervaciones;
+        partial void OnGE_ObervacionesChanging(global::System.String value);
+        partial void OnGE_ObervacionesChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_Nombre_Enfermero_Auxiliar
+        {
+            get
+            {
+                return _GE_Nombre_Enfermero_Auxiliar;
+            }
+            set
+            {
+                OnGE_Nombre_Enfermero_AuxiliarChanging(value);
+                ReportPropertyChanging("GE_Nombre_Enfermero_Auxiliar");
+                _GE_Nombre_Enfermero_Auxiliar = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_Nombre_Enfermero_Auxiliar");
+                OnGE_Nombre_Enfermero_AuxiliarChanged();
+            }
+        }
+        private global::System.String _GE_Nombre_Enfermero_Auxiliar;
+        partial void OnGE_Nombre_Enfermero_AuxiliarChanging(global::System.String value);
+        partial void OnGE_Nombre_Enfermero_AuxiliarChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Area
+        {
+            get
+            {
+                return _ID_Area;
+            }
+            set
+            {
+                OnID_AreaChanging(value);
+                ReportPropertyChanging("ID_Area");
+                _ID_Area = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Area");
+                OnID_AreaChanged();
+            }
+        }
+        private global::System.Int32 _ID_Area;
+        partial void OnID_AreaChanging(global::System.Int32 value);
+        partial void OnID_AreaChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_INSTALACION_TB_AREA", "TB_AREA")]
+        public TB_AREA TB_AREA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_AREA>("DB_SGHModel.FK_TB_INSTALACION_TB_AREA", "TB_AREA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_AREA>("DB_SGHModel.FK_TB_INSTALACION_TB_AREA", "TB_AREA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_AREA> TB_AREAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_AREA>("DB_SGHModel.FK_TB_INSTALACION_TB_AREA", "TB_AREA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_AREA>("DB_SGHModel.FK_TB_INSTALACION_TB_AREA", "TB_AREA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_LISTA_VERIFICACION_TB_INSTALACION", "TB_LISTA_VERIFICACION")]
+        public EntityCollection<TB_LISTA_VERIFICACION> TB_LISTA_VERIFICACION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_LISTA_VERIFICACION>("DB_SGHModel.FK_TB_LISTA_VERIFICACION_TB_INSTALACION", "TB_LISTA_VERIFICACION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_LISTA_VERIFICACION>("DB_SGHModel.FK_TB_LISTA_VERIFICACION_TB_INSTALACION", "TB_LISTA_VERIFICACION", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_LISTA_VERIFICACION")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_LISTA_VERIFICACION : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_LISTA_VERIFICACION.
+        /// </summary>
+        /// <param name="iD_ListaVerificacion">Valor inicial de la propiedad ID_ListaVerificacion.</param>
+        /// <param name="iD_Instalacion">Valor inicial de la propiedad ID_Instalacion.</param>
+        public static TB_LISTA_VERIFICACION CreateTB_LISTA_VERIFICACION(global::System.Int32 iD_ListaVerificacion, global::System.Int32 iD_Instalacion)
+        {
+            TB_LISTA_VERIFICACION tB_LISTA_VERIFICACION = new TB_LISTA_VERIFICACION();
+            tB_LISTA_VERIFICACION.ID_ListaVerificacion = iD_ListaVerificacion;
+            tB_LISTA_VERIFICACION.ID_Instalacion = iD_Instalacion;
+            return tB_LISTA_VERIFICACION;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_ListaVerificacion
+        {
+            get
+            {
+                return _ID_ListaVerificacion;
+            }
+            set
+            {
+                if (_ID_ListaVerificacion != value)
+                {
+                    OnID_ListaVerificacionChanging(value);
+                    ReportPropertyChanging("ID_ListaVerificacion");
+                    _ID_ListaVerificacion = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_ListaVerificacion");
+                    OnID_ListaVerificacionChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_ListaVerificacion;
+        partial void OnID_ListaVerificacionChanging(global::System.Int32 value);
+        partial void OnID_ListaVerificacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_Item
+        {
+            get
+            {
+                return _GE_Item;
+            }
+            set
+            {
+                OnGE_ItemChanging(value);
+                ReportPropertyChanging("GE_Item");
+                _GE_Item = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_Item");
+                OnGE_ItemChanged();
+            }
+        }
+        private global::System.String _GE_Item;
+        partial void OnGE_ItemChanging(global::System.String value);
+        partial void OnGE_ItemChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_Conformidad
+        {
+            get
+            {
+                return _GE_Conformidad;
+            }
+            set
+            {
+                OnGE_ConformidadChanging(value);
+                ReportPropertyChanging("GE_Conformidad");
+                _GE_Conformidad = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_Conformidad");
+                OnGE_ConformidadChanged();
+            }
+        }
+        private global::System.String _GE_Conformidad;
+        partial void OnGE_ConformidadChanging(global::System.String value);
+        partial void OnGE_ConformidadChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Instalacion
+        {
+            get
+            {
+                return _ID_Instalacion;
+            }
+            set
+            {
+                OnID_InstalacionChanging(value);
+                ReportPropertyChanging("ID_Instalacion");
+                _ID_Instalacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Instalacion");
+                OnID_InstalacionChanged();
+            }
+        }
+        private global::System.Int32 _ID_Instalacion;
+        partial void OnID_InstalacionChanging(global::System.Int32 value);
+        partial void OnID_InstalacionChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_LISTA_VERIFICACION_TB_INSTALACION", "TB_INSTALACION")]
+        public TB_INSTALACION TB_INSTALACION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_INSTALACION>("DB_SGHModel.FK_TB_LISTA_VERIFICACION_TB_INSTALACION", "TB_INSTALACION").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_INSTALACION>("DB_SGHModel.FK_TB_LISTA_VERIFICACION_TB_INSTALACION", "TB_INSTALACION").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_INSTALACION> TB_INSTALACIONReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_INSTALACION>("DB_SGHModel.FK_TB_LISTA_VERIFICACION_TB_INSTALACION", "TB_INSTALACION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_INSTALACION>("DB_SGHModel.FK_TB_LISTA_VERIFICACION_TB_INSTALACION", "TB_INSTALACION", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_LOCAL")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_LOCAL : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_LOCAL.
+        /// </summary>
+        /// <param name="iD_Local">Valor inicial de la propiedad ID_Local.</param>
+        public static TB_LOCAL CreateTB_LOCAL(global::System.Int32 iD_Local)
+        {
+            TB_LOCAL tB_LOCAL = new TB_LOCAL();
+            tB_LOCAL.ID_Local = iD_Local;
+            return tB_LOCAL;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Local
+        {
+            get
+            {
+                return _ID_Local;
+            }
+            set
+            {
+                if (_ID_Local != value)
+                {
+                    OnID_LocalChanging(value);
+                    ReportPropertyChanging("ID_Local");
+                    _ID_Local = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Local");
+                    OnID_LocalChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Local;
+        partial void OnID_LocalChanging(global::System.Int32 value);
+        partial void OnID_LocalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+            set
+            {
+                OnnombreChanging(value);
+                ReportPropertyChanging("nombre");
+                _nombre = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombre");
+                OnnombreChanged();
+            }
+        }
+        private global::System.String _nombre;
+        partial void OnnombreChanging(global::System.String value);
+        partial void OnnombreChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String direccion
+        {
+            get
+            {
+                return _direccion;
+            }
+            set
+            {
+                OndireccionChanging(value);
+                ReportPropertyChanging("direccion");
+                _direccion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("direccion");
+                OndireccionChanged();
+            }
+        }
+        private global::System.String _direccion;
+        partial void OndireccionChanging(global::System.String value);
+        partial void OndireccionChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CONSULTORIO_TB_LOCAL", "TB_CONSULTORIO")]
+        public EntityCollection<TB_CONSULTORIO> TB_CONSULTORIO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CONSULTORIO>("DB_SGHModel.FK_TB_CONSULTORIO_TB_LOCAL", "TB_CONSULTORIO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CONSULTORIO>("DB_SGHModel.FK_TB_CONSULTORIO_TB_LOCAL", "TB_CONSULTORIO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_LOCAL", "TB_HOJA_INGRESO_HOSPITALIZACION")]
+        public EntityCollection<TB_HOJA_INGRESO_HOSPITALIZACION> TB_HOJA_INGRESO_HOSPITALIZACION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_HOJA_INGRESO_HOSPITALIZACION>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_LOCAL", "TB_HOJA_INGRESO_HOSPITALIZACION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_HOJA_INGRESO_HOSPITALIZACION>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_LOCAL", "TB_HOJA_INGRESO_HOSPITALIZACION", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_HOSPITALIZACION_TB_LOCAL", "TB_ORDEN_HOSPITALIZACION")]
+        public EntityCollection<TB_ORDEN_HOSPITALIZACION> TB_ORDEN_HOSPITALIZACION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ORDEN_HOSPITALIZACION>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_LOCAL", "TB_ORDEN_HOSPITALIZACION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ORDEN_HOSPITALIZACION>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_LOCAL", "TB_ORDEN_HOSPITALIZACION", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_MAESTRO_TABLAS")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_MAESTRO_TABLAS : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_MAESTRO_TABLAS.
+        /// </summary>
+        /// <param name="mAS_CodTabla">Valor inicial de la propiedad MAS_CodTabla.</param>
+        /// <param name="mAS_CodCampo">Valor inicial de la propiedad MAS_CodCampo.</param>
+        /// <param name="mAS_DesCorta">Valor inicial de la propiedad MAS_DesCorta.</param>
+        public static TB_MAESTRO_TABLAS CreateTB_MAESTRO_TABLAS(global::System.String mAS_CodTabla, global::System.String mAS_CodCampo, global::System.String mAS_DesCorta)
+        {
+            TB_MAESTRO_TABLAS tB_MAESTRO_TABLAS = new TB_MAESTRO_TABLAS();
+            tB_MAESTRO_TABLAS.MAS_CodTabla = mAS_CodTabla;
+            tB_MAESTRO_TABLAS.MAS_CodCampo = mAS_CodCampo;
+            tB_MAESTRO_TABLAS.MAS_DesCorta = mAS_DesCorta;
+            return tB_MAESTRO_TABLAS;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String MAS_CodTabla
+        {
+            get
+            {
+                return _MAS_CodTabla;
+            }
+            set
+            {
+                if (_MAS_CodTabla != value)
+                {
+                    OnMAS_CodTablaChanging(value);
+                    ReportPropertyChanging("MAS_CodTabla");
+                    _MAS_CodTabla = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("MAS_CodTabla");
+                    OnMAS_CodTablaChanged();
+                }
+            }
+        }
+        private global::System.String _MAS_CodTabla;
+        partial void OnMAS_CodTablaChanging(global::System.String value);
+        partial void OnMAS_CodTablaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String MAS_CodCampo
+        {
+            get
+            {
+                return _MAS_CodCampo;
+            }
+            set
+            {
+                if (_MAS_CodCampo != value)
+                {
+                    OnMAS_CodCampoChanging(value);
+                    ReportPropertyChanging("MAS_CodCampo");
+                    _MAS_CodCampo = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("MAS_CodCampo");
+                    OnMAS_CodCampoChanged();
+                }
+            }
+        }
+        private global::System.String _MAS_CodCampo;
+        partial void OnMAS_CodCampoChanging(global::System.String value);
+        partial void OnMAS_CodCampoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String MAS_DesCorta
+        {
+            get
+            {
+                return _MAS_DesCorta;
+            }
+            set
+            {
+                OnMAS_DesCortaChanging(value);
+                ReportPropertyChanging("MAS_DesCorta");
+                _MAS_DesCorta = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("MAS_DesCorta");
+                OnMAS_DesCortaChanged();
+            }
+        }
+        private global::System.String _MAS_DesCorta;
+        partial void OnMAS_DesCortaChanging(global::System.String value);
+        partial void OnMAS_DesCortaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MAS_DesLarga
+        {
+            get
+            {
+                return _MAS_DesLarga;
+            }
+            set
+            {
+                OnMAS_DesLargaChanging(value);
+                ReportPropertyChanging("MAS_DesLarga");
+                _MAS_DesLarga = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MAS_DesLarga");
+                OnMAS_DesLargaChanged();
+            }
+        }
+        private global::System.String _MAS_DesLarga;
+        partial void OnMAS_DesLargaChanging(global::System.String value);
+        partial void OnMAS_DesLargaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MAS_Valor
+        {
+            get
+            {
+                return _MAS_Valor;
+            }
+            set
+            {
+                OnMAS_ValorChanging(value);
+                ReportPropertyChanging("MAS_Valor");
+                _MAS_Valor = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MAS_Valor");
+                OnMAS_ValorChanged();
+            }
+        }
+        private global::System.String _MAS_Valor;
+        partial void OnMAS_ValorChanging(global::System.String value);
+        partial void OnMAS_ValorChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MAS_Estado
+        {
+            get
+            {
+                return _MAS_Estado;
+            }
+            set
+            {
+                OnMAS_EstadoChanging(value);
+                ReportPropertyChanging("MAS_Estado");
+                _MAS_Estado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MAS_Estado");
+                OnMAS_EstadoChanged();
+            }
+        }
+        private global::System.String _MAS_Estado;
+        partial void OnMAS_EstadoChanging(global::System.String value);
+        partial void OnMAS_EstadoChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_MEDICAMENTO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_MEDICAMENTO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_MEDICAMENTO.
+        /// </summary>
+        /// <param name="iD_Medicamento">Valor inicial de la propiedad ID_Medicamento.</param>
+        public static TB_MEDICAMENTO CreateTB_MEDICAMENTO(global::System.Int32 iD_Medicamento)
+        {
+            TB_MEDICAMENTO tB_MEDICAMENTO = new TB_MEDICAMENTO();
+            tB_MEDICAMENTO.ID_Medicamento = iD_Medicamento;
+            return tB_MEDICAMENTO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Medicamento
+        {
+            get
+            {
+                return _ID_Medicamento;
+            }
+            set
+            {
+                if (_ID_Medicamento != value)
+                {
+                    OnID_MedicamentoChanging(value);
+                    ReportPropertyChanging("ID_Medicamento");
+                    _ID_Medicamento = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Medicamento");
+                    OnID_MedicamentoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Medicamento;
+        partial void OnID_MedicamentoChanging(global::System.Int32 value);
+        partial void OnID_MedicamentoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_NombreMedicamento
+        {
+            get
+            {
+                return _GE_NombreMedicamento;
+            }
+            set
+            {
+                OnGE_NombreMedicamentoChanging(value);
+                ReportPropertyChanging("GE_NombreMedicamento");
+                _GE_NombreMedicamento = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_NombreMedicamento");
+                OnGE_NombreMedicamentoChanged();
+            }
+        }
+        private global::System.String _GE_NombreMedicamento;
+        partial void OnGE_NombreMedicamentoChanging(global::System.String value);
+        partial void OnGE_NombreMedicamentoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> GE_FechaVencimiento
+        {
+            get
+            {
+                return _GE_FechaVencimiento;
+            }
+            set
+            {
+                OnGE_FechaVencimientoChanging(value);
+                ReportPropertyChanging("GE_FechaVencimiento");
+                _GE_FechaVencimiento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_FechaVencimiento");
+                OnGE_FechaVencimientoChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _GE_FechaVencimiento;
+        partial void OnGE_FechaVencimientoChanging(Nullable<global::System.DateTime> value);
+        partial void OnGE_FechaVencimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Single> GE_CantidadDisponible
+        {
+            get
+            {
+                return _GE_CantidadDisponible;
+            }
+            set
+            {
+                OnGE_CantidadDisponibleChanging(value);
+                ReportPropertyChanging("GE_CantidadDisponible");
+                _GE_CantidadDisponible = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_CantidadDisponible");
+                OnGE_CantidadDisponibleChanged();
+            }
+        }
+        private Nullable<global::System.Single> _GE_CantidadDisponible;
+        partial void OnGE_CantidadDisponibleChanging(Nullable<global::System.Single> value);
+        partial void OnGE_CantidadDisponibleChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Single> GE_Costo
+        {
+            get
+            {
+                return _GE_Costo;
+            }
+            set
+            {
+                OnGE_CostoChanging(value);
+                ReportPropertyChanging("GE_Costo");
+                _GE_Costo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_Costo");
+                OnGE_CostoChanged();
+            }
+        }
+        private Nullable<global::System.Single> _GE_Costo;
+        partial void OnGE_CostoChanging(Nullable<global::System.Single> value);
+        partial void OnGE_CostoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -3086,6 +12750,7 @@ namespace CI.SIC.DA
         partial void OnObservacionesChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3095,18 +12760,18 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Prescr__Codig__47DBAE45", "TB_Prescripcion_Medica")]
-        public EntityCollection<TB_Prescripcion_Medica> TB_Prescripcion_Medica
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_MEDICAMENTO", "TB_DETALLE_ORDEN_DE_PEDIDO")]
+        public EntityCollection<TB_DETALLE_ORDEN_DE_PEDIDO> TB_DETALLE_ORDEN_DE_PEDIDO
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Prescripcion_Medica>("DB_SGHModel.FK__TB_Prescr__Codig__47DBAE45", "TB_Prescripcion_Medica");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_DETALLE_ORDEN_DE_PEDIDO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_MEDICAMENTO", "TB_DETALLE_ORDEN_DE_PEDIDO");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Prescripcion_Medica>("DB_SGHModel.FK__TB_Prescr__Codig__47DBAE45", "TB_Prescripcion_Medica", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_DETALLE_ORDEN_DE_PEDIDO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_MEDICAMENTO", "TB_DETALLE_ORDEN_DE_PEDIDO", value);
                 }
             }
         }
@@ -3117,47 +12782,73 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Prescr__Codig__49C3F6B7", "TB_Prescripcion_Medica")]
-        public EntityCollection<TB_Prescripcion_Medica> TB_Prescripcion_Medica1
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_MEDICAMENTO", "TB_DETALLE_ORDEN_DE_SALIDA")]
+        public EntityCollection<TB_DETALLE_ORDEN_DE_SALIDA> TB_DETALLE_ORDEN_DE_SALIDA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Prescripcion_Medica>("DB_SGHModel.FK__TB_Prescr__Codig__49C3F6B7", "TB_Prescripcion_Medica");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_DETALLE_ORDEN_DE_SALIDA>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_MEDICAMENTO", "TB_DETALLE_ORDEN_DE_SALIDA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Prescripcion_Medica>("DB_SGHModel.FK__TB_Prescr__Codig__49C3F6B7", "TB_Prescripcion_Medica", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_DETALLE_ORDEN_DE_SALIDA>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_MEDICAMENTO", "TB_DETALLE_ORDEN_DE_SALIDA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_PRESCRIPCION_MEDICA_TB_MEDICAMENTO", "TB_PRESCRIPCION_MEDICA")]
+        public EntityCollection<TB_PRESCRIPCION_MEDICA> TB_PRESCRIPCION_MEDICA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_PRESCRIPCION_MEDICA>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_MEDICAMENTO", "TB_PRESCRIPCION_MEDICA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_PRESCRIPCION_MEDICA>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_MEDICAMENTO", "TB_PRESCRIPCION_MEDICA", value);
                 }
             }
         }
 
         #endregion
+
     }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Medico")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_MEDICO")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Medico : EntityObject
+    public partial class TB_MEDICO : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Medico.
+        /// Crear un nuevo objeto TB_MEDICO.
         /// </summary>
-        /// <param name="codigoMedico">Valor inicial de la propiedad CodigoMedico.</param>
-        public static TB_Medico CreateTB_Medico(global::System.Int32 codigoMedico)
+        /// <param name="iD_Medico">Valor inicial de la propiedad ID_Medico.</param>
+        /// <param name="direccion">Valor inicial de la propiedad Direccion.</param>
+        public static TB_MEDICO CreateTB_MEDICO(global::System.Int32 iD_Medico, global::System.String direccion)
         {
-            TB_Medico tB_Medico = new TB_Medico();
-            tB_Medico.CodigoMedico = codigoMedico;
-            return tB_Medico;
+            TB_MEDICO tB_MEDICO = new TB_MEDICO();
+            tB_MEDICO.ID_Medico = iD_Medico;
+            tB_MEDICO.Direccion = direccion;
+            return tB_MEDICO;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3165,125 +12856,294 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoMedico
+        public global::System.Int32 ID_Medico
         {
             get
             {
-                return _CodigoMedico;
+                return _ID_Medico;
             }
             set
             {
-                if (_CodigoMedico != value)
+                if (_ID_Medico != value)
                 {
-                    OnCodigoMedicoChanging(value);
-                    ReportPropertyChanging("CodigoMedico");
-                    _CodigoMedico = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("CodigoMedico");
-                    OnCodigoMedicoChanged();
+                    OnID_MedicoChanging(value);
+                    ReportPropertyChanging("ID_Medico");
+                    _ID_Medico = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Medico");
+                    OnID_MedicoChanged();
                 }
             }
         }
-        private global::System.Int32 _CodigoMedico;
-        partial void OnCodigoMedicoChanging(global::System.Int32 value);
-        partial void OnCodigoMedicoChanged();
+        private global::System.Int32 _ID_Medico;
+        partial void OnID_MedicoChanging(global::System.Int32 value);
+        partial void OnID_MedicoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String Nombres
+        public global::System.String nom_medico
         {
             get
             {
-                return _Nombres;
+                return _nom_medico;
             }
             set
             {
-                OnNombresChanging(value);
-                ReportPropertyChanging("Nombres");
-                _Nombres = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Nombres");
-                OnNombresChanged();
+                Onnom_medicoChanging(value);
+                ReportPropertyChanging("nom_medico");
+                _nom_medico = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nom_medico");
+                Onnom_medicoChanged();
             }
         }
-        private global::System.String _Nombres;
-        partial void OnNombresChanging(global::System.String value);
-        partial void OnNombresChanged();
+        private global::System.String _nom_medico;
+        partial void Onnom_medicoChanging(global::System.String value);
+        partial void Onnom_medicoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String Apellidos
+        public global::System.String ape_medico
         {
             get
             {
-                return _Apellidos;
+                return _ape_medico;
             }
             set
             {
-                OnApellidosChanging(value);
-                ReportPropertyChanging("Apellidos");
-                _Apellidos = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Apellidos");
-                OnApellidosChanged();
+                Onape_medicoChanging(value);
+                ReportPropertyChanging("ape_medico");
+                _ape_medico = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ape_medico");
+                Onape_medicoChanged();
             }
         }
-        private global::System.String _Apellidos;
-        partial void OnApellidosChanging(global::System.String value);
-        partial void OnApellidosChanged();
+        private global::System.String _ape_medico;
+        partial void Onape_medicoChanging(global::System.String value);
+        partial void Onape_medicoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> CodigoEspecialidad
+        public global::System.String num_cmp
         {
             get
             {
-                return _CodigoEspecialidad;
+                return _num_cmp;
             }
             set
             {
-                OnCodigoEspecialidadChanging(value);
-                ReportPropertyChanging("CodigoEspecialidad");
-                _CodigoEspecialidad = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoEspecialidad");
-                OnCodigoEspecialidadChanged();
+                Onnum_cmpChanging(value);
+                ReportPropertyChanging("num_cmp");
+                _num_cmp = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("num_cmp");
+                Onnum_cmpChanged();
             }
         }
-        private Nullable<global::System.Int32> _CodigoEspecialidad;
-        partial void OnCodigoEspecialidadChanging(Nullable<global::System.Int32> value);
-        partial void OnCodigoEspecialidadChanged();
+        private global::System.String _num_cmp;
+        partial void Onnum_cmpChanging(global::System.String value);
+        partial void Onnum_cmpChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String NumeroColegiatura
+        public global::System.String email
         {
             get
             {
-                return _NumeroColegiatura;
+                return _email;
             }
             set
             {
-                OnNumeroColegiaturaChanging(value);
-                ReportPropertyChanging("NumeroColegiatura");
-                _NumeroColegiatura = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("NumeroColegiatura");
-                OnNumeroColegiaturaChanged();
+                OnemailChanging(value);
+                ReportPropertyChanging("email");
+                _email = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("email");
+                OnemailChanged();
             }
         }
-        private global::System.String _NumeroColegiatura;
-        partial void OnNumeroColegiaturaChanging(global::System.String value);
-        partial void OnNumeroColegiaturaChanged();
+        private global::System.String _email;
+        partial void OnemailChanging(global::System.String value);
+        partial void OnemailChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String telefono
+        {
+            get
+            {
+                return _telefono;
+            }
+            set
+            {
+                OntelefonoChanging(value);
+                ReportPropertyChanging("telefono");
+                _telefono = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("telefono");
+                OntelefonoChanged();
+            }
+        }
+        private global::System.String _telefono;
+        partial void OntelefonoChanging(global::System.String value);
+        partial void OntelefonoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Direccion
+        {
+            get
+            {
+                return _Direccion;
+            }
+            set
+            {
+                OnDireccionChanging(value);
+                ReportPropertyChanging("Direccion");
+                _Direccion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Direccion");
+                OnDireccionChanged();
+            }
+        }
+        private global::System.String _Direccion;
+        partial void OnDireccionChanging(global::System.String value);
+        partial void OnDireccionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Celular
+        {
+            get
+            {
+                return _Celular;
+            }
+            set
+            {
+                OnCelularChanging(value);
+                ReportPropertyChanging("Celular");
+                _Celular = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Celular");
+                OnCelularChanged();
+            }
+        }
+        private global::System.String _Celular;
+        partial void OnCelularChanging(global::System.String value);
+        partial void OnCelularChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TelefonoDomicilio
+        {
+            get
+            {
+                return _TelefonoDomicilio;
+            }
+            set
+            {
+                OnTelefonoDomicilioChanging(value);
+                ReportPropertyChanging("TelefonoDomicilio");
+                _TelefonoDomicilio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TelefonoDomicilio");
+                OnTelefonoDomicilioChanged();
+            }
+        }
+        private global::System.String _TelefonoDomicilio;
+        partial void OnTelefonoDomicilioChanging(global::System.String value);
+        partial void OnTelefonoDomicilioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String FechaCertificacion
+        {
+            get
+            {
+                return _FechaCertificacion;
+            }
+            set
+            {
+                OnFechaCertificacionChanging(value);
+                ReportPropertyChanging("FechaCertificacion");
+                _FechaCertificacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FechaCertificacion");
+                OnFechaCertificacionChanged();
+            }
+        }
+        private global::System.String _FechaCertificacion;
+        partial void OnFechaCertificacionChanging(global::System.String value);
+        partial void OnFechaCertificacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CentroEstudios
+        {
+            get
+            {
+                return _CentroEstudios;
+            }
+            set
+            {
+                OnCentroEstudiosChanging(value);
+                ReportPropertyChanging("CentroEstudios");
+                _CentroEstudios = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CentroEstudios");
+                OnCentroEstudiosChanged();
+            }
+        }
+        private global::System.String _CentroEstudios;
+        partial void OnCentroEstudiosChanging(global::System.String value);
+        partial void OnCentroEstudiosChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CodigoColegiatura
+        {
+            get
+            {
+                return _CodigoColegiatura;
+            }
+            set
+            {
+                OnCodigoColegiaturaChanging(value);
+                ReportPropertyChanging("CodigoColegiatura");
+                _CodigoColegiatura = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CodigoColegiatura");
+                OnCodigoColegiaturaChanged();
+            }
+        }
+        private global::System.String _CodigoColegiatura;
+        partial void OnCodigoColegiaturaChanging(global::System.String value);
+        partial void OnCodigoColegiaturaChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3293,18 +13153,18 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Agenda__Codig__32E0915F", "TB_Agenda_Medica")]
-        public EntityCollection<TB_Agenda_Medica> TB_Agenda_Medica
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_AgendaMedica_TB_MEDICO", "TB_AGENDA_MEDICA")]
+        public EntityCollection<TB_AGENDA_MEDICA> TB_AGENDA_MEDICA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Agenda_Medica>("DB_SGHModel.FK__TB_Agenda__Codig__32E0915F", "TB_Agenda_Medica");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_AGENDA_MEDICA>("DB_SGHModel.FK_TB_AgendaMedica_TB_MEDICO", "TB_AGENDA_MEDICA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Agenda_Medica>("DB_SGHModel.FK__TB_Agenda__Codig__32E0915F", "TB_Agenda_Medica", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_AGENDA_MEDICA>("DB_SGHModel.FK_TB_AgendaMedica_TB_MEDICO", "TB_AGENDA_MEDICA", value);
                 }
             }
         }
@@ -3315,18 +13175,18 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Agenda__Codig__33D4B598", "TB_Agenda_Medica")]
-        public EntityCollection<TB_Agenda_Medica> TB_Agenda_Medica1
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Atencion_Emergencia_TB_Medico", "TB_Atencion_Emergencia")]
+        public EntityCollection<TB_Atencion_Emergencia> TB_Atencion_Emergencia
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Agenda_Medica>("DB_SGHModel.FK__TB_Agenda__Codig__33D4B598", "TB_Agenda_Medica");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Atencion_Emergencia>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_Medico", "TB_Atencion_Emergencia");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Agenda_Medica>("DB_SGHModel.FK__TB_Agenda__Codig__33D4B598", "TB_Agenda_Medica", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Atencion_Emergencia>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_Medico", "TB_Atencion_Emergencia", value);
                 }
             }
         }
@@ -3337,18 +13197,18 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__Cita__CodigoMedi__36B122431", "TB_Cita")]
-        public EntityCollection<TB_Cita> TB_Cita
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CITA_00TB_MEDICO", "TB_CITA")]
+        public EntityCollection<TB_CITA> TB_CITA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Cita>("DB_SGHModel.FK__Cita__CodigoMedi__36B122431", "TB_Cita");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CITA>("DB_SGHModel.FK_TB_CITA_00TB_MEDICO", "TB_CITA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Cita>("DB_SGHModel.FK__Cita__CodigoMedi__36B122431", "TB_Cita", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CITA>("DB_SGHModel.FK_TB_CITA_00TB_MEDICO", "TB_CITA", value);
                 }
             }
         }
@@ -3359,18 +13219,18 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__3F466844", "TB_Consulta")]
-        public EntityCollection<TB_Consulta> TB_Consulta
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Consulta_TB_MEDICO", "TB_CONSULTA")]
+        public EntityCollection<TB_CONSULTA> TB_CONSULTA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Consulta>("DB_SGHModel.FK__TB_Consul__Codig__3F466844", "TB_Consulta");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CONSULTA>("DB_SGHModel.FK_TB_Consulta_TB_MEDICO", "TB_CONSULTA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Consulta>("DB_SGHModel.FK__TB_Consul__Codig__3F466844", "TB_Consulta", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CONSULTA>("DB_SGHModel.FK_TB_Consulta_TB_MEDICO", "TB_CONSULTA", value);
                 }
             }
         }
@@ -3381,18 +13241,18 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__4222D4EF", "TB_Consulta")]
-        public EntityCollection<TB_Consulta> TB_Consulta1
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_MEDICO", "TB_HOJA_INGRESO_EMERGENCIA")]
+        public EntityCollection<TB_HOJA_INGRESO_EMERGENCIA> TB_HOJA_INGRESO_EMERGENCIA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Consulta>("DB_SGHModel.FK__TB_Consul__Codig__4222D4EF", "TB_Consulta");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_HOJA_INGRESO_EMERGENCIA>("DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_MEDICO", "TB_HOJA_INGRESO_EMERGENCIA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Consulta>("DB_SGHModel.FK__TB_Consul__Codig__4222D4EF", "TB_Consulta", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_HOJA_INGRESO_EMERGENCIA>("DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_MEDICO", "TB_HOJA_INGRESO_EMERGENCIA", value);
                 }
             }
         }
@@ -3403,34 +13263,18 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Medico__Codig__44FF419A", "TB_Especialidad")]
-        public TB_Especialidad TB_Especialidad
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_MEDICO_DE_TURNO_TB_MEDICO", "TB_MEDICO_DE_TURNO")]
+        public EntityCollection<TB_MEDICO_DE_TURNO> TB_MEDICO_DE_TURNO
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Especialidad>("DB_SGHModel.FK__TB_Medico__Codig__44FF419A", "TB_Especialidad").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Especialidad>("DB_SGHModel.FK__TB_Medico__Codig__44FF419A", "TB_Especialidad").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<TB_Especialidad> TB_EspecialidadReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Especialidad>("DB_SGHModel.FK__TB_Medico__Codig__44FF419A", "TB_Especialidad");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_MEDICO_DE_TURNO>("DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_MEDICO", "TB_MEDICO_DE_TURNO");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Especialidad>("DB_SGHModel.FK__TB_Medico__Codig__44FF419A", "TB_Especialidad", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_MEDICO_DE_TURNO>("DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_MEDICO", "TB_MEDICO_DE_TURNO", value);
                 }
             }
         }
@@ -3441,63 +13285,137 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Medico__Codig__45F365D3", "TB_Especialidad")]
-        public TB_Especialidad TB_Especialidad1
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_MEDICOESPECIALIDAD_TB_MEDICO", "TB_MEDICOESPECIALIDAD")]
+        public EntityCollection<TB_MEDICOESPECIALIDAD> TB_MEDICOESPECIALIDAD
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Especialidad>("DB_SGHModel.FK__TB_Medico__Codig__45F365D3", "TB_Especialidad").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Especialidad>("DB_SGHModel.FK__TB_Medico__Codig__45F365D3", "TB_Especialidad").Value = value;
-            }
-        }
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<TB_Especialidad> TB_Especialidad1Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Especialidad>("DB_SGHModel.FK__TB_Medico__Codig__45F365D3", "TB_Especialidad");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_MEDICOESPECIALIDAD>("DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_MEDICO", "TB_MEDICOESPECIALIDAD");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Especialidad>("DB_SGHModel.FK__TB_Medico__Codig__45F365D3", "TB_Especialidad", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_MEDICOESPECIALIDAD>("DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_MEDICO", "TB_MEDICOESPECIALIDAD", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_DE_PROCEDIMIENTO_00TB_MEDICO", "TB_ORDEN_DE_PROCEDIMIENTO")]
+        public EntityCollection<TB_ORDEN_DE_PROCEDIMIENTO> TB_ORDEN_DE_PROCEDIMIENTO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ORDEN_DE_PROCEDIMIENTO>("DB_SGHModel.FK_TB_ORDEN_DE_PROCEDIMIENTO_00TB_MEDICO", "TB_ORDEN_DE_PROCEDIMIENTO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ORDEN_DE_PROCEDIMIENTO>("DB_SGHModel.FK_TB_ORDEN_DE_PROCEDIMIENTO_00TB_MEDICO", "TB_ORDEN_DE_PROCEDIMIENTO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_EXAMEN_MEDICO_TB_MEDICO1", "TB_ORDEN_EXAMEN_MEDICO")]
+        public EntityCollection<TB_ORDEN_EXAMEN_MEDICO> TB_ORDEN_EXAMEN_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_MEDICO1", "TB_ORDEN_EXAMEN_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_MEDICO1", "TB_ORDEN_EXAMEN_MEDICO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_PRESCRIPCION_MEDICA_00TB_MEDICO", "TB_PRESCRIPCION_MEDICA")]
+        public EntityCollection<TB_PRESCRIPCION_MEDICA> TB_PRESCRIPCION_MEDICA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_PRESCRIPCION_MEDICA>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_00TB_MEDICO", "TB_PRESCRIPCION_MEDICA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_PRESCRIPCION_MEDICA>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_00TB_MEDICO", "TB_PRESCRIPCION_MEDICA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_TURNOATENCION_00TB_MEDICO", "TB_TURNO_ATENCION")]
+        public EntityCollection<TB_TURNO_ATENCION> TB_TURNO_ATENCION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_TURNO_ATENCION>("DB_SGHModel.FK_TB_TURNOATENCION_00TB_MEDICO", "TB_TURNO_ATENCION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_TURNO_ATENCION>("DB_SGHModel.FK_TB_TURNOATENCION_00TB_MEDICO", "TB_TURNO_ATENCION", value);
                 }
             }
         }
 
         #endregion
+
     }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Motivo_Hospitalizacion")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_MEDICO_DE_TURNO")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Motivo_Hospitalizacion : EntityObject
+    public partial class TB_MEDICO_DE_TURNO : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Motivo_Hospitalizacion.
+        /// Crear un nuevo objeto TB_MEDICO_DE_TURNO.
         /// </summary>
-        /// <param name="codigoMotivo">Valor inicial de la propiedad CodigoMotivo.</param>
-        public static TB_Motivo_Hospitalizacion CreateTB_Motivo_Hospitalizacion(global::System.Int32 codigoMotivo)
+        /// <param name="iD_MedicoTurno">Valor inicial de la propiedad ID_MedicoTurno.</param>
+        public static TB_MEDICO_DE_TURNO CreateTB_MEDICO_DE_TURNO(global::System.Int32 iD_MedicoTurno)
         {
-            TB_Motivo_Hospitalizacion tB_Motivo_Hospitalizacion = new TB_Motivo_Hospitalizacion();
-            tB_Motivo_Hospitalizacion.CodigoMotivo = codigoMotivo;
-            return tB_Motivo_Hospitalizacion;
+            TB_MEDICO_DE_TURNO tB_MEDICO_DE_TURNO = new TB_MEDICO_DE_TURNO();
+            tB_MEDICO_DE_TURNO.ID_MedicoTurno = iD_MedicoTurno;
+            return tB_MEDICO_DE_TURNO;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3505,27 +13423,424 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoMotivo
+        public global::System.Int32 ID_MedicoTurno
         {
             get
             {
-                return _CodigoMotivo;
+                return _ID_MedicoTurno;
             }
             set
             {
-                if (_CodigoMotivo != value)
+                if (_ID_MedicoTurno != value)
                 {
-                    OnCodigoMotivoChanging(value);
-                    ReportPropertyChanging("CodigoMotivo");
-                    _CodigoMotivo = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("CodigoMotivo");
-                    OnCodigoMotivoChanged();
+                    OnID_MedicoTurnoChanging(value);
+                    ReportPropertyChanging("ID_MedicoTurno");
+                    _ID_MedicoTurno = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_MedicoTurno");
+                    OnID_MedicoTurnoChanged();
                 }
             }
         }
-        private global::System.Int32 _CodigoMotivo;
-        partial void OnCodigoMotivoChanging(global::System.Int32 value);
-        partial void OnCodigoMotivoChanged();
+        private global::System.Int32 _ID_MedicoTurno;
+        partial void OnID_MedicoTurnoChanging(global::System.Int32 value);
+        partial void OnID_MedicoTurnoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Consultorio
+        {
+            get
+            {
+                return _ID_Consultorio;
+            }
+            set
+            {
+                OnID_ConsultorioChanging(value);
+                ReportPropertyChanging("ID_Consultorio");
+                _ID_Consultorio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Consultorio");
+                OnID_ConsultorioChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Consultorio;
+        partial void OnID_ConsultorioChanging(Nullable<global::System.Int32> value);
+        partial void OnID_ConsultorioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Medico
+        {
+            get
+            {
+                return _ID_Medico;
+            }
+            set
+            {
+                OnID_MedicoChanging(value);
+                ReportPropertyChanging("ID_Medico");
+                _ID_Medico = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Medico");
+                OnID_MedicoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Medico;
+        partial void OnID_MedicoChanging(Nullable<global::System.Int32> value);
+        partial void OnID_MedicoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> fecha
+        {
+            get
+            {
+                return _fecha;
+            }
+            set
+            {
+                OnfechaChanging(value);
+                ReportPropertyChanging("fecha");
+                _fecha = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fecha");
+                OnfechaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _fecha;
+        partial void OnfechaChanging(Nullable<global::System.DateTime> value);
+        partial void OnfechaChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_MEDICO_DE_TURNO_TB_CONSULTORIO", "TB_CONSULTORIO")]
+        public TB_CONSULTORIO TB_CONSULTORIO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTORIO>("DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_CONSULTORIO", "TB_CONSULTORIO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTORIO>("DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_CONSULTORIO", "TB_CONSULTORIO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_CONSULTORIO> TB_CONSULTORIOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTORIO>("DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_CONSULTORIO", "TB_CONSULTORIO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_CONSULTORIO>("DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_CONSULTORIO", "TB_CONSULTORIO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_MEDICO_DE_TURNO_TB_MEDICO", "TB_MEDICO")]
+        public TB_MEDICO TB_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_MEDICO", "TB_MEDICO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_MEDICO", "TB_MEDICO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_MEDICO> TB_MEDICOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_MEDICO", "TB_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_MEDICO", "TB_MEDICO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_MEDICO_DE_TURNO", "TB_PROGRAMACION_ATENCION_EXAMENES")]
+        public EntityCollection<TB_PROGRAMACION_ATENCION_EXAMENES> TB_PROGRAMACION_ATENCION_EXAMENES
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_PROGRAMACION_ATENCION_EXAMENES>("DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_MEDICO_DE_TURNO", "TB_PROGRAMACION_ATENCION_EXAMENES");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_PROGRAMACION_ATENCION_EXAMENES>("DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_MEDICO_DE_TURNO", "TB_PROGRAMACION_ATENCION_EXAMENES", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_MEDICOESPECIALIDAD")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_MEDICOESPECIALIDAD : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_MEDICOESPECIALIDAD.
+        /// </summary>
+        /// <param name="iD_Medico">Valor inicial de la propiedad ID_Medico.</param>
+        /// <param name="iD_Especialidad">Valor inicial de la propiedad ID_Especialidad.</param>
+        public static TB_MEDICOESPECIALIDAD CreateTB_MEDICOESPECIALIDAD(global::System.Int32 iD_Medico, global::System.Int32 iD_Especialidad)
+        {
+            TB_MEDICOESPECIALIDAD tB_MEDICOESPECIALIDAD = new TB_MEDICOESPECIALIDAD();
+            tB_MEDICOESPECIALIDAD.ID_Medico = iD_Medico;
+            tB_MEDICOESPECIALIDAD.ID_Especialidad = iD_Especialidad;
+            return tB_MEDICOESPECIALIDAD;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Medico
+        {
+            get
+            {
+                return _ID_Medico;
+            }
+            set
+            {
+                if (_ID_Medico != value)
+                {
+                    OnID_MedicoChanging(value);
+                    ReportPropertyChanging("ID_Medico");
+                    _ID_Medico = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Medico");
+                    OnID_MedicoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Medico;
+        partial void OnID_MedicoChanging(global::System.Int32 value);
+        partial void OnID_MedicoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Especialidad
+        {
+            get
+            {
+                return _ID_Especialidad;
+            }
+            set
+            {
+                if (_ID_Especialidad != value)
+                {
+                    OnID_EspecialidadChanging(value);
+                    ReportPropertyChanging("ID_Especialidad");
+                    _ID_Especialidad = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Especialidad");
+                    OnID_EspecialidadChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Especialidad;
+        partial void OnID_EspecialidadChanging(global::System.Int32 value);
+        partial void OnID_EspecialidadChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_MEDICOESPECIALIDAD_TB_ESPECIALIDAD", "TB_ESPECIALIDAD")]
+        public TB_ESPECIALIDAD TB_ESPECIALIDAD
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_ESPECIALIDAD", "TB_ESPECIALIDAD").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_ESPECIALIDAD", "TB_ESPECIALIDAD").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_ESPECIALIDAD> TB_ESPECIALIDADReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_ESPECIALIDAD", "TB_ESPECIALIDAD");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ESPECIALIDAD>("DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_ESPECIALIDAD", "TB_ESPECIALIDAD", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_MEDICOESPECIALIDAD_TB_MEDICO", "TB_MEDICO")]
+        public TB_MEDICO TB_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_MEDICO", "TB_MEDICO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_MEDICO", "TB_MEDICO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_MEDICO> TB_MEDICOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_MEDICO", "TB_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_MEDICO", "TB_MEDICO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_MOTIVO_HOSPITALIZACION")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_MOTIVO_HOSPITALIZACION : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_MOTIVO_HOSPITALIZACION.
+        /// </summary>
+        /// <param name="iD_Motivo_Hospitalizacion">Valor inicial de la propiedad ID_Motivo_Hospitalizacion.</param>
+        public static TB_MOTIVO_HOSPITALIZACION CreateTB_MOTIVO_HOSPITALIZACION(global::System.Int32 iD_Motivo_Hospitalizacion)
+        {
+            TB_MOTIVO_HOSPITALIZACION tB_MOTIVO_HOSPITALIZACION = new TB_MOTIVO_HOSPITALIZACION();
+            tB_MOTIVO_HOSPITALIZACION.ID_Motivo_Hospitalizacion = iD_Motivo_Hospitalizacion;
+            return tB_MOTIVO_HOSPITALIZACION;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Motivo_Hospitalizacion
+        {
+            get
+            {
+                return _ID_Motivo_Hospitalizacion;
+            }
+            set
+            {
+                if (_ID_Motivo_Hospitalizacion != value)
+                {
+                    OnID_Motivo_HospitalizacionChanging(value);
+                    ReportPropertyChanging("ID_Motivo_Hospitalizacion");
+                    _ID_Motivo_Hospitalizacion = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Motivo_Hospitalizacion");
+                    OnID_Motivo_HospitalizacionChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Motivo_Hospitalizacion;
+        partial void OnID_Motivo_HospitalizacionChanging(global::System.Int32 value);
+        partial void OnID_Motivo_HospitalizacionChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -3550,39 +13865,87 @@ namespace CI.SIC.DA
         private global::System.String _DescripcionInternamiento;
         partial void OnDescripcionInternamientoChanging(global::System.String value);
         partial void OnDescripcionInternamientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Estado
+        {
+            get
+            {
+                return _Estado;
+            }
+            set
+            {
+                OnEstadoChanging(value);
+                ReportPropertyChanging("Estado");
+                _Estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Estado");
+                OnEstadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Estado;
+        partial void OnEstadoChanging(Nullable<global::System.Int32> value);
+        partial void OnEstadoChanged();
 
         #endregion
+
     
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_HOSPITALIZACION_TB_MOTIVO_HOSPITALIZACION", "TB_ORDEN_HOSPITALIZACION")]
+        public EntityCollection<TB_ORDEN_HOSPITALIZACION> TB_ORDEN_HOSPITALIZACION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ORDEN_HOSPITALIZACION>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_MOTIVO_HOSPITALIZACION", "TB_ORDEN_HOSPITALIZACION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ORDEN_HOSPITALIZACION>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_MOTIVO_HOSPITALIZACION", "TB_ORDEN_HOSPITALIZACION", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Orden_Hopitalizacion")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_ORDEN_DE_PEDIDO")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Orden_Hopitalizacion : EntityObject
+    public partial class TB_ORDEN_DE_PEDIDO : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Orden_Hopitalizacion.
+        /// Crear un nuevo objeto TB_ORDEN_DE_PEDIDO.
         /// </summary>
-        /// <param name="codigoOrden">Valor inicial de la propiedad CodigoOrden.</param>
-        /// <param name="fechaHora">Valor inicial de la propiedad FechaHora.</param>
-        /// <param name="codigoMotivo">Valor inicial de la propiedad CodigoMotivo.</param>
-        /// <param name="codigoConsulta">Valor inicial de la propiedad CodigoConsulta.</param>
-        public static TB_Orden_Hopitalizacion CreateTB_Orden_Hopitalizacion(global::System.Int32 codigoOrden, global::System.DateTime fechaHora, global::System.Int32 codigoMotivo, global::System.Int32 codigoConsulta)
+        /// <param name="iD_OrdenPedido">Valor inicial de la propiedad ID_OrdenPedido.</param>
+        /// <param name="iD_Area">Valor inicial de la propiedad ID_Area.</param>
+        public static TB_ORDEN_DE_PEDIDO CreateTB_ORDEN_DE_PEDIDO(global::System.Int32 iD_OrdenPedido, global::System.Int32 iD_Area)
         {
-            TB_Orden_Hopitalizacion tB_Orden_Hopitalizacion = new TB_Orden_Hopitalizacion();
-            tB_Orden_Hopitalizacion.CodigoOrden = codigoOrden;
-            tB_Orden_Hopitalizacion.FechaHora = fechaHora;
-            tB_Orden_Hopitalizacion.CodigoMotivo = codigoMotivo;
-            tB_Orden_Hopitalizacion.CodigoConsulta = codigoConsulta;
-            return tB_Orden_Hopitalizacion;
+            TB_ORDEN_DE_PEDIDO tB_ORDEN_DE_PEDIDO = new TB_ORDEN_DE_PEDIDO();
+            tB_ORDEN_DE_PEDIDO.ID_OrdenPedido = iD_OrdenPedido;
+            tB_ORDEN_DE_PEDIDO.ID_Area = iD_Area;
+            return tB_ORDEN_DE_PEDIDO;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3590,27 +13953,1497 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoOrden
+        public global::System.Int32 ID_OrdenPedido
         {
             get
             {
-                return _CodigoOrden;
+                return _ID_OrdenPedido;
             }
             set
             {
-                if (_CodigoOrden != value)
+                if (_ID_OrdenPedido != value)
                 {
-                    OnCodigoOrdenChanging(value);
-                    ReportPropertyChanging("CodigoOrden");
-                    _CodigoOrden = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("CodigoOrden");
-                    OnCodigoOrdenChanged();
+                    OnID_OrdenPedidoChanging(value);
+                    ReportPropertyChanging("ID_OrdenPedido");
+                    _ID_OrdenPedido = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_OrdenPedido");
+                    OnID_OrdenPedidoChanged();
                 }
             }
         }
-        private global::System.Int32 _CodigoOrden;
-        partial void OnCodigoOrdenChanging(global::System.Int32 value);
-        partial void OnCodigoOrdenChanged();
+        private global::System.Int32 _ID_OrdenPedido;
+        partial void OnID_OrdenPedidoChanging(global::System.Int32 value);
+        partial void OnID_OrdenPedidoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> GE_FechaPedido
+        {
+            get
+            {
+                return _GE_FechaPedido;
+            }
+            set
+            {
+                OnGE_FechaPedidoChanging(value);
+                ReportPropertyChanging("GE_FechaPedido");
+                _GE_FechaPedido = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_FechaPedido");
+                OnGE_FechaPedidoChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _GE_FechaPedido;
+        partial void OnGE_FechaPedidoChanging(Nullable<global::System.DateTime> value);
+        partial void OnGE_FechaPedidoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_Observacion
+        {
+            get
+            {
+                return _GE_Observacion;
+            }
+            set
+            {
+                OnGE_ObservacionChanging(value);
+                ReportPropertyChanging("GE_Observacion");
+                _GE_Observacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_Observacion");
+                OnGE_ObservacionChanged();
+            }
+        }
+        private global::System.String _GE_Observacion;
+        partial void OnGE_ObservacionChanging(global::System.String value);
+        partial void OnGE_ObservacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Area
+        {
+            get
+            {
+                return _ID_Area;
+            }
+            set
+            {
+                OnID_AreaChanging(value);
+                ReportPropertyChanging("ID_Area");
+                _ID_Area = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Area");
+                OnID_AreaChanged();
+            }
+        }
+        private global::System.Int32 _ID_Area;
+        partial void OnID_AreaChanging(global::System.Int32 value);
+        partial void OnID_AreaChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_DE_PEDIDO_TB_AREA", "TB_AREA")]
+        public TB_AREA TB_AREA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_AREA>("DB_SGHModel.FK_TB_ORDEN_DE_PEDIDO_TB_AREA", "TB_AREA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_AREA>("DB_SGHModel.FK_TB_ORDEN_DE_PEDIDO_TB_AREA", "TB_AREA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_AREA> TB_AREAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_AREA>("DB_SGHModel.FK_TB_ORDEN_DE_PEDIDO_TB_AREA", "TB_AREA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_AREA>("DB_SGHModel.FK_TB_ORDEN_DE_PEDIDO_TB_AREA", "TB_AREA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_ORDEN_DE_PEDIDO", "TB_DETALLE_ORDEN_DE_PEDIDO")]
+        public EntityCollection<TB_DETALLE_ORDEN_DE_PEDIDO> TB_DETALLE_ORDEN_DE_PEDIDO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_DETALLE_ORDEN_DE_PEDIDO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_ORDEN_DE_PEDIDO", "TB_DETALLE_ORDEN_DE_PEDIDO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_DETALLE_ORDEN_DE_PEDIDO>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_ORDEN_DE_PEDIDO", "TB_DETALLE_ORDEN_DE_PEDIDO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_ORDEN_DE_PROCEDIMIENTO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_ORDEN_DE_PROCEDIMIENTO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_ORDEN_DE_PROCEDIMIENTO.
+        /// </summary>
+        /// <param name="iD_Orden_de_Procedimiento">Valor inicial de la propiedad ID_Orden_de_Procedimiento.</param>
+        /// <param name="nombreOrdenProcedimiento">Valor inicial de la propiedad NombreOrdenProcedimiento.</param>
+        /// <param name="fechaOrdenProcedimiento">Valor inicial de la propiedad FechaOrdenProcedimiento.</param>
+        /// <param name="cartaGarantia">Valor inicial de la propiedad CartaGarantia.</param>
+        /// <param name="iD_Paciente">Valor inicial de la propiedad ID_Paciente.</param>
+        /// <param name="iD_Medico">Valor inicial de la propiedad ID_Medico.</param>
+        /// <param name="estado">Valor inicial de la propiedad Estado.</param>
+        public static TB_ORDEN_DE_PROCEDIMIENTO CreateTB_ORDEN_DE_PROCEDIMIENTO(global::System.Int32 iD_Orden_de_Procedimiento, global::System.String nombreOrdenProcedimiento, global::System.DateTime fechaOrdenProcedimiento, global::System.String cartaGarantia, global::System.Int32 iD_Paciente, global::System.Int32 iD_Medico, global::System.String estado)
+        {
+            TB_ORDEN_DE_PROCEDIMIENTO tB_ORDEN_DE_PROCEDIMIENTO = new TB_ORDEN_DE_PROCEDIMIENTO();
+            tB_ORDEN_DE_PROCEDIMIENTO.ID_Orden_de_Procedimiento = iD_Orden_de_Procedimiento;
+            tB_ORDEN_DE_PROCEDIMIENTO.NombreOrdenProcedimiento = nombreOrdenProcedimiento;
+            tB_ORDEN_DE_PROCEDIMIENTO.FechaOrdenProcedimiento = fechaOrdenProcedimiento;
+            tB_ORDEN_DE_PROCEDIMIENTO.CartaGarantia = cartaGarantia;
+            tB_ORDEN_DE_PROCEDIMIENTO.ID_Paciente = iD_Paciente;
+            tB_ORDEN_DE_PROCEDIMIENTO.ID_Medico = iD_Medico;
+            tB_ORDEN_DE_PROCEDIMIENTO.Estado = estado;
+            return tB_ORDEN_DE_PROCEDIMIENTO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Orden_de_Procedimiento
+        {
+            get
+            {
+                return _ID_Orden_de_Procedimiento;
+            }
+            set
+            {
+                if (_ID_Orden_de_Procedimiento != value)
+                {
+                    OnID_Orden_de_ProcedimientoChanging(value);
+                    ReportPropertyChanging("ID_Orden_de_Procedimiento");
+                    _ID_Orden_de_Procedimiento = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Orden_de_Procedimiento");
+                    OnID_Orden_de_ProcedimientoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Orden_de_Procedimiento;
+        partial void OnID_Orden_de_ProcedimientoChanging(global::System.Int32 value);
+        partial void OnID_Orden_de_ProcedimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String NombreOrdenProcedimiento
+        {
+            get
+            {
+                return _NombreOrdenProcedimiento;
+            }
+            set
+            {
+                OnNombreOrdenProcedimientoChanging(value);
+                ReportPropertyChanging("NombreOrdenProcedimiento");
+                _NombreOrdenProcedimiento = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("NombreOrdenProcedimiento");
+                OnNombreOrdenProcedimientoChanged();
+            }
+        }
+        private global::System.String _NombreOrdenProcedimiento;
+        partial void OnNombreOrdenProcedimientoChanging(global::System.String value);
+        partial void OnNombreOrdenProcedimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FechaOrdenProcedimiento
+        {
+            get
+            {
+                return _FechaOrdenProcedimiento;
+            }
+            set
+            {
+                OnFechaOrdenProcedimientoChanging(value);
+                ReportPropertyChanging("FechaOrdenProcedimiento");
+                _FechaOrdenProcedimiento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaOrdenProcedimiento");
+                OnFechaOrdenProcedimientoChanged();
+            }
+        }
+        private global::System.DateTime _FechaOrdenProcedimiento;
+        partial void OnFechaOrdenProcedimientoChanging(global::System.DateTime value);
+        partial void OnFechaOrdenProcedimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String CartaGarantia
+        {
+            get
+            {
+                return _CartaGarantia;
+            }
+            set
+            {
+                OnCartaGarantiaChanging(value);
+                ReportPropertyChanging("CartaGarantia");
+                _CartaGarantia = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("CartaGarantia");
+                OnCartaGarantiaChanged();
+            }
+        }
+        private global::System.String _CartaGarantia;
+        partial void OnCartaGarantiaChanging(global::System.String value);
+        partial void OnCartaGarantiaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Paciente
+        {
+            get
+            {
+                return _ID_Paciente;
+            }
+            set
+            {
+                OnID_PacienteChanging(value);
+                ReportPropertyChanging("ID_Paciente");
+                _ID_Paciente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Paciente");
+                OnID_PacienteChanged();
+            }
+        }
+        private global::System.Int32 _ID_Paciente;
+        partial void OnID_PacienteChanging(global::System.Int32 value);
+        partial void OnID_PacienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Medico
+        {
+            get
+            {
+                return _ID_Medico;
+            }
+            set
+            {
+                OnID_MedicoChanging(value);
+                ReportPropertyChanging("ID_Medico");
+                _ID_Medico = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Medico");
+                OnID_MedicoChanged();
+            }
+        }
+        private global::System.Int32 _ID_Medico;
+        partial void OnID_MedicoChanging(global::System.Int32 value);
+        partial void OnID_MedicoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Estado
+        {
+            get
+            {
+                return _Estado;
+            }
+            set
+            {
+                OnEstadoChanging(value);
+                ReportPropertyChanging("Estado");
+                _Estado = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Estado");
+                OnEstadoChanged();
+            }
+        }
+        private global::System.String _Estado;
+        partial void OnEstadoChanging(global::System.String value);
+        partial void OnEstadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Aseguradora
+        {
+            get
+            {
+                return _Aseguradora;
+            }
+            set
+            {
+                OnAseguradoraChanging(value);
+                ReportPropertyChanging("Aseguradora");
+                _Aseguradora = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Aseguradora");
+                OnAseguradoraChanged();
+            }
+        }
+        private global::System.String _Aseguradora;
+        partial void OnAseguradoraChanging(global::System.String value);
+        partial void OnAseguradoraChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CARTA_GARANTIA_TB_ORDEN_DE_PROCEDIMIENTO", "TB_CARTA_GARANTIA")]
+        public EntityCollection<TB_CARTA_GARANTIA> TB_CARTA_GARANTIA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CARTA_GARANTIA>("DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_ORDEN_DE_PROCEDIMIENTO", "TB_CARTA_GARANTIA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CARTA_GARANTIA>("DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_ORDEN_DE_PROCEDIMIENTO", "TB_CARTA_GARANTIA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_DE_PROCEDIMIENTO_00TB_MEDICO", "TB_MEDICO")]
+        public TB_MEDICO TB_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_ORDEN_DE_PROCEDIMIENTO_00TB_MEDICO", "TB_MEDICO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_ORDEN_DE_PROCEDIMIENTO_00TB_MEDICO", "TB_MEDICO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_MEDICO> TB_MEDICOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_ORDEN_DE_PROCEDIMIENTO_00TB_MEDICO", "TB_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_ORDEN_DE_PROCEDIMIENTO_00TB_MEDICO", "TB_MEDICO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Orden_de_Procedimiento53", "TB_PACIENTE")]
+        public TB_PACIENTE TB_PACIENTE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Procedimiento53", "TB_PACIENTE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Procedimiento53", "TB_PACIENTE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_PACIENTE> TB_PACIENTEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Procedimiento53", "TB_PACIENTE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Procedimiento53", "TB_PACIENTE", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_ORDEN_DE_SALIDA")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_ORDEN_DE_SALIDA : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_ORDEN_DE_SALIDA.
+        /// </summary>
+        /// <param name="iD_OrdenSalida">Valor inicial de la propiedad ID_OrdenSalida.</param>
+        public static TB_ORDEN_DE_SALIDA CreateTB_ORDEN_DE_SALIDA(global::System.Int32 iD_OrdenSalida)
+        {
+            TB_ORDEN_DE_SALIDA tB_ORDEN_DE_SALIDA = new TB_ORDEN_DE_SALIDA();
+            tB_ORDEN_DE_SALIDA.ID_OrdenSalida = iD_OrdenSalida;
+            return tB_ORDEN_DE_SALIDA;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_OrdenSalida
+        {
+            get
+            {
+                return _ID_OrdenSalida;
+            }
+            set
+            {
+                if (_ID_OrdenSalida != value)
+                {
+                    OnID_OrdenSalidaChanging(value);
+                    ReportPropertyChanging("ID_OrdenSalida");
+                    _ID_OrdenSalida = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_OrdenSalida");
+                    OnID_OrdenSalidaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_OrdenSalida;
+        partial void OnID_OrdenSalidaChanging(global::System.Int32 value);
+        partial void OnID_OrdenSalidaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> GE_FechaSalida
+        {
+            get
+            {
+                return _GE_FechaSalida;
+            }
+            set
+            {
+                OnGE_FechaSalidaChanging(value);
+                ReportPropertyChanging("GE_FechaSalida");
+                _GE_FechaSalida = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_FechaSalida");
+                OnGE_FechaSalidaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _GE_FechaSalida;
+        partial void OnGE_FechaSalidaChanging(Nullable<global::System.DateTime> value);
+        partial void OnGE_FechaSalidaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_Observacion
+        {
+            get
+            {
+                return _GE_Observacion;
+            }
+            set
+            {
+                OnGE_ObservacionChanging(value);
+                ReportPropertyChanging("GE_Observacion");
+                _GE_Observacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_Observacion");
+                OnGE_ObservacionChanged();
+            }
+        }
+        private global::System.String _GE_Observacion;
+        partial void OnGE_ObservacionChanging(global::System.String value);
+        partial void OnGE_ObservacionChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_ORDEN_DE_SALIDA", "TB_DETALLE_ORDEN_DE_SALIDA")]
+        public EntityCollection<TB_DETALLE_ORDEN_DE_SALIDA> TB_DETALLE_ORDEN_DE_SALIDA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_DETALLE_ORDEN_DE_SALIDA>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_ORDEN_DE_SALIDA", "TB_DETALLE_ORDEN_DE_SALIDA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_DETALLE_ORDEN_DE_SALIDA>("DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_ORDEN_DE_SALIDA", "TB_DETALLE_ORDEN_DE_SALIDA", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_ORDEN_EXAMEN_MEDICO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_ORDEN_EXAMEN_MEDICO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_ORDEN_EXAMEN_MEDICO.
+        /// </summary>
+        /// <param name="iD_Orden_Examen_Medico">Valor inicial de la propiedad ID_Orden_Examen_Medico.</param>
+        public static TB_ORDEN_EXAMEN_MEDICO CreateTB_ORDEN_EXAMEN_MEDICO(global::System.Int32 iD_Orden_Examen_Medico)
+        {
+            TB_ORDEN_EXAMEN_MEDICO tB_ORDEN_EXAMEN_MEDICO = new TB_ORDEN_EXAMEN_MEDICO();
+            tB_ORDEN_EXAMEN_MEDICO.ID_Orden_Examen_Medico = iD_Orden_Examen_Medico;
+            return tB_ORDEN_EXAMEN_MEDICO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Orden_Examen_Medico
+        {
+            get
+            {
+                return _ID_Orden_Examen_Medico;
+            }
+            set
+            {
+                if (_ID_Orden_Examen_Medico != value)
+                {
+                    OnID_Orden_Examen_MedicoChanging(value);
+                    ReportPropertyChanging("ID_Orden_Examen_Medico");
+                    _ID_Orden_Examen_Medico = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Orden_Examen_Medico");
+                    OnID_Orden_Examen_MedicoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Orden_Examen_Medico;
+        partial void OnID_Orden_Examen_MedicoChanging(global::System.Int32 value);
+        partial void OnID_Orden_Examen_MedicoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Medico
+        {
+            get
+            {
+                return _ID_Medico;
+            }
+            set
+            {
+                OnID_MedicoChanging(value);
+                ReportPropertyChanging("ID_Medico");
+                _ID_Medico = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Medico");
+                OnID_MedicoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Medico;
+        partial void OnID_MedicoChanging(Nullable<global::System.Int32> value);
+        partial void OnID_MedicoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Orden_Interna
+        {
+            get
+            {
+                return _ID_Orden_Interna;
+            }
+            set
+            {
+                OnID_Orden_InternaChanging(value);
+                ReportPropertyChanging("ID_Orden_Interna");
+                _ID_Orden_Interna = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Orden_Interna");
+                OnID_Orden_InternaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Orden_Interna;
+        partial void OnID_Orden_InternaChanging(Nullable<global::System.Int32> value);
+        partial void OnID_Orden_InternaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> fecha
+        {
+            get
+            {
+                return _fecha;
+            }
+            set
+            {
+                OnfechaChanging(value);
+                ReportPropertyChanging("fecha");
+                _fecha = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fecha");
+                OnfechaChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _fecha;
+        partial void OnfechaChanging(Nullable<global::System.DateTime> value);
+        partial void OnfechaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Catalogo_Examen
+        {
+            get
+            {
+                return _ID_Catalogo_Examen;
+            }
+            set
+            {
+                OnID_Catalogo_ExamenChanging(value);
+                ReportPropertyChanging("ID_Catalogo_Examen");
+                _ID_Catalogo_Examen = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Catalogo_Examen");
+                OnID_Catalogo_ExamenChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Catalogo_Examen;
+        partial void OnID_Catalogo_ExamenChanging(Nullable<global::System.Int32> value);
+        partial void OnID_Catalogo_ExamenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String estado
+        {
+            get
+            {
+                return _estado;
+            }
+            set
+            {
+                OnestadoChanging(value);
+                ReportPropertyChanging("estado");
+                _estado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("estado");
+                OnestadoChanged();
+            }
+        }
+        private global::System.String _estado;
+        partial void OnestadoChanging(global::System.String value);
+        partial void OnestadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String observacion
+        {
+            get
+            {
+                return _observacion;
+            }
+            set
+            {
+                OnobservacionChanging(value);
+                ReportPropertyChanging("observacion");
+                _observacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("observacion");
+                OnobservacionChanged();
+            }
+        }
+        private global::System.String _observacion;
+        partial void OnobservacionChanging(global::System.String value);
+        partial void OnobservacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> GE_FechaSolicitud
+        {
+            get
+            {
+                return _GE_FechaSolicitud;
+            }
+            set
+            {
+                OnGE_FechaSolicitudChanging(value);
+                ReportPropertyChanging("GE_FechaSolicitud");
+                _GE_FechaSolicitud = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_FechaSolicitud");
+                OnGE_FechaSolicitudChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _GE_FechaSolicitud;
+        partial void OnGE_FechaSolicitudChanging(Nullable<global::System.DateTime> value);
+        partial void OnGE_FechaSolicitudChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_Paciente
+        {
+            get
+            {
+                return _GE_Paciente;
+            }
+            set
+            {
+                OnGE_PacienteChanging(value);
+                ReportPropertyChanging("GE_Paciente");
+                _GE_Paciente = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_Paciente");
+                OnGE_PacienteChanged();
+            }
+        }
+        private global::System.String _GE_Paciente;
+        partial void OnGE_PacienteChanging(global::System.String value);
+        partial void OnGE_PacienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_DetalleTecnico
+        {
+            get
+            {
+                return _GE_DetalleTecnico;
+            }
+            set
+            {
+                OnGE_DetalleTecnicoChanging(value);
+                ReportPropertyChanging("GE_DetalleTecnico");
+                _GE_DetalleTecnico = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_DetalleTecnico");
+                OnGE_DetalleTecnicoChanged();
+            }
+        }
+        private global::System.String _GE_DetalleTecnico;
+        partial void OnGE_DetalleTecnicoChanging(global::System.String value);
+        partial void OnGE_DetalleTecnicoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Tipo_Examen
+        {
+            get
+            {
+                return _ID_Tipo_Examen;
+            }
+            set
+            {
+                OnID_Tipo_ExamenChanging(value);
+                ReportPropertyChanging("ID_Tipo_Examen");
+                _ID_Tipo_Examen = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Tipo_Examen");
+                OnID_Tipo_ExamenChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Tipo_Examen;
+        partial void OnID_Tipo_ExamenChanging(Nullable<global::System.Int32> value);
+        partial void OnID_Tipo_ExamenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_NombreMedico
+        {
+            get
+            {
+                return _GE_NombreMedico;
+            }
+            set
+            {
+                OnGE_NombreMedicoChanging(value);
+                ReportPropertyChanging("GE_NombreMedico");
+                _GE_NombreMedico = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_NombreMedico");
+                OnGE_NombreMedicoChanged();
+            }
+        }
+        private global::System.String _GE_NombreMedico;
+        partial void OnGE_NombreMedicoChanging(global::System.String value);
+        partial void OnGE_NombreMedicoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GE_CodigoOrdenExamen
+        {
+            get
+            {
+                return _GE_CodigoOrdenExamen;
+            }
+            set
+            {
+                OnGE_CodigoOrdenExamenChanging(value);
+                ReportPropertyChanging("GE_CodigoOrdenExamen");
+                _GE_CodigoOrdenExamen = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_CodigoOrdenExamen");
+                OnGE_CodigoOrdenExamenChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GE_CodigoOrdenExamen;
+        partial void OnGE_CodigoOrdenExamenChanging(Nullable<global::System.Int32> value);
+        partial void OnGE_CodigoOrdenExamenChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_EXAMEN_MEDICO_TB_CATALOGO_EXAMEN_MEDICO", "TB_CATALOGO_EXAMEN_MEDICO")]
+        public TB_CATALOGO_EXAMEN_MEDICO TB_CATALOGO_EXAMEN_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CATALOGO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_CATALOGO_EXAMEN_MEDICO", "TB_CATALOGO_EXAMEN_MEDICO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CATALOGO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_CATALOGO_EXAMEN_MEDICO", "TB_CATALOGO_EXAMEN_MEDICO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_CATALOGO_EXAMEN_MEDICO> TB_CATALOGO_EXAMEN_MEDICOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CATALOGO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_CATALOGO_EXAMEN_MEDICO", "TB_CATALOGO_EXAMEN_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_CATALOGO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_CATALOGO_EXAMEN_MEDICO", "TB_CATALOGO_EXAMEN_MEDICO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_INFORME_RESULTADO_TB_ORDEN_EXAMEN_MEDICO", "TB_INFORME_RESULTADO")]
+        public EntityCollection<TB_INFORME_RESULTADO> TB_INFORME_RESULTADO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_INFORME_RESULTADO>("DB_SGHModel.FK_TB_INFORME_RESULTADO_TB_ORDEN_EXAMEN_MEDICO", "TB_INFORME_RESULTADO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_INFORME_RESULTADO>("DB_SGHModel.FK_TB_INFORME_RESULTADO_TB_ORDEN_EXAMEN_MEDICO", "TB_INFORME_RESULTADO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_EXAMEN_MEDICO_TB_MEDICO1", "TB_MEDICO")]
+        public TB_MEDICO TB_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_MEDICO1", "TB_MEDICO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_MEDICO1", "TB_MEDICO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_MEDICO> TB_MEDICOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_MEDICO1", "TB_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_MEDICO1", "TB_MEDICO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_EXAMEN_MEDICO_TB_ORDEN_INTERNA", "TB_ORDEN_INTERNA")]
+        public TB_ORDEN_INTERNA TB_ORDEN_INTERNA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_INTERNA>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_ORDEN_INTERNA", "TB_ORDEN_INTERNA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_INTERNA>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_ORDEN_INTERNA", "TB_ORDEN_INTERNA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_ORDEN_INTERNA> TB_ORDEN_INTERNAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_INTERNA>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_ORDEN_INTERNA", "TB_ORDEN_INTERNA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ORDEN_INTERNA>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_ORDEN_INTERNA", "TB_ORDEN_INTERNA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO")]
+        public TB_TIPO_EXAMEN_MEDICO TB_TIPO_EXAMEN_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_TIPO_EXAMEN_MEDICO> TB_TIPO_EXAMEN_MEDICOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_TIPO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_TIPO_EXAMEN_MEDICO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_SERVICIO_TB_ORDEN_EXAMEN_MEDICO1", "TB_ORDEN_SERVICIO")]
+        public EntityCollection<TB_ORDEN_SERVICIO> TB_ORDEN_SERVICIO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ORDEN_SERVICIO>("DB_SGHModel.FK_TB_ORDEN_SERVICIO_TB_ORDEN_EXAMEN_MEDICO1", "TB_ORDEN_SERVICIO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ORDEN_SERVICIO>("DB_SGHModel.FK_TB_ORDEN_SERVICIO_TB_ORDEN_EXAMEN_MEDICO1", "TB_ORDEN_SERVICIO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_ORDEN_EXAMEN_MEDICO", "TB_PROGRAMACION_ATENCION_EXAMENES")]
+        public EntityCollection<TB_PROGRAMACION_ATENCION_EXAMENES> TB_PROGRAMACION_ATENCION_EXAMENES
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_PROGRAMACION_ATENCION_EXAMENES>("DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_ORDEN_EXAMEN_MEDICO", "TB_PROGRAMACION_ATENCION_EXAMENES");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_PROGRAMACION_ATENCION_EXAMENES>("DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_ORDEN_EXAMEN_MEDICO", "TB_PROGRAMACION_ATENCION_EXAMENES", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_ORDEN_HOSPITALIZACION")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_ORDEN_HOSPITALIZACION : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_ORDEN_HOSPITALIZACION.
+        /// </summary>
+        /// <param name="iD_Orden_Hospitalizacion">Valor inicial de la propiedad ID_Orden_Hospitalizacion.</param>
+        /// <param name="fechaOrden">Valor inicial de la propiedad FechaOrden.</param>
+        /// <param name="prevision">Valor inicial de la propiedad Prevision.</param>
+        /// <param name="motivo">Valor inicial de la propiedad Motivo.</param>
+        /// <param name="tratamiento">Valor inicial de la propiedad Tratamiento.</param>
+        /// <param name="nroDiasHospitalizacion">Valor inicial de la propiedad NroDiasHospitalizacion.</param>
+        /// <param name="examenesPreOperatorios">Valor inicial de la propiedad ExamenesPreOperatorios.</param>
+        /// <param name="iD_MedicoTratante">Valor inicial de la propiedad ID_MedicoTratante.</param>
+        /// <param name="iD_MedicoTurno">Valor inicial de la propiedad ID_MedicoTurno.</param>
+        /// <param name="iD_Paciente">Valor inicial de la propiedad ID_Paciente.</param>
+        /// <param name="fechaHora">Valor inicial de la propiedad FechaHora.</param>
+        /// <param name="iD_Motivo_Hospitalizacion">Valor inicial de la propiedad ID_Motivo_Hospitalizacion.</param>
+        /// <param name="iD_Consulta">Valor inicial de la propiedad ID_Consulta.</param>
+        public static TB_ORDEN_HOSPITALIZACION CreateTB_ORDEN_HOSPITALIZACION(global::System.Int32 iD_Orden_Hospitalizacion, global::System.DateTime fechaOrden, global::System.String prevision, global::System.String motivo, global::System.String tratamiento, global::System.Int32 nroDiasHospitalizacion, global::System.String examenesPreOperatorios, global::System.Int32 iD_MedicoTratante, global::System.Int32 iD_MedicoTurno, global::System.Int32 iD_Paciente, global::System.DateTime fechaHora, global::System.Int32 iD_Motivo_Hospitalizacion, global::System.Int32 iD_Consulta)
+        {
+            TB_ORDEN_HOSPITALIZACION tB_ORDEN_HOSPITALIZACION = new TB_ORDEN_HOSPITALIZACION();
+            tB_ORDEN_HOSPITALIZACION.ID_Orden_Hospitalizacion = iD_Orden_Hospitalizacion;
+            tB_ORDEN_HOSPITALIZACION.FechaOrden = fechaOrden;
+            tB_ORDEN_HOSPITALIZACION.Prevision = prevision;
+            tB_ORDEN_HOSPITALIZACION.Motivo = motivo;
+            tB_ORDEN_HOSPITALIZACION.Tratamiento = tratamiento;
+            tB_ORDEN_HOSPITALIZACION.NroDiasHospitalizacion = nroDiasHospitalizacion;
+            tB_ORDEN_HOSPITALIZACION.ExamenesPreOperatorios = examenesPreOperatorios;
+            tB_ORDEN_HOSPITALIZACION.ID_MedicoTratante = iD_MedicoTratante;
+            tB_ORDEN_HOSPITALIZACION.ID_MedicoTurno = iD_MedicoTurno;
+            tB_ORDEN_HOSPITALIZACION.ID_Paciente = iD_Paciente;
+            tB_ORDEN_HOSPITALIZACION.FechaHora = fechaHora;
+            tB_ORDEN_HOSPITALIZACION.ID_Motivo_Hospitalizacion = iD_Motivo_Hospitalizacion;
+            tB_ORDEN_HOSPITALIZACION.ID_Consulta = iD_Consulta;
+            return tB_ORDEN_HOSPITALIZACION;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Orden_Hospitalizacion
+        {
+            get
+            {
+                return _ID_Orden_Hospitalizacion;
+            }
+            set
+            {
+                if (_ID_Orden_Hospitalizacion != value)
+                {
+                    OnID_Orden_HospitalizacionChanging(value);
+                    ReportPropertyChanging("ID_Orden_Hospitalizacion");
+                    _ID_Orden_Hospitalizacion = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Orden_Hospitalizacion");
+                    OnID_Orden_HospitalizacionChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Orden_Hospitalizacion;
+        partial void OnID_Orden_HospitalizacionChanging(global::System.Int32 value);
+        partial void OnID_Orden_HospitalizacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FechaOrden
+        {
+            get
+            {
+                return _FechaOrden;
+            }
+            set
+            {
+                OnFechaOrdenChanging(value);
+                ReportPropertyChanging("FechaOrden");
+                _FechaOrden = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaOrden");
+                OnFechaOrdenChanged();
+            }
+        }
+        private global::System.DateTime _FechaOrden;
+        partial void OnFechaOrdenChanging(global::System.DateTime value);
+        partial void OnFechaOrdenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Prevision
+        {
+            get
+            {
+                return _Prevision;
+            }
+            set
+            {
+                OnPrevisionChanging(value);
+                ReportPropertyChanging("Prevision");
+                _Prevision = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Prevision");
+                OnPrevisionChanged();
+            }
+        }
+        private global::System.String _Prevision;
+        partial void OnPrevisionChanging(global::System.String value);
+        partial void OnPrevisionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Motivo
+        {
+            get
+            {
+                return _Motivo;
+            }
+            set
+            {
+                OnMotivoChanging(value);
+                ReportPropertyChanging("Motivo");
+                _Motivo = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Motivo");
+                OnMotivoChanged();
+            }
+        }
+        private global::System.String _Motivo;
+        partial void OnMotivoChanging(global::System.String value);
+        partial void OnMotivoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Tratamiento
+        {
+            get
+            {
+                return _Tratamiento;
+            }
+            set
+            {
+                OnTratamientoChanging(value);
+                ReportPropertyChanging("Tratamiento");
+                _Tratamiento = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Tratamiento");
+                OnTratamientoChanged();
+            }
+        }
+        private global::System.String _Tratamiento;
+        partial void OnTratamientoChanging(global::System.String value);
+        partial void OnTratamientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 NroDiasHospitalizacion
+        {
+            get
+            {
+                return _NroDiasHospitalizacion;
+            }
+            set
+            {
+                OnNroDiasHospitalizacionChanging(value);
+                ReportPropertyChanging("NroDiasHospitalizacion");
+                _NroDiasHospitalizacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("NroDiasHospitalizacion");
+                OnNroDiasHospitalizacionChanged();
+            }
+        }
+        private global::System.Int32 _NroDiasHospitalizacion;
+        partial void OnNroDiasHospitalizacionChanging(global::System.Int32 value);
+        partial void OnNroDiasHospitalizacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ExamenesPreOperatorios
+        {
+            get
+            {
+                return _ExamenesPreOperatorios;
+            }
+            set
+            {
+                OnExamenesPreOperatoriosChanging(value);
+                ReportPropertyChanging("ExamenesPreOperatorios");
+                _ExamenesPreOperatorios = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ExamenesPreOperatorios");
+                OnExamenesPreOperatoriosChanged();
+            }
+        }
+        private global::System.String _ExamenesPreOperatorios;
+        partial void OnExamenesPreOperatoriosChanging(global::System.String value);
+        partial void OnExamenesPreOperatoriosChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_MedicoTratante
+        {
+            get
+            {
+                return _ID_MedicoTratante;
+            }
+            set
+            {
+                OnID_MedicoTratanteChanging(value);
+                ReportPropertyChanging("ID_MedicoTratante");
+                _ID_MedicoTratante = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_MedicoTratante");
+                OnID_MedicoTratanteChanged();
+            }
+        }
+        private global::System.Int32 _ID_MedicoTratante;
+        partial void OnID_MedicoTratanteChanging(global::System.Int32 value);
+        partial void OnID_MedicoTratanteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_MedicoTurno
+        {
+            get
+            {
+                return _ID_MedicoTurno;
+            }
+            set
+            {
+                OnID_MedicoTurnoChanging(value);
+                ReportPropertyChanging("ID_MedicoTurno");
+                _ID_MedicoTurno = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_MedicoTurno");
+                OnID_MedicoTurnoChanged();
+            }
+        }
+        private global::System.Int32 _ID_MedicoTurno;
+        partial void OnID_MedicoTurnoChanging(global::System.Int32 value);
+        partial void OnID_MedicoTurnoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Paciente
+        {
+            get
+            {
+                return _ID_Paciente;
+            }
+            set
+            {
+                OnID_PacienteChanging(value);
+                ReportPropertyChanging("ID_Paciente");
+                _ID_Paciente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Paciente");
+                OnID_PacienteChanged();
+            }
+        }
+        private global::System.Int32 _ID_Paciente;
+        partial void OnID_PacienteChanging(global::System.Int32 value);
+        partial void OnID_PacienteChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -3689,75 +15522,279 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoMotivo
+        public global::System.Int32 ID_Motivo_Hospitalizacion
         {
             get
             {
-                return _CodigoMotivo;
+                return _ID_Motivo_Hospitalizacion;
             }
             set
             {
-                OnCodigoMotivoChanging(value);
-                ReportPropertyChanging("CodigoMotivo");
-                _CodigoMotivo = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoMotivo");
-                OnCodigoMotivoChanged();
+                OnID_Motivo_HospitalizacionChanging(value);
+                ReportPropertyChanging("ID_Motivo_Hospitalizacion");
+                _ID_Motivo_Hospitalizacion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Motivo_Hospitalizacion");
+                OnID_Motivo_HospitalizacionChanged();
             }
         }
-        private global::System.Int32 _CodigoMotivo;
-        partial void OnCodigoMotivoChanging(global::System.Int32 value);
-        partial void OnCodigoMotivoChanged();
+        private global::System.Int32 _ID_Motivo_Hospitalizacion;
+        partial void OnID_Motivo_HospitalizacionChanging(global::System.Int32 value);
+        partial void OnID_Motivo_HospitalizacionChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoConsulta
+        public global::System.Int32 ID_Consulta
         {
             get
             {
-                return _CodigoConsulta;
+                return _ID_Consulta;
             }
             set
             {
-                OnCodigoConsultaChanging(value);
-                ReportPropertyChanging("CodigoConsulta");
-                _CodigoConsulta = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoConsulta");
-                OnCodigoConsultaChanged();
+                OnID_ConsultaChanging(value);
+                ReportPropertyChanging("ID_Consulta");
+                _ID_Consulta = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Consulta");
+                OnID_ConsultaChanged();
             }
         }
-        private global::System.Int32 _CodigoConsulta;
-        partial void OnCodigoConsultaChanging(global::System.Int32 value);
-        partial void OnCodigoConsultaChanged();
+        private global::System.Int32 _ID_Consulta;
+        partial void OnID_ConsultaChanging(global::System.Int32 value);
+        partial void OnID_ConsultaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Local
+        {
+            get
+            {
+                return _ID_Local;
+            }
+            set
+            {
+                OnID_LocalChanging(value);
+                ReportPropertyChanging("ID_Local");
+                _ID_Local = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Local");
+                OnID_LocalChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Local;
+        partial void OnID_LocalChanging(Nullable<global::System.Int32> value);
+        partial void OnID_LocalChanged();
 
         #endregion
+
     
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_HOSPITALIZACION_TB_Consulta", "TB_CONSULTA")]
+        public TB_CONSULTA TB_CONSULTA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTA>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_Consulta", "TB_CONSULTA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTA>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_Consulta", "TB_CONSULTA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_CONSULTA> TB_CONSULTAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTA>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_Consulta", "TB_CONSULTA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_CONSULTA>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_Consulta", "TB_CONSULTA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ORDEN_HOSPITALIZACION", "TB_HOJA_INGRESO_HOSPITALIZACION")]
+        public EntityCollection<TB_HOJA_INGRESO_HOSPITALIZACION> TB_HOJA_INGRESO_HOSPITALIZACION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_HOJA_INGRESO_HOSPITALIZACION>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ORDEN_HOSPITALIZACION", "TB_HOJA_INGRESO_HOSPITALIZACION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_HOJA_INGRESO_HOSPITALIZACION>("DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ORDEN_HOSPITALIZACION", "TB_HOJA_INGRESO_HOSPITALIZACION", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_HOSPITALIZACION_TB_LOCAL", "TB_LOCAL")]
+        public TB_LOCAL TB_LOCAL
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_LOCAL>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_LOCAL", "TB_LOCAL").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_LOCAL>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_LOCAL", "TB_LOCAL").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_LOCAL> TB_LOCALReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_LOCAL>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_LOCAL", "TB_LOCAL");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_LOCAL>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_LOCAL", "TB_LOCAL", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_HOSPITALIZACION_TB_MOTIVO_HOSPITALIZACION", "TB_MOTIVO_HOSPITALIZACION")]
+        public TB_MOTIVO_HOSPITALIZACION TB_MOTIVO_HOSPITALIZACION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MOTIVO_HOSPITALIZACION>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_MOTIVO_HOSPITALIZACION", "TB_MOTIVO_HOSPITALIZACION").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MOTIVO_HOSPITALIZACION>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_MOTIVO_HOSPITALIZACION", "TB_MOTIVO_HOSPITALIZACION").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_MOTIVO_HOSPITALIZACION> TB_MOTIVO_HOSPITALIZACIONReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MOTIVO_HOSPITALIZACION>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_MOTIVO_HOSPITALIZACION", "TB_MOTIVO_HOSPITALIZACION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MOTIVO_HOSPITALIZACION>("DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_MOTIVO_HOSPITALIZACION", "TB_MOTIVO_HOSPITALIZACION", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Orden_Hospitalizacion56", "TB_PACIENTE")]
+        public TB_PACIENTE TB_PACIENTE
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Orden_Hospitalizacion56", "TB_PACIENTE").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Orden_Hospitalizacion56", "TB_PACIENTE").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_PACIENTE> TB_PACIENTEReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Orden_Hospitalizacion56", "TB_PACIENTE");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Orden_Hospitalizacion56", "TB_PACIENTE", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Paciente")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_ORDEN_INTERNA")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Paciente : EntityObject
+    public partial class TB_ORDEN_INTERNA : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Paciente.
+        /// Crear un nuevo objeto TB_ORDEN_INTERNA.
         /// </summary>
-        /// <param name="codigoPaciente">Valor inicial de la propiedad CodigoPaciente.</param>
-        public static TB_Paciente CreateTB_Paciente(global::System.Int32 codigoPaciente)
+        /// <param name="iD_Orden_Interna">Valor inicial de la propiedad ID_Orden_Interna.</param>
+        public static TB_ORDEN_INTERNA CreateTB_ORDEN_INTERNA(global::System.Int32 iD_Orden_Interna)
         {
-            TB_Paciente tB_Paciente = new TB_Paciente();
-            tB_Paciente.CodigoPaciente = codigoPaciente;
-            return tB_Paciente;
+            TB_ORDEN_INTERNA tB_ORDEN_INTERNA = new TB_ORDEN_INTERNA();
+            tB_ORDEN_INTERNA.ID_Orden_Interna = iD_Orden_Interna;
+            return tB_ORDEN_INTERNA;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -3765,51 +15802,1477 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoPaciente
+        public global::System.Int32 ID_Orden_Interna
         {
             get
             {
-                return _CodigoPaciente;
+                return _ID_Orden_Interna;
             }
             set
             {
-                if (_CodigoPaciente != value)
+                if (_ID_Orden_Interna != value)
                 {
-                    OnCodigoPacienteChanging(value);
-                    ReportPropertyChanging("CodigoPaciente");
-                    _CodigoPaciente = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("CodigoPaciente");
-                    OnCodigoPacienteChanged();
+                    OnID_Orden_InternaChanging(value);
+                    ReportPropertyChanging("ID_Orden_Interna");
+                    _ID_Orden_Interna = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Orden_Interna");
+                    OnID_Orden_InternaChanged();
                 }
             }
         }
-        private global::System.Int32 _CodigoPaciente;
-        partial void OnCodigoPacienteChanging(global::System.Int32 value);
-        partial void OnCodigoPacienteChanged();
+        private global::System.Int32 _ID_Orden_Interna;
+        partial void OnID_Orden_InternaChanging(global::System.Int32 value);
+        partial void OnID_Orden_InternaChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String Nombres
+        public global::System.String ID_Tipo_Atencion
         {
             get
             {
-                return _Nombres;
+                return _ID_Tipo_Atencion;
             }
             set
             {
-                OnNombresChanging(value);
-                ReportPropertyChanging("Nombres");
-                _Nombres = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Nombres");
-                OnNombresChanged();
+                OnID_Tipo_AtencionChanging(value);
+                ReportPropertyChanging("ID_Tipo_Atencion");
+                _ID_Tipo_Atencion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ID_Tipo_Atencion");
+                OnID_Tipo_AtencionChanged();
             }
         }
-        private global::System.String _Nombres;
-        partial void OnNombresChanging(global::System.String value);
-        partial void OnNombresChanged();
+        private global::System.String _ID_Tipo_Atencion;
+        partial void OnID_Tipo_AtencionChanging(global::System.String value);
+        partial void OnID_Tipo_AtencionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Paciente
+        {
+            get
+            {
+                return _ID_Paciente;
+            }
+            set
+            {
+                OnID_PacienteChanging(value);
+                ReportPropertyChanging("ID_Paciente");
+                _ID_Paciente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Paciente");
+                OnID_PacienteChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Paciente;
+        partial void OnID_PacienteChanging(Nullable<global::System.Int32> value);
+        partial void OnID_PacienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Historia
+        {
+            get
+            {
+                return _ID_Historia;
+            }
+            set
+            {
+                OnID_HistoriaChanging(value);
+                ReportPropertyChanging("ID_Historia");
+                _ID_Historia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Historia");
+                OnID_HistoriaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Historia;
+        partial void OnID_HistoriaChanging(Nullable<global::System.Int32> value);
+        partial void OnID_HistoriaChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_INTERNA_TB_HISTORIA_CLINICA", "TB_HISTORIA_CLINICA")]
+        public TB_HISTORIA_CLINICA TB_HISTORIA_CLINICA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_HISTORIA_CLINICA>("DB_SGHModel.FK_TB_ORDEN_INTERNA_TB_HISTORIA_CLINICA", "TB_HISTORIA_CLINICA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_HISTORIA_CLINICA>("DB_SGHModel.FK_TB_ORDEN_INTERNA_TB_HISTORIA_CLINICA", "TB_HISTORIA_CLINICA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_HISTORIA_CLINICA> TB_HISTORIA_CLINICAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_HISTORIA_CLINICA>("DB_SGHModel.FK_TB_ORDEN_INTERNA_TB_HISTORIA_CLINICA", "TB_HISTORIA_CLINICA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_HISTORIA_CLINICA>("DB_SGHModel.FK_TB_ORDEN_INTERNA_TB_HISTORIA_CLINICA", "TB_HISTORIA_CLINICA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_EXAMEN_MEDICO_TB_ORDEN_INTERNA", "TB_ORDEN_EXAMEN_MEDICO")]
+        public EntityCollection<TB_ORDEN_EXAMEN_MEDICO> TB_ORDEN_EXAMEN_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_ORDEN_INTERNA", "TB_ORDEN_EXAMEN_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_ORDEN_INTERNA", "TB_ORDEN_EXAMEN_MEDICO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_ORDEN_SERVICIO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_ORDEN_SERVICIO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_ORDEN_SERVICIO.
+        /// </summary>
+        /// <param name="iD_Orden_Servicio">Valor inicial de la propiedad ID_Orden_Servicio.</param>
+        public static TB_ORDEN_SERVICIO CreateTB_ORDEN_SERVICIO(global::System.Int32 iD_Orden_Servicio)
+        {
+            TB_ORDEN_SERVICIO tB_ORDEN_SERVICIO = new TB_ORDEN_SERVICIO();
+            tB_ORDEN_SERVICIO.ID_Orden_Servicio = iD_Orden_Servicio;
+            return tB_ORDEN_SERVICIO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Orden_Servicio
+        {
+            get
+            {
+                return _ID_Orden_Servicio;
+            }
+            set
+            {
+                if (_ID_Orden_Servicio != value)
+                {
+                    OnID_Orden_ServicioChanging(value);
+                    ReportPropertyChanging("ID_Orden_Servicio");
+                    _ID_Orden_Servicio = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Orden_Servicio");
+                    OnID_Orden_ServicioChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Orden_Servicio;
+        partial void OnID_Orden_ServicioChanging(global::System.Int32 value);
+        partial void OnID_Orden_ServicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ConceptoPago
+        {
+            get
+            {
+                return _ConceptoPago;
+            }
+            set
+            {
+                OnConceptoPagoChanging(value);
+                ReportPropertyChanging("ConceptoPago");
+                _ConceptoPago = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ConceptoPago");
+                OnConceptoPagoChanged();
+            }
+        }
+        private global::System.String _ConceptoPago;
+        partial void OnConceptoPagoChanging(global::System.String value);
+        partial void OnConceptoPagoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Cita
+        {
+            get
+            {
+                return _ID_Cita;
+            }
+            set
+            {
+                OnID_CitaChanging(value);
+                ReportPropertyChanging("ID_Cita");
+                _ID_Cita = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Cita");
+                OnID_CitaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Cita;
+        partial void OnID_CitaChanging(Nullable<global::System.Int32> value);
+        partial void OnID_CitaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaSolicitud
+        {
+            get
+            {
+                return _FechaSolicitud;
+            }
+            set
+            {
+                OnFechaSolicitudChanging(value);
+                ReportPropertyChanging("FechaSolicitud");
+                _FechaSolicitud = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaSolicitud");
+                OnFechaSolicitudChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaSolicitud;
+        partial void OnFechaSolicitudChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaSolicitudChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Single> Subtotal
+        {
+            get
+            {
+                return _Subtotal;
+            }
+            set
+            {
+                OnSubtotalChanging(value);
+                ReportPropertyChanging("Subtotal");
+                _Subtotal = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Subtotal");
+                OnSubtotalChanged();
+            }
+        }
+        private Nullable<global::System.Single> _Subtotal;
+        partial void OnSubtotalChanging(Nullable<global::System.Single> value);
+        partial void OnSubtotalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Single> IGV
+        {
+            get
+            {
+                return _IGV;
+            }
+            set
+            {
+                OnIGVChanging(value);
+                ReportPropertyChanging("IGV");
+                _IGV = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IGV");
+                OnIGVChanged();
+            }
+        }
+        private Nullable<global::System.Single> _IGV;
+        partial void OnIGVChanging(Nullable<global::System.Single> value);
+        partial void OnIGVChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Single> Total
+        {
+            get
+            {
+                return _Total;
+            }
+            set
+            {
+                OnTotalChanging(value);
+                ReportPropertyChanging("Total");
+                _Total = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Total");
+                OnTotalChanged();
+            }
+        }
+        private Nullable<global::System.Single> _Total;
+        partial void OnTotalChanging(Nullable<global::System.Single> value);
+        partial void OnTotalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Orden_Examen_Medico
+        {
+            get
+            {
+                return _ID_Orden_Examen_Medico;
+            }
+            set
+            {
+                OnID_Orden_Examen_MedicoChanging(value);
+                ReportPropertyChanging("ID_Orden_Examen_Medico");
+                _ID_Orden_Examen_Medico = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Orden_Examen_Medico");
+                OnID_Orden_Examen_MedicoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Orden_Examen_Medico;
+        partial void OnID_Orden_Examen_MedicoChanging(Nullable<global::System.Int32> value);
+        partial void OnID_Orden_Examen_MedicoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String estado
+        {
+            get
+            {
+                return _estado;
+            }
+            set
+            {
+                OnestadoChanging(value);
+                ReportPropertyChanging("estado");
+                _estado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("estado");
+                OnestadoChanged();
+            }
+        }
+        private global::System.String _estado;
+        partial void OnestadoChanging(global::System.String value);
+        partial void OnestadoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Orden_de_Pago50", "TB_CITA")]
+        public TB_CITA TB_CITA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CITA>("DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Pago50", "TB_CITA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CITA>("DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Pago50", "TB_CITA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_CITA> TB_CITAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CITA>("DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Pago50", "TB_CITA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_CITA>("DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Pago50", "TB_CITA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_DETORDENSERVICIO_TB_ORDEN_SERVICIO", "TB_DETORDENSERVICIO")]
+        public EntityCollection<TB_DETORDENSERVICIO> TB_DETORDENSERVICIO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_DETORDENSERVICIO>("DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_ORDEN_SERVICIO", "TB_DETORDENSERVICIO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_DETORDENSERVICIO>("DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_ORDEN_SERVICIO", "TB_DETORDENSERVICIO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_SERVICIO_TB_ORDEN_EXAMEN_MEDICO1", "TB_ORDEN_EXAMEN_MEDICO")]
+        public TB_ORDEN_EXAMEN_MEDICO TB_ORDEN_EXAMEN_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_SERVICIO_TB_ORDEN_EXAMEN_MEDICO1", "TB_ORDEN_EXAMEN_MEDICO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_SERVICIO_TB_ORDEN_EXAMEN_MEDICO1", "TB_ORDEN_EXAMEN_MEDICO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_ORDEN_EXAMEN_MEDICO> TB_ORDEN_EXAMEN_MEDICOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_SERVICIO_TB_ORDEN_EXAMEN_MEDICO1", "TB_ORDEN_EXAMEN_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_SERVICIO_TB_ORDEN_EXAMEN_MEDICO1", "TB_ORDEN_EXAMEN_MEDICO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_ORDEN_TRABAJO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_ORDEN_TRABAJO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_ORDEN_TRABAJO.
+        /// </summary>
+        /// <param name="iD_Orden_Trabajo">Valor inicial de la propiedad ID_Orden_Trabajo.</param>
+        public static TB_ORDEN_TRABAJO CreateTB_ORDEN_TRABAJO(global::System.Int32 iD_Orden_Trabajo)
+        {
+            TB_ORDEN_TRABAJO tB_ORDEN_TRABAJO = new TB_ORDEN_TRABAJO();
+            tB_ORDEN_TRABAJO.ID_Orden_Trabajo = iD_Orden_Trabajo;
+            return tB_ORDEN_TRABAJO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Orden_Trabajo
+        {
+            get
+            {
+                return _ID_Orden_Trabajo;
+            }
+            set
+            {
+                if (_ID_Orden_Trabajo != value)
+                {
+                    OnID_Orden_TrabajoChanging(value);
+                    ReportPropertyChanging("ID_Orden_Trabajo");
+                    _ID_Orden_Trabajo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Orden_Trabajo");
+                    OnID_Orden_TrabajoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Orden_Trabajo;
+        partial void OnID_Orden_TrabajoChanging(global::System.Int32 value);
+        partial void OnID_Orden_TrabajoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Creacion
+        {
+            get
+            {
+                return _GM_Fecha_Creacion;
+            }
+            set
+            {
+                OnGM_Fecha_CreacionChanging(value);
+                ReportPropertyChanging("GM_Fecha_Creacion");
+                _GM_Fecha_Creacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Creacion");
+                OnGM_Fecha_CreacionChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Creacion;
+        partial void OnGM_Fecha_CreacionChanging(global::System.String value);
+        partial void OnGM_Fecha_CreacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_CodigoSolicitante
+        {
+            get
+            {
+                return _GM_CodigoSolicitante;
+            }
+            set
+            {
+                OnGM_CodigoSolicitanteChanging(value);
+                ReportPropertyChanging("GM_CodigoSolicitante");
+                _GM_CodigoSolicitante = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_CodigoSolicitante");
+                OnGM_CodigoSolicitanteChanged();
+            }
+        }
+        private global::System.String _GM_CodigoSolicitante;
+        partial void OnGM_CodigoSolicitanteChanging(global::System.String value);
+        partial void OnGM_CodigoSolicitanteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Asignacion
+        {
+            get
+            {
+                return _GM_Fecha_Asignacion;
+            }
+            set
+            {
+                OnGM_Fecha_AsignacionChanging(value);
+                ReportPropertyChanging("GM_Fecha_Asignacion");
+                _GM_Fecha_Asignacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Asignacion");
+                OnGM_Fecha_AsignacionChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Asignacion;
+        partial void OnGM_Fecha_AsignacionChanging(global::System.String value);
+        partial void OnGM_Fecha_AsignacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Inicio
+        {
+            get
+            {
+                return _GM_Fecha_Inicio;
+            }
+            set
+            {
+                OnGM_Fecha_InicioChanging(value);
+                ReportPropertyChanging("GM_Fecha_Inicio");
+                _GM_Fecha_Inicio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Inicio");
+                OnGM_Fecha_InicioChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Inicio;
+        partial void OnGM_Fecha_InicioChanging(global::System.String value);
+        partial void OnGM_Fecha_InicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Prioridad
+        {
+            get
+            {
+                return _GM_Prioridad;
+            }
+            set
+            {
+                OnGM_PrioridadChanging(value);
+                ReportPropertyChanging("GM_Prioridad");
+                _GM_Prioridad = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Prioridad");
+                OnGM_PrioridadChanged();
+            }
+        }
+        private global::System.String _GM_Prioridad;
+        partial void OnGM_PrioridadChanging(global::System.String value);
+        partial void OnGM_PrioridadChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Fin
+        {
+            get
+            {
+                return _GM_Fecha_Fin;
+            }
+            set
+            {
+                OnGM_Fecha_FinChanging(value);
+                ReportPropertyChanging("GM_Fecha_Fin");
+                _GM_Fecha_Fin = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Fin");
+                OnGM_Fecha_FinChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Fin;
+        partial void OnGM_Fecha_FinChanging(global::System.String value);
+        partial void OnGM_Fecha_FinChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_TiempoAprox
+        {
+            get
+            {
+                return _GM_TiempoAprox;
+            }
+            set
+            {
+                OnGM_TiempoAproxChanging(value);
+                ReportPropertyChanging("GM_TiempoAprox");
+                _GM_TiempoAprox = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_TiempoAprox");
+                OnGM_TiempoAproxChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_TiempoAprox;
+        partial void OnGM_TiempoAproxChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_TiempoAproxChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Indicaciones
+        {
+            get
+            {
+                return _GM_Indicaciones;
+            }
+            set
+            {
+                OnGM_IndicacionesChanging(value);
+                ReportPropertyChanging("GM_Indicaciones");
+                _GM_Indicaciones = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Indicaciones");
+                OnGM_IndicacionesChanged();
+            }
+        }
+        private global::System.String _GM_Indicaciones;
+        partial void OnGM_IndicacionesChanging(global::System.String value);
+        partial void OnGM_IndicacionesChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Tipo_Atencion
+        {
+            get
+            {
+                return _GM_Tipo_Atencion;
+            }
+            set
+            {
+                OnGM_Tipo_AtencionChanging(value);
+                ReportPropertyChanging("GM_Tipo_Atencion");
+                _GM_Tipo_Atencion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Tipo_Atencion");
+                OnGM_Tipo_AtencionChanged();
+            }
+        }
+        private global::System.String _GM_Tipo_Atencion;
+        partial void OnGM_Tipo_AtencionChanging(global::System.String value);
+        partial void OnGM_Tipo_AtencionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_Estado
+        {
+            get
+            {
+                return _GM_Estado;
+            }
+            set
+            {
+                OnGM_EstadoChanging(value);
+                ReportPropertyChanging("GM_Estado");
+                _GM_Estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_Estado");
+                OnGM_EstadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_Estado;
+        partial void OnGM_EstadoChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_EstadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Moti_Recha_Acepta
+        {
+            get
+            {
+                return _GM_Moti_Recha_Acepta;
+            }
+            set
+            {
+                OnGM_Moti_Recha_AceptaChanging(value);
+                ReportPropertyChanging("GM_Moti_Recha_Acepta");
+                _GM_Moti_Recha_Acepta = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Moti_Recha_Acepta");
+                OnGM_Moti_Recha_AceptaChanged();
+            }
+        }
+        private global::System.String _GM_Moti_Recha_Acepta;
+        partial void OnGM_Moti_Recha_AceptaChanging(global::System.String value);
+        partial void OnGM_Moti_Recha_AceptaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Origen
+        {
+            get
+            {
+                return _GM_Origen;
+            }
+            set
+            {
+                OnGM_OrigenChanging(value);
+                ReportPropertyChanging("GM_Origen");
+                _GM_Origen = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Origen");
+                OnGM_OrigenChanged();
+            }
+        }
+        private global::System.String _GM_Origen;
+        partial void OnGM_OrigenChanging(global::System.String value);
+        partial void OnGM_OrigenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Recha_Acepta
+        {
+            get
+            {
+                return _GM_Fecha_Recha_Acepta;
+            }
+            set
+            {
+                OnGM_Fecha_Recha_AceptaChanging(value);
+                ReportPropertyChanging("GM_Fecha_Recha_Acepta");
+                _GM_Fecha_Recha_Acepta = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Recha_Acepta");
+                OnGM_Fecha_Recha_AceptaChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Recha_Acepta;
+        partial void OnGM_Fecha_Recha_AceptaChanging(global::System.String value);
+        partial void OnGM_Fecha_Recha_AceptaChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_ORDEN___ID_Or__73852659", "TB_ORDEN_TRABAJO_DET")]
+        public EntityCollection<TB_ORDEN_TRABAJO_DET> TB_ORDEN_TRABAJO_DET
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ORDEN_TRABAJO_DET>("DB_SGHModel.FK__TB_ORDEN___ID_Or__73852659", "TB_ORDEN_TRABAJO_DET");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ORDEN_TRABAJO_DET>("DB_SGHModel.FK__TB_ORDEN___ID_Or__73852659", "TB_ORDEN_TRABAJO_DET", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_ORDEN_TRABAJO_DET")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_ORDEN_TRABAJO_DET : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_ORDEN_TRABAJO_DET.
+        /// </summary>
+        /// <param name="iD_Orden_Trabajo_Det">Valor inicial de la propiedad ID_Orden_Trabajo_Det.</param>
+        public static TB_ORDEN_TRABAJO_DET CreateTB_ORDEN_TRABAJO_DET(global::System.Int32 iD_Orden_Trabajo_Det)
+        {
+            TB_ORDEN_TRABAJO_DET tB_ORDEN_TRABAJO_DET = new TB_ORDEN_TRABAJO_DET();
+            tB_ORDEN_TRABAJO_DET.ID_Orden_Trabajo_Det = iD_Orden_Trabajo_Det;
+            return tB_ORDEN_TRABAJO_DET;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Orden_Trabajo_Det
+        {
+            get
+            {
+                return _ID_Orden_Trabajo_Det;
+            }
+            set
+            {
+                if (_ID_Orden_Trabajo_Det != value)
+                {
+                    OnID_Orden_Trabajo_DetChanging(value);
+                    ReportPropertyChanging("ID_Orden_Trabajo_Det");
+                    _ID_Orden_Trabajo_Det = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Orden_Trabajo_Det");
+                    OnID_Orden_Trabajo_DetChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Orden_Trabajo_Det;
+        partial void OnID_Orden_Trabajo_DetChanging(global::System.Int32 value);
+        partial void OnID_Orden_Trabajo_DetChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Orden_Trabajo
+        {
+            get
+            {
+                return _ID_Orden_Trabajo;
+            }
+            set
+            {
+                OnID_Orden_TrabajoChanging(value);
+                ReportPropertyChanging("ID_Orden_Trabajo");
+                _ID_Orden_Trabajo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Orden_Trabajo");
+                OnID_Orden_TrabajoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Orden_Trabajo;
+        partial void OnID_Orden_TrabajoChanging(Nullable<global::System.Int32> value);
+        partial void OnID_Orden_TrabajoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_Tiempo_Atencion
+        {
+            get
+            {
+                return _GM_Tiempo_Atencion;
+            }
+            set
+            {
+                OnGM_Tiempo_AtencionChanging(value);
+                ReportPropertyChanging("GM_Tiempo_Atencion");
+                _GM_Tiempo_Atencion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_Tiempo_Atencion");
+                OnGM_Tiempo_AtencionChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_Tiempo_Atencion;
+        partial void OnGM_Tiempo_AtencionChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_Tiempo_AtencionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Rechazo
+        {
+            get
+            {
+                return _GM_Fecha_Rechazo;
+            }
+            set
+            {
+                OnGM_Fecha_RechazoChanging(value);
+                ReportPropertyChanging("GM_Fecha_Rechazo");
+                _GM_Fecha_Rechazo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Rechazo");
+                OnGM_Fecha_RechazoChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Rechazo;
+        partial void OnGM_Fecha_RechazoChanging(global::System.String value);
+        partial void OnGM_Fecha_RechazoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Motivo_Rechazo
+        {
+            get
+            {
+                return _GM_Motivo_Rechazo;
+            }
+            set
+            {
+                OnGM_Motivo_RechazoChanging(value);
+                ReportPropertyChanging("GM_Motivo_Rechazo");
+                _GM_Motivo_Rechazo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Motivo_Rechazo");
+                OnGM_Motivo_RechazoChanged();
+            }
+        }
+        private global::System.String _GM_Motivo_Rechazo;
+        partial void OnGM_Motivo_RechazoChanging(global::System.String value);
+        partial void OnGM_Motivo_RechazoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_ORDEN___ID_Or__73852659", "TB_ORDEN_TRABAJO")]
+        public TB_ORDEN_TRABAJO TB_ORDEN_TRABAJO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_TRABAJO>("DB_SGHModel.FK__TB_ORDEN___ID_Or__73852659", "TB_ORDEN_TRABAJO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_TRABAJO>("DB_SGHModel.FK__TB_ORDEN___ID_Or__73852659", "TB_ORDEN_TRABAJO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_ORDEN_TRABAJO> TB_ORDEN_TRABAJOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_TRABAJO>("DB_SGHModel.FK__TB_ORDEN___ID_Or__73852659", "TB_ORDEN_TRABAJO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ORDEN_TRABAJO>("DB_SGHModel.FK__TB_ORDEN___ID_Or__73852659", "TB_ORDEN_TRABAJO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_PACIENTE")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_PACIENTE : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_PACIENTE.
+        /// </summary>
+        /// <param name="iD_Paciente">Valor inicial de la propiedad ID_Paciente.</param>
+        /// <param name="dni_paciente">Valor inicial de la propiedad dni_paciente.</param>
+        /// <param name="iD_TipoDocumento">Valor inicial de la propiedad ID_TipoDocumento.</param>
+        public static TB_PACIENTE CreateTB_PACIENTE(global::System.Int32 iD_Paciente, global::System.String dni_paciente, global::System.Int32 iD_TipoDocumento)
+        {
+            TB_PACIENTE tB_PACIENTE = new TB_PACIENTE();
+            tB_PACIENTE.ID_Paciente = iD_Paciente;
+            tB_PACIENTE.dni_paciente = dni_paciente;
+            tB_PACIENTE.ID_TipoDocumento = iD_TipoDocumento;
+            return tB_PACIENTE;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Paciente
+        {
+            get
+            {
+                return _ID_Paciente;
+            }
+            set
+            {
+                if (_ID_Paciente != value)
+                {
+                    OnID_PacienteChanging(value);
+                    ReportPropertyChanging("ID_Paciente");
+                    _ID_Paciente = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Paciente");
+                    OnID_PacienteChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Paciente;
+        partial void OnID_PacienteChanging(global::System.Int32 value);
+        partial void OnID_PacienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String dni_paciente
+        {
+            get
+            {
+                return _dni_paciente;
+            }
+            set
+            {
+                Ondni_pacienteChanging(value);
+                ReportPropertyChanging("dni_paciente");
+                _dni_paciente = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("dni_paciente");
+                Ondni_pacienteChanged();
+            }
+        }
+        private global::System.String _dni_paciente;
+        partial void Ondni_pacienteChanging(global::System.String value);
+        partial void Ondni_pacienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaNacimiento
+        {
+            get
+            {
+                return _FechaNacimiento;
+            }
+            set
+            {
+                OnFechaNacimientoChanging(value);
+                ReportPropertyChanging("FechaNacimiento");
+                _FechaNacimiento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaNacimiento");
+                OnFechaNacimientoChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaNacimiento;
+        partial void OnFechaNacimientoChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaNacimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Celular
+        {
+            get
+            {
+                return _Celular;
+            }
+            set
+            {
+                OnCelularChanging(value);
+                ReportPropertyChanging("Celular");
+                _Celular = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Celular");
+                OnCelularChanged();
+            }
+        }
+        private global::System.String _Celular;
+        partial void OnCelularChanging(global::System.String value);
+        partial void OnCelularChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String TelefonoDomicilio
+        {
+            get
+            {
+                return _TelefonoDomicilio;
+            }
+            set
+            {
+                OnTelefonoDomicilioChanging(value);
+                ReportPropertyChanging("TelefonoDomicilio");
+                _TelefonoDomicilio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("TelefonoDomicilio");
+                OnTelefonoDomicilioChanged();
+            }
+        }
+        private global::System.String _TelefonoDomicilio;
+        partial void OnTelefonoDomicilioChanging(global::System.String value);
+        partial void OnTelefonoDomicilioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Pais
+        {
+            get
+            {
+                return _ID_Pais;
+            }
+            set
+            {
+                OnID_PaisChanging(value);
+                ReportPropertyChanging("ID_Pais");
+                _ID_Pais = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Pais");
+                OnID_PaisChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Pais;
+        partial void OnID_PaisChanging(Nullable<global::System.Int32> value);
+        partial void OnID_PaisChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Departamento
+        {
+            get
+            {
+                return _ID_Departamento;
+            }
+            set
+            {
+                OnID_DepartamentoChanging(value);
+                ReportPropertyChanging("ID_Departamento");
+                _ID_Departamento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Departamento");
+                OnID_DepartamentoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Departamento;
+        partial void OnID_DepartamentoChanging(Nullable<global::System.Int32> value);
+        partial void OnID_DepartamentoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Provincia
+        {
+            get
+            {
+                return _ID_Provincia;
+            }
+            set
+            {
+                OnID_ProvinciaChanging(value);
+                ReportPropertyChanging("ID_Provincia");
+                _ID_Provincia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Provincia");
+                OnID_ProvinciaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Provincia;
+        partial void OnID_ProvinciaChanging(Nullable<global::System.Int32> value);
+        partial void OnID_ProvinciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Distrito
+        {
+            get
+            {
+                return _ID_Distrito;
+            }
+            set
+            {
+                OnID_DistritoChanging(value);
+                ReportPropertyChanging("ID_Distrito");
+                _ID_Distrito = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Distrito");
+                OnID_DistritoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Distrito;
+        partial void OnID_DistritoChanging(Nullable<global::System.Int32> value);
+        partial void OnID_DistritoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Direccion
+        {
+            get
+            {
+                return _Direccion;
+            }
+            set
+            {
+                OnDireccionChanging(value);
+                ReportPropertyChanging("Direccion");
+                _Direccion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Direccion");
+                OnDireccionChanged();
+            }
+        }
+        private global::System.String _Direccion;
+        partial void OnDireccionChanging(global::System.String value);
+        partial void OnDireccionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Sexo
+        {
+            get
+            {
+                return _ID_Sexo;
+            }
+            set
+            {
+                OnID_SexoChanging(value);
+                ReportPropertyChanging("ID_Sexo");
+                _ID_Sexo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Sexo");
+                OnID_SexoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Sexo;
+        partial void OnID_SexoChanging(Nullable<global::System.Int32> value);
+        partial void OnID_SexoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Ocupacion
+        {
+            get
+            {
+                return _Ocupacion;
+            }
+            set
+            {
+                OnOcupacionChanging(value);
+                ReportPropertyChanging("Ocupacion");
+                _Ocupacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Ocupacion");
+                OnOcupacionChanged();
+            }
+        }
+        private global::System.String _Ocupacion;
+        partial void OnOcupacionChanging(global::System.String value);
+        partial void OnOcupacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_TipoDocumento
+        {
+            get
+            {
+                return _ID_TipoDocumento;
+            }
+            set
+            {
+                OnID_TipoDocumentoChanging(value);
+                ReportPropertyChanging("ID_TipoDocumento");
+                _ID_TipoDocumento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_TipoDocumento");
+                OnID_TipoDocumentoChanged();
+            }
+        }
+        private global::System.Int32 _ID_TipoDocumento;
+        partial void OnID_TipoDocumentoChanging(global::System.Int32 value);
+        partial void OnID_TipoDocumentoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nombres
+        {
+            get
+            {
+                return _nombres;
+            }
+            set
+            {
+                OnnombresChanging(value);
+                ReportPropertyChanging("nombres");
+                _nombres = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombres");
+                OnnombresChanged();
+            }
+        }
+        private global::System.String _nombres;
+        partial void OnnombresChanging(global::System.String value);
+        partial void OnnombresChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -3864,122 +17327,51 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String Direccion
+        public Nullable<global::System.Int32> ID_EstadoCivil
         {
             get
             {
-                return _Direccion;
+                return _ID_EstadoCivil;
             }
             set
             {
-                OnDireccionChanging(value);
-                ReportPropertyChanging("Direccion");
-                _Direccion = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Direccion");
-                OnDireccionChanged();
+                OnID_EstadoCivilChanging(value);
+                ReportPropertyChanging("ID_EstadoCivil");
+                _ID_EstadoCivil = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_EstadoCivil");
+                OnID_EstadoCivilChanged();
             }
         }
-        private global::System.String _Direccion;
-        partial void OnDireccionChanging(global::System.String value);
-        partial void OnDireccionChanged();
+        private Nullable<global::System.Int32> _ID_EstadoCivil;
+        partial void OnID_EstadoCivilChanging(Nullable<global::System.Int32> value);
+        partial void OnID_EstadoCivilChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> FechaNacimiento
+        public global::System.String Correo
         {
             get
             {
-                return _FechaNacimiento;
+                return _Correo;
             }
             set
             {
-                OnFechaNacimientoChanging(value);
-                ReportPropertyChanging("FechaNacimiento");
-                _FechaNacimiento = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("FechaNacimiento");
-                OnFechaNacimientoChanged();
+                OnCorreoChanging(value);
+                ReportPropertyChanging("Correo");
+                _Correo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Correo");
+                OnCorreoChanged();
             }
         }
-        private Nullable<global::System.DateTime> _FechaNacimiento;
-        partial void OnFechaNacimientoChanging(Nullable<global::System.DateTime> value);
-        partial void OnFechaNacimientoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Telefono
-        {
-            get
-            {
-                return _Telefono;
-            }
-            set
-            {
-                OnTelefonoChanging(value);
-                ReportPropertyChanging("Telefono");
-                _Telefono = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Telefono");
-                OnTelefonoChanged();
-            }
-        }
-        private global::System.String _Telefono;
-        partial void OnTelefonoChanging(global::System.String value);
-        partial void OnTelefonoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String TelefonoCasa
-        {
-            get
-            {
-                return _TelefonoCasa;
-            }
-            set
-            {
-                OnTelefonoCasaChanging(value);
-                ReportPropertyChanging("TelefonoCasa");
-                _TelefonoCasa = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("TelefonoCasa");
-                OnTelefonoCasaChanged();
-            }
-        }
-        private global::System.String _TelefonoCasa;
-        partial void OnTelefonoCasaChanging(global::System.String value);
-        partial void OnTelefonoCasaChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Dni
-        {
-            get
-            {
-                return _Dni;
-            }
-            set
-            {
-                OnDniChanging(value);
-                ReportPropertyChanging("Dni");
-                _Dni = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Dni");
-                OnDniChanged();
-            }
-        }
-        private global::System.String _Dni;
-        partial void OnDniChanging(global::System.String value);
-        partial void OnDniChanged();
+        private global::System.String _Correo;
+        partial void OnCorreoChanging(global::System.String value);
+        partial void OnCorreoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -3989,18 +17381,18 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__Cita__CodigoPaci__37A5467C1", "TB_Cita")]
-        public EntityCollection<TB_Cita> TB_Cita
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Atencion_Emergencia_TB_PACIENTE", "TB_Atencion_Emergencia")]
+        public EntityCollection<TB_Atencion_Emergencia> TB_Atencion_Emergencia
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Cita>("DB_SGHModel.FK__Cita__CodigoPaci__37A5467C1", "TB_Cita");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Atencion_Emergencia>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_PACIENTE", "TB_Atencion_Emergencia");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Cita>("DB_SGHModel.FK__Cita__CodigoPaci__37A5467C1", "TB_Cita", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Atencion_Emergencia>("DB_SGHModel.FK_TB_Atencion_Emergencia_TB_PACIENTE", "TB_Atencion_Emergencia", value);
                 }
             }
         }
@@ -4011,18 +17403,18 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__3D5E1FD2", "TB_Consulta")]
-        public EntityCollection<TB_Consulta> TB_Consulta
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CARTA_GARANTIA_TB_PACIENTE", "TB_CARTA_GARANTIA")]
+        public EntityCollection<TB_CARTA_GARANTIA> TB_CARTA_GARANTIA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Consulta>("DB_SGHModel.FK__TB_Consul__Codig__3D5E1FD2", "TB_Consulta");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CARTA_GARANTIA>("DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_PACIENTE", "TB_CARTA_GARANTIA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Consulta>("DB_SGHModel.FK__TB_Consul__Codig__3D5E1FD2", "TB_Consulta", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CARTA_GARANTIA>("DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_PACIENTE", "TB_CARTA_GARANTIA", value);
                 }
             }
         }
@@ -4033,51 +17425,241 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Consul__Codig__403A8C7D", "TB_Consulta")]
-        public EntityCollection<TB_Consulta> TB_Consulta1
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_CO_GC_Cita55", "TB_CITA")]
+        public EntityCollection<TB_CITA> TB_CITA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Consulta>("DB_SGHModel.FK__TB_Consul__Codig__403A8C7D", "TB_Consulta");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CITA>("DB_SGHModel.FK_T_CL_CO_GC_Cita55", "TB_CITA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Consulta>("DB_SGHModel.FK__TB_Consul__Codig__403A8C7D", "TB_Consulta", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CITA>("DB_SGHModel.FK_T_CL_CO_GC_Cita55", "TB_CITA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Consulta_TB_PACIENTE", "TB_CONSULTA")]
+        public EntityCollection<TB_CONSULTA> TB_CONSULTA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CONSULTA>("DB_SGHModel.FK_TB_Consulta_TB_PACIENTE", "TB_CONSULTA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CONSULTA>("DB_SGHModel.FK_TB_Consulta_TB_PACIENTE", "TB_CONSULTA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_HISTORIA_CLINICA_TB_PACIENTE1", "TB_HISTORIA_CLINICA")]
+        public EntityCollection<TB_HISTORIA_CLINICA> TB_HISTORIA_CLINICA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_HISTORIA_CLINICA>("DB_SGHModel.FK_TB_HISTORIA_CLINICA_TB_PACIENTE1", "TB_HISTORIA_CLINICA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_HISTORIA_CLINICA>("DB_SGHModel.FK_TB_HISTORIA_CLINICA_TB_PACIENTE1", "TB_HISTORIA_CLINICA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Hoja_Ingreso_Emergencia54", "TB_HOJA_INGRESO_EMERGENCIA")]
+        public EntityCollection<TB_HOJA_INGRESO_EMERGENCIA> TB_HOJA_INGRESO_EMERGENCIA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_HOJA_INGRESO_EMERGENCIA>("DB_SGHModel.FK_T_CL_ES_GC_Hoja_Ingreso_Emergencia54", "TB_HOJA_INGRESO_EMERGENCIA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_HOJA_INGRESO_EMERGENCIA>("DB_SGHModel.FK_T_CL_ES_GC_Hoja_Ingreso_Emergencia54", "TB_HOJA_INGRESO_EMERGENCIA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Hooja_Ingreso_Hospitalizacion58", "TB_HOJA_INGRESO_HOSPITALIZACION")]
+        public EntityCollection<TB_HOJA_INGRESO_HOSPITALIZACION> TB_HOJA_INGRESO_HOSPITALIZACION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_HOJA_INGRESO_HOSPITALIZACION>("DB_SGHModel.FK_T_CL_ES_GC_Hooja_Ingreso_Hospitalizacion58", "TB_HOJA_INGRESO_HOSPITALIZACION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_HOJA_INGRESO_HOSPITALIZACION>("DB_SGHModel.FK_T_CL_ES_GC_Hooja_Ingreso_Hospitalizacion58", "TB_HOJA_INGRESO_HOSPITALIZACION", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Orden_de_Procedimiento53", "TB_ORDEN_DE_PROCEDIMIENTO")]
+        public EntityCollection<TB_ORDEN_DE_PROCEDIMIENTO> TB_ORDEN_DE_PROCEDIMIENTO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ORDEN_DE_PROCEDIMIENTO>("DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Procedimiento53", "TB_ORDEN_DE_PROCEDIMIENTO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ORDEN_DE_PROCEDIMIENTO>("DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Procedimiento53", "TB_ORDEN_DE_PROCEDIMIENTO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Orden_Hospitalizacion56", "TB_ORDEN_HOSPITALIZACION")]
+        public EntityCollection<TB_ORDEN_HOSPITALIZACION> TB_ORDEN_HOSPITALIZACION
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ORDEN_HOSPITALIZACION>("DB_SGHModel.FK_T_CL_ES_GC_Orden_Hospitalizacion56", "TB_ORDEN_HOSPITALIZACION");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ORDEN_HOSPITALIZACION>("DB_SGHModel.FK_T_CL_ES_GC_Orden_Hospitalizacion56", "TB_ORDEN_HOSPITALIZACION", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_CO_GC_Paciente_T_CL_ES_GC_TipoDocumento", "TB_TIPO_DOCUMENTO")]
+        public TB_TIPO_DOCUMENTO TB_TIPO_DOCUMENTO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_DOCUMENTO>("DB_SGHModel.FK_T_CL_CO_GC_Paciente_T_CL_ES_GC_TipoDocumento", "TB_TIPO_DOCUMENTO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_DOCUMENTO>("DB_SGHModel.FK_T_CL_CO_GC_Paciente_T_CL_ES_GC_TipoDocumento", "TB_TIPO_DOCUMENTO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_TIPO_DOCUMENTO> TB_TIPO_DOCUMENTOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_TIPO_DOCUMENTO>("DB_SGHModel.FK_T_CL_CO_GC_Paciente_T_CL_ES_GC_TipoDocumento", "TB_TIPO_DOCUMENTO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_TIPO_DOCUMENTO>("DB_SGHModel.FK_T_CL_CO_GC_Paciente_T_CL_ES_GC_TipoDocumento", "TB_TIPO_DOCUMENTO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Prescripcion_Medica57", "TB_PRESCRIPCION_MEDICA")]
+        public EntityCollection<TB_PRESCRIPCION_MEDICA> TB_PRESCRIPCION_MEDICA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_PRESCRIPCION_MEDICA>("DB_SGHModel.FK_T_CL_ES_GC_Prescripcion_Medica57", "TB_PRESCRIPCION_MEDICA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_PRESCRIPCION_MEDICA>("DB_SGHModel.FK_T_CL_ES_GC_Prescripcion_Medica57", "TB_PRESCRIPCION_MEDICA", value);
                 }
             }
         }
 
         #endregion
+
     }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Prescripcion_Medica")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_PLAN_MANTENIMIENTO")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Prescripcion_Medica : EntityObject
+    public partial class TB_PLAN_MANTENIMIENTO : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Prescripcion_Medica.
+        /// Crear un nuevo objeto TB_PLAN_MANTENIMIENTO.
         /// </summary>
-        /// <param name="codigoReceta">Valor inicial de la propiedad CodigoReceta.</param>
-        /// <param name="codigoMedicamento">Valor inicial de la propiedad CodigoMedicamento.</param>
-        /// <param name="codigoConsulta">Valor inicial de la propiedad CodigoConsulta.</param>
-        public static TB_Prescripcion_Medica CreateTB_Prescripcion_Medica(global::System.Int32 codigoReceta, global::System.Int32 codigoMedicamento, global::System.Int32 codigoConsulta)
+        /// <param name="iD_PlanMantenimiento">Valor inicial de la propiedad ID_PlanMantenimiento.</param>
+        public static TB_PLAN_MANTENIMIENTO CreateTB_PLAN_MANTENIMIENTO(global::System.Int32 iD_PlanMantenimiento)
         {
-            TB_Prescripcion_Medica tB_Prescripcion_Medica = new TB_Prescripcion_Medica();
-            tB_Prescripcion_Medica.CodigoReceta = codigoReceta;
-            tB_Prescripcion_Medica.CodigoMedicamento = codigoMedicamento;
-            tB_Prescripcion_Medica.CodigoConsulta = codigoConsulta;
-            return tB_Prescripcion_Medica;
+            TB_PLAN_MANTENIMIENTO tB_PLAN_MANTENIMIENTO = new TB_PLAN_MANTENIMIENTO();
+            tB_PLAN_MANTENIMIENTO.ID_PlanMantenimiento = iD_PlanMantenimiento;
+            return tB_PLAN_MANTENIMIENTO;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -4085,27 +17667,312 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoReceta
+        public global::System.Int32 ID_PlanMantenimiento
         {
             get
             {
-                return _CodigoReceta;
+                return _ID_PlanMantenimiento;
             }
             set
             {
-                if (_CodigoReceta != value)
+                if (_ID_PlanMantenimiento != value)
                 {
-                    OnCodigoRecetaChanging(value);
-                    ReportPropertyChanging("CodigoReceta");
-                    _CodigoReceta = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("CodigoReceta");
-                    OnCodigoRecetaChanged();
+                    OnID_PlanMantenimientoChanging(value);
+                    ReportPropertyChanging("ID_PlanMantenimiento");
+                    _ID_PlanMantenimiento = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_PlanMantenimiento");
+                    OnID_PlanMantenimientoChanged();
                 }
             }
         }
-        private global::System.Int32 _CodigoReceta;
-        partial void OnCodigoRecetaChanging(global::System.Int32 value);
-        partial void OnCodigoRecetaChanged();
+        private global::System.Int32 _ID_PlanMantenimiento;
+        partial void OnID_PlanMantenimientoChanging(global::System.Int32 value);
+        partial void OnID_PlanMantenimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Creacion
+        {
+            get
+            {
+                return _GM_Fecha_Creacion;
+            }
+            set
+            {
+                OnGM_Fecha_CreacionChanging(value);
+                ReportPropertyChanging("GM_Fecha_Creacion");
+                _GM_Fecha_Creacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Creacion");
+                OnGM_Fecha_CreacionChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Creacion;
+        partial void OnGM_Fecha_CreacionChanging(global::System.String value);
+        partial void OnGM_Fecha_CreacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Periodo_Inicio
+        {
+            get
+            {
+                return _GM_Periodo_Inicio;
+            }
+            set
+            {
+                OnGM_Periodo_InicioChanging(value);
+                ReportPropertyChanging("GM_Periodo_Inicio");
+                _GM_Periodo_Inicio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Periodo_Inicio");
+                OnGM_Periodo_InicioChanged();
+            }
+        }
+        private global::System.String _GM_Periodo_Inicio;
+        partial void OnGM_Periodo_InicioChanging(global::System.String value);
+        partial void OnGM_Periodo_InicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Periodo_Final
+        {
+            get
+            {
+                return _GM_Periodo_Final;
+            }
+            set
+            {
+                OnGM_Periodo_FinalChanging(value);
+                ReportPropertyChanging("GM_Periodo_Final");
+                _GM_Periodo_Final = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Periodo_Final");
+                OnGM_Periodo_FinalChanged();
+            }
+        }
+        private global::System.String _GM_Periodo_Final;
+        partial void OnGM_Periodo_FinalChanging(global::System.String value);
+        partial void OnGM_Periodo_FinalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_Estado
+        {
+            get
+            {
+                return _GM_Estado;
+            }
+            set
+            {
+                OnGM_EstadoChanging(value);
+                ReportPropertyChanging("GM_Estado");
+                _GM_Estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_Estado");
+                OnGM_EstadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_Estado;
+        partial void OnGM_EstadoChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_EstadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_Codigo_Plan
+        {
+            get
+            {
+                return _GM_Codigo_Plan;
+            }
+            set
+            {
+                OnGM_Codigo_PlanChanging(value);
+                ReportPropertyChanging("GM_Codigo_Plan");
+                _GM_Codigo_Plan = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_Codigo_Plan");
+                OnGM_Codigo_PlanChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_Codigo_Plan;
+        partial void OnGM_Codigo_PlanChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_Codigo_PlanChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_PRESCRIPCION_MEDICA")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_PRESCRIPCION_MEDICA : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_PRESCRIPCION_MEDICA.
+        /// </summary>
+        /// <param name="iD_Prescripcion_Medica">Valor inicial de la propiedad ID_Prescripcion_Medica.</param>
+        /// <param name="gA_FechaPrescripcion">Valor inicial de la propiedad GA_FechaPrescripcion.</param>
+        /// <param name="gA_Doctor">Valor inicial de la propiedad GA_Doctor.</param>
+        /// <param name="iD_Paciente">Valor inicial de la propiedad ID_Paciente.</param>
+        /// <param name="iD_Medico">Valor inicial de la propiedad ID_Medico.</param>
+        /// <param name="iD_Medicamento">Valor inicial de la propiedad ID_Medicamento.</param>
+        /// <param name="iD_Consulta">Valor inicial de la propiedad ID_Consulta.</param>
+        public static TB_PRESCRIPCION_MEDICA CreateTB_PRESCRIPCION_MEDICA(global::System.Int32 iD_Prescripcion_Medica, global::System.DateTime gA_FechaPrescripcion, global::System.String gA_Doctor, global::System.Int32 iD_Paciente, global::System.Int32 iD_Medico, global::System.Int32 iD_Medicamento, global::System.Int32 iD_Consulta)
+        {
+            TB_PRESCRIPCION_MEDICA tB_PRESCRIPCION_MEDICA = new TB_PRESCRIPCION_MEDICA();
+            tB_PRESCRIPCION_MEDICA.ID_Prescripcion_Medica = iD_Prescripcion_Medica;
+            tB_PRESCRIPCION_MEDICA.GA_FechaPrescripcion = gA_FechaPrescripcion;
+            tB_PRESCRIPCION_MEDICA.GA_Doctor = gA_Doctor;
+            tB_PRESCRIPCION_MEDICA.ID_Paciente = iD_Paciente;
+            tB_PRESCRIPCION_MEDICA.ID_Medico = iD_Medico;
+            tB_PRESCRIPCION_MEDICA.ID_Medicamento = iD_Medicamento;
+            tB_PRESCRIPCION_MEDICA.ID_Consulta = iD_Consulta;
+            return tB_PRESCRIPCION_MEDICA;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Prescripcion_Medica
+        {
+            get
+            {
+                return _ID_Prescripcion_Medica;
+            }
+            set
+            {
+                if (_ID_Prescripcion_Medica != value)
+                {
+                    OnID_Prescripcion_MedicaChanging(value);
+                    ReportPropertyChanging("ID_Prescripcion_Medica");
+                    _ID_Prescripcion_Medica = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Prescripcion_Medica");
+                    OnID_Prescripcion_MedicaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Prescripcion_Medica;
+        partial void OnID_Prescripcion_MedicaChanging(global::System.Int32 value);
+        partial void OnID_Prescripcion_MedicaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime GA_FechaPrescripcion
+        {
+            get
+            {
+                return _GA_FechaPrescripcion;
+            }
+            set
+            {
+                OnGA_FechaPrescripcionChanging(value);
+                ReportPropertyChanging("GA_FechaPrescripcion");
+                _GA_FechaPrescripcion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GA_FechaPrescripcion");
+                OnGA_FechaPrescripcionChanged();
+            }
+        }
+        private global::System.DateTime _GA_FechaPrescripcion;
+        partial void OnGA_FechaPrescripcionChanging(global::System.DateTime value);
+        partial void OnGA_FechaPrescripcionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String GA_Doctor
+        {
+            get
+            {
+                return _GA_Doctor;
+            }
+            set
+            {
+                OnGA_DoctorChanging(value);
+                ReportPropertyChanging("GA_Doctor");
+                _GA_Doctor = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("GA_Doctor");
+                OnGA_DoctorChanged();
+            }
+        }
+        private global::System.String _GA_Doctor;
+        partial void OnGA_DoctorChanging(global::System.String value);
+        partial void OnGA_DoctorChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Paciente
+        {
+            get
+            {
+                return _ID_Paciente;
+            }
+            set
+            {
+                OnID_PacienteChanging(value);
+                ReportPropertyChanging("ID_Paciente");
+                _ID_Paciente = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Paciente");
+                OnID_PacienteChanged();
+            }
+        }
+        private global::System.Int32 _ID_Paciente;
+        partial void OnID_PacienteChanging(global::System.Int32 value);
+        partial void OnID_PacienteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Medico
+        {
+            get
+            {
+                return _ID_Medico;
+            }
+            set
+            {
+                OnID_MedicoChanging(value);
+                ReportPropertyChanging("ID_Medico");
+                _ID_Medico = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Medico");
+                OnID_MedicoChanged();
+            }
+        }
+        private global::System.Int32 _ID_Medico;
+        partial void OnID_MedicoChanging(global::System.Int32 value);
+        partial void OnID_MedicoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -4160,50 +18027,51 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoMedicamento
+        public global::System.Int32 ID_Medicamento
         {
             get
             {
-                return _CodigoMedicamento;
+                return _ID_Medicamento;
             }
             set
             {
-                OnCodigoMedicamentoChanging(value);
-                ReportPropertyChanging("CodigoMedicamento");
-                _CodigoMedicamento = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoMedicamento");
-                OnCodigoMedicamentoChanged();
+                OnID_MedicamentoChanging(value);
+                ReportPropertyChanging("ID_Medicamento");
+                _ID_Medicamento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Medicamento");
+                OnID_MedicamentoChanged();
             }
         }
-        private global::System.Int32 _CodigoMedicamento;
-        partial void OnCodigoMedicamentoChanging(global::System.Int32 value);
-        partial void OnCodigoMedicamentoChanged();
+        private global::System.Int32 _ID_Medicamento;
+        partial void OnID_MedicamentoChanging(global::System.Int32 value);
+        partial void OnID_MedicamentoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoConsulta
+        public global::System.Int32 ID_Consulta
         {
             get
             {
-                return _CodigoConsulta;
+                return _ID_Consulta;
             }
             set
             {
-                OnCodigoConsultaChanging(value);
-                ReportPropertyChanging("CodigoConsulta");
-                _CodigoConsulta = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CodigoConsulta");
-                OnCodigoConsultaChanged();
+                OnID_ConsultaChanging(value);
+                ReportPropertyChanging("ID_Consulta");
+                _ID_Consulta = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Consulta");
+                OnID_ConsultaChanged();
             }
         }
-        private global::System.Int32 _CodigoConsulta;
-        partial void OnCodigoConsultaChanging(global::System.Int32 value);
-        partial void OnCodigoConsultaChanged();
+        private global::System.Int32 _ID_Consulta;
+        partial void OnID_ConsultaChanging(global::System.Int32 value);
+        partial void OnID_ConsultaChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -4213,16 +18081,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Prescr__Codig__46E78A0C", "TB_Consulta")]
-        public TB_Consulta TB_Consulta
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_PRESCRIPCION_MEDICA_TB_Consulta", "TB_CONSULTA")]
+        public TB_CONSULTA TB_CONSULTA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Prescr__Codig__46E78A0C", "TB_Consulta").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTA>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_Consulta", "TB_CONSULTA").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Prescr__Codig__46E78A0C", "TB_Consulta").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTA>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_Consulta", "TB_CONSULTA").Value = value;
             }
         }
         /// <summary>
@@ -4230,17 +18098,17 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Consulta> TB_ConsultaReference
+        public EntityReference<TB_CONSULTA> TB_CONSULTAReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Prescr__Codig__46E78A0C", "TB_Consulta");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CONSULTA>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_Consulta", "TB_CONSULTA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Prescr__Codig__46E78A0C", "TB_Consulta", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_CONSULTA>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_Consulta", "TB_CONSULTA", value);
                 }
             }
         }
@@ -4251,16 +18119,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Prescr__Codig__48CFD27E", "TB_Consulta")]
-        public TB_Consulta TB_Consulta1
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_PRESCRIPCION_MEDICA_TB_MEDICAMENTO", "TB_MEDICAMENTO")]
+        public TB_MEDICAMENTO TB_MEDICAMENTO
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Prescr__Codig__48CFD27E", "TB_Consulta").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICAMENTO>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_MEDICAMENTO", "TB_MEDICAMENTO").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Prescr__Codig__48CFD27E", "TB_Consulta").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICAMENTO>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_MEDICAMENTO", "TB_MEDICAMENTO").Value = value;
             }
         }
         /// <summary>
@@ -4268,17 +18136,17 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Consulta> TB_Consulta1Reference
+        public EntityReference<TB_MEDICAMENTO> TB_MEDICAMENTOReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Prescr__Codig__48CFD27E", "TB_Consulta");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICAMENTO>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_MEDICAMENTO", "TB_MEDICAMENTO");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Consulta>("DB_SGHModel.FK__TB_Prescr__Codig__48CFD27E", "TB_Consulta", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MEDICAMENTO>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_MEDICAMENTO", "TB_MEDICAMENTO", value);
                 }
             }
         }
@@ -4289,16 +18157,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Prescr__Codig__47DBAE45", "TB_Medicamento")]
-        public TB_Medicamento TB_Medicamento
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_PRESCRIPCION_MEDICA_00TB_MEDICO", "TB_MEDICO")]
+        public TB_MEDICO TB_MEDICO
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medicamento>("DB_SGHModel.FK__TB_Prescr__Codig__47DBAE45", "TB_Medicamento").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_00TB_MEDICO", "TB_MEDICO").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medicamento>("DB_SGHModel.FK__TB_Prescr__Codig__47DBAE45", "TB_Medicamento").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_00TB_MEDICO", "TB_MEDICO").Value = value;
             }
         }
         /// <summary>
@@ -4306,17 +18174,17 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Medicamento> TB_MedicamentoReference
+        public EntityReference<TB_MEDICO> TB_MEDICOReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medicamento>("DB_SGHModel.FK__TB_Prescr__Codig__47DBAE45", "TB_Medicamento");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_00TB_MEDICO", "TB_MEDICO");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Medicamento>("DB_SGHModel.FK__TB_Prescr__Codig__47DBAE45", "TB_Medicamento", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_00TB_MEDICO", "TB_MEDICO", value);
                 }
             }
         }
@@ -4327,16 +18195,16 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Prescr__Codig__49C3F6B7", "TB_Medicamento")]
-        public TB_Medicamento TB_Medicamento1
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GC_Prescripcion_Medica57", "TB_PACIENTE")]
+        public TB_PACIENTE TB_PACIENTE
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medicamento>("DB_SGHModel.FK__TB_Prescr__Codig__49C3F6B7", "TB_Medicamento").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Prescripcion_Medica57", "TB_PACIENTE").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medicamento>("DB_SGHModel.FK__TB_Prescr__Codig__49C3F6B7", "TB_Medicamento").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Prescripcion_Medica57", "TB_PACIENTE").Value = value;
             }
         }
         /// <summary>
@@ -4344,46 +18212,48 @@ namespace CI.SIC.DA
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<TB_Medicamento> TB_Medicamento1Reference
+        public EntityReference<TB_PACIENTE> TB_PACIENTEReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_Medicamento>("DB_SGHModel.FK__TB_Prescr__Codig__49C3F6B7", "TB_Medicamento");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Prescripcion_Medica57", "TB_PACIENTE");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_Medicamento>("DB_SGHModel.FK__TB_Prescr__Codig__49C3F6B7", "TB_Medicamento", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_PACIENTE>("DB_SGHModel.FK_T_CL_ES_GC_Prescripcion_Medica57", "TB_PACIENTE", value);
                 }
             }
         }
 
         #endregion
+
     }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Tipo_Analisis")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_PROGRAMACION_ATENCION_EXAMENES")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Tipo_Analisis : EntityObject
+    public partial class TB_PROGRAMACION_ATENCION_EXAMENES : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Tipo_Analisis.
+        /// Crear un nuevo objeto TB_PROGRAMACION_ATENCION_EXAMENES.
         /// </summary>
-        /// <param name="codigoTipoAnalisis">Valor inicial de la propiedad CodigoTipoAnalisis.</param>
-        public static TB_Tipo_Analisis CreateTB_Tipo_Analisis(global::System.Int32 codigoTipoAnalisis)
+        /// <param name="iD_Programacion">Valor inicial de la propiedad ID_Programacion.</param>
+        public static TB_PROGRAMACION_ATENCION_EXAMENES CreateTB_PROGRAMACION_ATENCION_EXAMENES(global::System.Int32 iD_Programacion)
         {
-            TB_Tipo_Analisis tB_Tipo_Analisis = new TB_Tipo_Analisis();
-            tB_Tipo_Analisis.CodigoTipoAnalisis = codigoTipoAnalisis;
-            return tB_Tipo_Analisis;
+            TB_PROGRAMACION_ATENCION_EXAMENES tB_PROGRAMACION_ATENCION_EXAMENES = new TB_PROGRAMACION_ATENCION_EXAMENES();
+            tB_PROGRAMACION_ATENCION_EXAMENES.ID_Programacion = iD_Programacion;
+            return tB_PROGRAMACION_ATENCION_EXAMENES;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -4391,27 +18261,1064 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 CodigoTipoAnalisis
+        public global::System.Int32 ID_Programacion
         {
             get
             {
-                return _CodigoTipoAnalisis;
+                return _ID_Programacion;
             }
             set
             {
-                if (_CodigoTipoAnalisis != value)
+                if (_ID_Programacion != value)
                 {
-                    OnCodigoTipoAnalisisChanging(value);
-                    ReportPropertyChanging("CodigoTipoAnalisis");
-                    _CodigoTipoAnalisis = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("CodigoTipoAnalisis");
-                    OnCodigoTipoAnalisisChanged();
+                    OnID_ProgramacionChanging(value);
+                    ReportPropertyChanging("ID_Programacion");
+                    _ID_Programacion = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Programacion");
+                    OnID_ProgramacionChanged();
                 }
             }
         }
-        private global::System.Int32 _CodigoTipoAnalisis;
-        partial void OnCodigoTipoAnalisisChanging(global::System.Int32 value);
-        partial void OnCodigoTipoAnalisisChanged();
+        private global::System.Int32 _ID_Programacion;
+        partial void OnID_ProgramacionChanging(global::System.Int32 value);
+        partial void OnID_ProgramacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_Orden_Examen_Medico
+        {
+            get
+            {
+                return _ID_Orden_Examen_Medico;
+            }
+            set
+            {
+                OnID_Orden_Examen_MedicoChanging(value);
+                ReportPropertyChanging("ID_Orden_Examen_Medico");
+                _ID_Orden_Examen_Medico = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Orden_Examen_Medico");
+                OnID_Orden_Examen_MedicoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_Orden_Examen_Medico;
+        partial void OnID_Orden_Examen_MedicoChanging(Nullable<global::System.Int32> value);
+        partial void OnID_Orden_Examen_MedicoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ID_MedicoTurno
+        {
+            get
+            {
+                return _ID_MedicoTurno;
+            }
+            set
+            {
+                OnID_MedicoTurnoChanging(value);
+                ReportPropertyChanging("ID_MedicoTurno");
+                _ID_MedicoTurno = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_MedicoTurno");
+                OnID_MedicoTurnoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ID_MedicoTurno;
+        partial void OnID_MedicoTurnoChanging(Nullable<global::System.Int32> value);
+        partial void OnID_MedicoTurnoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String estado
+        {
+            get
+            {
+                return _estado;
+            }
+            set
+            {
+                OnestadoChanging(value);
+                ReportPropertyChanging("estado");
+                _estado = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("estado");
+                OnestadoChanged();
+            }
+        }
+        private global::System.String _estado;
+        partial void OnestadoChanging(global::System.String value);
+        partial void OnestadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String comentarios
+        {
+            get
+            {
+                return _comentarios;
+            }
+            set
+            {
+                OncomentariosChanging(value);
+                ReportPropertyChanging("comentarios");
+                _comentarios = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("comentarios");
+                OncomentariosChanged();
+            }
+        }
+        private global::System.String _comentarios;
+        partial void OncomentariosChanging(global::System.String value);
+        partial void OncomentariosChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_MEDICO_DE_TURNO", "TB_MEDICO_DE_TURNO")]
+        public TB_MEDICO_DE_TURNO TB_MEDICO_DE_TURNO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO_DE_TURNO>("DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_MEDICO_DE_TURNO", "TB_MEDICO_DE_TURNO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO_DE_TURNO>("DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_MEDICO_DE_TURNO", "TB_MEDICO_DE_TURNO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_MEDICO_DE_TURNO> TB_MEDICO_DE_TURNOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO_DE_TURNO>("DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_MEDICO_DE_TURNO", "TB_MEDICO_DE_TURNO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MEDICO_DE_TURNO>("DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_MEDICO_DE_TURNO", "TB_MEDICO_DE_TURNO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_ORDEN_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO")]
+        public TB_ORDEN_EXAMEN_MEDICO TB_ORDEN_EXAMEN_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_ORDEN_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_ORDEN_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_ORDEN_EXAMEN_MEDICO> TB_ORDEN_EXAMEN_MEDICOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_ORDEN_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_ORDEN_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_REQUISITO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_REQUISITO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_REQUISITO.
+        /// </summary>
+        /// <param name="iD_Requisito">Valor inicial de la propiedad ID_Requisito.</param>
+        public static TB_REQUISITO CreateTB_REQUISITO(global::System.Int32 iD_Requisito)
+        {
+            TB_REQUISITO tB_REQUISITO = new TB_REQUISITO();
+            tB_REQUISITO.ID_Requisito = iD_Requisito;
+            return tB_REQUISITO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Requisito
+        {
+            get
+            {
+                return _ID_Requisito;
+            }
+            set
+            {
+                if (_ID_Requisito != value)
+                {
+                    OnID_RequisitoChanging(value);
+                    ReportPropertyChanging("ID_Requisito");
+                    _ID_Requisito = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Requisito");
+                    OnID_RequisitoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Requisito;
+        partial void OnID_RequisitoChanging(global::System.Int32 value);
+        partial void OnID_RequisitoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String descripcion
+        {
+            get
+            {
+                return _descripcion;
+            }
+            set
+            {
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
+            }
+        }
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "TB_CATALOGO_REQUISITO", "TB_CATALOGO_EXAMEN_MEDICO")]
+        public EntityCollection<TB_CATALOGO_EXAMEN_MEDICO> TB_CATALOGO_EXAMEN_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CATALOGO_EXAMEN_MEDICO>("DB_SGHModel.TB_CATALOGO_REQUISITO", "TB_CATALOGO_EXAMEN_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CATALOGO_EXAMEN_MEDICO>("DB_SGHModel.TB_CATALOGO_REQUISITO", "TB_CATALOGO_EXAMEN_MEDICO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_SERVICIO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_SERVICIO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_SERVICIO.
+        /// </summary>
+        /// <param name="iD_Servicio">Valor inicial de la propiedad ID_Servicio.</param>
+        public static TB_SERVICIO CreateTB_SERVICIO(global::System.Int32 iD_Servicio)
+        {
+            TB_SERVICIO tB_SERVICIO = new TB_SERVICIO();
+            tB_SERVICIO.ID_Servicio = iD_Servicio;
+            return tB_SERVICIO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Servicio
+        {
+            get
+            {
+                return _ID_Servicio;
+            }
+            set
+            {
+                if (_ID_Servicio != value)
+                {
+                    OnID_ServicioChanging(value);
+                    ReportPropertyChanging("ID_Servicio");
+                    _ID_Servicio = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Servicio");
+                    OnID_ServicioChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Servicio;
+        partial void OnID_ServicioChanging(global::System.Int32 value);
+        partial void OnID_ServicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_NombreServicio
+        {
+            get
+            {
+                return _GE_NombreServicio;
+            }
+            set
+            {
+                OnGE_NombreServicioChanging(value);
+                ReportPropertyChanging("GE_NombreServicio");
+                _GE_NombreServicio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_NombreServicio");
+                OnGE_NombreServicioChanged();
+            }
+        }
+        private global::System.String _GE_NombreServicio;
+        partial void OnGE_NombreServicioChanging(global::System.String value);
+        partial void OnGE_NombreServicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_DescripcionServicio
+        {
+            get
+            {
+                return _GE_DescripcionServicio;
+            }
+            set
+            {
+                OnGE_DescripcionServicioChanging(value);
+                ReportPropertyChanging("GE_DescripcionServicio");
+                _GE_DescripcionServicio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_DescripcionServicio");
+                OnGE_DescripcionServicioChanged();
+            }
+        }
+        private global::System.String _GE_DescripcionServicio;
+        partial void OnGE_DescripcionServicioChanging(global::System.String value);
+        partial void OnGE_DescripcionServicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Single> GE_CostoServicio
+        {
+            get
+            {
+                return _GE_CostoServicio;
+            }
+            set
+            {
+                OnGE_CostoServicioChanging(value);
+                ReportPropertyChanging("GE_CostoServicio");
+                _GE_CostoServicio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_CostoServicio");
+                OnGE_CostoServicioChanged();
+            }
+        }
+        private Nullable<global::System.Single> _GE_CostoServicio;
+        partial void OnGE_CostoServicioChanging(Nullable<global::System.Single> value);
+        partial void OnGE_CostoServicioChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_DETORDENSERVICIO_TB_SERVICIO", "TB_DETORDENSERVICIO")]
+        public EntityCollection<TB_DETORDENSERVICIO> TB_DETORDENSERVICIO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_DETORDENSERVICIO>("DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_SERVICIO", "TB_DETORDENSERVICIO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_DETORDENSERVICIO>("DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_SERVICIO", "TB_DETORDENSERVICIO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_SOLICITUD_MANTENIMIENTO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_SOLICITUD_MANTENIMIENTO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_SOLICITUD_MANTENIMIENTO.
+        /// </summary>
+        /// <param name="iD_SolicitudMantenimiento">Valor inicial de la propiedad ID_SolicitudMantenimiento.</param>
+        public static TB_SOLICITUD_MANTENIMIENTO CreateTB_SOLICITUD_MANTENIMIENTO(global::System.Int32 iD_SolicitudMantenimiento)
+        {
+            TB_SOLICITUD_MANTENIMIENTO tB_SOLICITUD_MANTENIMIENTO = new TB_SOLICITUD_MANTENIMIENTO();
+            tB_SOLICITUD_MANTENIMIENTO.ID_SolicitudMantenimiento = iD_SolicitudMantenimiento;
+            return tB_SOLICITUD_MANTENIMIENTO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_SolicitudMantenimiento
+        {
+            get
+            {
+                return _ID_SolicitudMantenimiento;
+            }
+            set
+            {
+                if (_ID_SolicitudMantenimiento != value)
+                {
+                    OnID_SolicitudMantenimientoChanging(value);
+                    ReportPropertyChanging("ID_SolicitudMantenimiento");
+                    _ID_SolicitudMantenimiento = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_SolicitudMantenimiento");
+                    OnID_SolicitudMantenimientoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_SolicitudMantenimiento;
+        partial void OnID_SolicitudMantenimientoChanging(global::System.Int32 value);
+        partial void OnID_SolicitudMantenimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Fecha_Creacion
+        {
+            get
+            {
+                return _GM_Fecha_Creacion;
+            }
+            set
+            {
+                OnGM_Fecha_CreacionChanging(value);
+                ReportPropertyChanging("GM_Fecha_Creacion");
+                _GM_Fecha_Creacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Fecha_Creacion");
+                OnGM_Fecha_CreacionChanged();
+            }
+        }
+        private global::System.String _GM_Fecha_Creacion;
+        partial void OnGM_Fecha_CreacionChanging(global::System.String value);
+        partial void OnGM_Fecha_CreacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_CodigoSolicitante
+        {
+            get
+            {
+                return _GM_CodigoSolicitante;
+            }
+            set
+            {
+                OnGM_CodigoSolicitanteChanging(value);
+                ReportPropertyChanging("GM_CodigoSolicitante");
+                _GM_CodigoSolicitante = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_CodigoSolicitante");
+                OnGM_CodigoSolicitanteChanged();
+            }
+        }
+        private global::System.String _GM_CodigoSolicitante;
+        partial void OnGM_CodigoSolicitanteChanging(global::System.String value);
+        partial void OnGM_CodigoSolicitanteChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_CodigoBeneficiario
+        {
+            get
+            {
+                return _GM_CodigoBeneficiario;
+            }
+            set
+            {
+                OnGM_CodigoBeneficiarioChanging(value);
+                ReportPropertyChanging("GM_CodigoBeneficiario");
+                _GM_CodigoBeneficiario = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_CodigoBeneficiario");
+                OnGM_CodigoBeneficiarioChanged();
+            }
+        }
+        private global::System.String _GM_CodigoBeneficiario;
+        partial void OnGM_CodigoBeneficiarioChanging(global::System.String value);
+        partial void OnGM_CodigoBeneficiarioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Codigo_CC
+        {
+            get
+            {
+                return _Codigo_CC;
+            }
+            set
+            {
+                OnCodigo_CCChanging(value);
+                ReportPropertyChanging("Codigo_CC");
+                _Codigo_CC = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Codigo_CC");
+                OnCodigo_CCChanged();
+            }
+        }
+        private global::System.String _Codigo_CC;
+        partial void OnCodigo_CCChanging(global::System.String value);
+        partial void OnCodigo_CCChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Tipo_Servicio
+        {
+            get
+            {
+                return _GM_Tipo_Servicio;
+            }
+            set
+            {
+                OnGM_Tipo_ServicioChanging(value);
+                ReportPropertyChanging("GM_Tipo_Servicio");
+                _GM_Tipo_Servicio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Tipo_Servicio");
+                OnGM_Tipo_ServicioChanged();
+            }
+        }
+        private global::System.String _GM_Tipo_Servicio;
+        partial void OnGM_Tipo_ServicioChanging(global::System.String value);
+        partial void OnGM_Tipo_ServicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Tipo_Mantenimiento
+        {
+            get
+            {
+                return _GM_Tipo_Mantenimiento;
+            }
+            set
+            {
+                OnGM_Tipo_MantenimientoChanging(value);
+                ReportPropertyChanging("GM_Tipo_Mantenimiento");
+                _GM_Tipo_Mantenimiento = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Tipo_Mantenimiento");
+                OnGM_Tipo_MantenimientoChanged();
+            }
+        }
+        private global::System.String _GM_Tipo_Mantenimiento;
+        partial void OnGM_Tipo_MantenimientoChanging(global::System.String value);
+        partial void OnGM_Tipo_MantenimientoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Numero_Equipo
+        {
+            get
+            {
+                return _GM_Numero_Equipo;
+            }
+            set
+            {
+                OnGM_Numero_EquipoChanging(value);
+                ReportPropertyChanging("GM_Numero_Equipo");
+                _GM_Numero_Equipo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Numero_Equipo");
+                OnGM_Numero_EquipoChanged();
+            }
+        }
+        private global::System.String _GM_Numero_Equipo;
+        partial void OnGM_Numero_EquipoChanging(global::System.String value);
+        partial void OnGM_Numero_EquipoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_FechaIncidencia
+        {
+            get
+            {
+                return _GM_FechaIncidencia;
+            }
+            set
+            {
+                OnGM_FechaIncidenciaChanging(value);
+                ReportPropertyChanging("GM_FechaIncidencia");
+                _GM_FechaIncidencia = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_FechaIncidencia");
+                OnGM_FechaIncidenciaChanged();
+            }
+        }
+        private global::System.String _GM_FechaIncidencia;
+        partial void OnGM_FechaIncidenciaChanging(global::System.String value);
+        partial void OnGM_FechaIncidenciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Detalle_Servicio
+        {
+            get
+            {
+                return _GM_Detalle_Servicio;
+            }
+            set
+            {
+                OnGM_Detalle_ServicioChanging(value);
+                ReportPropertyChanging("GM_Detalle_Servicio");
+                _GM_Detalle_Servicio = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Detalle_Servicio");
+                OnGM_Detalle_ServicioChanged();
+            }
+        }
+        private global::System.String _GM_Detalle_Servicio;
+        partial void OnGM_Detalle_ServicioChanging(global::System.String value);
+        partial void OnGM_Detalle_ServicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GM_Observacion
+        {
+            get
+            {
+                return _GM_Observacion;
+            }
+            set
+            {
+                OnGM_ObservacionChanging(value);
+                ReportPropertyChanging("GM_Observacion");
+                _GM_Observacion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GM_Observacion");
+                OnGM_ObservacionChanged();
+            }
+        }
+        private global::System.String _GM_Observacion;
+        partial void OnGM_ObservacionChanging(global::System.String value);
+        partial void OnGM_ObservacionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GM_Estado
+        {
+            get
+            {
+                return _GM_Estado;
+            }
+            set
+            {
+                OnGM_EstadoChanging(value);
+                ReportPropertyChanging("GM_Estado");
+                _GM_Estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GM_Estado");
+                OnGM_EstadoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GM_Estado;
+        partial void OnGM_EstadoChanging(Nullable<global::System.Int32> value);
+        partial void OnGM_EstadoChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_SOLICITUDES_DE_CAMBIO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_SOLICITUDES_DE_CAMBIO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_SOLICITUDES_DE_CAMBIO.
+        /// </summary>
+        /// <param name="iD_SolicitudCambio">Valor inicial de la propiedad ID_SolicitudCambio.</param>
+        /// <param name="iD_Empleado">Valor inicial de la propiedad ID_Empleado.</param>
+        public static TB_SOLICITUDES_DE_CAMBIO CreateTB_SOLICITUDES_DE_CAMBIO(global::System.Int32 iD_SolicitudCambio, global::System.Int32 iD_Empleado)
+        {
+            TB_SOLICITUDES_DE_CAMBIO tB_SOLICITUDES_DE_CAMBIO = new TB_SOLICITUDES_DE_CAMBIO();
+            tB_SOLICITUDES_DE_CAMBIO.ID_SolicitudCambio = iD_SolicitudCambio;
+            tB_SOLICITUDES_DE_CAMBIO.ID_Empleado = iD_Empleado;
+            return tB_SOLICITUDES_DE_CAMBIO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_SolicitudCambio
+        {
+            get
+            {
+                return _ID_SolicitudCambio;
+            }
+            set
+            {
+                if (_ID_SolicitudCambio != value)
+                {
+                    OnID_SolicitudCambioChanging(value);
+                    ReportPropertyChanging("ID_SolicitudCambio");
+                    _ID_SolicitudCambio = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_SolicitudCambio");
+                    OnID_SolicitudCambioChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_SolicitudCambio;
+        partial void OnID_SolicitudCambioChanging(global::System.Int32 value);
+        partial void OnID_SolicitudCambioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Empleado
+        {
+            get
+            {
+                return _ID_Empleado;
+            }
+            set
+            {
+                OnID_EmpleadoChanging(value);
+                ReportPropertyChanging("ID_Empleado");
+                _ID_Empleado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_Empleado");
+                OnID_EmpleadoChanged();
+            }
+        }
+        private global::System.Int32 _ID_Empleado;
+        partial void OnID_EmpleadoChanging(global::System.Int32 value);
+        partial void OnID_EmpleadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GE_Turno_Actual
+        {
+            get
+            {
+                return _GE_Turno_Actual;
+            }
+            set
+            {
+                OnGE_Turno_ActualChanging(value);
+                ReportPropertyChanging("GE_Turno_Actual");
+                _GE_Turno_Actual = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_Turno_Actual");
+                OnGE_Turno_ActualChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GE_Turno_Actual;
+        partial void OnGE_Turno_ActualChanging(Nullable<global::System.Int32> value);
+        partial void OnGE_Turno_ActualChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> GE_turno_cambiar
+        {
+            get
+            {
+                return _GE_turno_cambiar;
+            }
+            set
+            {
+                OnGE_turno_cambiarChanging(value);
+                ReportPropertyChanging("GE_turno_cambiar");
+                _GE_turno_cambiar = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_turno_cambiar");
+                OnGE_turno_cambiarChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _GE_turno_cambiar;
+        partial void OnGE_turno_cambiarChanging(Nullable<global::System.Int32> value);
+        partial void OnGE_turno_cambiarChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> GE_Fecha_cambio
+        {
+            get
+            {
+                return _GE_Fecha_cambio;
+            }
+            set
+            {
+                OnGE_Fecha_cambioChanging(value);
+                ReportPropertyChanging("GE_Fecha_cambio");
+                _GE_Fecha_cambio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_Fecha_cambio");
+                OnGE_Fecha_cambioChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _GE_Fecha_cambio;
+        partial void OnGE_Fecha_cambioChanging(Nullable<global::System.DateTime> value);
+        partial void OnGE_Fecha_cambioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String GE_APROBACION
+        {
+            get
+            {
+                return _GE_APROBACION;
+            }
+            set
+            {
+                OnGE_APROBACIONChanging(value);
+                ReportPropertyChanging("GE_APROBACION");
+                _GE_APROBACION = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("GE_APROBACION");
+                OnGE_APROBACIONChanged();
+            }
+        }
+        private global::System.String _GE_APROBACION;
+        partial void OnGE_APROBACIONChanging(global::System.String value);
+        partial void OnGE_APROBACIONChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_SOLICITUDES_DE_CAMBIO_TB_EMPLEADO", "TB_EMPLEADO")]
+        public TB_EMPLEADO TB_EMPLEADO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_EMPLEADO>("DB_SGHModel.FK_TB_SOLICITUDES_DE_CAMBIO_TB_EMPLEADO", "TB_EMPLEADO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_EMPLEADO>("DB_SGHModel.FK_TB_SOLICITUDES_DE_CAMBIO_TB_EMPLEADO", "TB_EMPLEADO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_EMPLEADO> TB_EMPLEADOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_EMPLEADO>("DB_SGHModel.FK_TB_SOLICITUDES_DE_CAMBIO_TB_EMPLEADO", "TB_EMPLEADO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_EMPLEADO>("DB_SGHModel.FK_TB_SOLICITUDES_DE_CAMBIO_TB_EMPLEADO", "TB_EMPLEADO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_TIPO_ANALISIS")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_TIPO_ANALISIS : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_TIPO_ANALISIS.
+        /// </summary>
+        /// <param name="iD_TipoAnalisis">Valor inicial de la propiedad ID_TipoAnalisis.</param>
+        public static TB_TIPO_ANALISIS CreateTB_TIPO_ANALISIS(global::System.Int32 iD_TipoAnalisis)
+        {
+            TB_TIPO_ANALISIS tB_TIPO_ANALISIS = new TB_TIPO_ANALISIS();
+            tB_TIPO_ANALISIS.ID_TipoAnalisis = iD_TipoAnalisis;
+            return tB_TIPO_ANALISIS;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_TipoAnalisis
+        {
+            get
+            {
+                return _ID_TipoAnalisis;
+            }
+            set
+            {
+                if (_ID_TipoAnalisis != value)
+                {
+                    OnID_TipoAnalisisChanging(value);
+                    ReportPropertyChanging("ID_TipoAnalisis");
+                    _ID_TipoAnalisis = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_TipoAnalisis");
+                    OnID_TipoAnalisisChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_TipoAnalisis;
+        partial void OnID_TipoAnalisisChanging(global::System.Int32 value);
+        partial void OnID_TipoAnalisisChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -4462,6 +19369,7 @@ namespace CI.SIC.DA
         partial void OnTipoResultadoChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -4471,69 +19379,49 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Analis__Codig__34C8D9D1", "TB_Analisis")]
-        public EntityCollection<TB_Analisis> TB_Analisis
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_ANALIS__ID_Ti__32AB8735", "TB_ANALISIS")]
+        public EntityCollection<TB_ANALISIS> TB_ANALISIS
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__34C8D9D1", "TB_Analisis");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ANALISIS>("DB_SGHModel.FK__TB_ANALIS__ID_Ti__32AB8735", "TB_ANALISIS");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__34C8D9D1", "TB_Analisis", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_Analis__Codig__36B12243", "TB_Analisis")]
-        public EntityCollection<TB_Analisis> TB_Analisis1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__36B12243", "TB_Analisis");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Analisis>("DB_SGHModel.FK__TB_Analis__Codig__36B12243", "TB_Analisis", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ANALISIS>("DB_SGHModel.FK__TB_ANALIS__ID_Ti__32AB8735", "TB_ANALISIS", value);
                 }
             }
         }
 
         #endregion
+
     }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_Turno_Citas")]
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_TIPO_DOCUMENTO")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class TB_Turno_Citas : EntityObject
+    public partial class TB_TIPO_DOCUMENTO : EntityObject
     {
         #region Método de generador
     
         /// <summary>
-        /// Crear un nuevo objeto TB_Turno_Citas.
+        /// Crear un nuevo objeto TB_TIPO_DOCUMENTO.
         /// </summary>
-        /// <param name="idTurno">Valor inicial de la propiedad IdTurno.</param>
-        public static TB_Turno_Citas CreateTB_Turno_Citas(global::System.Int32 idTurno)
+        /// <param name="iD_TipoDocumento">Valor inicial de la propiedad ID_TipoDocumento.</param>
+        public static TB_TIPO_DOCUMENTO CreateTB_TIPO_DOCUMENTO(global::System.Int32 iD_TipoDocumento)
         {
-            TB_Turno_Citas tB_Turno_Citas = new TB_Turno_Citas();
-            tB_Turno_Citas.IdTurno = idTurno;
-            return tB_Turno_Citas;
+            TB_TIPO_DOCUMENTO tB_TIPO_DOCUMENTO = new TB_TIPO_DOCUMENTO();
+            tB_TIPO_DOCUMENTO.ID_TipoDocumento = iD_TipoDocumento;
+            return tB_TIPO_DOCUMENTO;
         }
 
         #endregion
+
         #region Propiedades primitivas
     
         /// <summary>
@@ -4541,77 +19429,54 @@ namespace CI.SIC.DA
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 IdTurno
+        public global::System.Int32 ID_TipoDocumento
         {
             get
             {
-                return _IdTurno;
+                return _ID_TipoDocumento;
             }
             set
             {
-                if (_IdTurno != value)
+                if (_ID_TipoDocumento != value)
                 {
-                    OnIdTurnoChanging(value);
-                    ReportPropertyChanging("IdTurno");
-                    _IdTurno = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("IdTurno");
-                    OnIdTurnoChanged();
+                    OnID_TipoDocumentoChanging(value);
+                    ReportPropertyChanging("ID_TipoDocumento");
+                    _ID_TipoDocumento = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_TipoDocumento");
+                    OnID_TipoDocumentoChanged();
                 }
             }
         }
-        private global::System.Int32 _IdTurno;
-        partial void OnIdTurnoChanging(global::System.Int32 value);
-        partial void OnIdTurnoChanged();
+        private global::System.Int32 _ID_TipoDocumento;
+        partial void OnID_TipoDocumentoChanging(global::System.Int32 value);
+        partial void OnID_TipoDocumentoChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> HoraInicio
+        public global::System.String Nombre
         {
             get
             {
-                return _HoraInicio;
+                return _Nombre;
             }
             set
             {
-                OnHoraInicioChanging(value);
-                ReportPropertyChanging("HoraInicio");
-                _HoraInicio = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("HoraInicio");
-                OnHoraInicioChanged();
+                OnNombreChanging(value);
+                ReportPropertyChanging("Nombre");
+                _Nombre = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Nombre");
+                OnNombreChanged();
             }
         }
-        private Nullable<global::System.DateTime> _HoraInicio;
-        partial void OnHoraInicioChanging(Nullable<global::System.DateTime> value);
-        partial void OnHoraInicioChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> HoraFinal
-        {
-            get
-            {
-                return _HoraFinal;
-            }
-            set
-            {
-                OnHoraFinalChanging(value);
-                ReportPropertyChanging("HoraFinal");
-                _HoraFinal = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("HoraFinal");
-                OnHoraFinalChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _HoraFinal;
-        partial void OnHoraFinalChanging(Nullable<global::System.DateTime> value);
-        partial void OnHoraFinalChanged();
+        private global::System.String _Nombre;
+        partial void OnNombreChanging(global::System.String value);
+        partial void OnNombreChanged();
 
         #endregion
+
     
         #region Propiedades de navegación
     
@@ -4621,25 +19486,945 @@ namespace CI.SIC.DA
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_Agenda_Medica_TB_Turno_Citas", "TB_Agenda_Medica")]
-        public EntityCollection<TB_Agenda_Medica> TB_Agenda_Medica
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_CO_GC_Paciente_T_CL_ES_GC_TipoDocumento", "TB_PACIENTE")]
+        public EntityCollection<TB_PACIENTE> TB_PACIENTE
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_Agenda_Medica>("DB_SGHModel.FK_TB_Agenda_Medica_TB_Turno_Citas", "TB_Agenda_Medica");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_PACIENTE>("DB_SGHModel.FK_T_CL_CO_GC_Paciente_T_CL_ES_GC_TipoDocumento", "TB_PACIENTE");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_Agenda_Medica>("DB_SGHModel.FK_TB_Agenda_Medica_TB_Turno_Citas", "TB_Agenda_Medica", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_PACIENTE>("DB_SGHModel.FK_T_CL_CO_GC_Paciente_T_CL_ES_GC_TipoDocumento", "TB_PACIENTE", value);
                 }
             }
         }
 
         #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_TIPO_EMPLEADO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_TIPO_EMPLEADO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_TIPO_EMPLEADO.
+        /// </summary>
+        /// <param name="iD_Tipo_Empleado">Valor inicial de la propiedad ID_Tipo_Empleado.</param>
+        public static TB_TIPO_EMPLEADO CreateTB_TIPO_EMPLEADO(global::System.Int32 iD_Tipo_Empleado)
+        {
+            TB_TIPO_EMPLEADO tB_TIPO_EMPLEADO = new TB_TIPO_EMPLEADO();
+            tB_TIPO_EMPLEADO.ID_Tipo_Empleado = iD_Tipo_Empleado;
+            return tB_TIPO_EMPLEADO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Tipo_Empleado
+        {
+            get
+            {
+                return _ID_Tipo_Empleado;
+            }
+            set
+            {
+                if (_ID_Tipo_Empleado != value)
+                {
+                    OnID_Tipo_EmpleadoChanging(value);
+                    ReportPropertyChanging("ID_Tipo_Empleado");
+                    _ID_Tipo_Empleado = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Tipo_Empleado");
+                    OnID_Tipo_EmpleadoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Tipo_Empleado;
+        partial void OnID_Tipo_EmpleadoChanging(global::System.Int32 value);
+        partial void OnID_Tipo_EmpleadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String E_Descripcion
+        {
+            get
+            {
+                return _E_Descripcion;
+            }
+            set
+            {
+                OnE_DescripcionChanging(value);
+                ReportPropertyChanging("E_Descripcion");
+                _E_Descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("E_Descripcion");
+                OnE_DescripcionChanged();
+            }
+        }
+        private global::System.String _E_Descripcion;
+        partial void OnE_DescripcionChanging(global::System.String value);
+        partial void OnE_DescripcionChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_EMPLEADO_TB_TIPO_EMPLEADO", "TB_EMPLEADO")]
+        public EntityCollection<TB_EMPLEADO> TB_EMPLEADO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_EMPLEADO>("DB_SGHModel.FK_TB_EMPLEADO_TB_TIPO_EMPLEADO", "TB_EMPLEADO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_EMPLEADO>("DB_SGHModel.FK_TB_EMPLEADO_TB_TIPO_EMPLEADO", "TB_EMPLEADO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_TIPO_EXAMEN_MEDICO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_TIPO_EXAMEN_MEDICO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_TIPO_EXAMEN_MEDICO.
+        /// </summary>
+        /// <param name="iD_Tipo_Examen">Valor inicial de la propiedad ID_Tipo_Examen.</param>
+        public static TB_TIPO_EXAMEN_MEDICO CreateTB_TIPO_EXAMEN_MEDICO(global::System.Int32 iD_Tipo_Examen)
+        {
+            TB_TIPO_EXAMEN_MEDICO tB_TIPO_EXAMEN_MEDICO = new TB_TIPO_EXAMEN_MEDICO();
+            tB_TIPO_EXAMEN_MEDICO.ID_Tipo_Examen = iD_Tipo_Examen;
+            return tB_TIPO_EXAMEN_MEDICO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Tipo_Examen
+        {
+            get
+            {
+                return _ID_Tipo_Examen;
+            }
+            set
+            {
+                if (_ID_Tipo_Examen != value)
+                {
+                    OnID_Tipo_ExamenChanging(value);
+                    ReportPropertyChanging("ID_Tipo_Examen");
+                    _ID_Tipo_Examen = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Tipo_Examen");
+                    OnID_Tipo_ExamenChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Tipo_Examen;
+        partial void OnID_Tipo_ExamenChanging(global::System.Int32 value);
+        partial void OnID_Tipo_ExamenChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String descripcion
+        {
+            get
+            {
+                return _descripcion;
+            }
+            set
+            {
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
+            }
+        }
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DescripcionGeneral
+        {
+            get
+            {
+                return _DescripcionGeneral;
+            }
+            set
+            {
+                OnDescripcionGeneralChanging(value);
+                ReportPropertyChanging("DescripcionGeneral");
+                _DescripcionGeneral = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DescripcionGeneral");
+                OnDescripcionGeneralChanged();
+            }
+        }
+        private global::System.String _DescripcionGeneral;
+        partial void OnDescripcionGeneralChanging(global::System.String value);
+        partial void OnDescripcionGeneralChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CATALOGO_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_CATALOGO_EXAMEN_MEDICO")]
+        public EntityCollection<TB_CATALOGO_EXAMEN_MEDICO> TB_CATALOGO_EXAMEN_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CATALOGO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_CATALOGO_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_CATALOGO_EXAMEN_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CATALOGO_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_CATALOGO_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_CATALOGO_EXAMEN_MEDICO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CONSULTORIO_TB_TIPO_EXAMEN_MEDICO", "TB_CONSULTORIO")]
+        public EntityCollection<TB_CONSULTORIO> TB_CONSULTORIO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CONSULTORIO>("DB_SGHModel.FK_TB_CONSULTORIO_TB_TIPO_EXAMEN_MEDICO", "TB_CONSULTORIO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CONSULTORIO>("DB_SGHModel.FK_TB_CONSULTORIO_TB_TIPO_EXAMEN_MEDICO", "TB_CONSULTORIO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_ORDEN_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO")]
+        public EntityCollection<TB_ORDEN_EXAMEN_MEDICO> TB_ORDEN_EXAMEN_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_ORDEN_EXAMEN_MEDICO>("DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO", "TB_ORDEN_EXAMEN_MEDICO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_TIPO_INFORME_ADMINISTRATIVO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_TIPO_INFORME_ADMINISTRATIVO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_TIPO_INFORME_ADMINISTRATIVO.
+        /// </summary>
+        /// <param name="iD_Tipo_Informe">Valor inicial de la propiedad ID_Tipo_Informe.</param>
+        public static TB_TIPO_INFORME_ADMINISTRATIVO CreateTB_TIPO_INFORME_ADMINISTRATIVO(global::System.Int32 iD_Tipo_Informe)
+        {
+            TB_TIPO_INFORME_ADMINISTRATIVO tB_TIPO_INFORME_ADMINISTRATIVO = new TB_TIPO_INFORME_ADMINISTRATIVO();
+            tB_TIPO_INFORME_ADMINISTRATIVO.ID_Tipo_Informe = iD_Tipo_Informe;
+            return tB_TIPO_INFORME_ADMINISTRATIVO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Tipo_Informe
+        {
+            get
+            {
+                return _ID_Tipo_Informe;
+            }
+            set
+            {
+                if (_ID_Tipo_Informe != value)
+                {
+                    OnID_Tipo_InformeChanging(value);
+                    ReportPropertyChanging("ID_Tipo_Informe");
+                    _ID_Tipo_Informe = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Tipo_Informe");
+                    OnID_Tipo_InformeChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Tipo_Informe;
+        partial void OnID_Tipo_InformeChanging(global::System.Int32 value);
+        partial void OnID_Tipo_InformeChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String IA_Descripcion
+        {
+            get
+            {
+                return _IA_Descripcion;
+            }
+            set
+            {
+                OnIA_DescripcionChanging(value);
+                ReportPropertyChanging("IA_Descripcion");
+                _IA_Descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("IA_Descripcion");
+                OnIA_DescripcionChanged();
+            }
+        }
+        private global::System.String _IA_Descripcion;
+        partial void OnIA_DescripcionChanging(global::System.String value);
+        partial void OnIA_DescripcionChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO", "TB_INFORME_ADMINSITRATIVO")]
+        public EntityCollection<TB_INFORME_ADMINSITRATIVO> TB_INFORME_ADMINSITRATIVO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_INFORME_ADMINSITRATIVO>("DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO", "TB_INFORME_ADMINSITRATIVO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_INFORME_ADMINSITRATIVO>("DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO", "TB_INFORME_ADMINSITRATIVO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_TURNO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_TURNO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_TURNO.
+        /// </summary>
+        /// <param name="iD_TURNO">Valor inicial de la propiedad ID_TURNO.</param>
+        public static TB_TURNO CreateTB_TURNO(global::System.Int32 iD_TURNO)
+        {
+            TB_TURNO tB_TURNO = new TB_TURNO();
+            tB_TURNO.ID_TURNO = iD_TURNO;
+            return tB_TURNO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_TURNO
+        {
+            get
+            {
+                return _ID_TURNO;
+            }
+            set
+            {
+                if (_ID_TURNO != value)
+                {
+                    OnID_TURNOChanging(value);
+                    ReportPropertyChanging("ID_TURNO");
+                    _ID_TURNO = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_TURNO");
+                    OnID_TURNOChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_TURNO;
+        partial void OnID_TURNOChanging(global::System.Int32 value);
+        partial void OnID_TURNOChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Des_Turno
+        {
+            get
+            {
+                return _Des_Turno;
+            }
+            set
+            {
+                OnDes_TurnoChanging(value);
+                ReportPropertyChanging("Des_Turno");
+                _Des_Turno = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Des_Turno");
+                OnDes_TurnoChanged();
+            }
+        }
+        private global::System.String _Des_Turno;
+        partial void OnDes_TurnoChanging(global::System.String value);
+        partial void OnDes_TurnoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Horario_Turno
+        {
+            get
+            {
+                return _Horario_Turno;
+            }
+            set
+            {
+                OnHorario_TurnoChanging(value);
+                ReportPropertyChanging("Horario_Turno");
+                _Horario_Turno = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Horario_Turno");
+                OnHorario_TurnoChanged();
+            }
+        }
+        private global::System.String _Horario_Turno;
+        partial void OnHorario_TurnoChanging(global::System.String value);
+        partial void OnHorario_TurnoChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK__TB_AGENDA__ID_TU__2EDAF651", "TB_AGENDA_MEDICA")]
+        public EntityCollection<TB_AGENDA_MEDICA> TB_AGENDA_MEDICA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_AGENDA_MEDICA>("DB_SGHModel.FK__TB_AGENDA__ID_TU__2EDAF651", "TB_AGENDA_MEDICA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_AGENDA_MEDICA>("DB_SGHModel.FK__TB_AGENDA__ID_TU__2EDAF651", "TB_AGENDA_MEDICA", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_TURNO_ATENCION")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_TURNO_ATENCION : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_TURNO_ATENCION.
+        /// </summary>
+        /// <param name="iD_Medico">Valor inicial de la propiedad ID_Medico.</param>
+        /// <param name="iD_Cita">Valor inicial de la propiedad ID_Cita.</param>
+        /// <param name="iD_TURNOATENCION">Valor inicial de la propiedad ID_TURNOATENCION.</param>
+        /// <param name="fechaRegistro">Valor inicial de la propiedad FechaRegistro.</param>
+        public static TB_TURNO_ATENCION CreateTB_TURNO_ATENCION(global::System.Int32 iD_Medico, global::System.Int32 iD_Cita, global::System.Int32 iD_TURNOATENCION, global::System.DateTime fechaRegistro)
+        {
+            TB_TURNO_ATENCION tB_TURNO_ATENCION = new TB_TURNO_ATENCION();
+            tB_TURNO_ATENCION.ID_Medico = iD_Medico;
+            tB_TURNO_ATENCION.ID_Cita = iD_Cita;
+            tB_TURNO_ATENCION.ID_TURNOATENCION = iD_TURNOATENCION;
+            tB_TURNO_ATENCION.FechaRegistro = fechaRegistro;
+            return tB_TURNO_ATENCION;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Medico
+        {
+            get
+            {
+                return _ID_Medico;
+            }
+            set
+            {
+                if (_ID_Medico != value)
+                {
+                    OnID_MedicoChanging(value);
+                    ReportPropertyChanging("ID_Medico");
+                    _ID_Medico = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Medico");
+                    OnID_MedicoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Medico;
+        partial void OnID_MedicoChanging(global::System.Int32 value);
+        partial void OnID_MedicoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_Cita
+        {
+            get
+            {
+                return _ID_Cita;
+            }
+            set
+            {
+                if (_ID_Cita != value)
+                {
+                    OnID_CitaChanging(value);
+                    ReportPropertyChanging("ID_Cita");
+                    _ID_Cita = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_Cita");
+                    OnID_CitaChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_Cita;
+        partial void OnID_CitaChanging(global::System.Int32 value);
+        partial void OnID_CitaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_TURNOATENCION
+        {
+            get
+            {
+                return _ID_TURNOATENCION;
+            }
+            set
+            {
+                if (_ID_TURNOATENCION != value)
+                {
+                    OnID_TURNOATENCIONChanging(value);
+                    ReportPropertyChanging("ID_TURNOATENCION");
+                    _ID_TURNOATENCION = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_TURNOATENCION");
+                    OnID_TURNOATENCIONChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_TURNOATENCION;
+        partial void OnID_TURNOATENCIONChanging(global::System.Int32 value);
+        partial void OnID_TURNOATENCIONChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FechaRegistro
+        {
+            get
+            {
+                return _FechaRegistro;
+            }
+            set
+            {
+                OnFechaRegistroChanging(value);
+                ReportPropertyChanging("FechaRegistro");
+                _FechaRegistro = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaRegistro");
+                OnFechaRegistroChanged();
+            }
+        }
+        private global::System.DateTime _FechaRegistro;
+        partial void OnFechaRegistroChanging(global::System.DateTime value);
+        partial void OnFechaRegistroChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FechaAtencion
+        {
+            get
+            {
+                return _FechaAtencion;
+            }
+            set
+            {
+                OnFechaAtencionChanging(value);
+                ReportPropertyChanging("FechaAtencion");
+                _FechaAtencion = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FechaAtencion");
+                OnFechaAtencionChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FechaAtencion;
+        partial void OnFechaAtencionChanging(Nullable<global::System.DateTime> value);
+        partial void OnFechaAtencionChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_T_CL_ES_GC_TurnoAtencion_T_CL_CO_GC_Cita", "TB_CITA")]
+        public TB_CITA TB_CITA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CITA>("DB_SGHModel.FK_T_CL_ES_GC_TurnoAtencion_T_CL_CO_GC_Cita", "TB_CITA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CITA>("DB_SGHModel.FK_T_CL_ES_GC_TurnoAtencion_T_CL_CO_GC_Cita", "TB_CITA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_CITA> TB_CITAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_CITA>("DB_SGHModel.FK_T_CL_ES_GC_TurnoAtencion_T_CL_CO_GC_Cita", "TB_CITA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_CITA>("DB_SGHModel.FK_T_CL_ES_GC_TurnoAtencion_T_CL_CO_GC_Cita", "TB_CITA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_TURNOATENCION_00TB_MEDICO", "TB_MEDICO")]
+        public TB_MEDICO TB_MEDICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_TURNOATENCION_00TB_MEDICO", "TB_MEDICO").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_TURNOATENCION_00TB_MEDICO", "TB_MEDICO").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<TB_MEDICO> TB_MEDICOReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_TURNOATENCION_00TB_MEDICO", "TB_MEDICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TB_MEDICO>("DB_SGHModel.FK_TB_TURNOATENCION_00TB_MEDICO", "TB_MEDICO", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DB_SGHModel", Name="TB_TURNO_EMERGENCIA")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class TB_TURNO_EMERGENCIA : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto TB_TURNO_EMERGENCIA.
+        /// </summary>
+        /// <param name="iD_TURNOEMERGENCIA">Valor inicial de la propiedad ID_TURNOEMERGENCIA.</param>
+        public static TB_TURNO_EMERGENCIA CreateTB_TURNO_EMERGENCIA(global::System.Int32 iD_TURNOEMERGENCIA)
+        {
+            TB_TURNO_EMERGENCIA tB_TURNO_EMERGENCIA = new TB_TURNO_EMERGENCIA();
+            tB_TURNO_EMERGENCIA.ID_TURNOEMERGENCIA = iD_TURNOEMERGENCIA;
+            return tB_TURNO_EMERGENCIA;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_TURNOEMERGENCIA
+        {
+            get
+            {
+                return _ID_TURNOEMERGENCIA;
+            }
+            set
+            {
+                if (_ID_TURNOEMERGENCIA != value)
+                {
+                    OnID_TURNOEMERGENCIAChanging(value);
+                    ReportPropertyChanging("ID_TURNOEMERGENCIA");
+                    _ID_TURNOEMERGENCIA = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_TURNOEMERGENCIA");
+                    OnID_TURNOEMERGENCIAChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_TURNOEMERGENCIA;
+        partial void OnID_TURNOEMERGENCIAChanging(global::System.Int32 value);
+        partial void OnID_TURNOEMERGENCIAChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> GE_Horario_INI
+        {
+            get
+            {
+                return _GE_Horario_INI;
+            }
+            set
+            {
+                OnGE_Horario_INIChanging(value);
+                ReportPropertyChanging("GE_Horario_INI");
+                _GE_Horario_INI = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_Horario_INI");
+                OnGE_Horario_INIChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _GE_Horario_INI;
+        partial void OnGE_Horario_INIChanging(Nullable<global::System.DateTime> value);
+        partial void OnGE_Horario_INIChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> GE_Horario_FIN
+        {
+            get
+            {
+                return _GE_Horario_FIN;
+            }
+            set
+            {
+                OnGE_Horario_FINChanging(value);
+                ReportPropertyChanging("GE_Horario_FIN");
+                _GE_Horario_FIN = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("GE_Horario_FIN");
+                OnGE_Horario_FINChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _GE_Horario_FIN;
+        partial void OnGE_Horario_FINChanging(Nullable<global::System.DateTime> value);
+        partial void OnGE_Horario_FINChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_CRONOGRAMA_EMERGENCIA_TB_TURNO_EMERGENCIA", "TB_CRONOGRAMA_EMERGENCIA")]
+        public EntityCollection<TB_CRONOGRAMA_EMERGENCIA> TB_CRONOGRAMA_EMERGENCIA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_CRONOGRAMA_EMERGENCIA>("DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_TURNO_EMERGENCIA", "TB_CRONOGRAMA_EMERGENCIA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_CRONOGRAMA_EMERGENCIA>("DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_TURNO_EMERGENCIA", "TB_CRONOGRAMA_EMERGENCIA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DB_SGHModel", "FK_TB_EMPLEADO_TB_TURNO_EMERGENCIA", "TB_EMPLEADO")]
+        public EntityCollection<TB_EMPLEADO> TB_EMPLEADO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<TB_EMPLEADO>("DB_SGHModel.FK_TB_EMPLEADO_TB_TURNO_EMERGENCIA", "TB_EMPLEADO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<TB_EMPLEADO>("DB_SGHModel.FK_TB_EMPLEADO_TB_TURNO_EMERGENCIA", "TB_EMPLEADO", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
 
     #endregion
+
     
 }

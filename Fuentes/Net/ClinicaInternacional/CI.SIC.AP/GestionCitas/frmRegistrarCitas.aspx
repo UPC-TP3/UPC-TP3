@@ -64,7 +64,7 @@
 
    function btnBuscarPaciente_onclick() {
 
-        window.open('BuscarPaciente.aspx',null,'left=400, top=100, height=450, width= 450, status=no, resizable=no, scrollbars=no, location= no');
+        window.open('BuscarPaciente.aspx',null,'left=400, top=100, height=450, width= 500, status=no, resizable=no, scrollbars=no, location= no');
 
 
     }
@@ -146,6 +146,7 @@
                         <td>
                             <fieldset style="height: 120px;">
                                 <legend>Médico</legend>
+                                <asp:HiddenField ID="hdnIdEspecialidad" runat="server" />
                                 <asp:HiddenField runat="server" ID="hdnCodigoMedico" Value="0" />
                                 <input type="button" id="btnBuscarMedico" value="Buscar" onclick="return btnBuscarMedico_onclick()" />
                                 <table class="formulario">

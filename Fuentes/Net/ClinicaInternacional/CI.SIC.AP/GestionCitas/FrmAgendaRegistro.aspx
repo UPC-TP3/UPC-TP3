@@ -12,6 +12,7 @@
         <legend>Registrar Agenda Medica</legend>
         <asp:HiddenField runat="server" ID="hdnCodigoAgenda" Value="0" />
         <asp:HiddenField runat="server" ID="hdnCodigoMedico" Value="0" />
+        <asp:HiddenField ID="hdnIdEspecialidad" runat="server" />
         <table class="formulario">                
                 <colgroup>                    
                     <col style="width: 20%;"/>
@@ -92,42 +93,37 @@
                         ControlToValidate="txtFecha" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
             </tr>
+
+            <tr>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+
             <tr>
                 <td class="style1">
-                    &nbsp;</td>
+                    Turno</td>
                 <td class="style1">
-                    &nbsp;</td>
+                    :</td>
                 <td class="style1">
                     <asp:DropDownList ID="cboTurnos" runat="server" 
-                        onselectedindexchanged="cboTurnos_SelectedIndexChanged" Visible="False">
+                        onselectedindexchanged="cboTurnos_SelectedIndexChanged">
                     </asp:DropDownList>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Hora de Inicio
-                </td>
+                    &nbsp;</td>
                 <td>
-                    :
-                </td>
+                    &nbsp;</td>
                 <td>
-                    <asp:TextBox ID="txtHoraInicio" runat="server" Type="time" 
-                        ontextchanged="txtHoraInicio_TextChanged"></asp:TextBox><asp:RequiredFieldValidator
-                        ID="RequiredFieldValidator2" runat="server" ErrorMessage=" * Campo obligatorio"
-                        ControlToValidate="txtHoraInicio" ForeColor="Red"></asp:RequiredFieldValidator>
-                </td>
+                    &nbsp;</td>
             </tr>
-            <tr>
-                <td>
-                    Hora de Fin
-                </td>
-                <td>
-                    :
-                </td>
-                <td>
-                    <asp:TextBox ID="txtHoraFin" runat="server" Type="time" Enabled="False"></asp:TextBox>
-                </td>
-            </tr>
+            
+           
             <tr>
                 <td>
                     Numero Consultorio
@@ -136,9 +132,20 @@
                     :
                 </td>
                 <td>
-                    <asp:TextBox ID="txtConsultorio" runat="server" Enabled="true"></asp:TextBox>
+                    <asp:DropDownList ID="cboConsultorio" runat="server">
+                    </asp:DropDownList>
                 </td>
             </tr>
+
+             <tr>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+
             <tr>
                 <td>
                     Estado 
@@ -150,14 +157,25 @@
                     <asp:CheckBox ID="chkEstado" runat="server" Checked="True" />
                 </td>
             </tr>
+
+             <tr>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+
             <tr>
                 <td>
-                </td>
-                <td>
-                </td>
-                <td>
                     <asp:Button ID="btnGrabar" runat="server" Text="Grabar" CssClass="button" 
-                        onclick="btnGrabar_Click" /><asp:Button ID="btnCancelar" runat="server" 
+                        onclick="btnGrabar_Click" />
+                </td>
+                <td>
+                </td>
+                <td>
+                    <asp:Button ID="btnCancelar" runat="server" 
                         Text="Cancelar" CssClass="button" onclick="btnCancelar_Click" 
                         />
                 </td>

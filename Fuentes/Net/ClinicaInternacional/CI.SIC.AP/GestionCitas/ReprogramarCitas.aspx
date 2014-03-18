@@ -13,10 +13,7 @@
             <asp:BoundField DataField="FechaAgenda" HeaderText="Fecha" 
                 DataFormatString="{0:d}" />
             <asp:BoundField DataField="NumeroConsultorio" HeaderText="Consultorio" />
-            <asp:BoundField DataField="HoraInicioAgenda" HeaderText="Hora Inicio" 
-                DataFormatString="{0:t}" />
-            <asp:BoundField DataField="HoraFinAgenda" HeaderText="Hora Fin" 
-                DataFormatString="{0:t}" />
+            <asp:BoundField DataField="Horario_Turno" HeaderText="Horario" />
             <asp:BoundField DataField="NombrePaciente" HeaderText="Paciente" />
             <asp:BoundField DataField="Dni" HeaderText="DNI" />
             <asp:BoundField DataField="NombreMedico" HeaderText="Medico" />

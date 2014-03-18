@@ -8,9 +8,9 @@ namespace CI.SIC.BE
     public class ETurnoCita
     {
 
-        public int IdTurno { get; set; }
-        public DateTime? HoraInicio { get; set; }
-        public DateTime? HoraFinal { get; set; }
+        public int Id_Turno { get; set; }
+        public string Des_Turno { get; set; }
+        public string Horario_Turno { get; set; }
 
 
     }

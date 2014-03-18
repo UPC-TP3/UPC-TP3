@@ -45,9 +45,11 @@ public partial class GestionCitas_frmRegistrarCitas : System.Web.UI.Page
             lblNombresMedico.Text = cita.NombresMedico;
             lblApellidosMedico.Text = cita.ApellidosMedico;
             lblFechaCita.Text = cita.FechaAgenda.Value.ToString("dd/MM/yyyy");
-            lblHoraCita.Text = cita.HoraInicioAgenda.Value.ToString("HH:mm");
+            //lblHoraCita.Text = cita.HoraInicioAgenda.Value.ToString("HH:mm");
+            lblHoraCita.Text = cita.Horario_Turno;
             lblEspecialidad.Text = cita.DescripcionEspecialidad;
             lblConsultorio.Text = cita.NumeroConsultorio;
+            hdnIdEspecialidad.Value = cita.Id_Especialidad.ToString();  
             
         }
     }
@@ -86,10 +88,11 @@ public partial class GestionCitas_frmRegistrarCitas : System.Web.UI.Page
             new BCita().Insertar(new ECita
             {
                 FechaAgenda = fechaInicio,
-                HoraInicioAgenda = fechaInicio,
+                //HoraInicioAgenda = fechaInicio,
                 CodigoPaciente = Convert.ToInt32(hdnCodigoPaciente.Value),
                 CodigoMedico = Convert.ToInt32(hdnCodigoMedico.Value),
-                CodigoAgenda = Convert.ToInt32(hdnCodigoAgenda.Value)
+                CodigoAgenda = Convert.ToInt32(hdnCodigoAgenda.Value),
+                Id_Especialidad = Convert.ToInt32(hdnIdEspecialidad.Value),
             });
             ClientScript.RegisterStartupScript(GetType(), "alert",
                                                "<script language=JavaScript>alert('El registro ha sido creado.');</script>");
@@ -104,10 +107,11 @@ public partial class GestionCitas_frmRegistrarCitas : System.Web.UI.Page
             {
                 CodigoCita = Convert.ToInt32(hdnCodigoCita.Value),
                 FechaAgenda = fechaInicio,
-                HoraInicioAgenda = fechaInicio,
+                //HoraInicioAgenda = fechaInicio,
                 CodigoPaciente = Convert.ToInt32(hdnCodigoPaciente.Value),
                 CodigoMedico = Convert.ToInt32(hdnCodigoMedico.Value),
-                CodigoAgenda = Convert.ToInt32(hdnCodigoAgenda.Value)
+                CodigoAgenda = Convert.ToInt32(hdnCodigoAgenda.Value),
+                Id_Especialidad = Convert.ToInt32(hdnIdEspecialidad.Value),
             });
             ClientScript.RegisterStartupScript(GetType(), "alert",
                                                "<script language=JavaScript>alert('El registro ha sido actualizado.');</script>"); 
@@ -121,6 +125,7 @@ public partial class GestionCitas_frmRegistrarCitas : System.Web.UI.Page
         hdnCodigoMedico.Value = "0";
         hdnCodigoPaciente.Value = "0";
         hdnCodigoAgenda.Value = "0";
+        hdnIdEspecialidad.Value = "0"; 
         lblNombresMedico.Text = lblApellidosMedico.Text = lblEspecialidad.Text = lblFechaCita.Text = lblHoraCita.Text = string.Empty;
         lblNombresPaciente.Text = lblApellidosPaciente.Text = string.Empty;
         lblConsultorio.Text = string.Empty; 
@@ -165,10 +170,12 @@ public partial class GestionCitas_frmRegistrarCitas : System.Web.UI.Page
             lblNombresMedico.Text = agenda.NombresMedico;
             lblApellidosMedico.Text = agenda.ApellidosMedico;
             lblFechaCita.Text = agenda.Fecha.Value.ToString("dd/MM/yyyy");
-            lblHoraCita.Text = agenda.HoraInicio.Value.ToString("HH:mm");
+           // lblHoraCita.Text = agenda.HoraInicio.Value.ToString("HH:mm");
+            lblHoraCita.Text = agenda.Horario_Turno;
             lblEspecialidad.Text = agenda.DescripcionEspecialidad;
             lblConsultorio.Text = agenda.NumeroConsultorio;
-            lblColegiatura.Text = agenda.NumeroColegiatura; 
+            lblColegiatura.Text = agenda.NumeroColegiatura;
+            hdnIdEspecialidad.Value  = agenda.Id_Especialidad.ToString(); 
 
         }    
     }

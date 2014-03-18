@@ -147,6 +147,7 @@
                         <td>
                             <fieldset style="height: 120px;">
                                 <legend>Médico</legend>
+                                <asp:HiddenField ID="hdnIdEspecialidad" runat="server" />
                                 <asp:HiddenField runat="server" ID="hdnCodigoMedico" Value="0" />
                                 <input type="button" id="btnBuscarMedico" value="Buscar" onclick="return btnBuscarMedico_onclick()" />
                                 <table class="formulario">

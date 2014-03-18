@@ -19,3 +19,13 @@ C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Deb
 C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.csprojResolveAssemblyReference.cache
 C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.dll
 C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.pdb
+E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.DA.dll.config
+E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.DA.dll
+E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.DA.pdb
+E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.BE.dll
+E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.CC.dll
+E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.BE.pdb
+E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.CC.pdb
+E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.csprojResolveAssemblyReference.cache
+E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.dll
+E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.pdb

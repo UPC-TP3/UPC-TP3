@@ -59,7 +59,7 @@
                                             :
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtFecha" runat="server" ontextchanged="TextBox1_TextChanged" 
+                                            <asp:TextBox ID="txtFecha" runat="server"
                                                 Width="93px"></asp:TextBox>
                                         </td>
                                     </tr>
@@ -104,10 +104,7 @@
                 <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="CodigoAgenda" HeaderText="Codigo" />
                 <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:d}" />
-                <asp:BoundField DataField="HoraInicio" HeaderText="Hora Inicio" 
-                    DataFormatString="{0:t}" />
-                <asp:BoundField DataField="HoraFin" HeaderText="Hora Final" 
-                    DataFormatString="{0:t}" />
+                <asp:BoundField DataField="Horario_Turno" HeaderText="Horario" />
                 <asp:BoundField DataField="NumeroConsultorio" HeaderText="Nro Consultorio" />
                 <asp:BoundField DataField="NombresMedico" HeaderText="Nombre Medico" />
                 <asp:BoundField DataField="ApellidosMedico" HeaderText="Apellidos Medico" />

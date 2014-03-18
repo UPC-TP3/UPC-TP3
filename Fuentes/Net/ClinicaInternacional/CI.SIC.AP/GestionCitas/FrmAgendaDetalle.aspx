@@ -57,11 +57,7 @@
                     <HeaderStyle HorizontalAlign="Center" />
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:BoundField DataField="HoraInicio" HeaderText="H. Inicio" DataFormatString="{0:t}">
-                    <HeaderStyle HorizontalAlign="Center" />
-                    <ItemStyle HorizontalAlign="Center" />
-                </asp:BoundField>
-                <asp:BoundField DataField="HoraFin" HeaderText="H. Fin" DataFormatString="{0:t}">
+                <asp:BoundField DataField="Horario_Turno" HeaderText="Horario">
                     <HeaderStyle HorizontalAlign="Center" />
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>

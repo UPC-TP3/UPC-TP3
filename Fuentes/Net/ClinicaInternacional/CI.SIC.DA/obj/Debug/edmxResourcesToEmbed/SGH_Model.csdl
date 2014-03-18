@@ -1,652 +1,2371 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DB_SGHModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
   <EntityContainer Name="DB_SGHEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="TB_Agenda_Medica" EntityType="DB_SGHModel.TB_Agenda_Medica" />
-    <EntitySet Name="TB_Analisis" EntityType="DB_SGHModel.TB_Analisis" />
-    <EntitySet Name="TB_Cita" EntityType="DB_SGHModel.TB_Cita" />
-    <EntitySet Name="TB_Consulta" EntityType="DB_SGHModel.TB_Consulta" />
-    <EntitySet Name="TB_Consultorio" EntityType="DB_SGHModel.TB_Consultorio" />
-    <EntitySet Name="TB_Especialidad" EntityType="DB_SGHModel.TB_Especialidad" />
-    <EntitySet Name="TB_Estado_Cita" EntityType="DB_SGHModel.TB_Estado_Cita" />
-    <EntitySet Name="TB_Local" EntityType="DB_SGHModel.TB_Local" />
-    <EntitySet Name="TB_Medicamento" EntityType="DB_SGHModel.TB_Medicamento" />
-    <EntitySet Name="TB_Medico" EntityType="DB_SGHModel.TB_Medico" />
-    <EntitySet Name="TB_Motivo_Hospitalizacion" EntityType="DB_SGHModel.TB_Motivo_Hospitalizacion" />
-    <EntitySet Name="TB_Orden_Hopitalizacion" EntityType="DB_SGHModel.TB_Orden_Hopitalizacion" />
-    <EntitySet Name="TB_Paciente" EntityType="DB_SGHModel.TB_Paciente" />
-    <EntitySet Name="TB_Prescripcion_Medica" EntityType="DB_SGHModel.TB_Prescripcion_Medica" />
-    <EntitySet Name="TB_Tipo_Analisis" EntityType="DB_SGHModel.TB_Tipo_Analisis" />
-    <AssociationSet Name="FK__Cita__CodigoAgen__33D4B5981" Association="DB_SGHModel.FK__Cita__CodigoAgen__33D4B5981">
-      <End Role="TB_Agenda_Medica" EntitySet="TB_Agenda_Medica" />
-      <End Role="TB_Cita" EntitySet="TB_Cita" />
+    <EntitySet Name="sysdiagrams" EntityType="DB_SGHModel.sysdiagrams" />
+    <EntitySet Name="TB_ACTIVIDADES_PLANIFICADAS" EntityType="DB_SGHModel.TB_ACTIVIDADES_PLANIFICADAS" />
+    <EntitySet Name="TB_ACTIVO" EntityType="DB_SGHModel.TB_ACTIVO" />
+    <EntitySet Name="TB_AGENDA_MEDICA" EntityType="DB_SGHModel.TB_AGENDA_MEDICA" />
+    <EntitySet Name="TB_ANALISIS" EntityType="DB_SGHModel.TB_ANALISIS" />
+    <EntitySet Name="TB_AREA" EntityType="DB_SGHModel.TB_AREA" />
+    <EntitySet Name="TB_Atencion_Emergencia" EntityType="DB_SGHModel.TB_Atencion_Emergencia" />
+    <EntitySet Name="TB_CAMA" EntityType="DB_SGHModel.TB_CAMA" />
+    <EntitySet Name="TB_CARTA_GARANTIA" EntityType="DB_SGHModel.TB_CARTA_GARANTIA" />
+    <EntitySet Name="TB_CATALOGO_EXAMEN_MEDICO" EntityType="DB_SGHModel.TB_CATALOGO_EXAMEN_MEDICO" />
+    <EntitySet Name="TB_CENTRO_COSTO" EntityType="DB_SGHModel.TB_CENTRO_COSTO" />
+    <EntitySet Name="TB_CITA" EntityType="DB_SGHModel.TB_CITA" />
+    <EntitySet Name="TB_COMPROBANTE_DE_PAGO" EntityType="DB_SGHModel.TB_COMPROBANTE_DE_PAGO" />
+    <EntitySet Name="TB_CONSULTA" EntityType="DB_SGHModel.TB_CONSULTA" />
+    <EntitySet Name="TB_CONSULTORIO" EntityType="DB_SGHModel.TB_CONSULTORIO" />
+    <EntitySet Name="TB_CRONOGRAMA_EMERGENCIA" EntityType="DB_SGHModel.TB_CRONOGRAMA_EMERGENCIA" />
+    <EntitySet Name="TB_DET_HISTORIA_CLINICA" EntityType="DB_SGHModel.TB_DET_HISTORIA_CLINICA" />
+    <EntitySet Name="TB_DET_ORDEN_TRABAJO" EntityType="DB_SGHModel.TB_DET_ORDEN_TRABAJO" />
+    <EntitySet Name="TB_DETALLE_FICHA_EQUIPO" EntityType="DB_SGHModel.TB_DETALLE_FICHA_EQUIPO" />
+    <EntitySet Name="TB_DETALLE_ORDEN_DE_PEDIDO" EntityType="DB_SGHModel.TB_DETALLE_ORDEN_DE_PEDIDO" />
+    <EntitySet Name="TB_DETALLE_ORDEN_DE_SALIDA" EntityType="DB_SGHModel.TB_DETALLE_ORDEN_DE_SALIDA" />
+    <EntitySet Name="TB_Detalle_Solicitud_Mantenimiento" EntityType="DB_SGHModel.TB_Detalle_Solicitud_Mantenimiento" />
+    <EntitySet Name="TB_DETORDENSERVICIO" EntityType="DB_SGHModel.TB_DETORDENSERVICIO" />
+    <EntitySet Name="TB_EMPLEADO" EntityType="DB_SGHModel.TB_EMPLEADO" />
+    <EntitySet Name="TB_ESPECIALIDAD" EntityType="DB_SGHModel.TB_ESPECIALIDAD" />
+    <EntitySet Name="TB_ESTADO_CITA" EntityType="DB_SGHModel.TB_ESTADO_CITA" />
+    <EntitySet Name="TB_FICHA_EQUIPO" EntityType="DB_SGHModel.TB_FICHA_EQUIPO" />
+    <EntitySet Name="TB_HISTORIA_CLINICA" EntityType="DB_SGHModel.TB_HISTORIA_CLINICA" />
+    <EntitySet Name="TB_HOJA_INGRESO_EMERGENCIA" EntityType="DB_SGHModel.TB_HOJA_INGRESO_EMERGENCIA" />
+    <EntitySet Name="TB_HOJA_INGRESO_HOSPITALIZACION" EntityType="DB_SGHModel.TB_HOJA_INGRESO_HOSPITALIZACION" />
+    <EntitySet Name="TB_INFORME" EntityType="DB_SGHModel.TB_INFORME" />
+    <EntitySet Name="TB_INFORME_ADMINSITRATIVO" EntityType="DB_SGHModel.TB_INFORME_ADMINSITRATIVO" />
+    <EntitySet Name="TB_INFORME_DET" EntityType="DB_SGHModel.TB_INFORME_DET" />
+    <EntitySet Name="TB_INFORME_EQUIPO" EntityType="DB_SGHModel.TB_INFORME_EQUIPO" />
+    <EntitySet Name="TB_INFORME_EQUIPO_DET" EntityType="DB_SGHModel.TB_INFORME_EQUIPO_DET" />
+    <EntitySet Name="TB_INFORME_RESULTADO" EntityType="DB_SGHModel.TB_INFORME_RESULTADO" />
+    <EntitySet Name="TB_INSTALACION" EntityType="DB_SGHModel.TB_INSTALACION" />
+    <EntitySet Name="TB_LISTA_VERIFICACION" EntityType="DB_SGHModel.TB_LISTA_VERIFICACION" />
+    <EntitySet Name="TB_LOCAL" EntityType="DB_SGHModel.TB_LOCAL" />
+    <EntitySet Name="TB_MAESTRO_TABLAS" EntityType="DB_SGHModel.TB_MAESTRO_TABLAS" />
+    <EntitySet Name="TB_MEDICAMENTO" EntityType="DB_SGHModel.TB_MEDICAMENTO" />
+    <EntitySet Name="TB_MEDICO" EntityType="DB_SGHModel.TB_MEDICO" />
+    <EntitySet Name="TB_MEDICO_DE_TURNO" EntityType="DB_SGHModel.TB_MEDICO_DE_TURNO" />
+    <EntitySet Name="TB_MEDICOESPECIALIDAD" EntityType="DB_SGHModel.TB_MEDICOESPECIALIDAD" />
+    <EntitySet Name="TB_MOTIVO_HOSPITALIZACION" EntityType="DB_SGHModel.TB_MOTIVO_HOSPITALIZACION" />
+    <EntitySet Name="TB_ORDEN_DE_PEDIDO" EntityType="DB_SGHModel.TB_ORDEN_DE_PEDIDO" />
+    <EntitySet Name="TB_ORDEN_DE_PROCEDIMIENTO" EntityType="DB_SGHModel.TB_ORDEN_DE_PROCEDIMIENTO" />
+    <EntitySet Name="TB_ORDEN_DE_SALIDA" EntityType="DB_SGHModel.TB_ORDEN_DE_SALIDA" />
+    <EntitySet Name="TB_ORDEN_EXAMEN_MEDICO" EntityType="DB_SGHModel.TB_ORDEN_EXAMEN_MEDICO" />
+    <EntitySet Name="TB_ORDEN_HOSPITALIZACION" EntityType="DB_SGHModel.TB_ORDEN_HOSPITALIZACION" />
+    <EntitySet Name="TB_ORDEN_INTERNA" EntityType="DB_SGHModel.TB_ORDEN_INTERNA" />
+    <EntitySet Name="TB_ORDEN_SERVICIO" EntityType="DB_SGHModel.TB_ORDEN_SERVICIO" />
+    <EntitySet Name="TB_ORDEN_TRABAJO" EntityType="DB_SGHModel.TB_ORDEN_TRABAJO" />
+    <EntitySet Name="TB_ORDEN_TRABAJO_DET" EntityType="DB_SGHModel.TB_ORDEN_TRABAJO_DET" />
+    <EntitySet Name="TB_PACIENTE" EntityType="DB_SGHModel.TB_PACIENTE" />
+    <EntitySet Name="TB_PLAN_MANTENIMIENTO" EntityType="DB_SGHModel.TB_PLAN_MANTENIMIENTO" />
+    <EntitySet Name="TB_PRESCRIPCION_MEDICA" EntityType="DB_SGHModel.TB_PRESCRIPCION_MEDICA" />
+    <EntitySet Name="TB_PROGRAMACION_ATENCION_EXAMENES" EntityType="DB_SGHModel.TB_PROGRAMACION_ATENCION_EXAMENES" />
+    <EntitySet Name="TB_REQUISITO" EntityType="DB_SGHModel.TB_REQUISITO" />
+    <EntitySet Name="TB_SERVICIO" EntityType="DB_SGHModel.TB_SERVICIO" />
+    <EntitySet Name="TB_SOLICITUD_MANTENIMIENTO" EntityType="DB_SGHModel.TB_SOLICITUD_MANTENIMIENTO" />
+    <EntitySet Name="TB_SOLICITUDES_DE_CAMBIO" EntityType="DB_SGHModel.TB_SOLICITUDES_DE_CAMBIO" />
+    <EntitySet Name="TB_TIPO_ANALISIS" EntityType="DB_SGHModel.TB_TIPO_ANALISIS" />
+    <EntitySet Name="TB_TIPO_DOCUMENTO" EntityType="DB_SGHModel.TB_TIPO_DOCUMENTO" />
+    <EntitySet Name="TB_TIPO_EMPLEADO" EntityType="DB_SGHModel.TB_TIPO_EMPLEADO" />
+    <EntitySet Name="TB_TIPO_EXAMEN_MEDICO" EntityType="DB_SGHModel.TB_TIPO_EXAMEN_MEDICO" />
+    <EntitySet Name="TB_TIPO_INFORME_ADMINISTRATIVO" EntityType="DB_SGHModel.TB_TIPO_INFORME_ADMINISTRATIVO" />
+    <EntitySet Name="TB_TURNO" EntityType="DB_SGHModel.TB_TURNO" />
+    <EntitySet Name="TB_TURNO_ATENCION" EntityType="DB_SGHModel.TB_TURNO_ATENCION" />
+    <EntitySet Name="TB_TURNO_EMERGENCIA" EntityType="DB_SGHModel.TB_TURNO_EMERGENCIA" />
+    <AssociationSet Name="FK__TB_AGENDA__ID_TU__2EDAF651" Association="DB_SGHModel.FK__TB_AGENDA__ID_TU__2EDAF651">
+      <End Role="TB_TURNO" EntitySet="TB_TURNO" />
+      <End Role="TB_AGENDA_MEDICA" EntitySet="TB_AGENDA_MEDICA" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Agenda__Codig__32E0915F" Association="DB_SGHModel.FK__TB_Agenda__Codig__32E0915F">
-      <End Role="TB_Medico" EntitySet="TB_Medico" />
-      <End Role="TB_Agenda_Medica" EntitySet="TB_Agenda_Medica" />
+    <AssociationSet Name="FK_TB_AGENDA_MEDICA_TB_CONSULTORIO" Association="DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_CONSULTORIO">
+      <End Role="TB_CONSULTORIO" EntitySet="TB_CONSULTORIO" />
+      <End Role="TB_AGENDA_MEDICA" EntitySet="TB_AGENDA_MEDICA" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Agenda__Codig__33D4B598" Association="DB_SGHModel.FK__TB_Agenda__Codig__33D4B598">
-      <End Role="TB_Medico" EntitySet="TB_Medico" />
-      <End Role="TB_Agenda_Medica" EntitySet="TB_Agenda_Medica" />
+    <AssociationSet Name="FK_TB_AgendaMedica_TB_MEDICO" Association="DB_SGHModel.FK_TB_AgendaMedica_TB_MEDICO">
+      <End Role="TB_MEDICO" EntitySet="TB_MEDICO" />
+      <End Role="TB_AGENDA_MEDICA" EntitySet="TB_AGENDA_MEDICA" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Analis__Codig__34C8D9D1" Association="DB_SGHModel.FK__TB_Analis__Codig__34C8D9D1">
-      <End Role="TB_Tipo_Analisis" EntitySet="TB_Tipo_Analisis" />
-      <End Role="TB_Analisis" EntitySet="TB_Analisis" />
+    <AssociationSet Name="FK_TB_CITA_TB_AgendaMedica" Association="DB_SGHModel.FK_TB_CITA_TB_AgendaMedica">
+      <End Role="TB_AGENDA_MEDICA" EntitySet="TB_AGENDA_MEDICA" />
+      <End Role="TB_CITA" EntitySet="TB_CITA" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Analis__Codig__35BCFE0A" Association="DB_SGHModel.FK__TB_Analis__Codig__35BCFE0A">
-      <End Role="TB_Consulta" EntitySet="TB_Consulta" />
-      <End Role="TB_Analisis" EntitySet="TB_Analisis" />
+    <AssociationSet Name="FK__TB_ANALIS__ID_Co__31B762FC" Association="DB_SGHModel.FK__TB_ANALIS__ID_Co__31B762FC">
+      <End Role="TB_CONSULTA" EntitySet="TB_CONSULTA" />
+      <End Role="TB_ANALISIS" EntitySet="TB_ANALISIS" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Analis__Codig__36B12243" Association="DB_SGHModel.FK__TB_Analis__Codig__36B12243">
-      <End Role="TB_Tipo_Analisis" EntitySet="TB_Tipo_Analisis" />
-      <End Role="TB_Analisis" EntitySet="TB_Analisis" />
+    <AssociationSet Name="FK__TB_ANALIS__ID_Ti__32AB8735" Association="DB_SGHModel.FK__TB_ANALIS__ID_Ti__32AB8735">
+      <End Role="TB_TIPO_ANALISIS" EntitySet="TB_TIPO_ANALISIS" />
+      <End Role="TB_ANALISIS" EntitySet="TB_ANALISIS" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Analis__Codig__37A5467C" Association="DB_SGHModel.FK__TB_Analis__Codig__37A5467C">
-      <End Role="TB_Consulta" EntitySet="TB_Consulta" />
-      <End Role="TB_Analisis" EntitySet="TB_Analisis" />
+    <AssociationSet Name="FK_TB_INSTALACION_TB_AREA" Association="DB_SGHModel.FK_TB_INSTALACION_TB_AREA">
+      <End Role="TB_AREA" EntitySet="TB_AREA" />
+      <End Role="TB_INSTALACION" EntitySet="TB_INSTALACION" />
     </AssociationSet>
-    <AssociationSet Name="FK__Cita__CodigoMedi__36B122431" Association="DB_SGHModel.FK__Cita__CodigoMedi__36B122431">
-      <End Role="TB_Medico" EntitySet="TB_Medico" />
-      <End Role="TB_Cita" EntitySet="TB_Cita" />
+    <AssociationSet Name="FK_TB_ORDEN_DE_PEDIDO_TB_AREA" Association="DB_SGHModel.FK_TB_ORDEN_DE_PEDIDO_TB_AREA">
+      <End Role="TB_AREA" EntitySet="TB_AREA" />
+      <End Role="TB_ORDEN_DE_PEDIDO" EntitySet="TB_ORDEN_DE_PEDIDO" />
     </AssociationSet>
-    <AssociationSet Name="FK__Cita__CodigoPaci__37A5467C1" Association="DB_SGHModel.FK__Cita__CodigoPaci__37A5467C1">
-      <End Role="TB_Paciente" EntitySet="TB_Paciente" />
-      <End Role="TB_Cita" EntitySet="TB_Cita" />
+    <AssociationSet Name="FK_TB_Atencion_Emergencia_TB_CAMA" Association="DB_SGHModel.FK_TB_Atencion_Emergencia_TB_CAMA">
+      <End Role="TB_CAMA" EntitySet="TB_CAMA" />
+      <End Role="TB_Atencion_Emergencia" EntitySet="TB_Atencion_Emergencia" />
     </AssociationSet>
-    <AssociationSet Name="FK__Consulta__Codigo__3B75D7601" Association="DB_SGHModel.FK__Consulta__Codigo__3B75D7601">
-      <End Role="TB_Cita" EntitySet="TB_Cita" />
-      <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+    <AssociationSet Name="FK_TB_Atencion_Emergencia_TB_Medico" Association="DB_SGHModel.FK_TB_Atencion_Emergencia_TB_Medico">
+      <End Role="TB_MEDICO" EntitySet="TB_MEDICO" />
+      <End Role="TB_Atencion_Emergencia" EntitySet="TB_Atencion_Emergencia" />
     </AssociationSet>
-    <AssociationSet Name="FK_Cita_EstadoCita1" Association="DB_SGHModel.FK_Cita_EstadoCita1">
-      <End Role="TB_Estado_Cita" EntitySet="TB_Estado_Cita" />
-      <End Role="TB_Cita" EntitySet="TB_Cita" />
+    <AssociationSet Name="FK_TB_Atencion_Emergencia_TB_PACIENTE" Association="DB_SGHModel.FK_TB_Atencion_Emergencia_TB_PACIENTE">
+      <End Role="TB_PACIENTE" EntitySet="TB_PACIENTE" />
+      <End Role="TB_Atencion_Emergencia" EntitySet="TB_Atencion_Emergencia" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Consul__Codig__3D5E1FD2" Association="DB_SGHModel.FK__TB_Consul__Codig__3D5E1FD2">
-      <End Role="TB_Paciente" EntitySet="TB_Paciente" />
-      <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+    <AssociationSet Name="FK_T_CL_ES_GO_Cama63" Association="DB_SGHModel.FK_T_CL_ES_GO_Cama63">
+      <End Role="TB_HOJA_INGRESO_HOSPITALIZACION" EntitySet="TB_HOJA_INGRESO_HOSPITALIZACION" />
+      <End Role="TB_CAMA" EntitySet="TB_CAMA" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Consul__Codig__3E52440B" Association="DB_SGHModel.FK__TB_Consul__Codig__3E52440B">
-      <End Role="TB_Consultorio" EntitySet="TB_Consultorio" />
-      <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+    <AssociationSet Name="FK_TB_CAMA_TB_ESPECIALIDAD" Association="DB_SGHModel.FK_TB_CAMA_TB_ESPECIALIDAD">
+      <End Role="TB_ESPECIALIDAD" EntitySet="TB_ESPECIALIDAD" />
+      <End Role="TB_CAMA" EntitySet="TB_CAMA" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Consul__Codig__3F466844" Association="DB_SGHModel.FK__TB_Consul__Codig__3F466844">
-      <End Role="TB_Medico" EntitySet="TB_Medico" />
-      <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+    <AssociationSet Name="FK_TB_CARTA_GARANTIA_TB_ORDEN_DE_PROCEDIMIENTO" Association="DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_ORDEN_DE_PROCEDIMIENTO">
+      <End Role="TB_ORDEN_DE_PROCEDIMIENTO" EntitySet="TB_ORDEN_DE_PROCEDIMIENTO" />
+      <End Role="TB_CARTA_GARANTIA" EntitySet="TB_CARTA_GARANTIA" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Consul__Codig__403A8C7D" Association="DB_SGHModel.FK__TB_Consul__Codig__403A8C7D">
-      <End Role="TB_Paciente" EntitySet="TB_Paciente" />
-      <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+    <AssociationSet Name="FK_TB_CARTA_GARANTIA_TB_PACIENTE" Association="DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_PACIENTE">
+      <End Role="TB_PACIENTE" EntitySet="TB_PACIENTE" />
+      <End Role="TB_CARTA_GARANTIA" EntitySet="TB_CARTA_GARANTIA" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Consul__Codig__412EB0B6" Association="DB_SGHModel.FK__TB_Consul__Codig__412EB0B6">
-      <End Role="TB_Consultorio" EntitySet="TB_Consultorio" />
-      <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+    <AssociationSet Name="FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_CARTA_GARANTIA" Association="DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_CARTA_GARANTIA">
+      <End Role="TB_CARTA_GARANTIA" EntitySet="TB_CARTA_GARANTIA" />
+      <End Role="TB_HOJA_INGRESO_HOSPITALIZACION" EntitySet="TB_HOJA_INGRESO_HOSPITALIZACION" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Consul__Codig__4222D4EF" Association="DB_SGHModel.FK__TB_Consul__Codig__4222D4EF">
-      <End Role="TB_Medico" EntitySet="TB_Medico" />
-      <End Role="TB_Consulta" EntitySet="TB_Consulta" />
+    <AssociationSet Name="FK_TB_CATALOGO_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO" Association="DB_SGHModel.FK_TB_CATALOGO_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO">
+      <End Role="TB_TIPO_EXAMEN_MEDICO" EntitySet="TB_TIPO_EXAMEN_MEDICO" />
+      <End Role="TB_CATALOGO_EXAMEN_MEDICO" EntitySet="TB_CATALOGO_EXAMEN_MEDICO" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Prescr__Codig__46E78A0C" Association="DB_SGHModel.FK__TB_Prescr__Codig__46E78A0C">
-      <End Role="TB_Consulta" EntitySet="TB_Consulta" />
-      <End Role="TB_Prescripcion_Medica" EntitySet="TB_Prescripcion_Medica" />
+    <AssociationSet Name="FK_TB_ORDEN_EXAMEN_MEDICO_TB_CATALOGO_EXAMEN_MEDICO" Association="DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_CATALOGO_EXAMEN_MEDICO">
+      <End Role="TB_CATALOGO_EXAMEN_MEDICO" EntitySet="TB_CATALOGO_EXAMEN_MEDICO" />
+      <End Role="TB_ORDEN_EXAMEN_MEDICO" EntitySet="TB_ORDEN_EXAMEN_MEDICO" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Prescr__Codig__48CFD27E" Association="DB_SGHModel.FK__TB_Prescr__Codig__48CFD27E">
-      <End Role="TB_Consulta" EntitySet="TB_Consulta" />
-      <End Role="TB_Prescripcion_Medica" EntitySet="TB_Prescripcion_Medica" />
+    <AssociationSet Name="FK_T_CL_CO_GC_Cita55" Association="DB_SGHModel.FK_T_CL_CO_GC_Cita55">
+      <End Role="TB_PACIENTE" EntitySet="TB_PACIENTE" />
+      <End Role="TB_CITA" EntitySet="TB_CITA" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Consul__Codig__4316F928" Association="DB_SGHModel.FK__TB_Consul__Codig__4316F928">
-      <End Role="TB_Local" EntitySet="TB_Local" />
-      <End Role="TB_Consultorio" EntitySet="TB_Consultorio" />
+    <AssociationSet Name="FK_T_CL_CO_GC_Cita60" Association="DB_SGHModel.FK_T_CL_CO_GC_Cita60">
+      <End Role="TB_HISTORIA_CLINICA" EntitySet="TB_HISTORIA_CLINICA" />
+      <End Role="TB_CITA" EntitySet="TB_CITA" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Consul__Codig__440B1D61" Association="DB_SGHModel.FK__TB_Consul__Codig__440B1D61">
-      <End Role="TB_Local" EntitySet="TB_Local" />
-      <End Role="TB_Consultorio" EntitySet="TB_Consultorio" />
+    <AssociationSet Name="FK_T_CL_CO_GC_Comprobante_de_Pago51" Association="DB_SGHModel.FK_T_CL_CO_GC_Comprobante_de_Pago51">
+      <End Role="TB_CITA" EntitySet="TB_CITA" />
+      <End Role="TB_COMPROBANTE_DE_PAGO" EntitySet="TB_COMPROBANTE_DE_PAGO" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Medico__Codig__44FF419A" Association="DB_SGHModel.FK__TB_Medico__Codig__44FF419A">
-      <End Role="TB_Especialidad" EntitySet="TB_Especialidad" />
-      <End Role="TB_Medico" EntitySet="TB_Medico" />
+    <AssociationSet Name="FK_T_CL_ES_GC_Orden_de_Pago50" Association="DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Pago50">
+      <End Role="TB_CITA" EntitySet="TB_CITA" />
+      <End Role="TB_ORDEN_SERVICIO" EntitySet="TB_ORDEN_SERVICIO" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Medico__Codig__45F365D3" Association="DB_SGHModel.FK__TB_Medico__Codig__45F365D3">
-      <End Role="TB_Especialidad" EntitySet="TB_Especialidad" />
-      <End Role="TB_Medico" EntitySet="TB_Medico" />
+    <AssociationSet Name="FK_T_CL_ES_GC_TurnoAtencion_T_CL_CO_GC_Cita" Association="DB_SGHModel.FK_T_CL_ES_GC_TurnoAtencion_T_CL_CO_GC_Cita">
+      <End Role="TB_CITA" EntitySet="TB_CITA" />
+      <End Role="TB_TURNO_ATENCION" EntitySet="TB_TURNO_ATENCION" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Prescr__Codig__47DBAE45" Association="DB_SGHModel.FK__TB_Prescr__Codig__47DBAE45">
-      <End Role="TB_Medicamento" EntitySet="TB_Medicamento" />
-      <End Role="TB_Prescripcion_Medica" EntitySet="TB_Prescripcion_Medica" />
+    <AssociationSet Name="FK_TB_CITA_00TB_ESPECIALIDAD" Association="DB_SGHModel.FK_TB_CITA_00TB_ESPECIALIDAD">
+      <End Role="TB_ESPECIALIDAD" EntitySet="TB_ESPECIALIDAD" />
+      <End Role="TB_CITA" EntitySet="TB_CITA" />
     </AssociationSet>
-    <AssociationSet Name="FK__TB_Prescr__Codig__49C3F6B7" Association="DB_SGHModel.FK__TB_Prescr__Codig__49C3F6B7">
-      <End Role="TB_Medicamento" EntitySet="TB_Medicamento" />
-      <End Role="TB_Prescripcion_Medica" EntitySet="TB_Prescripcion_Medica" />
+    <AssociationSet Name="FK_TB_CITA_00TB_MEDICO" Association="DB_SGHModel.FK_TB_CITA_00TB_MEDICO">
+      <End Role="TB_MEDICO" EntitySet="TB_MEDICO" />
+      <End Role="TB_CITA" EntitySet="TB_CITA" />
     </AssociationSet>
-    <EntitySet Name="TB_Turno_Citas" EntityType="DB_SGHModel.TB_Turno_Citas" />
-    <AssociationSet Name="FK_TB_Agenda_Medica_TB_Turno_Citas" Association="DB_SGHModel.FK_TB_Agenda_Medica_TB_Turno_Citas">
-      <End Role="TB_Turno_Citas" EntitySet="TB_Turno_Citas" />
-      <End Role="TB_Agenda_Medica" EntitySet="TB_Agenda_Medica" />
+    <AssociationSet Name="FK_TB_CITA_TB_Estado_Cita" Association="DB_SGHModel.FK_TB_CITA_TB_Estado_Cita">
+      <End Role="TB_ESTADO_CITA" EntitySet="TB_ESTADO_CITA" />
+      <End Role="TB_CITA" EntitySet="TB_CITA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_Consulta_TB_CITA" Association="DB_SGHModel.FK_TB_Consulta_TB_CITA">
+      <End Role="TB_CITA" EntitySet="TB_CITA" />
+      <End Role="TB_CONSULTA" EntitySet="TB_CONSULTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_Consulta_TB_CONSULTORIO" Association="DB_SGHModel.FK_TB_Consulta_TB_CONSULTORIO">
+      <End Role="TB_CONSULTORIO" EntitySet="TB_CONSULTORIO" />
+      <End Role="TB_CONSULTA" EntitySet="TB_CONSULTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_Consulta_TB_MEDICO" Association="DB_SGHModel.FK_TB_Consulta_TB_MEDICO">
+      <End Role="TB_MEDICO" EntitySet="TB_MEDICO" />
+      <End Role="TB_CONSULTA" EntitySet="TB_CONSULTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_Consulta_TB_PACIENTE" Association="DB_SGHModel.FK_TB_Consulta_TB_PACIENTE">
+      <End Role="TB_PACIENTE" EntitySet="TB_PACIENTE" />
+      <End Role="TB_CONSULTA" EntitySet="TB_CONSULTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_ORDEN_HOSPITALIZACION_TB_Consulta" Association="DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_Consulta">
+      <End Role="TB_CONSULTA" EntitySet="TB_CONSULTA" />
+      <End Role="TB_ORDEN_HOSPITALIZACION" EntitySet="TB_ORDEN_HOSPITALIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_PRESCRIPCION_MEDICA_TB_Consulta" Association="DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_Consulta">
+      <End Role="TB_CONSULTA" EntitySet="TB_CONSULTA" />
+      <End Role="TB_PRESCRIPCION_MEDICA" EntitySet="TB_PRESCRIPCION_MEDICA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_CONSULTORIO_TB_LOCAL" Association="DB_SGHModel.FK_TB_CONSULTORIO_TB_LOCAL">
+      <End Role="TB_LOCAL" EntitySet="TB_LOCAL" />
+      <End Role="TB_CONSULTORIO" EntitySet="TB_CONSULTORIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_CONSULTORIO_TB_TIPO_EXAMEN_MEDICO" Association="DB_SGHModel.FK_TB_CONSULTORIO_TB_TIPO_EXAMEN_MEDICO">
+      <End Role="TB_TIPO_EXAMEN_MEDICO" EntitySet="TB_TIPO_EXAMEN_MEDICO" />
+      <End Role="TB_CONSULTORIO" EntitySet="TB_CONSULTORIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_MEDICO_DE_TURNO_TB_CONSULTORIO" Association="DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_CONSULTORIO">
+      <End Role="TB_CONSULTORIO" EntitySet="TB_CONSULTORIO" />
+      <End Role="TB_MEDICO_DE_TURNO" EntitySet="TB_MEDICO_DE_TURNO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_CRONOGRAMA_EMERGENCIA_TB_EMPLEADO" Association="DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_EMPLEADO">
+      <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+      <End Role="TB_CRONOGRAMA_EMERGENCIA" EntitySet="TB_CRONOGRAMA_EMERGENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_CRONOGRAMA_EMERGENCIA_TB_TURNO_EMERGENCIA" Association="DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_TURNO_EMERGENCIA">
+      <End Role="TB_TURNO_EMERGENCIA" EntitySet="TB_TURNO_EMERGENCIA" />
+      <End Role="TB_CRONOGRAMA_EMERGENCIA" EntitySet="TB_CRONOGRAMA_EMERGENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_DET_HISTORIA_CLINICA_TB_HISTORIA_CLINICA" Association="DB_SGHModel.FK_TB_DET_HISTORIA_CLINICA_TB_HISTORIA_CLINICA">
+      <End Role="TB_HISTORIA_CLINICA" EntitySet="TB_HISTORIA_CLINICA" />
+      <End Role="TB_DET_HISTORIA_CLINICA" EntitySet="TB_DET_HISTORIA_CLINICA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_MEDICAMENTO" Association="DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_MEDICAMENTO">
+      <End Role="TB_MEDICAMENTO" EntitySet="TB_MEDICAMENTO" />
+      <End Role="TB_DETALLE_ORDEN_DE_PEDIDO" EntitySet="TB_DETALLE_ORDEN_DE_PEDIDO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_ORDEN_DE_PEDIDO" Association="DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_ORDEN_DE_PEDIDO">
+      <End Role="TB_ORDEN_DE_PEDIDO" EntitySet="TB_ORDEN_DE_PEDIDO" />
+      <End Role="TB_DETALLE_ORDEN_DE_PEDIDO" EntitySet="TB_DETALLE_ORDEN_DE_PEDIDO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_MEDICAMENTO" Association="DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_MEDICAMENTO">
+      <End Role="TB_MEDICAMENTO" EntitySet="TB_MEDICAMENTO" />
+      <End Role="TB_DETALLE_ORDEN_DE_SALIDA" EntitySet="TB_DETALLE_ORDEN_DE_SALIDA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_ORDEN_DE_SALIDA" Association="DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_ORDEN_DE_SALIDA">
+      <End Role="TB_ORDEN_DE_SALIDA" EntitySet="TB_ORDEN_DE_SALIDA" />
+      <End Role="TB_DETALLE_ORDEN_DE_SALIDA" EntitySet="TB_DETALLE_ORDEN_DE_SALIDA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_DETORDENSERVICIO_TB_ORDEN_SERVICIO" Association="DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_ORDEN_SERVICIO">
+      <End Role="TB_ORDEN_SERVICIO" EntitySet="TB_ORDEN_SERVICIO" />
+      <End Role="TB_DETORDENSERVICIO" EntitySet="TB_DETORDENSERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_DETORDENSERVICIO_TB_SERVICIO" Association="DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_SERVICIO">
+      <End Role="TB_SERVICIO" EntitySet="TB_SERVICIO" />
+      <End Role="TB_DETORDENSERVICIO" EntitySet="TB_DETORDENSERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_EMPLEADO_TB_TIPO_EMPLEADO" Association="DB_SGHModel.FK_TB_EMPLEADO_TB_TIPO_EMPLEADO">
+      <End Role="TB_TIPO_EMPLEADO" EntitySet="TB_TIPO_EMPLEADO" />
+      <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_EMPLEADO_TB_TURNO_EMERGENCIA" Association="DB_SGHModel.FK_TB_EMPLEADO_TB_TURNO_EMERGENCIA">
+      <End Role="TB_TURNO_EMERGENCIA" EntitySet="TB_TURNO_EMERGENCIA" />
+      <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO" Association="DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO">
+      <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+      <End Role="TB_INFORME_ADMINSITRATIVO" EntitySet="TB_INFORME_ADMINSITRATIVO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_SOLICITUDES_DE_CAMBIO_TB_EMPLEADO" Association="DB_SGHModel.FK_TB_SOLICITUDES_DE_CAMBIO_TB_EMPLEADO">
+      <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+      <End Role="TB_SOLICITUDES_DE_CAMBIO" EntitySet="TB_SOLICITUDES_DE_CAMBIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_ESPECIALIDAD" Association="DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_ESPECIALIDAD">
+      <End Role="TB_ESPECIALIDAD" EntitySet="TB_ESPECIALIDAD" />
+      <End Role="TB_HOJA_INGRESO_EMERGENCIA" EntitySet="TB_HOJA_INGRESO_EMERGENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ESPECIALIDAD" Association="DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ESPECIALIDAD">
+      <End Role="TB_ESPECIALIDAD" EntitySet="TB_ESPECIALIDAD" />
+      <End Role="TB_HOJA_INGRESO_HOSPITALIZACION" EntitySet="TB_HOJA_INGRESO_HOSPITALIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_MEDICOESPECIALIDAD_TB_ESPECIALIDAD" Association="DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_ESPECIALIDAD">
+      <End Role="TB_ESPECIALIDAD" EntitySet="TB_ESPECIALIDAD" />
+      <End Role="TB_MEDICOESPECIALIDAD" EntitySet="TB_MEDICOESPECIALIDAD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_HISTORIA_CLINICA_TB_PACIENTE1" Association="DB_SGHModel.FK_TB_HISTORIA_CLINICA_TB_PACIENTE1">
+      <End Role="TB_PACIENTE" EntitySet="TB_PACIENTE" />
+      <End Role="TB_HISTORIA_CLINICA" EntitySet="TB_HISTORIA_CLINICA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_ORDEN_INTERNA_TB_HISTORIA_CLINICA" Association="DB_SGHModel.FK_TB_ORDEN_INTERNA_TB_HISTORIA_CLINICA">
+      <End Role="TB_HISTORIA_CLINICA" EntitySet="TB_HISTORIA_CLINICA" />
+      <End Role="TB_ORDEN_INTERNA" EntitySet="TB_ORDEN_INTERNA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_CL_ES_GC_Hoja_Ingreso_Emergencia54" Association="DB_SGHModel.FK_T_CL_ES_GC_Hoja_Ingreso_Emergencia54">
+      <End Role="TB_PACIENTE" EntitySet="TB_PACIENTE" />
+      <End Role="TB_HOJA_INGRESO_EMERGENCIA" EntitySet="TB_HOJA_INGRESO_EMERGENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_MEDICO" Association="DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_MEDICO">
+      <End Role="TB_MEDICO" EntitySet="TB_MEDICO" />
+      <End Role="TB_HOJA_INGRESO_EMERGENCIA" EntitySet="TB_HOJA_INGRESO_EMERGENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_CL_ES_GC_Hooja_Ingreso_Hospitalizacion58" Association="DB_SGHModel.FK_T_CL_ES_GC_Hooja_Ingreso_Hospitalizacion58">
+      <End Role="TB_PACIENTE" EntitySet="TB_PACIENTE" />
+      <End Role="TB_HOJA_INGRESO_HOSPITALIZACION" EntitySet="TB_HOJA_INGRESO_HOSPITALIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_LOCAL" Association="DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_LOCAL">
+      <End Role="TB_LOCAL" EntitySet="TB_LOCAL" />
+      <End Role="TB_HOJA_INGRESO_HOSPITALIZACION" EntitySet="TB_HOJA_INGRESO_HOSPITALIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ORDEN_HOSPITALIZACION" Association="DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ORDEN_HOSPITALIZACION">
+      <End Role="TB_ORDEN_HOSPITALIZACION" EntitySet="TB_ORDEN_HOSPITALIZACION" />
+      <End Role="TB_HOJA_INGRESO_HOSPITALIZACION" EntitySet="TB_HOJA_INGRESO_HOSPITALIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO" Association="DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO">
+      <End Role="TB_TIPO_INFORME_ADMINISTRATIVO" EntitySet="TB_TIPO_INFORME_ADMINISTRATIVO" />
+      <End Role="TB_INFORME_ADMINSITRATIVO" EntitySet="TB_INFORME_ADMINSITRATIVO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_INFORM__ID_In__5E8A0973" Association="DB_SGHModel.FK__TB_INFORM__ID_In__5E8A0973">
+      <End Role="TB_INFORME_EQUIPO" EntitySet="TB_INFORME_EQUIPO" />
+      <End Role="TB_INFORME_EQUIPO_DET" EntitySet="TB_INFORME_EQUIPO_DET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_INFORME_RESULTADO_TB_ORDEN_EXAMEN_MEDICO" Association="DB_SGHModel.FK_TB_INFORME_RESULTADO_TB_ORDEN_EXAMEN_MEDICO">
+      <End Role="TB_ORDEN_EXAMEN_MEDICO" EntitySet="TB_ORDEN_EXAMEN_MEDICO" />
+      <End Role="TB_INFORME_RESULTADO" EntitySet="TB_INFORME_RESULTADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_LISTA_VERIFICACION_TB_INSTALACION" Association="DB_SGHModel.FK_TB_LISTA_VERIFICACION_TB_INSTALACION">
+      <End Role="TB_INSTALACION" EntitySet="TB_INSTALACION" />
+      <End Role="TB_LISTA_VERIFICACION" EntitySet="TB_LISTA_VERIFICACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_ORDEN_HOSPITALIZACION_TB_LOCAL" Association="DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_LOCAL">
+      <End Role="TB_LOCAL" EntitySet="TB_LOCAL" />
+      <End Role="TB_ORDEN_HOSPITALIZACION" EntitySet="TB_ORDEN_HOSPITALIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_PRESCRIPCION_MEDICA_TB_MEDICAMENTO" Association="DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_MEDICAMENTO">
+      <End Role="TB_MEDICAMENTO" EntitySet="TB_MEDICAMENTO" />
+      <End Role="TB_PRESCRIPCION_MEDICA" EntitySet="TB_PRESCRIPCION_MEDICA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_MEDICO_DE_TURNO_TB_MEDICO" Association="DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_MEDICO">
+      <End Role="TB_MEDICO" EntitySet="TB_MEDICO" />
+      <End Role="TB_MEDICO_DE_TURNO" EntitySet="TB_MEDICO_DE_TURNO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_MEDICOESPECIALIDAD_TB_MEDICO" Association="DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_MEDICO">
+      <End Role="TB_MEDICO" EntitySet="TB_MEDICO" />
+      <End Role="TB_MEDICOESPECIALIDAD" EntitySet="TB_MEDICOESPECIALIDAD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_ORDEN_DE_PROCEDIMIENTO_00TB_MEDICO" Association="DB_SGHModel.FK_TB_ORDEN_DE_PROCEDIMIENTO_00TB_MEDICO">
+      <End Role="TB_MEDICO" EntitySet="TB_MEDICO" />
+      <End Role="TB_ORDEN_DE_PROCEDIMIENTO" EntitySet="TB_ORDEN_DE_PROCEDIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_ORDEN_EXAMEN_MEDICO_TB_MEDICO1" Association="DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_MEDICO1">
+      <End Role="TB_MEDICO" EntitySet="TB_MEDICO" />
+      <End Role="TB_ORDEN_EXAMEN_MEDICO" EntitySet="TB_ORDEN_EXAMEN_MEDICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_PRESCRIPCION_MEDICA_00TB_MEDICO" Association="DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_00TB_MEDICO">
+      <End Role="TB_MEDICO" EntitySet="TB_MEDICO" />
+      <End Role="TB_PRESCRIPCION_MEDICA" EntitySet="TB_PRESCRIPCION_MEDICA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_TURNOATENCION_00TB_MEDICO" Association="DB_SGHModel.FK_TB_TURNOATENCION_00TB_MEDICO">
+      <End Role="TB_MEDICO" EntitySet="TB_MEDICO" />
+      <End Role="TB_TURNO_ATENCION" EntitySet="TB_TURNO_ATENCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_MEDICO_DE_TURNO" Association="DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_MEDICO_DE_TURNO">
+      <End Role="TB_MEDICO_DE_TURNO" EntitySet="TB_MEDICO_DE_TURNO" />
+      <End Role="TB_PROGRAMACION_ATENCION_EXAMENES" EntitySet="TB_PROGRAMACION_ATENCION_EXAMENES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_ORDEN_HOSPITALIZACION_TB_MOTIVO_HOSPITALIZACION" Association="DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_MOTIVO_HOSPITALIZACION">
+      <End Role="TB_MOTIVO_HOSPITALIZACION" EntitySet="TB_MOTIVO_HOSPITALIZACION" />
+      <End Role="TB_ORDEN_HOSPITALIZACION" EntitySet="TB_ORDEN_HOSPITALIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_CL_ES_GC_Orden_de_Procedimiento53" Association="DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Procedimiento53">
+      <End Role="TB_PACIENTE" EntitySet="TB_PACIENTE" />
+      <End Role="TB_ORDEN_DE_PROCEDIMIENTO" EntitySet="TB_ORDEN_DE_PROCEDIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_ORDEN_EXAMEN_MEDICO_TB_ORDEN_INTERNA" Association="DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_ORDEN_INTERNA">
+      <End Role="TB_ORDEN_INTERNA" EntitySet="TB_ORDEN_INTERNA" />
+      <End Role="TB_ORDEN_EXAMEN_MEDICO" EntitySet="TB_ORDEN_EXAMEN_MEDICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_ORDEN_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO" Association="DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO">
+      <End Role="TB_TIPO_EXAMEN_MEDICO" EntitySet="TB_TIPO_EXAMEN_MEDICO" />
+      <End Role="TB_ORDEN_EXAMEN_MEDICO" EntitySet="TB_ORDEN_EXAMEN_MEDICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_ORDEN_SERVICIO_TB_ORDEN_EXAMEN_MEDICO1" Association="DB_SGHModel.FK_TB_ORDEN_SERVICIO_TB_ORDEN_EXAMEN_MEDICO1">
+      <End Role="TB_ORDEN_EXAMEN_MEDICO" EntitySet="TB_ORDEN_EXAMEN_MEDICO" />
+      <End Role="TB_ORDEN_SERVICIO" EntitySet="TB_ORDEN_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_ORDEN_EXAMEN_MEDICO" Association="DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_ORDEN_EXAMEN_MEDICO">
+      <End Role="TB_ORDEN_EXAMEN_MEDICO" EntitySet="TB_ORDEN_EXAMEN_MEDICO" />
+      <End Role="TB_PROGRAMACION_ATENCION_EXAMENES" EntitySet="TB_PROGRAMACION_ATENCION_EXAMENES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_CL_ES_GC_Orden_Hospitalizacion56" Association="DB_SGHModel.FK_T_CL_ES_GC_Orden_Hospitalizacion56">
+      <End Role="TB_PACIENTE" EntitySet="TB_PACIENTE" />
+      <End Role="TB_ORDEN_HOSPITALIZACION" EntitySet="TB_ORDEN_HOSPITALIZACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_ORDEN___ID_Or__73852659" Association="DB_SGHModel.FK__TB_ORDEN___ID_Or__73852659">
+      <End Role="TB_ORDEN_TRABAJO" EntitySet="TB_ORDEN_TRABAJO" />
+      <End Role="TB_ORDEN_TRABAJO_DET" EntitySet="TB_ORDEN_TRABAJO_DET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_CL_CO_GC_Paciente_T_CL_ES_GC_TipoDocumento" Association="DB_SGHModel.FK_T_CL_CO_GC_Paciente_T_CL_ES_GC_TipoDocumento">
+      <End Role="TB_TIPO_DOCUMENTO" EntitySet="TB_TIPO_DOCUMENTO" />
+      <End Role="TB_PACIENTE" EntitySet="TB_PACIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_CL_ES_GC_Prescripcion_Medica57" Association="DB_SGHModel.FK_T_CL_ES_GC_Prescripcion_Medica57">
+      <End Role="TB_PACIENTE" EntitySet="TB_PACIENTE" />
+      <End Role="TB_PRESCRIPCION_MEDICA" EntitySet="TB_PRESCRIPCION_MEDICA" />
+    </AssociationSet>
+    <AssociationSet Name="TB_CATALOGO_REQUISITO" Association="DB_SGHModel.TB_CATALOGO_REQUISITO">
+      <End Role="TB_CATALOGO_EXAMEN_MEDICO" EntitySet="TB_CATALOGO_EXAMEN_MEDICO" />
+      <End Role="TB_REQUISITO" EntitySet="TB_REQUISITO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_AGENDA_MEDICA_TB_ESPECIALIDAD" Association="DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_ESPECIALIDAD">
+      <End Role="TB_ESPECIALIDAD" EntitySet="TB_ESPECIALIDAD" />
+      <End Role="TB_AGENDA_MEDICA" EntitySet="TB_AGENDA_MEDICA" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="TB_Agenda_Medica">
+  <EntityType Name="sysdiagrams">
     <Key>
-      <PropertyRef Name="CodigoAgenda" />
+      <PropertyRef Name="diagram_id" />
     </Key>
-    <Property Type="Int32" Name="CodigoAgenda" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="principal_id" Nullable="false" />
+    <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="version" />
+    <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TB_ACTIVIDADES_PLANIFICADAS">
+    <Key>
+      <PropertyRef Name="ID_Actividades_Planificadas" />
+    </Key>
+    <Property Type="Int32" Name="ID_Actividades_Planificadas" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GM_Fecha_Planificada" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="GM_Hora_Inicio" />
+    <Property Type="Int32" Name="GM_Hora_Final" />
+    <Property Type="Int32" Name="GM_Estado" />
+    <Property Type="Int32" Name="GM_NroOrden" />
+    <Property Type="Int32" Name="GM_Codigo_PlanMantenimiento" />
+  </EntityType>
+  <EntityType Name="TB_ACTIVO">
+    <Key>
+      <PropertyRef Name="ID_Activo" />
+    </Key>
+    <Property Type="Int32" Name="ID_Activo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Tipo_Activo" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Descripcion" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Cantidad" />
+    <Property Type="Int32" Name="Estado" />
+  </EntityType>
+  <EntityType Name="TB_AGENDA_MEDICA">
+    <Key>
+      <PropertyRef Name="ID_AgendaMedica" />
+    </Key>
+    <Property Type="Int32" Name="ID_AgendaMedica" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="DateTime" Name="Fecha" />
     <Property Type="DateTime" Name="HoraInicio" />
     <Property Type="DateTime" Name="HoraFin" />
     <Property Type="Boolean" Name="Estado" Nullable="false" />
-    <Property Type="Int32" Name="CodigoMedico" Nullable="false" />
-    <Property Type="String" Name="NumeroConsultorio" MaxLength="10" FixedLength="true" Unicode="true" />
-    <NavigationProperty Name="TB_Cita" Relationship="DB_SGHModel.FK__Cita__CodigoAgen__33D4B5981" FromRole="TB_Agenda_Medica" ToRole="TB_Cita" />
-    <NavigationProperty Name="TB_Medico" Relationship="DB_SGHModel.FK__TB_Agenda__Codig__32E0915F" FromRole="TB_Agenda_Medica" ToRole="TB_Medico" />
-    <NavigationProperty Name="TB_Medico1" Relationship="DB_SGHModel.FK__TB_Agenda__Codig__33D4B598" FromRole="TB_Agenda_Medica" ToRole="TB_Medico" />
-    <Property Type="Int32" Name="IdTurno" Nullable="false" />
-    <NavigationProperty Name="TB_Turno_Citas" Relationship="DB_SGHModel.FK_TB_Agenda_Medica_TB_Turno_Citas" FromRole="TB_Agenda_Medica" ToRole="TB_Turno_Citas" />
+    <Property Type="Int32" Name="ID_Medico" Nullable="false" />
+    <Property Type="Int32" Name="ID_Consultorio" />
+    <Property Type="Int32" Name="ID_TURNO" />
+    <NavigationProperty Name="TB_TURNO" Relationship="DB_SGHModel.FK__TB_AGENDA__ID_TU__2EDAF651" FromRole="TB_AGENDA_MEDICA" ToRole="TB_TURNO" />
+    <NavigationProperty Name="TB_CONSULTORIO" Relationship="DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_CONSULTORIO" FromRole="TB_AGENDA_MEDICA" ToRole="TB_CONSULTORIO" />
+    <NavigationProperty Name="TB_MEDICO" Relationship="DB_SGHModel.FK_TB_AgendaMedica_TB_MEDICO" FromRole="TB_AGENDA_MEDICA" ToRole="TB_MEDICO" />
+    <NavigationProperty Name="TB_CITA" Relationship="DB_SGHModel.FK_TB_CITA_TB_AgendaMedica" FromRole="TB_AGENDA_MEDICA" ToRole="TB_CITA" />
+    <Property Type="Int32" Name="ID_Especialidad" />
+    <NavigationProperty Name="TB_ESPECIALIDAD" Relationship="DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_ESPECIALIDAD" FromRole="TB_AGENDA_MEDICA" ToRole="TB_ESPECIALIDAD" />
   </EntityType>
-  <EntityType Name="TB_Analisis">
+  <EntityType Name="TB_ANALISIS">
     <Key>
-      <PropertyRef Name="CodigoAnalisis" />
+      <PropertyRef Name="ID_Analisis" />
     </Key>
-    <Property Type="Int32" Name="CodigoAnalisis" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_Analisis" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="DateTime" Name="FechaSolicitud" />
     <Property Type="DateTime" Name="FechaAnalisis" />
     <Property Type="String" Name="Resultado" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Observaciones" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="CodigoConsulta" Nullable="false" />
-    <Property Type="Int32" Name="CodigoTipoAnalisis" Nullable="false" />
-    <NavigationProperty Name="TB_Tipo_Analisis" Relationship="DB_SGHModel.FK__TB_Analis__Codig__34C8D9D1" FromRole="TB_Analisis" ToRole="TB_Tipo_Analisis" />
-    <NavigationProperty Name="TB_Consulta" Relationship="DB_SGHModel.FK__TB_Analis__Codig__35BCFE0A" FromRole="TB_Analisis" ToRole="TB_Consulta" />
-    <NavigationProperty Name="TB_Tipo_Analisis1" Relationship="DB_SGHModel.FK__TB_Analis__Codig__36B12243" FromRole="TB_Analisis" ToRole="TB_Tipo_Analisis" />
-    <NavigationProperty Name="TB_Consulta1" Relationship="DB_SGHModel.FK__TB_Analis__Codig__37A5467C" FromRole="TB_Analisis" ToRole="TB_Consulta" />
+    <Property Type="Int32" Name="ID_Consulta" Nullable="false" />
+    <Property Type="Int32" Name="ID_TipoAnalisis" Nullable="false" />
+    <NavigationProperty Name="TB_CONSULTA" Relationship="DB_SGHModel.FK__TB_ANALIS__ID_Co__31B762FC" FromRole="TB_ANALISIS" ToRole="TB_CONSULTA" />
+    <NavigationProperty Name="TB_TIPO_ANALISIS" Relationship="DB_SGHModel.FK__TB_ANALIS__ID_Ti__32AB8735" FromRole="TB_ANALISIS" ToRole="TB_TIPO_ANALISIS" />
   </EntityType>
-  <EntityType Name="TB_Cita">
+  <EntityType Name="TB_AREA">
     <Key>
-      <PropertyRef Name="CodigoCita" />
+      <PropertyRef Name="ID_Area" />
     </Key>
-    <Property Type="Int32" Name="CodigoCita" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="DateTime" Name="FechaCita" />
-    <Property Type="Int32" Name="CodigoPaciente" Nullable="false" />
-    <Property Type="Int32" Name="CodigoMedico" Nullable="false" />
-    <Property Type="Int32" Name="CodigoAgenda" Nullable="false" />
-    <Property Type="Int32" Name="IdEstado" />
-    <NavigationProperty Name="TB_Agenda_Medica" Relationship="DB_SGHModel.FK__Cita__CodigoAgen__33D4B5981" FromRole="TB_Cita" ToRole="TB_Agenda_Medica" />
-    <NavigationProperty Name="TB_Medico" Relationship="DB_SGHModel.FK__Cita__CodigoMedi__36B122431" FromRole="TB_Cita" ToRole="TB_Medico" />
-    <NavigationProperty Name="TB_Paciente" Relationship="DB_SGHModel.FK__Cita__CodigoPaci__37A5467C1" FromRole="TB_Cita" ToRole="TB_Paciente" />
-    <NavigationProperty Name="TB_Consulta" Relationship="DB_SGHModel.FK__Consulta__Codigo__3B75D7601" FromRole="TB_Cita" ToRole="TB_Consulta" />
-    <NavigationProperty Name="TB_Estado_Cita" Relationship="DB_SGHModel.FK_Cita_EstadoCita1" FromRole="TB_Cita" ToRole="TB_Estado_Cita" />
+    <Property Type="Int32" Name="ID_Area" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GE_Nombre" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GE_Ubicacion" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_INSTALACION" Relationship="DB_SGHModel.FK_TB_INSTALACION_TB_AREA" FromRole="TB_AREA" ToRole="TB_INSTALACION" />
+    <NavigationProperty Name="TB_ORDEN_DE_PEDIDO" Relationship="DB_SGHModel.FK_TB_ORDEN_DE_PEDIDO_TB_AREA" FromRole="TB_AREA" ToRole="TB_ORDEN_DE_PEDIDO" />
+  </EntityType>
+  <EntityType Name="TB_Atencion_Emergencia">
+    <Key>
+      <PropertyRef Name="ID_ATENCION" />
+    </Key>
+    <Property Type="Int32" Name="ID_ATENCION" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="GE_FechaIngreso" Nullable="false" />
+    <Property Type="Int32" Name="ID_Medico" Nullable="false" />
+    <Property Type="Int32" Name="ID_Paciente" Nullable="false" />
+    <Property Type="String" Name="GE_DescripcionObservaciones" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="GE_Estado" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Cama" />
+    <NavigationProperty Name="TB_CAMA" Relationship="DB_SGHModel.FK_TB_Atencion_Emergencia_TB_CAMA" FromRole="TB_Atencion_Emergencia" ToRole="TB_CAMA" />
+    <NavigationProperty Name="TB_MEDICO" Relationship="DB_SGHModel.FK_TB_Atencion_Emergencia_TB_Medico" FromRole="TB_Atencion_Emergencia" ToRole="TB_MEDICO" />
+    <NavigationProperty Name="TB_PACIENTE" Relationship="DB_SGHModel.FK_TB_Atencion_Emergencia_TB_PACIENTE" FromRole="TB_Atencion_Emergencia" ToRole="TB_PACIENTE" />
+  </EntityType>
+  <EntityType Name="TB_CAMA">
+    <Key>
+      <PropertyRef Name="ID_Cama" />
+    </Key>
+    <Property Type="Int32" Name="ID_Cama" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="NroCama" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TipoCama" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Ubicacion" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Hoja_Ingreso_Hospitalizacion" />
+    <Property Type="Int32" Name="ID_Especialidad" />
+    <NavigationProperty Name="TB_Atencion_Emergencia" Relationship="DB_SGHModel.FK_TB_Atencion_Emergencia_TB_CAMA" FromRole="TB_CAMA" ToRole="TB_Atencion_Emergencia" />
+    <NavigationProperty Name="TB_HOJA_INGRESO_HOSPITALIZACION" Relationship="DB_SGHModel.FK_T_CL_ES_GO_Cama63" FromRole="TB_CAMA" ToRole="TB_HOJA_INGRESO_HOSPITALIZACION" />
+    <NavigationProperty Name="TB_ESPECIALIDAD" Relationship="DB_SGHModel.FK_TB_CAMA_TB_ESPECIALIDAD" FromRole="TB_CAMA" ToRole="TB_ESPECIALIDAD" />
+  </EntityType>
+  <EntityType Name="TB_CARTA_GARANTIA">
+    <Key>
+      <PropertyRef Name="ID_Carta" />
+    </Key>
+    <Property Type="Int32" Name="ID_Carta" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_Orden_de_Procedimiento" Nullable="false" />
+    <Property Type="Int32" Name="CodPresupuesto" Nullable="false" />
+    <Property Type="Int32" Name="ID_Paciente" Nullable="false" />
+    <Property Type="Int32" Name="CodAseguradora" Nullable="false" />
+    <Property Type="DateTime" Name="FecINiVigencia" Nullable="false" />
+    <Property Type="DateTime" Name="FecFinVigencia" Nullable="false" />
+    <Property Type="Decimal" Name="MontoCarta" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="Detalle" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Estado" Nullable="false" />
+    <NavigationProperty Name="TB_ORDEN_DE_PROCEDIMIENTO" Relationship="DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_ORDEN_DE_PROCEDIMIENTO" FromRole="TB_CARTA_GARANTIA" ToRole="TB_ORDEN_DE_PROCEDIMIENTO" />
+    <NavigationProperty Name="TB_PACIENTE" Relationship="DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_PACIENTE" FromRole="TB_CARTA_GARANTIA" ToRole="TB_PACIENTE" />
+    <NavigationProperty Name="TB_HOJA_INGRESO_HOSPITALIZACION" Relationship="DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_CARTA_GARANTIA" FromRole="TB_CARTA_GARANTIA" ToRole="TB_HOJA_INGRESO_HOSPITALIZACION" />
+  </EntityType>
+  <EntityType Name="TB_CATALOGO_EXAMEN_MEDICO">
+    <Key>
+      <PropertyRef Name="ID_Catalogo_Examen" />
+    </Key>
+    <Property Type="Int32" Name="ID_Catalogo_Examen" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="nom_examen" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="precio" Precision="10" Scale="2" />
+    <Property Type="Int32" Name="ID_Tipo_Examen" />
+    <NavigationProperty Name="TB_TIPO_EXAMEN_MEDICO" Relationship="DB_SGHModel.FK_TB_CATALOGO_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO" FromRole="TB_CATALOGO_EXAMEN_MEDICO" ToRole="TB_TIPO_EXAMEN_MEDICO" />
+    <NavigationProperty Name="TB_ORDEN_EXAMEN_MEDICO" Relationship="DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_CATALOGO_EXAMEN_MEDICO" FromRole="TB_CATALOGO_EXAMEN_MEDICO" ToRole="TB_ORDEN_EXAMEN_MEDICO" />
+    <NavigationProperty Name="TB_REQUISITO" Relationship="DB_SGHModel.TB_CATALOGO_REQUISITO" FromRole="TB_CATALOGO_EXAMEN_MEDICO" ToRole="TB_REQUISITO" />
+  </EntityType>
+  <EntityType Name="TB_CENTRO_COSTO">
+    <Key>
+      <PropertyRef Name="ID_CentroCosto" />
+    </Key>
+    <Property Type="Int32" Name="ID_CentroCosto" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Descripcion_CC" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Estado" />
+  </EntityType>
+  <EntityType Name="TB_CITA">
+    <Key>
+      <PropertyRef Name="ID_Cita" />
+    </Key>
+    <Property Type="Int32" Name="ID_Cita" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="FechaHoraCita" Nullable="false" />
+    <Property Type="String" Name="Aseguradora" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Double" Name="Cobertura" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="OrdenAtencion" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Paciente" Nullable="false" />
+    <Property Type="Int32" Name="ID_Historia" />
+    <Property Type="Int32" Name="ID_Especialidad" Nullable="false" />
+    <Property Type="Int32" Name="ID_Medico" Nullable="false" />
+    <Property Type="Int32" Name="ID_AgendaMedica" Nullable="false" />
+    <Property Type="Int32" Name="ID_EstadoCita" />
+    <Property Type="Int32" Name="ID_Cita_Reprogramada" />
+    <Property Type="String" Name="Des_Ubicacion_Cita" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Type="Boolean" Name="AtencionLocal" />
-    <Property Type="String" Name="DireccionDomicilio" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Sintomas" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="ReferenciaDomicilio" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="SintomasPaciente" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Aseguradora" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Decimal" Name="Cobertura" Precision="19" Scale="4" />
+    <NavigationProperty Name="TB_AGENDA_MEDICA" Relationship="DB_SGHModel.FK_TB_CITA_TB_AgendaMedica" FromRole="TB_CITA" ToRole="TB_AGENDA_MEDICA" />
+    <NavigationProperty Name="TB_PACIENTE" Relationship="DB_SGHModel.FK_T_CL_CO_GC_Cita55" FromRole="TB_CITA" ToRole="TB_PACIENTE" />
+    <NavigationProperty Name="TB_HISTORIA_CLINICA" Relationship="DB_SGHModel.FK_T_CL_CO_GC_Cita60" FromRole="TB_CITA" ToRole="TB_HISTORIA_CLINICA" />
+    <NavigationProperty Name="TB_COMPROBANTE_DE_PAGO" Relationship="DB_SGHModel.FK_T_CL_CO_GC_Comprobante_de_Pago51" FromRole="TB_CITA" ToRole="TB_COMPROBANTE_DE_PAGO" />
+    <NavigationProperty Name="TB_ORDEN_SERVICIO" Relationship="DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Pago50" FromRole="TB_CITA" ToRole="TB_ORDEN_SERVICIO" />
+    <NavigationProperty Name="TB_TURNO_ATENCION" Relationship="DB_SGHModel.FK_T_CL_ES_GC_TurnoAtencion_T_CL_CO_GC_Cita" FromRole="TB_CITA" ToRole="TB_TURNO_ATENCION" />
+    <NavigationProperty Name="TB_ESPECIALIDAD" Relationship="DB_SGHModel.FK_TB_CITA_00TB_ESPECIALIDAD" FromRole="TB_CITA" ToRole="TB_ESPECIALIDAD" />
+    <NavigationProperty Name="TB_MEDICO" Relationship="DB_SGHModel.FK_TB_CITA_00TB_MEDICO" FromRole="TB_CITA" ToRole="TB_MEDICO" />
+    <NavigationProperty Name="TB_ESTADO_CITA" Relationship="DB_SGHModel.FK_TB_CITA_TB_Estado_Cita" FromRole="TB_CITA" ToRole="TB_ESTADO_CITA" />
+    <NavigationProperty Name="TB_CONSULTA" Relationship="DB_SGHModel.FK_TB_Consulta_TB_CITA" FromRole="TB_CITA" ToRole="TB_CONSULTA" />
   </EntityType>
-  <EntityType Name="TB_Consulta">
+  <EntityType Name="TB_COMPROBANTE_DE_PAGO">
     <Key>
-      <PropertyRef Name="CodigoConsulta" />
+      <PropertyRef Name="ID_Comprobante_Pago" />
     </Key>
-    <Property Type="Int32" Name="CodigoConsulta" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_Comprobante_Pago" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="FechaComprobante" Nullable="false" />
+    <Property Type="String" Name="TipoComprobante" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FormaDePago" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Double" Name="MontoComprobante" Nullable="false" />
+    <Property Type="String" Name="ConceptoDePago" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Cita" Nullable="false" />
+    <NavigationProperty Name="TB_CITA" Relationship="DB_SGHModel.FK_T_CL_CO_GC_Comprobante_de_Pago51" FromRole="TB_COMPROBANTE_DE_PAGO" ToRole="TB_CITA" />
+  </EntityType>
+  <EntityType Name="TB_CONSULTA">
+    <Key>
+      <PropertyRef Name="ID_Consulta" />
+    </Key>
+    <Property Type="Int32" Name="ID_Consulta" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="DateTime" Name="FechaHoraInicio" Nullable="false" />
     <Property Type="DateTime" Name="FechaHoraFin" />
     <Property Type="String" Name="Observaciones" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="CodigoMedico" Nullable="false" />
-    <Property Type="Int32" Name="CodigoCita" Nullable="false" />
-    <Property Type="Int32" Name="CodigoConsultorio" Nullable="false" />
-    <Property Type="Int32" Name="CodigoPaciente" Nullable="false" />
+    <Property Type="Int32" Name="ID_Medico" Nullable="false" />
+    <Property Type="Int32" Name="ID_Cita" Nullable="false" />
+    <Property Type="Int32" Name="ID_Consultorio" Nullable="false" />
+    <Property Type="Int32" Name="ID_Paciente" Nullable="false" />
     <Property Type="String" Name="Diagnostico" MaxLength="4000" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="TB_Analisis" Relationship="DB_SGHModel.FK__TB_Analis__Codig__35BCFE0A" FromRole="TB_Consulta" ToRole="TB_Analisis" />
-    <NavigationProperty Name="TB_Analisis1" Relationship="DB_SGHModel.FK__TB_Analis__Codig__37A5467C" FromRole="TB_Consulta" ToRole="TB_Analisis" />
-    <NavigationProperty Name="TB_Cita" Relationship="DB_SGHModel.FK__Consulta__Codigo__3B75D7601" FromRole="TB_Consulta" ToRole="TB_Cita" />
-    <NavigationProperty Name="TB_Paciente" Relationship="DB_SGHModel.FK__TB_Consul__Codig__3D5E1FD2" FromRole="TB_Consulta" ToRole="TB_Paciente" />
-    <NavigationProperty Name="TB_Consultorio" Relationship="DB_SGHModel.FK__TB_Consul__Codig__3E52440B" FromRole="TB_Consulta" ToRole="TB_Consultorio" />
-    <NavigationProperty Name="TB_Medico" Relationship="DB_SGHModel.FK__TB_Consul__Codig__3F466844" FromRole="TB_Consulta" ToRole="TB_Medico" />
-    <NavigationProperty Name="TB_Paciente1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__403A8C7D" FromRole="TB_Consulta" ToRole="TB_Paciente" />
-    <NavigationProperty Name="TB_Consultorio1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__412EB0B6" FromRole="TB_Consulta" ToRole="TB_Consultorio" />
-    <NavigationProperty Name="TB_Medico1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__4222D4EF" FromRole="TB_Consulta" ToRole="TB_Medico" />
-    <NavigationProperty Name="TB_Prescripcion_Medica" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__46E78A0C" FromRole="TB_Consulta" ToRole="TB_Prescripcion_Medica" />
-    <NavigationProperty Name="TB_Prescripcion_Medica1" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__48CFD27E" FromRole="TB_Consulta" ToRole="TB_Prescripcion_Medica" />
+    <NavigationProperty Name="TB_ANALISIS" Relationship="DB_SGHModel.FK__TB_ANALIS__ID_Co__31B762FC" FromRole="TB_CONSULTA" ToRole="TB_ANALISIS" />
+    <NavigationProperty Name="TB_CITA" Relationship="DB_SGHModel.FK_TB_Consulta_TB_CITA" FromRole="TB_CONSULTA" ToRole="TB_CITA" />
+    <NavigationProperty Name="TB_CONSULTORIO" Relationship="DB_SGHModel.FK_TB_Consulta_TB_CONSULTORIO" FromRole="TB_CONSULTA" ToRole="TB_CONSULTORIO" />
+    <NavigationProperty Name="TB_MEDICO" Relationship="DB_SGHModel.FK_TB_Consulta_TB_MEDICO" FromRole="TB_CONSULTA" ToRole="TB_MEDICO" />
+    <NavigationProperty Name="TB_PACIENTE" Relationship="DB_SGHModel.FK_TB_Consulta_TB_PACIENTE" FromRole="TB_CONSULTA" ToRole="TB_PACIENTE" />
+    <NavigationProperty Name="TB_ORDEN_HOSPITALIZACION" Relationship="DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_Consulta" FromRole="TB_CONSULTA" ToRole="TB_ORDEN_HOSPITALIZACION" />
+    <NavigationProperty Name="TB_PRESCRIPCION_MEDICA" Relationship="DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_Consulta" FromRole="TB_CONSULTA" ToRole="TB_PRESCRIPCION_MEDICA" />
   </EntityType>
-  <EntityType Name="TB_Consultorio">
+  <EntityType Name="TB_CONSULTORIO">
     <Key>
-      <PropertyRef Name="CodigoConsultorio" />
+      <PropertyRef Name="ID_Consultorio" />
     </Key>
-    <Property Type="Int32" Name="CodigoConsultorio" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="NumeroConsultorio" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Consultorio" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="descripcion" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="nro_consultorio" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Local" />
+    <Property Type="Int32" Name="ID_Tipo_Examen" />
     <Property Type="String" Name="Piso" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="CodigoLocal" />
-    <NavigationProperty Name="TB_Consulta" Relationship="DB_SGHModel.FK__TB_Consul__Codig__3E52440B" FromRole="TB_Consultorio" ToRole="TB_Consulta" />
-    <NavigationProperty Name="TB_Consulta1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__412EB0B6" FromRole="TB_Consultorio" ToRole="TB_Consulta" />
-    <NavigationProperty Name="TB_Local" Relationship="DB_SGHModel.FK__TB_Consul__Codig__4316F928" FromRole="TB_Consultorio" ToRole="TB_Local" />
-    <NavigationProperty Name="TB_Local1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__440B1D61" FromRole="TB_Consultorio" ToRole="TB_Local" />
+    <NavigationProperty Name="TB_AGENDA_MEDICA" Relationship="DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_CONSULTORIO" FromRole="TB_CONSULTORIO" ToRole="TB_AGENDA_MEDICA" />
+    <NavigationProperty Name="TB_CONSULTA" Relationship="DB_SGHModel.FK_TB_Consulta_TB_CONSULTORIO" FromRole="TB_CONSULTORIO" ToRole="TB_CONSULTA" />
+    <NavigationProperty Name="TB_LOCAL" Relationship="DB_SGHModel.FK_TB_CONSULTORIO_TB_LOCAL" FromRole="TB_CONSULTORIO" ToRole="TB_LOCAL" />
+    <NavigationProperty Name="TB_TIPO_EXAMEN_MEDICO" Relationship="DB_SGHModel.FK_TB_CONSULTORIO_TB_TIPO_EXAMEN_MEDICO" FromRole="TB_CONSULTORIO" ToRole="TB_TIPO_EXAMEN_MEDICO" />
+    <NavigationProperty Name="TB_MEDICO_DE_TURNO" Relationship="DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_CONSULTORIO" FromRole="TB_CONSULTORIO" ToRole="TB_MEDICO_DE_TURNO" />
   </EntityType>
-  <EntityType Name="TB_Especialidad">
+  <EntityType Name="TB_CRONOGRAMA_EMERGENCIA">
     <Key>
-      <PropertyRef Name="CodigoEspecialidad" />
+      <PropertyRef Name="ID_CronogramaEmergencia" />
+      <PropertyRef Name="ID_TURNO" />
     </Key>
-    <Property Type="Int32" Name="CodigoEspecialidad" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Descripcion" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="TB_Medico" Relationship="DB_SGHModel.FK__TB_Medico__Codig__44FF419A" FromRole="TB_Especialidad" ToRole="TB_Medico" />
-    <NavigationProperty Name="TB_Medico1" Relationship="DB_SGHModel.FK__TB_Medico__Codig__45F365D3" FromRole="TB_Especialidad" ToRole="TB_Medico" />
+    <Property Type="Int32" Name="ID_CronogramaEmergencia" Nullable="false" />
+    <Property Type="Int32" Name="ID_TURNO" Nullable="false" />
+    <Property Type="String" Name="GE_DIAS" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Empleado" Nullable="false" />
+    <NavigationProperty Name="TB_EMPLEADO" Relationship="DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_EMPLEADO" FromRole="TB_CRONOGRAMA_EMERGENCIA" ToRole="TB_EMPLEADO" />
+    <NavigationProperty Name="TB_TURNO_EMERGENCIA" Relationship="DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_TURNO_EMERGENCIA" FromRole="TB_CRONOGRAMA_EMERGENCIA" ToRole="TB_TURNO_EMERGENCIA" />
   </EntityType>
-  <EntityType Name="TB_Estado_Cita">
+  <EntityType Name="TB_DET_HISTORIA_CLINICA">
     <Key>
-      <PropertyRef Name="IdEstado" />
+      <PropertyRef Name="ID_DetHistoria" />
+      <PropertyRef Name="ID_Historia" />
     </Key>
-    <Property Type="Int32" Name="IdEstado" Nullable="false" />
-    <Property Type="String" Name="DesEstado" />
-    <NavigationProperty Name="TB_Cita" Relationship="DB_SGHModel.FK_Cita_EstadoCita1" FromRole="TB_Estado_Cita" ToRole="TB_Cita" />
+    <Property Type="Int32" Name="ID_DetHistoria" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_Historia" Nullable="false" />
+    <Property Type="Int32" Name="ID_Procedencia" />
+    <Property Type="Int32" Name="ID_Consulta" />
+    <Property Type="Int32" Name="CodMedicoAtencion" />
+    <Property Type="DateTime" Name="ResulExamenes" />
+    <Property Type="DateTime" Name="FechaAtencion" />
+    <Property Type="String" Name="Diagnostico" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Tratamiento" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Observaciones" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_HISTORIA_CLINICA" Relationship="DB_SGHModel.FK_TB_DET_HISTORIA_CLINICA_TB_HISTORIA_CLINICA" FromRole="TB_DET_HISTORIA_CLINICA" ToRole="TB_HISTORIA_CLINICA" />
   </EntityType>
-  <EntityType Name="TB_Local">
+  <EntityType Name="TB_DET_ORDEN_TRABAJO">
     <Key>
-      <PropertyRef Name="CodigoLocal" />
+      <PropertyRef Name="GM_DetNroOrden" />
     </Key>
-    <Property Type="Int32" Name="CodigoLocal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="NombreLocal" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="DireccionLocal" MaxLength="150" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="TB_Consultorio" Relationship="DB_SGHModel.FK__TB_Consul__Codig__4316F928" FromRole="TB_Local" ToRole="TB_Consultorio" />
-    <NavigationProperty Name="TB_Consultorio1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__440B1D61" FromRole="TB_Local" ToRole="TB_Consultorio" />
+    <Property Type="Int32" Name="GM_DetNroOrden" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="GM_NroOrden" />
+    <Property Type="String" Name="GM_Fecha_Modificacion" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_CodigoSolicitante" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_Empleados_Asociados" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Prioridad" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Estado" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_Motivo_Estado" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Comentarios" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="TB_Medicamento">
+  <EntityType Name="TB_DETALLE_FICHA_EQUIPO">
     <Key>
-      <PropertyRef Name="CodigoMedicamento" />
+      <PropertyRef Name="GM_Detalle_Ficha_Equipo" />
     </Key>
-    <Property Type="Int32" Name="CodigoMedicamento" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="GM_Detalle_Ficha_Equipo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="GM_Codigo_Ficha_Equipo" />
+    <Property Type="String" Name="GM_Fecha_Último_Mantenimiento" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_Fecha_Ultima_Reparación" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="GM_NroPeriodo_Mantenimiento" />
+    <Property Type="String" Name="GM_Fecha_Proximo_Mantenimiento" MaxLength="8" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TB_DETALLE_ORDEN_DE_PEDIDO">
+    <Key>
+      <PropertyRef Name="ID_OrdenPedido" />
+      <PropertyRef Name="ID_NroItem" />
+    </Key>
+    <Property Type="Int32" Name="ID_OrdenPedido" Nullable="false" />
+    <Property Type="Int32" Name="ID_NroItem" Nullable="false" />
+    <Property Type="Single" Name="GE_Cantidad" />
+    <Property Type="Int32" Name="ID_Medicamento" Nullable="false" />
+    <NavigationProperty Name="TB_MEDICAMENTO" Relationship="DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_MEDICAMENTO" FromRole="TB_DETALLE_ORDEN_DE_PEDIDO" ToRole="TB_MEDICAMENTO" />
+    <NavigationProperty Name="TB_ORDEN_DE_PEDIDO" Relationship="DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_ORDEN_DE_PEDIDO" FromRole="TB_DETALLE_ORDEN_DE_PEDIDO" ToRole="TB_ORDEN_DE_PEDIDO" />
+  </EntityType>
+  <EntityType Name="TB_DETALLE_ORDEN_DE_SALIDA">
+    <Key>
+      <PropertyRef Name="ID_OrdenSalida" />
+      <PropertyRef Name="ID_NroItem" />
+    </Key>
+    <Property Type="Int32" Name="ID_OrdenSalida" Nullable="false" />
+    <Property Type="Int32" Name="ID_NroItem" Nullable="false" />
+    <Property Type="Single" Name="GE_Cantidad" />
+    <Property Type="Int32" Name="ID_Medicamento" Nullable="false" />
+    <NavigationProperty Name="TB_MEDICAMENTO" Relationship="DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_MEDICAMENTO" FromRole="TB_DETALLE_ORDEN_DE_SALIDA" ToRole="TB_MEDICAMENTO" />
+    <NavigationProperty Name="TB_ORDEN_DE_SALIDA" Relationship="DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_ORDEN_DE_SALIDA" FromRole="TB_DETALLE_ORDEN_DE_SALIDA" ToRole="TB_ORDEN_DE_SALIDA" />
+  </EntityType>
+  <EntityType Name="TB_Detalle_Solicitud_Mantenimiento">
+    <Key>
+      <PropertyRef Name="GM_NroDet_Solicitud" />
+    </Key>
+    <Property Type="Int32" Name="GM_NroDet_Solicitud" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="GM_NroSolicitud" />
+    <Property Type="String" Name="GM_Tiempo_Atencion" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="GM_Estado" />
+    <Property Type="String" Name="GM_Prioridad" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Observacion" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TB_DETORDENSERVICIO">
+    <Key>
+      <PropertyRef Name="ID_Orden_Servicio" />
+      <PropertyRef Name="ID_Item" />
+    </Key>
+    <Property Type="Int32" Name="ID_Orden_Servicio" Nullable="false" />
+    <Property Type="Int32" Name="ID_Item" Nullable="false" />
+    <Property Type="Single" Name="GE_Descuento" />
+    <Property Type="Int32" Name="ID_Servicio" Nullable="false" />
+    <NavigationProperty Name="TB_ORDEN_SERVICIO" Relationship="DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_ORDEN_SERVICIO" FromRole="TB_DETORDENSERVICIO" ToRole="TB_ORDEN_SERVICIO" />
+    <NavigationProperty Name="TB_SERVICIO" Relationship="DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_SERVICIO" FromRole="TB_DETORDENSERVICIO" ToRole="TB_SERVICIO" />
+  </EntityType>
+  <EntityType Name="TB_EMPLEADO">
+    <Key>
+      <PropertyRef Name="ID_Empleado" />
+    </Key>
+    <Property Type="Int32" Name="ID_Empleado" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="E_Nombre" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="E_Apellido_Paterno" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="E_Apellido_Materno" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="E_dni" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="E_Direccion" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="E_Telefono" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="E_Tipo_Empleado" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="E_Fecha_Nacimiento" />
+    <Property Type="String" Name="E_Correo" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Apellidos_Empleado" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Nombres_Empleado" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Cargo_Empleado" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Correo_Empleado" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Estado" />
+    <Property Type="Int32" Name="ID_TURNOEMERGENCIA" />
+    <Property Type="Int32" Name="ID_Tipo_Empleado" />
+    <NavigationProperty Name="TB_CRONOGRAMA_EMERGENCIA" Relationship="DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_EMPLEADO" FromRole="TB_EMPLEADO" ToRole="TB_CRONOGRAMA_EMERGENCIA" />
+    <NavigationProperty Name="TB_TIPO_EMPLEADO" Relationship="DB_SGHModel.FK_TB_EMPLEADO_TB_TIPO_EMPLEADO" FromRole="TB_EMPLEADO" ToRole="TB_TIPO_EMPLEADO" />
+    <NavigationProperty Name="TB_TURNO_EMERGENCIA" Relationship="DB_SGHModel.FK_TB_EMPLEADO_TB_TURNO_EMERGENCIA" FromRole="TB_EMPLEADO" ToRole="TB_TURNO_EMERGENCIA" />
+    <NavigationProperty Name="TB_INFORME_ADMINSITRATIVO" Relationship="DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO" FromRole="TB_EMPLEADO" ToRole="TB_INFORME_ADMINSITRATIVO" />
+    <NavigationProperty Name="TB_SOLICITUDES_DE_CAMBIO" Relationship="DB_SGHModel.FK_TB_SOLICITUDES_DE_CAMBIO_TB_EMPLEADO" FromRole="TB_EMPLEADO" ToRole="TB_SOLICITUDES_DE_CAMBIO" />
+  </EntityType>
+  <EntityType Name="TB_ESPECIALIDAD">
+    <Key>
+      <PropertyRef Name="ID_Especialidad" />
+    </Key>
+    <Property Type="Int32" Name="ID_Especialidad" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="descripcion" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_CAMA" Relationship="DB_SGHModel.FK_TB_CAMA_TB_ESPECIALIDAD" FromRole="TB_ESPECIALIDAD" ToRole="TB_CAMA" />
+    <NavigationProperty Name="TB_CITA" Relationship="DB_SGHModel.FK_TB_CITA_00TB_ESPECIALIDAD" FromRole="TB_ESPECIALIDAD" ToRole="TB_CITA" />
+    <NavigationProperty Name="TB_HOJA_INGRESO_EMERGENCIA" Relationship="DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_ESPECIALIDAD" FromRole="TB_ESPECIALIDAD" ToRole="TB_HOJA_INGRESO_EMERGENCIA" />
+    <NavigationProperty Name="TB_HOJA_INGRESO_HOSPITALIZACION" Relationship="DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ESPECIALIDAD" FromRole="TB_ESPECIALIDAD" ToRole="TB_HOJA_INGRESO_HOSPITALIZACION" />
+    <NavigationProperty Name="TB_MEDICOESPECIALIDAD" Relationship="DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_ESPECIALIDAD" FromRole="TB_ESPECIALIDAD" ToRole="TB_MEDICOESPECIALIDAD" />
+    <NavigationProperty Name="TB_AGENDA_MEDICA" Relationship="DB_SGHModel.FK_TB_AGENDA_MEDICA_TB_ESPECIALIDAD" FromRole="TB_ESPECIALIDAD" ToRole="TB_AGENDA_MEDICA" />
+  </EntityType>
+  <EntityType Name="TB_ESTADO_CITA">
+    <Key>
+      <PropertyRef Name="ID_EstadoCita" />
+    </Key>
+    <Property Type="Int32" Name="ID_EstadoCita" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="DesEstado" MaxLength="350" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_CITA" Relationship="DB_SGHModel.FK_TB_CITA_TB_Estado_Cita" FromRole="TB_ESTADO_CITA" ToRole="TB_CITA" />
+  </EntityType>
+  <EntityType Name="TB_FICHA_EQUIPO">
+    <Key>
+      <PropertyRef Name="ID_Ficha_Equipo" />
+    </Key>
+    <Property Type="Int32" Name="ID_Ficha_Equipo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GM_Ubicacion" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Fecha_ultimo_Mantenimiento" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_Fecha_Ultima_Reparacion" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="GM_NroPeriodo_Mantenimiento" />
+    <Property Type="String" Name="GM_Fecha_Proximo_Mantenimiento" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_Caracteristicas" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Observaciones" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Numero_Equipo" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TB_HISTORIA_CLINICA">
+    <Key>
+      <PropertyRef Name="ID_Historia" />
+    </Key>
+    <Property Type="Int32" Name="ID_Historia" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="FechaRegistro" Nullable="false" />
+    <Property Type="String" Name="Antecedentes" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Descripcion" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="FechaAtencion" />
+    <Property Type="Int32" Name="ID_Paciente" Nullable="false" />
+    <Property Type="Int32" Name="ID_GrupoSanguineo" Nullable="false" />
+    <NavigationProperty Name="TB_CITA" Relationship="DB_SGHModel.FK_T_CL_CO_GC_Cita60" FromRole="TB_HISTORIA_CLINICA" ToRole="TB_CITA" />
+    <NavigationProperty Name="TB_DET_HISTORIA_CLINICA" Relationship="DB_SGHModel.FK_TB_DET_HISTORIA_CLINICA_TB_HISTORIA_CLINICA" FromRole="TB_HISTORIA_CLINICA" ToRole="TB_DET_HISTORIA_CLINICA" />
+    <NavigationProperty Name="TB_PACIENTE" Relationship="DB_SGHModel.FK_TB_HISTORIA_CLINICA_TB_PACIENTE1" FromRole="TB_HISTORIA_CLINICA" ToRole="TB_PACIENTE" />
+    <NavigationProperty Name="TB_ORDEN_INTERNA" Relationship="DB_SGHModel.FK_TB_ORDEN_INTERNA_TB_HISTORIA_CLINICA" FromRole="TB_HISTORIA_CLINICA" ToRole="TB_ORDEN_INTERNA" />
+  </EntityType>
+  <EntityType Name="TB_HOJA_INGRESO_EMERGENCIA">
+    <Key>
+      <PropertyRef Name="ID_Hoja_Ingreso_Emergencia" />
+    </Key>
+    <Property Type="Int32" Name="ID_Hoja_Ingreso_Emergencia" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="FechaHoraIngreso" Nullable="false" />
+    <Property Type="Int32" Name="ID_Paciente" Nullable="false" />
+    <Property Type="Int32" Name="ID_Especialidad" Nullable="false" />
+    <Property Type="Int32" Name="ID_Medico" Nullable="false" />
+    <Property Type="String" Name="MotivoIngreso" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_ESPECIALIDAD" Relationship="DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_ESPECIALIDAD" FromRole="TB_HOJA_INGRESO_EMERGENCIA" ToRole="TB_ESPECIALIDAD" />
+    <NavigationProperty Name="TB_PACIENTE" Relationship="DB_SGHModel.FK_T_CL_ES_GC_Hoja_Ingreso_Emergencia54" FromRole="TB_HOJA_INGRESO_EMERGENCIA" ToRole="TB_PACIENTE" />
+    <NavigationProperty Name="TB_MEDICO" Relationship="DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_MEDICO" FromRole="TB_HOJA_INGRESO_EMERGENCIA" ToRole="TB_MEDICO" />
+  </EntityType>
+  <EntityType Name="TB_HOJA_INGRESO_HOSPITALIZACION">
+    <Key>
+      <PropertyRef Name="ID_Hoja_Ingreso_Hospitalizacion" />
+    </Key>
+    <Property Type="Int32" Name="ID_Hoja_Ingreso_Hospitalizacion" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="FechaIngreso" Nullable="false" />
+    <Property Type="DateTime" Name="FechaAlta" Nullable="false" />
+    <Property Type="Int32" Name="ID_Procedencia" Nullable="false" />
+    <Property Type="Int32" Name="TipoOrden" Nullable="false" />
+    <Property Type="String" Name="Tratamiento" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Paciente" Nullable="false" />
+    <Property Type="Int32" Name="ID_Orden_Hospitalizacion" />
+    <Property Type="Int32" Name="ID_Local" />
+    <Property Type="Int32" Name="ID_Carta" />
+    <Property Type="Int32" Name="ID_Cama" />
+    <Property Type="Int32" Name="ID_Especialidad" />
+    <NavigationProperty Name="TB_CAMA" Relationship="DB_SGHModel.FK_T_CL_ES_GO_Cama63" FromRole="TB_HOJA_INGRESO_HOSPITALIZACION" ToRole="TB_CAMA" />
+    <NavigationProperty Name="TB_CARTA_GARANTIA" Relationship="DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_CARTA_GARANTIA" FromRole="TB_HOJA_INGRESO_HOSPITALIZACION" ToRole="TB_CARTA_GARANTIA" />
+    <NavigationProperty Name="TB_ESPECIALIDAD" Relationship="DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ESPECIALIDAD" FromRole="TB_HOJA_INGRESO_HOSPITALIZACION" ToRole="TB_ESPECIALIDAD" />
+    <NavigationProperty Name="TB_PACIENTE" Relationship="DB_SGHModel.FK_T_CL_ES_GC_Hooja_Ingreso_Hospitalizacion58" FromRole="TB_HOJA_INGRESO_HOSPITALIZACION" ToRole="TB_PACIENTE" />
+    <NavigationProperty Name="TB_LOCAL" Relationship="DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_LOCAL" FromRole="TB_HOJA_INGRESO_HOSPITALIZACION" ToRole="TB_LOCAL" />
+    <NavigationProperty Name="TB_ORDEN_HOSPITALIZACION" Relationship="DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ORDEN_HOSPITALIZACION" FromRole="TB_HOJA_INGRESO_HOSPITALIZACION" ToRole="TB_ORDEN_HOSPITALIZACION" />
+  </EntityType>
+  <EntityType Name="TB_INFORME">
+    <Key>
+      <PropertyRef Name="GM_NroInforme" />
+    </Key>
+    <Property Type="Int32" Name="GM_NroInforme" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GM_Fecha_Informe" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_Descripción_Actividades" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Observaciones" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="GM_Estado" />
+  </EntityType>
+  <EntityType Name="TB_INFORME_ADMINSITRATIVO">
+    <Key>
+      <PropertyRef Name="ID_InformeAdministrativo" />
+    </Key>
+    <Property Type="Int32" Name="ID_InformeAdministrativo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_Empleado" Nullable="false" />
+    <Property Type="Int32" Name="ID_Tipo_Informe" Nullable="false" />
+    <Property Type="String" Name="IA_Mensaje" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="IA_Estado" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_EMPLEADO" Relationship="DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO" FromRole="TB_INFORME_ADMINSITRATIVO" ToRole="TB_EMPLEADO" />
+    <NavigationProperty Name="TB_TIPO_INFORME_ADMINISTRATIVO" Relationship="DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO" FromRole="TB_INFORME_ADMINSITRATIVO" ToRole="TB_TIPO_INFORME_ADMINISTRATIVO" />
+  </EntityType>
+  <EntityType Name="TB_INFORME_DET">
+    <Key>
+      <PropertyRef Name="GM_NroInforme_Det" />
+    </Key>
+    <Property Type="Int32" Name="GM_NroInforme_Det" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="GM_NroInforme" />
+    <Property Type="String" Name="GM_Fecha_Ejecucion" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="GM_Tiempo_Ejecucion" />
+    <Property Type="String" Name="GM_Motivo_Ejecucion" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Documento_adjunto" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TB_INFORME_EQUIPO">
+    <Key>
+      <PropertyRef Name="ID_InformeEquipo" />
+    </Key>
+    <Property Type="Int32" Name="ID_InformeEquipo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GM_Fecha_Informe" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_Descripcion_Actividades" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Observaciones" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="GM_Estado" />
+    <Property Type="String" Name="GM_Descripcion_Repuestos" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_INFORME_EQUIPO_DET" Relationship="DB_SGHModel.FK__TB_INFORM__ID_In__5E8A0973" FromRole="TB_INFORME_EQUIPO" ToRole="TB_INFORME_EQUIPO_DET" />
+  </EntityType>
+  <EntityType Name="TB_INFORME_EQUIPO_DET">
+    <Key>
+      <PropertyRef Name="ID_InformeEquipoDet" />
+    </Key>
+    <Property Type="Int32" Name="ID_InformeEquipoDet" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_InformeEquipo" />
+    <Property Type="String" Name="GM_Fecha_Ejecucion" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="GM_Tiempo_Ejecucion" />
+    <Property Type="String" Name="GM_Motivo_Rechazo" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Documento_adjunto" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_INFORME_EQUIPO" Relationship="DB_SGHModel.FK__TB_INFORM__ID_In__5E8A0973" FromRole="TB_INFORME_EQUIPO_DET" ToRole="TB_INFORME_EQUIPO" />
+  </EntityType>
+  <EntityType Name="TB_INFORME_RESULTADO">
+    <Key>
+      <PropertyRef Name="ID_InformeResultado" />
+    </Key>
+    <Property Type="Int32" Name="ID_InformeResultado" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_Orden_Examen_Medico" />
+    <Property Type="DateTime" Name="fecha" />
+    <Property Type="String" Name="resultado" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="observacion" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="estado" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="imagen" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_ORDEN_EXAMEN_MEDICO" Relationship="DB_SGHModel.FK_TB_INFORME_RESULTADO_TB_ORDEN_EXAMEN_MEDICO" FromRole="TB_INFORME_RESULTADO" ToRole="TB_ORDEN_EXAMEN_MEDICO" />
+  </EntityType>
+  <EntityType Name="TB_INSTALACION">
+    <Key>
+      <PropertyRef Name="ID_Instalacion" />
+    </Key>
+    <Property Type="Int32" Name="ID_Instalacion" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GE_Disponibilidad" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GE_Resultado" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GE_Obervaciones" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GE_Nombre_Enfermero_Auxiliar" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Area" Nullable="false" />
+    <NavigationProperty Name="TB_AREA" Relationship="DB_SGHModel.FK_TB_INSTALACION_TB_AREA" FromRole="TB_INSTALACION" ToRole="TB_AREA" />
+    <NavigationProperty Name="TB_LISTA_VERIFICACION" Relationship="DB_SGHModel.FK_TB_LISTA_VERIFICACION_TB_INSTALACION" FromRole="TB_INSTALACION" ToRole="TB_LISTA_VERIFICACION" />
+  </EntityType>
+  <EntityType Name="TB_LISTA_VERIFICACION">
+    <Key>
+      <PropertyRef Name="ID_ListaVerificacion" />
+    </Key>
+    <Property Type="Int32" Name="ID_ListaVerificacion" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GE_Item" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GE_Conformidad" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="ID_Instalacion" Nullable="false" />
+    <NavigationProperty Name="TB_INSTALACION" Relationship="DB_SGHModel.FK_TB_LISTA_VERIFICACION_TB_INSTALACION" FromRole="TB_LISTA_VERIFICACION" ToRole="TB_INSTALACION" />
+  </EntityType>
+  <EntityType Name="TB_LOCAL">
+    <Key>
+      <PropertyRef Name="ID_Local" />
+    </Key>
+    <Property Type="Int32" Name="ID_Local" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="nombre" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="direccion" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_CONSULTORIO" Relationship="DB_SGHModel.FK_TB_CONSULTORIO_TB_LOCAL" FromRole="TB_LOCAL" ToRole="TB_CONSULTORIO" />
+    <NavigationProperty Name="TB_HOJA_INGRESO_HOSPITALIZACION" Relationship="DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_LOCAL" FromRole="TB_LOCAL" ToRole="TB_HOJA_INGRESO_HOSPITALIZACION" />
+    <NavigationProperty Name="TB_ORDEN_HOSPITALIZACION" Relationship="DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_LOCAL" FromRole="TB_LOCAL" ToRole="TB_ORDEN_HOSPITALIZACION" />
+  </EntityType>
+  <EntityType Name="TB_MAESTRO_TABLAS">
+    <Key>
+      <PropertyRef Name="MAS_CodTabla" />
+      <PropertyRef Name="MAS_CodCampo" />
+    </Key>
+    <Property Type="String" Name="MAS_CodTabla" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="MAS_CodCampo" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="MAS_DesCorta" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="MAS_DesLarga" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="MAS_Valor" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="MAS_Estado" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TB_MEDICAMENTO">
+    <Key>
+      <PropertyRef Name="ID_Medicamento" />
+    </Key>
+    <Property Type="Int32" Name="ID_Medicamento" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GE_NombreMedicamento" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="GE_FechaVencimiento" />
+    <Property Type="Single" Name="GE_CantidadDisponible" />
+    <Property Type="Single" Name="GE_Costo" />
     <Property Type="String" Name="Descripcion" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Laboratorio" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Observaciones" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="TB_Prescripcion_Medica" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__47DBAE45" FromRole="TB_Medicamento" ToRole="TB_Prescripcion_Medica" />
-    <NavigationProperty Name="TB_Prescripcion_Medica1" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__49C3F6B7" FromRole="TB_Medicamento" ToRole="TB_Prescripcion_Medica" />
+    <NavigationProperty Name="TB_DETALLE_ORDEN_DE_PEDIDO" Relationship="DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_MEDICAMENTO" FromRole="TB_MEDICAMENTO" ToRole="TB_DETALLE_ORDEN_DE_PEDIDO" />
+    <NavigationProperty Name="TB_DETALLE_ORDEN_DE_SALIDA" Relationship="DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_MEDICAMENTO" FromRole="TB_MEDICAMENTO" ToRole="TB_DETALLE_ORDEN_DE_SALIDA" />
+    <NavigationProperty Name="TB_PRESCRIPCION_MEDICA" Relationship="DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_MEDICAMENTO" FromRole="TB_MEDICAMENTO" ToRole="TB_PRESCRIPCION_MEDICA" />
   </EntityType>
-  <EntityType Name="TB_Medico">
+  <EntityType Name="TB_MEDICO">
     <Key>
-      <PropertyRef Name="CodigoMedico" />
+      <PropertyRef Name="ID_Medico" />
     </Key>
-    <Property Type="Int32" Name="CodigoMedico" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Nombres" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Apellidos" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="CodigoEspecialidad" />
-    <Property Type="String" Name="NumeroColegiatura" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="TB_Agenda_Medica" Relationship="DB_SGHModel.FK__TB_Agenda__Codig__32E0915F" FromRole="TB_Medico" ToRole="TB_Agenda_Medica" />
-    <NavigationProperty Name="TB_Agenda_Medica1" Relationship="DB_SGHModel.FK__TB_Agenda__Codig__33D4B598" FromRole="TB_Medico" ToRole="TB_Agenda_Medica" />
-    <NavigationProperty Name="TB_Cita" Relationship="DB_SGHModel.FK__Cita__CodigoMedi__36B122431" FromRole="TB_Medico" ToRole="TB_Cita" />
-    <NavigationProperty Name="TB_Consulta" Relationship="DB_SGHModel.FK__TB_Consul__Codig__3F466844" FromRole="TB_Medico" ToRole="TB_Consulta" />
-    <NavigationProperty Name="TB_Consulta1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__4222D4EF" FromRole="TB_Medico" ToRole="TB_Consulta" />
-    <NavigationProperty Name="TB_Especialidad" Relationship="DB_SGHModel.FK__TB_Medico__Codig__44FF419A" FromRole="TB_Medico" ToRole="TB_Especialidad" />
-    <NavigationProperty Name="TB_Especialidad1" Relationship="DB_SGHModel.FK__TB_Medico__Codig__45F365D3" FromRole="TB_Medico" ToRole="TB_Especialidad" />
+    <Property Type="Int32" Name="ID_Medico" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="nom_medico" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ape_medico" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="num_cmp" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="email" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="telefono" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Direccion" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Celular" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TelefonoDomicilio" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FechaCertificacion" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CentroEstudios" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CodigoColegiatura" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_AGENDA_MEDICA" Relationship="DB_SGHModel.FK_TB_AgendaMedica_TB_MEDICO" FromRole="TB_MEDICO" ToRole="TB_AGENDA_MEDICA" />
+    <NavigationProperty Name="TB_Atencion_Emergencia" Relationship="DB_SGHModel.FK_TB_Atencion_Emergencia_TB_Medico" FromRole="TB_MEDICO" ToRole="TB_Atencion_Emergencia" />
+    <NavigationProperty Name="TB_CITA" Relationship="DB_SGHModel.FK_TB_CITA_00TB_MEDICO" FromRole="TB_MEDICO" ToRole="TB_CITA" />
+    <NavigationProperty Name="TB_CONSULTA" Relationship="DB_SGHModel.FK_TB_Consulta_TB_MEDICO" FromRole="TB_MEDICO" ToRole="TB_CONSULTA" />
+    <NavigationProperty Name="TB_HOJA_INGRESO_EMERGENCIA" Relationship="DB_SGHModel.FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_MEDICO" FromRole="TB_MEDICO" ToRole="TB_HOJA_INGRESO_EMERGENCIA" />
+    <NavigationProperty Name="TB_MEDICO_DE_TURNO" Relationship="DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_MEDICO" FromRole="TB_MEDICO" ToRole="TB_MEDICO_DE_TURNO" />
+    <NavigationProperty Name="TB_MEDICOESPECIALIDAD" Relationship="DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_MEDICO" FromRole="TB_MEDICO" ToRole="TB_MEDICOESPECIALIDAD" />
+    <NavigationProperty Name="TB_ORDEN_DE_PROCEDIMIENTO" Relationship="DB_SGHModel.FK_TB_ORDEN_DE_PROCEDIMIENTO_00TB_MEDICO" FromRole="TB_MEDICO" ToRole="TB_ORDEN_DE_PROCEDIMIENTO" />
+    <NavigationProperty Name="TB_ORDEN_EXAMEN_MEDICO" Relationship="DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_MEDICO1" FromRole="TB_MEDICO" ToRole="TB_ORDEN_EXAMEN_MEDICO" />
+    <NavigationProperty Name="TB_PRESCRIPCION_MEDICA" Relationship="DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_00TB_MEDICO" FromRole="TB_MEDICO" ToRole="TB_PRESCRIPCION_MEDICA" />
+    <NavigationProperty Name="TB_TURNO_ATENCION" Relationship="DB_SGHModel.FK_TB_TURNOATENCION_00TB_MEDICO" FromRole="TB_MEDICO" ToRole="TB_TURNO_ATENCION" />
   </EntityType>
-  <EntityType Name="TB_Motivo_Hospitalizacion">
+  <EntityType Name="TB_MEDICO_DE_TURNO">
     <Key>
-      <PropertyRef Name="CodigoMotivo" />
+      <PropertyRef Name="ID_MedicoTurno" />
     </Key>
-    <Property Type="Int32" Name="CodigoMotivo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_MedicoTurno" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_Consultorio" />
+    <Property Type="Int32" Name="ID_Medico" />
+    <Property Type="DateTime" Name="fecha" />
+    <NavigationProperty Name="TB_CONSULTORIO" Relationship="DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_CONSULTORIO" FromRole="TB_MEDICO_DE_TURNO" ToRole="TB_CONSULTORIO" />
+    <NavigationProperty Name="TB_MEDICO" Relationship="DB_SGHModel.FK_TB_MEDICO_DE_TURNO_TB_MEDICO" FromRole="TB_MEDICO_DE_TURNO" ToRole="TB_MEDICO" />
+    <NavigationProperty Name="TB_PROGRAMACION_ATENCION_EXAMENES" Relationship="DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_MEDICO_DE_TURNO" FromRole="TB_MEDICO_DE_TURNO" ToRole="TB_PROGRAMACION_ATENCION_EXAMENES" />
+  </EntityType>
+  <EntityType Name="TB_MEDICOESPECIALIDAD">
+    <Key>
+      <PropertyRef Name="ID_Medico" />
+      <PropertyRef Name="ID_Especialidad" />
+    </Key>
+    <Property Type="Int32" Name="ID_Medico" Nullable="false" />
+    <Property Type="Int32" Name="ID_Especialidad" Nullable="false" />
+    <NavigationProperty Name="TB_ESPECIALIDAD" Relationship="DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_ESPECIALIDAD" FromRole="TB_MEDICOESPECIALIDAD" ToRole="TB_ESPECIALIDAD" />
+    <NavigationProperty Name="TB_MEDICO" Relationship="DB_SGHModel.FK_TB_MEDICOESPECIALIDAD_TB_MEDICO" FromRole="TB_MEDICOESPECIALIDAD" ToRole="TB_MEDICO" />
+  </EntityType>
+  <EntityType Name="TB_MOTIVO_HOSPITALIZACION">
+    <Key>
+      <PropertyRef Name="ID_Motivo_Hospitalizacion" />
+    </Key>
+    <Property Type="Int32" Name="ID_Motivo_Hospitalizacion" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="DescripcionInternamiento" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Estado" />
+    <NavigationProperty Name="TB_ORDEN_HOSPITALIZACION" Relationship="DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_MOTIVO_HOSPITALIZACION" FromRole="TB_MOTIVO_HOSPITALIZACION" ToRole="TB_ORDEN_HOSPITALIZACION" />
   </EntityType>
-  <EntityType Name="TB_Orden_Hopitalizacion">
+  <EntityType Name="TB_ORDEN_DE_PEDIDO">
     <Key>
-      <PropertyRef Name="CodigoOrden" />
+      <PropertyRef Name="ID_OrdenPedido" />
     </Key>
-    <Property Type="Int32" Name="CodigoOrden" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_OrdenPedido" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="GE_FechaPedido" />
+    <Property Type="String" Name="GE_Observacion" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Area" Nullable="false" />
+    <NavigationProperty Name="TB_AREA" Relationship="DB_SGHModel.FK_TB_ORDEN_DE_PEDIDO_TB_AREA" FromRole="TB_ORDEN_DE_PEDIDO" ToRole="TB_AREA" />
+    <NavigationProperty Name="TB_DETALLE_ORDEN_DE_PEDIDO" Relationship="DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_ORDEN_DE_PEDIDO" FromRole="TB_ORDEN_DE_PEDIDO" ToRole="TB_DETALLE_ORDEN_DE_PEDIDO" />
+  </EntityType>
+  <EntityType Name="TB_ORDEN_DE_PROCEDIMIENTO">
+    <Key>
+      <PropertyRef Name="ID_Orden_de_Procedimiento" />
+    </Key>
+    <Property Type="Int32" Name="ID_Orden_de_Procedimiento" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="NombreOrdenProcedimiento" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="FechaOrdenProcedimiento" Nullable="false" />
+    <Property Type="String" Name="CartaGarantia" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Paciente" Nullable="false" />
+    <Property Type="Int32" Name="ID_Medico" Nullable="false" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Aseguradora" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_CARTA_GARANTIA" Relationship="DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_ORDEN_DE_PROCEDIMIENTO" FromRole="TB_ORDEN_DE_PROCEDIMIENTO" ToRole="TB_CARTA_GARANTIA" />
+    <NavigationProperty Name="TB_MEDICO" Relationship="DB_SGHModel.FK_TB_ORDEN_DE_PROCEDIMIENTO_00TB_MEDICO" FromRole="TB_ORDEN_DE_PROCEDIMIENTO" ToRole="TB_MEDICO" />
+    <NavigationProperty Name="TB_PACIENTE" Relationship="DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Procedimiento53" FromRole="TB_ORDEN_DE_PROCEDIMIENTO" ToRole="TB_PACIENTE" />
+  </EntityType>
+  <EntityType Name="TB_ORDEN_DE_SALIDA">
+    <Key>
+      <PropertyRef Name="ID_OrdenSalida" />
+    </Key>
+    <Property Type="Int32" Name="ID_OrdenSalida" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="GE_FechaSalida" />
+    <Property Type="String" Name="GE_Observacion" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_DETALLE_ORDEN_DE_SALIDA" Relationship="DB_SGHModel.FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_ORDEN_DE_SALIDA" FromRole="TB_ORDEN_DE_SALIDA" ToRole="TB_DETALLE_ORDEN_DE_SALIDA" />
+  </EntityType>
+  <EntityType Name="TB_ORDEN_EXAMEN_MEDICO">
+    <Key>
+      <PropertyRef Name="ID_Orden_Examen_Medico" />
+    </Key>
+    <Property Type="Int32" Name="ID_Orden_Examen_Medico" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_Medico" />
+    <Property Type="Int32" Name="ID_Orden_Interna" />
+    <Property Type="DateTime" Name="fecha" />
+    <Property Type="Int32" Name="ID_Catalogo_Examen" />
+    <Property Type="String" Name="estado" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="observacion" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="GE_FechaSolicitud" />
+    <Property Type="String" Name="GE_Paciente" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GE_DetalleTecnico" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Tipo_Examen" />
+    <Property Type="String" Name="GE_NombreMedico" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="GE_CodigoOrdenExamen" />
+    <NavigationProperty Name="TB_CATALOGO_EXAMEN_MEDICO" Relationship="DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_CATALOGO_EXAMEN_MEDICO" FromRole="TB_ORDEN_EXAMEN_MEDICO" ToRole="TB_CATALOGO_EXAMEN_MEDICO" />
+    <NavigationProperty Name="TB_INFORME_RESULTADO" Relationship="DB_SGHModel.FK_TB_INFORME_RESULTADO_TB_ORDEN_EXAMEN_MEDICO" FromRole="TB_ORDEN_EXAMEN_MEDICO" ToRole="TB_INFORME_RESULTADO" />
+    <NavigationProperty Name="TB_MEDICO" Relationship="DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_MEDICO1" FromRole="TB_ORDEN_EXAMEN_MEDICO" ToRole="TB_MEDICO" />
+    <NavigationProperty Name="TB_ORDEN_INTERNA" Relationship="DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_ORDEN_INTERNA" FromRole="TB_ORDEN_EXAMEN_MEDICO" ToRole="TB_ORDEN_INTERNA" />
+    <NavigationProperty Name="TB_TIPO_EXAMEN_MEDICO" Relationship="DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO" FromRole="TB_ORDEN_EXAMEN_MEDICO" ToRole="TB_TIPO_EXAMEN_MEDICO" />
+    <NavigationProperty Name="TB_ORDEN_SERVICIO" Relationship="DB_SGHModel.FK_TB_ORDEN_SERVICIO_TB_ORDEN_EXAMEN_MEDICO1" FromRole="TB_ORDEN_EXAMEN_MEDICO" ToRole="TB_ORDEN_SERVICIO" />
+    <NavigationProperty Name="TB_PROGRAMACION_ATENCION_EXAMENES" Relationship="DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_ORDEN_EXAMEN_MEDICO" FromRole="TB_ORDEN_EXAMEN_MEDICO" ToRole="TB_PROGRAMACION_ATENCION_EXAMENES" />
+  </EntityType>
+  <EntityType Name="TB_ORDEN_HOSPITALIZACION">
+    <Key>
+      <PropertyRef Name="ID_Orden_Hospitalizacion" />
+    </Key>
+    <Property Type="Int32" Name="ID_Orden_Hospitalizacion" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="FechaOrden" Nullable="false" />
+    <Property Type="String" Name="Prevision" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Motivo" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Tratamiento" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="NroDiasHospitalizacion" Nullable="false" />
+    <Property Type="String" Name="ExamenesPreOperatorios" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_MedicoTratante" Nullable="false" />
+    <Property Type="Int32" Name="ID_MedicoTurno" Nullable="false" />
+    <Property Type="Int32" Name="ID_Paciente" Nullable="false" />
     <Property Type="DateTime" Name="FechaHora" Nullable="false" />
     <Property Type="String" Name="Observaciones" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Type="DateTime" Name="FechaHoraAlta" />
-    <Property Type="Int32" Name="CodigoMotivo" Nullable="false" />
-    <Property Type="Int32" Name="CodigoConsulta" Nullable="false" />
+    <Property Type="Int32" Name="ID_Motivo_Hospitalizacion" Nullable="false" />
+    <Property Type="Int32" Name="ID_Consulta" Nullable="false" />
+    <Property Type="Int32" Name="ID_Local" />
+    <NavigationProperty Name="TB_CONSULTA" Relationship="DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_Consulta" FromRole="TB_ORDEN_HOSPITALIZACION" ToRole="TB_CONSULTA" />
+    <NavigationProperty Name="TB_HOJA_INGRESO_HOSPITALIZACION" Relationship="DB_SGHModel.FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ORDEN_HOSPITALIZACION" FromRole="TB_ORDEN_HOSPITALIZACION" ToRole="TB_HOJA_INGRESO_HOSPITALIZACION" />
+    <NavigationProperty Name="TB_LOCAL" Relationship="DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_LOCAL" FromRole="TB_ORDEN_HOSPITALIZACION" ToRole="TB_LOCAL" />
+    <NavigationProperty Name="TB_MOTIVO_HOSPITALIZACION" Relationship="DB_SGHModel.FK_TB_ORDEN_HOSPITALIZACION_TB_MOTIVO_HOSPITALIZACION" FromRole="TB_ORDEN_HOSPITALIZACION" ToRole="TB_MOTIVO_HOSPITALIZACION" />
+    <NavigationProperty Name="TB_PACIENTE" Relationship="DB_SGHModel.FK_T_CL_ES_GC_Orden_Hospitalizacion56" FromRole="TB_ORDEN_HOSPITALIZACION" ToRole="TB_PACIENTE" />
   </EntityType>
-  <EntityType Name="TB_Paciente">
+  <EntityType Name="TB_ORDEN_INTERNA">
     <Key>
-      <PropertyRef Name="CodigoPaciente" />
+      <PropertyRef Name="ID_Orden_Interna" />
     </Key>
-    <Property Type="Int32" Name="CodigoPaciente" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Nombres" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Orden_Interna" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ID_Tipo_Atencion" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Paciente" />
+    <Property Type="Int32" Name="ID_Historia" />
+    <NavigationProperty Name="TB_HISTORIA_CLINICA" Relationship="DB_SGHModel.FK_TB_ORDEN_INTERNA_TB_HISTORIA_CLINICA" FromRole="TB_ORDEN_INTERNA" ToRole="TB_HISTORIA_CLINICA" />
+    <NavigationProperty Name="TB_ORDEN_EXAMEN_MEDICO" Relationship="DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_ORDEN_INTERNA" FromRole="TB_ORDEN_INTERNA" ToRole="TB_ORDEN_EXAMEN_MEDICO" />
+  </EntityType>
+  <EntityType Name="TB_ORDEN_SERVICIO">
+    <Key>
+      <PropertyRef Name="ID_Orden_Servicio" />
+    </Key>
+    <Property Type="Int32" Name="ID_Orden_Servicio" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ConceptoPago" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Cita" />
+    <Property Type="DateTime" Name="FechaSolicitud" />
+    <Property Type="Single" Name="Subtotal" />
+    <Property Type="Single" Name="IGV" />
+    <Property Type="Single" Name="Total" />
+    <Property Type="Int32" Name="ID_Orden_Examen_Medico" />
+    <Property Type="String" Name="estado" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_CITA" Relationship="DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Pago50" FromRole="TB_ORDEN_SERVICIO" ToRole="TB_CITA" />
+    <NavigationProperty Name="TB_DETORDENSERVICIO" Relationship="DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_ORDEN_SERVICIO" FromRole="TB_ORDEN_SERVICIO" ToRole="TB_DETORDENSERVICIO" />
+    <NavigationProperty Name="TB_ORDEN_EXAMEN_MEDICO" Relationship="DB_SGHModel.FK_TB_ORDEN_SERVICIO_TB_ORDEN_EXAMEN_MEDICO1" FromRole="TB_ORDEN_SERVICIO" ToRole="TB_ORDEN_EXAMEN_MEDICO" />
+  </EntityType>
+  <EntityType Name="TB_ORDEN_TRABAJO">
+    <Key>
+      <PropertyRef Name="ID_Orden_Trabajo" />
+    </Key>
+    <Property Type="Int32" Name="ID_Orden_Trabajo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GM_Fecha_Creacion" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_CodigoSolicitante" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_Fecha_Asignacion" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_Fecha_Inicio" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_Prioridad" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Fecha_Fin" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="GM_TiempoAprox" />
+    <Property Type="String" Name="GM_Indicaciones" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Tipo_Atencion" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="GM_Estado" />
+    <Property Type="String" Name="GM_Moti_Recha_Acepta" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Origen" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Fecha_Recha_Acepta" MaxLength="8" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="TB_ORDEN_TRABAJO_DET" Relationship="DB_SGHModel.FK__TB_ORDEN___ID_Or__73852659" FromRole="TB_ORDEN_TRABAJO" ToRole="TB_ORDEN_TRABAJO_DET" />
+  </EntityType>
+  <EntityType Name="TB_ORDEN_TRABAJO_DET">
+    <Key>
+      <PropertyRef Name="ID_Orden_Trabajo_Det" />
+    </Key>
+    <Property Type="Int32" Name="ID_Orden_Trabajo_Det" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_Orden_Trabajo" />
+    <Property Type="Int32" Name="GM_Tiempo_Atencion" />
+    <Property Type="String" Name="GM_Fecha_Rechazo" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_Motivo_Rechazo" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_ORDEN_TRABAJO" Relationship="DB_SGHModel.FK__TB_ORDEN___ID_Or__73852659" FromRole="TB_ORDEN_TRABAJO_DET" ToRole="TB_ORDEN_TRABAJO" />
+  </EntityType>
+  <EntityType Name="TB_PACIENTE">
+    <Key>
+      <PropertyRef Name="ID_Paciente" />
+    </Key>
+    <Property Type="Int32" Name="ID_Paciente" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="dni_paciente" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="FechaNacimiento" />
+    <Property Type="String" Name="Celular" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TelefonoDomicilio" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Pais" />
+    <Property Type="Int32" Name="ID_Departamento" />
+    <Property Type="Int32" Name="ID_Provincia" />
+    <Property Type="Int32" Name="ID_Distrito" />
+    <Property Type="String" Name="Direccion" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Sexo" />
+    <Property Type="String" Name="Ocupacion" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_TipoDocumento" Nullable="false" />
+    <Property Type="String" Name="nombres" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="ApellidoPat" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="ApellidoMat" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Direccion" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="DateTime" Name="FechaNacimiento" />
-    <Property Type="String" Name="Telefono" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="TelefonoCasa" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Dni" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="TB_Cita" Relationship="DB_SGHModel.FK__Cita__CodigoPaci__37A5467C1" FromRole="TB_Paciente" ToRole="TB_Cita" />
-    <NavigationProperty Name="TB_Consulta" Relationship="DB_SGHModel.FK__TB_Consul__Codig__3D5E1FD2" FromRole="TB_Paciente" ToRole="TB_Consulta" />
-    <NavigationProperty Name="TB_Consulta1" Relationship="DB_SGHModel.FK__TB_Consul__Codig__403A8C7D" FromRole="TB_Paciente" ToRole="TB_Consulta" />
+    <Property Type="Int32" Name="ID_EstadoCivil" />
+    <Property Type="String" Name="Correo" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_Atencion_Emergencia" Relationship="DB_SGHModel.FK_TB_Atencion_Emergencia_TB_PACIENTE" FromRole="TB_PACIENTE" ToRole="TB_Atencion_Emergencia" />
+    <NavigationProperty Name="TB_CARTA_GARANTIA" Relationship="DB_SGHModel.FK_TB_CARTA_GARANTIA_TB_PACIENTE" FromRole="TB_PACIENTE" ToRole="TB_CARTA_GARANTIA" />
+    <NavigationProperty Name="TB_CITA" Relationship="DB_SGHModel.FK_T_CL_CO_GC_Cita55" FromRole="TB_PACIENTE" ToRole="TB_CITA" />
+    <NavigationProperty Name="TB_CONSULTA" Relationship="DB_SGHModel.FK_TB_Consulta_TB_PACIENTE" FromRole="TB_PACIENTE" ToRole="TB_CONSULTA" />
+    <NavigationProperty Name="TB_HISTORIA_CLINICA" Relationship="DB_SGHModel.FK_TB_HISTORIA_CLINICA_TB_PACIENTE1" FromRole="TB_PACIENTE" ToRole="TB_HISTORIA_CLINICA" />
+    <NavigationProperty Name="TB_HOJA_INGRESO_EMERGENCIA" Relationship="DB_SGHModel.FK_T_CL_ES_GC_Hoja_Ingreso_Emergencia54" FromRole="TB_PACIENTE" ToRole="TB_HOJA_INGRESO_EMERGENCIA" />
+    <NavigationProperty Name="TB_HOJA_INGRESO_HOSPITALIZACION" Relationship="DB_SGHModel.FK_T_CL_ES_GC_Hooja_Ingreso_Hospitalizacion58" FromRole="TB_PACIENTE" ToRole="TB_HOJA_INGRESO_HOSPITALIZACION" />
+    <NavigationProperty Name="TB_ORDEN_DE_PROCEDIMIENTO" Relationship="DB_SGHModel.FK_T_CL_ES_GC_Orden_de_Procedimiento53" FromRole="TB_PACIENTE" ToRole="TB_ORDEN_DE_PROCEDIMIENTO" />
+    <NavigationProperty Name="TB_ORDEN_HOSPITALIZACION" Relationship="DB_SGHModel.FK_T_CL_ES_GC_Orden_Hospitalizacion56" FromRole="TB_PACIENTE" ToRole="TB_ORDEN_HOSPITALIZACION" />
+    <NavigationProperty Name="TB_TIPO_DOCUMENTO" Relationship="DB_SGHModel.FK_T_CL_CO_GC_Paciente_T_CL_ES_GC_TipoDocumento" FromRole="TB_PACIENTE" ToRole="TB_TIPO_DOCUMENTO" />
+    <NavigationProperty Name="TB_PRESCRIPCION_MEDICA" Relationship="DB_SGHModel.FK_T_CL_ES_GC_Prescripcion_Medica57" FromRole="TB_PACIENTE" ToRole="TB_PRESCRIPCION_MEDICA" />
   </EntityType>
-  <EntityType Name="TB_Prescripcion_Medica">
+  <EntityType Name="TB_PLAN_MANTENIMIENTO">
     <Key>
-      <PropertyRef Name="CodigoReceta" />
+      <PropertyRef Name="ID_PlanMantenimiento" />
     </Key>
-    <Property Type="Int32" Name="CodigoReceta" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_PlanMantenimiento" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GM_Fecha_Creacion" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_Periodo_Inicio" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_Periodo_Final" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="GM_Estado" />
+    <Property Type="Int32" Name="GM_Codigo_Plan" />
+  </EntityType>
+  <EntityType Name="TB_PRESCRIPCION_MEDICA">
+    <Key>
+      <PropertyRef Name="ID_Prescripcion_Medica" />
+    </Key>
+    <Property Type="Int32" Name="ID_Prescripcion_Medica" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="GA_FechaPrescripcion" Nullable="false" />
+    <Property Type="String" Name="GA_Doctor" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ID_Paciente" Nullable="false" />
+    <Property Type="Int32" Name="ID_Medico" Nullable="false" />
     <Property Type="String" Name="Dosis" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="Frecuencia" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="Int32" Name="CodigoMedicamento" Nullable="false" />
-    <Property Type="Int32" Name="CodigoConsulta" Nullable="false" />
-    <NavigationProperty Name="TB_Consulta" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__46E78A0C" FromRole="TB_Prescripcion_Medica" ToRole="TB_Consulta" />
-    <NavigationProperty Name="TB_Consulta1" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__48CFD27E" FromRole="TB_Prescripcion_Medica" ToRole="TB_Consulta" />
-    <NavigationProperty Name="TB_Medicamento" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__47DBAE45" FromRole="TB_Prescripcion_Medica" ToRole="TB_Medicamento" />
-    <NavigationProperty Name="TB_Medicamento1" Relationship="DB_SGHModel.FK__TB_Prescr__Codig__49C3F6B7" FromRole="TB_Prescripcion_Medica" ToRole="TB_Medicamento" />
+    <Property Type="Int32" Name="ID_Medicamento" Nullable="false" />
+    <Property Type="Int32" Name="ID_Consulta" Nullable="false" />
+    <NavigationProperty Name="TB_CONSULTA" Relationship="DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_Consulta" FromRole="TB_PRESCRIPCION_MEDICA" ToRole="TB_CONSULTA" />
+    <NavigationProperty Name="TB_MEDICAMENTO" Relationship="DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_TB_MEDICAMENTO" FromRole="TB_PRESCRIPCION_MEDICA" ToRole="TB_MEDICAMENTO" />
+    <NavigationProperty Name="TB_MEDICO" Relationship="DB_SGHModel.FK_TB_PRESCRIPCION_MEDICA_00TB_MEDICO" FromRole="TB_PRESCRIPCION_MEDICA" ToRole="TB_MEDICO" />
+    <NavigationProperty Name="TB_PACIENTE" Relationship="DB_SGHModel.FK_T_CL_ES_GC_Prescripcion_Medica57" FromRole="TB_PRESCRIPCION_MEDICA" ToRole="TB_PACIENTE" />
   </EntityType>
-  <EntityType Name="TB_Tipo_Analisis">
+  <EntityType Name="TB_PROGRAMACION_ATENCION_EXAMENES">
     <Key>
-      <PropertyRef Name="CodigoTipoAnalisis" />
+      <PropertyRef Name="ID_Programacion" />
     </Key>
-    <Property Type="Int32" Name="CodigoTipoAnalisis" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_Programacion" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_Orden_Examen_Medico" />
+    <Property Type="Int32" Name="ID_MedicoTurno" />
+    <Property Type="String" Name="estado" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="comentarios" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_MEDICO_DE_TURNO" Relationship="DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_MEDICO_DE_TURNO" FromRole="TB_PROGRAMACION_ATENCION_EXAMENES" ToRole="TB_MEDICO_DE_TURNO" />
+    <NavigationProperty Name="TB_ORDEN_EXAMEN_MEDICO" Relationship="DB_SGHModel.FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_ORDEN_EXAMEN_MEDICO" FromRole="TB_PROGRAMACION_ATENCION_EXAMENES" ToRole="TB_ORDEN_EXAMEN_MEDICO" />
+  </EntityType>
+  <EntityType Name="TB_REQUISITO">
+    <Key>
+      <PropertyRef Name="ID_Requisito" />
+    </Key>
+    <Property Type="Int32" Name="ID_Requisito" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="descripcion" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_CATALOGO_EXAMEN_MEDICO" Relationship="DB_SGHModel.TB_CATALOGO_REQUISITO" FromRole="TB_REQUISITO" ToRole="TB_CATALOGO_EXAMEN_MEDICO" />
+  </EntityType>
+  <EntityType Name="TB_SERVICIO">
+    <Key>
+      <PropertyRef Name="ID_Servicio" />
+    </Key>
+    <Property Type="Int32" Name="ID_Servicio" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GE_NombreServicio" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GE_DescripcionServicio" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Single" Name="GE_CostoServicio" />
+    <NavigationProperty Name="TB_DETORDENSERVICIO" Relationship="DB_SGHModel.FK_TB_DETORDENSERVICIO_TB_SERVICIO" FromRole="TB_SERVICIO" ToRole="TB_DETORDENSERVICIO" />
+  </EntityType>
+  <EntityType Name="TB_SOLICITUD_MANTENIMIENTO">
+    <Key>
+      <PropertyRef Name="ID_SolicitudMantenimiento" />
+    </Key>
+    <Property Type="Int32" Name="ID_SolicitudMantenimiento" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GM_Fecha_Creacion" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_CodigoSolicitante" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_CodigoBeneficiario" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Codigo_CC" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_Tipo_Servicio" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Tipo_Mantenimiento" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Numero_Equipo" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_FechaIncidencia" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="GM_Detalle_Servicio" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GM_Observacion" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="GM_Estado" />
+  </EntityType>
+  <EntityType Name="TB_SOLICITUDES_DE_CAMBIO">
+    <Key>
+      <PropertyRef Name="ID_SolicitudCambio" />
+    </Key>
+    <Property Type="Int32" Name="ID_SolicitudCambio" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID_Empleado" Nullable="false" />
+    <Property Type="Int32" Name="GE_Turno_Actual" />
+    <Property Type="Int32" Name="GE_turno_cambiar" />
+    <Property Type="DateTime" Name="GE_Fecha_cambio" />
+    <Property Type="String" Name="GE_APROBACION" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_EMPLEADO" Relationship="DB_SGHModel.FK_TB_SOLICITUDES_DE_CAMBIO_TB_EMPLEADO" FromRole="TB_SOLICITUDES_DE_CAMBIO" ToRole="TB_EMPLEADO" />
+  </EntityType>
+  <EntityType Name="TB_TIPO_ANALISIS">
+    <Key>
+      <PropertyRef Name="ID_TipoAnalisis" />
+    </Key>
+    <Property Type="Int32" Name="ID_TipoAnalisis" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="Descripcion" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="TipoResultado" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="TB_Analisis" Relationship="DB_SGHModel.FK__TB_Analis__Codig__34C8D9D1" FromRole="TB_Tipo_Analisis" ToRole="TB_Analisis" />
-    <NavigationProperty Name="TB_Analisis1" Relationship="DB_SGHModel.FK__TB_Analis__Codig__36B12243" FromRole="TB_Tipo_Analisis" ToRole="TB_Analisis" />
+    <NavigationProperty Name="TB_ANALISIS" Relationship="DB_SGHModel.FK__TB_ANALIS__ID_Ti__32AB8735" FromRole="TB_TIPO_ANALISIS" ToRole="TB_ANALISIS" />
   </EntityType>
-  <Association Name="FK__Cita__CodigoAgen__33D4B5981">
-    <End Type="DB_SGHModel.TB_Agenda_Medica" Role="TB_Agenda_Medica" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Cita" Role="TB_Cita" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Agenda_Medica">
-        <PropertyRef Name="CodigoAgenda" />
-      </Principal>
-      <Dependent Role="TB_Cita">
-        <PropertyRef Name="CodigoAgenda" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Agenda__Codig__32E0915F">
-    <End Type="DB_SGHModel.TB_Medico" Role="TB_Medico" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Agenda_Medica" Role="TB_Agenda_Medica" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Medico">
-        <PropertyRef Name="CodigoMedico" />
-      </Principal>
-      <Dependent Role="TB_Agenda_Medica">
-        <PropertyRef Name="CodigoMedico" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Agenda__Codig__33D4B598">
-    <End Type="DB_SGHModel.TB_Medico" Role="TB_Medico" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Agenda_Medica" Role="TB_Agenda_Medica" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Medico">
-        <PropertyRef Name="CodigoMedico" />
-      </Principal>
-      <Dependent Role="TB_Agenda_Medica">
-        <PropertyRef Name="CodigoMedico" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Analis__Codig__34C8D9D1">
-    <End Type="DB_SGHModel.TB_Tipo_Analisis" Role="TB_Tipo_Analisis" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Analisis" Role="TB_Analisis" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Tipo_Analisis">
-        <PropertyRef Name="CodigoTipoAnalisis" />
-      </Principal>
-      <Dependent Role="TB_Analisis">
-        <PropertyRef Name="CodigoTipoAnalisis" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Analis__Codig__35BCFE0A">
-    <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Analisis" Role="TB_Analisis" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Consulta">
-        <PropertyRef Name="CodigoConsulta" />
-      </Principal>
-      <Dependent Role="TB_Analisis">
-        <PropertyRef Name="CodigoConsulta" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Analis__Codig__36B12243">
-    <End Type="DB_SGHModel.TB_Tipo_Analisis" Role="TB_Tipo_Analisis" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Analisis" Role="TB_Analisis" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Tipo_Analisis">
-        <PropertyRef Name="CodigoTipoAnalisis" />
-      </Principal>
-      <Dependent Role="TB_Analisis">
-        <PropertyRef Name="CodigoTipoAnalisis" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Analis__Codig__37A5467C">
-    <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Analisis" Role="TB_Analisis" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Consulta">
-        <PropertyRef Name="CodigoConsulta" />
-      </Principal>
-      <Dependent Role="TB_Analisis">
-        <PropertyRef Name="CodigoConsulta" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Cita__CodigoMedi__36B122431">
-    <End Type="DB_SGHModel.TB_Medico" Role="TB_Medico" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Cita" Role="TB_Cita" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Medico">
-        <PropertyRef Name="CodigoMedico" />
-      </Principal>
-      <Dependent Role="TB_Cita">
-        <PropertyRef Name="CodigoMedico" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Cita__CodigoPaci__37A5467C1">
-    <End Type="DB_SGHModel.TB_Paciente" Role="TB_Paciente" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Cita" Role="TB_Cita" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Paciente">
-        <PropertyRef Name="CodigoPaciente" />
-      </Principal>
-      <Dependent Role="TB_Cita">
-        <PropertyRef Name="CodigoPaciente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Consulta__Codigo__3B75D7601">
-    <End Type="DB_SGHModel.TB_Cita" Role="TB_Cita" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Cita">
-        <PropertyRef Name="CodigoCita" />
-      </Principal>
-      <Dependent Role="TB_Consulta">
-        <PropertyRef Name="CodigoCita" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Cita_EstadoCita1">
-    <End Type="DB_SGHModel.TB_Estado_Cita" Role="TB_Estado_Cita" Multiplicity="0..1" />
-    <End Type="DB_SGHModel.TB_Cita" Role="TB_Cita" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Estado_Cita">
-        <PropertyRef Name="IdEstado" />
-      </Principal>
-      <Dependent Role="TB_Cita">
-        <PropertyRef Name="IdEstado" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Consul__Codig__3D5E1FD2">
-    <End Type="DB_SGHModel.TB_Paciente" Role="TB_Paciente" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Paciente">
-        <PropertyRef Name="CodigoPaciente" />
-      </Principal>
-      <Dependent Role="TB_Consulta">
-        <PropertyRef Name="CodigoPaciente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Consul__Codig__3E52440B">
-    <End Type="DB_SGHModel.TB_Consultorio" Role="TB_Consultorio" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Consultorio">
-        <PropertyRef Name="CodigoConsultorio" />
-      </Principal>
-      <Dependent Role="TB_Consulta">
-        <PropertyRef Name="CodigoConsultorio" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Consul__Codig__3F466844">
-    <End Type="DB_SGHModel.TB_Medico" Role="TB_Medico" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Medico">
-        <PropertyRef Name="CodigoMedico" />
-      </Principal>
-      <Dependent Role="TB_Consulta">
-        <PropertyRef Name="CodigoMedico" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Consul__Codig__403A8C7D">
-    <End Type="DB_SGHModel.TB_Paciente" Role="TB_Paciente" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Paciente">
-        <PropertyRef Name="CodigoPaciente" />
-      </Principal>
-      <Dependent Role="TB_Consulta">
-        <PropertyRef Name="CodigoPaciente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Consul__Codig__412EB0B6">
-    <End Type="DB_SGHModel.TB_Consultorio" Role="TB_Consultorio" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Consultorio">
-        <PropertyRef Name="CodigoConsultorio" />
-      </Principal>
-      <Dependent Role="TB_Consulta">
-        <PropertyRef Name="CodigoConsultorio" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Consul__Codig__4222D4EF">
-    <End Type="DB_SGHModel.TB_Medico" Role="TB_Medico" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Medico">
-        <PropertyRef Name="CodigoMedico" />
-      </Principal>
-      <Dependent Role="TB_Consulta">
-        <PropertyRef Name="CodigoMedico" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Prescr__Codig__46E78A0C">
-    <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Prescripcion_Medica" Role="TB_Prescripcion_Medica" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Consulta">
-        <PropertyRef Name="CodigoConsulta" />
-      </Principal>
-      <Dependent Role="TB_Prescripcion_Medica">
-        <PropertyRef Name="CodigoConsulta" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Prescr__Codig__48CFD27E">
-    <End Type="DB_SGHModel.TB_Consulta" Role="TB_Consulta" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Prescripcion_Medica" Role="TB_Prescripcion_Medica" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Consulta">
-        <PropertyRef Name="CodigoConsulta" />
-      </Principal>
-      <Dependent Role="TB_Prescripcion_Medica">
-        <PropertyRef Name="CodigoConsulta" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Consul__Codig__4316F928">
-    <End Type="DB_SGHModel.TB_Local" Role="TB_Local" Multiplicity="0..1" />
-    <End Type="DB_SGHModel.TB_Consultorio" Role="TB_Consultorio" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Local">
-        <PropertyRef Name="CodigoLocal" />
-      </Principal>
-      <Dependent Role="TB_Consultorio">
-        <PropertyRef Name="CodigoLocal" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Consul__Codig__440B1D61">
-    <End Type="DB_SGHModel.TB_Local" Role="TB_Local" Multiplicity="0..1" />
-    <End Type="DB_SGHModel.TB_Consultorio" Role="TB_Consultorio" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Local">
-        <PropertyRef Name="CodigoLocal" />
-      </Principal>
-      <Dependent Role="TB_Consultorio">
-        <PropertyRef Name="CodigoLocal" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Medico__Codig__44FF419A">
-    <End Type="DB_SGHModel.TB_Especialidad" Role="TB_Especialidad" Multiplicity="0..1" />
-    <End Type="DB_SGHModel.TB_Medico" Role="TB_Medico" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Especialidad">
-        <PropertyRef Name="CodigoEspecialidad" />
-      </Principal>
-      <Dependent Role="TB_Medico">
-        <PropertyRef Name="CodigoEspecialidad" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Medico__Codig__45F365D3">
-    <End Type="DB_SGHModel.TB_Especialidad" Role="TB_Especialidad" Multiplicity="0..1" />
-    <End Type="DB_SGHModel.TB_Medico" Role="TB_Medico" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Especialidad">
-        <PropertyRef Name="CodigoEspecialidad" />
-      </Principal>
-      <Dependent Role="TB_Medico">
-        <PropertyRef Name="CodigoEspecialidad" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Prescr__Codig__47DBAE45">
-    <End Type="DB_SGHModel.TB_Medicamento" Role="TB_Medicamento" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Prescripcion_Medica" Role="TB_Prescripcion_Medica" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Medicamento">
-        <PropertyRef Name="CodigoMedicamento" />
-      </Principal>
-      <Dependent Role="TB_Prescripcion_Medica">
-        <PropertyRef Name="CodigoMedicamento" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__TB_Prescr__Codig__49C3F6B7">
-    <End Type="DB_SGHModel.TB_Medicamento" Role="TB_Medicamento" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Prescripcion_Medica" Role="TB_Prescripcion_Medica" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TB_Medicamento">
-        <PropertyRef Name="CodigoMedicamento" />
-      </Principal>
-      <Dependent Role="TB_Prescripcion_Medica">
-        <PropertyRef Name="CodigoMedicamento" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="TB_Turno_Citas">
+  <EntityType Name="TB_TIPO_DOCUMENTO">
     <Key>
-      <PropertyRef Name="IdTurno" />
+      <PropertyRef Name="ID_TipoDocumento" />
     </Key>
-    <Property Type="Int32" Name="IdTurno" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="DateTime" Name="HoraInicio" />
-    <Property Type="DateTime" Name="HoraFinal" />
-    <NavigationProperty Name="TB_Agenda_Medica" Relationship="DB_SGHModel.FK_TB_Agenda_Medica_TB_Turno_Citas" FromRole="TB_Turno_Citas" ToRole="TB_Agenda_Medica" />
+    <Property Type="Int32" Name="ID_TipoDocumento" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_PACIENTE" Relationship="DB_SGHModel.FK_T_CL_CO_GC_Paciente_T_CL_ES_GC_TipoDocumento" FromRole="TB_TIPO_DOCUMENTO" ToRole="TB_PACIENTE" />
   </EntityType>
-  <Association Name="FK_TB_Agenda_Medica_TB_Turno_Citas">
-    <End Type="DB_SGHModel.TB_Turno_Citas" Role="TB_Turno_Citas" Multiplicity="1" />
-    <End Type="DB_SGHModel.TB_Agenda_Medica" Role="TB_Agenda_Medica" Multiplicity="*" />
+  <EntityType Name="TB_TIPO_EMPLEADO">
+    <Key>
+      <PropertyRef Name="ID_Tipo_Empleado" />
+    </Key>
+    <Property Type="Int32" Name="ID_Tipo_Empleado" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="E_Descripcion" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_EMPLEADO" Relationship="DB_SGHModel.FK_TB_EMPLEADO_TB_TIPO_EMPLEADO" FromRole="TB_TIPO_EMPLEADO" ToRole="TB_EMPLEADO" />
+  </EntityType>
+  <EntityType Name="TB_TIPO_EXAMEN_MEDICO">
+    <Key>
+      <PropertyRef Name="ID_Tipo_Examen" />
+    </Key>
+    <Property Type="Int32" Name="ID_Tipo_Examen" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="descripcion" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DescripcionGeneral" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_CATALOGO_EXAMEN_MEDICO" Relationship="DB_SGHModel.FK_TB_CATALOGO_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO" FromRole="TB_TIPO_EXAMEN_MEDICO" ToRole="TB_CATALOGO_EXAMEN_MEDICO" />
+    <NavigationProperty Name="TB_CONSULTORIO" Relationship="DB_SGHModel.FK_TB_CONSULTORIO_TB_TIPO_EXAMEN_MEDICO" FromRole="TB_TIPO_EXAMEN_MEDICO" ToRole="TB_CONSULTORIO" />
+    <NavigationProperty Name="TB_ORDEN_EXAMEN_MEDICO" Relationship="DB_SGHModel.FK_TB_ORDEN_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO" FromRole="TB_TIPO_EXAMEN_MEDICO" ToRole="TB_ORDEN_EXAMEN_MEDICO" />
+  </EntityType>
+  <EntityType Name="TB_TIPO_INFORME_ADMINISTRATIVO">
+    <Key>
+      <PropertyRef Name="ID_Tipo_Informe" />
+    </Key>
+    <Property Type="Int32" Name="ID_Tipo_Informe" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="IA_Descripcion" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_INFORME_ADMINSITRATIVO" Relationship="DB_SGHModel.FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO" FromRole="TB_TIPO_INFORME_ADMINISTRATIVO" ToRole="TB_INFORME_ADMINSITRATIVO" />
+  </EntityType>
+  <EntityType Name="TB_TURNO">
+    <Key>
+      <PropertyRef Name="ID_TURNO" />
+    </Key>
+    <Property Type="Int32" Name="ID_TURNO" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Des_Turno" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Horario_Turno" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_AGENDA_MEDICA" Relationship="DB_SGHModel.FK__TB_AGENDA__ID_TU__2EDAF651" FromRole="TB_TURNO" ToRole="TB_AGENDA_MEDICA" />
+  </EntityType>
+  <EntityType Name="TB_TURNO_ATENCION">
+    <Key>
+      <PropertyRef Name="ID_Medico" />
+      <PropertyRef Name="ID_Cita" />
+      <PropertyRef Name="ID_TURNOATENCION" />
+    </Key>
+    <Property Type="Int32" Name="ID_Medico" Nullable="false" />
+    <Property Type="Int32" Name="ID_Cita" Nullable="false" />
+    <Property Type="Int32" Name="ID_TURNOATENCION" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="FechaRegistro" Nullable="false" />
+    <Property Type="DateTime" Name="FechaAtencion" />
+    <NavigationProperty Name="TB_CITA" Relationship="DB_SGHModel.FK_T_CL_ES_GC_TurnoAtencion_T_CL_CO_GC_Cita" FromRole="TB_TURNO_ATENCION" ToRole="TB_CITA" />
+    <NavigationProperty Name="TB_MEDICO" Relationship="DB_SGHModel.FK_TB_TURNOATENCION_00TB_MEDICO" FromRole="TB_TURNO_ATENCION" ToRole="TB_MEDICO" />
+  </EntityType>
+  <EntityType Name="TB_TURNO_EMERGENCIA">
+    <Key>
+      <PropertyRef Name="ID_TURNOEMERGENCIA" />
+    </Key>
+    <Property Type="Int32" Name="ID_TURNOEMERGENCIA" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="GE_Horario_INI" />
+    <Property Type="DateTime" Name="GE_Horario_FIN" />
+    <NavigationProperty Name="TB_CRONOGRAMA_EMERGENCIA" Relationship="DB_SGHModel.FK_TB_CRONOGRAMA_EMERGENCIA_TB_TURNO_EMERGENCIA" FromRole="TB_TURNO_EMERGENCIA" ToRole="TB_CRONOGRAMA_EMERGENCIA" />
+    <NavigationProperty Name="TB_EMPLEADO" Relationship="DB_SGHModel.FK_TB_EMPLEADO_TB_TURNO_EMERGENCIA" FromRole="TB_TURNO_EMERGENCIA" ToRole="TB_EMPLEADO" />
+  </EntityType>
+  <Association Name="FK__TB_AGENDA__ID_TU__2EDAF651">
+    <End Type="DB_SGHModel.TB_TURNO" Role="TB_TURNO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_AGENDA_MEDICA" Role="TB_AGENDA_MEDICA" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TB_Turno_Citas">
-        <PropertyRef Name="IdTurno" />
+      <Principal Role="TB_TURNO">
+        <PropertyRef Name="ID_TURNO" />
       </Principal>
-      <Dependent Role="TB_Agenda_Medica">
-        <PropertyRef Name="IdTurno" />
+      <Dependent Role="TB_AGENDA_MEDICA">
+        <PropertyRef Name="ID_TURNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_AGENDA_MEDICA_TB_CONSULTORIO">
+    <End Type="DB_SGHModel.TB_CONSULTORIO" Role="TB_CONSULTORIO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_AGENDA_MEDICA" Role="TB_AGENDA_MEDICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CONSULTORIO">
+        <PropertyRef Name="ID_Consultorio" />
+      </Principal>
+      <Dependent Role="TB_AGENDA_MEDICA">
+        <PropertyRef Name="ID_Consultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_AgendaMedica_TB_MEDICO">
+    <End Type="DB_SGHModel.TB_MEDICO" Role="TB_MEDICO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_AGENDA_MEDICA" Role="TB_AGENDA_MEDICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MEDICO">
+        <PropertyRef Name="ID_Medico" />
+      </Principal>
+      <Dependent Role="TB_AGENDA_MEDICA">
+        <PropertyRef Name="ID_Medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_CITA_TB_AgendaMedica">
+    <End Type="DB_SGHModel.TB_AGENDA_MEDICA" Role="TB_AGENDA_MEDICA" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_CITA" Role="TB_CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_AGENDA_MEDICA">
+        <PropertyRef Name="ID_AgendaMedica" />
+      </Principal>
+      <Dependent Role="TB_CITA">
+        <PropertyRef Name="ID_AgendaMedica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_ANALIS__ID_Co__31B762FC">
+    <End Type="DB_SGHModel.TB_CONSULTA" Role="TB_CONSULTA" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_ANALISIS" Role="TB_ANALISIS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CONSULTA">
+        <PropertyRef Name="ID_Consulta" />
+      </Principal>
+      <Dependent Role="TB_ANALISIS">
+        <PropertyRef Name="ID_Consulta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_ANALIS__ID_Ti__32AB8735">
+    <End Type="DB_SGHModel.TB_TIPO_ANALISIS" Role="TB_TIPO_ANALISIS" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_ANALISIS" Role="TB_ANALISIS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_ANALISIS">
+        <PropertyRef Name="ID_TipoAnalisis" />
+      </Principal>
+      <Dependent Role="TB_ANALISIS">
+        <PropertyRef Name="ID_TipoAnalisis" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_INSTALACION_TB_AREA">
+    <End Type="DB_SGHModel.TB_AREA" Role="TB_AREA" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_INSTALACION" Role="TB_INSTALACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_AREA">
+        <PropertyRef Name="ID_Area" />
+      </Principal>
+      <Dependent Role="TB_INSTALACION">
+        <PropertyRef Name="ID_Area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_ORDEN_DE_PEDIDO_TB_AREA">
+    <End Type="DB_SGHModel.TB_AREA" Role="TB_AREA" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_ORDEN_DE_PEDIDO" Role="TB_ORDEN_DE_PEDIDO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_AREA">
+        <PropertyRef Name="ID_Area" />
+      </Principal>
+      <Dependent Role="TB_ORDEN_DE_PEDIDO">
+        <PropertyRef Name="ID_Area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_Atencion_Emergencia_TB_CAMA">
+    <End Type="DB_SGHModel.TB_CAMA" Role="TB_CAMA" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_Atencion_Emergencia" Role="TB_Atencion_Emergencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CAMA">
+        <PropertyRef Name="ID_Cama" />
+      </Principal>
+      <Dependent Role="TB_Atencion_Emergencia">
+        <PropertyRef Name="ID_Cama" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_Atencion_Emergencia_TB_Medico">
+    <End Type="DB_SGHModel.TB_MEDICO" Role="TB_MEDICO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_Atencion_Emergencia" Role="TB_Atencion_Emergencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MEDICO">
+        <PropertyRef Name="ID_Medico" />
+      </Principal>
+      <Dependent Role="TB_Atencion_Emergencia">
+        <PropertyRef Name="ID_Medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_Atencion_Emergencia_TB_PACIENTE">
+    <End Type="DB_SGHModel.TB_PACIENTE" Role="TB_PACIENTE" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_Atencion_Emergencia" Role="TB_Atencion_Emergencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PACIENTE">
+        <PropertyRef Name="ID_Paciente" />
+      </Principal>
+      <Dependent Role="TB_Atencion_Emergencia">
+        <PropertyRef Name="ID_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_CL_ES_GO_Cama63">
+    <End Type="DB_SGHModel.TB_HOJA_INGRESO_HOSPITALIZACION" Role="TB_HOJA_INGRESO_HOSPITALIZACION" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_CAMA" Role="TB_CAMA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_HOJA_INGRESO_HOSPITALIZACION">
+        <PropertyRef Name="ID_Hoja_Ingreso_Hospitalizacion" />
+      </Principal>
+      <Dependent Role="TB_CAMA">
+        <PropertyRef Name="ID_Hoja_Ingreso_Hospitalizacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_CAMA_TB_ESPECIALIDAD">
+    <End Type="DB_SGHModel.TB_ESPECIALIDAD" Role="TB_ESPECIALIDAD" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_CAMA" Role="TB_CAMA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ESPECIALIDAD">
+        <PropertyRef Name="ID_Especialidad" />
+      </Principal>
+      <Dependent Role="TB_CAMA">
+        <PropertyRef Name="ID_Especialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_CARTA_GARANTIA_TB_ORDEN_DE_PROCEDIMIENTO">
+    <End Type="DB_SGHModel.TB_ORDEN_DE_PROCEDIMIENTO" Role="TB_ORDEN_DE_PROCEDIMIENTO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_CARTA_GARANTIA" Role="TB_CARTA_GARANTIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ORDEN_DE_PROCEDIMIENTO">
+        <PropertyRef Name="ID_Orden_de_Procedimiento" />
+      </Principal>
+      <Dependent Role="TB_CARTA_GARANTIA">
+        <PropertyRef Name="ID_Orden_de_Procedimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_CARTA_GARANTIA_TB_PACIENTE">
+    <End Type="DB_SGHModel.TB_PACIENTE" Role="TB_PACIENTE" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_CARTA_GARANTIA" Role="TB_CARTA_GARANTIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PACIENTE">
+        <PropertyRef Name="ID_Paciente" />
+      </Principal>
+      <Dependent Role="TB_CARTA_GARANTIA">
+        <PropertyRef Name="ID_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_CARTA_GARANTIA">
+    <End Type="DB_SGHModel.TB_CARTA_GARANTIA" Role="TB_CARTA_GARANTIA" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_HOJA_INGRESO_HOSPITALIZACION" Role="TB_HOJA_INGRESO_HOSPITALIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CARTA_GARANTIA">
+        <PropertyRef Name="ID_Carta" />
+      </Principal>
+      <Dependent Role="TB_HOJA_INGRESO_HOSPITALIZACION">
+        <PropertyRef Name="ID_Carta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_CATALOGO_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO">
+    <End Type="DB_SGHModel.TB_TIPO_EXAMEN_MEDICO" Role="TB_TIPO_EXAMEN_MEDICO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_CATALOGO_EXAMEN_MEDICO" Role="TB_CATALOGO_EXAMEN_MEDICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_EXAMEN_MEDICO">
+        <PropertyRef Name="ID_Tipo_Examen" />
+      </Principal>
+      <Dependent Role="TB_CATALOGO_EXAMEN_MEDICO">
+        <PropertyRef Name="ID_Tipo_Examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_ORDEN_EXAMEN_MEDICO_TB_CATALOGO_EXAMEN_MEDICO">
+    <End Type="DB_SGHModel.TB_CATALOGO_EXAMEN_MEDICO" Role="TB_CATALOGO_EXAMEN_MEDICO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_ORDEN_EXAMEN_MEDICO" Role="TB_ORDEN_EXAMEN_MEDICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CATALOGO_EXAMEN_MEDICO">
+        <PropertyRef Name="ID_Catalogo_Examen" />
+      </Principal>
+      <Dependent Role="TB_ORDEN_EXAMEN_MEDICO">
+        <PropertyRef Name="ID_Catalogo_Examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_CL_CO_GC_Cita55">
+    <End Type="DB_SGHModel.TB_PACIENTE" Role="TB_PACIENTE" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_CITA" Role="TB_CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PACIENTE">
+        <PropertyRef Name="ID_Paciente" />
+      </Principal>
+      <Dependent Role="TB_CITA">
+        <PropertyRef Name="ID_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_CL_CO_GC_Cita60">
+    <End Type="DB_SGHModel.TB_HISTORIA_CLINICA" Role="TB_HISTORIA_CLINICA" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_CITA" Role="TB_CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_HISTORIA_CLINICA">
+        <PropertyRef Name="ID_Historia" />
+      </Principal>
+      <Dependent Role="TB_CITA">
+        <PropertyRef Name="ID_Historia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_CL_CO_GC_Comprobante_de_Pago51">
+    <End Type="DB_SGHModel.TB_CITA" Role="TB_CITA" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_COMPROBANTE_DE_PAGO" Role="TB_COMPROBANTE_DE_PAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CITA">
+        <PropertyRef Name="ID_Cita" />
+      </Principal>
+      <Dependent Role="TB_COMPROBANTE_DE_PAGO">
+        <PropertyRef Name="ID_Cita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_CL_ES_GC_Orden_de_Pago50">
+    <End Type="DB_SGHModel.TB_CITA" Role="TB_CITA" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_ORDEN_SERVICIO" Role="TB_ORDEN_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CITA">
+        <PropertyRef Name="ID_Cita" />
+      </Principal>
+      <Dependent Role="TB_ORDEN_SERVICIO">
+        <PropertyRef Name="ID_Cita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_CL_ES_GC_TurnoAtencion_T_CL_CO_GC_Cita">
+    <End Type="DB_SGHModel.TB_CITA" Role="TB_CITA" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_TURNO_ATENCION" Role="TB_TURNO_ATENCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CITA">
+        <PropertyRef Name="ID_Cita" />
+      </Principal>
+      <Dependent Role="TB_TURNO_ATENCION">
+        <PropertyRef Name="ID_Cita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_CITA_00TB_ESPECIALIDAD">
+    <End Type="DB_SGHModel.TB_ESPECIALIDAD" Role="TB_ESPECIALIDAD" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_CITA" Role="TB_CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ESPECIALIDAD">
+        <PropertyRef Name="ID_Especialidad" />
+      </Principal>
+      <Dependent Role="TB_CITA">
+        <PropertyRef Name="ID_Especialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_CITA_00TB_MEDICO">
+    <End Type="DB_SGHModel.TB_MEDICO" Role="TB_MEDICO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_CITA" Role="TB_CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MEDICO">
+        <PropertyRef Name="ID_Medico" />
+      </Principal>
+      <Dependent Role="TB_CITA">
+        <PropertyRef Name="ID_Medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_CITA_TB_Estado_Cita">
+    <End Type="DB_SGHModel.TB_ESTADO_CITA" Role="TB_ESTADO_CITA" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_CITA" Role="TB_CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ESTADO_CITA">
+        <PropertyRef Name="ID_EstadoCita" />
+      </Principal>
+      <Dependent Role="TB_CITA">
+        <PropertyRef Name="ID_EstadoCita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_Consulta_TB_CITA">
+    <End Type="DB_SGHModel.TB_CITA" Role="TB_CITA" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_CONSULTA" Role="TB_CONSULTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CITA">
+        <PropertyRef Name="ID_Cita" />
+      </Principal>
+      <Dependent Role="TB_CONSULTA">
+        <PropertyRef Name="ID_Cita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_Consulta_TB_CONSULTORIO">
+    <End Type="DB_SGHModel.TB_CONSULTORIO" Role="TB_CONSULTORIO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_CONSULTA" Role="TB_CONSULTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CONSULTORIO">
+        <PropertyRef Name="ID_Consultorio" />
+      </Principal>
+      <Dependent Role="TB_CONSULTA">
+        <PropertyRef Name="ID_Consultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_Consulta_TB_MEDICO">
+    <End Type="DB_SGHModel.TB_MEDICO" Role="TB_MEDICO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_CONSULTA" Role="TB_CONSULTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MEDICO">
+        <PropertyRef Name="ID_Medico" />
+      </Principal>
+      <Dependent Role="TB_CONSULTA">
+        <PropertyRef Name="ID_Medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_Consulta_TB_PACIENTE">
+    <End Type="DB_SGHModel.TB_PACIENTE" Role="TB_PACIENTE" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_CONSULTA" Role="TB_CONSULTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PACIENTE">
+        <PropertyRef Name="ID_Paciente" />
+      </Principal>
+      <Dependent Role="TB_CONSULTA">
+        <PropertyRef Name="ID_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_ORDEN_HOSPITALIZACION_TB_Consulta">
+    <End Type="DB_SGHModel.TB_CONSULTA" Role="TB_CONSULTA" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_ORDEN_HOSPITALIZACION" Role="TB_ORDEN_HOSPITALIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CONSULTA">
+        <PropertyRef Name="ID_Consulta" />
+      </Principal>
+      <Dependent Role="TB_ORDEN_HOSPITALIZACION">
+        <PropertyRef Name="ID_Consulta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_PRESCRIPCION_MEDICA_TB_Consulta">
+    <End Type="DB_SGHModel.TB_CONSULTA" Role="TB_CONSULTA" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_PRESCRIPCION_MEDICA" Role="TB_PRESCRIPCION_MEDICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CONSULTA">
+        <PropertyRef Name="ID_Consulta" />
+      </Principal>
+      <Dependent Role="TB_PRESCRIPCION_MEDICA">
+        <PropertyRef Name="ID_Consulta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_CONSULTORIO_TB_LOCAL">
+    <End Type="DB_SGHModel.TB_LOCAL" Role="TB_LOCAL" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_CONSULTORIO" Role="TB_CONSULTORIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_LOCAL">
+        <PropertyRef Name="ID_Local" />
+      </Principal>
+      <Dependent Role="TB_CONSULTORIO">
+        <PropertyRef Name="ID_Local" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_CONSULTORIO_TB_TIPO_EXAMEN_MEDICO">
+    <End Type="DB_SGHModel.TB_TIPO_EXAMEN_MEDICO" Role="TB_TIPO_EXAMEN_MEDICO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_CONSULTORIO" Role="TB_CONSULTORIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_EXAMEN_MEDICO">
+        <PropertyRef Name="ID_Tipo_Examen" />
+      </Principal>
+      <Dependent Role="TB_CONSULTORIO">
+        <PropertyRef Name="ID_Tipo_Examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_MEDICO_DE_TURNO_TB_CONSULTORIO">
+    <End Type="DB_SGHModel.TB_CONSULTORIO" Role="TB_CONSULTORIO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_MEDICO_DE_TURNO" Role="TB_MEDICO_DE_TURNO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CONSULTORIO">
+        <PropertyRef Name="ID_Consultorio" />
+      </Principal>
+      <Dependent Role="TB_MEDICO_DE_TURNO">
+        <PropertyRef Name="ID_Consultorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_CRONOGRAMA_EMERGENCIA_TB_EMPLEADO">
+    <End Type="DB_SGHModel.TB_EMPLEADO" Role="TB_EMPLEADO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_CRONOGRAMA_EMERGENCIA" Role="TB_CRONOGRAMA_EMERGENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_EMPLEADO">
+        <PropertyRef Name="ID_Empleado" />
+      </Principal>
+      <Dependent Role="TB_CRONOGRAMA_EMERGENCIA">
+        <PropertyRef Name="ID_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_CRONOGRAMA_EMERGENCIA_TB_TURNO_EMERGENCIA">
+    <End Type="DB_SGHModel.TB_TURNO_EMERGENCIA" Role="TB_TURNO_EMERGENCIA" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_CRONOGRAMA_EMERGENCIA" Role="TB_CRONOGRAMA_EMERGENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TURNO_EMERGENCIA">
+        <PropertyRef Name="ID_TURNOEMERGENCIA" />
+      </Principal>
+      <Dependent Role="TB_CRONOGRAMA_EMERGENCIA">
+        <PropertyRef Name="ID_TURNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_DET_HISTORIA_CLINICA_TB_HISTORIA_CLINICA">
+    <End Type="DB_SGHModel.TB_HISTORIA_CLINICA" Role="TB_HISTORIA_CLINICA" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_DET_HISTORIA_CLINICA" Role="TB_DET_HISTORIA_CLINICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_HISTORIA_CLINICA">
+        <PropertyRef Name="ID_Historia" />
+      </Principal>
+      <Dependent Role="TB_DET_HISTORIA_CLINICA">
+        <PropertyRef Name="ID_Historia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_MEDICAMENTO">
+    <End Type="DB_SGHModel.TB_MEDICAMENTO" Role="TB_MEDICAMENTO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_DETALLE_ORDEN_DE_PEDIDO" Role="TB_DETALLE_ORDEN_DE_PEDIDO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MEDICAMENTO">
+        <PropertyRef Name="ID_Medicamento" />
+      </Principal>
+      <Dependent Role="TB_DETALLE_ORDEN_DE_PEDIDO">
+        <PropertyRef Name="ID_Medicamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_DETALLE_ORDEN_DE_PEDIDO_TB_ORDEN_DE_PEDIDO">
+    <End Type="DB_SGHModel.TB_ORDEN_DE_PEDIDO" Role="TB_ORDEN_DE_PEDIDO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_DETALLE_ORDEN_DE_PEDIDO" Role="TB_DETALLE_ORDEN_DE_PEDIDO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ORDEN_DE_PEDIDO">
+        <PropertyRef Name="ID_OrdenPedido" />
+      </Principal>
+      <Dependent Role="TB_DETALLE_ORDEN_DE_PEDIDO">
+        <PropertyRef Name="ID_OrdenPedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_MEDICAMENTO">
+    <End Type="DB_SGHModel.TB_MEDICAMENTO" Role="TB_MEDICAMENTO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_DETALLE_ORDEN_DE_SALIDA" Role="TB_DETALLE_ORDEN_DE_SALIDA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MEDICAMENTO">
+        <PropertyRef Name="ID_Medicamento" />
+      </Principal>
+      <Dependent Role="TB_DETALLE_ORDEN_DE_SALIDA">
+        <PropertyRef Name="ID_Medicamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_DETALLE_ORDEN_DE_SALIDA_TB_ORDEN_DE_SALIDA">
+    <End Type="DB_SGHModel.TB_ORDEN_DE_SALIDA" Role="TB_ORDEN_DE_SALIDA" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_DETALLE_ORDEN_DE_SALIDA" Role="TB_DETALLE_ORDEN_DE_SALIDA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ORDEN_DE_SALIDA">
+        <PropertyRef Name="ID_OrdenSalida" />
+      </Principal>
+      <Dependent Role="TB_DETALLE_ORDEN_DE_SALIDA">
+        <PropertyRef Name="ID_OrdenSalida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_DETORDENSERVICIO_TB_ORDEN_SERVICIO">
+    <End Type="DB_SGHModel.TB_ORDEN_SERVICIO" Role="TB_ORDEN_SERVICIO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_DETORDENSERVICIO" Role="TB_DETORDENSERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ORDEN_SERVICIO">
+        <PropertyRef Name="ID_Orden_Servicio" />
+      </Principal>
+      <Dependent Role="TB_DETORDENSERVICIO">
+        <PropertyRef Name="ID_Orden_Servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_DETORDENSERVICIO_TB_SERVICIO">
+    <End Type="DB_SGHModel.TB_SERVICIO" Role="TB_SERVICIO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_DETORDENSERVICIO" Role="TB_DETORDENSERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_SERVICIO">
+        <PropertyRef Name="ID_Servicio" />
+      </Principal>
+      <Dependent Role="TB_DETORDENSERVICIO">
+        <PropertyRef Name="ID_Servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_EMPLEADO_TB_TIPO_EMPLEADO">
+    <End Type="DB_SGHModel.TB_TIPO_EMPLEADO" Role="TB_TIPO_EMPLEADO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_EMPLEADO" Role="TB_EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_EMPLEADO">
+        <PropertyRef Name="ID_Tipo_Empleado" />
+      </Principal>
+      <Dependent Role="TB_EMPLEADO">
+        <PropertyRef Name="ID_Tipo_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_EMPLEADO_TB_TURNO_EMERGENCIA">
+    <End Type="DB_SGHModel.TB_TURNO_EMERGENCIA" Role="TB_TURNO_EMERGENCIA" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_EMPLEADO" Role="TB_EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TURNO_EMERGENCIA">
+        <PropertyRef Name="ID_TURNOEMERGENCIA" />
+      </Principal>
+      <Dependent Role="TB_EMPLEADO">
+        <PropertyRef Name="ID_TURNOEMERGENCIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_INFORME_ADMINSITRATIVO_TB_EMPLEADO">
+    <End Type="DB_SGHModel.TB_EMPLEADO" Role="TB_EMPLEADO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_INFORME_ADMINSITRATIVO" Role="TB_INFORME_ADMINSITRATIVO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_EMPLEADO">
+        <PropertyRef Name="ID_Empleado" />
+      </Principal>
+      <Dependent Role="TB_INFORME_ADMINSITRATIVO">
+        <PropertyRef Name="ID_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_SOLICITUDES_DE_CAMBIO_TB_EMPLEADO">
+    <End Type="DB_SGHModel.TB_EMPLEADO" Role="TB_EMPLEADO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_SOLICITUDES_DE_CAMBIO" Role="TB_SOLICITUDES_DE_CAMBIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_EMPLEADO">
+        <PropertyRef Name="ID_Empleado" />
+      </Principal>
+      <Dependent Role="TB_SOLICITUDES_DE_CAMBIO">
+        <PropertyRef Name="ID_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_ESPECIALIDAD">
+    <End Type="DB_SGHModel.TB_ESPECIALIDAD" Role="TB_ESPECIALIDAD" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_HOJA_INGRESO_EMERGENCIA" Role="TB_HOJA_INGRESO_EMERGENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ESPECIALIDAD">
+        <PropertyRef Name="ID_Especialidad" />
+      </Principal>
+      <Dependent Role="TB_HOJA_INGRESO_EMERGENCIA">
+        <PropertyRef Name="ID_Especialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ESPECIALIDAD">
+    <End Type="DB_SGHModel.TB_ESPECIALIDAD" Role="TB_ESPECIALIDAD" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_HOJA_INGRESO_HOSPITALIZACION" Role="TB_HOJA_INGRESO_HOSPITALIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ESPECIALIDAD">
+        <PropertyRef Name="ID_Especialidad" />
+      </Principal>
+      <Dependent Role="TB_HOJA_INGRESO_HOSPITALIZACION">
+        <PropertyRef Name="ID_Especialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_MEDICOESPECIALIDAD_TB_ESPECIALIDAD">
+    <End Type="DB_SGHModel.TB_ESPECIALIDAD" Role="TB_ESPECIALIDAD" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_MEDICOESPECIALIDAD" Role="TB_MEDICOESPECIALIDAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ESPECIALIDAD">
+        <PropertyRef Name="ID_Especialidad" />
+      </Principal>
+      <Dependent Role="TB_MEDICOESPECIALIDAD">
+        <PropertyRef Name="ID_Especialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_HISTORIA_CLINICA_TB_PACIENTE1">
+    <End Type="DB_SGHModel.TB_PACIENTE" Role="TB_PACIENTE" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_HISTORIA_CLINICA" Role="TB_HISTORIA_CLINICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PACIENTE">
+        <PropertyRef Name="ID_Paciente" />
+      </Principal>
+      <Dependent Role="TB_HISTORIA_CLINICA">
+        <PropertyRef Name="ID_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_ORDEN_INTERNA_TB_HISTORIA_CLINICA">
+    <End Type="DB_SGHModel.TB_HISTORIA_CLINICA" Role="TB_HISTORIA_CLINICA" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_ORDEN_INTERNA" Role="TB_ORDEN_INTERNA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_HISTORIA_CLINICA">
+        <PropertyRef Name="ID_Historia" />
+      </Principal>
+      <Dependent Role="TB_ORDEN_INTERNA">
+        <PropertyRef Name="ID_Historia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_CL_ES_GC_Hoja_Ingreso_Emergencia54">
+    <End Type="DB_SGHModel.TB_PACIENTE" Role="TB_PACIENTE" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_HOJA_INGRESO_EMERGENCIA" Role="TB_HOJA_INGRESO_EMERGENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PACIENTE">
+        <PropertyRef Name="ID_Paciente" />
+      </Principal>
+      <Dependent Role="TB_HOJA_INGRESO_EMERGENCIA">
+        <PropertyRef Name="ID_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_HOJA_INGRESO_EMERGENCIA_00TB_MEDICO">
+    <End Type="DB_SGHModel.TB_MEDICO" Role="TB_MEDICO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_HOJA_INGRESO_EMERGENCIA" Role="TB_HOJA_INGRESO_EMERGENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MEDICO">
+        <PropertyRef Name="ID_Medico" />
+      </Principal>
+      <Dependent Role="TB_HOJA_INGRESO_EMERGENCIA">
+        <PropertyRef Name="ID_Medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_CL_ES_GC_Hooja_Ingreso_Hospitalizacion58">
+    <End Type="DB_SGHModel.TB_PACIENTE" Role="TB_PACIENTE" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_HOJA_INGRESO_HOSPITALIZACION" Role="TB_HOJA_INGRESO_HOSPITALIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PACIENTE">
+        <PropertyRef Name="ID_Paciente" />
+      </Principal>
+      <Dependent Role="TB_HOJA_INGRESO_HOSPITALIZACION">
+        <PropertyRef Name="ID_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_LOCAL">
+    <End Type="DB_SGHModel.TB_LOCAL" Role="TB_LOCAL" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_HOJA_INGRESO_HOSPITALIZACION" Role="TB_HOJA_INGRESO_HOSPITALIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_LOCAL">
+        <PropertyRef Name="ID_Local" />
+      </Principal>
+      <Dependent Role="TB_HOJA_INGRESO_HOSPITALIZACION">
+        <PropertyRef Name="ID_Local" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_HOJA_INGRESO_HOSPITALIZACION_TB_ORDEN_HOSPITALIZACION">
+    <End Type="DB_SGHModel.TB_ORDEN_HOSPITALIZACION" Role="TB_ORDEN_HOSPITALIZACION" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_HOJA_INGRESO_HOSPITALIZACION" Role="TB_HOJA_INGRESO_HOSPITALIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ORDEN_HOSPITALIZACION">
+        <PropertyRef Name="ID_Orden_Hospitalizacion" />
+      </Principal>
+      <Dependent Role="TB_HOJA_INGRESO_HOSPITALIZACION">
+        <PropertyRef Name="ID_Orden_Hospitalizacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_INFORME_ADMINSITRATIVO_TB_TIPO_INFORME_ADMINISTRATIVO">
+    <End Type="DB_SGHModel.TB_TIPO_INFORME_ADMINISTRATIVO" Role="TB_TIPO_INFORME_ADMINISTRATIVO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_INFORME_ADMINSITRATIVO" Role="TB_INFORME_ADMINSITRATIVO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_INFORME_ADMINISTRATIVO">
+        <PropertyRef Name="ID_Tipo_Informe" />
+      </Principal>
+      <Dependent Role="TB_INFORME_ADMINSITRATIVO">
+        <PropertyRef Name="ID_Tipo_Informe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_INFORM__ID_In__5E8A0973">
+    <End Type="DB_SGHModel.TB_INFORME_EQUIPO" Role="TB_INFORME_EQUIPO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_INFORME_EQUIPO_DET" Role="TB_INFORME_EQUIPO_DET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_INFORME_EQUIPO">
+        <PropertyRef Name="ID_InformeEquipo" />
+      </Principal>
+      <Dependent Role="TB_INFORME_EQUIPO_DET">
+        <PropertyRef Name="ID_InformeEquipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_INFORME_RESULTADO_TB_ORDEN_EXAMEN_MEDICO">
+    <End Type="DB_SGHModel.TB_ORDEN_EXAMEN_MEDICO" Role="TB_ORDEN_EXAMEN_MEDICO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_INFORME_RESULTADO" Role="TB_INFORME_RESULTADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ORDEN_EXAMEN_MEDICO">
+        <PropertyRef Name="ID_Orden_Examen_Medico" />
+      </Principal>
+      <Dependent Role="TB_INFORME_RESULTADO">
+        <PropertyRef Name="ID_Orden_Examen_Medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_LISTA_VERIFICACION_TB_INSTALACION">
+    <End Type="DB_SGHModel.TB_INSTALACION" Role="TB_INSTALACION" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_LISTA_VERIFICACION" Role="TB_LISTA_VERIFICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_INSTALACION">
+        <PropertyRef Name="ID_Instalacion" />
+      </Principal>
+      <Dependent Role="TB_LISTA_VERIFICACION">
+        <PropertyRef Name="ID_Instalacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_ORDEN_HOSPITALIZACION_TB_LOCAL">
+    <End Type="DB_SGHModel.TB_LOCAL" Role="TB_LOCAL" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_ORDEN_HOSPITALIZACION" Role="TB_ORDEN_HOSPITALIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_LOCAL">
+        <PropertyRef Name="ID_Local" />
+      </Principal>
+      <Dependent Role="TB_ORDEN_HOSPITALIZACION">
+        <PropertyRef Name="ID_Local" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_PRESCRIPCION_MEDICA_TB_MEDICAMENTO">
+    <End Type="DB_SGHModel.TB_MEDICAMENTO" Role="TB_MEDICAMENTO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_PRESCRIPCION_MEDICA" Role="TB_PRESCRIPCION_MEDICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MEDICAMENTO">
+        <PropertyRef Name="ID_Medicamento" />
+      </Principal>
+      <Dependent Role="TB_PRESCRIPCION_MEDICA">
+        <PropertyRef Name="ID_Medicamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_MEDICO_DE_TURNO_TB_MEDICO">
+    <End Type="DB_SGHModel.TB_MEDICO" Role="TB_MEDICO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_MEDICO_DE_TURNO" Role="TB_MEDICO_DE_TURNO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MEDICO">
+        <PropertyRef Name="ID_Medico" />
+      </Principal>
+      <Dependent Role="TB_MEDICO_DE_TURNO">
+        <PropertyRef Name="ID_Medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_MEDICOESPECIALIDAD_TB_MEDICO">
+    <End Type="DB_SGHModel.TB_MEDICO" Role="TB_MEDICO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_MEDICOESPECIALIDAD" Role="TB_MEDICOESPECIALIDAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MEDICO">
+        <PropertyRef Name="ID_Medico" />
+      </Principal>
+      <Dependent Role="TB_MEDICOESPECIALIDAD">
+        <PropertyRef Name="ID_Medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_ORDEN_DE_PROCEDIMIENTO_00TB_MEDICO">
+    <End Type="DB_SGHModel.TB_MEDICO" Role="TB_MEDICO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_ORDEN_DE_PROCEDIMIENTO" Role="TB_ORDEN_DE_PROCEDIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MEDICO">
+        <PropertyRef Name="ID_Medico" />
+      </Principal>
+      <Dependent Role="TB_ORDEN_DE_PROCEDIMIENTO">
+        <PropertyRef Name="ID_Medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_ORDEN_EXAMEN_MEDICO_TB_MEDICO1">
+    <End Type="DB_SGHModel.TB_MEDICO" Role="TB_MEDICO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_ORDEN_EXAMEN_MEDICO" Role="TB_ORDEN_EXAMEN_MEDICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MEDICO">
+        <PropertyRef Name="ID_Medico" />
+      </Principal>
+      <Dependent Role="TB_ORDEN_EXAMEN_MEDICO">
+        <PropertyRef Name="ID_Medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_PRESCRIPCION_MEDICA_00TB_MEDICO">
+    <End Type="DB_SGHModel.TB_MEDICO" Role="TB_MEDICO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_PRESCRIPCION_MEDICA" Role="TB_PRESCRIPCION_MEDICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MEDICO">
+        <PropertyRef Name="ID_Medico" />
+      </Principal>
+      <Dependent Role="TB_PRESCRIPCION_MEDICA">
+        <PropertyRef Name="ID_Medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_TURNOATENCION_00TB_MEDICO">
+    <End Type="DB_SGHModel.TB_MEDICO" Role="TB_MEDICO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_TURNO_ATENCION" Role="TB_TURNO_ATENCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MEDICO">
+        <PropertyRef Name="ID_Medico" />
+      </Principal>
+      <Dependent Role="TB_TURNO_ATENCION">
+        <PropertyRef Name="ID_Medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_MEDICO_DE_TURNO">
+    <End Type="DB_SGHModel.TB_MEDICO_DE_TURNO" Role="TB_MEDICO_DE_TURNO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_PROGRAMACION_ATENCION_EXAMENES" Role="TB_PROGRAMACION_ATENCION_EXAMENES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MEDICO_DE_TURNO">
+        <PropertyRef Name="ID_MedicoTurno" />
+      </Principal>
+      <Dependent Role="TB_PROGRAMACION_ATENCION_EXAMENES">
+        <PropertyRef Name="ID_MedicoTurno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_ORDEN_HOSPITALIZACION_TB_MOTIVO_HOSPITALIZACION">
+    <End Type="DB_SGHModel.TB_MOTIVO_HOSPITALIZACION" Role="TB_MOTIVO_HOSPITALIZACION" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_ORDEN_HOSPITALIZACION" Role="TB_ORDEN_HOSPITALIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_MOTIVO_HOSPITALIZACION">
+        <PropertyRef Name="ID_Motivo_Hospitalizacion" />
+      </Principal>
+      <Dependent Role="TB_ORDEN_HOSPITALIZACION">
+        <PropertyRef Name="ID_Motivo_Hospitalizacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_CL_ES_GC_Orden_de_Procedimiento53">
+    <End Type="DB_SGHModel.TB_PACIENTE" Role="TB_PACIENTE" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_ORDEN_DE_PROCEDIMIENTO" Role="TB_ORDEN_DE_PROCEDIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PACIENTE">
+        <PropertyRef Name="ID_Paciente" />
+      </Principal>
+      <Dependent Role="TB_ORDEN_DE_PROCEDIMIENTO">
+        <PropertyRef Name="ID_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_ORDEN_EXAMEN_MEDICO_TB_ORDEN_INTERNA">
+    <End Type="DB_SGHModel.TB_ORDEN_INTERNA" Role="TB_ORDEN_INTERNA" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_ORDEN_EXAMEN_MEDICO" Role="TB_ORDEN_EXAMEN_MEDICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ORDEN_INTERNA">
+        <PropertyRef Name="ID_Orden_Interna" />
+      </Principal>
+      <Dependent Role="TB_ORDEN_EXAMEN_MEDICO">
+        <PropertyRef Name="ID_Orden_Interna" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_ORDEN_EXAMEN_MEDICO_TB_TIPO_EXAMEN_MEDICO">
+    <End Type="DB_SGHModel.TB_TIPO_EXAMEN_MEDICO" Role="TB_TIPO_EXAMEN_MEDICO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_ORDEN_EXAMEN_MEDICO" Role="TB_ORDEN_EXAMEN_MEDICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_EXAMEN_MEDICO">
+        <PropertyRef Name="ID_Tipo_Examen" />
+      </Principal>
+      <Dependent Role="TB_ORDEN_EXAMEN_MEDICO">
+        <PropertyRef Name="ID_Tipo_Examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_ORDEN_SERVICIO_TB_ORDEN_EXAMEN_MEDICO1">
+    <End Type="DB_SGHModel.TB_ORDEN_EXAMEN_MEDICO" Role="TB_ORDEN_EXAMEN_MEDICO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_ORDEN_SERVICIO" Role="TB_ORDEN_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ORDEN_EXAMEN_MEDICO">
+        <PropertyRef Name="ID_Orden_Examen_Medico" />
+      </Principal>
+      <Dependent Role="TB_ORDEN_SERVICIO">
+        <PropertyRef Name="ID_Orden_Examen_Medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_PROGRAMACION_ATENCION_EXAMENES_TB_ORDEN_EXAMEN_MEDICO">
+    <End Type="DB_SGHModel.TB_ORDEN_EXAMEN_MEDICO" Role="TB_ORDEN_EXAMEN_MEDICO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_PROGRAMACION_ATENCION_EXAMENES" Role="TB_PROGRAMACION_ATENCION_EXAMENES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ORDEN_EXAMEN_MEDICO">
+        <PropertyRef Name="ID_Orden_Examen_Medico" />
+      </Principal>
+      <Dependent Role="TB_PROGRAMACION_ATENCION_EXAMENES">
+        <PropertyRef Name="ID_Orden_Examen_Medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_CL_ES_GC_Orden_Hospitalizacion56">
+    <End Type="DB_SGHModel.TB_PACIENTE" Role="TB_PACIENTE" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_ORDEN_HOSPITALIZACION" Role="TB_ORDEN_HOSPITALIZACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PACIENTE">
+        <PropertyRef Name="ID_Paciente" />
+      </Principal>
+      <Dependent Role="TB_ORDEN_HOSPITALIZACION">
+        <PropertyRef Name="ID_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_ORDEN___ID_Or__73852659">
+    <End Type="DB_SGHModel.TB_ORDEN_TRABAJO" Role="TB_ORDEN_TRABAJO" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_ORDEN_TRABAJO_DET" Role="TB_ORDEN_TRABAJO_DET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ORDEN_TRABAJO">
+        <PropertyRef Name="ID_Orden_Trabajo" />
+      </Principal>
+      <Dependent Role="TB_ORDEN_TRABAJO_DET">
+        <PropertyRef Name="ID_Orden_Trabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_CL_CO_GC_Paciente_T_CL_ES_GC_TipoDocumento">
+    <End Type="DB_SGHModel.TB_TIPO_DOCUMENTO" Role="TB_TIPO_DOCUMENTO" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_PACIENTE" Role="TB_PACIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_DOCUMENTO">
+        <PropertyRef Name="ID_TipoDocumento" />
+      </Principal>
+      <Dependent Role="TB_PACIENTE">
+        <PropertyRef Name="ID_TipoDocumento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_CL_ES_GC_Prescripcion_Medica57">
+    <End Type="DB_SGHModel.TB_PACIENTE" Role="TB_PACIENTE" Multiplicity="1" />
+    <End Type="DB_SGHModel.TB_PRESCRIPCION_MEDICA" Role="TB_PRESCRIPCION_MEDICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PACIENTE">
+        <PropertyRef Name="ID_Paciente" />
+      </Principal>
+      <Dependent Role="TB_PRESCRIPCION_MEDICA">
+        <PropertyRef Name="ID_Paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TB_CATALOGO_REQUISITO">
+    <End Type="DB_SGHModel.TB_CATALOGO_EXAMEN_MEDICO" Role="TB_CATALOGO_EXAMEN_MEDICO" Multiplicity="*" />
+    <End Type="DB_SGHModel.TB_REQUISITO" Role="TB_REQUISITO" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_TB_AGENDA_MEDICA_TB_ESPECIALIDAD">
+    <End Type="DB_SGHModel.TB_ESPECIALIDAD" Role="TB_ESPECIALIDAD" Multiplicity="0..1" />
+    <End Type="DB_SGHModel.TB_AGENDA_MEDICA" Role="TB_AGENDA_MEDICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ESPECIALIDAD">
+        <PropertyRef Name="ID_Especialidad" />
+      </Principal>
+      <Dependent Role="TB_AGENDA_MEDICA">
+        <PropertyRef Name="ID_Especialidad" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

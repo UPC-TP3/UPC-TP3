@@ -14,10 +14,10 @@ namespace CI.SIC.BL
 
         public List<EEspecialidad> Listar()
         {
-            return _contexto.TB_Especialidad.Select(lista => new EEspecialidad
+            return _contexto.TB_ESPECIALIDAD.Select(lista => new EEspecialidad
             {
-                CodigoEspecialidad = lista.CodigoEspecialidad,
-                Descripcion = lista.Descripcion
+                CodigoEspecialidad = lista.ID_Especialidad,
+                Descripcion = lista.descripcion 
             }).ToList();
         }
     }

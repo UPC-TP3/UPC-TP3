@@ -11,55 +11,66 @@ namespace CI.SIC.BL
 
         readonly DB_SGHEntities _contexto = new DB_SGHEntities();
 
-        public List<ECita> Listar(int codigoMedico, int codigoPaciente)
+        public List<ECita> Listar(int codigoMedico, string dniPaciente)
         {
-            return _contexto.TB_Cita.Where(f => f.CodigoMedico == codigoMedico && f.CodigoPaciente == codigoPaciente)
-                .Select(cita => new ECita
+            return _contexto.TB_CITA.Where(f => f.ID_Medico == codigoMedico && f.TB_PACIENTE.dni_paciente == dniPaciente)
+                .Select(Cita => new ECita
                 {
-                    FechaAgenda = cita.FechaCita,
-                    HoraInicioAgenda =  cita.TB_Agenda_Medica.HoraInicio,
-                }).OrderBy(o => o.FechaAgenda).ThenBy(p => p.HoraInicioAgenda).ToList();
+                    FechaAgenda = Cita.TB_AGENDA_MEDICA.Fecha,
+                    //HoraInicioAgenda = TB_Cita.TB_Agenda_Medica.HoraInicio,
+                    //HoraFinAgenda = TB_Cita.TB_Agenda_Medica.HoraFin,
+                    Horario_Turno = Cita.TB_AGENDA_MEDICA.TB_TURNO.Horario_Turno,
+                    NombrePaciente = Cita.TB_PACIENTE.nombres + " " + Cita.TB_PACIENTE.ApellidoPat + " " + Cita.TB_PACIENTE.ApellidoMat,
+                    NombreMedico = Cita.TB_MEDICO.nom_medico + " " + Cita.TB_MEDICO.ape_medico,
+                    NumeroConsultorio = Cita.TB_AGENDA_MEDICA.TB_CONSULTORIO.nro_consultorio,
+                    CodigoCita = Cita.ID_Cita,
+                    Dni = Cita.TB_PACIENTE.dni_paciente,
+                    DesEstado = Cita.TB_ESTADO_CITA.DesEstado 
+                }).OrderBy(o => o.FechaAgenda).ThenBy(p => p.Horario_Turno).ToList();
         }
 
         public List<ECita> Listar()
         {
-            return _contexto.TB_Cita.Where(f => f.AtencionLocal == true).Select(TB_Cita => new  ECita    
+            return _contexto.TB_CITA.Where(f => f.AtencionLocal == true).Select(Cita => new  ECita    
             {
-                FechaAgenda = TB_Cita.FechaCita,
-                HoraInicioAgenda = TB_Cita.TB_Agenda_Medica.HoraInicio,
-                HoraFinAgenda = TB_Cita.TB_Agenda_Medica.HoraFin,
-                NombrePaciente = TB_Cita.TB_Paciente.Nombres + " " + TB_Cita.TB_Paciente.ApellidoPat + " " + TB_Cita.TB_Paciente.ApellidoMat,
-                NombreMedico = TB_Cita.TB_Medico.Nombres + " " + TB_Cita.TB_Medico.Apellidos,
-                NumeroConsultorio = TB_Cita.TB_Agenda_Medica.NumeroConsultorio, 
-                CodigoCita = TB_Cita.CodigoCita,
-                Dni = TB_Cita.TB_Paciente.Dni 
-                
-            }).OrderBy(o => o.FechaAgenda).ThenBy(p => p.HoraInicioAgenda).ToList();
+                FechaAgenda = Cita.TB_AGENDA_MEDICA.Fecha,
+                //HoraInicioAgenda = TB_Cita.TB_Agenda_Medica.HoraInicio,
+                //HoraFinAgenda = TB_Cita.TB_Agenda_Medica.HoraFin,
+                Horario_Turno = Cita.TB_AGENDA_MEDICA.TB_TURNO.Horario_Turno, 
+                NombrePaciente = Cita.TB_PACIENTE.nombres + " " + Cita.TB_PACIENTE.ApellidoPat + " " + Cita.TB_PACIENTE.ApellidoMat,
+                NombreMedico = Cita.TB_MEDICO.nom_medico + " " + Cita.TB_MEDICO.ape_medico,
+                NumeroConsultorio = Cita.TB_AGENDA_MEDICA.TB_CONSULTORIO.nro_consultorio, 
+                CodigoCita = Cita.ID_Cita,
+                Dni = Cita.TB_PACIENTE.dni_paciente, 
+                DesEstado = Cita.TB_ESTADO_CITA.DesEstado 
+            }).OrderBy(o => o.FechaAgenda).ThenBy(p => p.Horario_Turno).ToList();
         }
 
         public int Insertar(ECita cita)
         {
-            var objeto = new TB_Cita 
+            var objeto = new TB_CITA 
             {
-                FechaCita = cita.FechaAgenda, 
-                CodigoMedico = cita.CodigoMedico,
-                CodigoPaciente = cita.CodigoPaciente,
-                CodigoAgenda = cita.CodigoAgenda,
-                IdEstado = 1,
+               FechaHoraCita = cita.FechaAgenda.Value, 
+                ID_Medico = cita.CodigoMedico,
+                ID_Paciente = cita.CodigoPaciente,
+                ID_AgendaMedica = cita.CodigoAgenda,
+                ID_Especialidad = cita.Id_Especialidad, 
+                ID_EstadoCita = 1,
+                Estado = "1",
                 AtencionLocal = true, 
             };
-            _contexto.AddToTB_Cita(objeto);
+            _contexto.AddToTB_CITA(objeto);
             _contexto.SaveChanges();
-            return objeto.CodigoCita;
+            return objeto.ID_Cita;
         }
 
         public int Actualizar(ECita cita)
         {
-            var objeto = _contexto.TB_Cita.FirstOrDefault(c => c.CodigoCita == cita.CodigoCita);
+            var objeto = _contexto.TB_CITA.FirstOrDefault(c => c.ID_Cita == cita.CodigoCita);
             if (objeto != null)
             {
-                objeto.CodigoAgenda = cita.CodigoAgenda;
-                objeto.CodigoMedico = cita.CodigoMedico;
+                objeto.ID_AgendaMedica = cita.CodigoAgenda;
+                objeto.ID_Medico = cita.CodigoMedico;
                 _contexto.SaveChanges();
             }
             return cita.CodigoCita;
@@ -67,7 +78,7 @@ namespace CI.SIC.BL
 
         public void Eliminar(int codigoCita)
         {
-            var cita = _contexto.TB_Cita.FirstOrDefault(c => c.CodigoCita == codigoCita);
+            var cita = _contexto.TB_CITA.FirstOrDefault(c => c.ID_Cita == codigoCita);
             if (cita != null)
             {
                 _contexto.DeleteObject(cita);
@@ -77,21 +88,26 @@ namespace CI.SIC.BL
 
         public ECita Obtener(int codigoCita)
         {
-            return _contexto.TB_Cita.Where(f => f.CodigoCita == codigoCita).Select(cita => new ECita
+            return _contexto.TB_CITA.Where(f => f.ID_Cita == codigoCita).Select(cita => new ECita
             {
-                CodigoCita = cita.CodigoCita,
-                FechaAgenda = cita.TB_Agenda_Medica.Fecha,
-                HoraInicioAgenda = cita.TB_Agenda_Medica.HoraInicio,
-                HoraFinAgenda = cita.TB_Agenda_Medica.HoraFin,
-                CodigoMedico = cita.CodigoMedico,
-                NombresMedico = cita.TB_Medico.Nombres,
-                ApellidosMedico = cita.TB_Medico.Apellidos,
-                DescripcionEspecialidad = cita.TB_Medico.TB_Especialidad.Descripcion,
-                CodigoPaciente = cita.CodigoPaciente,
-                NombrePaciente = cita.TB_Paciente.Nombres,
-                ApellidosPaciente = cita.TB_Paciente.ApellidoPat + " " + cita.TB_Paciente.ApellidoMat,
-                NumeroConsultorio = cita.TB_Agenda_Medica.NumeroConsultorio,
-                CodigoAgenda = cita.CodigoAgenda 
+                CodigoCita = cita.ID_Cita,
+                FechaAgenda = cita.TB_AGENDA_MEDICA.Fecha,
+                //HoraInicioAgenda = cita.TB_Agenda_Medica.HoraInicio,
+                //HoraFinAgenda = cita.TB_Agenda_Medica.HoraFin,
+                Horario_Turno = cita.TB_AGENDA_MEDICA.TB_TURNO.Horario_Turno, 
+                CodigoMedico = cita.ID_Medico,
+                NombresMedico = cita.TB_MEDICO.nom_medico,
+                ApellidosMedico = cita.TB_MEDICO.ape_medico,
+                DescripcionEspecialidad = cita.TB_AGENDA_MEDICA.TB_ESPECIALIDAD.descripcion,
+                CodigoPaciente = cita.ID_Paciente,
+                NombrePaciente = cita.TB_PACIENTE.nombres,
+                ApellidosPaciente = cita.TB_PACIENTE.ApellidoPat + " " + cita.TB_PACIENTE.ApellidoMat,
+                NumeroConsultorio = cita.TB_AGENDA_MEDICA.TB_CONSULTORIO.nro_consultorio,
+                CodigoAgenda = cita.ID_AgendaMedica, 
+                Id_Consultorio = cita.TB_AGENDA_MEDICA.TB_CONSULTORIO.ID_Consultorio,
+                Id_EstadoCita = cita.TB_ESTADO_CITA.ID_EstadoCita,
+                Dni = cita.TB_PACIENTE.dni_paciente, 
+                
             }).FirstOrDefault();
         }
 

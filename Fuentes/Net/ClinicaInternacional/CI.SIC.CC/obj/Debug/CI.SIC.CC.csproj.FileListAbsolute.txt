@@ -10,3 +10,7 @@ C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\bin\Deb
 C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\bin\Debug\CI.SIC.CC.pdb
 C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\obj\Debug\CI.SIC.CC.dll
 C:\Users\Juan\Desktop\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\obj\Debug\CI.SIC.CC.pdb
+E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\bin\Debug\CI.SIC.CC.dll
+E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\bin\Debug\CI.SIC.CC.pdb
+E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\obj\Debug\CI.SIC.CC.dll
+E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\obj\Debug\CI.SIC.CC.pdb

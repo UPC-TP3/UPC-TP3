@@ -14,60 +14,63 @@ namespace CI.SIC.BL
 
         public List<ECitaDomiciliaria> Listar(int codigoMedico, int codigoPaciente)
         {
-            return _contexto.TB_Cita.Where(f => f.CodigoMedico == codigoMedico && f.CodigoPaciente == codigoPaciente)
+            return _contexto.TB_CITA.Where(f => f.ID_Medico == codigoMedico && f.ID_Paciente == codigoPaciente)
                 .Select(cita => new ECitaDomiciliaria
                 {
-                    FechaAgenda = cita.FechaCita,
-                    HoraInicioAgenda = cita.TB_Agenda_Medica.HoraInicio,
-                }).OrderBy(o => o.FechaAgenda).ThenBy(p => p.HoraInicioAgenda).ToList();
+                    FechaAgenda = cita.FechaHoraCita,
+                   Horario_Turno = cita.TB_AGENDA_MEDICA.TB_TURNO.Horario_Turno,
+                }).OrderBy(o => o.FechaAgenda).ThenBy(p => p.Horario_Turno).ToList();
         }
 
         public List<ECitaDomiciliaria> Listar()
         {
-            return _contexto.TB_Cita.Where(f => f.AtencionLocal == false).Select(TB_Cita => new ECitaDomiciliaria
+            return _contexto.TB_CITA.Where(f => f.AtencionLocal == false).Select(TB_CITA => new ECitaDomiciliaria
             {
-                FechaAgenda = TB_Cita.FechaCita,
-                HoraInicioAgenda = TB_Cita.TB_Agenda_Medica.HoraInicio,
-                HoraFinAgenda = TB_Cita.TB_Agenda_Medica.HoraFin,
-                NombrePaciente = TB_Cita.TB_Paciente.Nombres + " " + TB_Cita.TB_Paciente.ApellidoPat + " " + TB_Cita.TB_Paciente.ApellidoMat,
-                NombreMedico = TB_Cita.TB_Medico.Nombres + " " + TB_Cita.TB_Medico.Apellidos,
-                NumeroConsultorio = TB_Cita.TB_Agenda_Medica.NumeroConsultorio,
-                CodigoCita = TB_Cita.CodigoCita,
-                Dni = TB_Cita.TB_Paciente.Dni
+                FechaAgenda = TB_CITA.FechaHoraCita,
+                //HoraInicioAgenda = TB_Cita.TB_Agenda_Medica.HoraInicio,
+                //HoraFinAgenda = TB_Cita.TB_Agenda_Medica.HoraFin,
+                Horario_Turno = TB_CITA.TB_AGENDA_MEDICA.TB_TURNO.Horario_Turno, 
+                NombrePaciente = TB_CITA.TB_PACIENTE.nombres + " " + TB_CITA.TB_PACIENTE.ApellidoPat + " " + TB_CITA.TB_PACIENTE.ApellidoMat,
+                NombreMedico = TB_CITA.TB_MEDICO.nom_medico + " " + TB_CITA.TB_MEDICO.ape_medico,
+                NumeroConsultorio = TB_CITA.TB_AGENDA_MEDICA.TB_CONSULTORIO.nro_consultorio,
+                CodigoCita = TB_CITA.ID_Cita,
+                Dni = TB_CITA.TB_PACIENTE.dni_paciente
 
-            }).OrderBy(o => o.FechaAgenda).ThenBy(p => p.HoraInicioAgenda).ToList();
+            }).OrderBy(o => o.FechaAgenda).ThenBy(p => p.Horario_Turno).ToList();
         }
 
         public int Insertar(ECitaDomiciliaria cita)
         {
-            var objeto = new TB_Cita
+            var objeto = new TB_CITA
             {
-                FechaCita = cita.FechaAgenda,
-                CodigoMedico = cita.CodigoMedico,
-                CodigoPaciente = cita.CodigoPaciente,
-                CodigoAgenda = cita.CodigoAgenda,
-                IdEstado = 1,
+                FechaHoraCita = cita.FechaAgenda.Value,
+                ID_Medico = cita.CodigoMedico,
+                ID_Paciente = cita.CodigoPaciente,
+                ID_AgendaMedica  = cita.CodigoAgenda,
+                ID_EstadoCita = 1,
+                ID_Especialidad = cita.Id_Especialidad, 
+                Estado = "1",
                 AtencionLocal = false,
-                DireccionDomicilio = cita.DireccionDomicilio,
+                Des_Ubicacion_Cita = cita.DireccionDomicilio,
                 ReferenciaDomicilio = cita.ReferenciaDomicilio,
-                SintomasPaciente = cita.SintomasPaciente,
+                Sintomas = cita.SintomasPaciente,
                 Aseguradora = cita.Aseguradora 
             };
-            _contexto.AddToTB_Cita(objeto);
+            _contexto.AddToTB_CITA(objeto);
             _contexto.SaveChanges();
-            return objeto.CodigoCita;
+            return objeto.ID_Cita;
         }
 
         public int Actualizar(ECitaDomiciliaria cita)
         {
-            var objeto = _contexto.TB_Cita.FirstOrDefault(c => c.CodigoCita == cita.CodigoCita);
+            var objeto = _contexto.TB_CITA.FirstOrDefault(c => c.ID_Cita == cita.CodigoCita);
             if (objeto != null)
             {
-                objeto.CodigoAgenda = cita.CodigoAgenda;
-                objeto.CodigoMedico = cita.CodigoMedico;
-                objeto.DireccionDomicilio = cita.DireccionDomicilio;
+                objeto.ID_AgendaMedica = cita.CodigoAgenda;
+                objeto.ID_Medico = cita.CodigoMedico;
+                objeto.Des_Ubicacion_Cita = cita.DireccionDomicilio;
                 objeto.ReferenciaDomicilio = cita.ReferenciaDomicilio;
-                objeto.SintomasPaciente = cita.SintomasPaciente;
+                objeto.Sintomas = cita.SintomasPaciente;
                 objeto.Aseguradora = cita.Aseguradora;
                 _contexto.SaveChanges();
             }
@@ -76,7 +79,7 @@ namespace CI.SIC.BL
 
         public void Eliminar(int codigoCita)
         {
-            var cita = _contexto.TB_Cita.FirstOrDefault(c => c.CodigoCita == codigoCita);
+            var cita = _contexto.TB_CITA.FirstOrDefault(c => c.ID_Cita == codigoCita);
             if (cita != null)
             {
                 _contexto.DeleteObject(cita);
@@ -86,25 +89,27 @@ namespace CI.SIC.BL
 
         public ECitaDomiciliaria Obtener(int codigoCita)
         {
-            return _contexto.TB_Cita.Where(f => f.CodigoCita == codigoCita).Select(cita => new ECitaDomiciliaria
+            return _contexto.TB_CITA.Where(f => f.ID_Cita == codigoCita).Select(cita => new ECitaDomiciliaria
             {
-                CodigoCita = cita.CodigoCita,
-                FechaAgenda = cita.TB_Agenda_Medica.Fecha,
-                HoraInicioAgenda = cita.TB_Agenda_Medica.HoraInicio,
-                HoraFinAgenda = cita.TB_Agenda_Medica.HoraFin,
-                CodigoMedico = cita.CodigoMedico,
-                NombresMedico = cita.TB_Medico.Nombres,
-                ApellidosMedico = cita.TB_Medico.Apellidos,
-                DescripcionEspecialidad = cita.TB_Medico.TB_Especialidad.Descripcion,
-                NumeroColegiatura = cita.TB_Medico.NumeroColegiatura, 
-                CodigoPaciente = cita.CodigoPaciente,
-                NombrePaciente = cita.TB_Paciente.Nombres,
-                ApellidosPaciente = cita.TB_Paciente.ApellidoPat + " " + cita.TB_Paciente.ApellidoMat,
-                NumeroConsultorio = cita.TB_Agenda_Medica.NumeroConsultorio,
-                CodigoAgenda = cita.CodigoAgenda,
-                DireccionDomicilio = cita.DireccionDomicilio,
+                CodigoCita = cita.ID_Cita,
+                FechaAgenda = cita.TB_AGENDA_MEDICA.Fecha,
+                //HoraInicioAgenda = cita.TB_Agenda_Medica.HoraInicio,
+                //HoraFinAgenda = cita.TB_Agenda_Medica.HoraFin,
+                Horario_Turno = cita.TB_AGENDA_MEDICA.TB_TURNO.Horario_Turno,
+                CodigoMedico = cita.ID_Medico,
+                NombresMedico = cita.TB_MEDICO.nom_medico,
+                ApellidosMedico = cita.TB_MEDICO.ape_medico,
+                Id_Especialidad = cita.TB_AGENDA_MEDICA.TB_ESPECIALIDAD.ID_Especialidad, 
+                DescripcionEspecialidad = cita.TB_AGENDA_MEDICA.TB_ESPECIALIDAD.descripcion,
+                NumeroColegiatura = cita.TB_MEDICO.num_cmp, 
+                CodigoPaciente = cita.ID_Paciente,
+                NombrePaciente = cita.TB_PACIENTE.nombres,
+                ApellidosPaciente = cita.TB_PACIENTE.ApellidoPat + " " + cita.TB_PACIENTE.ApellidoMat,
+                NumeroConsultorio = cita.TB_AGENDA_MEDICA.TB_CONSULTORIO.nro_consultorio,
+                CodigoAgenda = cita.ID_AgendaMedica,
+                DireccionDomicilio = cita.Des_Ubicacion_Cita,
                 ReferenciaDomicilio = cita.ReferenciaDomicilio,
-                SintomasPaciente = cita.SintomasPaciente,
+                SintomasPaciente = cita.Sintomas,
                 Aseguradora = cita.Aseguradora 
             }).FirstOrDefault();
         }

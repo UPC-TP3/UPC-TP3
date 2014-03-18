@@ -44,6 +44,8 @@
     <Compile Include="BAgendaMedica.cs" />
     <Compile Include="BCita.cs" />
     <Compile Include="BCitaDomiciliaria.cs" />
+    <Compile Include="BConsulta.cs" />
+    <Compile Include="BConsultorio.cs" />
     <Compile Include="BEspecialidad.cs" />
     <Compile Include="BL_Cama.cs" />
     <Compile Include="BL_CartaGarantia.cs" />
@@ -57,8 +59,10 @@
     <Compile Include="BL_SolicitudMantenimiento.cs" />
     <Compile Include="BL_TipoDocumento.cs" />
     <Compile Include="BL_Comprobante_Pago.cs" />
+    <Compile Include="BMedicamento.cs" />
     <Compile Include="BMedico.cs" />
     <Compile Include="BPaciente.cs" />
+    <Compile Include="BRecetaMedica.cs" />
     <Compile Include="BTurnoCita.cs" />
     <Compile Include="Catalogo_ExamenBL.cs" />
     <Compile Include="ConsultorioBL.cs" />

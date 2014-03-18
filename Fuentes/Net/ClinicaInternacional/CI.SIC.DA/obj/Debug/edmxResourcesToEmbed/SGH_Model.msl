@@ -1,185 +1,885 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DB_SGHModelStoreContainer" CdmEntityContainer="DB_SGHEntities">
-    <EntitySetMapping Name="TB_Agenda_Medica">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Agenda_Medica">
-        <MappingFragment StoreEntitySet="TB_Agenda_Medica">
-          <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
-          <ScalarProperty Name="NumeroConsultorio" ColumnName="NumeroConsultorio" />
-          <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DB_SGHModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ACTIVIDADES_PLANIFICADAS">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_ACTIVIDADES_PLANIFICADAS">
+        <MappingFragment StoreEntitySet="TB_ACTIVIDADES_PLANIFICADAS">
+          <ScalarProperty Name="GM_Codigo_PlanMantenimiento" ColumnName="GM_Codigo_PlanMantenimiento" />
+          <ScalarProperty Name="GM_NroOrden" ColumnName="GM_NroOrden" />
+          <ScalarProperty Name="GM_Estado" ColumnName="GM_Estado" />
+          <ScalarProperty Name="GM_Hora_Final" ColumnName="GM_Hora_Final" />
+          <ScalarProperty Name="GM_Hora_Inicio" ColumnName="GM_Hora_Inicio" />
+          <ScalarProperty Name="GM_Fecha_Planificada" ColumnName="GM_Fecha_Planificada" />
+          <ScalarProperty Name="ID_Actividades_Planificadas" ColumnName="ID_Actividades_Planificadas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ACTIVO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_ACTIVO">
+        <MappingFragment StoreEntitySet="TB_ACTIVO">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Tipo_Activo" ColumnName="Tipo_Activo" />
+          <ScalarProperty Name="ID_Activo" ColumnName="ID_Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_AGENDA_MEDICA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_AGENDA_MEDICA">
+        <MappingFragment StoreEntitySet="TB_AGENDA_MEDICA">
+          <ScalarProperty Name="ID_Especialidad" ColumnName="ID_Especialidad" />
+          <ScalarProperty Name="ID_TURNO" ColumnName="ID_TURNO" />
+          <ScalarProperty Name="ID_Consultorio" ColumnName="ID_Consultorio" />
+          <ScalarProperty Name="ID_Medico" ColumnName="ID_Medico" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
           <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="CodigoAgenda" ColumnName="CodigoAgenda" />
+          <ScalarProperty Name="ID_AgendaMedica" ColumnName="ID_AgendaMedica" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_Analisis">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Analisis">
-        <MappingFragment StoreEntitySet="TB_Analisis">
-          <ScalarProperty Name="CodigoTipoAnalisis" ColumnName="CodigoTipoAnalisis" />
-          <ScalarProperty Name="CodigoConsulta" ColumnName="CodigoConsulta" />
+    <EntitySetMapping Name="TB_ANALISIS">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_ANALISIS">
+        <MappingFragment StoreEntitySet="TB_ANALISIS">
+          <ScalarProperty Name="ID_TipoAnalisis" ColumnName="ID_TipoAnalisis" />
+          <ScalarProperty Name="ID_Consulta" ColumnName="ID_Consulta" />
           <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
           <ScalarProperty Name="Resultado" ColumnName="Resultado" />
           <ScalarProperty Name="FechaAnalisis" ColumnName="FechaAnalisis" />
           <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
-          <ScalarProperty Name="CodigoAnalisis" ColumnName="CodigoAnalisis" />
+          <ScalarProperty Name="ID_Analisis" ColumnName="ID_Analisis" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_Cita">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Cita">
-        <MappingFragment StoreEntitySet="TB_Cita">
+    <EntitySetMapping Name="TB_AREA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_AREA">
+        <MappingFragment StoreEntitySet="TB_AREA">
+          <ScalarProperty Name="GE_Ubicacion" ColumnName="GE_Ubicacion" />
+          <ScalarProperty Name="GE_Nombre" ColumnName="GE_Nombre" />
+          <ScalarProperty Name="ID_Area" ColumnName="ID_Area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Atencion_Emergencia">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Atencion_Emergencia">
+        <MappingFragment StoreEntitySet="TB_Atencion_Emergencia">
+          <ScalarProperty Name="ID_Cama" ColumnName="ID_Cama" />
+          <ScalarProperty Name="GE_Estado" ColumnName="GE_Estado" />
+          <ScalarProperty Name="GE_DescripcionObservaciones" ColumnName="GE_DescripcionObservaciones" />
+          <ScalarProperty Name="ID_Paciente" ColumnName="ID_Paciente" />
+          <ScalarProperty Name="ID_Medico" ColumnName="ID_Medico" />
+          <ScalarProperty Name="GE_FechaIngreso" ColumnName="GE_FechaIngreso" />
+          <ScalarProperty Name="ID_ATENCION" ColumnName="ID_ATENCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_CAMA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_CAMA">
+        <MappingFragment StoreEntitySet="TB_CAMA">
+          <ScalarProperty Name="ID_Especialidad" ColumnName="ID_Especialidad" />
+          <ScalarProperty Name="ID_Hoja_Ingreso_Hospitalizacion" ColumnName="ID_Hoja_Ingreso_Hospitalizacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+          <ScalarProperty Name="TipoCama" ColumnName="TipoCama" />
+          <ScalarProperty Name="NroCama" ColumnName="NroCama" />
+          <ScalarProperty Name="ID_Cama" ColumnName="ID_Cama" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_CARTA_GARANTIA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_CARTA_GARANTIA">
+        <MappingFragment StoreEntitySet="TB_CARTA_GARANTIA">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="MontoCarta" ColumnName="MontoCarta" />
+          <ScalarProperty Name="FecFinVigencia" ColumnName="FecFinVigencia" />
+          <ScalarProperty Name="FecINiVigencia" ColumnName="FecINiVigencia" />
+          <ScalarProperty Name="CodAseguradora" ColumnName="CodAseguradora" />
+          <ScalarProperty Name="ID_Paciente" ColumnName="ID_Paciente" />
+          <ScalarProperty Name="CodPresupuesto" ColumnName="CodPresupuesto" />
+          <ScalarProperty Name="ID_Orden_de_Procedimiento" ColumnName="ID_Orden_de_Procedimiento" />
+          <ScalarProperty Name="ID_Carta" ColumnName="ID_Carta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_CATALOGO_EXAMEN_MEDICO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_CATALOGO_EXAMEN_MEDICO">
+        <MappingFragment StoreEntitySet="TB_CATALOGO_EXAMEN_MEDICO">
+          <ScalarProperty Name="ID_Tipo_Examen" ColumnName="ID_Tipo_Examen" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="nom_examen" ColumnName="nom_examen" />
+          <ScalarProperty Name="ID_Catalogo_Examen" ColumnName="ID_Catalogo_Examen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_CENTRO_COSTO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_CENTRO_COSTO">
+        <MappingFragment StoreEntitySet="TB_CENTRO_COSTO">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Descripcion_CC" ColumnName="Descripcion_CC" />
+          <ScalarProperty Name="ID_CentroCosto" ColumnName="ID_CentroCosto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_CITA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_CITA">
+        <MappingFragment StoreEntitySet="TB_CITA">
+          <ScalarProperty Name="ReferenciaDomicilio" ColumnName="ReferenciaDomicilio" />
+          <ScalarProperty Name="Sintomas" ColumnName="Sintomas" />
+          <ScalarProperty Name="AtencionLocal" ColumnName="AtencionLocal" />
+          <ScalarProperty Name="Des_Ubicacion_Cita" ColumnName="Des_Ubicacion_Cita" />
+          <ScalarProperty Name="ID_Cita_Reprogramada" ColumnName="ID_Cita_Reprogramada" />
+          <ScalarProperty Name="ID_EstadoCita" ColumnName="ID_EstadoCita" />
+          <ScalarProperty Name="ID_AgendaMedica" ColumnName="ID_AgendaMedica" />
+          <ScalarProperty Name="ID_Medico" ColumnName="ID_Medico" />
+          <ScalarProperty Name="ID_Especialidad" ColumnName="ID_Especialidad" />
+          <ScalarProperty Name="ID_Historia" ColumnName="ID_Historia" />
+          <ScalarProperty Name="ID_Paciente" ColumnName="ID_Paciente" />
+          <ScalarProperty Name="OrdenAtencion" ColumnName="OrdenAtencion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Cobertura" ColumnName="Cobertura" />
           <ScalarProperty Name="Aseguradora" ColumnName="Aseguradora" />
-          <ScalarProperty Name="SintomasPaciente" ColumnName="SintomasPaciente" />
-          <ScalarProperty Name="ReferenciaDomicilio" ColumnName="ReferenciaDomicilio" />
-          <ScalarProperty Name="DireccionDomicilio" ColumnName="DireccionDomicilio" />
-          <ScalarProperty Name="AtencionLocal" ColumnName="AtencionLocal" />
-          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
-          <ScalarProperty Name="CodigoAgenda" ColumnName="CodigoAgenda" />
-          <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
-          <ScalarProperty Name="CodigoPaciente" ColumnName="CodigoPaciente" />
-          <ScalarProperty Name="FechaCita" ColumnName="FechaCita" />
-          <ScalarProperty Name="CodigoCita" ColumnName="CodigoCita" />
+          <ScalarProperty Name="FechaHoraCita" ColumnName="FechaHoraCita" />
+          <ScalarProperty Name="ID_Cita" ColumnName="ID_Cita" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_Consulta">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Consulta">
-        <MappingFragment StoreEntitySet="TB_Consulta">
+    <EntitySetMapping Name="TB_COMPROBANTE_DE_PAGO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_COMPROBANTE_DE_PAGO">
+        <MappingFragment StoreEntitySet="TB_COMPROBANTE_DE_PAGO">
+          <ScalarProperty Name="ID_Cita" ColumnName="ID_Cita" />
+          <ScalarProperty Name="ConceptoDePago" ColumnName="ConceptoDePago" />
+          <ScalarProperty Name="MontoComprobante" ColumnName="MontoComprobante" />
+          <ScalarProperty Name="FormaDePago" ColumnName="FormaDePago" />
+          <ScalarProperty Name="TipoComprobante" ColumnName="TipoComprobante" />
+          <ScalarProperty Name="FechaComprobante" ColumnName="FechaComprobante" />
+          <ScalarProperty Name="ID_Comprobante_Pago" ColumnName="ID_Comprobante_Pago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_CONSULTA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_CONSULTA">
+        <MappingFragment StoreEntitySet="TB_CONSULTA">
           <ScalarProperty Name="Diagnostico" ColumnName="Diagnostico" />
-          <ScalarProperty Name="CodigoPaciente" ColumnName="CodigoPaciente" />
-          <ScalarProperty Name="CodigoConsultorio" ColumnName="CodigoConsultorio" />
-          <ScalarProperty Name="CodigoCita" ColumnName="CodigoCita" />
-          <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
+          <ScalarProperty Name="ID_Paciente" ColumnName="ID_Paciente" />
+          <ScalarProperty Name="ID_Consultorio" ColumnName="ID_Consultorio" />
+          <ScalarProperty Name="ID_Cita" ColumnName="ID_Cita" />
+          <ScalarProperty Name="ID_Medico" ColumnName="ID_Medico" />
           <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
           <ScalarProperty Name="FechaHoraFin" ColumnName="FechaHoraFin" />
           <ScalarProperty Name="FechaHoraInicio" ColumnName="FechaHoraInicio" />
-          <ScalarProperty Name="CodigoConsulta" ColumnName="CodigoConsulta" />
+          <ScalarProperty Name="ID_Consulta" ColumnName="ID_Consulta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_Consultorio">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Consultorio">
-        <MappingFragment StoreEntitySet="TB_Consultorio">
-          <ScalarProperty Name="CodigoLocal" ColumnName="CodigoLocal" />
+    <EntitySetMapping Name="TB_CONSULTORIO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_CONSULTORIO">
+        <MappingFragment StoreEntitySet="TB_CONSULTORIO">
           <ScalarProperty Name="Piso" ColumnName="Piso" />
-          <ScalarProperty Name="NumeroConsultorio" ColumnName="NumeroConsultorio" />
-          <ScalarProperty Name="CodigoConsultorio" ColumnName="CodigoConsultorio" />
+          <ScalarProperty Name="ID_Tipo_Examen" ColumnName="ID_Tipo_Examen" />
+          <ScalarProperty Name="ID_Local" ColumnName="ID_Local" />
+          <ScalarProperty Name="nro_consultorio" ColumnName="nro_consultorio" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="ID_Consultorio" ColumnName="ID_Consultorio" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_Especialidad">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Especialidad">
-        <MappingFragment StoreEntitySet="TB_Especialidad">
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="CodigoEspecialidad" ColumnName="CodigoEspecialidad" />
+    <EntitySetMapping Name="TB_CRONOGRAMA_EMERGENCIA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_CRONOGRAMA_EMERGENCIA">
+        <MappingFragment StoreEntitySet="TB_CRONOGRAMA_EMERGENCIA">
+          <ScalarProperty Name="ID_Empleado" ColumnName="ID_Empleado" />
+          <ScalarProperty Name="GE_DIAS" ColumnName="GE_DIAS" />
+          <ScalarProperty Name="ID_TURNO" ColumnName="ID_TURNO" />
+          <ScalarProperty Name="ID_CronogramaEmergencia" ColumnName="ID_CronogramaEmergencia" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_Estado_Cita">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Estado_Cita">
-        <MappingFragment StoreEntitySet="TB_Estado_Cita">
+    <EntitySetMapping Name="TB_DET_HISTORIA_CLINICA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_DET_HISTORIA_CLINICA">
+        <MappingFragment StoreEntitySet="TB_DET_HISTORIA_CLINICA">
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Tratamiento" ColumnName="Tratamiento" />
+          <ScalarProperty Name="Diagnostico" ColumnName="Diagnostico" />
+          <ScalarProperty Name="FechaAtencion" ColumnName="FechaAtencion" />
+          <ScalarProperty Name="ResulExamenes" ColumnName="ResulExamenes" />
+          <ScalarProperty Name="CodMedicoAtencion" ColumnName="CodMedicoAtencion" />
+          <ScalarProperty Name="ID_Consulta" ColumnName="ID_Consulta" />
+          <ScalarProperty Name="ID_Procedencia" ColumnName="ID_Procedencia" />
+          <ScalarProperty Name="ID_Historia" ColumnName="ID_Historia" />
+          <ScalarProperty Name="ID_DetHistoria" ColumnName="ID_DetHistoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_DET_ORDEN_TRABAJO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_DET_ORDEN_TRABAJO">
+        <MappingFragment StoreEntitySet="TB_DET_ORDEN_TRABAJO">
+          <ScalarProperty Name="GM_Comentarios" ColumnName="GM_Comentarios" />
+          <ScalarProperty Name="GM_Motivo_Estado" ColumnName="GM_Motivo_Estado" />
+          <ScalarProperty Name="GM_Estado" ColumnName="GM_Estado" />
+          <ScalarProperty Name="GM_Prioridad" ColumnName="GM_Prioridad" />
+          <ScalarProperty Name="GM_Empleados_Asociados" ColumnName="GM_Empleados_Asociados" />
+          <ScalarProperty Name="GM_CodigoSolicitante" ColumnName="GM_CodigoSolicitante" />
+          <ScalarProperty Name="GM_Fecha_Modificacion" ColumnName="GM_Fecha_Modificacion" />
+          <ScalarProperty Name="GM_NroOrden" ColumnName="GM_NroOrden" />
+          <ScalarProperty Name="GM_DetNroOrden" ColumnName="GM_DetNroOrden" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_DETALLE_FICHA_EQUIPO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_DETALLE_FICHA_EQUIPO">
+        <MappingFragment StoreEntitySet="TB_DETALLE_FICHA_EQUIPO">
+          <ScalarProperty Name="GM_Fecha_Proximo_Mantenimiento" ColumnName="GM_Fecha_Proximo_Mantenimiento" />
+          <ScalarProperty Name="GM_NroPeriodo_Mantenimiento" ColumnName="GM_NroPeriodo_Mantenimiento" />
+          <ScalarProperty Name="GM_Fecha_Ultima_Reparación" ColumnName="GM_Fecha_Ultima_Reparación" />
+          <ScalarProperty Name="GM_Fecha_Último_Mantenimiento" ColumnName="GM_Fecha_Último_Mantenimiento" />
+          <ScalarProperty Name="GM_Codigo_Ficha_Equipo" ColumnName="GM_Codigo_Ficha_Equipo" />
+          <ScalarProperty Name="GM_Detalle_Ficha_Equipo" ColumnName="GM_Detalle_Ficha_Equipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_DETALLE_ORDEN_DE_PEDIDO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_DETALLE_ORDEN_DE_PEDIDO">
+        <MappingFragment StoreEntitySet="TB_DETALLE_ORDEN_DE_PEDIDO">
+          <ScalarProperty Name="ID_Medicamento" ColumnName="ID_Medicamento" />
+          <ScalarProperty Name="GE_Cantidad" ColumnName="GE_Cantidad" />
+          <ScalarProperty Name="ID_NroItem" ColumnName="ID_NroItem" />
+          <ScalarProperty Name="ID_OrdenPedido" ColumnName="ID_OrdenPedido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_DETALLE_ORDEN_DE_SALIDA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_DETALLE_ORDEN_DE_SALIDA">
+        <MappingFragment StoreEntitySet="TB_DETALLE_ORDEN_DE_SALIDA">
+          <ScalarProperty Name="ID_Medicamento" ColumnName="ID_Medicamento" />
+          <ScalarProperty Name="GE_Cantidad" ColumnName="GE_Cantidad" />
+          <ScalarProperty Name="ID_NroItem" ColumnName="ID_NroItem" />
+          <ScalarProperty Name="ID_OrdenSalida" ColumnName="ID_OrdenSalida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_Detalle_Solicitud_Mantenimiento">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_Detalle_Solicitud_Mantenimiento">
+        <MappingFragment StoreEntitySet="TB_Detalle_Solicitud_Mantenimiento">
+          <ScalarProperty Name="GM_Observacion" ColumnName="GM_Observacion" />
+          <ScalarProperty Name="GM_Prioridad" ColumnName="GM_Prioridad" />
+          <ScalarProperty Name="GM_Estado" ColumnName="GM_Estado" />
+          <ScalarProperty Name="GM_Tiempo_Atencion" ColumnName="GM_Tiempo_Atencion" />
+          <ScalarProperty Name="GM_NroSolicitud" ColumnName="GM_NroSolicitud" />
+          <ScalarProperty Name="GM_NroDet_Solicitud" ColumnName="GM_NroDet_Solicitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_DETORDENSERVICIO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_DETORDENSERVICIO">
+        <MappingFragment StoreEntitySet="TB_DETORDENSERVICIO">
+          <ScalarProperty Name="ID_Servicio" ColumnName="ID_Servicio" />
+          <ScalarProperty Name="GE_Descuento" ColumnName="GE_Descuento" />
+          <ScalarProperty Name="ID_Item" ColumnName="ID_Item" />
+          <ScalarProperty Name="ID_Orden_Servicio" ColumnName="ID_Orden_Servicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_EMPLEADO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_EMPLEADO">
+        <MappingFragment StoreEntitySet="TB_EMPLEADO">
+          <ScalarProperty Name="ID_Tipo_Empleado" ColumnName="ID_Tipo_Empleado" />
+          <ScalarProperty Name="ID_TURNOEMERGENCIA" ColumnName="ID_TURNOEMERGENCIA" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Correo_Empleado" ColumnName="Correo_Empleado" />
+          <ScalarProperty Name="Cargo_Empleado" ColumnName="Cargo_Empleado" />
+          <ScalarProperty Name="Nombres_Empleado" ColumnName="Nombres_Empleado" />
+          <ScalarProperty Name="Apellidos_Empleado" ColumnName="Apellidos_Empleado" />
+          <ScalarProperty Name="E_Correo" ColumnName="E_Correo" />
+          <ScalarProperty Name="E_Fecha_Nacimiento" ColumnName="E_Fecha_Nacimiento" />
+          <ScalarProperty Name="E_Tipo_Empleado" ColumnName="E_Tipo_Empleado" />
+          <ScalarProperty Name="E_Telefono" ColumnName="E_Telefono" />
+          <ScalarProperty Name="E_Direccion" ColumnName="E_Direccion" />
+          <ScalarProperty Name="E_dni" ColumnName="E_dni" />
+          <ScalarProperty Name="E_Apellido_Materno" ColumnName="E_Apellido_Materno" />
+          <ScalarProperty Name="E_Apellido_Paterno" ColumnName="E_Apellido_Paterno" />
+          <ScalarProperty Name="E_Nombre" ColumnName="E_Nombre" />
+          <ScalarProperty Name="ID_Empleado" ColumnName="ID_Empleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ESPECIALIDAD">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_ESPECIALIDAD">
+        <MappingFragment StoreEntitySet="TB_ESPECIALIDAD">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="ID_Especialidad" ColumnName="ID_Especialidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ESTADO_CITA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_ESTADO_CITA">
+        <MappingFragment StoreEntitySet="TB_ESTADO_CITA">
           <ScalarProperty Name="DesEstado" ColumnName="DesEstado" />
-          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="ID_EstadoCita" ColumnName="ID_EstadoCita" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_Local">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Local">
-        <MappingFragment StoreEntitySet="TB_Local">
-          <ScalarProperty Name="DireccionLocal" ColumnName="DireccionLocal" />
-          <ScalarProperty Name="NombreLocal" ColumnName="NombreLocal" />
-          <ScalarProperty Name="CodigoLocal" ColumnName="CodigoLocal" />
+    <EntitySetMapping Name="TB_FICHA_EQUIPO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_FICHA_EQUIPO">
+        <MappingFragment StoreEntitySet="TB_FICHA_EQUIPO">
+          <ScalarProperty Name="GM_Numero_Equipo" ColumnName="GM_Numero_Equipo" />
+          <ScalarProperty Name="GM_Observaciones" ColumnName="GM_Observaciones" />
+          <ScalarProperty Name="GM_Caracteristicas" ColumnName="GM_Caracteristicas" />
+          <ScalarProperty Name="GM_Fecha_Proximo_Mantenimiento" ColumnName="GM_Fecha_Proximo_Mantenimiento" />
+          <ScalarProperty Name="GM_NroPeriodo_Mantenimiento" ColumnName="GM_NroPeriodo_Mantenimiento" />
+          <ScalarProperty Name="GM_Fecha_Ultima_Reparacion" ColumnName="GM_Fecha_Ultima_Reparacion" />
+          <ScalarProperty Name="GM_Fecha_ultimo_Mantenimiento" ColumnName="GM_Fecha_ultimo_Mantenimiento" />
+          <ScalarProperty Name="GM_Ubicacion" ColumnName="GM_Ubicacion" />
+          <ScalarProperty Name="ID_Ficha_Equipo" ColumnName="ID_Ficha_Equipo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_Medicamento">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Medicamento">
-        <MappingFragment StoreEntitySet="TB_Medicamento">
+    <EntitySetMapping Name="TB_HISTORIA_CLINICA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_HISTORIA_CLINICA">
+        <MappingFragment StoreEntitySet="TB_HISTORIA_CLINICA">
+          <ScalarProperty Name="ID_GrupoSanguineo" ColumnName="ID_GrupoSanguineo" />
+          <ScalarProperty Name="ID_Paciente" ColumnName="ID_Paciente" />
+          <ScalarProperty Name="FechaAtencion" ColumnName="FechaAtencion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Antecedentes" ColumnName="Antecedentes" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="ID_Historia" ColumnName="ID_Historia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_HOJA_INGRESO_EMERGENCIA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_HOJA_INGRESO_EMERGENCIA">
+        <MappingFragment StoreEntitySet="TB_HOJA_INGRESO_EMERGENCIA">
+          <ScalarProperty Name="MotivoIngreso" ColumnName="MotivoIngreso" />
+          <ScalarProperty Name="ID_Medico" ColumnName="ID_Medico" />
+          <ScalarProperty Name="ID_Especialidad" ColumnName="ID_Especialidad" />
+          <ScalarProperty Name="ID_Paciente" ColumnName="ID_Paciente" />
+          <ScalarProperty Name="FechaHoraIngreso" ColumnName="FechaHoraIngreso" />
+          <ScalarProperty Name="ID_Hoja_Ingreso_Emergencia" ColumnName="ID_Hoja_Ingreso_Emergencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_HOJA_INGRESO_HOSPITALIZACION">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_HOJA_INGRESO_HOSPITALIZACION">
+        <MappingFragment StoreEntitySet="TB_HOJA_INGRESO_HOSPITALIZACION">
+          <ScalarProperty Name="ID_Especialidad" ColumnName="ID_Especialidad" />
+          <ScalarProperty Name="ID_Cama" ColumnName="ID_Cama" />
+          <ScalarProperty Name="ID_Carta" ColumnName="ID_Carta" />
+          <ScalarProperty Name="ID_Local" ColumnName="ID_Local" />
+          <ScalarProperty Name="ID_Orden_Hospitalizacion" ColumnName="ID_Orden_Hospitalizacion" />
+          <ScalarProperty Name="ID_Paciente" ColumnName="ID_Paciente" />
+          <ScalarProperty Name="Tratamiento" ColumnName="Tratamiento" />
+          <ScalarProperty Name="TipoOrden" ColumnName="TipoOrden" />
+          <ScalarProperty Name="ID_Procedencia" ColumnName="ID_Procedencia" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="ID_Hoja_Ingreso_Hospitalizacion" ColumnName="ID_Hoja_Ingreso_Hospitalizacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_INFORME">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_INFORME">
+        <MappingFragment StoreEntitySet="TB_INFORME">
+          <ScalarProperty Name="GM_Estado" ColumnName="GM_Estado" />
+          <ScalarProperty Name="GM_Observaciones" ColumnName="GM_Observaciones" />
+          <ScalarProperty Name="GM_Descripción_Actividades" ColumnName="GM_Descripción_Actividades" />
+          <ScalarProperty Name="GM_Fecha_Informe" ColumnName="GM_Fecha_Informe" />
+          <ScalarProperty Name="GM_NroInforme" ColumnName="GM_NroInforme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_INFORME_ADMINSITRATIVO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_INFORME_ADMINSITRATIVO">
+        <MappingFragment StoreEntitySet="TB_INFORME_ADMINSITRATIVO">
+          <ScalarProperty Name="IA_Estado" ColumnName="IA_Estado" />
+          <ScalarProperty Name="IA_Mensaje" ColumnName="IA_Mensaje" />
+          <ScalarProperty Name="ID_Tipo_Informe" ColumnName="ID_Tipo_Informe" />
+          <ScalarProperty Name="ID_Empleado" ColumnName="ID_Empleado" />
+          <ScalarProperty Name="ID_InformeAdministrativo" ColumnName="ID_InformeAdministrativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_INFORME_DET">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_INFORME_DET">
+        <MappingFragment StoreEntitySet="TB_INFORME_DET">
+          <ScalarProperty Name="GM_Documento_adjunto" ColumnName="GM_Documento_adjunto" />
+          <ScalarProperty Name="GM_Motivo_Ejecucion" ColumnName="GM_Motivo_Ejecucion" />
+          <ScalarProperty Name="GM_Tiempo_Ejecucion" ColumnName="GM_Tiempo_Ejecucion" />
+          <ScalarProperty Name="GM_Fecha_Ejecucion" ColumnName="GM_Fecha_Ejecucion" />
+          <ScalarProperty Name="GM_NroInforme" ColumnName="GM_NroInforme" />
+          <ScalarProperty Name="GM_NroInforme_Det" ColumnName="GM_NroInforme_Det" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_INFORME_EQUIPO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_INFORME_EQUIPO">
+        <MappingFragment StoreEntitySet="TB_INFORME_EQUIPO">
+          <ScalarProperty Name="GM_Descripcion_Repuestos" ColumnName="GM_Descripcion_Repuestos" />
+          <ScalarProperty Name="GM_Estado" ColumnName="GM_Estado" />
+          <ScalarProperty Name="GM_Observaciones" ColumnName="GM_Observaciones" />
+          <ScalarProperty Name="GM_Descripcion_Actividades" ColumnName="GM_Descripcion_Actividades" />
+          <ScalarProperty Name="GM_Fecha_Informe" ColumnName="GM_Fecha_Informe" />
+          <ScalarProperty Name="ID_InformeEquipo" ColumnName="ID_InformeEquipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_INFORME_EQUIPO_DET">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_INFORME_EQUIPO_DET">
+        <MappingFragment StoreEntitySet="TB_INFORME_EQUIPO_DET">
+          <ScalarProperty Name="GM_Documento_adjunto" ColumnName="GM_Documento_adjunto" />
+          <ScalarProperty Name="GM_Motivo_Rechazo" ColumnName="GM_Motivo_Rechazo" />
+          <ScalarProperty Name="GM_Tiempo_Ejecucion" ColumnName="GM_Tiempo_Ejecucion" />
+          <ScalarProperty Name="GM_Fecha_Ejecucion" ColumnName="GM_Fecha_Ejecucion" />
+          <ScalarProperty Name="ID_InformeEquipo" ColumnName="ID_InformeEquipo" />
+          <ScalarProperty Name="ID_InformeEquipoDet" ColumnName="ID_InformeEquipoDet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_INFORME_RESULTADO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_INFORME_RESULTADO">
+        <MappingFragment StoreEntitySet="TB_INFORME_RESULTADO">
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+          <ScalarProperty Name="resultado" ColumnName="resultado" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="ID_Orden_Examen_Medico" ColumnName="ID_Orden_Examen_Medico" />
+          <ScalarProperty Name="ID_InformeResultado" ColumnName="ID_InformeResultado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_INSTALACION">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_INSTALACION">
+        <MappingFragment StoreEntitySet="TB_INSTALACION">
+          <ScalarProperty Name="ID_Area" ColumnName="ID_Area" />
+          <ScalarProperty Name="GE_Nombre_Enfermero_Auxiliar" ColumnName="GE_Nombre_Enfermero_Auxiliar" />
+          <ScalarProperty Name="GE_Obervaciones" ColumnName="GE_Obervaciones" />
+          <ScalarProperty Name="GE_Resultado" ColumnName="GE_Resultado" />
+          <ScalarProperty Name="GE_Disponibilidad" ColumnName="GE_Disponibilidad" />
+          <ScalarProperty Name="ID_Instalacion" ColumnName="ID_Instalacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_LISTA_VERIFICACION">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_LISTA_VERIFICACION">
+        <MappingFragment StoreEntitySet="TB_LISTA_VERIFICACION">
+          <ScalarProperty Name="ID_Instalacion" ColumnName="ID_Instalacion" />
+          <ScalarProperty Name="GE_Conformidad" ColumnName="GE_Conformidad" />
+          <ScalarProperty Name="GE_Item" ColumnName="GE_Item" />
+          <ScalarProperty Name="ID_ListaVerificacion" ColumnName="ID_ListaVerificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_LOCAL">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_LOCAL">
+        <MappingFragment StoreEntitySet="TB_LOCAL">
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="ID_Local" ColumnName="ID_Local" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_MAESTRO_TABLAS">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_MAESTRO_TABLAS">
+        <MappingFragment StoreEntitySet="TB_MAESTRO_TABLAS">
+          <ScalarProperty Name="MAS_Estado" ColumnName="MAS_Estado" />
+          <ScalarProperty Name="MAS_Valor" ColumnName="MAS_Valor" />
+          <ScalarProperty Name="MAS_DesLarga" ColumnName="MAS_DesLarga" />
+          <ScalarProperty Name="MAS_DesCorta" ColumnName="MAS_DesCorta" />
+          <ScalarProperty Name="MAS_CodCampo" ColumnName="MAS_CodCampo" />
+          <ScalarProperty Name="MAS_CodTabla" ColumnName="MAS_CodTabla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_MEDICAMENTO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_MEDICAMENTO">
+        <MappingFragment StoreEntitySet="TB_MEDICAMENTO">
           <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
           <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="CodigoMedicamento" ColumnName="CodigoMedicamento" />
+          <ScalarProperty Name="GE_Costo" ColumnName="GE_Costo" />
+          <ScalarProperty Name="GE_CantidadDisponible" ColumnName="GE_CantidadDisponible" />
+          <ScalarProperty Name="GE_FechaVencimiento" ColumnName="GE_FechaVencimiento" />
+          <ScalarProperty Name="GE_NombreMedicamento" ColumnName="GE_NombreMedicamento" />
+          <ScalarProperty Name="ID_Medicamento" ColumnName="ID_Medicamento" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_Medico">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Medico">
-        <MappingFragment StoreEntitySet="TB_Medico">
-          <ScalarProperty Name="NumeroColegiatura" ColumnName="NumeroColegiatura" />
-          <ScalarProperty Name="CodigoEspecialidad" ColumnName="CodigoEspecialidad" />
-          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
-          <ScalarProperty Name="CodigoMedico" ColumnName="CodigoMedico" />
+    <EntitySetMapping Name="TB_MEDICO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_MEDICO">
+        <MappingFragment StoreEntitySet="TB_MEDICO">
+          <ScalarProperty Name="CodigoColegiatura" ColumnName="CodigoColegiatura" />
+          <ScalarProperty Name="CentroEstudios" ColumnName="CentroEstudios" />
+          <ScalarProperty Name="FechaCertificacion" ColumnName="FechaCertificacion" />
+          <ScalarProperty Name="TelefonoDomicilio" ColumnName="TelefonoDomicilio" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="num_cmp" ColumnName="num_cmp" />
+          <ScalarProperty Name="ape_medico" ColumnName="ape_medico" />
+          <ScalarProperty Name="nom_medico" ColumnName="nom_medico" />
+          <ScalarProperty Name="ID_Medico" ColumnName="ID_Medico" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_Motivo_Hospitalizacion">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Motivo_Hospitalizacion">
-        <MappingFragment StoreEntitySet="TB_Motivo_Hospitalizacion">
+    <EntitySetMapping Name="TB_MEDICO_DE_TURNO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_MEDICO_DE_TURNO">
+        <MappingFragment StoreEntitySet="TB_MEDICO_DE_TURNO">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="ID_Medico" ColumnName="ID_Medico" />
+          <ScalarProperty Name="ID_Consultorio" ColumnName="ID_Consultorio" />
+          <ScalarProperty Name="ID_MedicoTurno" ColumnName="ID_MedicoTurno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_MEDICOESPECIALIDAD">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_MEDICOESPECIALIDAD">
+        <MappingFragment StoreEntitySet="TB_MEDICOESPECIALIDAD">
+          <ScalarProperty Name="ID_Especialidad" ColumnName="ID_Especialidad" />
+          <ScalarProperty Name="ID_Medico" ColumnName="ID_Medico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_MOTIVO_HOSPITALIZACION">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_MOTIVO_HOSPITALIZACION">
+        <MappingFragment StoreEntitySet="TB_MOTIVO_HOSPITALIZACION">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="DescripcionInternamiento" ColumnName="DescripcionInternamiento" />
-          <ScalarProperty Name="CodigoMotivo" ColumnName="CodigoMotivo" />
+          <ScalarProperty Name="ID_Motivo_Hospitalizacion" ColumnName="ID_Motivo_Hospitalizacion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_Orden_Hopitalizacion">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Orden_Hopitalizacion">
-        <MappingFragment StoreEntitySet="TB_Orden_Hopitalizacion">
-          <ScalarProperty Name="CodigoConsulta" ColumnName="CodigoConsulta" />
-          <ScalarProperty Name="CodigoMotivo" ColumnName="CodigoMotivo" />
+    <EntitySetMapping Name="TB_ORDEN_DE_PEDIDO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_ORDEN_DE_PEDIDO">
+        <MappingFragment StoreEntitySet="TB_ORDEN_DE_PEDIDO">
+          <ScalarProperty Name="ID_Area" ColumnName="ID_Area" />
+          <ScalarProperty Name="GE_Observacion" ColumnName="GE_Observacion" />
+          <ScalarProperty Name="GE_FechaPedido" ColumnName="GE_FechaPedido" />
+          <ScalarProperty Name="ID_OrdenPedido" ColumnName="ID_OrdenPedido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ORDEN_DE_PROCEDIMIENTO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_ORDEN_DE_PROCEDIMIENTO">
+        <MappingFragment StoreEntitySet="TB_ORDEN_DE_PROCEDIMIENTO">
+          <ScalarProperty Name="Aseguradora" ColumnName="Aseguradora" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="ID_Medico" ColumnName="ID_Medico" />
+          <ScalarProperty Name="ID_Paciente" ColumnName="ID_Paciente" />
+          <ScalarProperty Name="CartaGarantia" ColumnName="CartaGarantia" />
+          <ScalarProperty Name="FechaOrdenProcedimiento" ColumnName="FechaOrdenProcedimiento" />
+          <ScalarProperty Name="NombreOrdenProcedimiento" ColumnName="NombreOrdenProcedimiento" />
+          <ScalarProperty Name="ID_Orden_de_Procedimiento" ColumnName="ID_Orden_de_Procedimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ORDEN_DE_SALIDA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_ORDEN_DE_SALIDA">
+        <MappingFragment StoreEntitySet="TB_ORDEN_DE_SALIDA">
+          <ScalarProperty Name="GE_Observacion" ColumnName="GE_Observacion" />
+          <ScalarProperty Name="GE_FechaSalida" ColumnName="GE_FechaSalida" />
+          <ScalarProperty Name="ID_OrdenSalida" ColumnName="ID_OrdenSalida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ORDEN_EXAMEN_MEDICO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_ORDEN_EXAMEN_MEDICO">
+        <MappingFragment StoreEntitySet="TB_ORDEN_EXAMEN_MEDICO">
+          <ScalarProperty Name="GE_CodigoOrdenExamen" ColumnName="GE_CodigoOrdenExamen" />
+          <ScalarProperty Name="GE_NombreMedico" ColumnName="GE_NombreMedico" />
+          <ScalarProperty Name="ID_Tipo_Examen" ColumnName="ID_Tipo_Examen" />
+          <ScalarProperty Name="GE_DetalleTecnico" ColumnName="GE_DetalleTecnico" />
+          <ScalarProperty Name="GE_Paciente" ColumnName="GE_Paciente" />
+          <ScalarProperty Name="GE_FechaSolicitud" ColumnName="GE_FechaSolicitud" />
+          <ScalarProperty Name="observacion" ColumnName="observacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="ID_Catalogo_Examen" ColumnName="ID_Catalogo_Examen" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="ID_Orden_Interna" ColumnName="ID_Orden_Interna" />
+          <ScalarProperty Name="ID_Medico" ColumnName="ID_Medico" />
+          <ScalarProperty Name="ID_Orden_Examen_Medico" ColumnName="ID_Orden_Examen_Medico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ORDEN_HOSPITALIZACION">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_ORDEN_HOSPITALIZACION">
+        <MappingFragment StoreEntitySet="TB_ORDEN_HOSPITALIZACION">
+          <ScalarProperty Name="ID_Local" ColumnName="ID_Local" />
+          <ScalarProperty Name="ID_Consulta" ColumnName="ID_Consulta" />
+          <ScalarProperty Name="ID_Motivo_Hospitalizacion" ColumnName="ID_Motivo_Hospitalizacion" />
           <ScalarProperty Name="FechaHoraAlta" ColumnName="FechaHoraAlta" />
           <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
           <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
-          <ScalarProperty Name="CodigoOrden" ColumnName="CodigoOrden" />
+          <ScalarProperty Name="ID_Paciente" ColumnName="ID_Paciente" />
+          <ScalarProperty Name="ID_MedicoTurno" ColumnName="ID_MedicoTurno" />
+          <ScalarProperty Name="ID_MedicoTratante" ColumnName="ID_MedicoTratante" />
+          <ScalarProperty Name="ExamenesPreOperatorios" ColumnName="ExamenesPreOperatorios" />
+          <ScalarProperty Name="NroDiasHospitalizacion" ColumnName="NroDiasHospitalizacion" />
+          <ScalarProperty Name="Tratamiento" ColumnName="Tratamiento" />
+          <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+          <ScalarProperty Name="Prevision" ColumnName="Prevision" />
+          <ScalarProperty Name="FechaOrden" ColumnName="FechaOrden" />
+          <ScalarProperty Name="ID_Orden_Hospitalizacion" ColumnName="ID_Orden_Hospitalizacion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_Paciente">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Paciente">
-        <MappingFragment StoreEntitySet="TB_Paciente">
-          <ScalarProperty Name="Dni" ColumnName="Dni" />
-          <ScalarProperty Name="TelefonoCasa" ColumnName="TelefonoCasa" />
-          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+    <EntitySetMapping Name="TB_ORDEN_INTERNA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_ORDEN_INTERNA">
+        <MappingFragment StoreEntitySet="TB_ORDEN_INTERNA">
+          <ScalarProperty Name="ID_Historia" ColumnName="ID_Historia" />
+          <ScalarProperty Name="ID_Paciente" ColumnName="ID_Paciente" />
+          <ScalarProperty Name="ID_Tipo_Atencion" ColumnName="ID_Tipo_Atencion" />
+          <ScalarProperty Name="ID_Orden_Interna" ColumnName="ID_Orden_Interna" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ORDEN_SERVICIO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_ORDEN_SERVICIO">
+        <MappingFragment StoreEntitySet="TB_ORDEN_SERVICIO">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="ID_Orden_Examen_Medico" ColumnName="ID_Orden_Examen_Medico" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="IGV" ColumnName="IGV" />
+          <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+          <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+          <ScalarProperty Name="ID_Cita" ColumnName="ID_Cita" />
+          <ScalarProperty Name="ConceptoPago" ColumnName="ConceptoPago" />
+          <ScalarProperty Name="ID_Orden_Servicio" ColumnName="ID_Orden_Servicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ORDEN_TRABAJO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_ORDEN_TRABAJO">
+        <MappingFragment StoreEntitySet="TB_ORDEN_TRABAJO">
+          <ScalarProperty Name="GM_Fecha_Recha_Acepta" ColumnName="GM_Fecha_Recha_Acepta" />
+          <ScalarProperty Name="GM_Origen" ColumnName="GM_Origen" />
+          <ScalarProperty Name="GM_Moti_Recha_Acepta" ColumnName="GM_Moti_Recha_Acepta" />
+          <ScalarProperty Name="GM_Estado" ColumnName="GM_Estado" />
+          <ScalarProperty Name="GM_Tipo_Atencion" ColumnName="GM_Tipo_Atencion" />
+          <ScalarProperty Name="GM_Indicaciones" ColumnName="GM_Indicaciones" />
+          <ScalarProperty Name="GM_TiempoAprox" ColumnName="GM_TiempoAprox" />
+          <ScalarProperty Name="GM_Fecha_Fin" ColumnName="GM_Fecha_Fin" />
+          <ScalarProperty Name="GM_Prioridad" ColumnName="GM_Prioridad" />
+          <ScalarProperty Name="GM_Fecha_Inicio" ColumnName="GM_Fecha_Inicio" />
+          <ScalarProperty Name="GM_Fecha_Asignacion" ColumnName="GM_Fecha_Asignacion" />
+          <ScalarProperty Name="GM_CodigoSolicitante" ColumnName="GM_CodigoSolicitante" />
+          <ScalarProperty Name="GM_Fecha_Creacion" ColumnName="GM_Fecha_Creacion" />
+          <ScalarProperty Name="ID_Orden_Trabajo" ColumnName="ID_Orden_Trabajo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ORDEN_TRABAJO_DET">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_ORDEN_TRABAJO_DET">
+        <MappingFragment StoreEntitySet="TB_ORDEN_TRABAJO_DET">
+          <ScalarProperty Name="GM_Motivo_Rechazo" ColumnName="GM_Motivo_Rechazo" />
+          <ScalarProperty Name="GM_Fecha_Rechazo" ColumnName="GM_Fecha_Rechazo" />
+          <ScalarProperty Name="GM_Tiempo_Atencion" ColumnName="GM_Tiempo_Atencion" />
+          <ScalarProperty Name="ID_Orden_Trabajo" ColumnName="ID_Orden_Trabajo" />
+          <ScalarProperty Name="ID_Orden_Trabajo_Det" ColumnName="ID_Orden_Trabajo_Det" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PACIENTE">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_PACIENTE">
+        <MappingFragment StoreEntitySet="TB_PACIENTE">
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="ID_EstadoCivil" ColumnName="ID_EstadoCivil" />
           <ScalarProperty Name="ApellidoMat" ColumnName="ApellidoMat" />
           <ScalarProperty Name="ApellidoPat" ColumnName="ApellidoPat" />
-          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
-          <ScalarProperty Name="CodigoPaciente" ColumnName="CodigoPaciente" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="ID_TipoDocumento" ColumnName="ID_TipoDocumento" />
+          <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+          <ScalarProperty Name="ID_Sexo" ColumnName="ID_Sexo" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="ID_Distrito" ColumnName="ID_Distrito" />
+          <ScalarProperty Name="ID_Provincia" ColumnName="ID_Provincia" />
+          <ScalarProperty Name="ID_Departamento" ColumnName="ID_Departamento" />
+          <ScalarProperty Name="ID_Pais" ColumnName="ID_Pais" />
+          <ScalarProperty Name="TelefonoDomicilio" ColumnName="TelefonoDomicilio" />
+          <ScalarProperty Name="Celular" ColumnName="Celular" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="dni_paciente" ColumnName="dni_paciente" />
+          <ScalarProperty Name="ID_Paciente" ColumnName="ID_Paciente" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_Prescripcion_Medica">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Prescripcion_Medica">
-        <MappingFragment StoreEntitySet="TB_Prescripcion_Medica">
-          <ScalarProperty Name="CodigoConsulta" ColumnName="CodigoConsulta" />
-          <ScalarProperty Name="CodigoMedicamento" ColumnName="CodigoMedicamento" />
+    <EntitySetMapping Name="TB_PLAN_MANTENIMIENTO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_PLAN_MANTENIMIENTO">
+        <MappingFragment StoreEntitySet="TB_PLAN_MANTENIMIENTO">
+          <ScalarProperty Name="GM_Codigo_Plan" ColumnName="GM_Codigo_Plan" />
+          <ScalarProperty Name="GM_Estado" ColumnName="GM_Estado" />
+          <ScalarProperty Name="GM_Periodo_Final" ColumnName="GM_Periodo_Final" />
+          <ScalarProperty Name="GM_Periodo_Inicio" ColumnName="GM_Periodo_Inicio" />
+          <ScalarProperty Name="GM_Fecha_Creacion" ColumnName="GM_Fecha_Creacion" />
+          <ScalarProperty Name="ID_PlanMantenimiento" ColumnName="ID_PlanMantenimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PRESCRIPCION_MEDICA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_PRESCRIPCION_MEDICA">
+        <MappingFragment StoreEntitySet="TB_PRESCRIPCION_MEDICA">
+          <ScalarProperty Name="ID_Consulta" ColumnName="ID_Consulta" />
+          <ScalarProperty Name="ID_Medicamento" ColumnName="ID_Medicamento" />
           <ScalarProperty Name="Frecuencia" ColumnName="Frecuencia" />
           <ScalarProperty Name="Dosis" ColumnName="Dosis" />
-          <ScalarProperty Name="CodigoReceta" ColumnName="CodigoReceta" />
+          <ScalarProperty Name="ID_Medico" ColumnName="ID_Medico" />
+          <ScalarProperty Name="ID_Paciente" ColumnName="ID_Paciente" />
+          <ScalarProperty Name="GA_Doctor" ColumnName="GA_Doctor" />
+          <ScalarProperty Name="GA_FechaPrescripcion" ColumnName="GA_FechaPrescripcion" />
+          <ScalarProperty Name="ID_Prescripcion_Medica" ColumnName="ID_Prescripcion_Medica" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_Tipo_Analisis">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Tipo_Analisis">
-        <MappingFragment StoreEntitySet="TB_Tipo_Analisis">
+    <EntitySetMapping Name="TB_PROGRAMACION_ATENCION_EXAMENES">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_PROGRAMACION_ATENCION_EXAMENES">
+        <MappingFragment StoreEntitySet="TB_PROGRAMACION_ATENCION_EXAMENES">
+          <ScalarProperty Name="comentarios" ColumnName="comentarios" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="ID_MedicoTurno" ColumnName="ID_MedicoTurno" />
+          <ScalarProperty Name="ID_Orden_Examen_Medico" ColumnName="ID_Orden_Examen_Medico" />
+          <ScalarProperty Name="ID_Programacion" ColumnName="ID_Programacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_REQUISITO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_REQUISITO">
+        <MappingFragment StoreEntitySet="TB_REQUISITO">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="ID_Requisito" ColumnName="ID_Requisito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_SERVICIO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_SERVICIO">
+        <MappingFragment StoreEntitySet="TB_SERVICIO">
+          <ScalarProperty Name="GE_CostoServicio" ColumnName="GE_CostoServicio" />
+          <ScalarProperty Name="GE_DescripcionServicio" ColumnName="GE_DescripcionServicio" />
+          <ScalarProperty Name="GE_NombreServicio" ColumnName="GE_NombreServicio" />
+          <ScalarProperty Name="ID_Servicio" ColumnName="ID_Servicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_SOLICITUD_MANTENIMIENTO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_SOLICITUD_MANTENIMIENTO">
+        <MappingFragment StoreEntitySet="TB_SOLICITUD_MANTENIMIENTO">
+          <ScalarProperty Name="GM_Estado" ColumnName="GM_Estado" />
+          <ScalarProperty Name="GM_Observacion" ColumnName="GM_Observacion" />
+          <ScalarProperty Name="GM_Detalle_Servicio" ColumnName="GM_Detalle_Servicio" />
+          <ScalarProperty Name="GM_FechaIncidencia" ColumnName="GM_FechaIncidencia" />
+          <ScalarProperty Name="GM_Numero_Equipo" ColumnName="GM_Numero_Equipo" />
+          <ScalarProperty Name="GM_Tipo_Mantenimiento" ColumnName="GM_Tipo_Mantenimiento" />
+          <ScalarProperty Name="GM_Tipo_Servicio" ColumnName="GM_Tipo_Servicio" />
+          <ScalarProperty Name="Codigo_CC" ColumnName="Codigo_CC" />
+          <ScalarProperty Name="GM_CodigoBeneficiario" ColumnName="GM_CodigoBeneficiario" />
+          <ScalarProperty Name="GM_CodigoSolicitante" ColumnName="GM_CodigoSolicitante" />
+          <ScalarProperty Name="GM_Fecha_Creacion" ColumnName="GM_Fecha_Creacion" />
+          <ScalarProperty Name="ID_SolicitudMantenimiento" ColumnName="ID_SolicitudMantenimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_SOLICITUDES_DE_CAMBIO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_SOLICITUDES_DE_CAMBIO">
+        <MappingFragment StoreEntitySet="TB_SOLICITUDES_DE_CAMBIO">
+          <ScalarProperty Name="GE_APROBACION" ColumnName="GE_APROBACION" />
+          <ScalarProperty Name="GE_Fecha_cambio" ColumnName="GE_Fecha_cambio" />
+          <ScalarProperty Name="GE_turno_cambiar" ColumnName="GE_turno_cambiar" />
+          <ScalarProperty Name="GE_Turno_Actual" ColumnName="GE_Turno_Actual" />
+          <ScalarProperty Name="ID_Empleado" ColumnName="ID_Empleado" />
+          <ScalarProperty Name="ID_SolicitudCambio" ColumnName="ID_SolicitudCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_TIPO_ANALISIS">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_TIPO_ANALISIS">
+        <MappingFragment StoreEntitySet="TB_TIPO_ANALISIS">
           <ScalarProperty Name="TipoResultado" ColumnName="TipoResultado" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="CodigoTipoAnalisis" ColumnName="CodigoTipoAnalisis" />
+          <ScalarProperty Name="ID_TipoAnalisis" ColumnName="ID_TipoAnalisis" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TB_Turno_Citas">
-      <EntityTypeMapping TypeName="DB_SGHModel.TB_Turno_Citas">
-        <MappingFragment StoreEntitySet="TB_Turno_Citas">
-          <ScalarProperty Name="HoraFinal" ColumnName="HoraFinal" />
-          <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
-          <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
+    <EntitySetMapping Name="TB_TIPO_DOCUMENTO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_TIPO_DOCUMENTO">
+        <MappingFragment StoreEntitySet="TB_TIPO_DOCUMENTO">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ID_TipoDocumento" ColumnName="ID_TipoDocumento" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TB_TIPO_EMPLEADO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_TIPO_EMPLEADO">
+        <MappingFragment StoreEntitySet="TB_TIPO_EMPLEADO">
+          <ScalarProperty Name="E_Descripcion" ColumnName="E_Descripcion" />
+          <ScalarProperty Name="ID_Tipo_Empleado" ColumnName="ID_Tipo_Empleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_TIPO_EXAMEN_MEDICO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_TIPO_EXAMEN_MEDICO">
+        <MappingFragment StoreEntitySet="TB_TIPO_EXAMEN_MEDICO">
+          <ScalarProperty Name="DescripcionGeneral" ColumnName="DescripcionGeneral" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="ID_Tipo_Examen" ColumnName="ID_Tipo_Examen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_TIPO_INFORME_ADMINISTRATIVO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_TIPO_INFORME_ADMINISTRATIVO">
+        <MappingFragment StoreEntitySet="TB_TIPO_INFORME_ADMINISTRATIVO">
+          <ScalarProperty Name="IA_Descripcion" ColumnName="IA_Descripcion" />
+          <ScalarProperty Name="ID_Tipo_Informe" ColumnName="ID_Tipo_Informe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_TURNO">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_TURNO">
+        <MappingFragment StoreEntitySet="TB_TURNO">
+          <ScalarProperty Name="Horario_Turno" ColumnName="Horario_Turno" />
+          <ScalarProperty Name="Des_Turno" ColumnName="Des_Turno" />
+          <ScalarProperty Name="ID_TURNO" ColumnName="ID_TURNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_TURNO_ATENCION">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_TURNO_ATENCION">
+        <MappingFragment StoreEntitySet="TB_TURNO_ATENCION">
+          <ScalarProperty Name="FechaAtencion" ColumnName="FechaAtencion" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="ID_TURNOATENCION" ColumnName="ID_TURNOATENCION" />
+          <ScalarProperty Name="ID_Cita" ColumnName="ID_Cita" />
+          <ScalarProperty Name="ID_Medico" ColumnName="ID_Medico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_TURNO_EMERGENCIA">
+      <EntityTypeMapping TypeName="DB_SGHModel.TB_TURNO_EMERGENCIA">
+        <MappingFragment StoreEntitySet="TB_TURNO_EMERGENCIA">
+          <ScalarProperty Name="GE_Horario_FIN" ColumnName="GE_Horario_FIN" />
+          <ScalarProperty Name="GE_Horario_INI" ColumnName="GE_Horario_INI" />
+          <ScalarProperty Name="ID_TURNOEMERGENCIA" ColumnName="ID_TURNOEMERGENCIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="TB_CATALOGO_REQUISITO" TypeName="DB_SGHModel.TB_CATALOGO_REQUISITO" StoreEntitySet="TB_CATALOGO_REQUISITO">
+      <EndProperty Name="TB_REQUISITO">
+        <ScalarProperty Name="ID_Requisito" ColumnName="ID_Requisito" />
+      </EndProperty>
+      <EndProperty Name="TB_CATALOGO_EXAMEN_MEDICO">
+        <ScalarProperty Name="ID_Catalogo_Examen" ColumnName="ID_Catalogo_Examen" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -11,11 +11,11 @@ namespace CI.SIC.BL
 
         public int Insertar(EMedico medico)
         {
-            _contexto.AddToTB_Medico(new TB_Medico
+            _contexto.AddToTB_MEDICO(new TB_MEDICO
             {
-                Nombres = medico.Nombres,
-                Apellidos = medico.Apellidos,
-                CodigoEspecialidad = medico.CodigoEspecialidad
+               nom_medico = medico.Nombres,
+               ape_medico = medico.Apellidos,
+               ID_Medico  = medico.CodigoEspecialidad
             });
             _contexto.SaveChanges();
             return medico.CodigoMedico;
@@ -23,25 +23,27 @@ namespace CI.SIC.BL
 
         public List<EMedico> Listar()
         {
-            return _contexto.TB_Medico.Select(m => new EMedico 
+            return _contexto.TB_MEDICO.Select(m => new EMedico 
             
             {
-                CodigoMedico = m.CodigoMedico,
-                Nombres = m.Nombres,
-                Apellidos = m.Apellidos,
-                DescripcionEspecialidad = m.TB_Especialidad.Descripcion
+                CodigoMedico =  m.ID_Medico,
+                Nombres = m.nom_medico,
+                Apellidos = m.ape_medico,
+                NumeroColegiatura = m.CodigoColegiatura, 
+                ApeNom = m.nom_medico + " " + m.ape_medico 
             }).ToList();
         }
 
         public EMedico Obtener(int codigoMedico)
         {
-            return _contexto.TB_Medico.Where(f => f.CodigoMedico == codigoMedico).Select(m => new EMedico
+            return _contexto.TB_MEDICOESPECIALIDAD.Where(f => f.ID_Medico == codigoMedico).Select(m => new EMedico
             {
-                CodigoMedico = m.CodigoMedico,
-                Nombres = m.Nombres,
-                Apellidos = m.Apellidos,
-                DescripcionEspecialidad = m.TB_Especialidad.Descripcion,
-                NumeroColegiatura = m.NumeroColegiatura 
+                CodigoMedico = m.ID_Medico,
+                Nombres = m.TB_MEDICO.nom_medico,
+                Apellidos = m.TB_MEDICO.ape_medico,
+                DescripcionEspecialidad = m.TB_ESPECIALIDAD.descripcion,
+                NumeroColegiatura = m.TB_MEDICO.CodigoColegiatura,
+                Id_Especialidad = m.ID_Especialidad 
             }).FirstOrDefault();
         }
     }

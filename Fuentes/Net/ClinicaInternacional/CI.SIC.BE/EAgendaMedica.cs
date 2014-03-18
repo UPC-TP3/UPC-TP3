@@ -15,7 +15,9 @@ namespace CI.SIC.BE
         public bool Estado { get; set; }
         public int CodigoMedico { get; set; }
         public string  NumeroColegiatura { get; set; }
-        public int IdTurno { get; set; }
+        public int Id_Turno { get; set; }
+        public int Id_consultorio { get; set; }
+        public int Id_Especialidad { get; set; }
 
         public string EstadoDisplay { get; set; }
         public string NombresMedico { get; set; }
@@ -23,6 +25,7 @@ namespace CI.SIC.BE
         public int CodigoEspecialidad { get; set; }
         public string DescripcionEspecialidad { get; set; }
         public string NumeroConsultorio { get; set; }
+        public string Horario_Turno { get; set; }
 
     }
 }

@@ -31,11 +31,13 @@ public partial class GestionCitas_FrmAgendaRegistro : System.Web.UI.Page
                         lblApellidos.Text = agendaMedica.ApellidosMedico;
                         lblEspecialidad.Text = agendaMedica.DescripcionEspecialidad;
                         txtFecha.Text = agendaMedica.Fecha.Value.ToString("yyyy-MM-dd");
-                        txtHoraInicio.Text = agendaMedica.HoraInicio.Value.ToString("HH:mm");
-                        txtHoraFin.Text = agendaMedica.HoraFin.Value.ToString("HH:mm");
-                        txtConsultorio.Text = agendaMedica.NumeroConsultorio;
+                        //txtHoraInicio.Text = agendaMedica.HoraInicio.Value.ToString("HH:mm");
+                        //txtHoraFin.Text = agendaMedica.HoraFin.Value.ToString("HH:mm");
+                        //txtConsultorio.Text = agendaMedica.NumeroConsultorio;
                         chkEstado.Checked = agendaMedica.Estado;
-                        cboTurnos.SelectedValue = agendaMedica.IdTurno.ToString(); 
+                        cboTurnos.SelectedValue = agendaMedica.Id_Turno.ToString();
+                        cboConsultorio.SelectedValue = agendaMedica.Id_consultorio.ToString();
+                        hdnIdEspecialidad.Value = agendaMedica.Id_Especialidad.ToString();  
                     }
                 }
                 else
@@ -48,7 +50,8 @@ public partial class GestionCitas_FrmAgendaRegistro : System.Web.UI.Page
                         lblNombres.Text = medico.Nombres;
                         lblApellidos.Text = medico.Apellidos;
                         lblEspecialidad.Text = medico.DescripcionEspecialidad;
-                        lblColegiatura.Text = medico.NumeroColegiatura;                        
+                        lblColegiatura.Text = medico.NumeroColegiatura;
+                        hdnIdEspecialidad.Value = medico.Id_Especialidad.ToString(); 
                     }
                 }
             }
@@ -67,23 +70,23 @@ public partial class GestionCitas_FrmAgendaRegistro : System.Web.UI.Page
                     Convert.ToInt32(txtFecha.Text.Substring(8, 2))
                     );
 
-                if (!string.IsNullOrEmpty(txtHoraInicio.Text))
-                    fechaInicio = new DateTime(
-                        Convert.ToInt32(txtFecha.Text.Substring(0, 4)),
-                        Convert.ToInt32(txtFecha.Text.Substring(5, 2)),
-                        Convert.ToInt32(txtFecha.Text.Substring(8, 2)),
-                        Convert.ToInt32(txtHoraInicio.Text.Substring(0, 2)),
-                        Convert.ToInt32(txtHoraInicio.Text.Substring(3, 2)), 0
-                        );
+                //if (!string.IsNullOrEmpty(txtHoraInicio.Text))
+                //    fechaInicio = new DateTime(
+                //        Convert.ToInt32(txtFecha.Text.Substring(0, 4)),
+                //        Convert.ToInt32(txtFecha.Text.Substring(5, 2)),
+                //        Convert.ToInt32(txtFecha.Text.Substring(8, 2)),
+                //        Convert.ToInt32(txtHoraInicio.Text.Substring(0, 2)),
+                //        Convert.ToInt32(txtHoraInicio.Text.Substring(3, 2)), 0
+                //        );
 
-                if (!string.IsNullOrEmpty(txtHoraFin.Text))
-                    fechaFin = new DateTime(
-                        Convert.ToInt32(txtFecha.Text.Substring(0, 4)),
-                        Convert.ToInt32(txtFecha.Text.Substring(5, 2)),
-                        Convert.ToInt32(txtFecha.Text.Substring(8, 2)),
-                        Convert.ToInt32(txtHoraFin.Text.Substring(0, 2)),
-                        Convert.ToInt32(txtHoraFin.Text.Substring(3, 2)), 0
-                        );
+                //if (!string.IsNullOrEmpty(txtHoraFin.Text))
+                //    fechaFin = new DateTime(
+                //        Convert.ToInt32(txtFecha.Text.Substring(0, 4)),
+                //        Convert.ToInt32(txtFecha.Text.Substring(5, 2)),
+                //        Convert.ToInt32(txtFecha.Text.Substring(8, 2)),
+                //        Convert.ToInt32(txtHoraFin.Text.Substring(0, 2)),
+                //        Convert.ToInt32(txtHoraFin.Text.Substring(3, 2)), 0
+                //        );
             }
 
             if (hdnCodigoAgenda.Value == "0")
@@ -91,42 +94,38 @@ public partial class GestionCitas_FrmAgendaRegistro : System.Web.UI.Page
                 hdnCodigoAgenda.Value = new BAgendaMedica().Insertar(new EAgendaMedica
                     {
                         Fecha = fechaInicio,
-                        HoraInicio = fechaInicio,
-                        HoraFin = fechaFin,
-                        NumeroConsultorio = txtConsultorio.Text, 
+                        //HoraInicio = fechaInicio,
+                        //HoraFin = fechaFin,
+                       // NumeroConsultorio = txtConsultorio.Text, 
                         Estado = chkEstado.Checked,
                         CodigoMedico = Convert.ToInt32(hdnCodigoMedico.Value),
-                        IdTurno = Convert.ToInt32(cboTurnos.SelectedValue)
+                        Id_Turno = Convert.ToInt32(cboTurnos.SelectedValue),
+                        Id_consultorio = Convert.ToInt32(cboConsultorio.SelectedValue),
+                        Id_Especialidad = Convert.ToInt32(hdnIdEspecialidad.Value)
                     }).ToString();
-
-                Response.Redirect("FrmAgendaDetalle.aspx?CodigoMedico=" + hdnCodigoAgenda.Value);
             }
             else
             {
-                
                 new BAgendaMedica().Actualizar(new EAgendaMedica
                     {
-                        
                         CodigoAgenda = Convert.ToInt32(hdnCodigoAgenda.Value),
                         Fecha = fechaInicio,
                         HoraInicio = fechaInicio,
                         HoraFin = fechaFin,
-                        NumeroConsultorio = txtConsultorio.Text, 
+                       // NumeroConsultorio = txtConsultorio.Text, 
                         Estado = chkEstado.Checked,
                         CodigoMedico = Convert.ToInt32(hdnCodigoMedico.Value),
-                        IdTurno = Convert.ToInt32(cboTurnos.SelectedValue) 
+                        Id_Turno = Convert.ToInt32(cboTurnos.SelectedValue),
+                        Id_consultorio = Convert.ToInt32(cboConsultorio.SelectedValue),
+                        Id_Especialidad = Convert.ToInt32(hdnIdEspecialidad.Value)
                     });
-
-                Response.Redirect("frmAgendaMedica.aspx");
-                
             }
-
-            
-
+           
             ClientScript.RegisterStartupScript(GetType(), "alert",
                                              "<script language=JavaScript>alert('El registro ha sido creado.');</script>");
+           // Response.Redirect("frmAgendaMedica.aspx", true);
 
-           // Response.Redirect("FrmAgendaDetalle.aspx?CodigoMedico=" + hdnCodigoAgenda.Value);
+            Response.Redirect("FrmAgendaDetalle.aspx?CodigoMedico=" + hdnCodigoMedico.Value);
 
             //Limpiar();
 
@@ -142,16 +141,16 @@ public partial class GestionCitas_FrmAgendaRegistro : System.Web.UI.Page
                            Convert.ToInt32(txtFecha.Text.Substring(8, 2))
                            );
 
-                if (!string.IsNullOrEmpty(txtHoraInicio.Text))
-                {
-                    var inicio = new DateTime(fecha.Year, fecha.Month, fecha.Day,
-                                              Convert.ToInt32(txtHoraInicio.Text.Substring(0, 2)),
-                                              Convert.ToInt32(txtHoraInicio.Text.Substring(3, 2)), 0
-                        );
-                    txtHoraFin.Text = inicio.AddMinutes(30.0).ToString("HH:mm");
-                }
-                else
-                    txtHoraFin.Text = string.Empty;
+                //if (!string.IsNullOrEmpty(txtHoraInicio.Text))
+                //{
+                //    var inicio = new DateTime(fecha.Year, fecha.Month, fecha.Day,
+                //                              Convert.ToInt32(txtHoraInicio.Text.Substring(0, 2)),
+                //                              Convert.ToInt32(txtHoraInicio.Text.Substring(3, 2)), 0
+                //        );
+                //    txtHoraFin.Text = inicio.AddMinutes(30.0).ToString("HH:mm");
+                //}
+                //else
+                //    txtHoraFin.Text = string.Empty;
             }
         }
 
@@ -164,9 +163,9 @@ public partial class GestionCitas_FrmAgendaRegistro : System.Web.UI.Page
         {
             hdnCodigoAgenda.Value = "0";
             txtFecha.Text = string.Empty;
-            txtHoraInicio.Text = string.Empty;
-            txtHoraFin.Text = string.Empty;
-            txtConsultorio.Text = string.Empty;
+            //txtHoraInicio.Text = string.Empty;
+            //txtHoraFin.Text = string.Empty;
+            //txtConsultorio.Text = string.Empty;
             chkEstado.Checked = true;
         }
 
@@ -175,16 +174,22 @@ public partial class GestionCitas_FrmAgendaRegistro : System.Web.UI.Page
 
             BTurnoCita turnos = new BTurnoCita();
             cboTurnos.DataSource = turnos.Listar();
-            cboTurnos.DataTextField = "HoraInicio";
-            cboTurnos.DataValueField = "IdTurno";
+            cboTurnos.DataTextField = "Horario_Turno";
+            cboTurnos.DataValueField = "Id_Turno";
             cboTurnos.DataBind();
+
+            BConsultorio consultorio = new BConsultorio();
+            cboConsultorio.DataSource = consultorio.Listar();
+            cboConsultorio.DataTextField = "Nro_Consultorio";
+            cboConsultorio.DataValueField = "Id_Consultorio";
+            cboConsultorio.DataBind();
+
 
         }
 
 
         protected void cboTurnos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtHoraInicio.Text = cboTurnos.SelectedValue;
-            txtHoraInicio.Text = "HOLA";
+            
         }
 }

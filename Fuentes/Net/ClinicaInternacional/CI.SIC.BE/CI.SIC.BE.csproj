@@ -62,9 +62,13 @@
     <Compile Include="EAgendaMedica.cs" />
     <Compile Include="ECita.cs" />
     <Compile Include="ECitaDomiciliaria.cs" />
+    <Compile Include="EConsulta.cs" />
+    <Compile Include="EConsultorio.cs" />
     <Compile Include="EEspecialidad.cs" />
+    <Compile Include="EMedicamento.cs" />
     <Compile Include="EMedico.cs" />
     <Compile Include="EPaciente.cs" />
+    <Compile Include="ERecetaMedica.cs" />
     <Compile Include="EspecialidadBE.cs" />
     <Compile Include="ETurnoCita.cs" />
     <Compile Include="Examen_RequisitoBE.cs" />

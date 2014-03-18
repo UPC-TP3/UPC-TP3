@@ -14,11 +14,11 @@ namespace CI.SIC.BL
 
         public List<ETurnoCita> Listar()
         {
-            return _contexto.TB_Turno_Citas.Select(lista => new ETurnoCita
+            return _contexto.TB_TURNO.Select(lista => new ETurnoCita
             {
-                IdTurno = lista.IdTurno,
-                HoraInicio = lista.HoraInicio,
-                HoraFinal = lista.HoraFinal  
+                Id_Turno = lista.ID_TURNO,
+                Des_Turno = lista.Des_Turno,
+                Horario_Turno = lista.Horario_Turno   
             }).ToList();
         }
 

@@ -19,7 +19,7 @@
                 <asp:BoundField DataField="Apellidos" HeaderText="Apellidos">
                     <HeaderStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:BoundField DataField="DescripcionEspecialidad" HeaderText="Especialidad">
+                <asp:BoundField DataField="NumeroColegiatura" HeaderText="Colegiatura">
                     <HeaderStyle HorizontalAlign="Center" />
                 </asp:BoundField>
                 <asp:TemplateField>

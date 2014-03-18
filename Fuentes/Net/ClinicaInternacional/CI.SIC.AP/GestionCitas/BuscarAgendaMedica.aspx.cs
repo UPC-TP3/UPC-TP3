@@ -13,6 +13,10 @@ public partial class GestionCitas_BuscarAgendaMedica : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            DateTime thisDay = DateTime.Today;
+
+            txtFecha.Text = thisDay.ToString("dd/MM/yyyy");
+
             Cargar();
             CargarCombo();
         }
@@ -48,10 +52,7 @@ public partial class GestionCitas_BuscarAgendaMedica : System.Web.UI.Page
     }
 
 
-    protected void TextBox1_TextChanged(object sender, EventArgs e)
-    {
-
-    }
+   
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
         string codigo = cboEspecialidad.SelectedValue;

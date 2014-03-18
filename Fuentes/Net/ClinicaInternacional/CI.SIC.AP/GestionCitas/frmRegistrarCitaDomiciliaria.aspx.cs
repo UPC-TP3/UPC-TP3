@@ -35,13 +35,15 @@ public partial class GestionCitas_frmRegistrarCitaDomiciliaria : System.Web.UI.P
             lblApellidosMedico.Text = cita.ApellidosMedico;
             lblColegiatura.Text = cita.NumeroColegiatura; 
             lblFechaCita.Text = cita.FechaAgenda.Value.ToString("dd/MM/yyyy");
-            lblHoraCita.Text = cita.HoraInicioAgenda.Value.ToString("HH:mm");
+            //lblHoraCita.Text = cita.HoraInicioAgenda.Value.ToString("HH:mm");
+            lblHoraCita.Text = cita.Horario_Turno;
             lblEspecialidad.Text = cita.DescripcionEspecialidad;
             lblConsultorio.Text = cita.NumeroConsultorio;
             lblDomicilio.Text = cita.DireccionDomicilio;
             lblReferencia.Text = cita.ReferenciaDomicilio;
             lblSintomas.Text = cita.SintomasPaciente;
             lblAseguradora.Text = cita.Aseguradora;
+            hdnIdEspecialidad.Value = cita.Id_Especialidad.ToString(); 
         }
     }
 
@@ -78,14 +80,15 @@ public partial class GestionCitas_frmRegistrarCitaDomiciliaria : System.Web.UI.P
             new BCitaDomiciliaria().Insertar(new ECitaDomiciliaria
             {
                 FechaAgenda = fechaInicio,
-                HoraInicioAgenda = fechaInicio,
+                //HoraInicioAgenda = fechaInicio,
                 CodigoPaciente = Convert.ToInt32(hdnCodigoPaciente.Value),
                 CodigoMedico = Convert.ToInt32(hdnCodigoMedico.Value),
                 CodigoAgenda = Convert.ToInt32(hdnCodigoAgenda.Value),
                 DireccionDomicilio = lblDomicilio.Text,
                 ReferenciaDomicilio = lblReferencia.Text,
                 SintomasPaciente = lblSintomas.Text,
-                Aseguradora = lblAseguradora.Text 
+                Aseguradora = lblAseguradora.Text,
+                Id_Especialidad = Convert.ToInt32(hdnIdEspecialidad.Value)
             });
             ClientScript.RegisterStartupScript(GetType(), "alert",
                                                "<script language=JavaScript>alert('El registro ha sido creado.');</script>");
@@ -100,14 +103,15 @@ public partial class GestionCitas_frmRegistrarCitaDomiciliaria : System.Web.UI.P
             {
                 CodigoCita = Convert.ToInt32(hdnCodigoCita.Value),
                 FechaAgenda = fechaInicio,
-                HoraInicioAgenda = fechaInicio,
+                //HoraInicioAgenda = fechaInicio,
                 CodigoPaciente = Convert.ToInt32(hdnCodigoPaciente.Value),
                 CodigoMedico = Convert.ToInt32(hdnCodigoMedico.Value),
                 CodigoAgenda = Convert.ToInt32(hdnCodigoAgenda.Value),
                 DireccionDomicilio = lblDomicilio.Text,
                 ReferenciaDomicilio = lblReferencia.Text,
                 SintomasPaciente = lblSintomas.Text,
-                Aseguradora = lblAseguradora.Text 
+                Aseguradora = lblAseguradora.Text,
+                Id_Especialidad = Convert.ToInt32(hdnIdEspecialidad.Value)
             });
             ClientScript.RegisterStartupScript(GetType(), "alert",
                                                "<script language=JavaScript>alert('El registro ha sido actualizado.');</script>");
@@ -129,6 +133,7 @@ public partial class GestionCitas_frmRegistrarCitaDomiciliaria : System.Web.UI.P
         lblReferencia.Text = string.Empty;
         lblSintomas.Text = string.Empty;
         lblAseguradora.Text = string.Empty;
+        hdnIdEspecialidad.Value = "0";
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -173,11 +178,12 @@ public partial class GestionCitas_frmRegistrarCitaDomiciliaria : System.Web.UI.P
             lblNombresMedico.Text = agenda.NombresMedico;
             lblApellidosMedico.Text = agenda.ApellidosMedico;
             lblFechaCita.Text = agenda.Fecha.Value.ToString("dd/MM/yyyy");
-            lblHoraCita.Text = agenda.HoraInicio.Value.ToString("HH:mm");
+            //lblHoraCita.Text = agenda.HoraInicio.Value.ToString("HH:mm");
+            lblHoraCita.Text = agenda.Horario_Turno;
             lblEspecialidad.Text = agenda.DescripcionEspecialidad;
             lblConsultorio.Text = agenda.NumeroConsultorio;
-            lblColegiatura.Text = agenda.NumeroColegiatura; 
-
+            lblColegiatura.Text = agenda.NumeroColegiatura;
+            hdnIdEspecialidad.Value = agenda.Id_Especialidad.ToString();  
 
         }
     }
