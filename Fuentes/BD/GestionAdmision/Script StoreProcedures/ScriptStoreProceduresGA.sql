@@ -405,3 +405,94 @@ UPDATE TB_ORDEN_HOSPITALIZACION SET MOTIVO='3' WHERE ID_Orden_Hospitalizacion = 
 END
 
 GO
+CREATE PROCEDURE usp_Select_MedicoPorEspecialidad
+@ID_Especialidad int
+AS
+BEGIN
+SELECT M.ID_Medico,
+       M.ape_medico + ', ' + M.nom_medico AS nom_medico
+  FROM TB_MEDICO M INNER JOIN TB_MEDICOESPECIALIDAD ME
+  ON M.ID_Medico=ME.ID_Medico
+  WHERE ID_Especialidad = @ID_Especialidad
+  END
+  
+ GO
+CREATE PROCEDURE [dbo].[usp_Get_Orden_Procedimiento]
+ @ID_Orden_de_Procedimiento int
+AS
+BEGIN
+
+SELECT 
+ID_Orden_de_Procedimiento
+,NombreOrdenProcedimiento
+,FechaOrdenProcedimiento
+,CartaGarantia
+,ID_Paciente
+,ID_Medico
+,Estado
+,Aseguradora FROM TB_ORDEN_DE_PROCEDIMIENTO
+WHERE ID_Orden_de_Procedimiento=@ID_Orden_de_Procedimiento
+
+END
+
+GO
+CREATE PROCEDURE usp_Update_Orden_Procedimiento
+ @ID_Orden_de_Procedimiento int
+,@NombreOrdenProcedimiento varchar(255)
+,@FechaOrdenProcedimiento datetime
+,@CartaGarantia varchar(255)
+,@ID_Paciente int
+,@ID_Medico int
+,@Estado varchar(255)
+,@Aseguradora varchar(150)
+
+AS
+BEGIN
+
+UPDATE TB_ORDEN_DE_PROCEDIMIENTO
+SET
+ NombreOrdenProcedimiento=@NombreOrdenProcedimiento
+,FechaOrdenProcedimiento=@FechaOrdenProcedimiento
+,CartaGarantia=@CartaGarantia
+,ID_Paciente=@ID_Paciente
+,ID_Medico=@ID_Medico
+,Estado=@Estado
+,Aseguradora=@Aseguradora
+WHERE ID_Orden_de_Procedimiento=@ID_Orden_de_Procedimiento
+
+END
+
+GO
+CREATE PROCEDURE usp_Insert_Orden_Procedimiento
+ @ID_Orden_de_Procedimiento int
+,@NombreOrdenProcedimiento varchar(255)
+,@FechaOrdenProcedimiento datetime
+,@CartaGarantia varchar(255)
+,@ID_Paciente int
+,@ID_Medico int
+,@Estado varchar(255)
+,@Aseguradora varchar(150)
+
+AS
+BEGIN
+
+INSERT INTO TB_ORDEN_DE_PROCEDIMIENTO
+(NombreOrdenProcedimiento
+,FechaOrdenProcedimiento
+,CartaGarantia
+,ID_Paciente
+,ID_Medico
+,Estado
+,Aseguradora)
+     VALUES
+(@NombreOrdenProcedimiento
+,@FechaOrdenProcedimiento
+,@CartaGarantia
+,@ID_Paciente
+,@ID_Medico
+,@Estado
+,@Aseguradora)
+
+
+END
+
