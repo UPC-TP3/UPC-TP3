@@ -51,6 +51,7 @@
     <Compile Include="BE_MotivoHospita.cs" />
     <Compile Include="BE_OrdendeTrabajo.cs" />
     <Compile Include="BE_OrdenHospitaliza.cs" />
+    <Compile Include="BE_OrdenProcedimiento.cs" />
     <Compile Include="BE_Paciente.cs" />
     <Compile Include="BE_Sede.cs" />
     <Compile Include="BE_SolicitudMantenimiento.cs" />
