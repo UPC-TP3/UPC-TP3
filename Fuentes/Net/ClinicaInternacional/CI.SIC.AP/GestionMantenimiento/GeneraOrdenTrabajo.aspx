@@ -196,8 +196,7 @@
                     <td class="style1">Solicitud</td>
                     <td class="style8">:</td>
                     <td class="style1">
-                        <asp:DropDownList ID="ddlSolicitud" runat="server" Height="16px" Width="181px" 
-                            onselectedindexchanged="ddlSolicitud_SelectedIndexChanged">
+                        <asp:DropDownList ID="ddlSolicitud" runat="server" Height="16px" Width="181px">
                             <asp:ListItem Value="1">Mant. Electrocardiograma</asp:ListItem>
                             <asp:ListItem Value="2">Mant. Sala Parto</asp:ListItem>
                             <asp:ListItem Value="3">Mant. Neumologia</asp:ListItem>
@@ -209,22 +208,6 @@
                     <td class="style1">
                     </td>      
                 </tr>
-                <tr>
-                      <td class="style11">
-                          Area</td>
-                      <td class="style12">
-                          :</td>
-                      <td class="style11">
-                          <asp:TextBox ID="TextBox1" runat="server" BackColor="#CCCCCC" 
-                              Width="177px" ReadOnly="True"></asp:TextBox>
-                      </td>
-                      <td class="style13">
-                      </td>
-                      <td class="style14">
-                      </td>
-                      <td class="style11">
-                      </td>
-                  </tr>
                   <tr>
                       <td class="style4">
                           &nbsp;</td>
@@ -445,3 +428,4 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PaginaActual" Runat="Server">
 </asp:Content>
+

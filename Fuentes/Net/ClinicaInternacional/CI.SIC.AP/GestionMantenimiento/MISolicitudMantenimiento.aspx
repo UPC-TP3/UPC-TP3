@@ -223,8 +223,8 @@
                         <asp:DropDownList ID="ddltiposervicio" runat="server" CssClass="stlComboBox" AutoPostBack="true"
                             OnSelectedIndexChanged="ddltiposervicio_SelectedIndexChanged" Width="80%">
                             <asp:ListItem Text="--Seleccionar--" Value="0"></asp:ListItem>
-                            <asp:ListItem Text="Equipo medico" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Infraestructura medica" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Equipo Mecanico" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Infraestructura" Value="2"></asp:ListItem>
                         </asp:DropDownList>
                     </td>
                 </tr>

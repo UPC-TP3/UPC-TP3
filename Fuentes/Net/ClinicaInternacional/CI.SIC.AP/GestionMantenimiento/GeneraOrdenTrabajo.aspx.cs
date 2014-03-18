@@ -17,7 +17,6 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
             Session["Usuario"] = "Freddy Casas";
             Session["CodUsuario"] = "us002";
             Session["Area"] = "Infraestructura";
-            CargarCombo();
         }
         else { if (estadopopup == 1) { mpeActSM.Show(); } }
     }
@@ -25,7 +24,7 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
 
     protected void ibBuscar_Click(object sender, EventArgs e)
     {
-
+      
         try
         {
             CargarGrilla();
@@ -37,6 +36,9 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
             ClientScript.RegisterStartupScript(typeof(string), "Mensaje", "<script language=\"JavaScript\"> alert('" + mensaje + "')</script>");
         }
     }
+
+
+
 
     #region Custom Methods
     private void CargarGrilla()
@@ -57,28 +59,7 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
         }
         lbContador.Text = lista.Count.ToString();
     }
-    private void CargarCombo()
-    {
-        BL_SolicitudMantenimiento obj = new BL_SolicitudMantenimiento();
 
-        var lista = obj.fn_ListaSM("00000000", "99999999");
-        if (lista.Count > 0)
-        {
-            ddlSolicitud.DataSource = lista;
-            ddlSolicitud.DataTextField = "Nrosolicitud";
-            ddlSolicitud.DataValueField = "Nrosolicitud";
-            ddlSolicitud.DataBind();
-        }
-        else
-        {
-            string mensaje = null;
-            mensaje = "No Existen Solicitudes Registradas";
-            //ucMOk.ShowSuccess(mensaje, 200, 400);
-            //ClientScript.RegisterStartupScript(typeof(string), "Mensaje", "<script language=\"JavaScript\"> alert('" + mensaje + "')</script>");
-            ddlSolicitud.DataBind();
-        }
-        lbContador.Text = lista.Count.ToString();
-    }
 
     public void Modificar(object sender, CommandEventArgs e)
     {
@@ -101,7 +82,7 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
 
     public void limpiar()
     {
-
+        
         txtOrdendeTrabajo.Text = "";
         txtFecCreacion.Text = "";
         txtCreadoX.Text = "";
@@ -137,7 +118,7 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
             BL_OrdenTrabajo obj = new BL_OrdenTrabajo();
 
             ordentrabajo.GM_NroOrden = int.Parse(e.CommandArgument.ToString());
-
+            
             if (obj.fn_EliminarOT(ordentrabajo))
             {
                 string mensaje = "Se eliminó correctamente la Orden de Trabajo";
@@ -167,14 +148,14 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
 
         BE_OrdendeTrabajo od = new BE_OrdendeTrabajo();
         od.GM_NroOrden = int.Parse(txtOrdendeTrabajo.Text == "" ? "0" : txtOrdendeTrabajo.Text);
-        od.GM_NroSolicitud = int.Parse(ddlSolicitud.SelectedValue);
+        od.GM_NroSolicitud = int.Parse(ddlSolicitud.SelectedValue); 
         od.GM_Fecha_Creacion = txtFecCreacion.Text;
         od.GM_CodigoSolicitante = txtCreadoX.Text;
         od.GM_Fecha_Inicio = txtFecInicio.Text;
         od.GM_Fecha_Fin = txtFecFin.Text;
         od.GM_Empleados_Asociados = txtPersonal.Text;
         od.GM_Prioridad = ddlPrioridad.SelectedValue;
-        od.GM_Comentarios = txtComentarios.Text;
+        od.GM_Comentarios= txtComentarios.Text;
         od.GM_Estado = ddlEstado.SelectedValue;
 
         return od;
@@ -215,7 +196,7 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
         ClientScript.RegisterStartupScript(typeof(string), "Mensaje", "<script language=\"JavaScript\"> alert('" + mensaje + "')</script>");
     }
 
-
+  
 
     #endregion
 
@@ -256,20 +237,25 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
         estadopopup = 1;
     }
 
+
+
+
+
     protected void Button1_Click(object sender, EventArgs e)
     {
-        txtPersonal.Text = ddlPersonal.SelectedValue + Environment.NewLine + txtPersonal.Text;
-    }
 
+        txtPersonal.Text = ddlPersonal.SelectedValue + Environment.NewLine + txtPersonal.Text;
+
+
+    }
+   
+    
     protected void ddlPersonal_SelectedIndexChanged(object sender, EventArgs e)
     {
 
     }
-    protected void gvOrdenTrabajo_SelectedIndexChanged(object sender, EventArgs e)
-    {
 
-    }
-    protected void ddlSolicitud_SelectedIndexChanged(object sender, EventArgs e)
+    protected void gvOrdenTrabajo_SelectedIndexChanged(object sender, EventArgs e)
     {
 
     }

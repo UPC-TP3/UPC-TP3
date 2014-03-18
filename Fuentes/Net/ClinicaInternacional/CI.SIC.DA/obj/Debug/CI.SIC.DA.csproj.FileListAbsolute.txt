@@ -29,13 +29,3 @@ E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.CC.pdb
 E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.csprojResolveAssemblyReference.cache
 E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.dll
 E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.pdb
-D:\UPC\11vo\TP3\UPC-TP3-NEW\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.DA.dll.config
-D:\UPC\11vo\TP3\UPC-TP3-NEW\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.DA.dll
-D:\UPC\11vo\TP3\UPC-TP3-NEW\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.DA.pdb
-D:\UPC\11vo\TP3\UPC-TP3-NEW\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.BE.dll
-D:\UPC\11vo\TP3\UPC-TP3-NEW\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.CC.dll
-D:\UPC\11vo\TP3\UPC-TP3-NEW\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.BE.pdb
-D:\UPC\11vo\TP3\UPC-TP3-NEW\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.CC.pdb
-D:\UPC\11vo\TP3\UPC-TP3-NEW\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.csprojResolveAssemblyReference.cache
-D:\UPC\11vo\TP3\UPC-TP3-NEW\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.dll
-D:\UPC\11vo\TP3\UPC-TP3-NEW\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.pdb
