@@ -88,28 +88,27 @@ public partial class GestionMantenimiento_MonitorearOT : System.Web.UI.Page
         lbContador.Text = lista.Count.ToString();
     }
 
-    //public void Modificar(object sender, CommandEventArgs e)
-    //{
-    //    try
-    //    {
-    //        txtid.Text = e.CommandArgument.ToString();
-    //        txtarea.Text = Session["Area"].ToString();
-    //        txtsolicitadopor.Text = Session["Usuario"].ToString();
-    //        hfcodsolicitado.Value = Session["CodUsuario"].ToString();
-    //        txtfechacreacion.Text = DateTime.Now.ToString("ddMMyyyy");
-    //        CargarRegistro(txtid.Text);
-    //        mpeActSM.Show();
-    //        estadopopup = 1;
-
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        string mensaje = null;
-    //        mensaje = "Error al mostrar los datos";
-    //        ucMOk.ShowError(mensaje, 200, 400);
-    //        //ClientScript.RegisterStartupScript(typeof(string), "Mensaje", "<script language=\"JavaScript\"> alert('" + mensaje + "')</script>");
-    //    }
-    //}
+    public void Modificar(object sender, CommandEventArgs e)
+    {
+        try
+        {
+            txtid.Text = e.CommandArgument.ToString();
+            txtarea.Text = Session["Area"].ToString();
+            txtsolicitadopor.Text = Session["Usuario"].ToString();
+            hfcodsolicitado.Value = Session["CodUsuario"].ToString();
+            txtfechacreacion.Text = DateTime.Now.ToString("ddMMyyyy");
+            CargarRegistro(txtid.Text);
+            mpeActSM.Show();
+            estadopopup = 1;
+        }
+        catch (Exception ex)
+        {
+            string mensaje = null;
+            mensaje = "Error al mostrar los datos";
+            ucMOk.ShowError(mensaje, 200, 400);
+            //ClientScript.RegisterStartupScript(typeof(string), "Mensaje", "<script language=\"JavaScript\"> alert('" + mensaje + "')</script>");
+        }
+    }
 
     //public void Eliminar(object sender, CommandEventArgs e)
     //{
@@ -249,7 +248,7 @@ public partial class GestionMantenimiento_MonitorearOT : System.Web.UI.Page
     //    mpeActSM.Hide();
     //    CargarGrilla();
     //}
-    private void Modificar()
+    private void Cerrar()
     {
         BL_OrdenTrabajo obj = new BL_OrdenTrabajo();
         var sm = crearbjeto();
@@ -308,7 +307,7 @@ public partial class GestionMantenimiento_MonitorearOT : System.Web.UI.Page
     {
         try
         {
-            Modificar();
+            Cerrar();
             //if (string.IsNullOrEmpty(txtid.Text))
             //{
             //    Insertar();

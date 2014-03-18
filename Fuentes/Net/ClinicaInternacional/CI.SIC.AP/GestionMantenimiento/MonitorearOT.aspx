@@ -117,14 +117,14 @@
                     Style="font-size: 10px" Width="100%" 
                     >
                     <Columns>
-                        <%--<asp:TemplateField HeaderText="Cerrar">
+                        <asp:TemplateField HeaderText="Cerrar">
                             <ItemStyle HorizontalAlign="Center" Width="80px" />
                             <HeaderStyle HorizontalAlign="Center" Width="80px" />
                             <ItemTemplate>
                                 <asp:ImageButton ID="ibModificar" runat="server" CausesValidation="False" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "GM_NroOrden") %>'
                                     OnCommand="Modificar" CommandName="Modificar" SkinID="Modificar" ToolTip="Modificar" />
                             </ItemTemplate>
-                        </asp:TemplateField>--%>
+                        </asp:TemplateField>
                         <%--<asp:TemplateField HeaderText="Anular" Visible="False">
                             <ItemTemplate>
                                 <asp:ImageButton ID="imbEliminar" runat="server" OnClientClick="return confirm('¿Esta seguro de eliminar este registro?');"

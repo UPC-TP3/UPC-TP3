@@ -85,7 +85,7 @@
                 <asp:GridView ID="gvEvaluarSolicitudes" runat="server" AutoGenerateColumns="False" 
                      SkinID="GridZX11" style=" font-size:10px" Width="100%" >
                     <Columns>
-                        <asp:TemplateField HeaderText="Modificar">
+                        <asp:TemplateField HeaderText="Aceptar/Anular">
                             <ItemStyle HorizontalAlign="Center" Width="80px" />
                             <HeaderStyle HorizontalAlign="Center" Width="80px" />
                             <ItemTemplate>
@@ -134,4 +134,3 @@
         </asp:Panel>
 </div>
 </asp:Content>
-
