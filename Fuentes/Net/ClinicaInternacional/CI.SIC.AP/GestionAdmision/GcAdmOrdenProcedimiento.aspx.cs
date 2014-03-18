@@ -18,6 +18,9 @@ public partial class GcAdmOrdenProcedimiento : System.Web.UI.Page
     }
 
     public void pDatoInicial(){
+
+        txtFechaOrdenProc.Text = DateTime.Today.ToString("dd/MM/yyyy");
+
         //Tipo Documento
         BL_TipoDocumento oTipoDocumentoBL = new BL_TipoDocumento();
         List<BE_TipoDocumento> lTipoDocumentoBE = null;

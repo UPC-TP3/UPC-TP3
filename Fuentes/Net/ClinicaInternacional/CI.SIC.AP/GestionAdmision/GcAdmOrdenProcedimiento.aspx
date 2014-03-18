@@ -187,7 +187,7 @@
                                     &nbsp;
                                 </td>
                                 <td style="width: 30%">
-                                    <asp:TextBox ID="txtFechaOrdenProc" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtFechaOrdenProc" runat="server" Enabled="False"></asp:TextBox>
                                 </td>
                                 <td style="width: 5%">
                                     
@@ -247,14 +247,17 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="5">
+                                <td colspan="6">
                                     <asp:TextBox ID="txtDescripcion" Width="450px" Height="40px" 
                                         TextMode="MultiLine" runat="server"></asp:TextBox>
                                 </td>
                             </tr>    
                             
+                            </table>
+
+                            <table border="0" cellpadding="0" cellspacing="0" width="400px">
                             <tr>
-                             <td align="right" colspan="5">
+                             <td align="right">
                              <div class="botones">
                                 <br />                     
                               <asp:Button ID="btnComprobantePago" Width="220px" runat="server" 
@@ -264,7 +267,8 @@
                              
                             </tr>                     
                              
-                        </table>
+                        
+                            </table>
 
 
                         <asp:HiddenField ID="hdfPacienteId" runat="server" />
