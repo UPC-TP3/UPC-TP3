@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
     <fieldset>
-        <legend style="font-size: medium">Agenda&nbsp;&nbsp;&nbsp; </legend>
+        <legend style="font-size: medium">Agenda del Medico&nbsp;&nbsp;&nbsp; </legend>
         <table class="formulario" style="font-size: 14px">
             <colgroup>
                 <col style="width: 20%;" />
@@ -87,8 +87,8 @@
             <SortedDescendingCellStyle BackColor="#FFFDF8" />
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
-        <asp:Button ID="btnCrear" runat="server" Text="Crear" CssClass="button" 
-                    onclick="btnCrear_Click" style="margin-left: 10px;" /><a href="frmAgendaMedica.aspx" class="button" >Cancelar</a>
+        <asp:Button ID="btnCrear" runat="server" Text="Nuevo Turno" CssClass="button" 
+                    onclick="btnCrear_Click" style="margin-left: 10px;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="frmAgendaMedica.aspx" class="button" >Regresar al Listado</a>
     </fieldset>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PaginaActual" Runat="Server">

@@ -61,6 +61,7 @@ public partial class GestionCitas_frmRegistrarConsulta : System.Web.UI.Page
                      lblDiagnostico.Enabled = false;
                      lblObservaciones.Enabled = false;
                      btnConfirmar.Visible = false;
+                     btnRecetar.Visible = true; 
 
                      grvMedicamentos.DataSource = new BRecetaMedica().Listar(consulta.Id_Consulta);
                      grvMedicamentos.DataBind();

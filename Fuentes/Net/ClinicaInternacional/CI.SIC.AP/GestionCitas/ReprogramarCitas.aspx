@@ -3,6 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
+<p>
+    <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="Small" 
+        Text="Mantenimiento de Citas"></asp:Label>
+</p>
     <asp:GridView ID="grvCitas" runat="server" AutoGenerateColumns="False" 
         CellPadding="4" DataKeyNames="CodigoCita" 
         onselectedindexchanged="GridView1_SelectedIndexChanged" Font-Size="X-Small" 

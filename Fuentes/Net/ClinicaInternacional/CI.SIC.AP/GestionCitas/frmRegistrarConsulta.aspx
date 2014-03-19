@@ -8,7 +8,7 @@
         }
         .style2
         {
-            width: 403px;
+            width: 281px;
         }
     </style>
 </asp:Content>
@@ -246,9 +246,23 @@
                                     </tr>
                                     <tr>
                                         <td>
+                                         
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
                                             <asp:Button ID="btnRecetar" runat="server" 
                                                 Text="Recetar Medicina" onclick="btnRecetar_Click" Visible="False" />
                                         </td>
+                                        <td>
+                                            &nbsp;</td>
+                                        <td>
+                                            &nbsp;</td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>
+                                            MEDICAMENTOS</td>
                                         <td>
                                             &nbsp;</td>
                                         <td>
@@ -263,22 +277,35 @@
                         <td class="style2">
                          
                             <asp:GridView ID="grvMedicamentos" runat="server" AutoGenerateColumns="False" 
-                                Font-Size="Small">
+                                Font-Size="Small" CellPadding="4" ForeColor="#333333" GridLines="None" 
+                                Width="539px">
+                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                                 <Columns>
                                     <asp:BoundField DataField="NombreMedicamento" HeaderText="Medicamento" />
                                     <asp:BoundField DataField="Dosis" HeaderText="Dosis" />
                                     <asp:BoundField DataField="Frecuencia" HeaderText="Frecuencia" />
                                     <asp:BoundField DataField="Observacion" HeaderText="Observacion" />
                                 </Columns>
+                                <EditRowStyle BackColor="#999999" />
+                                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                                <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                                <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                             </asp:GridView>
                          
                         </td>
                     </tr>
                     <tr>
+                       
                         <td colspan="2">
                             <asp:Button runat="server" ID="btnConfirmar" Text="Grabar Consulta" CssClass="button"
                                 OnClick="btnConfirmar_Click" />&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;<a href="frmConsultaMedica.aspx" class="button">Cancelar</a>
+                            &nbsp;&nbsp;&nbsp;<a href="frmConsultaMedica.aspx" class="button">Regresar al Listado</a>
                             </td>
                     </tr>
                 </table>

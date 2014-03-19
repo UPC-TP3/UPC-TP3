@@ -126,7 +126,7 @@
            
             <tr>
                 <td>
-                    Numero Consultorio
+                    Número Consultorio
                 </td>
                 <td>
                     :
@@ -148,7 +148,7 @@
 
             <tr>
                 <td>
-                    Estado 
+                    Activo 
                 </td>
                 <td>
                     :
@@ -169,7 +169,7 @@
 
             <tr>
                 <td>
-                    <asp:Button ID="btnGrabar" runat="server" Text="Grabar" CssClass="button" 
+                    <asp:Button ID="btnGrabar" runat="server" Text="Grabar Agenda" CssClass="button" 
                         onclick="btnGrabar_Click" />
                 </td>
                 <td>

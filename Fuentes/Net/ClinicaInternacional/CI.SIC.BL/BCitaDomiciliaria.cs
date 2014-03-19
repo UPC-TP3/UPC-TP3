@@ -58,6 +58,18 @@ namespace CI.SIC.BL
             };
             _contexto.AddToTB_CITA(objeto);
             _contexto.SaveChanges();
+
+
+            //DESACTIVAR EL ESTADO DE LA AGENDA MEDICA////////
+            var objeto2 = _contexto.TB_AGENDA_MEDICA.FirstOrDefault(c => c.ID_AgendaMedica == cita.CodigoAgenda);
+            if (objeto2 != null)
+            {
+
+                objeto2.Estado = false;
+                _contexto.SaveChanges();
+            }
+            //////////////////////////////////////////////////
+
             return objeto.ID_Cita;
         }
 

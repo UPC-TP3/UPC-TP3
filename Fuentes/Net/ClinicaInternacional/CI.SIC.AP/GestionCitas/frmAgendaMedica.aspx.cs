@@ -27,8 +27,5 @@ public partial class GestionCitas_frmAgendaMedica : System.Web.UI.Page
             Response.Redirect("FrmAgendaDetalle.aspx?CodigoMedico=" + CodigoMedico);
         }
     }
-    protected void grvMedico_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
+   
 }

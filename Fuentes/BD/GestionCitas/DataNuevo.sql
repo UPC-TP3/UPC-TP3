@@ -1,4 +1,5 @@
 
+insert into TB_Especialidad (Descripcion) values ('(Todos)')
 insert into TB_Especialidad (Descripcion) values ('Pediatría')
 insert into TB_Especialidad (Descripcion) values ('Dermatología')
 insert into TB_Especialidad (Descripcion) values ('Urología')
@@ -17,21 +18,23 @@ insert into TB_Consultorio values (NULL,'102',1,NULL,1)
 insert into TB_Consultorio values (NULL,'200',1,NULL,2)
 insert into TB_Consultorio values (NULL,'201',1,NULL,2)
 insert into TB_Consultorio values (NULL,'202',1,NULL,2)
+insert into TB_Consultorio values (NULL,'Domicilio',1,NULL,2)
 
 
 insert TB_Estado_Cita  values ('Pendiente')
 insert TB_Estado_Cita  values ('Atendido')
 
+insert TB_Medico values('(Todos)','Cueto Garcia','45656',NULL,'3482639','AV. LIMA 456','998599270','3482639',NULL,NULL,'45612333')
 insert TB_Medico values('Cesar','Cueto Garcia','45656',NULL,'3482639','AV. LIMA 456','998599270','3482639',NULL,NULL,'45612333')
 insert TB_Medico values('Manuel','Cespedez Reaño','78965',NULL,NULL,'JR. LAMPA 456',NULL,NULL,NULL,NULL,'CP456789') 
 insert TB_Medico values('Carlos','Fasabi Mendoza','13352',NULL,NULL,'AV. IQUITOS 963',NULL,NULL,NULL,NULL,'LT456133') 
 insert TB_Medico values('Jhon','Lucana Sanchez','96456',NULL,NULL,'AV. LOS DELFINES 963',NULL,NULL,NULL,NULL,'96423331') 
 
 
-insert TB_MEDICOESPECIALIDAD values(1,1)
 insert TB_MEDICOESPECIALIDAD values(2,2)
 insert TB_MEDICOESPECIALIDAD values(3,3)
 insert TB_MEDICOESPECIALIDAD values(4,4)
+insert TB_MEDICOESPECIALIDAD values(5,5)
 
 
 INSERT TB_TIPO_DOCUMENTO VALUES ('DOCUMENTO DE IDENTIDAD')
@@ -68,6 +71,10 @@ insert TB_Turno values ('Tarde','17:30 - 18:00')
 
 
 insert TB_MEDICAMENTO values('Panadol',NULL,NULL,NULL,NULL,NULL,NULL)
+insert TB_MEDICAMENTO values('Penisilina',NULL,NULL,NULL,NULL,NULL,NULL)
+insert TB_MEDICAMENTO values('Vitaminas',NULL,NULL,NULL,NULL,NULL,NULL)
+insert TB_MEDICAMENTO values('Kitadol',NULL,NULL,NULL,NULL,NULL,NULL)
+insert TB_MEDICAMENTO values('Ranitidina',NULL,NULL,NULL,NULL,NULL,NULL)
 
 
 

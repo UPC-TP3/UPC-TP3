@@ -5,11 +5,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
 <fieldset>
         <legend style="font-size: 13px">
-            <br />
+            AGENDA MEDICA<br />
+            <br />  
             Seleccionar Médico</legend>
         <asp:GridView ID="grvMedico" runat="server" Width="95%" CssClass="datos" AutoGenerateColumns="False"
             DataKeyNames="CodigoMedico" OnRowCommand="grvMedico_RowCommand" 
-            onselectedindexchanged="grvMedico_SelectedIndexChanged" CellPadding="4" 
+            CellPadding="4" 
             Font-Size="Small" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
@@ -42,7 +43,6 @@
             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
         <br />
-        <a href="/" class="button" style="margin-left: 10px;margin-bottom:25px;">Cancelar</a>
     </fieldset>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PaginaActual" Runat="Server">

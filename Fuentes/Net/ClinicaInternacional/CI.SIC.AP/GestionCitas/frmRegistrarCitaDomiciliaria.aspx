@@ -45,7 +45,7 @@
 
     function btnBuscarMedico_onclick() {
 
-        window.open('BuscarAgendaMedica.aspx', null, 'left=400, top=100, height=450, width= 750, status=no, resizable=si, scrollbars=si, location= no');
+        window.open('BuscarAgendaMedica.aspx', null, 'left=400, top=100, height=450, width= 800, status=no, resizable=si, scrollbars=si, location= no');
 
 
     }
@@ -65,7 +65,8 @@
                             <fieldset style="height: 120px;">
                                 <legend>Paciente</legend>
                                 <asp:HiddenField runat="server" ID="hdnCodigoPaciente" Value="0" />
-                                <input type="button" id="btnBuscarPaciente" value="Buscar"  onclick="return btnBuscarPaciente_onclick()" />
+                                <input type="button" id="btnBuscarPaciente" value="Buscar Paciente"  
+                                    onclick="return btnBuscarPaciente_onclick()" />
                                 <table class="formulario">
                                     <colgroup>
                                         <col style="width: 20%;" />
@@ -129,7 +130,7 @@
                                     </tr>
                                     <tr>
                                         <td class="style1">
-                                            Direccion
+                                            Dirección
                                         </td>
                                         <td>
                                             :
@@ -149,7 +150,7 @@
                                 <legend>Médico</legend>
                                 <asp:HiddenField ID="hdnIdEspecialidad" runat="server" />
                                 <asp:HiddenField runat="server" ID="hdnCodigoMedico" Value="0" />
-                                <input type="button" id="btnBuscarMedico" value="Buscar" onclick="return btnBuscarMedico_onclick()" />
+                                <input type="button" id="btnBuscarMedico" value="Buscar Medico" onclick="return btnBuscarMedico_onclick()" />
                                 <table class="formulario">
                                     <colgroup>
                                         <col style="width: 20%;" />
@@ -303,8 +304,8 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <asp:Button runat="server" ID="btnConfirmar" Text="Confirmar Cita" CssClass="button"
-                                OnClick="btnConfirmar_Click" /><a href="frmCitaDomicilio.aspx" class="button">Cancelar</a>
+                            <asp:Button runat="server" ID="btnConfirmar" Text="Grabar Cita" CssClass="button"
+                                OnClick="btnConfirmar_Click" />&nbsp;&nbsp;&nbsp;&nbsp; <a href="frmCitaDomicilio.aspx" class="button">Regresar al Listado</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="." 
                                 Width="16px" />
                             <asp:Button ID="Button2" runat="server" onclick="Button2_Click" Text="." 

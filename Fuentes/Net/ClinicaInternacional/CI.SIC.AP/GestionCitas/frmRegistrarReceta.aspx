@@ -4,7 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
  <fieldset>
-        <legend>Registrar Agenda Medica</legend>
+        <legend>Registrar Receta de Medicamentos</legend>
+        <asp:HiddenField ID="hdnCodigoCita" runat="server" />
         <asp:HiddenField runat="server" ID="hdnCodigoConsulta" Value="0" />
         <asp:HiddenField runat="server" ID="hdnCodigoMedico" Value="0" />
         <asp:HiddenField ID="hdnCodigoPaciente" runat="server" 
@@ -81,7 +82,7 @@
 
             <tr>
                 <td>
-                    Observacion 
+                    Observación 
                 </td>
                 <td>
                     :

@@ -51,17 +51,18 @@
 
     <asp:GridView ID="grvCitas" runat="server" AutoGenerateColumns="False" 
         CellPadding="4" DataKeyNames="CodigoCita" 
-        onselectedindexchanged="GridView1_SelectedIndexChanged" Font-Size="Small" 
+        onselectedindexchanged="GridView1_SelectedIndexChanged" Font-Size="X-Small" 
         ForeColor="#333333" GridLines="None" Width="694px">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
-            <asp:BoundField DataField="CodigoCita" HeaderText="Codigo" />
+            <asp:BoundField DataField="CodigoCita" HeaderText="Código" />
             <asp:BoundField DataField="FechaAgenda" HeaderText="Fecha" 
                 DataFormatString="{0:d}" />
             <asp:BoundField DataField="NumeroConsultorio" HeaderText="Consultorio" />
             <asp:BoundField DataField="Horario_Turno" HeaderText="Horario" />
             <asp:BoundField DataField="NombrePaciente" HeaderText="Paciente" />
             <asp:BoundField DataField="Dni" HeaderText="DNI" />
+            <asp:BoundField DataField="NombreMedico" HeaderText="Medico" />
             <asp:BoundField DataField="DesEstado" HeaderText="Estado" />
             
             <asp:CommandField ShowSelectButton="True" />

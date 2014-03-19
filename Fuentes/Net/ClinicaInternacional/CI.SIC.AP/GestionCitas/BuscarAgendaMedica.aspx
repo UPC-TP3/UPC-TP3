@@ -44,7 +44,10 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
+    <p>
+        <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="Large" 
+            Text="Consultar Agenda Medica"></asp:Label>
+    </p>
     <table class="formulario">
                                     <colgroup>
                                         <col style="width: 20%;" />
@@ -108,6 +111,7 @@
                 <asp:BoundField DataField="NumeroConsultorio" HeaderText="Nro Consultorio" />
                 <asp:BoundField DataField="NombresMedico" HeaderText="Nombre Medico" />
                 <asp:BoundField DataField="ApellidosMedico" HeaderText="Apellidos Medico" />
+                <asp:BoundField DataField="DescripcionEspecialidad" HeaderText="Especialidad" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" ForeColor="White" Font-Bold="True" />

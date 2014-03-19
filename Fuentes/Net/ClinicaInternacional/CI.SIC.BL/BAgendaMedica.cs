@@ -79,7 +79,7 @@ namespace CI.SIC.BL
 
            // string fec = string.Format("{0:yyyyMMdd HH:mm:ss}", Convert.ToDateTime(fecha));
 
-            return _contexto.TB_AGENDA_MEDICA.Where(f => f.Fecha == fecha && f.ID_Especialidad == codigoEspecialidad).Select(am => new EAgendaMedica
+            return _contexto.TB_AGENDA_MEDICA.Where(f => f.Fecha == fecha && f.ID_Especialidad == codigoEspecialidad && f.Estado == true).Select(am => new EAgendaMedica
             {
                 CodigoAgenda = am.ID_AgendaMedica,
                 Fecha = am.Fecha,
@@ -114,24 +114,7 @@ namespace CI.SIC.BL
         //    }).ToList();
         //}
 
-        //public List<EAgendaMedica> Listar(bool estado)
-        //{
-        //    return _contexto.TB_AGENDA_MEDICA.Where(f => f.Estado == estado).Select(am => new EAgendaMedica
-        //    {
-        //        CodigoAgenda = am.ID_AgendaMedica,
-        //        Fecha = am.Fecha,
-        //        //HoraInicio = am.HoraInicio,
-        //        //HoraFin = am.HoraFin,
-        //        Horario_Turno = am.TB_TURNO.Horario_Turno, 
-        //        Estado = am.Estado,
-        //        EstadoDisplay = am.Estado ? "Activo" : "Inactivo",
-        //        CodigoMedico = am.ID_Medico,
-        //        NombresMedico = am.TB_MEDICO.nom_medico,
-        //        ApellidosMedico = am.TB_MEDICO.ape_medico,
-        //        DescripcionEspecialidad = am.TB_MEDICO.TB_ESPECIALIDAD.T    am.TB_Medico.TB_Especialidad.Descripcion,
-        //        NumeroConsultorio = am.TB_CONSULTORIO.nro_consultorio   
-        //    }).ToList();
-        //}
+        
 
         public List<EAgendaMedica> Listar(bool estado)
         {

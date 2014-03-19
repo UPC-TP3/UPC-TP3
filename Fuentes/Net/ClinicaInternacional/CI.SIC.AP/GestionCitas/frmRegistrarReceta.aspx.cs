@@ -18,13 +18,14 @@ public partial class GestionCitas_frmRegistrarReceta : System.Web.UI.Page
             if (Request.QueryString["codigo"] != null)
             {
                 var codigoConsulta = Convert.ToString(Request.QueryString["codigo"]);
-              //  hdnCodigoAgenda.Value = codigoAgenda;
+                hdnCodigoCita.Value = codigoConsulta;
                 var consultaMedica = new BConsulta().Obtener(Convert.ToInt32(codigoConsulta));
                 if (consultaMedica != null)
                 {
                     hdnCodigoMedico.Value = consultaMedica.Id_Medico.ToString();
                     hdnCodigoPaciente.Value = consultaMedica.Id_Paciente.ToString();
-                    hdnCodigoConsulta.Value = consultaMedica.Id_Consulta.ToString(); 
+                    hdnCodigoConsulta.Value = consultaMedica.Id_Consulta.ToString();
+                   
                 }
             }
             ////else
@@ -48,35 +49,7 @@ public partial class GestionCitas_frmRegistrarReceta : System.Web.UI.Page
 
     protected void btnGrabar_Click(object sender, EventArgs e)
     {
-        //DateTime? fechaInicio = null;
-        //DateTime? fechaFin = null;
-
-        //if (!string.IsNullOrEmpty(txtFecha.Text))
-        //{
-        //    fechaInicio = new DateTime(
-        //        Convert.ToInt32(txtFecha.Text.Substring(0, 4)),
-        //        Convert.ToInt32(txtFecha.Text.Substring(5, 2)),
-        //        Convert.ToInt32(txtFecha.Text.Substring(8, 2))
-        //        );
-
-            //if (!string.IsNullOrEmpty(txtHoraInicio.Text))
-            //    fechaInicio = new DateTime(
-            //        Convert.ToInt32(txtFecha.Text.Substring(0, 4)),
-            //        Convert.ToInt32(txtFecha.Text.Substring(5, 2)),
-            //        Convert.ToInt32(txtFecha.Text.Substring(8, 2)),
-            //        Convert.ToInt32(txtHoraInicio.Text.Substring(0, 2)),
-            //        Convert.ToInt32(txtHoraInicio.Text.Substring(3, 2)), 0
-            //        );
-
-            //if (!string.IsNullOrEmpty(txtHoraFin.Text))
-            //    fechaFin = new DateTime(
-            //        Convert.ToInt32(txtFecha.Text.Substring(0, 4)),
-            //        Convert.ToInt32(txtFecha.Text.Substring(5, 2)),
-            //        Convert.ToInt32(txtFecha.Text.Substring(8, 2)),
-            //        Convert.ToInt32(txtHoraFin.Text.Substring(0, 2)),
-            //        Convert.ToInt32(txtHoraFin.Text.Substring(3, 2)), 0
-            //        );
-       // }
+        
 
         //if (hdnCodigoConsulta.Value == "0")
         //{
@@ -88,6 +61,8 @@ public partial class GestionCitas_frmRegistrarReceta : System.Web.UI.Page
             Id_Medico = Convert.ToInt32(hdnCodigoMedico.Value),
             Id_Consulta  = Convert.ToInt32(hdnCodigoConsulta.Value),
             Id_Medicamento = Convert.ToInt32(cboMedicamento.SelectedValue),
+            Dosis = txtDosis.Text,
+            Frecuencia = txtFrecuencia.Text, 
         });
 
         //}
@@ -113,8 +88,8 @@ public partial class GestionCitas_frmRegistrarReceta : System.Web.UI.Page
         // Response.Redirect("frmAgendaMedica.aspx", true);
 
 
-        Response.Redirect("frmRegistrarConsulta.aspx?codigo=" + hdnCodigoConsulta.Value);
-
+        Response.Redirect("frmRegistrarConsulta.aspx?codigo=" + hdnCodigoCita.Value);
+        
 
         //Limpiar();
     }

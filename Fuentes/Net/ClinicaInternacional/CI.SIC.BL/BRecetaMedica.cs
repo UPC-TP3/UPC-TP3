@@ -24,7 +24,8 @@ namespace CI.SIC.BL
                     Id_Medicamento = Cita.ID_Medicamento,
                     NombreMedicamento = Cita.TB_MEDICAMENTO.GE_NombreMedicamento,
                     Dosis = Cita.Dosis ,
-                    Frecuencia = Cita.Frecuencia  
+                    Frecuencia = Cita.Frecuencia,
+                    Observacion = Cita.GA_Doctor 
                 }).ToList();
 
         }
@@ -66,7 +67,9 @@ namespace CI.SIC.BL
                Id_Medicamento = cita.ID_Medicamento, 
                Observacion = cita.GA_Doctor,
                Dosis = cita.Dosis,
-               Frecuencia = cita.Frecuencia 
+               Frecuencia = cita.Frecuencia,
+               Id_Medico = cita.ID_Medico,
+               Id_Paciente = cita.ID_Paciente 
                 
            }).FirstOrDefault();
        }

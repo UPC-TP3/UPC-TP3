@@ -10,7 +10,7 @@
         ForeColor="#333333" GridLines="None" Width="694px">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
-            <asp:BoundField DataField="CodigoCita" HeaderText="Codigo" />
+            <asp:BoundField DataField="CodigoCita" HeaderText="Código" />
             <asp:BoundField DataField="FechaAgenda" HeaderText="Fecha" 
                 DataFormatString="{0:d}" />
             <asp:BoundField DataField="NumeroConsultorio" HeaderText="Consultorio" />
