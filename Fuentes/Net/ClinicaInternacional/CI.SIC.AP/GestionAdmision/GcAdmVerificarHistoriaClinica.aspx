@@ -1,12 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true"  ClientIDMode="Static" CodeFile="GcAdmEmergencia.aspx.cs" Inherits="GestionAdmision_GcAdmEmergencia" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" CodeFile="GcAdmVerificarHistoriaClinica.aspx.cs" Inherits="GestionAdmision_GcAdmVerificarHistoriaClinica" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
    <script language="javascript" type="text/javascript" src="../js/jquery-1.7.1.js" ></script>
-    <script language="javascript" type="text/javascript" src="GcAdmEmergencia.js"></script>
+    <script language="javascript" type="text/javascript" src="GcAdmVerificarHistoriaClinica.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
 <div class="cab">
-   <h2>Admisión Emergencia</h2>
+   <h2>Historia Clínica</h2>
 </div>
 <div class="filtro" style="margin-bottom:0px;">
 <div class="block_center">
@@ -26,9 +26,8 @@
 </div>
 <div class="botones">
 <br />
-            <asp:Button ID="btnVerificar" Width="108px"  
-        runat="server"  Text="Verificar Paciente" 
-        onclick="btnVerificar_Click"    />
+            <asp:Button ID="btnVerificar" Width="115px"  
+        runat="server"  Text="Verificar Paciente" onclick="btnVerificar_Click"   />
  </div>  
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PaginaActual" Runat="Server">

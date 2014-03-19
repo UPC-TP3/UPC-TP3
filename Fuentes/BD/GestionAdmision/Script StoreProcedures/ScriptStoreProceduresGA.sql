@@ -137,7 +137,6 @@ values
 END
 GO
 
-
 CREATE PROC usp_RegistrarPaciente
 /*
 Nombre: usp_RegistrarPaciente
@@ -154,13 +153,16 @@ Fecha: 10/03/2014
 @Telefono	VARCHAR(10),
 @Direccion	VARCHAR(150),
 @Sexo		INT,
-@IdTipoDoc	INT
+@IdTipoDoc	INT,
+@ID_Pais		INT,
+@ID_Departamento	INT,
+@ID_Provincia		INT,
+@ID_Distrito	INT
 AS
-	INSERT INTO			dbo.TB_PACIENTE		
-						(ID_TipoDocumento,dni_paciente,FechaNacimiento,Celular,
-						TelefonoDomicilio,Direccion,ID_Sexo,nombres,ApellidoPat,ApellidoMat) 
+	INSERT INTO			dbo.TB_PACIENTE	(ID_TipoDocumento,dni_paciente,FechaNacimiento,Celular,
+						TelefonoDomicilio,Direccion,ID_Sexo,nombres,ApellidoPat,ApellidoMat,ID_Pais,ID_Departamento,ID_Provincia,ID_Distrito) 
 	VALUES				(@IdTipoDoc,@DNI,@FechaNac,@Celular,@Telefono,@Direccion,@Sexo,@Nombres,
-						@ApellidoP,@ApellidoM)
+						@ApellidoP,@ApellidoM,@ID_Pais,@ID_Departamento,@ID_Provincia,@ID_Distrito)
 GO
 
 
@@ -189,7 +191,73 @@ Fecha: 10/03/2014
 */
 @DNI		VARCHAR(11)
 AS
-	SELECT dni_paciente FROM dbo.TB_PACIENTE WHERE dni_paciente = @DNI
+	SELECT ID_Paciente, dni_paciente,FechaNacimiento,Direccion,nombres,ApellidoPat,ApellidoMat,ID_TipoDocumento,ID_Sexo FROM dbo.TB_PACIENTE WHERE dni_paciente = @DNI
+	
+go
+
+
+CREATE PROC usp_ListarUbiGeo 
+@MAS_CodTabla	VARCHAR(10),
+@MAS_Valor		VARCHAR(10)
+AS
+	SELECT MAS_CodCampo, MAS_DesCorta FROM dbo.TB_MAESTRO_TABLAS
+	WHERE MAS_CodTabla = @MAS_CodTabla 
+	AND MAS_Valor = @MAS_Valor 
+GO
+
+
+
+CREATE PROC usp_RegistrarHistoriaClinica
+/*
+Nombre: usp_RegistrarPaciente
+Creado Por: Lsalvatierra
+Proposito: Registrar Paciente a Emergencia.
+Fecha: 10/03/2014
+*/
+@IntervecionQ	VARCHAR(250),
+@Alergias	VARCHAR(400),
+@ID_Paciente	INT,
+@ID_GrupoSanguineo	INT,
+@ID_Procedencia		INT
+AS
+	DECLARE @ID_Historia	INT;
+	
+	INSERT INTO			dbo.TB_HISTORIA_CLINICA
+						(IntervecionQ,Alergias,ID_Paciente,ID_GrupoSanguineo,FechaRegistro,Antecedentes) 
+	VALUES				(@IntervecionQ,@Alergias,@ID_Paciente,@ID_GrupoSanguineo,GETDATE(),'')
+
+	SELECT @ID_Historia = IDENT_CURRENT ('dbo.TB_HISTORIA_CLINICA');
+	
+	INSERT INTO			dbo.TB_DET_HISTORIA_CLINICA
+						(ID_Historia,ID_Procedencia,FechaAtencion) 
+	VALUES				(@ID_Historia,@ID_Procedencia,GETDATE())
+GO
+
+
+CREATE PROC usp_DetalleHistoriClinica
+@ID_Paciente	INT
+AS
+	SELECT ID_DetHistoria,a.ID_Historia,dbo.fn_DescProcedencia(ID_Procedencia) AS Procedencia,ISNULL(Diagnostico,'') AS Diagnostico, ISNULL(Tratamiento,'') AS Tratamiento, a.FechaAtencion
+	FROM dbo.TB_DET_HISTORIA_CLINICA a, dbo.TB_HISTORIA_CLINICA b 
+	WHERE A.ID_Historia = B.ID_Historia AND ID_Paciente = @ID_Paciente
+GO
+
+
+CREATE FUNCTION fn_DescProcedencia 
+(
+    @ID_Procedencia INT
+)
+RETURNS VARCHAR(MAX)
+AS
+BEGIN
+    DECLARE @Nom_Procedencia VARCHAR(MAX)
+
+    SELECT	@Nom_Procedencia = MAS_DesCorta
+	  FROM	dbo.TB_MAESTRO_TABLAS
+   WHERE	MAS_CodTabla = 'TB_TIPADM'
+   AND		MAS_CodCampo = @ID_Procedencia
+    RETURN @Nom_Procedencia
+END
 GO
 
 CREATE PROCEDURE usp_GetCartaXCodigo
@@ -292,7 +360,7 @@ BEGIN
 SELECT O.[ID_Orden_Hospitalizacion]
       ,O.[FechaOrden]
       ,O.[Prevision]
-      ,O.[Motivo]
+      ,O.[ID_Estado]
       ,ISNULL(O.[Tratamiento], '') [Tratamiento]
       ,O.[NroDiasHospitalizacion]
       ,ISNULL(O.[ExamenesPreOperatorios], '') [ExamenesPreOperatorios]
@@ -310,7 +378,7 @@ SELECT O.[ID_Orden_Hospitalizacion]
   FROM [dbo].[TB_ORDEN_HOSPITALIZACION] O 
  --INNER JOIN [TB_MEDICO] M ON O.ID_MedicoTratante = M.ID_Medico
   WHERE [ID_Orden_Hospitalizacion] = @pIdOrden
-  AND RTRIM(O.Motivo) IN ('1','3')
+  AND RTRIM(O.ID_Estado) IN ('1','3')
 END
 
 GO
@@ -402,6 +470,184 @@ INSERT INTO [dbo].[TB_HOJA_INGRESO_HOSPITALIZACION]
 
 
 UPDATE TB_ORDEN_HOSPITALIZACION SET MOTIVO='3' WHERE ID_Orden_Hospitalizacion = @ID_Orden_Hospitalizacion 
+END
+
+GO
+CREATE PROCEDURE usp_Select_MedicoPorEspecialidad
+@ID_Especialidad int
+AS
+BEGIN
+SELECT M.ID_Medico,
+       M.ape_medico + ', ' + M.nom_medico AS nom_medico
+  FROM TB_MEDICO M INNER JOIN TB_MEDICOESPECIALIDAD ME
+  ON M.ID_Medico=ME.ID_Medico
+  WHERE ID_Especialidad = @ID_Especialidad
+  END
+  
+ GO
+CREATE PROCEDURE [dbo].[usp_Get_Orden_Procedimiento]
+ @ID_Orden_de_Procedimiento int
+AS
+BEGIN
+
+SELECT 
+ID_Orden_de_Procedimiento
+,NombreOrdenProcedimiento
+,FechaOrdenProcedimiento
+,CartaGarantia
+,ID_Paciente
+,ID_Medico
+,Estado
+,Aseguradora FROM TB_ORDEN_DE_PROCEDIMIENTO
+WHERE ID_Orden_de_Procedimiento=@ID_Orden_de_Procedimiento
+
+END
+
+GO
+CREATE PROCEDURE usp_Update_Orden_Procedimiento
+ @ID_Orden_de_Procedimiento int
+,@NombreOrdenProcedimiento varchar(255)
+,@FechaOrdenProcedimiento datetime
+,@CartaGarantia varchar(255)
+,@ID_Paciente int
+,@ID_Medico int
+,@Estado varchar(255)
+,@Aseguradora varchar(150)
+
+AS
+BEGIN
+
+UPDATE TB_ORDEN_DE_PROCEDIMIENTO
+SET
+ NombreOrdenProcedimiento=@NombreOrdenProcedimiento
+,FechaOrdenProcedimiento=@FechaOrdenProcedimiento
+,CartaGarantia=@CartaGarantia
+,ID_Paciente=@ID_Paciente
+,ID_Medico=@ID_Medico
+,Estado=@Estado
+,Aseguradora=@Aseguradora
+WHERE ID_Orden_de_Procedimiento=@ID_Orden_de_Procedimiento
+
+END
+
+GO
+CREATE PROCEDURE usp_Insert_Orden_Procedimiento
+ @ID_Orden_de_Procedimiento int
+,@NombreOrdenProcedimiento varchar(255)
+,@FechaOrdenProcedimiento datetime
+,@CartaGarantia varchar(255)
+,@ID_Paciente int
+,@ID_Medico int
+,@Estado varchar(255)
+,@Aseguradora varchar(150)
+
+AS
+BEGIN
+
+INSERT INTO TB_ORDEN_DE_PROCEDIMIENTO
+(NombreOrdenProcedimiento
+,FechaOrdenProcedimiento
+,CartaGarantia
+,ID_Paciente
+,ID_Medico
+,Estado
+,Aseguradora)
+     VALUES
+(@NombreOrdenProcedimiento
+,@FechaOrdenProcedimiento
+,@CartaGarantia
+,@ID_Paciente
+,@ID_Medico
+,@Estado
+,@Aseguradora)
+
+
+END
+
+
+GO
+
+
+
+
+
+
+CREATE PROCEDURE usp_GetOrdenesHospitalizacion
+@pfecIni datetime,
+@pfecFin datetime
+AS
+BEGIN
+SELECT O.ID_Orden_Hospitalizacion
+      ,O.FechaOrden
+      ,O.Prevision
+      ,O.Tratamiento
+      ,O.NroDiasHospitalizacion
+      ,O.ExamenesPreOperatorios
+      ,O.ID_MedicoTratante
+      ,(SELECT M.nom_medico + ' ' + M.ape_medico FROM TB_MEDICO  M WHERE  M.ID_Medico = O.ID_MedicoTratante) MedTratante
+      ,O.ID_MedicoTurno
+       ,(SELECT M.nom_medico + ' ' + M.ape_medico FROM TB_MEDICO  M WHERE  M.ID_Medico = O.ID_MedicoTurno) MedTurno
+      ,O.ID_Paciente
+      ,(SELECT P.nombres + ' ' + P.ApellidoPat FROM TB_PACIENTE  P WHERE  P.ID_Paciente = O.ID_Paciente) Paciente
+      ,O.FechaHora
+      ,O.Observaciones
+      ,O.ID_Motivo_Hospitalizacion
+      ,MO.DescripcionInternamiento
+      ,O.ID_Consulta
+      ,O.ID_Local
+      ,O.ID_Estado
+  FROM TB_ORDEN_HOSPITALIZACION O  INNER JOIN
+  TB_MOTIVO_HOSPITALIZACION MO ON MO.ID_Motivo_Hospitalizacion = O.ID_Motivo_Hospitalizacion
+  WHERE O.FechaOrden between @pfecIni AND @pfecFin
+END
+
+GO
+
+CREATE PROCEDURE usp_InsertOrdenHospital
+@Prevision varchar(255),
+@NroDiasHospitalizacion int,
+@ExamenesPreOperatorios varchar(255),
+@ID_MedicoTratante int,
+@ID_MedicoTurno int,
+@ID_Paciente int,
+@FechaHora datetime,
+@ID_Motivo_Hospitalizacion int,
+@ID_Consulta int,
+@ID_Local int
+
+AS
+BEGIN
+INSERT INTO [dbo].[TB_ORDEN_HOSPITALIZACION]
+           ([FechaOrden]
+           ,[Prevision]
+           ,[Tratamiento]
+           ,[NroDiasHospitalizacion]
+           ,[ExamenesPreOperatorios]
+           ,[ID_MedicoTratante]
+           ,[ID_MedicoTurno]
+           ,[ID_Paciente]
+           ,[FechaHora]
+           ,[Observaciones]
+           ,[ID_Motivo_Hospitalizacion]
+           ,[ID_Consulta]
+           ,[ID_Local]
+           ,[ID_Estado])
+     VALUES
+           (GETDATE()
+           ,@Prevision
+           ,''
+           ,@NroDiasHospitalizacion
+           ,@ExamenesPreOperatorios
+           ,@ID_MedicoTratante
+           ,@ID_MedicoTurno
+           ,@ID_Paciente
+           ,@FechaHora
+           ,''
+           ,@ID_Motivo_Hospitalizacion
+           ,@ID_Consulta
+           ,@ID_Local
+           ,1)
+           
 END
 
 GO

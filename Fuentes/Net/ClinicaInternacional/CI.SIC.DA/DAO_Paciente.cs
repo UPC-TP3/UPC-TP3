@@ -89,7 +89,16 @@ namespace CI.SIC.DA
                     {
                         objUsuario = new BE_Paciente
                         {
-                            dni_paciente = oReader.GetString(oReader.GetOrdinal("dni_paciente"))
+                            ID_Paciente = oReader.GetInt32(oReader.GetOrdinal("ID_Paciente")),
+                            dni_paciente = oReader.GetString(oReader.GetOrdinal("dni_paciente")),
+                            Nombres = oReader.GetString(oReader.GetOrdinal("nombres")),
+                            ApellidoPat = oReader.GetString(oReader.GetOrdinal("ApellidoPat")),
+                            ApellidoMat = oReader.GetString(oReader.GetOrdinal("ApellidoMat")),
+                            ID_TipoDocumento = oReader.GetInt32(oReader.GetOrdinal("ID_TipoDocumento")),
+                            Direccion = oReader.GetString(oReader.GetOrdinal("Direccion")),
+                            ID_Sexo = oReader.GetInt32(oReader.GetOrdinal("ID_Sexo")),
+                            FechaNacimiento = oReader.GetDateTime(oReader.GetOrdinal("FechaNacimiento"))
+
                         };
 
                     }
@@ -123,11 +132,16 @@ namespace CI.SIC.DA
                 parameters.Add("@Direccion", p_objPacienteBE.Direccion);
                 parameters.Add("@Sexo", p_objPacienteBE.ID_Sexo);
                 parameters.Add("@IdTipoDoc", p_objPacienteBE.ID_TipoDocumento);
+                parameters.Add("@ID_Pais", p_objPacienteBE.Direccion);
+                parameters.Add("@ID_Departamento", p_objPacienteBE.ID_Sexo);
+                parameters.Add("@ID_Provincia", p_objPacienteBE.ID_TipoDocumento);
+                parameters.Add("@ID_Distrito", p_objPacienteBE.ID_TipoDocumento);
                 int rpta = SqlHelper.Instance.ExecuteNonQuery("usp_RegistrarPaciente", parameters);
                 return rpta;
             }
             catch { throw; }
         }
+
 
 
         #endregion

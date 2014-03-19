@@ -389,7 +389,7 @@ padding:0;outline:0;
 
                   
 .columna {
-width: 44.8%;
+width: 44%;
 float: left;
 padding-bottom: 10em;
 margin:  0px  10px 0px 20px;
@@ -411,6 +411,18 @@ padding:0;outline:0;
 .columna input[type='checkbox'] { padding: 0px 0px; height:16px; width: 16px; border: 0px solid #CED5D7; clip: auto;
                                   position: static;  vertical-align:middle;
                                  }
+.columna input[type='submit']{ width:85px;   color: #FFFFFF;   border: 1px solid #CED5D7; font-size:1.1em;    box-shadow:0 0 0 3px #EEF5F7;    padding: 3px 6px;    
+                                   border-radius: 10px; height:28px;    font-weight: bold;    text-shadow: 1px 1px 0px white;     background: #1871A8;    
+                                   background: -moz-linear-gradient(top, #e4f1f6 0%, #cfe6ef 100%);    
+                                   background: -webkit-linear-gradient(top, #e4f1f6 0%,#cfe6ef 100%);}
+
+
+
+.columna input[type='submit']:hover{    background: #D7EDF5;  color: #003C69;   background: -moz-linear-gradient(top, #edfcff 0%, #cfe6ef 100%);    
+                                         background: -webkit-linear-gradient(top, #edfcff 0%,#cfe6ef 100%);}
+.columna input[type='submit']:active{    background: #D7EDF5; color: #003C69;    background: -moz-linear-gradient(top, #cfe6ef 0%, #edfcff 100%);    
+                                          background: -webkit-linear-gradient(top, #cfe6ef 0%,#edfcff 100%);}
+                                 
                                  
 .columna input[type='checkbox'] + label { font-weight: bold; color: #005386;    }                                 
 

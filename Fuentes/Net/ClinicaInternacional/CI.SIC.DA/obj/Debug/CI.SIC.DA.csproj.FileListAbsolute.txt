@@ -29,3 +29,23 @@ E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.CC.pdb
 E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.csprojResolveAssemblyReference.cache
 E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.dll
 E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.pdb
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.DA.dll.config
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.DA.dll
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.DA.pdb
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.BE.dll
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.CC.dll
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.BE.pdb
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.CC.pdb
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\ResolveAssemblyReference.cache
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.dll
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.pdb
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.DA.dll.config
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.DA.dll
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.DA.pdb
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.BE.dll
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.CC.dll
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.BE.pdb
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\bin\Debug\CI.SIC.CC.pdb
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.csprojResolveAssemblyReference.cache
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.dll
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.DA\obj\Debug\CI.SIC.DA.pdb

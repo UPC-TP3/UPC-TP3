@@ -14,3 +14,7 @@ E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\bin\Debug\CI.SIC.CC.dll
 E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\bin\Debug\CI.SIC.CC.pdb
 E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\obj\Debug\CI.SIC.CC.dll
 E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\obj\Debug\CI.SIC.CC.pdb
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\bin\Debug\CI.SIC.CC.dll
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\bin\Debug\CI.SIC.CC.pdb
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\obj\Debug\CI.SIC.CC.dll
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.CC\obj\Debug\CI.SIC.CC.pdb

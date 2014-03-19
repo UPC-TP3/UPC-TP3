@@ -6,18 +6,23 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CI.SIC.BL;
 using CI.SIC.BE;
+using System.Web.Services;
 
 public partial class GestionAdmision_GcAdmEmergenciaRegistrar : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack) {
-            ltlTitulo.Text = "Admisión Emergencia";
             pr_CargarCboTipoDocumento();
+            pr_CargarCboPais();
+
         }
     }
 
-               /// <summary>
+
+
+
+        /// <summary>
         /// Carga los tipo de documentos
         /// </summary>
         private void pr_CargarCboTipoDocumento()
@@ -27,6 +32,41 @@ public partial class GestionAdmision_GcAdmEmergenciaRegistrar : System.Web.UI.Pa
             ddlTipoDocumentoN.DataValueField = "Codigo";
             ddlTipoDocumentoN.DataBind();
         }
+
+
+        /// <summary>
+        /// Carga los tipo de documentos
+        /// </summary>
+        private void pr_CargarCboPais()
+        {
+            ddlPais.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_PAIS", "");
+            ddlPais.DataTextField = "MAS_DesCorta";
+            ddlPais.DataValueField = "MAS_CodCampo";
+            ddlPais.DataBind();
+        }
+
+        [WebMethod]
+        public static List<BE_MaestroTabla> pr_CargarCboDepartamento(string p_Valor)
+        {
+            return BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_DPTO", p_Valor);
+
+        }
+
+        [WebMethod]
+        public static List<BE_MaestroTabla> pr_CargarCboProvincia(string p_Valor)
+        {
+            return BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_PROVIN", p_Valor);
+           
+        }
+
+
+        [WebMethod]
+        public static List<BE_MaestroTabla> pr_CargarCboDistrito(string p_Valor)
+        {
+            return BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_DIST", p_Valor);
+
+        }
+
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -41,6 +81,10 @@ public partial class GestionAdmision_GcAdmEmergenciaRegistrar : System.Web.UI.Pa
             objValores.Add("Direccion", txtDireccionN.Text);
             objValores.Add("Sexo", ddlSexo.SelectedValue);
             objValores.Add("FechaNac", txtFechaNac.Text);
+            objValores.Add("Pais", ddlPais.SelectedValue);
+            objValores.Add("Departamento", ddlDepartamento.SelectedValue);
+            objValores.Add("Provincia", ddlProvincia.SelectedValue);
+            objValores.Add("Distrito", ddDistrito.SelectedValue);
             string vmensaje = "";
             BL_Paciente.Instancia.fn_RegistrarPaciente(objValores, ref vmensaje);
             ClientScript.RegisterStartupScript(GetType(), "MostrarMensaje", "fnMensaje('" + vmensaje + "');", true);

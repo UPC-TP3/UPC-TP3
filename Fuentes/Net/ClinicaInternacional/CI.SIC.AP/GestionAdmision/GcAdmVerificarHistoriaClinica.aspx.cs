@@ -7,16 +7,17 @@ using System.Web.UI.WebControls;
 using CI.SIC.BL;
 using CI.SIC.BE;
 
-public partial class GestionAdmision_GcAdmEmergencia : System.Web.UI.Page
+public partial class GestionAdmision_GcAdmVerificarHistoriaClinica : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
+
             pr_CargarCboTipoDocumento();
         }
     }
-        
+
     /// <summary>
     /// Carga los tipo de documentos
     /// </summary>
@@ -34,14 +35,14 @@ public partial class GestionAdmision_GcAdmEmergencia : System.Web.UI.Page
         var objPaciente = BL_Paciente.Instancia.fn_VerificarPaciente(txtDocumento.Text);
         if (objPaciente != null)
         {
-            string vmensaje = "El Paciente ya se encuentra Registrado";
-            ClientScript.RegisterStartupScript(GetType(), "MostrarMensaje", "fnMensaje('" + vmensaje + "');", true);
+            Session["Paciente"] = objPaciente;
+            Response.Redirect("GcAdmRegistrarHistoriaClinica.aspx");
         }
         else
         {
             string vmensaje2 = "El paciente no se encuentra registrado";
             ClientScript.RegisterStartupScript(GetType(), "MostrarMensaje", "fnMensaje2('" + vmensaje2 + "');", true);
-            Response.Redirect("GcAdmEmergenciaRegistrar.aspx");
+ 
         }
     }
 }
