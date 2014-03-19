@@ -378,7 +378,7 @@ SELECT O.[ID_Orden_Hospitalizacion]
   FROM [dbo].[TB_ORDEN_HOSPITALIZACION] O 
  --INNER JOIN [TB_MEDICO] M ON O.ID_MedicoTratante = M.ID_Medico
   WHERE [ID_Orden_Hospitalizacion] = @pIdOrden
-  AND RTRIM(O.Motivo) IN ('1','3')
+  AND RTRIM(O.ID_Estado) IN ('1','3')
 END
 
 GO
