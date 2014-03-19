@@ -50,11 +50,14 @@
     <Compile Include="DAO_Cama.cs" />
     <Compile Include="DAO_CartaGarantia.cs" />
     <Compile Include="DAO_Comprobante_Pago.cs" />
+    <Compile Include="DAO_DetHistoriaClinica.cs" />
     <Compile Include="DAO_Especialidad.cs" />
     <Compile Include="DAO_EvaluarSolicitudMantenimiento.cs" />
+    <Compile Include="DAO_HistoriaClinica.cs" />
     <Compile Include="DAO_Hospitalizacion.cs" />
     <Compile Include="DAO_MaestroTablas.cs" />
     <Compile Include="DAO_Medico.cs" />
+    <Compile Include="DAO_OrdenProcedimiento.cs" />
     <Compile Include="DAO_OrdenTrabajo.cs" />
     <Compile Include="DAO_Paciente.cs" />
     <Compile Include="DAO_SolicitudMantenimiento.cs" />

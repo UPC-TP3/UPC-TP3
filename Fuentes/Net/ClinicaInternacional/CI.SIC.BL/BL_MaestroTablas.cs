@@ -46,5 +46,13 @@ namespace CI.SIC.BL
                 throw;
             }
         }
+
+        public List<BE_MaestroTabla> fn_ListarUbiGEO(string p_CodTabla, string p_Valor)
+        {
+            List<BE_MaestroTabla> result = null;
+            result = DAO_MaestroTablas.Instancia.fn_ListarUbiGEO(p_CodTabla, p_Valor);
+            result.Insert(0, new BE_MaestroTabla { MAS_CodCampo = "0", MAS_DesCorta = "-Seleccione-" });
+            return result;
+        }
     }
 }

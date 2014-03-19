@@ -136,5 +136,27 @@ namespace CI.SIC.DA
             }
             return _ListSedes;
         }
+
+
+        public List<BE_MaestroTabla> fn_ListarUbiGEO(string p_codTabla, string p_Valor)
+        {
+            var lista = new List<BE_MaestroTabla>();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@MAS_CodTabla", p_codTabla);
+            parameters.Add("@MAS_Valor", p_Valor);
+            using (IDataReader reader = SqlHelper.Instance.ExecuteReader("usp_ListarUbiGeo", parameters))
+            {
+                while (reader.Read())
+                {
+                    lista.Add(new BE_MaestroTabla
+                    {
+                        MAS_CodCampo = reader.GetString(reader.GetOrdinal("MAS_CodCampo")),
+                        MAS_DesCorta = reader.GetString(reader.GetOrdinal("MAS_DesCorta"))
+                    });
+                }
+            }
+
+            return lista;
+        }
     }
 }

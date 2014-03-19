@@ -39,10 +39,18 @@ namespace CI.SIC.BL
         /// <returns>true, False</returns>
         public bool fn_RegistrarPaciente(Dictionary<string, object> p_objValores, ref string p_vMensaje)
         {
-            DateTime dt = Convert.ToDateTime(p_objValores["FechaNac"].ToString());
+            DateTime dt;
+            if (p_objValores["FechaNac"].ToString() != "")
+            {
+                dt = Convert.ToDateTime(p_objValores["FechaNac"].ToString());
+            }
+            else
+            {
+                dt = DateTime.Today;
+            }
             if (DAO_Paciente.Instancia.fn_RegistrarPaciente(new BE_Paciente
             {
-                
+
                 dni_paciente = p_objValores["DNI"].ToString(),
                 ApellidoPat = p_objValores["ApellidoP"].ToString(),
                 ApellidoMat = p_objValores["ApellidoM"].ToString(),
@@ -52,7 +60,11 @@ namespace CI.SIC.BL
                 Direccion = p_objValores["Direccion"].ToString(),
                 ID_Sexo = Convert.ToInt32(p_objValores["Sexo"].ToString()),
                 ID_TipoDocumento = Convert.ToInt32(p_objValores["TipoDoc"].ToString()),
-                FechaNacimiento = dt
+                FechaNacimiento = dt,
+                ID_Pais = Convert.ToInt32(p_objValores["Pais"].ToString()),
+                ID_Departamento = Convert.ToInt32(p_objValores["Departamento"].ToString()),
+                ID_Provincia = Convert.ToInt32(p_objValores["Provincia"].ToString()),
+                ID_Distrito = Convert.ToInt32(p_objValores["Distrito"].ToString())
             }) > 0)
             {
                 p_vMensaje = "El registro se creó correctamente.";

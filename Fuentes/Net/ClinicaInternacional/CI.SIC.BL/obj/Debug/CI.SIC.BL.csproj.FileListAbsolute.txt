@@ -32,3 +32,25 @@ E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.CC.pdb
 E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.csprojResolveAssemblyReference.cache
 E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.dll
 E:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.pdb
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BL.dll
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BL.pdb
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BE.dll
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.DA.dll
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.CC.dll
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BE.pdb
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.DA.pdb
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.CC.pdb
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\ResolveAssemblyReference.cache
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.dll
+E:\UPC\XI Ciclo\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.pdb
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BL.dll
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BL.pdb
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BE.dll
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.DA.dll
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.CC.dll
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.BE.pdb
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.DA.pdb
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\bin\Debug\CI.SIC.CC.pdb
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.csprojResolveAssemblyReference.cache
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.dll
+F:\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.BL\obj\Debug\CI.SIC.BL.pdb

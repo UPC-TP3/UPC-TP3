@@ -15,6 +15,10 @@ namespace CI.SIC.BE
         public DateTime FechaAtencion { get; set; }
         public int ID_Paciente { get; set; }
         public int ID_GrupoSanguineo { get; set; }
+        public string IntervencionQ { get; set; }
+        public string Alergias { get; set; }
+
+        public int ID_Procedencia { get; set; }
     }
 
 }
