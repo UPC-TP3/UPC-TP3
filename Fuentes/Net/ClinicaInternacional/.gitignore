@@ -14,3 +14,8 @@
 /CI.SIC.DA/obj
 /CI.SIC.CC/bin
 /CI.SIC.CC/obj
+
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
