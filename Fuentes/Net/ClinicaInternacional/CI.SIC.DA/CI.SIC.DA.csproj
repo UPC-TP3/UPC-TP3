@@ -70,6 +70,7 @@
     <Compile Include="GestionEmergencia\MedicoDA.cs" />
     <Compile Include="GestionEmergencia\OrdenExamenDA.cs" />
     <Compile Include="GestionEmergencia\PacienteDA.cs" />
+    <Compile Include="GestionEmergencia\ServicioEmergenciaDA.cs" />
     <Compile Include="GestionEmergencia\ServicioExamenDA.cs" />
     <Compile Include="GestionEmergencia\TipoExamenDA.cs" />
     <Compile Include="GestionEmergencia\TurnoDA.cs" />

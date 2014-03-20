@@ -483,3 +483,258 @@ select [ID_SERVICIO]
       ,[FECHA] from TB_DETALLE_SERVICIOS_MEDICAMENTOS
 where id_atencion=@idatencion
 go
+
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'sgsnet_sps_tipo_examen_medico') AND type in (N'P', N'PC'))
+DROP PROCEDURE sgsnet_sps_tipo_examen_medico
+GO 
+      
+CREATE procedure [dbo].sgsnet_sps_tipo_examen_medico         
+/*****************************************************************************            
+Nombre   : Lista el tipo de examen medico         
+Objetivo  :           
+Autor   : RN            
+Fecha Creación : 19-03-2014            
+Autor Modifica :             
+Fecha Modifica :             
+Notas   :         
+ 
+sgsnet_sps_tipo_examen_medico  
+****************************************************************************/            
+           
+AS  
+SELECT  
+ID_Tipo_Examen,
+descripcion as Descripcion,
+DescripcionGeneral
+FROM TB_TIPO_EXAMEN_MEDICO
+go
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'sgsnet_sps_medicamento') AND type in (N'P', N'PC'))
+DROP PROCEDURE sgsnet_sps_medicamento
+GO 
+      
+CREATE procedure [dbo].sgsnet_sps_medicamento        
+/*****************************************************************************            
+Nombre   : Lista el medicamento            
+Objetivo  :           
+Autor   : RN            
+Fecha Creación : 19-03-2014            
+Autor Modifica :             
+Fecha Modifica :             
+Notas   :         
+ 
+sgsnet_sps_medicamento  
+****************************************************************************/            
+           
+AS  
+SELECT  
+ID_Medicamento,
+GE_NombreMedicamento ,
+Descripcion 
+FROM TB_MEDICAMENTO
+go
+
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'sgsnet_sps_emergencia_by_id') AND type in (N'P', N'PC'))
+DROP PROCEDURE sgsnet_sps_emergencia_by_id
+GO 
+      
+CREATE procedure [dbo].sgsnet_sps_emergencia_by_id       
+/*****************************************************************************            
+Nombre   :            
+Objetivo  :           
+Autor   : RN            
+Fecha Creación : 19-03-2014            
+Autor Modifica :             
+Fecha Modifica :             
+Notas   :         
+ 
+sgsnet_sps_emergencia_by_id '1','47865433'  
+****************************************************************************/            
+(
+@vi_tipo char(1), /*1=DNI, 2=Cod Paciente, 3=Atencion Medica*/
+@vi_numero_documento varchar(11)
+)           
+AS  
+DECLARE @strSQL VARCHAR(MAX)
+SET @strSQL =('SELECT  
+ID_ATENCION,
+ate.ID_Paciente,
+pac.nombres ,
+pac.ApellidoPat +'+ CHAR(39) + CHAR(39) + '+pac.ApellidoMat  as apellidos,
+DNI_paciente 
+FROM TB_ATENCION_EMERGENCIA ate
+INNER JOIN TB_PACIENTE  pac ON ate.ID_Paciente =pac.ID_Paciente 
+WHERE GE_Estado<>''I''')
+
+
+ IF(@vi_tipo ='1') 
+ BEGIN
+ SET @strSQL = @strSQL + ' AND LTRIM(RTRIM(DNI_paciente)) = '''+ LTRIM(RTRIM(@vi_numero_documento))+'''' 
+ END
+ ELSE IF(@vi_tipo ='2') 
+ BEGIN
+ SET @strSQL = @strSQL + ' AND LTRIM(RTRIM(pac.ID_Paciente)) = '''+ LTRIM(RTRIM(@vi_numero_documento))+'''' 
+ END
+ ELSE IF(@vi_tipo ='3') 
+ BEGIN
+ SET @strSQL = @strSQL + ' AND LTRIM(RTRIM(ID_ATENCION)) = '''+ LTRIM(RTRIM(@vi_numero_documento))+'''' 
+ END 
+ EXEC(@strSQL)
+ --print @strSQL
+go
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'sgsnet_sps_servicios_examenes_by_id') AND type in (N'P', N'PC'))
+DROP PROCEDURE sgsnet_sps_servicios_examenes_by_id
+GO 
+      
+CREATE procedure [dbo].sgsnet_sps_servicios_examenes_by_id        
+/*****************************************************************************            
+Nombre   : Lista el medicamento            
+Objetivo  :           
+Autor   : RN            
+Fecha Creación : 19-03-2014            
+Autor Modifica :             
+Fecha Modifica :             
+Notas   :         
+ 
+sgsnet_sps_servicios_examenes_by_id 3  
+****************************************************************************/            
+(
+@vi_id_atencion int
+)           
+AS  
+SELECT 
+ID_SERVICIO ,
+ID_ATENCION ,
+ID_EXAMEN ,
+tipo.descripcion ,
+tipo.DescripcionGeneral 
+from TB_DETALLE_SERVICIOS_EXAMENES ex
+INNER JOIN TB_TIPO_EXAMEN_MEDICO tipo ON ex.ID_EXAMEN =tipo.ID_Tipo_Examen 
+where ID_ATENCION = @vi_id_atencion
+go
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'sgsnet_sps_servicios_medicamentos_by_id') AND type in (N'P', N'PC'))
+DROP PROCEDURE sgsnet_sps_servicios_medicamentos_by_id
+GO 
+      
+CREATE procedure [dbo].sgsnet_sps_servicios_medicamentos_by_id        
+/*****************************************************************************            
+Nombre   : Lista el medicamento            
+Objetivo  :           
+Autor   : RN            
+Fecha Creación : 19-03-2014            
+Autor Modifica :             
+Fecha Modifica :             
+Notas   :         
+ 
+sgsnet_sps_servicios_medicamentos_by_id 3  
+****************************************************************************/            
+(
+@vi_id_atencion int
+)           
+AS  
+select 
+ID_SERVICIO ,
+ID_ATENCION ,
+ex.ID_MEDICAMENTO ,
+GE_NombreMedicamento ,
+Descripcion ,
+CANTIDAD 
+from TB_DETALLE_SERVICIOS_MEDICAMENTOS ex
+INNER JOIN TB_MEDICAMENTO tipo ON ex.ID_MEDICAMENTO  =tipo.ID_Medicamento  
+where ID_ATENCION = @vi_id_atencion
+go
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'sgsnet_sps_medicamento_by_id') AND type in (N'P', N'PC'))
+DROP PROCEDURE sgsnet_sps_medicamento_by_id
+GO 
+      
+CREATE procedure [dbo].sgsnet_sps_medicamento_by_id        
+/*****************************************************************************            
+Nombre   : Lista el medicamento            
+Objetivo  :           
+Autor   : RN            
+Fecha Creación : 19-03-2014            
+Autor Modifica :             
+Fecha Modifica :             
+Notas   :         
+ 
+sgsnet_sps_medicamento  
+****************************************************************************/            
+(
+@vi_ID_Medicamento int
+)           
+AS  
+SELECT  
+ID_Medicamento,
+GE_NombreMedicamento ,
+Descripcion 
+FROM TB_MEDICAMENTO where ID_Medicamento = @vi_ID_Medicamento
+go
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'sgsnet_sps_tipo_examen_medico_by_id') AND type in (N'P', N'PC'))
+DROP PROCEDURE sgsnet_sps_tipo_examen_medico_by_id
+GO 
+      
+CREATE procedure [dbo].sgsnet_sps_tipo_examen_medico_by_id         
+/*****************************************************************************            
+Nombre   : Lista el tipo de examen medico         
+Objetivo  :           
+Autor   : RN            
+Fecha Creación : 19-03-2014            
+Autor Modifica :             
+Fecha Modifica :             
+Notas   :         
+ 
+sgsnet_sps_tipo_examen_medico  
+****************************************************************************/            
+(
+@vi_id_tipo_examen int
+)           
+AS  
+SELECT  
+ID_Tipo_Examen,
+descripcion as Descripcion,
+DescripcionGeneral
+FROM TB_TIPO_EXAMEN_MEDICO where ID_Tipo_Examen =@vi_id_tipo_examen
+go
+
+alter procedure [dbo].[sp_insertServicioEmergencia] 
+@NroAtencion  as int,  
+@CodigoPaciente as int 
+as  
+insert into TB_SERVICIOS_DE_EMERGENCIA   
+values(@NroAtencion,@CodigoPaciente) 
+
+select 1
+GO
+
+
+alter procedure [dbo].[sp_insertDetalleOrdenExamen]  
+@NroAtencion as int,  
+@IdExamen  as int 
+as  
+insert into TB_DETALLE_SERVICIOS_EXAMENES
+values(@NroAtencion,@IdExamen,0,GETDATE ())  
+select 1
+GO
+
+alter procedure [dbo].[sp_insertDetalleOrdenMedicamentos]  
+@NroAtencion as int,  
+@CodigoMedicamento  as int,  
+@Cantidad  as int
+as  
+insert into TB_DETALLE_SERVICIOS_MEDICAMENTOS
+values(@NroAtencion,@CodigoMedicamento,@Cantidad,0,GETDATE ()) 
+select 1
+GO
+

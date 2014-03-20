@@ -43,6 +43,7 @@
     <Compile Include="BE_Cama.cs" />
     <Compile Include="BE_CartaGarantia.cs" />
     <Compile Include="BE_DetHistoriaClinica.cs" />
+    <Compile Include="BE_Emergencia.cs" />
     <Compile Include="BE_Especialidad.cs" />
     <Compile Include="BE_EvaluarSolicitudMantenimiento.cs" />
     <Compile Include="BE_HistoriaClinica.cs" />
@@ -98,6 +99,12 @@
     <Compile Include="Programacion_ExamenBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tipo_ExamenBE.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CI.SIC.CC\CI.SIC.CC.csproj">
+      <Project>{DFC40592-730B-4361-882A-04BB088A6EF6}</Project>
+      <Name>CI.SIC.CC</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

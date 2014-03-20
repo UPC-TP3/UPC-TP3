@@ -1,6 +1,12 @@
 ﻿
 namespace CI.SIC.CC
 {
+    public enum direccionOrden
+    {
+        Ascending,
+        Descending
+    }
+
     public enum Estado
     {
         NoDisponible = 1,
