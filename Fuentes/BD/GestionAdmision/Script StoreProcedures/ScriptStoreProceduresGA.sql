@@ -579,7 +579,7 @@ INSERT INTO [dbo].[TB_HOJA_INGRESO_HOSPITALIZACION]
            ,@ID_Especialidad)
 
 
-UPDATE TB_ORDEN_HOSPITALIZACION SET MOTIVO='3' WHERE ID_Orden_Hospitalizacion = @ID_Orden_Hospitalizacion 
+UPDATE TB_ORDEN_HOSPITALIZACION SET ID_Estado='3' WHERE ID_Orden_Hospitalizacion = @ID_Orden_Hospitalizacion 
 END
 
 GO

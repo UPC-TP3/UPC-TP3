@@ -29,7 +29,6 @@ public partial class GestionAdmision_GcAdmHospitalizacion : System.Web.UI.Page
         ddlTipoDoc.DataMember = "Codigo";
         ddlTipoDoc.DataValueField = "Descripcion";
         ddlTipoDoc.DataBind();
-        ddlTipoDoc.SelectedValue = "0";
 
         List<BE_MaestroTabla> lstSexo = BL_MaestroTablas.Instancia.GetDatatabla(Constantes.CodTablaSexo);
         lstSexo.Insert(0, new BE_MaestroTabla() { MAS_CodCampo = "0", MAS_DesCorta = "----------" });
@@ -229,6 +228,7 @@ public partial class GestionAdmision_GcAdmHospitalizacion : System.Web.UI.Page
                 valida = true;
             else
                 valida = false;
+        
 
         if (valida)
         {

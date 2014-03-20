@@ -215,8 +215,7 @@
                                                 </tr>
                                             </table>
                                         </td>
-                                        <td style="width: 15%; padding: 0px 5px 0px 0px;"  valign="bottom">
-                                           
+                                        <td style="width: 15%; padding: 0px 5px 0px 0px;" valign="bottom">
                                         </td>
                                         <td style="width: 20%">
                                             <asp:UpdatePanel ID="updOrden" runat="server" UpdateMode="Conditional">
@@ -233,7 +232,7 @@
                                         <td style="width: 15%">
                                         </td>
                                         <td style="width: 20%;">
-                                         <asp:Button ID="btnControl" runat="server" Visible="false" OnClientClick="return ValidarDatos();" />
+                                            <asp:Button ID="btnControl" runat="server" Visible="false" OnClientClick="return ValidarDatos();" />
                                         </td>
                                     </tr>
                                     <tr>

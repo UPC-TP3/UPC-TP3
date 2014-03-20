@@ -57,9 +57,8 @@ SET IDENTITY_INSERT [TB_ESTADO_CITA] OFF
 
 SET IDENTITY_INSERT [dbo].[TB_TIPO_DOCUMENTO] ON
 INSERT [dbo].[TB_TIPO_DOCUMENTO] ([ID_TipoDocumento], [Nombre]) VALUES (1, N'Dni')
-INSERT [dbo].[TB_TIPO_DOCUMENTO] ([ID_TipoDocumento], [Nombre]) VALUES (2, N'Licencia de Conducir')
-INSERT [dbo].[TB_TIPO_DOCUMENTO] ([ID_TipoDocumento], [Nombre]) VALUES (3, N'Pasaporte')
-INSERT [dbo].[TB_TIPO_DOCUMENTO] ([ID_TipoDocumento], [Nombre]) VALUES (4, N'Carnet de Extranjería')
+INSERT [dbo].[TB_TIPO_DOCUMENTO] ([ID_TipoDocumento], [Nombre]) VALUES (2, N'Pasaporte')
+INSERT [dbo].[TB_TIPO_DOCUMENTO] ([ID_TipoDocumento], [Nombre]) VALUES (3, N'Carnet de Extranjería')
 SET IDENTITY_INSERT [dbo].[TB_TIPO_DOCUMENTO] OFF
 
 SET IDENTITY_INSERT [dbo].[TB_PACIENTE] ON
@@ -164,17 +163,19 @@ VALUES(4,CAST(0x0000A2E100000000 AS DateTime),CAST(0x0000A2EA01808AC3 AS DateTim
 SET IDENTITY_INSERT [dbo].[TB_CONSULTA] OFF
 
 SET IDENTITY_INSERT [dbo].[TB_ORDEN_HOSPITALIZACION] ON
-INSERT INTO [dbo].[TB_ORDEN_HOSPITALIZACION]([ID_Orden_Hospitalizacion],[FechaOrden],[Prevision],[Motivo],[Tratamiento],[NroDiasHospitalizacion],[ExamenesPreOperatorios],[ID_MedicoTratante],[ID_MedicoTurno],[ID_Paciente],[FechaHora],[Observaciones],[FechaHoraAlta],[ID_Motivo_Hospitalizacion],[ID_Consulta],[ID_Local],[ID_Estado])
-VALUES(1001,CAST(0x0000A2E100000000 AS DateTime),'','1','',5,'1',1,2,1,CAST(0x0000A2EA01808AC3 AS DateTime),'',NULL,1,1,1,1)
 
-INSERT INTO [dbo].[TB_ORDEN_HOSPITALIZACION]([ID_Orden_Hospitalizacion],[FechaOrden],[Prevision],[Motivo],[Tratamiento],[NroDiasHospitalizacion],[ExamenesPreOperatorios],[ID_MedicoTratante],[ID_MedicoTurno],[ID_Paciente],[FechaHora],[Observaciones],[FechaHoraAlta],[ID_Motivo_Hospitalizacion],[ID_Consulta],[ID_Local],[ID_Estado])
-VALUES(1002,CAST(0x0000A2E100000000 AS DateTime),'','1','',13,'0',3,4,2,CAST(0x0000A2EA01808AC3 AS DateTime),'',NULL,2,3,1,1)
+INSERT INTO [dbo].[TB_ORDEN_HOSPITALIZACION]([ID_Orden_Hospitalizacion],[FechaOrden],[Prevision],[Tratamiento],[NroDiasHospitalizacion],[ExamenesPreOperatorios],[ID_MedicoTratante],[ID_MedicoTurno],[ID_Paciente],[FechaHora],[Observaciones],[FechaHoraAlta],[ID_Motivo_Hospitalizacion],[ID_Consulta],[ID_Local],[ID_Estado])
+VALUES(1001,CAST(0x0000A2E100000000 AS DateTime),'','',5,'1',1,2,1,CAST(0x0000A2EA01808AC3 AS DateTime),'',NULL,1,1,1,1)
 
-INSERT INTO [dbo].[TB_ORDEN_HOSPITALIZACION]([ID_Orden_Hospitalizacion],[FechaOrden],[Prevision],[Motivo],[Tratamiento],[NroDiasHospitalizacion],[ExamenesPreOperatorios],[ID_MedicoTratante],[ID_MedicoTurno],[ID_Paciente],[FechaHora],[Observaciones],[FechaHoraAlta],[ID_Motivo_Hospitalizacion],[ID_Consulta],[ID_Local],[ID_Estado])
-VALUES(1003,CAST(0x0000A2E100000000 AS DateTime),'','1','',12,'0',2,3,3,CAST(0x0000A2EA01808AC3 AS DateTime),'',NULL,3,4,1,1)
+INSERT INTO [dbo].[TB_ORDEN_HOSPITALIZACION]([ID_Orden_Hospitalizacion],[FechaOrden],[Prevision],[Tratamiento],[NroDiasHospitalizacion],[ExamenesPreOperatorios],[ID_MedicoTratante],[ID_MedicoTurno],[ID_Paciente],[FechaHora],[Observaciones],[FechaHoraAlta],[ID_Motivo_Hospitalizacion],[ID_Consulta],[ID_Local],[ID_Estado])
+VALUES(1002,CAST(0x0000A2E100000000 AS DateTime),'','',13,'0',3,4,2,CAST(0x0000A4EA01817AC1 AS DateTime),'',NULL,2,3,1,1)
 
-INSERT INTO [dbo].[TB_ORDEN_HOSPITALIZACION]([ID_Orden_Hospitalizacion],[FechaOrden],[Prevision],[Motivo],[Tratamiento],[NroDiasHospitalizacion],[ExamenesPreOperatorios],[ID_MedicoTratante],[ID_MedicoTurno],[ID_Paciente],[FechaHora],[Observaciones],[FechaHoraAlta],[ID_Motivo_Hospitalizacion],[ID_Consulta],[ID_Local],[ID_Estado])
-VALUES(1004,CAST(0x0000A2E100000000 AS DateTime),'','1','',15,'1',3,1,4,CAST(0x0000A2EA01808AC3 AS DateTime),'',NULL,3,2,2,1)
+INSERT INTO [dbo].[TB_ORDEN_HOSPITALIZACION]([ID_Orden_Hospitalizacion],[FechaOrden],[Prevision],[Tratamiento],[NroDiasHospitalizacion],[ExamenesPreOperatorios],[ID_MedicoTratante],[ID_MedicoTurno],[ID_Paciente],[FechaHora],[Observaciones],[FechaHoraAlta],[ID_Motivo_Hospitalizacion],[ID_Consulta],[ID_Local],[ID_Estado])
+VALUES(1003,CAST(0x0000A2E100000000 AS DateTime),'','',12,'0',2,3,3,CAST(0x0000A4EA01817AC1 AS DateTime),'',NULL,3,4,1,1)
+
+INSERT INTO [dbo].[TB_ORDEN_HOSPITALIZACION]([ID_Orden_Hospitalizacion],[FechaOrden],[Prevision],[Tratamiento],[NroDiasHospitalizacion],[ExamenesPreOperatorios],[ID_MedicoTratante],[ID_MedicoTurno],[ID_Paciente],[FechaHora],[Observaciones],[FechaHoraAlta],[ID_Motivo_Hospitalizacion],[ID_Consulta],[ID_Local],[ID_Estado])
+VALUES(1004,CAST(0x0000A2E100000000 AS DateTime),'','',15,'1',3,1,4,CAST(0x0000A2EA01808AC3 AS DateTime),'',NULL,3,2,2,1)
+
 SET IDENTITY_INSERT [dbo].[TB_ORDEN_HOSPITALIZACION] OFF
 
 
@@ -200,15 +201,21 @@ INSERT INTO [dbo].[TB_CARTA_GARANTIA](ID_Carta,[ID_Orden_de_Procedimiento],[CodP
 	VALUES(3,1,1,3,1,CAST(0x0000A2E100000000 AS DateTime),CAST(0x0000A4EA01817AC1 AS DateTime),2030.36,'',1)
 INSERT INTO [dbo].[TB_CARTA_GARANTIA](ID_Carta,[ID_Orden_de_Procedimiento],[CodPresupuesto],[ID_Paciente],[CodAseguradora],[FecINiVigencia],[FecFinVigencia],[MontoCarta],[Detalle],[Estado])
 VALUES(4,1,1,2,1,CAST(0x0000A2E100000000 AS DateTime),CAST(0x0000A4EA01817AC1 AS DateTime),2030.36,'',1)
+
+
+INSERT INTO [dbo].[TB_CARTA_GARANTIA](ID_Carta,[ID_Orden_de_Procedimiento],[CodPresupuesto],[ID_Paciente],[CodAseguradora],[FecINiVigencia],[FecFinVigencia],[MontoCarta],[Detalle],[Estado])
+VALUES(5,1,1,1,1,CAST(0x0000A2E100000000 AS DateTime),CAST(0x0000A4EA01817AC1 AS DateTime),2030.36,'',1)
+
+INSERT INTO [dbo].[TB_CARTA_GARANTIA](ID_Carta,[ID_Orden_de_Procedimiento],[CodPresupuesto],[ID_Paciente],[CodAseguradora],[FecINiVigencia],[FecFinVigencia],[MontoCarta],[Detalle],[Estado])
+VALUES(6,1,1,2,1,CAST(0x0000A2E100000000 AS DateTime),CAST(0x0000A4EA01817AC1 AS DateTime),2030.36,'',1)
+
+INSERT INTO [dbo].[TB_CARTA_GARANTIA](ID_Carta,[ID_Orden_de_Procedimiento],[CodPresupuesto],[ID_Paciente],[CodAseguradora],[FecINiVigencia],[FecFinVigencia],[MontoCarta],[Detalle],[Estado])
+VALUES(7,1,1,3,1,CAST(0x0000A2E100000000 AS DateTime),CAST(0x0000A4EA01817AC1 AS DateTime),2030.36,'',1)
+
+INSERT INTO [dbo].[TB_CARTA_GARANTIA](ID_Carta,[ID_Orden_de_Procedimiento],[CodPresupuesto],[ID_Paciente],[CodAseguradora],[FecINiVigencia],[FecFinVigencia],[MontoCarta],[Detalle],[Estado])
+VALUES(8,1,1,4,1,CAST(0x0000A2E100000000 AS DateTime),CAST(0x0000A4EA01817AC1 AS DateTime),2030.36,'',1)
+
 SET IDENTITY_INSERT [dbo].[TB_CARTA_GARANTIA] OFF
-
-
-
-
-
-
-
-
 
 
 
