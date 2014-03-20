@@ -32,9 +32,9 @@ public partial class GcAdmAmbulatoria : System.Web.UI.Page
                 txtCorreo.Text = oPacienteBE.correo;
                 txtFecNac.Text = oPacienteBE.FechaNacimiento.ToString();
                 txtNroDoc.Text = oPacienteBE.dni_paciente;
-                txtSexo.Text = oPacienteBE.ID_Sexo.ToString();
+                txtSexo.Text = oPacienteBE.SexoDescripcion;
                 txtTelefono.Text = oPacienteBE.TelefonoDomicilio;
-                txtTipoDocumento.Text = oPacienteBE.ID_TipoDocumento.ToString();
+                txtTipoDocumento.Text = oPacienteBE.TipoDocumentoNombre;
                            
             }
     }
@@ -62,7 +62,7 @@ public partial class GcAdmAmbulatoria : System.Web.UI.Page
             oComprobante_PagoBE.ID_Cita = IdCita;
 
             if (oComprobante_PagoBL.Nuevo(oComprobante_PagoBE)) {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertaCita", "alert('Se ha activado la Cita');", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertaCita", "alert('Se ha grabado la Cita');", true);
             }
         }
     }
