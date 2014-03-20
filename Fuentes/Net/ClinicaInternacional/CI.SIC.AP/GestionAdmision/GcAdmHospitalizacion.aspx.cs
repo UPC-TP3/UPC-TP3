@@ -23,11 +23,11 @@ public partial class GestionAdmision_GcAdmHospitalizacion : System.Web.UI.Page
     {
 
         //------------MAESTRO-------
-        List<BE_MaestroTabla> lstTipo = BL_MaestroTablas.Instancia.GetDatatabla(Constantes.CodTablaTipoDOC);
-        lstTipo.Insert(0, new BE_MaestroTabla() { MAS_CodCampo = "0", MAS_DesCorta = "----------" });
+        List<BE_TipoDocumento> lstTipo = BL_TipoDocumento.Instancia.fn_ListarTipoDocumento();
+        lstTipo.Insert(0, new BE_TipoDocumento() { Codigo = 0, Descripcion = "----------" });
         ddlTipoDoc.DataSource = lstTipo;
-        ddlTipoDoc.DataMember = "MAS_CodCampo";
-        ddlTipoDoc.DataValueField = "MAS_DesCorta";
+        ddlTipoDoc.DataMember = "Codigo";
+        ddlTipoDoc.DataValueField = "Descripcion";
         ddlTipoDoc.DataBind();
         ddlTipoDoc.SelectedValue = "0";
 
@@ -131,11 +131,11 @@ public partial class GestionAdmision_GcAdmHospitalizacion : System.Web.UI.Page
                         var FecProgramacion = Convert.ToDateTime(oOrden.FechaHora);
                         var oFecActual = DateTime.Now;
 
-                        //if (FecProgramacion < oFecActual)
-                        //{
-                        //    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "filtro", "alert('La Fecha y hora de programación: "+ FecProgramacion + " es menor a la fecha actual, debe regularizar la fecha y hora de programación de la Orden.');", true);
-                        //    return;
-                        //}
+                        if (FecProgramacion < oFecActual)
+                        {
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "filtro", "alert('La Fecha y hora de programación: " + FecProgramacion + " es menor a la fecha actual, debe regularizar la fecha y hora de programación de la Orden.');", true);
+                            return;
+                        }
 
                         txtFecOrden.Text = oOrden.FechaOrden.ToString();
                         ddlMotivo.SelectedIndex = oOrden.ID_Motivo_Hospitalizacion;
@@ -175,12 +175,10 @@ public partial class GestionAdmision_GcAdmHospitalizacion : System.Web.UI.Page
                     {
                         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "La orden de hospitalización ya se encuentra activada" + "');LimpiarCampos();", true);
                     }
-
                 }
                 else
                 {
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + Constantes.Mensajes.msgOrdenInternamientoNull + "');LimpiarCampos();", true);
-
                 }
             }
         }
@@ -203,22 +201,20 @@ public partial class GestionAdmision_GcAdmHospitalizacion : System.Web.UI.Page
             if (_oCarta.FecFinVigencia < fecActual)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "La vigencia de la Carta de Garantía se encuentra caducada" + "');", true);
-                //
                 resp = false;
             }
 
-            //if (idCliente = 0)
-            //{ 
-            
-            //}
+            if (idCliente != Convert.ToInt32(hdfIDPaciente.Value))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "La Carta de Garantía no pertenece al Paciente" + "');", true);
+                resp = false;
+            }
         }
         else
         {
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "No se encuentra Carta Garantía con el código ingresado" + "');", true);
             resp = false;
         }
-
-
         return resp;
     }
 

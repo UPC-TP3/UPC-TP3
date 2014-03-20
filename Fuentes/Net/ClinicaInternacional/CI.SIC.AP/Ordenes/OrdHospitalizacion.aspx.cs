@@ -24,11 +24,11 @@ public partial class Ordenes_OrdHospitalizacion : System.Web.UI.Page
     public void CargaInicial()
     {
         //------------MAESTRO-------
-        List<BE_MaestroTabla> lstTipo = BL_MaestroTablas.Instancia.GetDatatabla(Constantes.CodTablaTipoDOC);
-        lstTipo.Insert(0, new BE_MaestroTabla() { MAS_CodCampo = "0", MAS_DesCorta = "----------" });
+        List<BE_TipoDocumento> lstTipo = BL_TipoDocumento.Instancia.fn_ListarTipoDocumento();
+        lstTipo.Insert(0, new BE_TipoDocumento() { Codigo = 0, Descripcion = "----------" });
         ddlTipoDoc.DataSource = lstTipo;
-        ddlTipoDoc.DataMember = "MAS_CodCampo";
-        ddlTipoDoc.DataValueField = "MAS_DesCorta";
+        ddlTipoDoc.DataMember = "Codigo";
+        ddlTipoDoc.DataValueField = "Descripcion";
         ddlTipoDoc.DataBind();
         ddlTipoDoc.SelectedValue = "0";
 
@@ -104,15 +104,17 @@ public partial class Ordenes_OrdHospitalizacion : System.Web.UI.Page
             fechaRF = DateTime.Parse(fechaFin);
             validaFecMenor = true;
         }
-        else
-        {
-            if (inicio == 1)
-            {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "filtro", "alert('Ingresar rango de fechas.');", true);
-                return false;
-            }
-           
-        }
+        //else
+        //   resp = false;
+        //else
+        //{
+        //    if (inicio == 1)
+        //    {
+        //        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "filtro", "alert('Ingresar rango de fechas.');", true);
+        //        return false;
+        //    }
+
+        //}
 
         if (inicio == 1)
         {
@@ -155,7 +157,8 @@ public partial class Ordenes_OrdHospitalizacion : System.Web.UI.Page
             }
             else if (fechaInicio == string.Empty && fechaFin == string.Empty)
             {
-                resp = true;
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "filtro", "alert('Debe ingresar Fechas de Inicio y Fin.');", true);
+                resp = false;
             }
         }
 
@@ -167,9 +170,9 @@ public partial class Ordenes_OrdHospitalizacion : System.Web.UI.Page
     protected void imgBtnBuscar_Click(object sender, ImageClickEventArgs e)
     {
         if (cargarValoresBusqueda(1) == true)
-        {
             LoadData(1);
-        }
+        else
+            LoadData(0);
     }
 
     protected void gvOrdenes_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -196,6 +199,12 @@ public partial class Ordenes_OrdHospitalizacion : System.Web.UI.Page
                     gvOrdenes.DataBind();
                 }
             }
+            else
+            {
+                gvOrdenes.DataSource = null;
+                gvOrdenes.DataBind();
+
+            }
 
         }
         catch (Exception)
@@ -217,12 +226,12 @@ public partial class Ordenes_OrdHospitalizacion : System.Web.UI.Page
                 ScriptManager.RegisterClientScriptBlock(this, GetType(), "Orden", "alert('Seleccionar Tipo de Documento');", true);
                 return;
             }
-            if(doc == "")
+            if (doc == "")
             {
                 ScriptManager.RegisterClientScriptBlock(this, GetType(), "Orden", "alert('Ingresar Nro de Documento');", true);
                 return;
             }
-            
+
 
             BE_Paciente oPaciente = BL_Paciente.Instancia.fn_ConsultarPaciente(0, txtNroDoc.Text.Trim(), 0);
 
@@ -261,13 +270,13 @@ public partial class Ordenes_OrdHospitalizacion : System.Web.UI.Page
             oOrden.ID_Consulta = Convert.ToInt32(txtIdConsulta.Text.Trim());
             oOrden.ID_Local = ddlSede.SelectedIndex;
 
-             var oFecActual = DateTime.Now;
-             if (oOrden.FechaHora < oFecActual)
-             {
-                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "filtro", "alert('La Fecha y hora de programación de la hospitalización: " + oOrden.FechaHora + " es menor a la fecha actual, debe ingresar una fecha y hora de programación de la Orden, posterior a la fecha actual.');", true);
-                 return;
-             }
-            
+            var oFecActual = DateTime.Now;
+            if (oOrden.FechaHora < oFecActual)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "filtro", "alert('La Fecha y hora de programación de la hospitalización: " + oOrden.FechaHora + " es menor a la fecha actual, debe ingresar una fecha y hora de programación de la Orden, posterior a la fecha actual.');", true);
+                return;
+            }
+
 
             var resul = BL_Hospitalizacion.Instancia.insertOrdenHospital(oOrden);
 
@@ -276,7 +285,7 @@ public partial class Ordenes_OrdHospitalizacion : System.Web.UI.Page
             else
                 ScriptManager.RegisterClientScriptBlock(this, GetType(), "Orden", "alert('No se realizo el registro de la Orden.');hideModalPopup('bmpRegAct');", true);
 
-            //imgBtnBuscar_Click(null, null);
+            imgBtnBuscar_Click(null, null);
 
         }
         catch (Exception)

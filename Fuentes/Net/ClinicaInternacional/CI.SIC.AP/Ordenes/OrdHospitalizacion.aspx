@@ -21,14 +21,18 @@
         function imgBtnFiltrar_Mouseout(object) { object.src = object.src.replace("img_filtro_hover.gif", "img_filtro.gif"); }
         function imgBtnBorrarFiltro_Mouseover(object) { object.src = object.src.replace("img_borrarfiltro.gif", "img_borrarfiltro_hover.gif"); }
         function imgBtnBorrarFiltro_Mouseout(object) { object.src = object.src.replace("img_borrarfiltro_hover.gif", "img_borrarfiltro.gif"); }
+
         function imgBtnBorrarFiltro_Click() {
             $('#Contenido_txtFechaInicio').val("");
             $('#Contenido_txtFechaFin').val("");
         }
 
+
+
+
         function lnkNuevoRegistro_Click() {
             $('#Contenido_lbl1').html('Registro de Orden de Hospitalización');
-
+            cleanerFields();
             showModalPopup('bmpRegAct');
 
             return false;
@@ -56,6 +60,25 @@
 
 
         function cleanerFields() {
+            $('#<%= ddlTipoDoc.ClientID %>').get(0).selectedIndex = 0;
+            $('#<%= ddlSexo.ClientID %>').get(0).selectedIndex = 0;
+            $('#<%= ddlSede.ClientID %>').get(0).selectedIndex = 0;
+            $('#<%= ddlMotivo.ClientID %>').get(0).selectedIndex = 0;
+            $('#<%= ddlMedTurno.ClientID %>').get(0).selectedIndex = 0;
+            $('#<%= ddlMedTratante.ClientID %>').get(0).selectedIndex = 0;
+            $('#<%= ddlProcedencia.ClientID %>').get(0).selectedIndex = 0;
+
+            $("#<%=txtNroDoc.ClientID%>").val("");
+            $("#<%=txtNombres.ClientID%>").val("");
+            $("#<%=txtPaterno.ClientID%>").val("");
+            $("#<%=txtMaterno.ClientID%>").val("");
+
+            $("#<%=txtFecha.ClientID%>").val("");
+            $("#<%=txtNroDias.ClientID%>").val("");
+            $("#<%=txtPrevision.ClientID%>").val("");
+
+            $("#<%=txtIdConsulta.ClientID%>").val("");
+            $("#<%=txtExaPreOpera.ClientID%>").val("");
         }
 
         function ValidarRegistro() {
@@ -118,14 +141,14 @@
                             <tr>
                                 <td>
                                     <div style="width: 128px; float: left; font-weight: 600;">
-                                        Desde</div>
+                                        Inicio</div>
                                 </td>
                                 <td>
                                     &nbsp;
                                 </td>
                                 <td>
                                     <div style="width: 128px; float: left; font-weight: 600;">
-                                        Hasta</div>
+                                        Fin</div>
                                 </td>
                             </tr>
                             <tr>
@@ -161,10 +184,10 @@
                     </div>
                     <div class="separador">
                         <asp:ImageButton runat="server" ID="imgBtnFiltrar" OnClick="imgBtnBuscar_Click" onmouseover="imgBtnFiltrar_Mouseover(this);"
-                            onmouseout="imgBtnFiltrar_Mouseout(this);" ImageUrl="~/css/img/img_filtro.gif" />
+                            onmouseout="imgBtnFiltrar_Mouseout(this);" ImageUrl="~/css/img/img_filtro.gif"  />
                         <asp:ImageButton runat="server" ID="imgBtnBorrarFiltro" OnClientClick="imgBtnBorrarFiltro_Click();"
                             onmouseover="imgBtnBorrarFiltro_Mouseover(this);" onmouseout="imgBtnBorrarFiltro_Mouseout(this);"
-                            CausesValidation="false" ImageUrl="~/css/img/img_borrarfiltro.gif" />
+                            CausesValidation="false" ImageUrl="~/css/img/img_borrarfiltro.gif"  OnClick="imgBtnBuscar_Click"/>
                     </div>
                     <div class="box_c2" style="margin-top: 15px; width: 680px;">
                         <div class="f5f6f6_01_1">
@@ -239,8 +262,6 @@
                                                         </td>
                                                         <td style="width: 15%">
                                                             <asp:DropDownList ID="ddlTipoDoc" runat="server" Style="width: 99%">
-                                                                <asp:ListItem Value="1" Text="Dni"></asp:ListItem>
-                                                                <asp:ListItem Value="2" Text="Carnet Extranjería"></asp:ListItem>
                                                             </asp:DropDownList>
                                                         </td>
                                                         <td style="width: 20%" class="block_center">

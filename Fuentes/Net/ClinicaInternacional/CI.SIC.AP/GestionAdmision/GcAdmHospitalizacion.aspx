@@ -210,29 +210,30 @@
                                                             FilterType="Numbers" TargetControlID="txtNroOrdenHosp">
                                                         </ext:FilteredTextBoxExtender>
                                                     </td>
-                                                    <td valign="bottom">
-                                                        <asp:UpdatePanel ID="updOrden" runat="server" UpdateMode="Conditional">
-                                                            <ContentTemplate>
-                                                                <asp:Button CssClass="botonesIndividual" ToolTip="Obtener Nro.Orden" ID="btnGetOrden"
-                                                                    Width="30px" runat="server" Text="..." OnClientClick="return ValidarDatos();"
-                                                                    OnClick="btnGetOrden_Click" />
-                                                            </ContentTemplate>
-                                                            <Triggers>
-                                                                <asp:AsyncPostBackTrigger ControlID="btnControl" EventName="Click" />
-                                                            </Triggers>
-                                                        </asp:UpdatePanel>
+                                                    <td>
                                                     </td>
                                                 </tr>
                                             </table>
                                         </td>
-                                        <td style="width: 15%; padding: 0px 5px 0px 0px;">
+                                        <td style="width: 15%; padding: 0px 5px 0px 0px;"  valign="bottom">
+                                           
                                         </td>
                                         <td style="width: 20%">
-                                            <asp:Button ID="btnControl" runat="server" Visible="false" OnClientClick="return ValidarDatos();" />
+                                            <asp:UpdatePanel ID="updOrden" runat="server" UpdateMode="Conditional">
+                                                <ContentTemplate>
+                                                    <asp:Button CssClass="botonesIndividual" ToolTip="Obtener Nro.Orden" ID="btnGetOrden"
+                                                        Width="65px" runat="server" Text="Buscar" OnClientClick="return ValidarDatos();"
+                                                        OnClick="btnGetOrden_Click" />
+                                                </ContentTemplate>
+                                                <Triggers>
+                                                    <asp:AsyncPostBackTrigger ControlID="btnControl" EventName="Click" />
+                                                </Triggers>
+                                            </asp:UpdatePanel>
                                         </td>
                                         <td style="width: 15%">
                                         </td>
                                         <td style="width: 20%;">
+                                         <asp:Button ID="btnControl" runat="server" Visible="false" OnClientClick="return ValidarDatos();" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -477,7 +478,7 @@
                                 </td>
                                 <td style="width: 15%; padding: 0px 5px 0px 0px;">
                                     <div class="block_center">
-                                        Tipo Orden:</div>
+                                        Causa Hosp.:</div>
                                 </td>
                                 <td style="width: 20%">
                                     <asp:DropDownList ID="ddlTipoOrden" runat="server" Style="width: 100%">
