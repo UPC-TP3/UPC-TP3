@@ -193,11 +193,11 @@ SET IDENTITY_INSERT [dbo].[TB_ORDEN_DE_PROCEDIMIENTO] OFF
 
 SET IDENTITY_INSERT [dbo].[TB_CARTA_GARANTIA] ON
 INSERT INTO [dbo].[TB_CARTA_GARANTIA](ID_Carta,[ID_Orden_de_Procedimiento],[CodPresupuesto],[ID_Paciente],[CodAseguradora],[FecINiVigencia],[FecFinVigencia],[MontoCarta],[Detalle],[Estado])
-VALUES(1,1,1,2,1,CAST(0x0000A2E100000000 AS DateTime),CAST(0x0000A2EA01808AC3 AS DateTime),2030.36,'',1)
+VALUES(1,1,1,1,1,CAST(0x0000A2E100000000 AS DateTime),CAST(0x0000A2EA01808AC3 AS DateTime),2030.36,'',1)
 INSERT INTO [dbo].[TB_CARTA_GARANTIA](ID_Carta,[ID_Orden_de_Procedimiento],[CodPresupuesto],[ID_Paciente],[CodAseguradora],[FecINiVigencia],[FecFinVigencia],[MontoCarta],[Detalle],[Estado])
 VALUES(2,1,1,2,1,CAST(0x0000A2E100000000 AS DateTime),CAST(0x0000A2EA01808AC3 AS DateTime),2030.36,'',1)
 INSERT INTO [dbo].[TB_CARTA_GARANTIA](ID_Carta,[ID_Orden_de_Procedimiento],[CodPresupuesto],[ID_Paciente],[CodAseguradora],[FecINiVigencia],[FecFinVigencia],[MontoCarta],[Detalle],[Estado])
-	VALUES(3,1,1,2,1,CAST(0x0000A2E100000000 AS DateTime),CAST(0x0000A4EA01817AC1 AS DateTime),2030.36,'',1)
+	VALUES(3,1,1,3,1,CAST(0x0000A2E100000000 AS DateTime),CAST(0x0000A4EA01817AC1 AS DateTime),2030.36,'',1)
 INSERT INTO [dbo].[TB_CARTA_GARANTIA](ID_Carta,[ID_Orden_de_Procedimiento],[CodPresupuesto],[ID_Paciente],[CodAseguradora],[FecINiVigencia],[FecFinVigencia],[MontoCarta],[Detalle],[Estado])
 VALUES(4,1,1,2,1,CAST(0x0000A2E100000000 AS DateTime),CAST(0x0000A4EA01817AC1 AS DateTime),2030.36,'',1)
 SET IDENTITY_INSERT [dbo].[TB_CARTA_GARANTIA] OFF
