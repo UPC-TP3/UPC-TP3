@@ -352,6 +352,7 @@ BEGIN
     RETURN @Nom_Procedencia
 END
 GO
+
 CREATE FUNCTION fn_DescTipoDocumento 
 (
     @ID_TipoDocumento INT
