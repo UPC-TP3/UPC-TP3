@@ -139,6 +139,26 @@
                                     <asp:TextBox ID="txtDireccion" Enabled="false" runat="server" Style="width: 98%"></asp:TextBox>
                                 </td>
                             </tr>
+                            <tr>
+                                <td style="width: 30%">
+                                    <div class="block_center">Fecha Cita:</div> 
+                                </td>
+                                <td style="width: 5%">
+                                </td>
+                                <td colspan="3">
+                                    <div class="block_center">Hora Cita:</div> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 30%">
+                                    <asp:TextBox ID="txtFechaCita" Enabled="false" runat="server"></asp:TextBox>
+                                </td>
+                                <td style="width: 5%">
+                                </td>
+                                <td colspan="3">
+                                    <asp:TextBox ID="txtHoraCita" Enabled="false" runat="server" Style="width: 98%"></asp:TextBox>
+                                </td>
+                            </tr>
                              
                         </table>
                          <br />

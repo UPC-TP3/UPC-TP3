@@ -81,29 +81,30 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE procedure [dbo].[usp_Select_ValidarCita]
-@ID_Paciente int,
-@FechaHoraCita datetime
-AS
-BEGIN
-
-SELECT ID_Cita
-      ,FechaHoraCita
-      ,ISNULL(Aseguradora,'') AS Aseguradora
-      ,Cobertura
-      ,ISNULL(Estado,'') AS Estado
-      ,ISNULL(OrdenAtencion,'') AS OrdenAtencion
-      ,ISNULL(ID_Paciente,0) AS ID_Paciente
-      ,ISNULL(ID_Historia,0) AS ID_Historia
-      ,ISNULL(ID_Especialidad,0) AS ID_Especialidad
-      ,ISNULL(ID_Medico,0) AS ID_Medico
-      ,ISNULL(ID_AgendaMedica,0) AS ID_AgendaMedica
-      ,ISNULL(ID_EstadoCita,0) AS ID_EstadoCita
-      ,ISNULL(ID_Cita_Reprogramada,0) as ID_Cita_Reprogramada
-      ,ISNULL(Des_Ubicacion_Cita,'') AS Des_Ubicacion_Cita
-  FROM TB_CITA
-  WHERE ID_Paciente = @ID_Paciente AND
-        FechaHoraCita > = @FechaHoraCita
-END
+@ID_Paciente int,  
+@FechaHoraCita datetime,
+@ID_Cita int = -1
+AS  
+BEGIN  
+  
+SELECT ID_Cita  
+      ,FechaHoraCita  
+      ,ISNULL(Aseguradora,'') AS Aseguradora  
+      ,Cobertura  
+      ,ISNULL(Estado,'') AS Estado  
+      ,ISNULL(OrdenAtencion,'') AS OrdenAtencion  
+      ,ISNULL(ID_Paciente,0) AS ID_Paciente  
+      ,ISNULL(ID_Historia,0) AS ID_Historia  
+      ,ISNULL(ID_Especialidad,0) AS ID_Especialidad  
+      ,ISNULL(ID_Medico,0) AS ID_Medico  
+      ,ISNULL(ID_AgendaMedica,0) AS ID_AgendaMedica  
+      ,ISNULL(ID_EstadoCita,0) AS ID_EstadoCita  
+      ,ISNULL(ID_Cita_Reprogramada,0) as ID_Cita_Reprogramada  
+      ,ISNULL(Des_Ubicacion_Cita,'') AS Des_Ubicacion_Cita  
+  FROM TB_CITA  
+  WHERE (@ID_CITA <> -1 AND ID_Cita=@ID_CITA) OR
+		(ID_Paciente = @ID_Paciente AND FechaHoraCita > = @FechaHoraCita  )
+END  
 GO
 /****** Object:  StoredProcedure [dbo].[usp_Insert_Comprobante_Pago]    Script Date: 03/13/2014 15:09:14 ******/
 SET ANSI_NULLS ON
