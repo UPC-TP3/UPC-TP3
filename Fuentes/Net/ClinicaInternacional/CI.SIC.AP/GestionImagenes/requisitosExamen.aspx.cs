@@ -52,6 +52,7 @@ public partial class GestionImagenes_requisitosExamen : System.Web.UI.Page
             //txtPrecio.Text = "";
             txtTipo_atencion.Text = "";
             txtEstado_orden_examen.Text = "";
+            hidId_orden_pago.Value = "0";
 
             if (eOrden_examen != null)
             {
@@ -65,7 +66,7 @@ public partial class GestionImagenes_requisitosExamen : System.Web.UI.Page
                 //txtPrecio.Text = eOrden_examen.Precio.ToString();
                 txtTipo_atencion.Text = eOrden_examen.Tipo_atencion;
                 txtEstado_orden_examen.Text = eOrden_examen.Estado;
-
+                hidId_orden_pago.Value = eOrden_examen.Id_orden_pago.ToString();
                 CargaProgramacion();
             }
             else
@@ -211,9 +212,26 @@ public partial class GestionImagenes_requisitosExamen : System.Web.UI.Page
         btnVerificar.Visible = false;
 
         if (txtEstado_orden_examen.Text != "")
-            if (txtEstado_orden_examen.Text.Substring(0, 1) == "C")
+            //if (txtEstado_orden_examen.Text.Substring(0, 1) == "C")
+            if (txtEstado_orden_examen.Text.Substring(0, 1) == "P")
             {
-                btnVerificar.Visible = true;
+                if (hidId_orden_pago.Value == "")
+                    hidId_orden_pago.Value = "0";
+
+                if (txtEstado_programacion.Text.Trim() != "")
+                {
+                    if (txtEstado_programacion.Text.Substring(0, 1) == "O")
+                        btnVerificar.Visible = false;
+                    else
+                        if (txtEstado_programacion.Text.Substring(0, 1) == "G" || (txtEstado_programacion.Text.Substring(0, 1) == "R" && hidId_orden_pago.Value != "0"))
+                            btnVerificar.Visible = true;
+                        else
+                            btnVerificar.Visible = false;
+                }
+            }
+            else
+            {
+                btnVerificar.Visible = false;
             }
     }
     protected void cboConsultorio_SelectedIndexChanged(object sender, EventArgs e)

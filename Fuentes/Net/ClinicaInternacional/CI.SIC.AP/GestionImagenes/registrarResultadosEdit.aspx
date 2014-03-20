@@ -148,7 +148,7 @@
                         <td>
                             Paciente</td>
                         <td>
-                            <asp:TextBox ID="txtPaciente" runat="server" Width="300px" ReadOnly="True" 
+                            <asp:TextBox ID="txtPaciente" runat="server" Width="258px" ReadOnly="True" 
                                 CssClass="no_edit"></asp:TextBox>
                         </td>
                         <td>
@@ -197,10 +197,10 @@
                                 CssClass="caja_texto_enabled"></asp:TextBox>
                         </td>
                         <td>
-                            Estado</td>
+                            &nbsp;</td>
                         <td>
                             <asp:TextBox ID="txtEstado_resultado" runat="server" Width="83px" ReadOnly="True" 
-                                CssClass="caja_texto_enabled"></asp:TextBox>
+                                CssClass="caja_texto_enabled" Visible="False"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -217,6 +217,18 @@
                         <td colspan="3">
                             <asp:TextBox ID="txtObservaciones" runat="server" Width="500px" 
                                 CssClass="caja_texto_enabled" Rows="3" TextMode="MultiLine"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="lblAdicionales" runat="server" 
+                                Font-Names="Verdana;Arial;Hervetica" Font-Size="10px" Text="Adicionales" 
+                                Visible="False"></asp:Label>
+                        </td>
+                        <td colspan="3">
+                            <asp:TextBox ID="txtAdicionales" runat="server" Width="500px" 
+                                CssClass="caja_texto_enabled" Rows="3" TextMode="MultiLine" 
+                                Visible="False"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -243,12 +255,14 @@
                                 <tr>
                                     <td>
                             <asp:Button ID="btnGrabar" runat="server" 
-                                Text="Grabar" onclick="btnProgramar_Click" />
+                                Text="Grabar" onclick="btnProgramar_Click" Visible="False" />
                                     </td>
                                     <td>
                                         &nbsp;</td>
                                     <td>
                                         <asp:Button ID="btnAnular" runat="server" Text="Anular" />
+                            <asp:Button ID="btnGrabarAdicionales" runat="server" 
+                                Text="Grabar" Visible="False" onclick="btnGrabarAdicionales_Click" />
                                     </td>
                                     <td>
                                         &nbsp;</td>

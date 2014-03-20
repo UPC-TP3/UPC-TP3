@@ -17,6 +17,14 @@ namespace CI.SIC.BL
             return result;
         }
 
+        public bool Modificar(InformeResultadoBE pInformeResultadoBE)
+        {
+            bool result = false;
+            result = InformeResultadoDA.Instancia.Modificar(pInformeResultadoBE);
+
+            return result;
+        }
+
         public InformeResultadoBE Registro(int pId_orden_examen)
         {
             InformeResultadoBE result = null;

@@ -235,7 +235,8 @@
                         <td>
                             &nbsp;</td>
                         <td colspan="3">
-                            &nbsp;</td>
+                                        <asp:HiddenField ID="hidId_orden_pago" runat="server" />
+                                    </td>
                     </tr>
                     <tr>
                         <td>

@@ -83,7 +83,7 @@ Insert Into TB_CONSULTORIO (descripcion, nro_consultorio, ID_Local, ID_Tipo_Exam
 
 Insert Into TB_REQUISITO (descripcion) Values ('En ayunas')
 Insert Into TB_REQUISITO (descripcion) Values ('Sin marcapasos')
-Insert Into TB_REQUISITO (descripcion) Values ('No alérgico a los contrates')
+Insert Into TB_REQUISITO (descripcion) Values ('No alérgico a los contrastes')
 Insert Into TB_REQUISITO (descripcion) Values ('Requisito a')
 Insert Into TB_REQUISITO (descripcion) Values ('Requisito b')
 Insert Into TB_REQUISITO (descripcion) Values ('Requisito c')

@@ -14,7 +14,7 @@
         }
     </style>
 <script language="javascript" type="text/javascript" src="../js/jquery-1.7.1.js" ></script>
-<%--     <script type="text/javascript">
+    <%--     <script type="text/javascript">
          $(document).ready(function () {
 
              $('#btnConsultar').click(function () {
@@ -272,7 +272,8 @@
                                         <asp:HiddenField ID="hidAccion" runat="server" />
                                     </td>
                                     <td>
-                                        &nbsp;</td>
+                                        <asp:HiddenField ID="hidId_orden_pago" runat="server" />
+                                    </td>
                                     <td>
                                         &nbsp;</td>
                                     <td>

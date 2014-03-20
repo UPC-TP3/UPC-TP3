@@ -15,5 +15,6 @@ namespace CI.SIC.BE
         public string Observacion { get; set; }
         public string Estado { get; set; }
         public string Imagen { get; set; }
+        public string Adicional { get; set; }
     }
 }

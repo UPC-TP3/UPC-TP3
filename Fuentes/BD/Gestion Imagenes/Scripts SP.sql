@@ -10,7 +10,7 @@ CREATE Procedure [dbo].[pa_Registro_Programacion_Examen]
 @id_orden_examen int
 As
 Set Nocount On
-Select p.ID_Programacion, p.ID_Orden_Examen_Medico as id_orden_examen, case p.estado when 'G' then 'Generado' when 'D' then 'Pagado' when 'R' then 'Reprogramado' when 'O' then 'Observado'  when 'V' then 'Verificado' else '' end as estado,
+Select p.ID_Programacion, p.ID_Orden_Examen_Medico as id_orden_examen, case p.estado when 'G' then 'Generada' when 'P' then 'Pendiente Pago' when 'D' then 'Pagada' when 'R' then 'Reprogramada' when 'O' then 'Observada'  when 'V' then 'Verificada' when 'X' then 'Anulada' else '' end as estado,
 h.id_consultorio, h.ID_MedicoTurno as id_horario, c.id_local, (m.nom_medico+' '+m.ape_medico) as especialista
 From TB_PROGRAMACION_ATENCION_EXAMENES p Inner Join TB_MEDICO_DE_TURNO h On (p.ID_MedicoTurno= h.ID_MedicoTurno)
 Inner Join TB_CONSULTORIO c On (h.id_consultorio= c.id_consultorio)
@@ -33,7 +33,10 @@ Select o.ID_Orden_Examen_Medico as id_orden_examen, o.ID_Medico, o.ID_Orden_Inte
 m.nom_medico + ' ' + m.ape_medico as medico, e.ID_Tipo_Examen as id_tpo_examen, e.nom_examen as examen, a.id_historia, p.nombres +' '+p.ApellidoPat+' '+ApellidoMat as paciente,
 isnull(e.precio,0) as precio, o.ID_Catalogo_Examen as id_examen,
 case a.ID_Tipo_Atencion when 'E' then 'Emergencia' when 'A' then 'Ambulatorio' when 'H' then 'Hospitalario' else '' end as tipo_atencion,
-case o.estado when 'G' then 'Generada' when 'P' then 'Programada' when 'C' then 'Confirmada' else '' end as estado
+case o.estado when 'G' then 'Generada' when 'P' then 'Programada' when 'C' then 'Conpletada' when 'A' then 'Atendida' when 'D' then 'Pagada' else '' end as estado,
+isnull((Select ID_Orden_Servicio
+From TB_ORDEN_SERVICIO 
+Where ID_Orden_Examen_Medico= @id_orden_examen and estado= 'G'),0) as id_orden_pago
 From TB_ORDEN_EXAMEN_MEDICO o Inner Join TB_MEDICO m On (o.id_medico= m.id_medico)
 Inner Join TB_CATALOGO_EXAMEN_MEDICO e On (o.ID_Catalogo_Examen= e.ID_Catalogo_Examen)
 Inner Join TB_ORDEN_INTERNA a On (o.ID_Orden_Interna= a.ID_Orden_Interna)
@@ -94,6 +97,7 @@ else
 	end
 
 
+
 Go
 
 
@@ -111,9 +115,11 @@ As
 Insert Into TB_ORDEN_SERVICIO (FechaSolicitud, ID_Orden_Examen_Medico, estado, Total)
 Values (GETDATE(), @id_orden_examen, @estado, @importe)
 
-Update TB_ORDEN_EXAMEN_MEDICO Set estado= 'C' Where ID_Orden_Examen_Medico= @id_orden_examen
+--Update TB_ORDEN_EXAMEN_MEDICO Set estado= 'C' Where ID_Orden_Examen_Medico= @id_orden_examen
 
-Update TB_PROGRAMACION_ATENCION_EXAMENES Set estado= 'D' Where ID_Orden_Examen_Medico= @id_orden_examen and estado= 'G'
+--Update TB_PROGRAMACION_ATENCION_EXAMENES Set estado= 'D' Where ID_Orden_Examen_Medico= @id_orden_examen and estado= 'G'
+
+Update TB_ORDEN_EXAMEN_MEDICO Set estado= 'D' Where ID_Orden_Examen_Medico= @id_orden_examen
 
 
 Go
@@ -136,6 +142,26 @@ Go
 
 
 
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE Procedure [dbo].[pa_Modificar_Informe_Resultado]
+@id_orden_examen int, 
+@resultado varchar(250),
+@observacion varchar(250),
+@estado varchar(1),
+@imagen varchar(100),
+@adicional varchar(250)
+As
+Update TB_INFORME_RESULTADO Set adicional= @adicional 
+Where  ID_Orden_Examen_Medico= @id_orden_examen
+
+Update TB_ORDEN_EXAMEN_MEDICO Set estado= 'C' Where ID_Orden_Examen_Medico= @id_orden_examen
+
+Go
+
+
 /****** Object:  StoredProcedure [dbo].[pa_Lista_Programacion_Examenes]    Script Date: 03/06/2014 19:25:58 ******/
 SET ANSI_NULLS ON
 GO
@@ -154,8 +180,8 @@ As
 Set @paciente= REPLACE(@paciente,' ','%')
 
 		Select p.ID_Programacion, p.ID_Orden_Examen_Medico as id_orden_examen, p.ID_MedicoTurno as id_horario, 
-		case p.estado when 'G' then 'Generada' when 'D' then 'Pagado' when 'R' then 'Reprogramado' when 'X' then 'Anulado' when 'O' then 'Observado' when 'V' then 'Verificado' else '' end as estado,
-		c.descripcion as consultorio, e.nom_examen as examen, a.id_historia, pa.nombres + ', '+ pa.ApellidoPat+' '+ pa.ApellidoMat as paciente,
+		case p.estado when 'G' then 'Generada' when 'P' then 'Pendiente Pago' when 'D' then 'Pagada' when 'R' then 'Reprogramada' when 'O' then 'Observada' when 'V' then 'Verificada' when 'X' then 'Anulada' else '' end as estado,
+		c.nro_consultorio as consultorio, e.nom_examen as examen, a.id_historia, pa.nombres + ', '+ pa.ApellidoPat+' '+ pa.ApellidoMat as paciente,
 		m.nom_medico +' '+m.ape_medico as especialista, ho.fecha, l.nombre as Local
 		From TB_PROGRAMACION_ATENCION_EXAMENES p 
 		Inner Join TB_MEDICO_DE_TURNO ho On (p.ID_MedicoTurno= ho.ID_MedicoTurno)
@@ -174,6 +200,7 @@ Set @paciente= REPLACE(@paciente,' ','%')
 		And @id_historia in (a.ID_Historia, 0)
 		And ((pa.nombres + pa.ApellidoPat + pa.ApellidoMat) like '%'+@paciente+'%' or  (pa.ApellidoPat+pa.ApellidoMat+pa.nombres) like '%'+@paciente+'%')
 		Order By l.nombre, c.nro_consultorio, ho.fecha
+
 
 
 
@@ -240,7 +267,6 @@ Inner Join TB_CATALOGO_REQUISITO er On (e.ID_Catalogo_Examen= er.ID_Catalogo_Exa
 Inner Join TB_REQUISITO r On (er.id_requisito= r.id_requisito)
 Where e.ID_Catalogo_Examen= @id_examen
 
-
 Go
 
 
@@ -283,7 +309,6 @@ Update TB_ORDEN_EXAMEN_MEDICO Set estado= 'P' Where ID_Orden_Examen_Medico= @id_
 
 
 UPdate TB_ORDEN_SERVICIO Set estado= 'X' Where ID_Orden_Examen_Medico= @id_orden_examen
-
 
 
 
@@ -333,6 +358,8 @@ As
 Insert Into TB_INFORME_RESULTADO (ID_Orden_Examen_Medico, fecha, resultado, observacion, estado, imagen)
 Values (@id_orden_examen, GETDATE(), @resultado, @observacion, @estado, @imagen)
 
+Update TB_ORDEN_EXAMEN_MEDICO Set estado= 'A' Where ID_Orden_Examen_Medico= @id_orden_examen
+
 
 Go
 
@@ -341,7 +368,7 @@ CREATE Procedure pa_Registro_Informe_Resultado
 As
 Set Nocount On
 Select ID_InformeResultado as id_informe, ID_Orden_Examen_Medico as id_orden_examen, fecha, resultado, observacion,
-case estado when 'R' then 'Registrado' else '' end as estado, isnull(imagen,'') as imagen 
+case estado when 'R' then 'Registrado' else '' end as estado, isnull(imagen,'') as imagen, ISNULL(adicional, '') as adicional 
 From TB_INFORME_RESULTADO
 Where ID_Orden_Examen_Medico= @id_orden_examen
 

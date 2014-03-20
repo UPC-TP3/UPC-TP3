@@ -47,8 +47,8 @@ public partial class Plantilla : System.Web.UI.MasterPage
         menu += "</ul></li>";
 
         menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Gestión de Imágenes");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/programacionImagenesEdit.aspx", "Programación de Exámenes");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/generarOrdenPagoEdit.aspx", "Órdenes de Pago");
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/ordenPago.aspx", "Órdenes de Pago");
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/programacionImagenesEdit.aspx", "Programación de Exámenes");     
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/requisitosExamen.aspx", "Verificar Requisitos");
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/registrarResultadosEdit.aspx", "Registrar Resultados");
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/registrarResultadosEdit.aspx?accion=C", "Consultar Resultados");

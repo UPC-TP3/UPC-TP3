@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" CodeFile="programacionImagenesEdit.aspx.cs" Inherits="GestionImagenes_programacionImagenesEdit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" ClientIDMode="Static"  CodeFile="programacionImagenesEdit.aspx.cs" Inherits="GestionImagenes_programacionImagenesEdit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style type="text/css">
@@ -14,22 +14,23 @@
         }
     </style>
     <script language="javascript" type="text/javascript" src="../js/jquery-1.7.1.js" ></script>
-<%--     <script type="text/javascript">
-         $(document).ready(function () {
-
-             $('#btnConsultar').click(function () {
-                 return confirm("Seguro de Anular Contrato");
-             })
-         });
-    </script>--%>
+    <script type="text/javascript">
+        function fnMensaje(pvMensaje) {
+            alert(pvMensaje);
+        }
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
 
         <script type="text/javascript">
+
+
             $(document).ready(function () {
 
                 $('#<%= btnReProgramar.ClientID %>').click(function () {
+
+
                     if ($('#<%= txtId_orden_examen.ClientID %>').val() == "") {
                         alert("Ingrese Orden de Examen");
                         $('#<%= txtId_orden_examen.ClientID %>').focus();
@@ -73,6 +74,13 @@
 
 
                 $('#<%= btnProgramar.ClientID %>').click(function () {
+
+                    if ($('#<%= txtEstado_orden_examen.ClientID %>').val() != "Pagada") {
+                        alert("Primero debe realizar el pago.");
+                        $('#<%= txtEstado_orden_examen.ClientID %>').focus();
+                        return false;
+                    }
+
                     if ($('#<%= txtId_orden_examen.ClientID %>').val() == "") {
                         alert("Ingrese Orden de Examen");
                         $('#<%= txtId_orden_examen.ClientID %>').focus();
@@ -190,13 +198,13 @@
                         <td>
                             Paciente</td>
                         <td>
-                            <asp:TextBox ID="txtPaciente" runat="server" Width="259px" ReadOnly="True" 
+                            <asp:TextBox ID="txtPaciente" runat="server" Width="208px" ReadOnly="True" 
                                 CssClass="no_edit"></asp:TextBox>
                         </td>
                         <td>
                             Médico</td>
                         <td>
-                            <asp:TextBox ID="txtMedico" runat="server" Width="223px" ReadOnly="True" 
+                            <asp:TextBox ID="txtMedico" runat="server" Width="206px" ReadOnly="True" 
                                 CssClass="no_edit"></asp:TextBox>
                         </td>
                     </tr>
@@ -271,10 +279,13 @@
                             </asp:DropDownList>
                         </td>
                         <td>
-                            Estado</td>
+                            <asp:Label ID="lblEstado_programacion" runat="server" 
+                                Font-Names="Verdana;Arial;Hervetica" Font-Size="10px" Text="Estado" 
+                                Visible="False"></asp:Label>
+                        </td>
                         <td>
                             <asp:TextBox ID="txtEstado_programacion" runat="server" Width="109px" 
-                                ReadOnly="True" CssClass="no_edit"></asp:TextBox>
+                                ReadOnly="True" CssClass="no_edit" Visible="False"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -301,7 +312,8 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:Label ID="lblMotivoR" runat="server" Text="Motivo Reprogramación"></asp:Label>
+                            <asp:Label ID="lblMotivoR" runat="server" Text="Motivo Reprogramación" 
+                                Font-Names="Verdana;Arial;Hervetica,10px" Font-Size="10px"></asp:Label>
                         </td>
                         <td colspan="3">
                             <asp:TextBox ID="txtMotivoR" runat="server" Width="459px"></asp:TextBox>
@@ -319,7 +331,9 @@
                     </tr>
                     <tr>
                         <td>
-                            Historial Programación</td>
+                            <asp:Label ID="lblHistorial" runat="server" Text="Historial programación" 
+                                Font-Names="Verdana;Arial;Hervetica,10px" Font-Size="10px" Visible="False"></asp:Label>
+                        </td>
                         <td>
                             &nbsp;</td>
                         <td>

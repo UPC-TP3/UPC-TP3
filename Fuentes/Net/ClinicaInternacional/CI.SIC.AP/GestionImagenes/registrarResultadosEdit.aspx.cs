@@ -103,12 +103,23 @@ public partial class GestionImagenes_registrarResultadosEdit : System.Web.UI.Pag
         InformeResultadoBE eInformeResultado;
         eInformeResultado = oInformeResultado.Registro(txtId_orden_examen.Text == "" ? 0 : Convert.ToInt32(txtId_orden_examen.Text));
 
+        lblAdicionales.Visible = false;
+        txtAdicionales.Visible = false;
+        btnGrabarAdicionales.Visible = false;
+
+
+        txtResultado.CssClass = "";
+        txtObservaciones.CssClass = "";
+        txtFecha_resultado.CssClass = "";
+
+
         if (eInformeResultado != null)
         {
             txtFecha_resultado.Text = eInformeResultado.Fecha.ToString("dd/MM/yyyy");
             txtEstado_resultado.Text = eInformeResultado.Estado;
             txtResultado.Text = eInformeResultado.Resultado;
             txtObservaciones.Text = eInformeResultado.Observacion;
+            txtAdicionales.Text = eInformeResultado.Adicional;
 
             if (hidAccion.Value != "C")
             {
@@ -120,6 +131,14 @@ public partial class GestionImagenes_registrarResultadosEdit : System.Web.UI.Pag
             }
             else
             {
+                txtResultado.CssClass = "no_edit";
+                txtObservaciones.CssClass = "no_edit";
+                txtFecha_resultado.CssClass = "no_edit";
+
+                lblAdicionales.Visible = true;
+                txtAdicionales.Visible = true;
+                btnGrabarAdicionales.Visible = true;
+
                 if (eInformeResultado.Imagen != "")
                 {
                     Image1.Visible = true;
@@ -128,7 +147,7 @@ public partial class GestionImagenes_registrarResultadosEdit : System.Web.UI.Pag
                     Image1.ImageUrl = "examenes/" + eInformeResultado.Imagen;
                     //Image1.ImageUrl = @"file:///C:/Users/Public/Pictures/ban-seguros.png";
                     //Image1.DataBind();
-                    
+
                 }
             }
         }
@@ -169,6 +188,9 @@ public partial class GestionImagenes_registrarResultadosEdit : System.Web.UI.Pag
             txtTipo_atencion.Text = "";
             txtEstado_orden_examen.Text = "";
             txtFecha_resultado.Text = "";
+            txtAdicionales.Text = "";
+            txtResultado.Text = "";
+            txtObservaciones.Text = "";
 
             if (eOrden_examen != null)
             {
@@ -249,12 +271,53 @@ public partial class GestionImagenes_registrarResultadosEdit : System.Web.UI.Pag
 
         //CargaProgramacion();
 
-        ////if (txtEstado_orden_examen.Text!="")
-        ////    if (txtEstado_orden_examen.Text.Substring(0, 1) == "C")
-        ////    {
-        ////        btnOrden_pago.Visible = false;
-        ////    }
+        if (txtEstado_orden_examen.Text != "" && hidAccion.Value != "C")
+            if (txtEstado_orden_examen.Text.Substring(0, 1) == "P")
+            {
+                btnGrabar.Visible = true;
+            }
+            else
+            {
+                btnGrabar.Visible = false;
+            }
+        else
+        {
+            btnGrabar.Visible = false;
+        }
     }
 
 
+    protected void btnGrabarAdicionales_Click(object sender, EventArgs e)
+    {
+        if (txtAdicionales.Text == "")
+        {
+            lblMensaje.Text = "Registre Adicionales";
+            txtAdicionales.Focus();
+            return;
+        }
+
+        InformeResultadoBL oInformeResultado = new InformeResultadoBL();
+        InformeResultadoBE eInformeResultado = new InformeResultadoBE();
+
+        eInformeResultado.Id_orden_examen = Convert.ToInt32(txtId_orden_examen.Text);
+        eInformeResultado.Resultado = txtResultado.Text;
+        eInformeResultado.Observacion = txtObservaciones.Text;
+        eInformeResultado.Adicional = txtAdicionales.Text;
+        eInformeResultado.Estado = "R";
+        if (fupImagen.FileName != "")
+            eInformeResultado.Imagen = fupImagen.FileName;
+
+        if (oInformeResultado.Modificar(eInformeResultado) == true)
+        {
+            //if (fupImagen.FileName != "")
+            //{
+            //    //System.IO.File.Copy(fupImagen.PostedFile.FileName, @"D:\personal\UPC\tp3\proyecto\sistema\examenes\" + fupImagen.FileName, true);
+            //    System.IO.File.Copy(fupImagen.PostedFile.FileName, @"D:\personal\UPC\tp3\proyecto\sistema\UPC-TP3\Fuentes\Net\ClinicaInternacional\CI.SIC.AP\GestionImagenes\examenes\" + fupImagen.FileName, true);
+
+            //}
+            Response.Redirect("gestionImagenes.aspx");
+        }
+        else
+            lblMensaje.Text = "No se pudieron registrar Adicionales";
+    }
 }

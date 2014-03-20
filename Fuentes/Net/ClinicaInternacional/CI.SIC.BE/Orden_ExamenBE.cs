@@ -21,5 +21,6 @@ namespace CI.SIC.BE
         public string Examen { get; set; }
         public string Estado { get; set; }
         public decimal Precio { get; set; }
+        public int Id_orden_pago { get; set; }
     }
 }

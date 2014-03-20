@@ -164,6 +164,8 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
                 cboHorario.SelectedValue = "0";
                 txtEspecialista.Text = "";
                 txtEstado_programacion.Text = "";
+                lblEstado_programacion.Visible = false;
+                txtEstado_programacion.Visible = false;
                 lblMensaje.Text = "Orden de examen no existe";
             }
         }
@@ -264,7 +266,11 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
         eProgramacion_Examen.Estado = "G";
 
         if (oProgramacion_Examen.Nuevo(eProgramacion_Examen) == true)
+        {
+            string vmensaje = "Se registró la programación.";
+            ClientScript.RegisterStartupScript(GetType(), "MostrarMensaje", "fnMensaje('" + vmensaje + "');", true);
             Response.Redirect("gestionImagenes.aspx");
+        }
         else
             lblMensaje.Text = "No se pudo registrar Programación";
 
@@ -293,10 +299,24 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
         CargaOrden();
         CargaProgramacion();
 
+        if (txtEstado_orden_examen.Text.Trim()!="")
+            if (txtEstado_orden_examen.Text.Substring(0,1)=="A" || txtEstado_orden_examen.Text.Substring(0,1)=="C")
+            {
+                btnProgramar.Visible = false;
+                btnReProgramar.Visible = false;
+            }
+
         Programacion_ExamenBL oProgramacion_Examen = new Programacion_ExamenBL();
 
         grvProgramacion.DataSource = oProgramacion_Examen.Listado(txtId_orden_examen.Text == "" ? 0 : Convert.ToInt32(txtId_orden_examen.Text), 0, "", "", 0, 0);
         grvProgramacion.DataBind();
+
+        if (grvProgramacion.Rows.Count == 0)
+            lblHistorial.Visible = false;
+        else
+        {
+            lblHistorial.Visible = true;
+        }
 
     }
 
@@ -316,7 +336,8 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
             cboHorario.SelectedValue = eProgramacion.Id_horario.ToString();
             txtEstado_programacion.Text = eProgramacion.Estado;
             txtEspecialista.Text = eProgramacion.Especialista;
-
+            lblEstado_programacion.Visible = true;
+            txtEstado_programacion.Visible = true;
             btnReProgramar.Visible = true;
             lblMotivoR.Visible = true;
             txtMotivoR.Visible = true;
@@ -330,6 +351,8 @@ public partial class GestionImagenes_programacionImagenesEdit : System.Web.UI.Pa
             cboHorario.SelectedValue = "0";
             txtEstado_programacion.Text = "";
             txtEspecialista.Text = "";
+            lblEstado_programacion.Visible = false;
+            txtEstado_programacion.Visible = false;
 
             btnReProgramar.Visible = false;
             lblMotivoR.Visible = false;

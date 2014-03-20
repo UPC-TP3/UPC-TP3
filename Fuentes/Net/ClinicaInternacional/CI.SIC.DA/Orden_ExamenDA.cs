@@ -32,7 +32,8 @@ namespace CI.SIC.DA
                         Precio = reader.GetDecimal(reader.GetOrdinal("Precio")),
                         Id_examen= reader.GetInt32(reader.GetOrdinal("Id_examen")),
                         Tipo_atencion= reader.GetString(reader.GetOrdinal("Tipo_atencion")),
-                        Estado= reader.GetString(reader.GetOrdinal("Estado"))
+                        Estado = reader.GetString(reader.GetOrdinal("Estado")),
+                        Id_orden_pago = reader.GetInt32(reader.GetOrdinal("Id_orden_pago"))
                     });
                 }
             }
