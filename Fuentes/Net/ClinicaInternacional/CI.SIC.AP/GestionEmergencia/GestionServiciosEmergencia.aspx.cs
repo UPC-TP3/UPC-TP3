@@ -82,6 +82,10 @@ public partial class GestionEmergencia_GestionServiciosEmergencia : System.Web.U
         this.oEmergenciaExamenesBEList.Add(new BE_Emergencia());
         this.grvExamen.DataSource = this.oEmergenciaExamenesBEList;
         this.grvExamen.DataBind();
+
+        this.oEmergenciaMedicamentosBEList.Add(new BE_Emergencia());
+        this.grvMedicamentos.DataSource = this.oEmergenciaMedicamentosBEList;
+        this.grvMedicamentos.DataBind();
     
     }
     protected void btnbuscar_Click(object sender, EventArgs e)
@@ -368,11 +372,11 @@ public partial class GestionEmergencia_GestionServiciosEmergencia : System.Web.U
         {
             BE_Emergencia itemBE = (e.Row.DataItem as BE_Emergencia);
 
-            //if (itemBE.ID_Tipo_Examen == 0)
-            //{
-            //    e.Row.Visible = false;
-            //    return;
-            //}
+            if (itemBE.ID_EXAMEN == 0)
+            {
+                e.Row.Visible = false;
+                return;
+            }
 
             e.Row.Style["cursor"] = "pointer";
 

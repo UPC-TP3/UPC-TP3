@@ -472,17 +472,17 @@ values (@idatencion,@idmedico,@estado,@fecha,@idpaciente,@detalle,@idexamen)
 update TB_DETALLE_SERVICIOS_EXAMENES set TB_DETALLE_SERVICIOS_EXAMENES.status=1 where id_atencion=@idatencion
 go
 
-create proc usp_ListarServicioMedicamento
-@idatencion
-as
-select [ID_SERVICIO]
-      ,[ID_ATENCION]
-      ,[ID_MEDICAMENTO]
-      ,[CANTIDAD]
-      ,[STATUS]
-      ,[FECHA] from TB_DETALLE_SERVICIOS_MEDICAMENTOS
-where id_atencion=@idatencion
-go
+--create proc usp_ListarServicioMedicamento
+--@idatencion
+--as
+--select [ID_SERVICIO]
+--      ,[ID_ATENCION]
+--      ,[ID_MEDICAMENTO]
+--      ,[CANTIDAD]
+--      ,[STATUS]
+--      ,[FECHA] from TB_DETALLE_SERVICIOS_MEDICAMENTOS
+--where id_atencion=@idatencion
+--go
 
 
 
