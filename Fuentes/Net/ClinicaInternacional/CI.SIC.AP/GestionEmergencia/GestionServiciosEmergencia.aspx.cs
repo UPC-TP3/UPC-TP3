@@ -458,12 +458,12 @@ public partial class GestionEmergencia_GestionServiciosEmergencia : System.Web.U
          
         }
 
-        //foreach (GridViewRow grd_Row1 in this.grvMedicamentos.Rows)
-        //{
-        //    TextBox txtCantidad = (TextBox)(grd_Row1.FindControl("txtCantidad"));
-        //    ind3 = oServicioEmergenciaBL.InsertarMedicamento (idtencion, Convert.ToInt32(grd_Row1.Cells[0].Text), Convert.ToInt32(txtCantidad.Text));
+        foreach (GridViewRow grd_Row1 in this.grvMedicamentos.Rows)
+        {
+            TextBox txtCantidad = (TextBox)(grd_Row1.FindControl("txtCantidad"));
+            ind3 = oServicioEmergenciaBL.InsertarMedicamento(idtencion, Convert.ToInt32(grd_Row1.Cells[0].Text), Convert.ToInt32(txtCantidad.Text));
 
-        //}
+        }
         IniciaPagina();
         this.oEmergenciaExamenesBEList = null;
         this.oEmergenciaExamenesBEList.Add(new BE_Emergencia());
