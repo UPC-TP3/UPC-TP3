@@ -1,8 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" CodeFile="GcAdmRegistrarHistoriaClinica.aspx.cs" Inherits="GestionAdmision_GcAdmRegistrarHistoriaClinica" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" EnableEventValidation="false" ClientIDMode="Static" CodeFile="GcAdmRegistrarHistoriaClinica.aspx.cs" Inherits="GestionAdmision_GcAdmRegistrarHistoriaClinica" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
   <script language="javascript" type="text/javascript" src="../js/jquery-1.7.1.js" ></script>
     <script language="javascript" type="text/javascript" src="GcAdmRegistrarHistoriaClinica.js"></script>
+<style type="text/css">
+.disabled 
+{
+ color:#8A8A8A;
+ background-color:#F8F8F8;
+} 
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
   
@@ -12,34 +19,34 @@
  <div class="filtro">
     <div class="columna"> 
         <div>
-         <asp:Label ID="lblNroHistoria" runat="server" Text="Nro de Historia Clínica:"></asp:Label><asp:HiddenField
+         <asp:Label ID="lblNroHistoria" runat="server" Text="Fecha de registro:"></asp:Label><asp:HiddenField
              ID="hddIDPaciente" runat="server" />
-         <p><asp:TextBox ID="txtNroHistoria"  runat="server" MaxLength="20"></asp:TextBox></p> 
+         <p><asp:TextBox ID="txtFechaReg" CssClass="disabled" ReadOnly="true"  runat="server" MaxLength="20"></asp:TextBox></p> 
         </div>
         <div>
             <asp:Label ID="lblTipoDocumentoN" runat="server" Text="Tipo de Documento:"></asp:Label>
-            <p><asp:DropDownList ID="ddlTipoDocumentoN" Enabled="false" runat="server"></asp:DropDownList></p> 
+            <p><asp:TextBox ID="txtTipoDocumento" CssClass="disabled" ReadOnly="true"  runat="server" MaxLength="20"></asp:TextBox></p> 
         </div>
        <div>
             <asp:Label ID="lblNombre" runat="server" Text="Nombres:"></asp:Label>
-            <p><asp:TextBox ID="txtNombre"  ReadOnly="true" runat="server" MaxLength="20" ></asp:TextBox></p> 
+            <p><asp:TextBox ID="txtNombre" CssClass="disabled" ReadOnly="true" runat="server" MaxLength="20" ></asp:TextBox></p> 
         </div>
         <div>
             <asp:Label ID="lblApellidoP" runat="server" Text="Apellido Paterno:"></asp:Label>
-            <p><asp:TextBox ID="txtApellidoP"  ReadOnly="true" runat="server" MaxLength="20"></asp:TextBox></p> 
+            <p><asp:TextBox ID="txtApellidoP"  ReadOnly="true" CssClass="disabled" runat="server" MaxLength="20"></asp:TextBox></p> 
         </div>
         <div>
             <asp:Label ID="lblApellidoM" runat="server" Text="Apellido Materno:"></asp:Label>
-            <p><asp:TextBox ID="txtApellidoM" ReadOnly="true"  runat="server" MaxLength="20"></asp:TextBox></p> 
+            <p><asp:TextBox ID="txtApellidoM" ReadOnly="true" CssClass="disabled" runat="server" MaxLength="20"></asp:TextBox></p> 
         </div>
         <div>
             <asp:Label ID="Label2" runat="server" Text="Alergias:"></asp:Label>
-            <p><asp:DropDownList ID="ddlAlergias" runat="server" AutoPostBack="True" 
-                    onselectedindexchanged="ddlAlergias_SelectedIndexChanged">
+            <p><asp:DropDownList ID="ddlAlergias" runat="server" >
             <asp:ListItem Text="NO" Value="0"></asp:ListItem>
             <asp:ListItem Text="SI" Value="1"></asp:ListItem>
             </asp:DropDownList></p>
-            <asp:TextBox ID="txtAlergias" ReadOnly="true"  runat="server" MaxLength="20"></asp:TextBox> 
+            <asp:DropDownList ID="ddlTipoAlergia" Enabled="false" runat="server" >
+            </asp:DropDownList>             
         </div>
         <div>
             <asp:Label ID="Label3" runat="server" Text="Tipo Admisión:"></asp:Label>
@@ -57,28 +64,23 @@
         </div>
         <div>
             <asp:Label ID="lblNroDocumento" runat="server" Text="Nro de Documento:"></asp:Label>
-            <p><asp:TextBox ID="txtNroDocumento" ReadOnly="true"   MaxLength="12"  runat="server" ></asp:TextBox></p>
+            <p><asp:TextBox ID="txtNroDocumento"  ReadOnly="true"  CssClass="disabled" MaxLength="12"  runat="server" ></asp:TextBox></p>
         </div> 
                 <div>
           <asp:Label ID="lblFechaNac" runat="server" Text="Fecha de Nacimiento:"></asp:Label>
-        <p><asp:TextBox ID="txtFechaNac" ReadOnly="true"  MaxLength="10"  runat="server" ></asp:TextBox></p>
+        <p><asp:TextBox ID="txtFechaNac" ReadOnly="true" CssClass="disabled"  MaxLength="10"  runat="server" ></asp:TextBox></p>
         </div>
         <div>
-            <asp:Label ID="lblSexo" runat="server" Text="Sexo:"></asp:Label>
-            <p><asp:DropDownList ID="ddlSexo" runat="server">
-            <asp:ListItem Text="-Seleccione-" Value="-1"></asp:ListItem>
-            <asp:ListItem Text="Masculino" Value="1"></asp:ListItem>
-            <asp:ListItem Text="Femenino" Value="0"></asp:ListItem>
-            </asp:DropDownList></p> 
+            <asp:Label ID="lblSexo" runat="server" Enabled="false" Text="Sexo:"></asp:Label>
+            <p><asp:TextBox ID="txtSexo" CssClass="disabled" ReadOnly="true"  runat="server" MaxLength="20"></asp:TextBox></p> 
         </div>
         <div>
             <asp:Label ID="lblDireccionN" runat="server" Text="Dirección del Paciente:"></asp:Label>
-            <p><asp:TextBox ID="txtDireccionN" ReadOnly="true"  runat="server" MaxLength="200" TextMode="SingleLine"></asp:TextBox></p>
+            <p><asp:TextBox ID="txtDireccionN" ReadOnly="true" CssClass="disabled" runat="server" MaxLength="200" TextMode="SingleLine"></asp:TextBox></p>
         </div>
         <div>
             <asp:Label ID="Label4" runat="server" Text="Intervención Quirúrgica:"></asp:Label>
-            <p><asp:DropDownList ID="ddlInterv" runat="server" AutoPostBack="True" 
-                    onselectedindexchanged="ddlInterv_SelectedIndexChanged">
+            <p><asp:DropDownList ID="ddlInterv" runat="server" >
             <asp:ListItem Text="NO" Value="0"></asp:ListItem>
             <asp:ListItem Text="SI" Value="1"></asp:ListItem>
             </asp:DropDownList></p> 
@@ -87,16 +89,10 @@
         <div>
             <asp:Label ID="Label5" runat="server" Text="Grupo Sanguineo:"></asp:Label>
             <p><asp:DropDownList ID="ddlGrupo" runat="server">
-            <asp:ListItem Text="-Seleccione-" Value="-1"></asp:ListItem>
-            <asp:ListItem Text="RH O+" Value="1"></asp:ListItem>
-            <asp:ListItem Text="RH O-" Value="2"></asp:ListItem>
-            <asp:ListItem Text="RH A+" Value="3"></asp:ListItem>
-            <asp:ListItem Text="RH A-" Value="4"></asp:ListItem>
             </asp:DropDownList></p> 
         </div>
         <div>
-        <p><asp:Button ID="Button1" runat="server" Text="Registrar" 
-                onclick="Button1_Click" /></p>
+        <p>        <asp:Button ID="btnGuardar" BackColor="#1871A8" ForeColor="#FFFFFF" Width="108px" runat="server" Text="Registrar" /> <asp:Button ID="btnSalir" BackColor="#1871A8" ForeColor="#FFFFFF" Width="108px" runat="server" Text="SALIR" /> </p>
         </div>
 
         </div>

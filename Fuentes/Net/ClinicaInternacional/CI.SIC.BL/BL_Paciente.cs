@@ -82,6 +82,104 @@ namespace CI.SIC.BL
 
         #endregion
 
+        #region Gestión de Admisión Luis
+
+
+        public BE_Paciente fn_VerificarPaciente_2(string p_vDNI, Int32 p_nTipoDocumento)
+        {
+            return DAO_Paciente.Instancia.fn_VerificarPaciente_2(p_vDNI, p_nTipoDocumento);
+        }
+
+
+        /// <summary>
+        /// Registrar Paciente
+        /// </summary>
+        /// <param name="p_objPacienteBE">Objeto Paciente</param>
+        /// <param name="p_vMensaje">Respuesta del proceso</param>
+        /// <returns>true, False</returns>
+        public bool fn_RegistrarPaciente_2(Dictionary<string, object> p_objValores, ref string p_vMensaje)
+        {
+            DateTime dt;
+            dt = Convert.ToDateTime(p_objValores["FechaNac"].ToString());
+            if (DAO_Paciente.Instancia.fn_RegistrarPaciente_2(new BE_Paciente
+            {
+
+                dni_paciente = p_objValores["NroDocumento"].ToString(),
+                ApellidoPat = p_objValores["ApellidoP"].ToString(),
+                ApellidoMat = p_objValores["ApellidoM"].ToString(),
+                Nombres = p_objValores["Nombre"].ToString(),
+                TelefonoDomicilio = p_objValores["Telefono"].ToString(),
+                Celular = p_objValores["Celular"].ToString(),
+                Direccion = p_objValores["Direccion"].ToString(),
+                ID_Sexo = Convert.ToInt32(p_objValores["Sexo"].ToString()),
+                ID_TipoDocumento = Convert.ToInt32(p_objValores["TipoDocumento"].ToString()),
+                FechaNacimiento = dt,
+                ID_Pais = Convert.ToInt32(p_objValores["Pais"].ToString()),
+                ID_Departamento = Convert.ToInt32(p_objValores["Departamento"].ToString()),
+                ID_Provincia = Convert.ToInt32(p_objValores["Provincia"].ToString()),
+                ID_Distrito = Convert.ToInt32(p_objValores["Distrito"].ToString()),
+                correo = p_objValores["Correo"].ToString(),
+                Ocupacion = p_objValores["Ocupacion"].ToString(),
+                ID_EstadoCivil = Convert.ToInt32(p_objValores["EstadoCivil"].ToString())
+            }) > 0)
+            {
+                p_vMensaje = "El registro se creó correctamente.";
+                return true;
+            }
+            else
+            {
+                p_vMensaje = "Error : NO se puedo crear el registro.";
+                return false;
+            }
+        }
+
+
+
+        /// <summary>
+        /// Registrar Paciente
+        /// </summary>
+        /// <param name="p_objPacienteBE">Objeto Paciente</param>
+        /// <param name="p_vMensaje">Respuesta del proceso</param>
+        /// <returns>true, False</returns>
+        public bool fn_ActualizarPaciente_2(Dictionary<string, object> p_objValores, ref string p_vMensaje)
+        {
+            DateTime dt;
+            dt = Convert.ToDateTime(p_objValores["FechaNac"].ToString());
+            if (DAO_Paciente.Instancia.fn_ActualizarPaciente_2(new BE_Paciente
+            {
+                ID_Paciente = Convert.ToInt32(p_objValores["IdPaciente"].ToString()),
+                dni_paciente = p_objValores["NroDocumento"].ToString(),
+                ApellidoPat = p_objValores["ApellidoP"].ToString(),
+                ApellidoMat = p_objValores["ApellidoM"].ToString(),
+                Nombres = p_objValores["Nombre"].ToString(),
+                TelefonoDomicilio = p_objValores["Telefono"].ToString(),
+                Celular = p_objValores["Celular"].ToString(),
+                Direccion = p_objValores["Direccion"].ToString(),
+                ID_Sexo = Convert.ToInt32(p_objValores["Sexo"].ToString()),
+                ID_TipoDocumento = Convert.ToInt32(p_objValores["TipoDocumento"].ToString()),
+                FechaNacimiento = dt,
+                ID_Pais = Convert.ToInt32(p_objValores["Pais"].ToString()),
+                ID_Departamento = Convert.ToInt32(p_objValores["Departamento"].ToString()),
+                ID_Provincia = Convert.ToInt32(p_objValores["Provincia"].ToString()),
+                ID_Distrito = Convert.ToInt32(p_objValores["Distrito"].ToString()),
+                correo = p_objValores["Correo"].ToString(),
+                Ocupacion = p_objValores["Ocupacion"].ToString(),
+                ID_EstadoCivil = Convert.ToInt32(p_objValores["EstadoCivil"].ToString())
+            }) > 0)
+            {
+                p_vMensaje = "El registro se actualizó correctamente.";
+                return true;
+            }
+            else
+            {
+                p_vMensaje = "Error : NO se puedo actualizar el registro.";
+                return false;
+            }
+        }
+
+
+        #endregion
+
 
         #region Gestion Adminsion ANDREE
         public BE_Paciente fn_ConsultarPaciente(int pintID_Paciente, String pstrDocumentoIdentidad, int intID_TipoDocumento)

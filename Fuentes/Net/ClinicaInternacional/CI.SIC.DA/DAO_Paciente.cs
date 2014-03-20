@@ -313,7 +313,141 @@ namespace CI.SIC.DA
         }
 
         #endregion
-        
+
+
+
+        #region Gestión Admisión Luis
+
+        /// <summary>
+        /// Función que verifica la existencia del Paciente en la BD
+        /// </summary>
+        /// <param name="p_vDNI">DNI del paciente</param>
+        /// <returns>Objeto Paciente</returns>
+        public BE_Paciente fn_VerificarPaciente_2(string p_vDNI, Int32 p_nTipoDocumento)
+        {
+            /*
+            Nombre: fn_VerificarPaciente
+            Creado Por: Lsalvatierra
+            Fecha Creación: 10/03/2014
+            */
+            var objUsuario = (BE_Paciente)null;
+            try
+            {
+                Dictionary<string, object> parameter = new Dictionary<string, object>();
+                parameter.Add("@DNI", p_vDNI);
+                parameter.Add("@ID_TipoDocumento", p_nTipoDocumento);
+                using (IDataReader oReader = SqlHelper.Instance.ExecuteReader("usp_VerificarPaciente", parameter))
+                {
+                    if (oReader.Read())
+                    {
+                        objUsuario = new BE_Paciente
+                        {
+                            ID_Paciente = oReader.GetInt32(oReader.GetOrdinal("ID_Paciente")),
+                            dni_paciente = oReader.GetString(oReader.GetOrdinal("dni_paciente")),
+                            Nombres = oReader.GetString(oReader.GetOrdinal("nombres")),
+                            ApellidoPat = oReader.GetString(oReader.GetOrdinal("ApellidoPat")),
+                            ApellidoMat = oReader.GetString(oReader.GetOrdinal("ApellidoMat")),
+                            ID_TipoDocumento = oReader.GetInt32(oReader.GetOrdinal("ID_TipoDocumento")),
+                            Direccion = oReader.GetString(oReader.GetOrdinal("Direccion")),
+                            ID_Sexo = oReader.GetInt32(oReader.GetOrdinal("ID_Sexo")),
+                            FechaNacimiento = oReader.GetDateTime(oReader.GetOrdinal("FechaNacimiento")),
+                            Celular = oReader.GetString(oReader.GetOrdinal("Celular")),
+                            TelefonoDomicilio = oReader.GetString(oReader.GetOrdinal("TelefonoDomicilio")),
+                            ID_Pais = oReader.GetInt32(oReader.GetOrdinal("ID_Pais")),
+                            ID_Departamento = oReader.GetInt32(oReader.GetOrdinal("ID_Departamento")),
+                            ID_Provincia = oReader.GetInt32(oReader.GetOrdinal("ID_Provincia")),
+                            ID_Distrito = oReader.GetInt32(oReader.GetOrdinal("ID_Distrito")),
+                            ID_EstadoCivil = oReader.GetInt32(oReader.GetOrdinal("ID_EstadoCivil")),
+                            Ocupacion = oReader.GetString(oReader.GetOrdinal("Ocupacion")),
+                            correo = oReader.GetString(oReader.GetOrdinal("Correo")),
+                            TipoDocumento = oReader.GetString(oReader.GetOrdinal("TipoDocumento")),
+                            DescSexo = oReader.GetString(oReader.GetOrdinal("DescSexo"))
+                        };
+
+                    }
+                    oReader.Close();
+                }
+                return objUsuario;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Registrar Paciente
+        /// </summary>
+        /// <param name="p_objPacienteBE">Objeto paciente</param>
+        /// <returns>Respuesta 0->False   1->True</returns>
+        public int fn_RegistrarPaciente_2(BE_Paciente p_objPacienteBE)
+        {
+            try
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Add("@DNI", p_objPacienteBE.dni_paciente);
+                parameters.Add("@Nombres", p_objPacienteBE.Nombres);
+                parameters.Add("@ApellidoP", p_objPacienteBE.ApellidoPat);
+                parameters.Add("@ApellidoM", p_objPacienteBE.ApellidoMat);
+                parameters.Add("@FechaNac", p_objPacienteBE.FechaNacimiento);
+                parameters.Add("@Celular", p_objPacienteBE.Celular);
+                parameters.Add("@Telefono", p_objPacienteBE.TelefonoDomicilio);
+                parameters.Add("@Direccion", p_objPacienteBE.Direccion);
+                parameters.Add("@Sexo", p_objPacienteBE.ID_Sexo);
+                parameters.Add("@IdTipoDoc", p_objPacienteBE.ID_TipoDocumento);
+                parameters.Add("@ID_Pais", p_objPacienteBE.ID_Pais);
+                parameters.Add("@ID_Departamento", p_objPacienteBE.ID_Departamento);
+                parameters.Add("@ID_Provincia", p_objPacienteBE.ID_Provincia);
+                parameters.Add("@ID_Distrito", p_objPacienteBE.ID_Distrito);
+                parameters.Add("@ID_EstadoCivil", p_objPacienteBE.ID_EstadoCivil);
+                parameters.Add("@Ocupacion", p_objPacienteBE.Ocupacion);
+                parameters.Add("@Correo", p_objPacienteBE.correo);
+
+                int rpta = SqlHelper.Instance.ExecuteNonQuery("usp_RegistrarPaciente_2", parameters);
+                return rpta;
+            }
+            catch { throw; }
+        }
+
+
+        /// <summary>
+        /// Actualizar Paciente
+        /// </summary>
+        /// <param name="p_objPacienteBE">Objeto paciente</param>
+        /// <returns>Respuesta 0->False   1->True</returns>
+        public int fn_ActualizarPaciente_2(BE_Paciente p_objPacienteBE)
+        {
+            try
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Add("@ID_Paciente", p_objPacienteBE.ID_Paciente);
+                parameters.Add("@DNI", p_objPacienteBE.dni_paciente);
+                parameters.Add("@Nombres", p_objPacienteBE.Nombres);
+                parameters.Add("@ApellidoP", p_objPacienteBE.ApellidoPat);
+                parameters.Add("@ApellidoM", p_objPacienteBE.ApellidoMat);
+                parameters.Add("@FechaNac", p_objPacienteBE.FechaNacimiento);
+                parameters.Add("@Celular", p_objPacienteBE.Celular);
+                parameters.Add("@Telefono", p_objPacienteBE.TelefonoDomicilio);
+                parameters.Add("@Direccion", p_objPacienteBE.Direccion);
+                parameters.Add("@Sexo", p_objPacienteBE.ID_Sexo);
+                parameters.Add("@IdTipoDoc", p_objPacienteBE.ID_TipoDocumento);
+                parameters.Add("@ID_Pais", p_objPacienteBE.ID_Pais);
+                parameters.Add("@ID_Departamento", p_objPacienteBE.ID_Departamento);
+                parameters.Add("@ID_Provincia", p_objPacienteBE.ID_Provincia);
+                parameters.Add("@ID_Distrito", p_objPacienteBE.ID_Distrito);
+                parameters.Add("@ID_EstadoCivil", p_objPacienteBE.ID_EstadoCivil);
+                parameters.Add("@Ocupacion", p_objPacienteBE.Ocupacion);
+                parameters.Add("@Correo", p_objPacienteBE.correo);
+                int rpta = SqlHelper.Instance.ExecuteNonQuery("usp_ActualizarPaciente_2", parameters);
+                return rpta;
+            }
+            catch { throw; }
+        }
+
+
+
+        #endregion
+
         #region Gestion Adminsion ANDREE
 
         public BE_Paciente fn_ConsultarPaciente(int pintID_Paciente, String pstrDocumentoIdentidad, int intID_TipoDocumento)
