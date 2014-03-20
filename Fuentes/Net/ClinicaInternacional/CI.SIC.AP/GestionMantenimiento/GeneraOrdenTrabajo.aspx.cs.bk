@@ -57,14 +57,33 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
         }
         lbContador.Text = lista.Count.ToString();
     }
-
-
-    private void CargarCombo()
+    private void CargarGrillaEmp()
     {
-      
+        //BL_SolicitudMantenimiento obj = new BL_SolicitudMantenimiento();
+        BL_Empleado obj = new BL_Empleado();
+
+        //var lista = obj.fn_ListaEmpleado(1/*Int32.Parse(DropDownList1.SelectedValue.ToString())*//*txtfechaini.Text, txtfechafin.Text*/);
+        var lista = obj.fn_ListaEmpleado(int.Parse(DropDownList1.SelectedValue));
+        if (lista.Count > 0)
+        {
+            gvEmpleados.DataSource = lista;
+            gvEmpleados.DataBind();
+        }
+        else
+        {
+            string mensaje = null;
+            mensaje = "No Existen Empleados";
+            //ucMOk.ShowSuccess(mensaje, 200, 400);
+            //ClientScript.RegisterStartupScript(typeof(string), "Mensaje", "<script language=\"JavaScript\"> alert('" + mensaje + "')</script>");
+            gvEmpleados.DataBind();
+        }
+        //lbContadorEmp.Text = lista.Count.ToString();
+    }
+    private void CargarCombo()
+    {      
         BL_SolicitudMantenimiento obj = new BL_SolicitudMantenimiento();
 
-        var lista = obj.fn_ListaSMxEstado(2);
+        var lista = obj.fn_ListaSM("00000000", "99999999");
         if (lista.Count > 0)
         {
             ddlSolicitud.DataSource = lista;
@@ -223,11 +242,6 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
     #endregion
 
 
-
-
-
-
-
     protected void btnGuardar_Click(object sender, EventArgs e)
     {
         try
@@ -248,6 +262,11 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
             throw ex;
         }
     }
+    protected void btnRecurso_Click(object sender, EventArgs e)
+    {
+        mpeEmpleado.Show();
+        estadopopup = 1;
+    }
     protected void btnCerrar_Click(object sender, EventArgs e)
     {
         estadopopup = 0;
@@ -260,7 +279,11 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
         mpeActSM.Show();
         estadopopup = 1;
     }
-
+    protected void txtSalirOT_Click(object sender, EventArgs e)
+    {
+        //mpeEmpleado.Show();
+        //estadopopup = 1;
+    }
    
     protected void ddlPersonal_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -273,5 +296,35 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
     protected void ddlSolicitud_SelectedIndexChanged(object sender, EventArgs e)
     {
 
+    }
+    protected void ibBuscarEmp_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void gvEmpleados_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            var obj = e.Row.DataItem as BE_Empleado;
+            if (obj != null)
+            {
+                var image1 = e.Row.FindControl("ibSeleccionar") as Image;
+                if (image1 != null)
+                {
+                    if (obj.Estado == 1)
+                    {
+                        image1.Visible = true;
+                    }
+                    else if (obj.Estado == 2)
+                    {
+                        image1.Visible = false;
+                    }
+
+                }
+            }
+        }
+    }
+    public void Seleccionar(object sender, CommandEventArgs e)
+    {
     }
 }

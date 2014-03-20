@@ -164,7 +164,8 @@
 	                <td align="right">
                         <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" 
                             onclick="btnNuevo_Click" />
-                        <asp:Button ID="txtSalirOT" runat="server" Text="Salir" />
+                        <asp:Button ID="txtSalirOT" runat="server" Text="Salir" 
+                            onclick="txtSalirOT_Click" />
 	                </td>
                 </tr>
             </table>
@@ -292,7 +293,8 @@
                           </asp:DropDownList>
                       </td>
                       <td class="style6">
-                          &nbsp;</td>
+                          <asp:Button ID="btnRecurso" runat="server" Text="Consultar Recursos ..." onclick="btnRecurso_Click" />
+                      </td>
                       <td class="style7">
                           &nbsp;</td>
                       <td class="style4">
@@ -384,8 +386,124 @@
             </tr>
         </table>
     </asp:Panel>
+    <asp:Panel ID="pnlEmpleado" runat="server" Style="width:700px;" CssClass="cuadrodes" >
+        <table border="0" width="100%">
+            <tr><td class="stlTituloPagina">Empleado</td></tr>	                	                	                                
+            <tr><td class="Linea"></td></tr>	                                
+        </table>
+        <br/>
+                    <table border="0" width="680px" class="stlPanelBusqueda">
+                <tr>
+                    <td class="stlCabecera" style="height: 15px">
+                        Busqueda
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                                <table class="stlPanelBusqueda" cellspacing="0" border="0" width="680px">
+                        <tr>
+                            <td class="style1">
+                                Lista&nbsp;de&nbsp;Empleados&nbsp;por&nbsp;Especialidad
+                            </td>
+                            <td class="style1">
+                                :
+                            </td>
+                            <td class="style1">
+                                <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" 
+                                    CssClass="stlComboBox" Width="300px">
+                                    <asp:ListItem Selected="True" Text="--Todos--" Value="0"></asp:ListItem>
+                                    <asp:ListItem Text="Servicio General" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="Electronica" Value="2"></asp:ListItem>
+                                    <asp:ListItem Text="Electricidad" Value="3"></asp:ListItem>
+                                    <asp:ListItem Text="Mecanica" Value="4"></asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            </td>
+                            <caption>
+                                fff
+                    </caption>
+                        </tr>
+                        <tr>
+                            <td class="style1">
+                                Lista&nbsp;de&nbsp;Empleados&nbsp;por&nbsp;Disponibilidad
+                            </td>
+                            <td class="style1">
+                                :
+                            </td>
+                            <td class="style1">
+                                <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="true" 
+                                    CssClass="stlComboBox" Width="300px">
+                                    <asp:ListItem Selected="True" Text="--Todos--" Value="0"></asp:ListItem>
+                                    <asp:ListItem Text="Disponible" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="No Disponible" Value="2"></asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td align="right">
+                                <asp:Button ID="ibBuscar" runat="server" OnClick="ibBuscarEmp_Click" 
+                                    Text="Buscar" />
+                                &nbsp;
+                            </td>
+                        </tr>
+            </table>
+            <br />
+                        <div class="HeaderGV" style="height: 300px; overflow: auto; width: 70%">
+                <asp:GridView ID="gvEmpleados" runat="server" AutoGenerateColumns="False" SkinID="GridZX11"
+                    onrowdatabound="gvEmpleados_RowDataBound"
+                    Style="font-size: 10px" Width="70%"
+                    >
+                    <Columns>
+                        <asp:BoundField DataField="E_Apellido_Paterno" HeaderText="Apellido Paterno">
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="E_Apellido_Materno" HeaderText="Apellido Materno">
+                        <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="E_Nombre" HeaderText="Nombre">
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="E_Telefono" HeaderText="Telefono Celular">
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="ID_Especialidad" HeaderText="Especialidad">
+                        <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Estado" HeaderText="Estado">
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:TemplateField HeaderText="Seleccionar">
+                            <ItemTemplate>
+                                <asp:ImageButton ID="ibSeleccionar" imageurl="~/Imagenes/GM_check.png" runat="server" CausesValidation="False"
+                                    CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ID_Empleado") %>'
+                                    OnCommand="Seleccionar" CommandName="Seleccionar" SkinID="Selecccionar" ToolTip="Seleccionar" />
+                            </ItemTemplate>
+                            <HeaderStyle Height="15px" />
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </div>
+
+
+    </asp:Panel>
+
     <asp:Button ID="btnTabla" runat="server" Style="display: none" />
     <ajaxtoolkit:ModalPopupExtender ID="mpeActSM" runat="server" BehaviorID="bmpActSM" PopupControlID="pnlActSM"
+                    TargetControlID="btnTabla" BackgroundCssClass="modalBackground" DropShadow="true"  CancelControlID="btnTabla" >
+    </ajaxtoolkit:ModalPopupExtender>
+    <ajaxtoolkit:ModalPopupExtender ID="mpeEmpleado" runat="server" BehaviorID="bmpEmpleado" PopupControlID="pnlEmpleado"
                     TargetControlID="btnTabla" BackgroundCssClass="modalBackground" DropShadow="true"  CancelControlID="btnTabla" >
     </ajaxtoolkit:ModalPopupExtender>
     </div>

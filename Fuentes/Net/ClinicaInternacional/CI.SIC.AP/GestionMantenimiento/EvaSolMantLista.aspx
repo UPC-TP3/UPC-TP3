@@ -1,6 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" CodeFile="EvaSolMantLista.aspx.cs" Inherits="GestionMantenimiento_EvaSolMantLista" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<script type="text/javascript">
+    function validafecha() {
+        var fi = document.getElementById('<%= txtfechaini.ClientID %>');
+        var ff = document.getElementById('<%= txtfechafin.ClientID %>');
+        if ((fi.value != '' && fi.value != '________') && (ff.value != '' && ff.value != '________')) {
+            if (fi.value > ff.value) { alert('La fecha inicial debe ser menor que la fecha final'); return false; }
+        }
+        return true;
+    }
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
 <div class="col_04">
@@ -41,7 +51,7 @@
                      <td>Fecha Inicio</td>
                      <td>:</td>
                      <td>
-                         <asp:TextBox ID="txtfechaini" runat="server" CssClass="stlCajaTexto"></asp:TextBox>
+                         <asp:TextBox ID="txtfechaini" runat="server" CssClass="stlCajaTexto" onChange="return validafecha();"></asp:TextBox>
                          <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/App_Themes/EstilosHO/calendar.gif" Width="16px" />
                          <ajaxtoolkit:CalendarExtender ID="CalendarExtender3" runat="server" TargetControlID="txtfechaini"
                                 PopupButtonID="btnFecInicial" Enabled="True" Format="dd/MM/yyyy" >
@@ -53,7 +63,7 @@
                      <td>Fecha Fin</td>
                      <td>:</td>
                      <td>
-                         <asp:TextBox ID="txtfechafin" runat="server" CssClass="stlCajaTexto"></asp:TextBox>
+                         <asp:TextBox ID="txtfechafin" runat="server" CssClass="stlCajaTexto" onChange="return validafecha();"></asp:TextBox>
                          <asp:ImageButton ID="ImageButton1" runat="server" 
                              ImageUrl="~/App_Themes/EstilosHO/calendar.gif" />
                          <ajaxtoolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtfechafin"
@@ -83,38 +93,29 @@
              </table><br/>
              <div class="HeaderGV" style="HEIGHT: 300px ; overflow:auto; width : 99%  ">
                 <asp:GridView ID="gvEvaluarSolicitudes" runat="server" AutoGenerateColumns="False" 
-                     SkinID="GridZX11" style=" font-size:10px" Width="100%" >
+                     SkinID="GridZX11" style=" font-size:10px" Width="100%"
+                     onrowdatabound="gvEvaluarSolicitudes_RowDataBound" >
                     <Columns>
-                        <asp:TemplateField HeaderText="Modificar">
+                        <asp:TemplateField HeaderText="Aceptar/Anular">
                             <ItemStyle HorizontalAlign="Center" Width="80px" />
                             <HeaderStyle HorizontalAlign="Center" Width="80px" />
                             <ItemTemplate>
                                 <asp:ImageButton ID="ibModificar" runat="server" CausesValidation="False" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Nrosolicitud") %>' OnCommand="Modificar" CommandName="Modificar" SkinID="Modificar" ToolTip="Modificar" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Nrosolicitud" HeaderText="N° Solicitud" >
+                        <asp:BoundField DataField="Nrosolicitud" HeaderText="N° Solicitud">
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="Fechacreacion" HeaderText="Fec.Creación" >
-                        <ItemStyle HorizontalAlign="Center" />
-                        </asp:BoundField>
-                        <asp:BoundField DataField="FechaIncidencia" HeaderText="Fecha de Incidencia" >
-                        <ItemStyle HorizontalAlign="Center" />
-                        </asp:BoundField>                            
-                        <asp:BoundField DataField="Tiposerviciodesc" HeaderText="Tipo Servicio" >
+                        <asp:BoundField DataField="Fechacreacion" HeaderText="Fec.Creación">
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="Tipomantenimiento" HeaderText="Tipo Mantenimiento" 
-                            Visible="False" >
+                        <asp:BoundField DataField="NomTiposervicio" HeaderText="Tipo Servicio">
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="Observaciones" HeaderText="Observación" >
+                        <asp:BoundField DataField="Especificacion" HeaderText="Equipo/Infraestructura">
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="Prioridad" HeaderText="Prioridad" Visible="False" >
-                            <ItemStyle HorizontalAlign="Center" />
-                        </asp:BoundField>
-                        <asp:BoundField DataField="Estadodesc" HeaderText="Estado" >
+                        <asp:BoundField DataField="NomEstado" HeaderText="Estado">
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:BoundField>
                     </Columns>
@@ -134,4 +135,3 @@
         </asp:Panel>
 </div>
 </asp:Content>
-

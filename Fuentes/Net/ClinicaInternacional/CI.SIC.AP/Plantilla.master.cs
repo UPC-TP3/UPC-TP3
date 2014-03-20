@@ -43,6 +43,7 @@ public partial class Plantilla : System.Web.UI.MasterPage
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionMantenimiento/EvaSolMantLista.aspx", "Evaluar Solicitud");
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionMantenimiento/GeneraOrdenTrabajo.aspx", "Orden de Trabajo");
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionMantenimiento/MonitorearOT.aspx", "Monitorear OT");
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionMantenimiento/ConsultaRecursosDisponibles.aspx", "Consultar Recursos");
         menu += "</ul></li>";
 
         menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Gestión de Imágenes");

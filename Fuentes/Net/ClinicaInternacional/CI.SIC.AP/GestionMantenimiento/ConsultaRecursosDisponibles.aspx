@@ -1,9 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" CodeFile="MonitorearOT.aspx.cs" Inherits="GestionMantenimiento_MonitorearOT" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" CodeFile="ConsultaRecursosDisponibles.aspx.cs" Inherits="GestionMantenimiento_ConsultaRecursosDisponibles" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
 <%@ Register Src="~/GestionMantenimiento/Mensaje.ascx" TagName="ucMensajeOk" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-
+    <style type="text/css">
+        .style1
+        {
+            height: 16px;
+        }
+    </style>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
     <ContentTemplate>
@@ -12,7 +18,7 @@
             <table border="0" width="100%">
                 <tr>
                     <td class="stlTituloPagina">
-                        Monitorear Ordenes de Trabajo
+                        Consulta Disponibilidad de Recursos
                     </td>
                 </tr>
                 <tr>
@@ -21,164 +27,122 @@
                 </tr>
             </table>
             <br />
-            <table class="stlPanelBusqueda" cellspacing="0" border="0" width="100%">
-                <%--<tr>
-                    <td>
-                        Fecha&nbsp;Inicio
-                    </td>
-                    <td>
-                        :
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtfechaini" CssClass="stlCajaTexto" runat="server"></asp:TextBox>
-                        <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/App_Themes/EstilosHO/calendar.gif" />
-                        <ajaxtoolkit:CalendarExtender ID="CalendarExtender3" runat="server" TargetControlID="txtfechaini"
-                            PopupButtonID="btnFecInicial" Enabled="True" Format="ddMMyyyy">
-                        </ajaxtoolkit:CalendarExtender>
-                        <ajaxtoolkit:MaskedEditExtender ID="MaskedEditExtender3" runat="server" MaskType="Number"
-                            Mask="99999999" TargetControlID="txtfechaini">
-                        </ajaxtoolkit:MaskedEditExtender>
-                    </td>
-                    <td>
-                        Fecha&nbsp;Fin
-                    </td>
-                    <td>
-                        :
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtfechafin" CssClass="stlCajaTexto" runat="server"></asp:TextBox>
-                        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/App_Themes/EstilosHO/calendar.gif" />
-                        <ajaxtoolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtfechafin"
-                            PopupButtonID="btnFecInicial" Enabled="True" Format="ddMMyyyy">
-                        </ajaxtoolkit:CalendarExtender>
-                        <ajaxtoolkit:MaskedEditExtender ID="MaskedEditExtender1" runat="server" MaskType="Number"
-                            Mask="99999999" TargetControlID="txtfechafin">
-                        </ajaxtoolkit:MaskedEditExtender>
-                    </td>
-                </tr>--%>
+            <br />
+            <table border="0" width="100%" class="stlPanelBusqueda">
                 <tr>
-                    <td class="stlCabecera" style="height: 15px" colspan="6">
+                    <td class="stlCabecera" style="height: 15px">
                         Busqueda
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        &nbsp;Estado&nbsp;de&nbsp;Orden&nbsp;de&nbsp;Trabajo
-                    </td>
-                    <td>
-                        :
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="DropDownList1" runat="server" CssClass="stlComboBox" AutoPostBack="true" Width="80%">
-                            <asp:ListItem Text="--Todos--" Value="0" Selected="True"></asp:ListItem>
-                            <asp:ListItem Text="Por Ejecutar" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="En Ejecución" Value="2"></asp:ListItem>
-                            <asp:ListItem Text="Ejecutada" Value="3"></asp:ListItem>
-                            <asp:ListItem Text="Ejecutada y Cerrada " Value="4"></asp:ListItem>
-                        </asp:DropDownList>
-                    </td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="lbContador" runat="server" Font-Size="10px">&nbsp;</asp:Label>
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td>
-                        &nbsp;
-                    </td>
-                    <td align="right">
-                        <asp:Button ID="btnBuscarPresupuesto" runat="server" OnClick="ibBuscar_Click" Text="Buscar" />
-                        &nbsp;
-                    </td>
-                </tr>
+                                <table class="stlPanelBusqueda" cellspacing="0" border="0" width="100%">
+                        <tr>
+                            <td class="style1">
+                                Lista&nbsp;de&nbsp;Empleados&nbsp;por&nbsp;Especialidad
+                            </td>
+                            <td class="style1">
+                                :
+                            </td>
+                            <td class="style1">
+                                <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" 
+                                    CssClass="stlComboBox" Width="300px" 
+                                    onselectedindexchanged="DropDownList1_SelectedIndexChanged">
+                                    <asp:ListItem Selected="True" Text="--Todos--" Value="0"></asp:ListItem>
+                                    <asp:ListItem Text="Servicio General" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="Electronica" Value="2"></asp:ListItem>
+                                    <asp:ListItem Text="Electricidad" Value="3"></asp:ListItem>
+                                    <asp:ListItem Text="Mecanica" Value="4"></asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="style1">
+                                Lista&nbsp;de&nbsp;Empleados&nbsp;por&nbsp;Disponibilidad
+                            </td>
+                            <td class="style1">
+                                :
+                            </td>
+                            <td class="style1">
+                                <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="true" 
+                                    CssClass="stlComboBox" Width="300px" 
+                                    onselectedindexchanged="DropDownList2_SelectedIndexChanged">
+                                    <asp:ListItem Selected="True" Text="--Todos--" Value="0"></asp:ListItem>
+                                    <asp:ListItem Text="Disponible" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="No Disponible" Value="2"></asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td align="right">
+                                <asp:Button ID="ibBuscar" runat="server" OnClick="ibBuscarEmp_Click" 
+                                    Text="Buscar" />
+                                &nbsp;
+                            </td>
+                        </tr>
             </table>
-            <br />
-            <table border="0" width="100%" class="stlPanelBusqueda">
-                <tr>
-                    <td class="stlCabecera" style="height: 15px" colspan="6">
-                        Leyenda
+
                     </td>
                 </tr>
-                <tr style="height: 15px">
-                    <td><img alt="" src="../Imagenes/Trafficlight_red.png" /></td>
-                    <td>Por Ejecutar</td>
-                    <td>&nbsp;</td>
-                    <td><img alt="" src="../Imagenes/Trafficlight_green.png" /></td>
-                    <td>Ejecutada</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr style="height: 15px">
-                    <td><img alt="" src="../Imagenes/Trafficlight_yellow.png" /></td>
-                    <td>En Ejecución</td>
-                    <td>&nbsp;</td>
-                    <td><img alt="" src="../Imagenes/Trafficlight_blue.png" /></td>
-                    <td>Ejecutada y Cerrada</td>
-                    <td>&nbsp;</td>
+                <tr>
+                    <td colspan="3" style="height: 15px">
+                        <asp:Label ID="lbContadorEmp" runat="server">&nbsp;</asp:Label>
+                    </td>
                 </tr>
             </table>
             <br />
             <div class="HeaderGV" style="height: 300px; overflow: auto; width: 99%">
-                <asp:GridView ID="gvSolicitudes" runat="server" AutoGenerateColumns="False" SkinID="GridZX11"
-                    onrowdatabound="gvSolicitudes_RowDataBound"
-                    Style="font-size: 10px" Width="100%" 
+                <asp:GridView ID="gvEmpleados" runat="server" AutoGenerateColumns="False" SkinID="GridZX11"
+                    onrowdatabound="gvEmpleados_RowDataBound"
+                    Style="font-size: 10px" Width="100%"
                     >
                     <Columns>
-                        <asp:TemplateField HeaderText="Cerrar">
+                        <asp:BoundField DataField="E_Apellido_Paterno" HeaderText="Apellido Paterno">
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="E_Apellido_Materno" HeaderText="Apellido Materno">
+                        <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="E_Nombre" HeaderText="Nombre">
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="E_Telefono" HeaderText="Telefono Celular">
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="ID_Especialidad" HeaderText="Especialidad">
+                        <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Estado" HeaderText="Estado">
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:TemplateField HeaderText="Seleccionar">
                             <ItemTemplate>
-                                <asp:ImageButton ID="ibModificar" imageurl="~/Imagenes/GM_check.png" runat="server" CausesValidation="False"
-                                    CommandArgument='<%# DataBinder.Eval(Container.DataItem, "GM_NroOrden") %>'
-                                    OnCommand="Modificar" CommandName="Modificar" SkinID="Modificar" ToolTip="Cerrar" />
+                                <asp:ImageButton ID="ibSeleccionar" imageurl="~/Imagenes/GM_check.png" runat="server" CausesValidation="False"
+                                    CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ID_Empleado") %>'
+                                    OnCommand="Seleccionar" CommandName="Seleccionar" SkinID="Selecccionar" ToolTip="Seleccionar" />
                             </ItemTemplate>
                             <HeaderStyle Height="15px" />
-                            <ItemStyle HorizontalAlign="Center" />
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Informe">
-                            <ItemTemplate>
-                                <asp:ImageButton ID="ibInforme" imageurl="~/Imagenes/GM_informe.png" runat="server" CausesValidation="False"
-                                    CommandArgument='<%# DataBinder.Eval(Container.DataItem, "GM_NroSolicitud") %>'
-                                    OnCommand="Informe" CommandName="Informe" SkinID="Informe" ToolTip="Informe" />   
-                            </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" />
-                        </asp:TemplateField>
-                        <asp:BoundField DataField="GM_NroOrden" HeaderText="N° Orden">
-                            <ItemStyle HorizontalAlign="Center" />
-                        </asp:BoundField>
-                        <asp:BoundField DataField="GM_NroSolicitud" HeaderText="N° Solitud">
-                        <ItemStyle HorizontalAlign="Center" />
-                        </asp:BoundField>
-                        <asp:BoundField DataField="GM_Fecha_Creacion" HeaderText="Fec.Creación">
-                            <ItemStyle HorizontalAlign="Center" />
-                        </asp:BoundField>
-                        <asp:BoundField DataField="GM_Prioridad" HeaderText="Prioridad">
-                        <ItemStyle HorizontalAlign="Center" />
-                        </asp:BoundField>
-                        <asp:BoundField DataField="GM_Especificacion" HeaderText="Equipo/Infraestructura">
-                            <ItemStyle HorizontalAlign="Center" />
-                        </asp:BoundField>
-                        <%--<asp:BoundField DataField="GM_Estado" HeaderText="Estado">
-                            <ItemStyle HorizontalAlign="Center" />
-                        </asp:BoundField>--%>
-                        <asp:TemplateField HeaderText="Indicador">
-                            <ItemTemplate>
-                                <asp:Image id="imgIndicador" imageurl="" runat="server"/>
-                            </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>
-            <br />
+            &nbsp;
+                            <td align="right">
+                                &nbsp;
+                            </td>
             <%--<table border="0" width="100%">
                 <tr>
                     <td class="Linea">
@@ -191,12 +155,14 @@
                     </td>
                 </tr>
             </table>--%>
+            <asp:Button ID="ibAgregar" runat="server" onclick="ibAgregar_Click" Text="Agregar" visible="false"
+                              Width="78px" />
         </asp:Panel>
         <asp:Panel ID="pnlActSM" runat="server" Style="width: 700px;padding:20px;" CssClass="cuadrodes">
             <table border="0" width="100%">
                 <tr>
                     <td class="stlTituloPagina">
-                        Informe de Mantenimiento
+                        Servicios de Mantenimiento Asignado a Empleado 
                     </td>
                 </tr>
                 <tr>
@@ -301,28 +267,31 @@
                     </td>
                 </tr>
                 <tr>--%>
+                </tr>
+                <tr>
                     <td style="width: 20%">
                         Descripción de Actividades
                     </td>
                     <td>
                         :
                     </td>
-                    <td style="width: 80%" colspan="4">
-                        <asp:TextBox ID="txtdetalleserv" runat="server" CssClass="stlCajaTexto" TextMode="MultiLine"
-                            Width="80%" Rows="4" Height="50px" />
-                    </td>
-                </tr>
-                <tr runat="server" id="tr1">
-                    <td style="width: 20%">
-                        Observación
-                    </td>
-                    <td>
-                        :
-                    </td>
                     <td colspan="4" style="width: 80%">
-                        <asp:TextBox ID="txtobs" runat="server" CssClass="stlCajaTexto" Width="80%" TextMode="MultiLine"
+                        <asp:TextBox ID="txtdetalleserv" runat="server" CssClass="stlCajaTexto" 
+                            Width="80%" TextMode="MultiLine"
                             Rows="4" Height="50px" />
                     </td>
+                    <tr ID="tr1" runat="server">
+                        <td style="width: 20%">
+                            Observación
+                        </td>
+                        <td>
+                            :
+                        </td>
+                        <td colspan="4" style="width: 80%">
+                            <asp:TextBox ID="txtobs" runat="server" CssClass="stlCajaTexto" Height="50px" 
+                                Rows="4" TextMode="MultiLine" Width="80%" />
+                        </td>
+                    </tr>
                 </tr>
             </table>
             <br />
@@ -333,9 +302,9 @@
                 </tr>
                 <tr>
                     <td align="right">
-                        <asp:Button ID="ibCerrar" runat="server" Text="Cerrar OT" OnClick="ibCerrar_Click" />
+                        <asp:Button ID="ibGuardar" runat="server" Text="Cerrar OT" OnClick="ibGuardar_Click" />
                         <asp:Button ID="ibAnular" runat="server" Text="Anular" Visible="false" onclick="ibAnular_Click" />
-                        <asp:Button ID="ibRetornar" runat="server" Text="Retornar" OnClick="ibRetornar_Click" />
+                        <asp:Button ID="ibCerrar" runat="server" Text="Cerrar" OnClick="ibCerrar_Click" />
                     </td>
                 </tr>
             </table>
@@ -350,5 +319,7 @@
     </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="PaginaActual" Runat="Server">
 </asp:Content>
+

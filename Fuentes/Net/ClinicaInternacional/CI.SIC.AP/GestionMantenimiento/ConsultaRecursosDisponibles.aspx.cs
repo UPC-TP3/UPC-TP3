@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 using CI.SIC.BL;
 using CI.SIC.BE;
 
-
-public partial class GestionMantenimiento_MonitorearOT : System.Web.UI.Page
+public partial class GestionMantenimiento_ConsultaRecursosDisponibles : System.Web.UI.Page
 {
+
     private static int estadopopup;
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -20,64 +20,25 @@ public partial class GestionMantenimiento_MonitorearOT : System.Web.UI.Page
             Session["Usuario"] = "Luis Muñoz";
             Session["CodUsuario"] = "us001";
             Session["Area"] = "Cuidados Intensivos";
-            CargarGrilla();
+            //CargarGrilla();
         }
         else { if (estadopopup == 1) { mpeActSM.Show(); } }
     }
 
-    protected void ibBuscar_Click(object sender, EventArgs e)
+    protected void ibBuscarEmp_Click(object sender, EventArgs e)
     {
-        //CargarGrilla();
-        try
-        {
-            CargarGrilla();
-        }
-        catch (Exception ex)
-        {
-            string mensaje = null;
-            mensaje = "Error al Buscar las Ordenes de Trabajo";
-            ucMOk.ShowError(mensaje, 200, 400);
-            //ClientScript.RegisterStartupScript(typeof(string), "Mensaje", "<script language=\"JavaScript\"> alert('" + mensaje + "')</script>");
-        }
-    }
-
-    protected void gvSolicitudes_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-        if (e.Row.RowType == DataControlRowType.DataRow)
-        {
-            var obj = e.Row.DataItem as BE_OrdendeTrabajo;
-            if (obj != null)
-            {
-                var image1 = e.Row.FindControl("imgIndicador") as Image;
-                var image2 = e.Row.FindControl("ibModificar") as Image;
-                var image3 = e.Row.FindControl("ibInforme") as Image;
-                if (image1 != null)
-                {
-                    if (obj.GM_Estado == "1"){
-                        image1.ImageUrl = "~/Imagenes/Trafficlight_red.png";
-                        image2.Visible = false;
-                        image3.Visible = false;
-                    }
-                    else if (obj.GM_Estado == "2"){                    
-                        image1.ImageUrl = "~/Imagenes/Trafficlight_yellow.png";
-                        image2.Visible = false;
-                        image3.Visible = false;
-                    }
-                    else if (obj.GM_Estado == "3"){
-                        image1.ImageUrl = "~/Imagenes/Trafficlight_green.png";
-                        image2.Visible = true;
-                        image3.Visible = true;
-                    }
-                    else if (obj.GM_Estado == "4"){
-                        image1.ImageUrl = "~/Imagenes/Trafficlight_blue.png";
-                        image2.Visible = false;
-                        image3.Visible = true;
-                        //e.Row.Cells[0].Controls[0].EnableViewState = false;
-                    }
-
-                }
-            }
-        }
+        CargarGrilla();
+        //try
+        //{
+        //    CargarGrilla();
+        //}
+        //catch (Exception ex)
+        //{
+        //    string mensaje = null;
+        //    mensaje = "Error al Buscar las Solicitudes";
+        //    ucMOk.ShowError(mensaje, 200, 400);
+        //    //ClientScript.RegisterStartupScript(typeof(string), "Mensaje", "<script language=\"JavaScript\"> alert('" + mensaje + "')</script>");
+        //}
     }
 
 
@@ -85,23 +46,25 @@ public partial class GestionMantenimiento_MonitorearOT : System.Web.UI.Page
     private void CargarGrilla()
     {
         //BL_SolicitudMantenimiento obj = new BL_SolicitudMantenimiento();
-        BL_OrdenTrabajo obj = new BL_OrdenTrabajo();
+        BL_Empleado obj = new BL_Empleado();
 
-        var lista = obj.fn_MonitorearOT(Int32.Parse(DropDownList1.SelectedValue.ToString())/*txtfechaini.Text, txtfechafin.Text*/);
+        //var lista = obj.fn_ListaEmpleado(1/*Int32.Parse(DropDownList1.SelectedValue.ToString())*//*txtfechaini.Text, txtfechafin.Text*/);
+        var lista = obj.fn_ListaEmpleado(int.Parse(DropDownList1.SelectedValue));
         if (lista.Count > 0)
         {
-            gvSolicitudes.DataSource = lista;
-            gvSolicitudes.DataBind();
+            gvEmpleados.DataSource = lista;
+            gvEmpleados.DataBind();
+          
         }
         else
         {
             string mensaje = null;
-            mensaje = "No Existen Ordenes de Trabajo Registradas";
+            mensaje = "No Existen Empleados";
             ucMOk.ShowSuccess(mensaje, 200, 400);
             //ClientScript.RegisterStartupScript(typeof(string), "Mensaje", "<script language=\"JavaScript\"> alert('" + mensaje + "')</script>");
-            gvSolicitudes.DataBind();
+            gvEmpleados.DataBind();
         }
-        lbContador.Text = lista.Count.ToString()+" Registros Encontrados";
+        lbContadorEmp.Text = lista.Count.ToString();
     }
 
     public void Modificar(object sender, CommandEventArgs e)
@@ -113,8 +76,6 @@ public partial class GestionMantenimiento_MonitorearOT : System.Web.UI.Page
             txtsolicitadopor.Text = Session["Usuario"].ToString();
             hfcodsolicitado.Value = Session["CodUsuario"].ToString();
             txtfechacreacion.Text = DateTime.Now.ToString("ddMMyyyy");
-            ibCerrar.Visible = true;
-            ibRetornar.Visible = true;
             CargarRegistro(txtid.Text);
             mpeActSM.Show();
             estadopopup = 1;
@@ -128,29 +89,6 @@ public partial class GestionMantenimiento_MonitorearOT : System.Web.UI.Page
         }
     }
 
-    public void Informe(object sender, CommandEventArgs e)
-    {
-        try
-        {
-            txtid.Text = e.CommandArgument.ToString();
-            txtarea.Text = Session["Area"].ToString();
-            txtsolicitadopor.Text = Session["Usuario"].ToString();
-            hfcodsolicitado.Value = Session["CodUsuario"].ToString();
-            txtfechacreacion.Text = DateTime.Now.ToString("ddMMyyyy");
-            ibCerrar.Visible = false;
-            ibRetornar.Visible = true;
-            CargarRegistro(txtid.Text);
-            mpeActSM.Show();
-            estadopopup = 1;
-        }
-        catch (Exception ex)
-        {
-            string mensaje = null;
-            mensaje = "Error al mostrar los datos";
-            ucMOk.ShowError(mensaje, 200, 400);
-            //ClientScript.RegisterStartupScript(typeof(string), "Mensaje", "<script language=\"JavaScript\"> alert('" + mensaje + "')</script>");
-        }
-    }
     //public void Eliminar(object sender, CommandEventArgs e)
     //{
     //    try
@@ -306,6 +244,32 @@ public partial class GestionMantenimiento_MonitorearOT : System.Web.UI.Page
     //    ScriptManager.RegisterStartupScript(this,typeof(string), "Mensaje", "<script language=\"JavaScript\"> alert('" + mensaje + "')</script>",false);
     //}
 
+    //private void CargarActivo()
+    //{
+    //    if (ddltiposervicio.SelectedValue == "1")
+    //    {
+    //        ddlequipomedico.Items.Clear();
+    //        ddlequipomedico.Items.Add(new ListItem("--Seleccionar--", "0"));
+    //        ddlequipomedico.Items.Add(new ListItem("Equipo de Resonancia Magnetica Serie: AXN001", "1"));
+    //        ddlequipomedico.Items.Add(new ListItem("Equipo de Rayos X Serie: RXN001", "2"));
+    //        ddlequipomedico.Items.Add(new ListItem("Equipo de Resonancia Magnetica Serie: AXN002", "3"));
+    //        ddlequipomedico.Items.Add(new ListItem("Equipo de Rayos X Serie: RXN002", "4"));
+    //        ddlequipomedico.Items.Add(new ListItem("Equipo de Resonancia Magnetica Serie: AXN003", "5"));
+    //        ddlequipomedico.Items.Add(new ListItem("Equipo de Rayos X Serie: RXN003", "6"));
+    //    }
+    //    else if (ddltiposervicio.SelectedValue == "2")
+    //    {
+    //        ddlequipomedico.Items.Clear();
+    //        ddlequipomedico.Items.Add(new ListItem("--Seleccionar--", "0"));
+    //        ddlequipomedico.Items.Add(new ListItem("Sala de Espera Pabellón 1", "1"));
+    //        ddlequipomedico.Items.Add(new ListItem("Sala de Parto Pabellón 2", "2"));
+    //        ddlequipomedico.Items.Add(new ListItem("Cuarto de Almacén Pabellón 1", "3"));
+    //        ddlequipomedico.Items.Add(new ListItem("Sala de Reposo Pabellón 5", "4"));
+    //        ddlequipomedico.Items.Add(new ListItem("Sala de Operaciones Pabellón 3", "5"));
+    //        ddlequipomedico.Items.Add(new ListItem("Sala de Cuidados Intensivos Pabellón 1", "6"));
+    //    }
+    //}
+
     #endregion
     protected void ibIngresar_Click(object sender, EventArgs e)
     {
@@ -318,7 +282,7 @@ public partial class GestionMantenimiento_MonitorearOT : System.Web.UI.Page
         mpeActSM.Show();
         estadopopup = 1;
     }
-    protected void ibCerrar_Click(object sender, EventArgs e)
+    protected void ibGuardar_Click(object sender, EventArgs e)
     {
         try
         {
@@ -340,11 +304,18 @@ public partial class GestionMantenimiento_MonitorearOT : System.Web.UI.Page
         }
 
     }
-    protected void ibRetornar_Click(object sender, EventArgs e)
+    //protected void ddltiposervicio_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    if (ddltiposervicio.SelectedIndex > 0)
+    //    {
+    //        CargarActivo();
+    //    }
+    //}
+    protected void ibCerrar_Click(object sender, EventArgs e)
     {
         estadopopup = 0;
         Enable(true);
-        ibCerrar.Visible = true;
+        ibGuardar.Visible = true;
         mpeActSM.Hide();
     }
     protected void ibAnular_Click(object sender, EventArgs e)
@@ -366,15 +337,78 @@ public partial class GestionMantenimiento_MonitorearOT : System.Web.UI.Page
             ucMOk.ShowWarning(mensaje, 200, 400);
             //ClientScript.RegisterStartupScript(typeof(string), "Mensaje", "<script language=\"JavaScript\"> alert('" + mensaje + "')</script>");
         }
-        ibCerrar.Visible = true;
+        ibGuardar.Visible = true;
         Enable(true);
     }
-    //protected void ddltiposervicio_SelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    if (ddltiposervicio.SelectedIndex > 0)
-    //    {
-    //        CargarActivo();
-    //    }
-    //}
+    protected void ibSeleccionar_Click(object sender, EventArgs e)
+    {
+        estadopopup = 0;
+        Enable(true);
+        ibCerrar.Visible = true;
+        mpeActSM.Hide();
+    }
+    public void Seleccionar(object sender, CommandEventArgs e)
+    {
+        //try
+        //{
+        //    txtid.Text = e.CommandArgument.ToString();
+        //    txtarea.Text = Session["Area"].ToString();
+        //    txtsolicitadopor.Text = Session["Usuario"].ToString();
+        //    hfcodsolicitado.Value = Session["CodUsuario"].ToString();
+        //    txtfechacreacion.Text = DateTime.Now.ToString("ddMMyyyy");
+        //    ibCerrar.Visible = true;
+        //    ibRetornar.Visible = true;
+        //    CargarRegistro(txtid.Text);
+        //    mpeActSM.Show();
+        //    estadopopup = 1;
+        //}
+        //catch (Exception ex)
+        //{
+        //    string mensaje = null;
+        //    mensaje = "Error al mostrar los datos";
+        //    ucMOk.ShowError(mensaje, 200, 400);
+        //    //ClientScript.RegisterStartupScript(typeof(string), "Mensaje", "<script language=\"JavaScript\"> alert('" + mensaje + "')</script>");
+        //}
+    }
+    protected void gvEmpleados_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+    protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+    protected void ibAgregar_Click(object sender, EventArgs e)
+    {
+
+    }
+    protected void gvEmpleados_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            var obj = e.Row.DataItem as BE_Empleado;
+            if (obj != null)
+            {
+                var image1 = e.Row.FindControl("ibSeleccionar") as Image;
+                if (image1 != null)
+                {
+                    if (obj.Estado == 1)
+                    {
+                        image1.Visible = true;
+                    }
+                    else if (obj.Estado == 2)
+                    {
+                        image1.Visible = false;
+                    }
+
+                }
+            }
+        }
+    }
+
 
 }

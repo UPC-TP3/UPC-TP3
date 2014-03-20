@@ -2,7 +2,17 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
 <%@ Register Src="~/GestionMantenimiento/Mensaje.ascx" TagName="ucMensajeOk" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-
+<script type="text/javascript">
+    function validafecha() {
+        var fi = document.getElementById('<%= txtfechaini.ClientID %>');
+        var ff = document.getElementById('<%= txtfechafin.ClientID %>');
+        if ((fi.value != '' && fi.value != '________') && (ff.value != '' && ff.value != '________'))
+        {
+            if (fi.value > ff.value) { alert('La fecha inicial debe ser menor que la fecha final');return false;}
+        }
+        return true;
+     }
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -30,7 +40,7 @@
                         :
                     </td>
                     <td>
-                        <asp:TextBox ID="txtfechaini" CssClass="stlCajaTexto" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtfechaini" CssClass="stlCajaTexto" runat="server" onChange="return validafecha();"></asp:TextBox>
                         <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/App_Themes/EstilosHO/calendar.gif" />
                         <ajaxtoolkit:CalendarExtender ID="CalendarExtender3" runat="server" TargetControlID="txtfechaini"
                             PopupButtonID="btnFecInicial" Enabled="True" Format="ddMMyyyy">
@@ -46,7 +56,7 @@
                         :
                     </td>
                     <td>
-                        <asp:TextBox ID="txtfechafin" CssClass="stlCajaTexto" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtfechafin" CssClass="stlCajaTexto" runat="server" onChange="return validafecha();"></asp:TextBox>
                         <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/App_Themes/EstilosHO/calendar.gif" />
                         <ajaxtoolkit:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtfechafin"
                             PopupButtonID="btnFecInicial" Enabled="True" Format="ddMMyyyy">
@@ -82,7 +92,7 @@
             <table border="0" width="100%" class="stlPanelBusqueda">
                 <tr>
                     <td class="stlCabecera" style="height: 15px">
-                        Resultados de la Busqueda
+                        Resultados de la Búsqueda
                     </td>
                 </tr>
                 <tr>
@@ -107,7 +117,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Anular">
                             <ItemTemplate>
-                                <asp:ImageButton ID="imbEliminar" runat="server" OnClientClick="return confirm('¿Esta seguro de eliminar este registro?');"
+                                <asp:ImageButton ID="imbEliminar" runat="server" OnClientClick="return confirm('¿Esta seguro que desea Anular la Solicitud?');"
                                     OnCommand="Eliminar" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Nrosolicitud") %>'
                                     SkinID="Eliminar" ToolTip="Eliminar"></asp:ImageButton>
                             </ItemTemplate>
@@ -121,6 +131,9 @@
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:BoundField>
                         <asp:BoundField DataField="NomTiposervicio" HeaderText="Tipo Servicio">
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Especificacion" HeaderText="Equipo/Infraestructura">
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:BoundField>
                         <asp:BoundField DataField="NomEstado" HeaderText="Estado">
@@ -137,7 +150,7 @@
                 </tr>
                 <tr>
                     <td align="right">
-                        <asp:Button ID="ibIngresar" runat="server" Text="Nuevo" OnClick="ibIngresar_Click" />
+                        <asp:Button ID="ibIngresar" runat="server" Text="Ingresar Solicitud" OnClick="ibIngresar_Click" />
                         
                         <asp:Button ID="ibSalir" runat="server" Text="Salir" />
                     </td>
@@ -165,7 +178,9 @@
                         :
                     </td>
                     <td style="width: 30%">
-                        <asp:TextBox ID="txtid" runat="server" CssClass="stlCajaTexto" MaxLength="60" Enabled="False" />
+                        <asp:TextBox ID="txtid" runat="server" CssClass="stlCajaTexto" MaxLength="60" 
+                            Enabled="False" ToolTip="Muestra el número de Solicitud" 
+                            BackColor="#CCCCCC" />
                     </td>
                     <td style="width: 20%">
                         Solicitado por
@@ -174,7 +189,8 @@
                         :
                     </td>
                     <td style="width: 30%">
-                        <asp:TextBox ID="txtsolicitadopor" runat="server" CssClass="stlCajaTexto" Enabled="false" />
+                        <asp:TextBox ID="txtsolicitadopor" runat="server" CssClass="stlCajaTexto" 
+                            Enabled="false" BackColor="#CCCCCC" />
                         <asp:HiddenField ID="hfcodsolicitado" runat="server" />
                     </td>
                 </tr>
@@ -187,7 +203,7 @@
                     </td>
                     <td style="width: 30%">
                         <asp:TextBox ID="txtarea" runat="server" CssClass="stlCajaTexto" 
-                            Enabled="false" />
+                            Enabled="false" BackColor="#CCCCCC" />
                     </td>
                     <td style="width: 20%">
                         Fecha&nbsp;Solicitud
@@ -197,7 +213,7 @@
                     </td>
                     <td style="width: 30%">
                         <asp:TextBox ID="txtfechacreacion" runat="server" CssClass="stlCajaTexto" MaxLength="60"
-                            Enabled="False" />
+                            Enabled="False" BackColor="#CCCCCC" />
                     </td>
                 </tr>
                 <tr>
@@ -223,8 +239,8 @@
                         <asp:DropDownList ID="ddltiposervicio" runat="server" CssClass="stlComboBox" AutoPostBack="true"
                             OnSelectedIndexChanged="ddltiposervicio_SelectedIndexChanged" Width="80%">
                             <asp:ListItem Text="--Seleccionar--" Value="0"></asp:ListItem>
-                            <asp:ListItem Text="Equipo Mecanico" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Infraestructura" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Equipo medico" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Infraestructura medica" Value="2"></asp:ListItem>
                         </asp:DropDownList>
                     </td>
                 </tr>

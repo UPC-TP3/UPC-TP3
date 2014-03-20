@@ -15,7 +15,12 @@ namespace CI.SIC.BL
             result = DAO_SolicitudMantenimiento.Instancia.fn_ListaSM(fi, ff);
             return result;
         }
-
+        public List<BE_SolicitudMantenimiento> fn_ListaSMxEstado(int estado)
+        {
+            List<BE_SolicitudMantenimiento> result = null;
+            result = DAO_SolicitudMantenimiento.Instancia.fn_ListaSMxEstado(estado);
+            return result;
+        }
         public bool fn_InsertarSM(BE_SolicitudMantenimiento p_SMBE)
         {
             bool result = false;

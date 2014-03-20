@@ -31,7 +31,7 @@ namespace CI.SIC.DA
                         GM_Prioridad = reader.GetString(reader.GetOrdinal("GM_Prioridad")),
                         GM_Comentarios = reader.GetString(reader.GetOrdinal("GM_Comentarios")),
                         GM_Estado = reader.GetString(reader.GetOrdinal("GM_Estado")).ToString(),
-
+                        GM_Especificacion = reader.GetString(reader.GetOrdinal("GM_Especificacion")).ToString(),
                         //GM_NroOrdenOT = reader.GetInt32(reader.GetOrdinal("GM_NroSolicitud")),
                         //GM_Fecha_CreacionOT = reader.GetString(reader.GetOrdinal("GM_Fecha_Creacion")),
                         //GM_CodigoSolicitanteOT = reader.GetString(reader.GetOrdinal("GM_CodigoSolicitante")),
@@ -56,8 +56,8 @@ namespace CI.SIC.DA
                 {
                     lista.Add(new BE_OrdendeTrabajo
                     {
-                        GM_NroOrden = reader.GetInt32(reader.GetOrdinal("GM_NroOrden")),
-                        GM_NroSolicitud = reader.GetInt32(reader.GetOrdinal("GM_NroSolicitud")),
+                        GM_NroOrden1 = reader.GetString(reader.GetOrdinal("GM_NroOrden")),
+                        GM_NroSolicitud1 = reader.GetString(reader.GetOrdinal("GM_NroSolicitud")),
                         GM_Fecha_Creacion = reader.GetString(reader.GetOrdinal("GM_Fecha_Creacion")),
                         GM_Estado = reader.GetString(reader.GetOrdinal("GM_Estado")),
                     });

@@ -22,6 +22,7 @@ namespace CI.SIC.BE
         public int Activo { get; set; }
         public string Tipomantenimiento { get; set; }
         public string Observaciones { get; set; }
+        public string Especificacion { get; set; }        
         public string Area { get; set; }
         public int Estado { get; set; }
         public string NomEstado { get; set; }

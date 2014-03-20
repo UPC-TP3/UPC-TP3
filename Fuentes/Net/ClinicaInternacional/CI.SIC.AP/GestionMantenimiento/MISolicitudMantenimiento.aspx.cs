@@ -55,11 +55,11 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
         {
             string mensaje = null;
             mensaje = "No Existen Solicitudes Registradas";
-            ucMOk.ShowSuccess(mensaje,200,400);
+            //ucMOk.ShowSuccess(mensaje,200,400);
             //ClientScript.RegisterStartupScript(typeof(string), "Mensaje", "<script language=\"JavaScript\"> alert('" + mensaje + "')</script>");
             gvSolicitudes.DataBind();
         }
-        lbContador.Text = lista.Count.ToString();
+        lbContador.Text = lista.Count.ToString() + " Solicitudes encontradas";
     }
 
     public void Modificar(object sender, CommandEventArgs e)
@@ -72,6 +72,7 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
             hfcodsolicitado.Value = Session["CodUsuario"].ToString();
             txtfechacreacion.Text = DateTime.Now.ToString("ddMMyyyy");
             CargarRegistro(txtid.Text);
+            txtid.Visible = true;
             mpeActSM.Show();
             estadopopup = 1;
 
@@ -175,13 +176,14 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
         sm.EmpleadoBen = Session["CodUsuario"].ToString();
         sm.Area = txtarea.Text;
         sm.Fechacreacion = txtfechacreacion.Text;
-        sm.CodigoCC = "CC0001";
-
+        sm.CodigoCC = "CC0001";        
         sm.Tiposervicio = ddltiposervicio.SelectedValue;
+        sm.Tipomantenimiento = "Correctivo";
         sm.Activo = int.Parse(ddlequipomedico.SelectedValue);
         sm.Fechaincidencia = txtfechaincidencia.Text;
         sm.Detalleservicio = txtdetalleserv.Text;
         sm.Observaciones = txtobs.Text;
+        sm.Especificacion = ddlequipomedico.SelectedItem.Text;
         sm.Estado = 1;
 
         return sm;
@@ -196,7 +198,7 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
         if (obj.fn_InsertarSM(sm))
         {
             estadopopup = 0;
-            ucMOk.ShowSuccess("Solicitud de Mantenimiento registrado correctamente",250,400);
+            ucMOk.ShowSuccess("Solicitud de Mantenimiento registrado correctamente",200,400);
             
         }
         mpeActSM.Hide();
@@ -257,6 +259,7 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
         txtsolicitadopor.Text = Session["Usuario"].ToString();
         hfcodsolicitado.Value = Session["CodUsuario"].ToString();
         txtfechacreacion.Text = DateTime.Now.ToString("ddMMyyyy");
+        txtid.Visible = false;
         mpeActSM.Show();
         estadopopup = 1;
     }
@@ -293,6 +296,7 @@ public partial class GestionMantenimiento_MISolicitudMantenimiento : System.Web.
         estadopopup = 0;
         Enable(true);
         ibGuardar.Visible = true;
+        txtid.Visible = true;
         mpeActSM.Hide();
     }
     protected void ibAnular_Click(object sender, EventArgs e)

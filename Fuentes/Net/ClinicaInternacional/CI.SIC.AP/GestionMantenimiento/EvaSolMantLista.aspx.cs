@@ -39,16 +39,9 @@ public partial class GestionMantenimiento_EvaSolMantLista : System.Web.UI.Page
     #region Custom Methods
     private void CargarGrilla()
     {
-        BL_EvaluarSolicitudMantenimiento obj = new BL_EvaluarSolicitudMantenimiento();
+        BL_SolicitudMantenimiento obj = new BL_SolicitudMantenimiento();
 
-        
-        var lista = obj.fn_ListaESM(txtfechaini.Text, txtfechafin.Text);
-
-        if (txtfechaini.Text == "" && txtfechafin.Text == "" && txtNroSolicitud.Text != "")
-        {
-            lista = obj.fn_ConsultaESM_x_NroSolicitud(Convert.ToInt32(txtNroSolicitud.Text));
-        }        
-
+        var lista = obj.fn_ListaSM(txtfechaini.Text, txtfechafin.Text);
         if (lista.Count > 0)
         {
             gvEvaluarSolicitudes.DataSource = lista;
@@ -57,10 +50,12 @@ public partial class GestionMantenimiento_EvaSolMantLista : System.Web.UI.Page
         else
         {
             string mensaje = null;
-            mensaje = "No Existen Evaluaciones de Solicitudes Registradas";
+            mensaje = "No Existen Solicitudes Registradas";
+            //ucMOk.ShowSuccess(mensaje,200,400);
+            //ClientScript.RegisterStartupScript(typeof(string), "Mensaje", "<script language=\"JavaScript\"> alert('" + mensaje + "')</script>");
             gvEvaluarSolicitudes.DataBind();
         }
-        lbContador.Text = lista.Count.ToString();
+        lbContador.Text = lista.Count.ToString() + " Solicitudes encontradas";
     }
 
     public void Modificar(object sender, CommandEventArgs e)
@@ -82,5 +77,32 @@ public partial class GestionMantenimiento_EvaSolMantLista : System.Web.UI.Page
     {
         txtfechaini.Text = null;
         txtfechafin.Text = null;
+    }
+    protected void gvEvaluarSolicitudes_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            var obj = e.Row.DataItem as BE_SolicitudMantenimiento;
+            if (obj != null)
+            {
+                var image2 = e.Row.FindControl("ibModificar") as Image;
+                if (image2 != null)
+                {
+                    if (obj.Estado == 1)
+                    {
+                        image2.Visible = true;
+                    }
+                    else if (obj.Estado == 2)
+                    {
+                        image2.Visible = false;
+                    }
+                    else if (obj.Estado == 3)
+                    {
+                        image2.Visible = false;
+                    }
+
+                }
+            }
+        }
     }
 }

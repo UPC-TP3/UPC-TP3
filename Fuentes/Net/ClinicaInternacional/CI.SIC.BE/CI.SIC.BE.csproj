@@ -44,6 +44,7 @@
     <Compile Include="BE_CartaGarantia.cs" />
     <Compile Include="BE_DetHistoriaClinica.cs" />
     <Compile Include="BE_Emergencia.cs" />
+    <Compile Include="BE_Empleado.cs" />
     <Compile Include="BE_Especialidad.cs" />
     <Compile Include="BE_EvaluarSolicitudMantenimiento.cs" />
     <Compile Include="BE_HistoriaClinica.cs" />

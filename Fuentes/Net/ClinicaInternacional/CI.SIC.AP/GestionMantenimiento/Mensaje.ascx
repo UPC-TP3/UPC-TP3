@@ -3,7 +3,7 @@
 <link href="../App_Themes/EstilosHO/Default.css" rel="stylesheet" type="text/css" />
 <asp:LinkButton ID="LinkButtonTargetControl" runat="server"></asp:LinkButton>
 
-<asp:Panel ID="MessageBox" runat="server" Style="display: none;background-color:White;height:150px;"  >
+<asp:Panel ID="MessageBox" runat="server" Style="display: none;background-color:White;height:180px;"  >
     <asp:Panel ID="pnlCabecera" runat="server" style="color: white;background-color: #6699CC;font-weight: bold;text-align:center" 
         Height="25px">
         <asp:Label ID="LabelPopupHeader" runat="server" style="color:white;font-weight: bold;" 
