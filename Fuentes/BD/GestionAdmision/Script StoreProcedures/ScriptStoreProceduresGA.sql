@@ -172,6 +172,74 @@ END
 GO
 
 
+CREATE PROC usp_RegistrarPaciente_2
+/*
+Nombre: usp_RegistrarPaciente
+Creado Por: Lsalvatierra
+Proposito: Registrar Paciente a Emergencia.
+Fecha: 10/03/2014
+*/
+@DNI		VARCHAR(11),
+@Nombres	VARCHAR(50),
+@ApellidoP	VARCHAR(80),
+@ApellidoM	VARCHAR(80),
+@FechaNac	DATETIME,
+@Celular	VARCHAR(10),
+@Telefono	VARCHAR(10),
+@Direccion	VARCHAR(150),
+@Sexo		INT,
+@IdTipoDoc	INT,
+@ID_Pais		INT,
+@ID_Departamento	INT,
+@ID_Provincia		INT,
+@ID_Distrito	INT,
+@ID_EstadoCivil	INT,
+@Ocupacion	VARCHAR(255),
+@Correo	VARCHAR(100)
+AS
+	INSERT INTO			dbo.TB_PACIENTE	(ID_TipoDocumento,dni_paciente,FechaNacimiento,Celular,
+						TelefonoDomicilio,Direccion,ID_Sexo,nombres,ApellidoPat,ApellidoMat,ID_Pais,
+						ID_Departamento,ID_Provincia,ID_Distrito,ID_EstadoCivil,Ocupacion,Correo) 
+	VALUES				(@IdTipoDoc,@DNI,@FechaNac,@Celular,@Telefono,@Direccion,@Sexo,@Nombres,
+						@ApellidoP,@ApellidoM,@ID_Pais,@ID_Departamento,@ID_Provincia,@ID_Distrito,
+						@ID_EstadoCivil,@Ocupacion,@Correo)
+GO
+
+CREATE PROC usp_ActualizarPaciente_2
+/*
+Nombre: usp_RegistrarPaciente
+Creado Por: Lsalvatierra
+Proposito: Registrar Paciente a Emergencia.
+Fecha: 10/03/2014
+*/
+@ID_Paciente	INT,
+@DNI		VARCHAR(11),
+@Nombres	VARCHAR(50),
+@ApellidoP	VARCHAR(80),
+@ApellidoM	VARCHAR(80),
+@FechaNac	DATETIME,
+@Celular	VARCHAR(10),
+@Telefono	VARCHAR(10),
+@Direccion	VARCHAR(150),
+@Sexo		INT,
+@IdTipoDoc	INT,
+@ID_Pais		INT,
+@ID_Departamento	INT,
+@ID_Provincia		INT,
+@ID_Distrito	INT,
+@ID_EstadoCivil	INT,
+@Ocupacion	VARCHAR(255),
+@Correo	VARCHAR(100)
+AS
+	UPDATE	dbo.TB_PACIENTE
+	SET		ID_TipoDocumento=@IdTipoDoc,dni_paciente=@DNI,FechaNacimiento=@FechaNac,Celular=@Celular,
+			TelefonoDomicilio=@Telefono,Direccion=@Direccion,ID_Sexo=@Sexo,nombres=@Nombres,ApellidoPat=@ApellidoP,
+			ApellidoMat=@ApellidoM,ID_Pais=@ID_Pais,ID_Departamento=@ID_Departamento,ID_Provincia=@ID_Provincia,
+			ID_Distrito=@ID_Distrito,ID_EstadoCivil=@ID_EstadoCivil,Ocupacion=@Ocupacion,Correo=@Correo
+	WHERE	ID_Paciente= @ID_Paciente
+GO
+
+
 CREATE  PROC usp_ListarTipoDocumento
 /*
 Nombre: ListarTipoDocumento
@@ -195,9 +263,12 @@ Creado Por: Lsalvatierra
 Proposito: Verificar Existencia del paciente.
 Fecha: 10/03/2014
 */
-@DNI		VARCHAR(11)
+@DNI				VARCHAR(11),
+@ID_TipoDocumento	INT
 AS
-	SELECT ID_Paciente, dni_paciente,FechaNacimiento,Direccion,nombres,ApellidoPat,ApellidoMat,ID_TipoDocumento,ID_Sexo FROM dbo.TB_PACIENTE WHERE dni_paciente = @DNI
+	SELECT ID_Paciente,ID_TipoDocumento,dbo.fn_DescTipoDocumento(ID_TipoDocumento) as TipoDocumento,dbo.fn_DescSexo(ID_Sexo) as DescSexo, dni_paciente,FechaNacimiento,Celular,TelefonoDomicilio,Direccion,ID_Sexo,nombres,ApellidoPat,ApellidoMat,ID_Pais,
+			ID_Departamento,ID_Provincia,ID_Distrito,ID_EstadoCivil,Ocupacion,Correo FROM dbo.TB_PACIENTE WHERE dni_paciente = @DNI
+	AND ID_TipoDocumento = @ID_TipoDocumento
 	
 go
 
@@ -240,7 +311,7 @@ AS
 GO
 
 
-CREATE PROC usp_DetalleHistoriClinica
+CREATE PROC usp_DetalleHistoriClinica 
 @ID_Paciente	INT
 AS
 	SELECT ID_DetHistoria,a.ID_Historia,dbo.fn_DescProcedencia(ID_Procedencia) AS Procedencia,ISNULL(Diagnostico,'') AS Diagnostico, ISNULL(Tratamiento,'') AS Tratamiento, a.FechaAtencion
@@ -263,6 +334,38 @@ BEGIN
    WHERE	MAS_CodTabla = 'TB_TIPADM'
    AND		MAS_CodCampo = @ID_Procedencia
     RETURN @Nom_Procedencia
+END
+GO
+CREATE FUNCTION fn_DescSexo 
+(
+    @ID_Procedencia INT
+)
+RETURNS VARCHAR(MAX)
+AS
+BEGIN
+    DECLARE @Nom_Procedencia VARCHAR(MAX)
+
+    SELECT	@Nom_Procedencia = MAS_DesCorta
+	  FROM	dbo.TB_MAESTRO_TABLAS
+   WHERE	MAS_CodTabla = 'TB_SEXO'
+   AND		MAS_CodCampo = @ID_Procedencia
+    RETURN @Nom_Procedencia
+END
+GO
+CREATE FUNCTION fn_DescTipoDocumento 
+(
+    @ID_TipoDocumento INT
+)
+RETURNS VARCHAR(MAX)
+AS
+BEGIN
+    DECLARE @Descripcion VARCHAR(MAX)
+
+	
+    SELECT	@Descripcion = a.Nombre
+	  FROM	dbo.TB_TIPO_DOCUMENTO a
+   WHERE	a.ID_TipoDocumento = @ID_TipoDocumento
+    RETURN @Descripcion
 END
 GO
 
