@@ -28,5 +28,8 @@ namespace CI.SIC.BE
         public string ApellidoMat { get; set; }
         public int ID_EstadoCivil { get; set; }        
         public string correo { get; set; }
+        public string Observacion { get; set; }
+        public string NombreTipoDocumento { get; set; }
+        public string Anonimo { get; set; }
     }
 }

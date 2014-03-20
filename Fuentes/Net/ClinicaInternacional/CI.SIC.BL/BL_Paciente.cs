@@ -64,10 +64,11 @@ namespace CI.SIC.BL
                 ID_Pais = Convert.ToInt32(p_objValores["Pais"].ToString()),
                 ID_Departamento = Convert.ToInt32(p_objValores["Departamento"].ToString()),
                 ID_Provincia = Convert.ToInt32(p_objValores["Provincia"].ToString()),
-                ID_Distrito = Convert.ToInt32(p_objValores["Distrito"].ToString())
+                ID_Distrito = Convert.ToInt32(p_objValores["Distrito"].ToString()),
+                Observacion = p_objValores["Observacion"].ToString()
             }) > 0)
             {
-                p_vMensaje = "El registro se creó correctamente.";
+                p_vMensaje = "El paciente se creó correctamente.";
                 return true;
             }
             else
@@ -76,6 +77,7 @@ namespace CI.SIC.BL
                 return false;
             }
         }
+
 
 
         #endregion
@@ -129,6 +131,25 @@ namespace CI.SIC.BL
             }
         }
 
+
+        public int fn_ActualizarPaciente(BE_Paciente poBE_Paciente)
+        {
+            try
+            {
+                return DAO_Paciente.Instancia.fn_ActualizarPaciente(poBE_Paciente);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public List<BE_Paciente> fn_ListarPaciente(BE_Paciente poBE_Paciente)
+        {
+            List<BE_Paciente> result = null;
+            result = DAO_Paciente.Instancia.fn_ListarPaciente(poBE_Paciente);
+            return result;
+        }
         #endregion
 
     }

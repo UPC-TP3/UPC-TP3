@@ -12,6 +12,126 @@ namespace CI.SIC.DA
 {
     public class DAO_Paciente : BaseDA<DAO_Paciente>
     {
+        public int fn_ActualizarPaciente(BE_Paciente p_objPacienteBE)
+        {
+            try
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+                parameters.Add("@ID_Paciente", p_objPacienteBE.ID_Paciente);
+                parameters.Add("@DNI", p_objPacienteBE.dni_paciente);
+                parameters.Add("@Nombres", p_objPacienteBE.Nombres);
+                parameters.Add("@ApellidoP", p_objPacienteBE.ApellidoPat);
+                parameters.Add("@ApellidoM", p_objPacienteBE.ApellidoMat);
+                parameters.Add("@FechaNac", p_objPacienteBE.FechaNacimiento);
+                parameters.Add("@Celular", p_objPacienteBE.Celular);
+                parameters.Add("@Telefono", p_objPacienteBE.TelefonoDomicilio);
+                parameters.Add("@Direccion", p_objPacienteBE.Direccion);
+                parameters.Add("@Sexo", p_objPacienteBE.ID_Sexo);
+
+                if (p_objPacienteBE.ID_TipoDocumento == 0)
+                {
+                    parameters.Add("@IdTipoDoc", DBNull.Value);
+                }
+                else
+                {
+                    parameters.Add("@IdTipoDoc", p_objPacienteBE.ID_TipoDocumento);
+                }
+
+                if (p_objPacienteBE.ID_Pais == 0)
+                {
+                    parameters.Add("@ID_Pais", DBNull.Value);
+                }
+                else
+                {
+                    parameters.Add("@ID_Pais", p_objPacienteBE.ID_Pais);
+                }
+
+                if (p_objPacienteBE.ID_Departamento == 0)
+                {
+                    parameters.Add("@ID_Departamento", DBNull.Value);
+                }
+                else
+                {
+                    parameters.Add("@ID_Departamento", p_objPacienteBE.ID_Departamento);
+                }
+
+                if (p_objPacienteBE.ID_Provincia == 0)
+                {
+                    parameters.Add("@ID_Provincia", DBNull.Value);
+                }
+                else
+                {
+                    parameters.Add("@ID_Provincia", p_objPacienteBE.ID_Provincia);
+                }
+
+                if (p_objPacienteBE.ID_Distrito == 0)
+                {
+                    parameters.Add("@ID_Distrito", DBNull.Value);
+                }
+                else
+                {
+                    parameters.Add("@ID_Distrito", p_objPacienteBE.ID_Distrito);
+                }
+
+                parameters.Add("@Observacion", p_objPacienteBE.Observacion);
+                int rpta = SqlHelper.Instance.ExecuteNonQuery("usp_ActualizarPaciente", parameters);
+                return rpta;
+            }
+            catch { throw; }
+        }
+
+
+
+        public List<BE_Paciente> fn_ListarPaciente(BE_Paciente opBE_Paciente)
+        {
+            var lista = new List<BE_Paciente>();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@ID_Paciente", opBE_Paciente.ID_Paciente);
+            parameters.Add("@dni_paciente", opBE_Paciente.dni_paciente);
+            parameters.Add("@ID_TipoDocumento", opBE_Paciente.ID_TipoDocumento);
+
+            parameters.Add("@Observacion", opBE_Paciente.Observacion);
+            parameters.Add("@nombres", opBE_Paciente.Nombres);
+            parameters.Add("@ApellidoPat", opBE_Paciente.ApellidoPat);
+            parameters.Add("@ApellidoMat", opBE_Paciente.ApellidoMat);
+
+            using (IDataReader reader = SqlHelper.Instance.ExecuteReader("usp_SelectAll_Paciente", parameters))
+            {
+                while (reader.Read())
+                {
+                    lista.Add(new BE_Paciente
+                    {
+
+                        //Nombres = reader.GetString(reader.GetOrdinal("nombres"))
+                        ID_Paciente = reader.GetInt32(reader.GetOrdinal("ID_Paciente")),
+                        dni_paciente = reader.GetString(reader.GetOrdinal("dni_paciente")),
+                        //EstadoCivil = reader.GetString(reader.GetOrdinal("EstadoCivil")),                
+                        FechaNacimiento = reader.GetDateTime(reader.GetOrdinal("FechaNacimiento")),
+                        Celular = reader.GetString(reader.GetOrdinal("Celular")),
+                        TelefonoDomicilio = reader.GetString(reader.GetOrdinal("TelefonoDomicilio")),
+                        ID_Pais = reader.GetInt32(reader.GetOrdinal("ID_Pais")),
+                        ID_Departamento = reader.GetInt32(reader.GetOrdinal("ID_Departamento")),
+                        ID_Provincia = reader.GetInt32(reader.GetOrdinal("ID_Provincia")),
+                        ID_Distrito = reader.GetInt32(reader.GetOrdinal("ID_Distrito")),
+                        Direccion = reader.GetString(reader.GetOrdinal("Direccion")),
+                        ID_Sexo = reader.GetInt32(reader.GetOrdinal("ID_Sexo")),
+                        Ocupacion = reader.GetString(reader.GetOrdinal("Ocupacion")),
+                        ID_TipoDocumento = reader.GetInt32(reader.GetOrdinal("ID_TipoDocumento")),
+                        Nombres = reader.GetString(reader.GetOrdinal("ApellidoPat")) + " " + reader.GetString(reader.GetOrdinal("ApellidoMat")) + " ," + reader.GetString(reader.GetOrdinal("nombres")),
+                        ApellidoPat = reader.GetString(reader.GetOrdinal("ApellidoPat")),
+                        ApellidoMat = reader.GetString(reader.GetOrdinal("ApellidoMat")),
+                        ID_EstadoCivil = reader.GetInt32(reader.GetOrdinal("ID_EstadoCivil")),
+                        correo = reader.GetString(reader.GetOrdinal("correo")),
+                        NombreTipoDocumento = reader.GetString(reader.GetOrdinal("NombreTipoDocumento")),
+                        Anonimo = reader.GetString(reader.GetOrdinal("dni_paciente")) == "" ? "SI" : "NO"
+                    });
+                }
+            }
+            return lista;
+        }
+
+
         public BE_Paciente GetPacienteXIdPaciente(int IdPaciente, string NroDocumento)
         {
 
@@ -130,19 +250,67 @@ namespace CI.SIC.DA
                 parameters.Add("@Celular", p_objPacienteBE.Celular);
                 parameters.Add("@Telefono", p_objPacienteBE.TelefonoDomicilio);
                 parameters.Add("@Direccion", p_objPacienteBE.Direccion);
-                parameters.Add("@Sexo", p_objPacienteBE.ID_Sexo);
-                parameters.Add("@IdTipoDoc", p_objPacienteBE.ID_TipoDocumento);
-                parameters.Add("@ID_Pais", p_objPacienteBE.Direccion);
-                parameters.Add("@ID_Departamento", p_objPacienteBE.ID_Sexo);
-                parameters.Add("@ID_Provincia", p_objPacienteBE.ID_TipoDocumento);
-                parameters.Add("@ID_Distrito", p_objPacienteBE.ID_TipoDocumento);
+
+                if (p_objPacienteBE.ID_Sexo == 0)
+                {
+                    parameters.Add("@Sexo", DBNull.Value);
+                }
+                else
+                {
+                    parameters.Add("@Sexo", p_objPacienteBE.ID_Sexo);
+                }
+
+                if (p_objPacienteBE.ID_TipoDocumento == 0)
+                {
+                    parameters.Add("@IdTipoDoc", DBNull.Value);
+                }
+                else
+                {
+                    parameters.Add("@IdTipoDoc", p_objPacienteBE.ID_TipoDocumento);
+                }
+
+                if (p_objPacienteBE.ID_Pais == 0)
+                {
+                    parameters.Add("@ID_Pais", DBNull.Value);
+                }
+                else
+                {
+                    parameters.Add("@ID_Pais", p_objPacienteBE.ID_Pais);
+                }
+
+                if (p_objPacienteBE.ID_Departamento == 0)
+                {
+                    parameters.Add("@ID_Departamento", DBNull.Value);
+                }
+                else
+                {
+                    parameters.Add("@ID_Departamento", p_objPacienteBE.ID_Departamento);
+                }
+
+                if (p_objPacienteBE.ID_Provincia == 0)
+                {
+                    parameters.Add("@ID_Provincia", DBNull.Value);
+                }
+                else
+                {
+                    parameters.Add("@ID_Provincia", p_objPacienteBE.ID_Provincia);
+                }
+
+                if (p_objPacienteBE.ID_Distrito == 0)
+                {
+                    parameters.Add("@ID_Distrito", DBNull.Value);
+                }
+                else
+                {
+                    parameters.Add("@ID_Distrito", p_objPacienteBE.ID_Distrito);
+                }
+
+                parameters.Add("@Observacion", p_objPacienteBE.Observacion);
                 int rpta = SqlHelper.Instance.ExecuteNonQuery("usp_RegistrarPaciente", parameters);
                 return rpta;
             }
             catch { throw; }
         }
-
-
 
         #endregion
         

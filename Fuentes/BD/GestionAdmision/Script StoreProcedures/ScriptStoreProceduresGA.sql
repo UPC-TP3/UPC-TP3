@@ -160,12 +160,15 @@ Fecha: 10/03/2014
 @ID_Pais		INT,
 @ID_Departamento	INT,
 @ID_Provincia		INT,
-@ID_Distrito	INT
+@ID_Distrito	INT,
+@Observacion	VARCHAR(150)
 AS
+BEGIN
 	INSERT INTO			dbo.TB_PACIENTE	(ID_TipoDocumento,dni_paciente,FechaNacimiento,Celular,
-						TelefonoDomicilio,Direccion,ID_Sexo,nombres,ApellidoPat,ApellidoMat,ID_Pais,ID_Departamento,ID_Provincia,ID_Distrito) 
+						TelefonoDomicilio,Direccion,ID_Sexo,nombres,ApellidoPat,ApellidoMat,ID_Pais,ID_Departamento,ID_Provincia,ID_Distrito,Observacion) 
 	VALUES				(@IdTipoDoc,@DNI,@FechaNac,@Celular,@Telefono,@Direccion,@Sexo,@Nombres,
-						@ApellidoP,@ApellidoM,@ID_Pais,@ID_Departamento,@ID_Provincia,@ID_Distrito)
+						@ApellidoP,@ApellidoM,@ID_Pais,@ID_Departamento,@ID_Provincia,@ID_Distrito,@Observacion)
+END
 GO
 
 
@@ -653,4 +656,95 @@ INSERT INTO [dbo].[TB_ORDEN_HOSPITALIZACION]
            
 END
 
+GO
+
+
+CREATE PROCEDURE [dbo].[usp_SelectAll_Paciente]
+@ID_Paciente INT,
+@dni_paciente VARCHAR(11),
+@ID_TipoDocumento int,
+@Observacion VARCHAR(500),
+@nombres VARCHAR(50),
+@ApellidoPat VARCHAR(100),
+@ApellidoMat VARCHAR(100)
+AS
+BEGIN
+SELECT ID_Paciente
+      ,ISNULL(P.dni_paciente,'') as dni_paciente      
+      ,ISNULL(TD.Nombre,'') AS NombreTipoDocumento 
+      ,isnull(P.FechaNacimiento,'01/01/1900') as FechaNacimiento
+      ,isnull(P.Celular,'') as Celular
+      ,isnull(P.TelefonoDomicilio,'') as TelefonoDomicilio	
+      ,isnull(P.ID_Pais,0) as ID_Pais
+      ,isnull(P.ID_Departamento,0) as ID_Departamento
+      ,isnull(P.ID_Provincia,0) as ID_Provincia
+      ,isnull(P.ID_Distrito,0) as ID_Distrito
+      ,isnull(Direccion,'') as Direccion
+      ,isnull(ID_Sexo,0) as ID_Sexo
+      ,isnull(P.Ocupacion,'') as Ocupacion
+      ,isnull(P.ID_TipoDocumento,0) as ID_TipoDocumento
+      ,isnull(P.nombres,'') as nombres
+      ,isnull(P.ApellidoPat,'') as ApellidoPat
+      ,isnull(P.ApellidoMat,'') as ApellidoMat
+      ,isnull(P.ID_EstadoCivil,0) as ID_EstadoCivil
+      ,isnull(P.Correo,'') as Correo
+      ,isnull(P.Observacion,'') as Observacion
+  FROM TB_PACIENTE P left join TB_TIPO_DOCUMENTO TD
+       ON P.ID_TipoDocumento = TD.ID_TipoDocumento
+  WHERE (@ID_Paciente=0 OR P.ID_Paciente = @ID_Paciente) AND        
+        (@ID_TipoDocumento = 0 OR P.ID_TipoDocumento=@ID_TipoDocumento) AND
+        (ISNULL(P.dni_paciente,'') LIKE '%' + @dni_paciente + '%') AND
+        (ISNULL(P.Observacion,'') LIKE '%' + @Observacion + '%') AND
+        (ISNULL(P.ApellidoPat,'') LIKE '%' + @ApellidoPat + '%') AND
+        (ISNULL(P.ApellidoMat,'') LIKE '%' + @ApellidoMat + '%') AND
+        (ISNULL(P.Nombres,'') LIKE '%' + @Nombres + '%') 
+        
+  END
+GO
+
+
+CREATE PROC usp_ActualizarPaciente
+/*
+Nombre: usp_ActualizarPaciente
+Creado Por: Agaldos
+Proposito: Actualizar Paciente a Emergencia.
+Fecha: 20/03/2014
+*/
+@ID_Paciente int,
+@DNI		VARCHAR(11),
+@Nombres	VARCHAR(50),
+@ApellidoP	VARCHAR(80),
+@ApellidoM	VARCHAR(80),
+@FechaNac	DATETIME,
+@Celular	VARCHAR(10),
+@Telefono	VARCHAR(10),
+@Direccion	VARCHAR(150),
+@Sexo		INT,
+@IdTipoDoc	INT,
+@ID_Pais		INT,
+@ID_Departamento	INT,
+@ID_Provincia		INT,
+@ID_Distrito	INT,
+@Observacion	VARCHAR(150)
+AS
+BEGIN
+	UPDATE dbo.TB_PACIENTE	
+	SET
+	ID_TipoDocumento=@IdTipoDoc,
+	dni_paciente=@DNI,
+	FechaNacimiento=@FechaNac,
+	Celular=@Celular,
+	TelefonoDomicilio=@Telefono,
+	Direccion=@Direccion,
+	ID_Sexo=@Sexo,
+	nombres=@Nombres,
+	ApellidoPat=@ApellidoP,
+	ApellidoMat=@ApellidoM,
+	ID_Pais=@ID_Pais,
+	ID_Departamento=@ID_Departamento,
+	ID_Provincia=@ID_Provincia,
+	ID_Distrito=@ID_Distrito,
+	Observacion=@Observacion
+	WHERE ID_Paciente =  @ID_Paciente					
+END
 GO

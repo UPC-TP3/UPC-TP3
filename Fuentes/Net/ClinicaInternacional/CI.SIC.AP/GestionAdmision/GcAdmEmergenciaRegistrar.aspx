@@ -37,8 +37,12 @@
         <p><asp:TextBox ID="txtFechaNac"  MaxLength="10"  runat="server" ></asp:TextBox></p>
         </div>
         <div>
-            <asp:Label ID="lblDireccionN" runat="server" Text="Dirección del Paciente:"></asp:Label>
+            <asp:Label ID="lblDireccionN" runat="server" Text="Dirección:"></asp:Label>
             <p><asp:TextBox ID="txtDireccionN"  runat="server" MaxLength="200" TextMode="MultiLine"></asp:TextBox></p>
+        </div>
+        <div>
+            <asp:Label ID="lblObservacion" runat="server" Text="Observación:"></asp:Label>
+            <p><asp:TextBox ID="txtObservacion"  runat="server" MaxLength="200" TextMode="MultiLine"></asp:TextBox></p>
         </div>
         <div>
         </div>
