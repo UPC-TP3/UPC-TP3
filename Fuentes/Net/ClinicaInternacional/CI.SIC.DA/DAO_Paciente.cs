@@ -485,8 +485,8 @@ namespace CI.SIC.DA
                         ApellidoMat = reader.GetString(reader.GetOrdinal("ApellidoMat")),
                         ID_EstadoCivil = reader.GetInt32(reader.GetOrdinal("ID_EstadoCivil")),
                         correo = reader.GetString(reader.GetOrdinal("correo")),
-                        //SexoDescripcion = reader.GetString(reader.GetOrdinal("SexoDescripcion")),
-                        //TipoDocumentoNombre = reader.GetString(reader.GetOrdinal("TipoDocumentoNombre"))
+                        SexoDescripcion = reader.GetString(reader.GetOrdinal("SexoDescripcion")),
+                        TipoDocumentoNombre = reader.GetString(reader.GetOrdinal("TipoDocumentoNombre"))
                     };
                 }
             }
