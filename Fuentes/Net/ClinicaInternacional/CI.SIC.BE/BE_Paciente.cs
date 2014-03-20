@@ -19,8 +19,10 @@ namespace CI.SIC.BE
         public int ID_Distrito { get; set; }
         public string Direccion { get; set; }
         public int ID_Sexo { get; set; }
+        public string SexoDescripcion { get; set; }
         public string Ocupacion { get; set; }
         public int ID_TipoDocumento { get; set; }
+        public string TipoDocumentoNombre { get; set; }
         public string Nombres { get; set; }
         public string ApellidoPat { get; set; }
         public string ApellidoMat { get; set; }

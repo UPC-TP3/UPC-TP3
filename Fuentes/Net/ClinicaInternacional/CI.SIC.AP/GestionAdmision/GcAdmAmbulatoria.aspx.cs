@@ -20,23 +20,33 @@ public partial class GcAdmAmbulatoria : System.Web.UI.Page
     public void pDatoInicial(){
         BL_Paciente oPacienteBL = new BL_Paciente();
         BE_Paciente oPacienteBE = null;
+        BE_Cita oCitaBE = null;
 
-      int IdPaciente = Int32.Parse(Request.QueryString["id"]);
+        int IdPaciente = Int32.Parse(Request.QueryString["id"]);
+        int IdCita = Int32.Parse(Request.QueryString["Cita"]);
 
-      oPacienteBE = oPacienteBL.fn_ConsultarPaciente(IdPaciente, "", 0);
+        oPacienteBE = oPacienteBL.fn_ConsultarPaciente(IdPaciente, "", 0);
 
-            if (oPacienteBE != null) {
-                txtNombre.Text = oPacienteBE.Nombres;
-                txtApMat.Text = oPacienteBE.ApellidoMat;
-                txtApPat.Text = oPacienteBE.ApellidoPat;
-                txtCorreo.Text = oPacienteBE.correo;
-                txtFecNac.Text = oPacienteBE.FechaNacimiento.ToString();
-                txtNroDoc.Text = oPacienteBE.dni_paciente;
-                txtSexo.Text = oPacienteBE.ID_Sexo.ToString();
-                txtTelefono.Text = oPacienteBE.TelefonoDomicilio;
-                txtTipoDocumento.Text = oPacienteBE.ID_TipoDocumento.ToString();
-                           
-            }
+        if (oPacienteBE != null) {
+            txtNombre.Text = oPacienteBE.Nombres;
+            txtApMat.Text = oPacienteBE.ApellidoMat;
+            txtApPat.Text = oPacienteBE.ApellidoPat;
+            txtCorreo.Text = oPacienteBE.correo;
+            txtFecNac.Text = oPacienteBE.FechaNacimiento.ToString();
+            txtNroDoc.Text = oPacienteBE.dni_paciente;
+            txtSexo.Text = oPacienteBE.SexoDescripcion;
+            txtTelefono.Text = oPacienteBE.TelefonoDomicilio;
+            txtTipoDocumento.Text = oPacienteBE.TipoDocumentoNombre;
+        }
+
+        oCitaBE = oPacienteBL.fn_ObtenerCitaActiva(IdCita);
+
+        if (oCitaBE != null)
+        {
+            txtFechaCita.Text = oCitaBE.FechaHoraCita != DateTime.MinValue ? oCitaBE.FechaHoraCita.ToString("dd/MM/yyyy") : "";
+            txtHoraCita.Text = oCitaBE.FechaHoraCita != DateTime.MinValue ? oCitaBE.FechaHoraCita.ToString("HH:mm") : "";
+            btnComprobantePago.Visible = (oCitaBE.ID_EstadoCita == 1);
+        }
     }
 
     protected void btnComprobantePago_Click(object sender, EventArgs e)
@@ -62,7 +72,14 @@ public partial class GcAdmAmbulatoria : System.Web.UI.Page
             oComprobante_PagoBE.ID_Cita = IdCita;
 
             if (oComprobante_PagoBL.Nuevo(oComprobante_PagoBE)) {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertaCita", "alert('Se ha activado la Cita');", true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertaCita", 
+                    string.Format("alert('{0}\\nNro Documento:{1}\\nNombre Paciente:{2} {3}'); window.location.href='{4}';", 
+                    "Se ha grabado la Cita", 
+                    txtNroDoc.Text, 
+                    txtNombre.Text, 
+                    txtApPat.Text,
+                    Request.Url.GetLeftPart(UriPartial.Authority) + Page.ResolveUrl("~/GestionAdmision/GcAdmConsultaCita.aspx")), 
+                true);
             }
         }
     }

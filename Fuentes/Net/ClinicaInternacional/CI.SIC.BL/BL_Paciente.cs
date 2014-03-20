@@ -105,6 +105,18 @@ namespace CI.SIC.BL
             }
         }
 
+        public BE_Cita fn_ObtenerCitaActiva(int pID_Cita)
+        {
+            try
+            {
+                return DAO_Paciente.Instancia.fn_ObtenerCitaActiva(pID_Cita);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool fb_ActualizarEstadoCita(int pintID_Cita, int intID_EstadoCita)
         {
             try

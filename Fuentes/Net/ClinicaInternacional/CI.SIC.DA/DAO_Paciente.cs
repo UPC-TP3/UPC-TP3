@@ -179,13 +179,12 @@ namespace CI.SIC.DA
                         Ocupacion = reader.GetString(reader.GetOrdinal("Ocupacion")),
                         ID_TipoDocumento = reader.GetInt32(reader.GetOrdinal("ID_TipoDocumento")),
                         Nombres = reader.GetString(reader.GetOrdinal("nombres")),
-                        ApellidoPat = reader.GetString(reader.GetOrdinal("ApellidoPat"))           ,
-                        ApellidoMat = reader.GetString(reader.GetOrdinal("ApellidoMat"))
-                  ,
-                        ID_EstadoCivil = reader.GetInt32(reader.GetOrdinal("ID_EstadoCivil"))
-                  ,
-                        correo = reader.GetString(reader.GetOrdinal("correo"))
-
+                        ApellidoPat = reader.GetString(reader.GetOrdinal("ApellidoPat")),
+                        ApellidoMat = reader.GetString(reader.GetOrdinal("ApellidoMat")),
+                        ID_EstadoCivil = reader.GetInt32(reader.GetOrdinal("ID_EstadoCivil")),
+                        correo = reader.GetString(reader.GetOrdinal("correo")),
+                        SexoDescripcion = reader.GetString(reader.GetOrdinal("SexoDescripcion")),
+                        TipoDocumentoNombre = reader.GetString(reader.GetOrdinal("TipoDocumentoNombre"))
                     };
                 }
             }
@@ -209,12 +208,23 @@ namespace CI.SIC.DA
             catch { throw; }
         }
 
+        public BE_Cita fn_ObtenerCitaActiva(int pID_Cita)
+        {
+            return fn_ObtenerCitaActiva(0, DateTime.Now, pID_Cita);
+        }
+
         public BE_Cita fn_ObtenerCitaActiva(int pID_Paciente, DateTime pFechaHoraCita)
+        {
+            return fn_ObtenerCitaActiva(pID_Paciente, pFechaHoraCita, -1);
+        }
+
+        private BE_Cita fn_ObtenerCitaActiva(int pID_Paciente, DateTime pFechaHoraCita, int pID_Cita)
         {
             BE_Cita obj = null;
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("@ID_Paciente", pID_Paciente);
             parameters.Add("@FechaHoraCita", pFechaHoraCita);
+            parameters.Add("@ID_Cita", pID_Cita);
 
             using (IDataReader reader = SqlHelper.Instance.ExecuteReader("usp_Select_ValidarCita", parameters))
             {

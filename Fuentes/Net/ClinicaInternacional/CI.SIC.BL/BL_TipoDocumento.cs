@@ -14,7 +14,7 @@ namespace CI.SIC.BL
         {
             List<BE_TipoDocumento> result = null;
             result = DAO_TipoDocumento.Instancia.fn_ListarTipoDocumento();
-            result.Insert(0, new BE_TipoDocumento { Codigo = 0, Descripcion = "-Seleccione-" });
+            result.Insert(0, new BE_TipoDocumento { Codigo = -1, Descripcion = "-Seleccione-" });
             return result;
         }
     }

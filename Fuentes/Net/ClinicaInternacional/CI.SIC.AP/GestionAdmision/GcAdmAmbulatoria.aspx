@@ -18,7 +18,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="Server">
     <div class="col_04">
         <h2 class="recibo_dig">
-            Admisión de Ambulatoria</h2>
+            Atención Ambulatoria</h2>
         <div class="box_tit">
             Registro | Actualización
         </div>
@@ -139,11 +139,31 @@
                                     <asp:TextBox ID="txtDireccion" Enabled="false" runat="server" Style="width: 98%"></asp:TextBox>
                                 </td>
                             </tr>
+                            <tr>
+                                <td style="width: 30%">
+                                    <div class="block_center">Fecha Cita:</div> 
+                                </td>
+                                <td style="width: 5%">
+                                </td>
+                                <td colspan="3">
+                                    <div class="block_center">Hora Cita:</div> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 30%">
+                                    <asp:TextBox ID="txtFechaCita" Enabled="false" runat="server"></asp:TextBox>
+                                </td>
+                                <td style="width: 5%">
+                                </td>
+                                <td colspan="3">
+                                    <asp:TextBox ID="txtHoraCita" Enabled="false" runat="server" Style="width: 98%"></asp:TextBox>
+                                </td>
+                            </tr>
                              
                         </table>
                          <br />
                          <div class="box_tit reg_title" id="div1" runat="server" style="width: 98%">
-                            Monto a Pagar y Cobertura de Seguro</div>
+                            Monto a Pagar y Co-pago</div>
                         <table border="0" cellspacing="0" cellpadding="0" class="Tabla_filtro_txt" style="width: 95%">
                             <tr>
                                 <td style="width: 30%">
@@ -152,7 +172,7 @@
                                 <td style="width: 5%">
                                 </td>
                                 <td colspan="3">
-                                    <div class="block_center">Cobertura:</div> 
+                                    <div class="block_center">Co-pago:</div> 
                                 </td>
                             </tr>
                             <tr>
@@ -192,7 +212,7 @@
                              <div class="botones">
                                 <br />                     
                               <asp:Button ID="btnComprobantePago" Width="120px" runat="server" 
-                                     Text="Activar Cita" onclick="btnComprobantePago_Click" />                             
+                                     Text="Grabar" onclick="btnComprobantePago_Click" />                             
                              </div> 
                              </td>
                              

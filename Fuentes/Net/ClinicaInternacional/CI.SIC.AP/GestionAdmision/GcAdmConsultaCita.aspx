@@ -14,6 +14,27 @@
             color: Red;
         }
     </style>
+    <script type="text/javascript">
+
+        function ValidarDatos() {
+            var resp = true;
+            var txtNroDoc = $("#<%=txtNroDoc.ClientID%>");
+            var ddlTipoDoc = $("#<%=ddlTipoDoc.ClientID%>");
+
+            if (txtNroDoc.val().replace(/^\s+|\s+$/g, '') === "") {
+                alert('Debe Ingresar Nro. de Documento');
+                txtNroDoc.val("");
+                txtNroDoc.focus();
+                resp = false;
+            } else if (ddlTipoDoc.val() == "-1") {
+                alert('Debe seleccionar un tipo de documento');
+                ddlTipoDoc.focus();
+                resp = false;
+            }
+
+            return resp;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="Server">
     <div class="col_04">      
@@ -67,7 +88,7 @@
                              <div class="botones">
                                 <br />                     
                                  <asp:Button ID="btnAceptar" Width="80px" runat="server" 
-                                     Text="Aceptar" onclick="btnAceptar_Click" />            
+                                     Text="Aceptar" onclick="btnAceptar_Click" OnClientClick="return ValidarDatos();" />            
                                      </div>
                                                       
                              </td>
