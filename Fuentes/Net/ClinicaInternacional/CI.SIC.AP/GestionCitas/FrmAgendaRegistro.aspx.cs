@@ -62,35 +62,42 @@ public partial class GestionCitas_FrmAgendaRegistro : System.Web.UI.Page
             DateTime? fechaInicio = null;
             DateTime? fechaFin = null;
 
-            if (!string.IsNullOrEmpty(txtFecha.Text))
+            //if (!string.IsNullOrEmpty(txtFecha.Text))
+            //{
+            //    fechaInicio = new DateTime(
+            //        Convert.ToInt32(txtFecha.Text.Substring(0, 4)),
+            //        Convert.ToInt32(txtFecha.Text.Substring(5, 2)),
+            //        Convert.ToInt32(txtFecha.Text.Substring(8, 2))
+            //        );
+
+               
+            //}
+
+            fechaInicio = Convert.ToDateTime(txtFecha.Text); 
+            DateTime thisDay = DateTime.Today;
+
+            if (fechaInicio < thisDay)
             {
-                fechaInicio = new DateTime(
-                    Convert.ToInt32(txtFecha.Text.Substring(0, 4)),
-                    Convert.ToInt32(txtFecha.Text.Substring(5, 2)),
-                    Convert.ToInt32(txtFecha.Text.Substring(8, 2))
-                    );
-
-                //if (!string.IsNullOrEmpty(txtHoraInicio.Text))
-                //    fechaInicio = new DateTime(
-                //        Convert.ToInt32(txtFecha.Text.Substring(0, 4)),
-                //        Convert.ToInt32(txtFecha.Text.Substring(5, 2)),
-                //        Convert.ToInt32(txtFecha.Text.Substring(8, 2)),
-                //        Convert.ToInt32(txtHoraInicio.Text.Substring(0, 2)),
-                //        Convert.ToInt32(txtHoraInicio.Text.Substring(3, 2)), 0
-                //        );
-
-                //if (!string.IsNullOrEmpty(txtHoraFin.Text))
-                //    fechaFin = new DateTime(
-                //        Convert.ToInt32(txtFecha.Text.Substring(0, 4)),
-                //        Convert.ToInt32(txtFecha.Text.Substring(5, 2)),
-                //        Convert.ToInt32(txtFecha.Text.Substring(8, 2)),
-                //        Convert.ToInt32(txtHoraFin.Text.Substring(0, 2)),
-                //        Convert.ToInt32(txtHoraFin.Text.Substring(3, 2)), 0
-                //        );
+                lblMensaje.Visible = true;
+                lblMensaje.Text = "La fecha es menor a la fecha actual";
+                return; 
             }
+
 
             if (hdnCodigoAgenda.Value == "0")
             {
+
+                //VALIAR SI EXISTE EL TURNO YA INGRESADO//////
+                if (Buscar(fechaInicio.Value,Convert.ToInt32(hdnCodigoMedico.Value),Convert.ToInt32(cboTurnos.SelectedValue)) == true )
+                {
+                    lblMensaje.Visible = true; 
+                    lblMensaje.Text = "Este turno ya fue asignado a este medico";
+                    return; 
+                }
+
+                ///////////////////////////////////////////////
+
+
                 hdnCodigoAgenda.Value = new BAgendaMedica().Insertar(new EAgendaMedica
                     {
                         Fecha = fechaInicio,
@@ -187,9 +194,28 @@ public partial class GestionCitas_FrmAgendaRegistro : System.Web.UI.Page
 
         }
 
+        private static Boolean Buscar(DateTime fecha, int idmedico, int idturno ) 
+        {
+            Boolean resul = false;
+            BAgendaMedica turnos = new BAgendaMedica();
+            if (turnos.Buscar(fecha,idmedico,idturno).Count()>0   )
+            {
+                resul = true; 
+            }
+
+            return resul;
+        }
+
 
         protected void cboTurnos_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+        protected void txtFecha_TextChanged(object sender, EventArgs e)
+        {
+
+           
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "invocarfuncion", "validarFechaMenorActual(" + txtFecha.Text + ")", false);
+
         }
 }

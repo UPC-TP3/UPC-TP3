@@ -97,6 +97,30 @@ namespace CI.SIC.BL
             }).ToList();
         }
 
+
+        public List<EAgendaMedica> Buscar(DateTime fecha, int codigoMedico, int CodigoTurno)
+        {
+            
+            return _contexto.TB_AGENDA_MEDICA.Where(f => f.Fecha == fecha && f.ID_Medico == codigoMedico && f.ID_TURNO == CodigoTurno && f.Estado == true).Select(am => new EAgendaMedica
+            {
+                CodigoAgenda = am.ID_AgendaMedica,
+                Fecha = am.Fecha,
+                //HoraInicio = am.HoraInicio,
+                //HoraFin = am.HoraFin,
+                Horario_Turno = am.TB_TURNO.Horario_Turno,
+                NumeroConsultorio = am.TB_CONSULTORIO.nro_consultorio,
+                Estado = am.Estado,
+                EstadoDisplay = am.Estado ? "Activo" : "Inactivo",
+                CodigoMedico = am.ID_Medico,
+                NombresMedico = am.TB_MEDICO.nom_medico,
+                ApellidosMedico = am.TB_MEDICO.ape_medico,
+                DescripcionEspecialidad = am.TB_ESPECIALIDAD.descripcion
+
+            }).ToList();
+        }
+
+
+
         //public List<EAgendaMedica> Listar(bool estado)
         //{
         //    return _contexto.TB_Agenda_Medica.Where(f => f.Estado == estado && f.TB_Cita.Count == 0).Select(am => new EAgendaMedica 

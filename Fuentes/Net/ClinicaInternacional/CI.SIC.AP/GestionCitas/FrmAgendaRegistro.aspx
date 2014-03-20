@@ -8,6 +8,29 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
+
+<script language="javascript" type="text/javascript">
+    
+    function validarFechaMenorActual(date) {
+        var today = new Date();
+        var date2 = new Date(date);
+
+        if (date2 < today) {
+            return false;
+
+            alert("La fecha ingresada es menor a la fecha actual") 
+
+        }
+        else {
+            return true;
+        }
+    }
+
+</script>
+
+
+
+
     <fieldset>
         <legend>Registrar Agenda Medica</legend>
         <asp:HiddenField runat="server" ID="hdnCodigoAgenda" Value="0" />
@@ -88,7 +111,8 @@
                     :
                 </td>
                 <td>
-                    <asp:TextBox ID="txtFecha" runat="server" Type="date"></asp:TextBox><asp:RequiredFieldValidator
+                    <asp:TextBox ID="txtFecha" runat="server" Type="date" 
+                        ontextchanged="txtFecha_TextChanged"></asp:TextBox><asp:RequiredFieldValidator
                         ID="RequiredFieldValidator1" runat="server" ErrorMessage=" * Campo obligatorio"
                         ControlToValidate="txtFecha" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
@@ -100,7 +124,9 @@
                 <td>
                     &nbsp;</td>
                 <td>
-                    &nbsp;</td>
+                    <asp:Label ID="lblMensaje" runat="server" Font-Bold="True" Font-Size="Small" 
+                        ForeColor="Red" Text="Label" Visible="False"></asp:Label>
+                </td>
             </tr>
 
             <tr>
