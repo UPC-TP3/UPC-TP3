@@ -31,5 +31,7 @@ namespace CI.SIC.BE
         public string Observacion { get; set; }
         public string NombreTipoDocumento { get; set; }
         public string Anonimo { get; set; }
+        public string TipoDocumento { get; set; }
+        public string DescSexo { get; set; }
     }
 }
