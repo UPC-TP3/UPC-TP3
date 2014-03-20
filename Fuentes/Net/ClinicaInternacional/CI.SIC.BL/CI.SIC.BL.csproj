@@ -76,6 +76,7 @@
     <Compile Include="GestionEmergencia\MedicoBL.cs" />
     <Compile Include="GestionEmergencia\OrdenExamenBL.cs" />
     <Compile Include="GestionEmergencia\PacienteBL.cs" />
+    <Compile Include="GestionEmergencia\ServicioEmergenciaBL.cs" />
     <Compile Include="GestionEmergencia\ServicioExamenBL.cs" />
     <Compile Include="GestionEmergencia\TipoExamenBL.cs" />
     <Compile Include="GestionEmergencia\TurnoBL.cs" />
