@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" EnableEventValidation="false" ClientIDMode="Static" CodeFile="GcAdmRegistrarHistoriaClinica.aspx.cs" Inherits="GestionAdmision_GcAdmRegistrarHistoriaClinica" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-  <script language="javascript" type="text/javascript" src="../js/jquery-1.7.1.js" ></script>
-    <script language="javascript" type="text/javascript" src="GcAdmRegistrarHistoriaClinica.js"></script>
 <style type="text/css">
 .disabled 
 {
