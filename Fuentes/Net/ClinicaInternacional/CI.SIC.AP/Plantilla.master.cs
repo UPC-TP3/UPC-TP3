@@ -20,6 +20,7 @@ public partial class Plantilla : System.Web.UI.MasterPage
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmHospitalizacion.aspx", "Hospitalización");
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmVerificarHistoriaClinica.aspx", "Historia Clínica");
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmOrdenProcedimiento.aspx", "Orden Procedimiento");
+         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmConsultarPaciente.aspx", "Paciente");
         
         menu += "</ul></li>";
 
