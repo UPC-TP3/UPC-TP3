@@ -128,6 +128,7 @@ public partial class GestionAdmision_GcAdmEmergenciaRegistrar : System.Web.UI.Pa
             objValores.Add("Departamento", ddlDepartamento.SelectedValue);
             objValores.Add("Provincia", ddlProvincia.SelectedValue);
             objValores.Add("Distrito", ddDistrito.SelectedValue);
+            objValores.Add("Observacion", txtObservacion.Text);
             string vmensaje = "";
 
             if (strPacienteId == null)

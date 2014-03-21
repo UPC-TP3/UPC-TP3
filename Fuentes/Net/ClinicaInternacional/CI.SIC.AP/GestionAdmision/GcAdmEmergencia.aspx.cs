@@ -44,4 +44,29 @@ public partial class GestionAdmision_GcAdmEmergencia : System.Web.UI.Page
             Response.Redirect("GcAdmEmergenciaRegistrar.aspx");
         }
     }
+    protected void btnRegistrarPaciente_Click(object sender, EventArgs e)
+    {
+       
+        Dictionary<string, object> objValores = new Dictionary<string, object>();
+        objValores.Add("DNI", "");
+        objValores.Add("TipoDoc", 0);
+        objValores.Add("Nombre", "");
+        objValores.Add("ApellidoP", "");
+        objValores.Add("ApellidoM", "");
+        objValores.Add("Telefono","");
+        objValores.Add("Celular", "");
+        objValores.Add("Direccion", "");
+        objValores.Add("Sexo", 0);
+        objValores.Add("FechaNac", "01/01/1900");
+        objValores.Add("Pais", 0);
+        objValores.Add("Departamento", 0);
+        objValores.Add("Provincia", 0);
+        objValores.Add("Distrito", 0);
+        objValores.Add("Observacion", txtObservacion.Text);
+        string vmensaje = "";
+
+        BL_Paciente.Instancia.fn_RegistrarPaciente(objValores, ref vmensaje);
+
+        ClientScript.RegisterStartupScript(GetType(), "MostrarMensaje", "fnMensaje('" + vmensaje + "');", true);
+    }
 }
