@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" CodeFile="GcAdmConsultarPaciente.aspx.cs" Inherits="GcAdmConsultarPaciente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <script language="javascript" type="text/javascript" src="../js/jquery-1.7.1.js" ></script>
-    <script language="javascript" type="text/javascript" src="GcAdmRegistrarHistoriaClinica.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
   
