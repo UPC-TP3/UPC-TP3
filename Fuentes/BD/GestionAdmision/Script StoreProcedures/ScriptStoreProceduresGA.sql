@@ -266,7 +266,7 @@ Fecha: 10/03/2014
 @DNI				VARCHAR(11),
 @ID_TipoDocumento	INT
 AS
-	SELECT ID_Paciente,ID_TipoDocumento,dbo.fn_DescTipoDocumento(ID_TipoDocumento) as TipoDocumento,dbo.fn_DescSexo(ID_Sexo) as DescSexo, dni_paciente,FechaNacimiento,Celular,TelefonoDomicilio,Direccion,ID_Sexo,nombres,ApellidoPat,ApellidoMat,ID_Pais,
+	SELECT ID_Paciente,ID_TipoDocumento,isnull(dbo.fn_DescTipoDocumento(ID_TipoDocumento),'') as TipoDocumento,isnull(dbo.fn_DescSexo(ID_Sexo),'') as DescSexo, dni_paciente,FechaNacimiento,Celular,TelefonoDomicilio,Direccion,ID_Sexo,nombres,ApellidoPat,ApellidoMat,ID_Pais,
 			ID_Departamento,ID_Provincia,ID_Distrito,ID_EstadoCivil,Ocupacion,Correo FROM dbo.TB_PACIENTE WHERE dni_paciente = @DNI
 	AND ID_TipoDocumento = @ID_TipoDocumento
 	
