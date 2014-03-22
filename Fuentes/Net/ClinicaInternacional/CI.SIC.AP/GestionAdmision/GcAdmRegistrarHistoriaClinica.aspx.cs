@@ -85,7 +85,7 @@ public partial class GestionAdmision_GcAdmRegistrarHistoriaClinica : System.Web.
     /// </summary>
     private void pr_CargarCboTipoAdmin()
     {
-        ddlTipoAdmin.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_TIPADM", "");
+        ddlTipoAdmin.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("120", "");
         ddlTipoAdmin.DataTextField = "MAS_DesCorta";
         ddlTipoAdmin.DataValueField = "MAS_CodCampo";
         ddlTipoAdmin.DataBind();
@@ -96,7 +96,7 @@ public partial class GestionAdmision_GcAdmRegistrarHistoriaClinica : System.Web.
     /// </summary>
     private void pr_CargarCboGrupo()
     {
-        ddlGrupo.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_GRSN", "");
+        ddlGrupo.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("130", "");
         ddlGrupo.DataTextField = "MAS_DesCorta";
         ddlGrupo.DataValueField = "MAS_CodCampo";
         ddlGrupo.DataBind();
@@ -117,26 +117,10 @@ public partial class GestionAdmision_GcAdmRegistrarHistoriaClinica : System.Web.
     }
 
 
-
-
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        Dictionary<string, object> objValores = new Dictionary<string, object>();
-        //objValores.Add("Alergias", txtAlergias.Text);
-        objValores.Add("Intervencion", txtInterv.Text);
-        objValores.Add("TipoAdmision", ddlTipoAdmin.SelectedValue);
-        objValores.Add("GrupoSanguineo", ddlGrupo.SelectedValue);
-        objValores.Add("IDPaciente", hddIDPaciente.Value.ToString());
-
-        string vmensaje = "";
-        BL_HistoriaClinica.Instancia.fn_RegistrarHC(objValores, ref vmensaje);
-        
-    }
-
     [WebMethod]
     public static List<BE_MaestroTabla> pr_CargarAlergias(string p_Valor)
     {
-        return BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_ALERG", p_Valor);
+        return BL_MaestroTablas.Instancia.fn_ListarUbiGEO("140", p_Valor);
 
     }
 }

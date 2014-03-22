@@ -1,51 +1,58 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" EnableEventValidation="false" ClientIDMode="Static" AutoEventWireup="true" CodeFile="GcAdmActualizarPaciente.aspx.cs" Inherits="GestionAdmision_GcAdmActualizarPaciente" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ext" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<style type="text/css">
+.disabled 
+{
+ color:#8A8A8A;
+ background-color:#F8F8F8;
+} 
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
     
 <div class="cab">
-   <h2>Actualizar Paciente</h2>
+   <h2>ACTUALIZAR PACIENTE</h2>
 </div>
  <div class="filtro">
     <div class="columna"> 
         <div>
             <asp:Label ID="lblTipoDocumentoN" runat="server" Text="Tipo de Documento:"></asp:Label><asp:HiddenField
                 ID="hddIDPaciente" runat="server" />
-            <p><asp:TextBox ID="txtTipoDocumento" ReadOnly="true"  runat="server" ></asp:TextBox> 
+            <p><asp:TextBox ID="txtTipoDocumento" CssClass="disabled" ReadOnly="true"  runat="server" ></asp:TextBox> 
                 <asp:HiddenField ID="hddIdTipoDoc" runat="server" /><asp:HiddenField
                 ID="hddAccion" runat="server" /></p> 
         </div>
         <div>
             <asp:Label ID="lblNroDocumento" runat="server" Text="Nro de Documento:"></asp:Label>
-            <p><asp:TextBox ID="txtNroDocumento"  ReadOnly="true" MaxLength="12"  runat="server" ></asp:TextBox></p>
+            <p><asp:TextBox ID="txtNroDocumento" CssClass="disabled" ReadOnly="true" MaxLength="12"  runat="server" ></asp:TextBox></p>
         </div>    
        <div>
             <asp:Label ID="lblNombre" runat="server" Text="Nombres:"></asp:Label>
-            <p><asp:TextBox ID="txtNombre"   runat="server" MaxLength="20" ></asp:TextBox></p> 
+            <p><asp:TextBox ID="txtNombre"   runat="server" MaxLength="20" ></asp:TextBox>&nbsp&nbsp*</p> 
         </div>
         <div>
             <asp:Label ID="lblApellidoP" runat="server" Text="Apellido Paterno:"></asp:Label>
-            <p><asp:TextBox ID="txtApellidoP"   runat="server" MaxLength="30"></asp:TextBox></p> 
+            <p><asp:TextBox ID="txtApellidoP"   runat="server" MaxLength="30"></asp:TextBox>&nbsp&nbsp*</p> 
         </div>
         <div>
             <asp:Label ID="lblApellidoM" runat="server" Text="Apellido Materno:"></asp:Label>
-            <p><asp:TextBox ID="txtApellidoM"  runat="server" MaxLength="30"></asp:TextBox></p> 
+            <p><asp:TextBox ID="txtApellidoM"  runat="server" MaxLength="30"></asp:TextBox>&nbsp&nbsp*</p> 
         </div>
         <div>
           <asp:Label ID="lblFechaNac" runat="server" Text="Fecha de Nacimiento:"></asp:Label>
-        <p><asp:TextBox ID="txtFechaNac"  MaxLength="10"  runat="server" ></asp:TextBox>
+        <p><asp:TextBox ID="txtFechaNac"  MaxLength="10"  runat="server" ></asp:TextBox>&nbsp&nbsp*
            <ext:MaskedEditExtender ID="meeFechaNac" runat="server" TargetControlID="txtFechaNac"
                                         Mask="99/99/9999" MessageValidatorTip="true" MaskType="Date"  ErrorTooltipEnabled="True"
                                         CultureName="es-PE" /></p>
         </div>
         <div>
             <asp:Label ID="lblDireccionN" runat="server" Text="Dirección del Paciente:"></asp:Label>
-            <p><asp:TextBox ID="txtDireccionN"  runat="server" MaxLength="500" ></asp:TextBox></p>
+            <p><asp:TextBox ID="txtDireccionN"  runat="server" MaxLength="500" ></asp:TextBox>&nbsp&nbsp*</p>
         </div>
         <div>
             <asp:Label ID="Label1" runat="server" Text="Estado Civil:"></asp:Label>
-            <p><asp:DropDownList ID="ddlEstadoCivil" runat="server"></asp:DropDownList></p>
+            <p><asp:DropDownList ID="ddlEstadoCivil" runat="server"></asp:DropDownList>&nbsp&nbsp*</p>
         </div>
         <div>
            <asp:Label ID="Label3" runat="server" Text="Correo:"></asp:Label>
@@ -66,23 +73,23 @@
         </div>
         <div>
             <asp:Label ID="lblSexo" runat="server" Text="Sexo:"></asp:Label>
-            <p><asp:DropDownList ID="ddlSexo" runat="server"></asp:DropDownList></p> 
+            <p><asp:DropDownList ID="ddlSexo" runat="server"></asp:DropDownList>&nbsp&nbsp*</p> 
         </div>
         <div>
            <asp:Label ID="lblPais" runat="server" Text="Pais:"></asp:Label>
-           <p><asp:DropDownList ID="ddlPais" runat="server"></asp:DropDownList></p> 
+           <p><asp:DropDownList ID="ddlPais" runat="server"></asp:DropDownList>&nbsp&nbsp*</p> 
         </div>
         <div>
            <asp:Label ID="lblDpto" runat="server" Text="Departamento:"></asp:Label>
-           <p><asp:DropDownList ID="ddlDepartamento" runat="server"><asp:ListItem Text="-Seleccione-" Value="0"></asp:ListItem></asp:DropDownList></p> 
+           <p><asp:DropDownList ID="ddlDepartamento" runat="server"><asp:ListItem Text="-Seleccione-" Value="0"></asp:ListItem></asp:DropDownList>&nbsp&nbsp*</p> 
         </div>
         <div>
            <asp:Label ID="lblProvincia" runat="server" Text="Provincia:"></asp:Label>
-           <p><asp:DropDownList ID="ddlProvincia" runat="server"><asp:ListItem Text="-Seleccione-" Value="0"></asp:ListItem></asp:DropDownList></p> 
+           <p><asp:DropDownList ID="ddlProvincia" runat="server"><asp:ListItem Text="-Seleccione-" Value="0"></asp:ListItem></asp:DropDownList>&nbsp&nbsp*</p> 
         </div>
         <div>
            <asp:Label ID="lblDistrito" runat="server" Text="Distrito:"></asp:Label>
-           <p><asp:DropDownList ID="ddDistrito" runat="server"><asp:ListItem Text="-Seleccione-" Value="0"></asp:ListItem></asp:DropDownList></p> 
+           <p><asp:DropDownList ID="ddDistrito" runat="server"><asp:ListItem Text="-Seleccione-" Value="0"></asp:ListItem></asp:DropDownList>&nbsp&nbsp*</p> 
         </div>
         <div>
            <asp:Label ID="Label2" runat="server" Text="Ocupación:"></asp:Label>

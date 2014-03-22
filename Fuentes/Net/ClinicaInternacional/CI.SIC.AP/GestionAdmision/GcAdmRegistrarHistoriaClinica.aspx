@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" EnableEventValidation="false" ClientIDMode="Static" CodeFile="GcAdmRegistrarHistoriaClinica.aspx.cs" Inherits="GestionAdmision_GcAdmRegistrarHistoriaClinica" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" ClientIDMode="Static" CodeFile="GcAdmRegistrarHistoriaClinica.aspx.cs" Inherits="GestionAdmision_GcAdmRegistrarHistoriaClinica" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <style type="text/css">
@@ -49,7 +49,7 @@
         <div>
             <asp:Label ID="Label3" runat="server" Text="Tipo Admisión:"></asp:Label>
             <p><asp:DropDownList ID="ddlTipoAdmin" runat="server">
-            </asp:DropDownList></p> 
+            </asp:DropDownList>&nbsp&nbsp*</p> 
         </div>
         <div>
         <p></p>
@@ -87,7 +87,7 @@
         <div>
             <asp:Label ID="Label5" runat="server" Text="Grupo Sanguineo:"></asp:Label>
             <p><asp:DropDownList ID="ddlGrupo" runat="server">
-            </asp:DropDownList></p> 
+            </asp:DropDownList>&nbsp&nbsp*</p> 
         </div>
         <div>
         <p>        <asp:Button ID="btnGuardar" BackColor="#1871A8" ForeColor="#FFFFFF" Width="108px" runat="server" Text="Registrar" /> <asp:Button ID="btnSalir" BackColor="#1871A8" ForeColor="#FFFFFF" Width="108px" runat="server" Text="SALIR" /> </p>

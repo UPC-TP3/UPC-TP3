@@ -12,28 +12,11 @@ using EasyCallback;
 public partial class GestionAdmision_GcAdmActualizarPaciente : System.Web.UI.Page
 {
 
-    private string GetAccion
-    {
-        get
-        {
-            if (ViewState["GetAccion"] != null)
-            {
-                return (String)ViewState["GetAccion"];
-            }
-
-            return "";
-        }
-        set
-        {
-            ViewState["MyObject"] = value;
-        }
-    }
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
-
             pr_CargarCboSexo();
             pr_CargarCboPais();
             pr_CargarCboEstadoCivil();
@@ -76,6 +59,11 @@ public partial class GestionAdmision_GcAdmActualizarPaciente : System.Web.UI.Pag
             txtApellidoP.ReadOnly = true;
             txtNombre.ReadOnly = true;
             txtFechaNac.ReadOnly = true;
+            ddlSexo.Enabled = false;
+            txtApellidoP.CssClass = "disabled";
+            txtApellidoM.CssClass = "disabled";
+            txtNombre.CssClass = "disabled";
+            txtFechaNac.CssClass = "disabled";
             btnGuardar.Text = "ACTUALIZAR";
             hddAccion.Value = "2";
         }
@@ -163,14 +151,14 @@ public partial class GestionAdmision_GcAdmActualizarPaciente : System.Web.UI.Pag
 
     private void pr_CargarCboPais()
     {
-        ddlPais.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_PAIS", "");
+        ddlPais.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("80", "");
         ddlPais.DataTextField = "MAS_DesCorta";
         ddlPais.DataValueField = "MAS_CodCampo";
         ddlPais.DataBind();
     }
     private void pr_CargarCboDpto(string p_Valor)
     {
-        ddlDepartamento.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_DPTO", p_Valor);
+        ddlDepartamento.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("90", p_Valor);
         ddlDepartamento.DataTextField = "MAS_DesCorta";
         ddlDepartamento.DataValueField = "MAS_CodCampo";
         ddlDepartamento.DataBind();
@@ -178,7 +166,7 @@ public partial class GestionAdmision_GcAdmActualizarPaciente : System.Web.UI.Pag
 
     private void pr_CargarCboProv(string p_Valor)
     {
-        ddlProvincia.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_PROVIN", p_Valor);
+        ddlProvincia.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("100", p_Valor);
         ddlProvincia.DataTextField = "MAS_DesCorta";
         ddlProvincia.DataValueField = "MAS_CodCampo";
         ddlProvincia.DataBind();
@@ -186,7 +174,7 @@ public partial class GestionAdmision_GcAdmActualizarPaciente : System.Web.UI.Pag
 
     private void pr_CargarCboDist(string p_Valor)
     {
-        ddDistrito.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_DIST", p_Valor);
+        ddDistrito.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("110", p_Valor);
         ddDistrito.DataTextField = "MAS_DesCorta";
         ddDistrito.DataValueField = "MAS_CodCampo";
         ddDistrito.DataBind();
@@ -194,14 +182,14 @@ public partial class GestionAdmision_GcAdmActualizarPaciente : System.Web.UI.Pag
 
     private void pr_CargarCboEstadoCivil()
     {
-        ddlEstadoCivil.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_ESTCIV", "");
+        ddlEstadoCivil.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("50", "");
         ddlEstadoCivil.DataTextField = "MAS_DesCorta";
         ddlEstadoCivil.DataValueField = "MAS_CodCampo";
         ddlEstadoCivil.DataBind();
     }
     private void pr_CargarCboSexo()
     {
-        ddlSexo.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_SEXO", "");
+        ddlSexo.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("20", "");
         ddlSexo.DataTextField = "MAS_DesCorta";
         ddlSexo.DataValueField = "MAS_CodCampo";
         ddlSexo.DataBind();
@@ -209,14 +197,14 @@ public partial class GestionAdmision_GcAdmActualizarPaciente : System.Web.UI.Pag
     [WebMethod]
     public static List<BE_MaestroTabla> pr_CargarCboDepartamento(string p_Valor)
     {
-        return BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_DPTO", p_Valor);
+        return BL_MaestroTablas.Instancia.fn_ListarUbiGEO("90", p_Valor);
 
     }
 
     [WebMethod]
     public static List<BE_MaestroTabla> pr_CargarCboProvincia(string p_Valor)
     {
-        return BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_PROVIN", p_Valor);
+        return BL_MaestroTablas.Instancia.fn_ListarUbiGEO("100", p_Valor);
 
     }
 
@@ -224,7 +212,7 @@ public partial class GestionAdmision_GcAdmActualizarPaciente : System.Web.UI.Pag
     [WebMethod]
     public static List<BE_MaestroTabla> pr_CargarCboDistrito(string p_Valor)
     {
-        return BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_DIST", p_Valor);
+        return BL_MaestroTablas.Instancia.fn_ListarUbiGEO("110", p_Valor);
 
     }
 

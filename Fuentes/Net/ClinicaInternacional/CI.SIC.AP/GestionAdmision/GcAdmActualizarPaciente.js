@@ -160,9 +160,18 @@ Page.prototype = {
             return false;
         }
 
-        if (objPage.ddlSexo.val() == "0") {
-            alert("Seleccionar Sexo");
-            objPage.ddlSexo.focus();
+        if (objPage.txtFechaNac.val().length < 10) {
+            alert("Ingrese una de Fecha Nacimiento Correcta");
+            objPage.txtFechaNac.focus();
+            return false;
+        }
+
+        var today = new Date();
+        var date2 = new Date(objPage.txtFechaNac.val());
+
+        if (date2 > today) {
+            alert("Fecha Nacimiento Incorrecta");
+            objPage.txtFechaNac.focus();
             return false;
         }
 
@@ -175,20 +184,6 @@ Page.prototype = {
         if (objPage.ddlEstadoCivil.val() == "0") {
             alert("Seleccionar Estado Civil");
             objPage.ddlEstadoCivil.focus();
-            return false;
-        }
-
-        if (objPage.txtFechaNac.val().length < 10) {
-            alert("Ingrese una de Fecha Nacimiento Correcta");
-            objPage.txtFechaNac.focus();
-            return false;
-        }
-        var today = new Date();
-        var date2 = new Date(objPage.txtFechaNac.val());
-
-        if (date2 > today) {
-            alert("Fecha Nacimiento Incorrecta");
-            objPage.txtFechaNac.focus();
             return false;
         }
 
@@ -206,6 +201,13 @@ Page.prototype = {
                 return false;
             }
         }
+
+        if (objPage.ddlSexo.val() == "0") {
+            alert("Seleccionar Sexo");
+            objPage.ddlSexo.focus();
+            return false;
+        }
+
         if (objPage.ddlPais.val() == "0") {
             alert("Seleccionar Pais");
             objPage.ddlPais.focus();
@@ -270,6 +272,7 @@ Page.prototype = {
                 if (objPage.hddAccion.val() == "1") {
                     alert(objResult.Message);
                     fnLimpiarControles();
+                    location.href("GcAdmVerificarPaciente.aspx");
                 } else {
                     alert(objResult.Message);
                     location.href("GcAdmVerificarPaciente.aspx");
@@ -302,7 +305,7 @@ function fnLimpiarControles() {
     objPage.txtDocumento.val('');
     objPage.txtTelefono.val('');
     objPage.txtCelular.val('');
-    objPage.ddlSexo.val('-1');
+    objPage.ddlSexo.val('0');
     objPage.txtCorreo.val('');
     objPage.txtOcupacion.val('')
     objPage.ddlEstadoCivil.val('0');

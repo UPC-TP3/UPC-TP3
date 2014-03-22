@@ -38,6 +38,68 @@ INSERT INTO [dbo].[TB_MAESTRO_TABLAS]([MAS_CodTabla],[MAS_CodCampo],[MAS_DesCort
 INSERT INTO [dbo].[TB_MAESTRO_TABLAS]([MAS_CodTabla],[MAS_CodCampo],[MAS_DesCorta],[MAS_DesLarga],[MAS_Valor],[MAS_Estado])VALUES ('70','3','Activado','','','1')
 INSERT INTO [dbo].[TB_MAESTRO_TABLAS]([MAS_CodTabla],[MAS_CodCampo],[MAS_DesCorta],[MAS_DesLarga],[MAS_Valor],[MAS_Estado])VALUES ('70','4','Caducado','','','1')
 
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('80','00','País','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('80','1','PERÚ','','','A');
+
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('90','00','Departamento','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('90','1','LIMA','','1','A');
+
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('100','00','Provincia','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('100','1','LIMA','','1','A');
+
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('110','00','Distrito','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('110','1','San Borja','','1','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('110','2','San Luis','','1','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('110','3','Pueblo Libre','','1','A');
+GO
+
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('120','00','Tipo Admisión','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('120','1','Ambulatoria','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('120','2','Emergencia','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('120','3','Hospitalización','','','A');
+GO
+
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('130','00','Grupo Sanguineo','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('130','1','RH O-','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('130','2','RH O+','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('130','3','RH A-','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('130','4','RH A+','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('130','5','RH B-','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('130','6','RH B+','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('130','7','RH AB-','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('130','8','RH AB+','','','A');
+
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('140','00','Tipo de Alergias','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('140','1','Medícamento','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('140','2','Ácaros','','','A');
+INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_DesLarga,MAS_Valor,MAS_Estado)
+VALUES ('140','3','Alimentaria','','','A');
 
 SET IDENTITY_INSERT [dbo].[TB_CAMA] ON
 INSERT INTO [dbo].[TB_CAMA]([ID_Cama],[NroCama],[TipoCama],[Ubicacion],[Estado],[ID_Hoja_Ingreso_Hospitalizacion])VALUES(1,'101','Pedriática','201-A','1',NULL)
@@ -56,7 +118,7 @@ INSERT INTO [dbo].[TB_ESTADO_CITA](ID_EstadoCita,[DesEstado]) VALUES (3,'Activad
 SET IDENTITY_INSERT [TB_ESTADO_CITA] OFF
 
 SET IDENTITY_INSERT [dbo].[TB_TIPO_DOCUMENTO] ON
-INSERT [dbo].[TB_TIPO_DOCUMENTO] ([ID_TipoDocumento], [Nombre]) VALUES (1, N'Dni')
+INSERT [dbo].[TB_TIPO_DOCUMENTO] ([ID_TipoDocumento], [Nombre]) VALUES (1, N'DNI')
 INSERT [dbo].[TB_TIPO_DOCUMENTO] ([ID_TipoDocumento], [Nombre]) VALUES (2, N'Pasaporte')
 INSERT [dbo].[TB_TIPO_DOCUMENTO] ([ID_TipoDocumento], [Nombre]) VALUES (3, N'Carnet de Extranjería')
 SET IDENTITY_INSERT [dbo].[TB_TIPO_DOCUMENTO] OFF
@@ -216,38 +278,3 @@ INSERT INTO [dbo].[TB_CARTA_GARANTIA](ID_Carta,[ID_Orden_de_Procedimiento],[CodP
 VALUES(8,1,1,4,1,CAST(0x0000A2E100000000 AS DateTime),CAST(0x0000A4EA01817AC1 AS DateTime),2030.36,'',1)
 
 SET IDENTITY_INSERT [dbo].[TB_CARTA_GARANTIA] OFF
-
-
-
-
-
-INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_Valor,MAS_Estado)
-VALUES ('TB_PAIS','1','PERÚ','','A');
-
-INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_Valor,MAS_Estado)
-VALUES ('TB_DPTO','1','LIMA','1','A');
-
-INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_Valor,MAS_Estado)
-VALUES ('TB_PROVIN','1','LIMA','1','A');
-
-INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_Valor,MAS_Estado)
-VALUES ('TB_DIST','1','San Borja','1','A');
-
-INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_Valor,MAS_Estado)
-VALUES ('TB_DIST','2','San Luis','1','A');
-
-INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_Valor,MAS_Estado)
-VALUES ('TB_DIST','3','Pueblo Libre','1','A');
-GO
-
-
-
-INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_Valor,MAS_Estado)
-VALUES ('TB_TIPADM','1','Ambulatoria','','A');
-
-INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_Valor,MAS_Estado)
-VALUES ('TB_TIPADM','2','Emergencia','','A');
-
-INSERT INTO dbo.TB_MAESTRO_TABLAS (MAS_CodTabla,MAS_CodCampo,MAS_DesCorta,MAS_Valor,MAS_Estado)
-VALUES ('TB_TIPADM','3','Hospitalización','','A');
-GO

@@ -28,25 +28,65 @@
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" Runat="Server">
-<div class="cab">
-   <h2>Historia Clínica</h2>
-</div>
-<div class="filtro" style="margin-bottom:0px;">
-<div class="block_center">
-<p>
-    <asp:Label ID="lblTipoDocumento" runat="server" Text="Tipo de Documento:"></asp:Label>&nbsp&nbsp<asp:DropDownList ID="ddlTipoDocumento"  runat="server"></asp:DropDownList>
-</p>
-<p> 
-    <asp:Label ID="lblDocumento" runat="server" Text="Documento de Identidad:"></asp:Label>&nbsp&nbsp<asp:TextBox ID="txtDocumento" MaxLength="12"   runat="server"></asp:TextBox>
-</p>
-<br />
-</div>
-</div>
-<div class="botonCentral">
-<br />
-            <asp:Button ID="btnVerificar" Width="115px"  
-        runat="server"  Text="BUSCAR" />
- </div>  
+     <div class="col_04">      
+        <div>
+            <div class="width_total">
+                <div class="Espaciofiltro">
+                    <div class="separador" style="width: 75%">
+                        <div class="box_tit reg_title" id="div1" runat="server" style="width: 98%">
+                            Datos del Paciente</div>
+                        <table border="0" cellspacing="0" cellpadding="0" class="Tabla_filtro_txt" style="width: 95%">
+                            <tr>
+                                <td style="width: 30%">
+                                <div class="block_center">
+                                    Tipo De documento:</div> 
+                                </td>
+                                <td style="width: 5%">
+                                </td>
+                                <td style="width: 30%">
+                                <div class="block_center">
+                                    Nro. Documento:</div> 
+                                </td>
+                                <td style="width: 5%">
+                                </td>
+                                <td style="width: 30%">
+                                </td>
+                            </tr>
+                            <tr>                               
+                                
+                                <td style="width: 30%">
+                                    <asp:DropDownList ID="ddlTipoDocumento"  runat="server"></asp:DropDownList>
+                                </td>
+                                <td style="width: 5%">
+                                    &nbsp;
+                                </td>
+                                <td style="width: 30%">
+                                    <asp:TextBox ID="txtDocumento" MaxLength="12"   runat="server"></asp:TextBox>
+                                </td>
+                                <td style="width: 5%">
+                                    
+                                </td>
+                                <td style="width: 30%">                                 
+                                </td>
+                            </tr>                                                       
+                        </table>
+                         <br />                        
+                        <table border="0" cellspacing="0" cellpadding="0" class="Tabla_filtro_txt" style="width: 95%">
+                            <tr>
+                             <td align="right" >        
+                             <div class="botones">
+                                <br />                     
+                                    <asp:Button ID="btnVerificar" Width="78px" runat="server"  Text="BUSCAR"  />           
+                                     </div>
+                                                      
+                             </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PaginaActual" Runat="Server">
 </asp:Content>

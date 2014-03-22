@@ -1,14 +1,13 @@
 ﻿$(document).ready(function () {
     objPage.initialize();
 
-    $("#ddlTipoAlergia").append($("<option></option>").attr("value", "0").text("-Seleccione-"))
+    $("#ddlTipoAlergia").append($("<option></option>").attr("value", "0").text("-Seleccione-"));
 
     $("#ddlAlergias").change(function () {
         // armo el objeto que servira de parametro, para ello utilizo una libreria de JSON
         //este parametro mapeara con el definido en el web service
-
         if ($("#ddlAlergias").val() == "1") {
-            $("#ddlTipoAlergia").prop("disabled", false);
+            $("#ddlTipoAlergia").removeAttr('disabled');
             var params = new Object();
             params.p_Valor = "";
             params = JSON.stringify(params);
@@ -26,7 +25,7 @@
                 }
             });
         } else {
-            $("#ddlTipoAlergia").prop("disabled", true);
+            $("#ddlTipoAlergia").attr('disabled', '-1');
             $("#ddlTipoAlergia").val('0');
         }
     });
@@ -34,9 +33,9 @@
 
     $("#ddlInterv").change(function () {
         if ($("#ddlInterv").val() == "1") {
-            $('#txtInterv').prop("readonly", false);
+            $('#txtInterv').removeAttr('readonly');
         } else {
-            $('#txtInterv').prop("readonly", true);
+            $('#txtInterv').attr('readonly', '-1');
             $('#txtInterv').val('');
         }
 

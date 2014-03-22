@@ -45,7 +45,7 @@ Page.prototype = {
         return false;
     },
     VerificarPaciente: function () {
-        if (objPage.ddlTipoDocumento.val() == "0") {
+        if (objPage.ddlTipoDocumento.val() == "-1") {
             alert("Seleccionar tipo de Documento");
             objPage.ddlTipoDocumento.focus();
             return false;

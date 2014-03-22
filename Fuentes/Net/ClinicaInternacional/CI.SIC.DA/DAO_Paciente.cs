@@ -336,7 +336,7 @@ namespace CI.SIC.DA
                 Dictionary<string, object> parameter = new Dictionary<string, object>();
                 parameter.Add("@DNI", p_vDNI);
                 parameter.Add("@ID_TipoDocumento", p_nTipoDocumento);
-                using (IDataReader oReader = SqlHelper.Instance.ExecuteReader("usp_VerificarPaciente", parameter))
+                using (IDataReader oReader = SqlHelper.Instance.ExecuteReader("usp_VerificarPaciente_HC", parameter))
                 {
                     if (oReader.Read())
                     {

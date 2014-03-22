@@ -263,23 +263,55 @@ Creado Por: Lsalvatierra
 Proposito: Verificar Existencia del paciente.
 Fecha: 10/03/2014
 */
-@DNI				VARCHAR(11),
-@ID_TipoDocumento	INT
+@DNI				VARCHAR(11)
 AS
 	SELECT ID_Paciente,ID_TipoDocumento,isnull(dbo.fn_DescTipoDocumento(ID_TipoDocumento),'') as TipoDocumento,isnull(dbo.fn_DescSexo(ID_Sexo),'') as DescSexo, dni_paciente,FechaNacimiento,Celular,TelefonoDomicilio,Direccion,ID_Sexo,nombres,ApellidoPat,ApellidoMat,ID_Pais,
 			ID_Departamento,ID_Provincia,ID_Distrito,ID_EstadoCivil,Ocupacion,Correo FROM dbo.TB_PACIENTE WHERE dni_paciente = @DNI
-	AND ID_TipoDocumento = @ID_TipoDocumento
+GO
+
+CREATE PROC usp_VerificarPaciente_HC 
+/*
+Nombre: usp_VerificarPaciente
+Creado Por: Lsalvatierra
+Proposito: Verificar Existencia del paciente.
+Fecha: 10/03/2014
+*/
+@DNI				VARCHAR(12),
+@ID_TipoDocumento	INT
+AS
+	SELECT	ID_Paciente,
+			ID_TipoDocumento,
+			ISNULL(dbo.fn_DescTipoDocumento(ID_TipoDocumento),'') as TipoDocumento,
+			ISNULL(dbo.fn_DescSexo(ID_Sexo),'') as DescSexo,
+			ISNULL(dni_paciente,'') as dni_paciente,
+			ISNULL(FechaNacimiento,'') as FechaNacimiento,
+			ISNULL(Celular,'') as Celular,
+			ISNULL(TelefonoDomicilio,'') as TelefonoDomicilio,
+			ISNULL(Direccion,'') as Direccion,
+			ISNULL(ID_Sexo,'') as ID_Sexo,
+			ISNULL(nombres,'') as nombres,
+			ISNULL(ApellidoPat,'') as ApellidoPat,
+			ISNULL(ApellidoMat,'') as ApellidoMat,
+			ISNULL(ID_Pais,'') as ID_Pais,
+			ISNULL(ID_Departamento,'') as ID_Departamento,
+			ISNULL(ID_Provincia,'') as ID_Provincia,
+			ISNULL(ID_Distrito,'') as ID_Distrito,
+			ISNULL(ID_EstadoCivil,'') as ID_EstadoCivil,
+			ISNULL(Ocupacion,'') as Ocupacion,
+			ISNULL(Correo,'') AS Correo 
+	FROM	dbo.TB_PACIENTE WHERE dni_paciente = @DNI
+	AND		ID_TipoDocumento = @ID_TipoDocumento
 	
 go
-
 
 CREATE PROC usp_ListarUbiGeo 
 @MAS_CodTabla	VARCHAR(10),
 @MAS_Valor		VARCHAR(10)
 AS
 	SELECT MAS_CodCampo, MAS_DesCorta FROM dbo.TB_MAESTRO_TABLAS
-	WHERE MAS_CodTabla = @MAS_CodTabla 
+	WHERE RTRIM([MAS_CodTabla]) = RTRIM(@MAS_CodTabla)
 	AND MAS_Valor = @MAS_Valor 
+	AND MAS_CodCampo <> '00'
 GO
 
 
@@ -314,10 +346,16 @@ GO
 CREATE PROC usp_DetalleHistoriClinica 
 @ID_Paciente	INT
 AS
-	SELECT ID_DetHistoria,a.ID_Historia,dbo.fn_DescProcedencia(ID_Procedencia) AS Procedencia,ISNULL(Diagnostico,'') AS Diagnostico, ISNULL(Tratamiento,'') AS Tratamiento, a.FechaAtencion
+	SELECT	ID_DetHistoria,
+			a.ID_Historia,
+			ISNULL(dbo.fn_DescProcedencia(ID_Procedencia),'') AS Procedencia,
+			ISNULL(Diagnostico,'') AS Diagnostico, 
+			ISNULL(Tratamiento,'') AS Tratamiento, 
+			ISNULL(a.FechaAtencion,'') AS FechaAtencion
 	FROM dbo.TB_DET_HISTORIA_CLINICA a, dbo.TB_HISTORIA_CLINICA b 
 	WHERE A.ID_Historia = B.ID_Historia AND ID_Paciente = @ID_Paciente
 GO
+
 
 
 CREATE FUNCTION fn_DescProcedencia 
@@ -331,7 +369,7 @@ BEGIN
 
     SELECT	@Nom_Procedencia = MAS_DesCorta
 	  FROM	dbo.TB_MAESTRO_TABLAS
-   WHERE	MAS_CodTabla = 'TB_TIPADM'
+   WHERE	MAS_CodTabla = '120'
    AND		MAS_CodCampo = @ID_Procedencia
     RETURN @Nom_Procedencia
 END
@@ -347,7 +385,7 @@ BEGIN
 
     SELECT	@Nom_Procedencia = MAS_DesCorta
 	  FROM	dbo.TB_MAESTRO_TABLAS
-   WHERE	MAS_CodTabla = 'TB_SEXO'
+   WHERE	MAS_CodTabla = '20'
    AND		MAS_CodCampo = @ID_Procedencia
     RETURN @Nom_Procedencia
 END
