@@ -87,7 +87,7 @@
                                         </tr>
                                         <tr>
                                         <td colspan="2">
-                                        <asp:TextBox ID="txtObservacion" Width="400px" Height="60px" runat="server" ></asp:TextBox><asp:RequiredFieldValidator ValidationGroup="vgAnonimo" ID="rfvObs" runat="server" ErrorMessage="Ingresar una observación" Text="*" ControlToValidate="txtDocumento"></asp:RequiredFieldValidator>
+                                        <asp:TextBox ID="txtObservacion" Width="400px" Height="60px" runat="server" ></asp:TextBox><asp:RequiredFieldValidator ValidationGroup="vgAnonimo" ID="rfvObs" runat="server" ErrorMessage="Ingresar una observación" Text="*" ControlToValidate="txtObservacion"></asp:RequiredFieldValidator>
                                         </td>                                        
                                                                                 
                                         </tr>
