@@ -834,8 +834,8 @@ SELECT ID_Paciente
       ,isnull(P.Observacion,'') as Observacion
   FROM TB_PACIENTE P left join TB_TIPO_DOCUMENTO TD
        ON P.ID_TipoDocumento = TD.ID_TipoDocumento
-  WHERE (@ID_Paciente=0 OR P.ID_Paciente = @ID_Paciente) AND        
-        (@ID_TipoDocumento = 0 OR P.ID_TipoDocumento=@ID_TipoDocumento) AND
+   WHERE (@ID_Paciente=0 OR P.ID_Paciente = @ID_Paciente) AND        
+        ((@ID_TipoDocumento = 0 OR P.ID_TipoDocumento=@ID_TipoDocumento) or (@ID_TipoDocumento=999 and P.ID_TipoDocumento is null) ) AND
         (ISNULL(P.dni_paciente,'') LIKE '%' + @dni_paciente + '%') AND
         (ISNULL(P.Observacion,'') LIKE '%' + @Observacion + '%') AND
         (ISNULL(P.ApellidoPat,'') LIKE '%' + @ApellidoPat + '%') AND
