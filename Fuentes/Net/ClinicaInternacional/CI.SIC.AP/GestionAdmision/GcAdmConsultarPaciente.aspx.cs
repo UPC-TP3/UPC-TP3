@@ -26,10 +26,24 @@ public partial class GcAdmConsultarPaciente : System.Web.UI.Page
     /// </summary>
     private void pr_CargarCboTipoDocumento()
     {
-        ddlTipoDoc.DataSource = BL_TipoDocumento.Instancia.fn_ListarTipoDocumento();
+
+        List<BE_TipoDocumento> lBE_TipoDocumento = null;
+
+        lBE_TipoDocumento = BL_TipoDocumento.Instancia.fn_ListarTipoDocumento();
+
+        ddlTipoDoc.DataSource = lBE_TipoDocumento;
         ddlTipoDoc.DataTextField = "Descripcion";
         ddlTipoDoc.DataValueField = "Codigo";
         ddlTipoDoc.DataBind();
+
+        ListItem li = new ListItem();
+
+        li.Value = "999";
+        li.Text = "Anónimo";
+
+        ddlTipoDoc.Items.Insert(1, li);
+
+        
     }
 
     private void pr_DatosPaciente() {
@@ -38,7 +52,11 @@ public partial class GcAdmConsultarPaciente : System.Web.UI.Page
 
          oBE_Paciente.ID_Paciente = 0;
          oBE_Paciente.dni_paciente = txtNroDoc.Text.Trim();
-         oBE_Paciente.ID_TipoDocumento = Int32.Parse(ddlTipoDoc.SelectedValue);
+
+         if (ddlTipoDoc.SelectedIndex != 0) {
+             oBE_Paciente.ID_TipoDocumento = Int32.Parse(ddlTipoDoc.SelectedValue);
+         }       
+
          oBE_Paciente.Observacion = "";
          oBE_Paciente.Nombres = txtNombre.Text.Trim();
          oBE_Paciente.ApellidoPat = txtApPat.Text.Trim();
