@@ -35,25 +35,26 @@ CREATE PROCEDURE [dbo].[usp_Select_Paciente]
 AS
 BEGIN
 SELECT ID_Paciente  
-      ,dni_paciente        
+      ,isnull(dni_paciente,'') as dni_paciente        
       ,isnull(FechaNacimiento,'01/01/1900') as FechaNacimiento  
       ,isnull(Celular,'') as Celular  
       ,isnull(TelefonoDomicilio,'') as TelefonoDomicilio   
-      ,ID_Pais  
-      ,ID_Departamento  
-      ,ID_Provincia  
-      ,ID_Distrito  
+      ,isnull(ID_Pais,0) as ID_Pais  
+      ,isnull(ID_Departamento,0) as ID_Departamento 
+      ,isnull(ID_Provincia,0)as ID_Provincia  
+      ,isnull(ID_Distrito,0) as ID_Distrito  
       ,isnull(Direccion,'') as Direccion  
-      ,ID_Sexo  
-      ,(SELECT MAS_DesCorta FROM TB_MAESTRO_TABLAS WHERE MAS_CodTabla='20' AND MAS_CodCampo=ID_Sexo) AS SexoDescripcion
+      ,isnull(ID_Sexo,0) as ID_Sexo  
+      ,isnull((SELECT MAS_DesCorta FROM TB_MAESTRO_TABLAS WHERE MAS_CodTabla='20' AND MAS_CodCampo=ID_Sexo),'') AS SexoDescripcion
       ,isnull(Ocupacion,'') as Ocupacion  
-      ,ID_TipoDocumento
-      ,(SELECT Nombre FROM TB_TIPO_DOCUMENTO t WHERE t.ID_TipoDocumento=p.ID_TipoDocumento) AS TipoDocumentoNombre
+      ,isnull(ID_TipoDocumento,0) as ID_TipoDocumento
+      ,isnull((SELECT Nombre FROM TB_TIPO_DOCUMENTO t WHERE t.ID_TipoDocumento=p.ID_TipoDocumento),'') AS TipoDocumentoNombre
       ,isnull(nombres,'') as nombres  
       ,isnull(ApellidoPat,'') as ApellidoPat  
       ,isnull(ApellidoMat,'') as ApellidoMat  
-      ,ID_EstadoCivil  
+      ,isnull(ID_EstadoCivil,0) as ID_EstadoCivil   
       ,isnull(Correo,'') as Correo  
+      ,isnull(Observacion,'') as Observacion
   FROM TB_PACIENTE   p
   WHERE (ID_Paciente = @ID_Paciente OR @ID_Paciente=0) AND
         (dni_paciente LIKE '%' + @dni_paciente + '%') AND
