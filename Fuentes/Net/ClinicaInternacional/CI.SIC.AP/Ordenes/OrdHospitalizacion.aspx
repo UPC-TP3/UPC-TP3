@@ -268,9 +268,9 @@
                                                             Documento:
                                                         </td>
                                                         <td style="width: 15%">
-                                                            <asp:TextBox ID="txtNroDoc" runat="server" style="width: 70%"></asp:TextBox>
+                                                            <asp:TextBox ID="txtNroDoc" runat="server" style="width: 50%"></asp:TextBox>
                                                             <asp:Button CssClass="botonesIndividual" ToolTip="Obtener Nro.Orden" ID="btnGetOrden"
-                                                                Width="20px" runat="server" Text="..." OnClick="btnGetOrden_Click"  style="width: 20%" />
+                                                                Width="20px" runat="server" Text="Buscar" OnClick="btnGetOrden_Click"  style="width: 45%" />
                                                         </td>
                                                         <td style="width: 20%" class="block_center">
                                                             Sexo:
