@@ -172,7 +172,7 @@ public partial class GestionAdmision_GcAdmHospitalizacion : System.Web.UI.Page
                     }
                     if (EstOrden == 3)
                     {
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "La orden de hospitalización ya se encuentra activada" + "');LimpiarCampos();", true);
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "La Orden de hospitalización ya se encuentra activada" + "');LimpiarCampos();", true);
                     }
                 }
                 else
@@ -246,12 +246,18 @@ public partial class GestionAdmision_GcAdmHospitalizacion : System.Web.UI.Page
 
             BL_Hospitalizacion obj = new BL_Hospitalizacion();
 
-            var resul = obj.insertIngresoHosp(_bean);
+            try
+            {
+                var resul = obj.insertIngresoHosp(_bean);
 
-            if (resul)
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "Se registro la operacion" + "');LimpiarCampos();", true);
-            else
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "No se registro la operacion" + "');", true);
+                if (resul)
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "Se registro la operación" + "');LimpiarCampos();", true);
+                else
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "regis", "alert('" + "No se registro la operacin" + "');", true);
+            }
+            catch (Exception)
+            {                
+            }           
         }
 
     }

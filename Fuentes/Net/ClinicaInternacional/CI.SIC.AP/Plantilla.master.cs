@@ -15,21 +15,20 @@ public partial class Plantilla : System.Web.UI.MasterPage
     {
         string menu = string.Empty;
         menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Admisión");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmConsultaCita.aspx", "Ambulatorio");
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmConsultaCita.aspx", "Ambulatoria");
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmEmergencia.aspx", "Emergencia");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmHospitalizacion.aspx", "Hospitalización");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmVerificarHistoriaClinica.aspx", "Historia Clínica");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmOrdenProcedimiento.aspx", "Orden Procedimiento");
-         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmConsultarPaciente.aspx", "Paciente");
-        
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmHospitalizacion.aspx", "Hospitalaria");        
         menu += "</ul></li>";
 
-        menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Órdenes");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "Ordenes/OrdHospitalizacion.aspx", "Hospitalización");
+        menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Orden");
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "Ordenes/OrdHospitalizacion.aspx", "Hospitalización");        
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmOrdenProcedimiento.aspx", "Psrocedimiento");
         menu += "</ul></li>";
 
         menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Mantenimiento");
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmVerificarPaciente.aspx", "Actualizar Paciente");
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmVerificarHistoriaClinica.aspx", "Historia Clínica");
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmConsultarPaciente.aspx", "Paciente");
         menu += "</ul></li>";
 
         menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Gestión de Citas");
@@ -49,7 +48,7 @@ public partial class Plantilla : System.Web.UI.MasterPage
 
         menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Gestión de Imágenes");
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/ordenPago.aspx", "Órdenes de Pago");
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/programacionImagenesEdit.aspx", "Programación de Exámenes");     
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/programacionImagenesEdit.aspx", "Programación de Exámenes");
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/requisitosExamen.aspx", "Verificar Requisitos");
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/registrarResultadosEdit.aspx", "Registrar Resultados");
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionImagenes/registrarResultadosEdit.aspx?accion=C", "Consultar Resultados");
