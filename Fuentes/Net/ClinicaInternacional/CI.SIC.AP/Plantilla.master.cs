@@ -22,7 +22,7 @@ public partial class Plantilla : System.Web.UI.MasterPage
 
         menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Orden");
         menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "Ordenes/OrdHospitalizacion.aspx", "Hospitalización");        
-        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmOrdenProcedimiento.aspx", "Psrocedimiento");
+        menu += string.Format("<li><a href=\'../{0}\'>{1}</a></li>", "GestionAdmision/GcAdmOrdenProcedimiento.aspx", "Procedimiento");
         menu += "</ul></li>";
 
         menu += string.Format("<li><a href=\"#\">{0}</a><ul class=\"sub\">", "Mantenimiento");

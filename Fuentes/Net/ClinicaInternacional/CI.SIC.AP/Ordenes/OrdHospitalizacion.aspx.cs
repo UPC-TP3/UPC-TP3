@@ -245,6 +245,11 @@ public partial class Ordenes_OrdHospitalizacion : System.Web.UI.Page
                 txtMaterno.Text = oPaciente.ApellidoMat.ToString();
                 ddlSexo.SelectedIndex = oPaciente.ID_Sexo;
             }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, GetType(), "Orden", "alert('Paciente no encontrado, ingresar tipo y número de documento válido');", true);
+                return;
+            }
         }
         catch (Exception)
         {

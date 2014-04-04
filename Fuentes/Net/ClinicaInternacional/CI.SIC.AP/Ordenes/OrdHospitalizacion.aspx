@@ -44,17 +44,16 @@
 
             var resp = true;
 
-            if (IdOrden == '') {
-                alert('Debe Ingresar Nro de documento de identidad');
+            var msg = '';
+
+            if (IdOrden == '') { msg = msg + " - Debe Ingresar Nro de documento de identidad \n"; }
+            if (oTipoDoc == '0') { msg = msg + "- Debe seleccionar el tipo de documento  \n"; }
+
+            if (msg != '') {
+                alert(msg);
                 resp = false;
             }
-
-            if (oTipoDoc == '0') {
-                alert('Debe seleccionar el tipo de documento');
-                resp = false;
-            }
-
-
+            
             return resp;
         }
 
@@ -94,6 +93,12 @@
             var oMTratante = $('#<%= ddlMedTratante.ClientID %>').attr("selectedIndex");
             var oMedTurno = $('#<%= ddlMedTurno.ClientID %>').attr("selectedIndex");
             var oProcedencia = $('#<%= ddlProcedencia.ClientID %>').attr("selectedIndex");
+
+            var IdOrden = $("#<%=txtNroDoc.ClientID%>").val();
+            var oTipoDoc = $('#<%= ddlTipoDoc.ClientID %>').attr("selectedIndex");
+
+            if (IdOrden == '') { msg = msg + "- Debe Ingresar Nro de documento de identidad \n"; }
+            if (oTipoDoc == '') { msg = msg + "- Debe seleccionar el tipo de documento\n"; }
 
             if (FecRegistro == '') { msg = msg + "- Debe ingresar Fecha Programada \n"; }
             if (oNroDias == '') { msg = msg + "- Debe ingresar Nro de días\n"; }
@@ -268,7 +273,7 @@
                                                             Documento:
                                                         </td>
                                                         <td style="width: 15%">
-                                                            <asp:TextBox ID="txtNroDoc" runat="server" style="width: 50%"></asp:TextBox>
+                                                            <asp:TextBox ID="txtNroDoc" runat="server" style="width: 50%" MaxLength="8"></asp:TextBox>
                                                             <asp:Button CssClass="botonesIndividual" ToolTip="Obtener Nro.Orden" ID="btnGetOrden"
                                                                 Width="20px" runat="server" Text="Buscar" OnClick="btnGetOrden_Click"  style="width: 45%" />
                                                         </td>
