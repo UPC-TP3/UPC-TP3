@@ -12,15 +12,16 @@ public partial class GestionAdmision_GcAdmEmergenciaRegistrar : System.Web.UI.Pa
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!Page.IsPostBack) {
-            pr_CargarCboTipoDocumento();
-            pr_CargarCboPais();
+        if (!Page.IsPostBack) {           
             pDataInicial();
-
         }
     }
     
     public void pDataInicial() {
+        pr_CargarCboEstadoCivil();
+        pr_CargarCboTipoDocumento();
+        pr_CargarCboPais();
+        pr_CargarCboSexo();
 
       string strPacienteId = Request.QueryString["PacienteId"];
       BL_Paciente oPacienteBL = new BL_Paciente();
@@ -43,18 +44,46 @@ public partial class GestionAdmision_GcAdmEmergenciaRegistrar : System.Web.UI.Pa
               txtNroDocumento.Text = oPacienteBE.dni_paciente;
               txtObservacion.Text = oPacienteBE.Observacion;
               txtTelefono.Text = oPacienteBE.TelefonoDomicilio;
-              ddlDepartamento.SelectedValue = oPacienteBE.ID_Departamento.ToString();
               ddlPais.SelectedValue = oPacienteBE.ID_Pais.ToString();
-              ddlProvincia.SelectedValue = oPacienteBE.ID_Provincia.ToString();
+
+              if (oPacienteBE.ID_EstadoCivil != 0){
+                  ddlEstadoCivil.SelectedValue = oPacienteBE.ID_EstadoCivil.ToString();
+              }
+
+              if (ddlPais.SelectedValue != "") {
+                  pr_CargarCboDpto(ddlPais.SelectedValue);
+                  ddlDepartamento.SelectedValue = oPacienteBE.ID_Departamento.ToString();
+              }
+              
+              if (ddlDepartamento.SelectedValue != "")
+              {
+                  pr_CargarCboProv(ddlDepartamento.SelectedValue);
+                  ddlProvincia.SelectedValue = oPacienteBE.ID_Provincia.ToString();
+              }
+
+              if (ddlProvincia.SelectedValue != "")
+              {
+                  pr_CargarCboDist(ddlProvincia.SelectedValue);
+                  ddDistrito.SelectedValue = oPacienteBE.ID_Distrito.ToString();
+              }
+              
               ddlSexo.SelectedValue = oPacienteBE.ID_Sexo.ToString();
               ddlTipoDocumentoN.SelectedValue = oPacienteBE.ID_TipoDocumento.ToString();
 
           }
-
       
       }
     
     }
+
+    private void pr_CargarCboEstadoCivil()
+    {
+        ddlEstadoCivil.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("50", "");
+        ddlEstadoCivil.DataTextField = "MAS_DesCorta";
+        ddlEstadoCivil.DataValueField = "MAS_CodCampo";
+        ddlEstadoCivil.DataBind();
+    }
+
 
         /// <summary>
         /// Carga los tipo de documentos
@@ -67,39 +96,77 @@ public partial class GestionAdmision_GcAdmEmergenciaRegistrar : System.Web.UI.Pa
             ddlTipoDocumentoN.DataBind();
         }
 
+        //private void pr_CargarCboEstadoCivil()
+        //{
+        //    ddlEstadoCivil.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("50", "");
+        //    ddlEstadoCivil.DataTextField = "MAS_DesCorta";
+        //    ddlEstadoCivil.DataValueField = "MAS_CodCampo";
+        //    ddlEstadoCivil.DataBind();
+        //}
+        private void pr_CargarCboSexo()
+        {
+            ddlSexo.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("20", "");
+            ddlSexo.DataTextField = "MAS_DesCorta";
+            ddlSexo.DataValueField = "MAS_CodCampo";
+            ddlSexo.DataBind();
+        }
+
 
         /// <summary>
         /// Carga los tipo de documentos
         /// </summary>
         private void pr_CargarCboPais()
         {
-            ddlPais.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_PAIS", "");
+            ddlPais.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("80", "");
             ddlPais.DataTextField = "MAS_DesCorta";
             ddlPais.DataValueField = "MAS_CodCampo";
             ddlPais.DataBind();
         }
 
-        [WebMethod]
-        public static List<BE_MaestroTabla> pr_CargarCboDepartamento(string p_Valor)
+        private void pr_CargarCboDpto(string p_Valor)
         {
-            return BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_DPTO", p_Valor);
-
+            ddlDepartamento.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("90", p_Valor);
+            ddlDepartamento.DataTextField = "MAS_DesCorta";
+            ddlDepartamento.DataValueField = "MAS_CodCampo";
+            ddlDepartamento.DataBind();
         }
 
-        [WebMethod]
-        public static List<BE_MaestroTabla> pr_CargarCboProvincia(string p_Valor)
+        private void pr_CargarCboProv(string p_Valor)
         {
-            return BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_PROVIN", p_Valor);
+            ddlProvincia.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("100", p_Valor);
+            ddlProvincia.DataTextField = "MAS_DesCorta";
+            ddlProvincia.DataValueField = "MAS_CodCampo";
+            ddlProvincia.DataBind();
+        }
+
+        private void pr_CargarCboDist(string p_Valor)
+        {
+            ddDistrito.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("110", p_Valor);
+            ddDistrito.DataTextField = "MAS_DesCorta";
+            ddDistrito.DataValueField = "MAS_CodCampo";
+            ddDistrito.DataBind();
+        }
+
+       
+        //public void pr_CargarCboDepartamento(string p_Valor)
+        //{
+        //     BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_DPTO", p_Valor);
+
+        //}
+
+
+        //public void pr_CargarCboProvincia(string p_Valor)
+        //{
+        //     BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_PROVIN", p_Valor);
            
-        }
+        //}
 
 
-        [WebMethod]
-        public static List<BE_MaestroTabla> pr_CargarCboDistrito(string p_Valor)
-        {
-            return BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_DIST", p_Valor);
+        //public void pr_CargarCboDistrito(string p_Valor)
+        //{
+        //     BL_MaestroTablas.Instancia.fn_ListarUbiGEO("TB_DIST", p_Valor);
 
-        }
+        //}
 
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -162,5 +229,37 @@ public partial class GestionAdmision_GcAdmEmergenciaRegistrar : System.Web.UI.Pa
 
             ClientScript.RegisterStartupScript(GetType(), "MostrarMensaje", "fnMensaje('" + vmensaje + "');", true);
 
+        }
+        protected void ddlPais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlPais.SelectedValue != "")
+            {
+                pr_CargarCboDpto(ddlPais.SelectedValue);
+            }
+            else {
+                ddlDepartamento.Items.Clear();
+            }
+        }
+        protected void ddlDepartamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlDepartamento.SelectedValue != "")
+            {
+                pr_CargarCboProv(ddlDepartamento.SelectedValue);
+            }
+            else
+            {
+                ddlProvincia.Items.Clear();
+            }
+        }
+        protected void ddlProvincia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlProvincia.SelectedValue != "")
+            {
+                pr_CargarCboDist(ddlProvincia.SelectedValue);
+            }
+            else
+            {
+                ddDistrito.Items.Clear();
+            }
         }
 }

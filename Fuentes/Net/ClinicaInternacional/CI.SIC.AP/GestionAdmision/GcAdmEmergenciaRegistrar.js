@@ -5,71 +5,71 @@
         return (key >= 48 && key <= 57);
     });
 
-    $("#ddlPais").change(function () {
-        // armo el objeto que servira de parametro, para ello utilizo una libreria de JSON
-        //este parametro mapeara con el definido en el web service
-        var params = new Object();
-        params.p_Valor = $("#ddlPais").val();
-        params = JSON.stringify(params);
+//    $("#ddlPais").change(function () {
+//        // armo el objeto que servira de parametro, para ello utilizo una libreria de JSON
+//        //este parametro mapeara con el definido en el web service
+//        var params = new Object();
+//        params.p_Valor = $("#ddlPais").val();
+//        params = JSON.stringify(params);
 
-        $.ajax({
-            type: "POST",
-            url: "GcAdmEmergenciaRegistrar.aspx/pr_CargarCboDepartamento",
-            data: params,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            async: false,
-            success: CargarDpto,
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert(textStatus + ": " + XMLHttpRequest.responseText);
-            }
-        });
+//        $.ajax({
+//            type: "POST",
+//            url: "GcAdmEmergenciaRegistrar.aspx/pr_CargarCboDepartamento",
+//            data: params,
+//            contentType: "application/json; charset=utf-8",
+//            dataType: "json",
+//            async: false,
+//            success: CargarDpto,
+//            error: function (XMLHttpRequest, textStatus, errorThrown) {
+//                alert(textStatus + ": " + XMLHttpRequest.responseText);
+//            }
+//        });
 
-    });
+//    });
 
-    $("#ddlDepartamento").change(function () {
-        // armo el objeto que servira de parametro, para ello utilizo una libreria de JSON
-        //este parametro mapeara con el definido en el web service
-        var params = new Object();
-        params.p_Valor = $("#ddlDepartamento").val();
-        params = JSON.stringify(params);
+//    $("#ddlDepartamento").change(function () {
+//        // armo el objeto que servira de parametro, para ello utilizo una libreria de JSON
+//        //este parametro mapeara con el definido en el web service
+//        var params = new Object();
+//        params.p_Valor = $("#ddlDepartamento").val();
+//        params = JSON.stringify(params);
 
-        $.ajax({
-            type: "POST",
-            url: "GcAdmEmergenciaRegistrar.aspx/pr_CargarCboProvincia",
-            data: params,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            async: false,
-            success: CargarProvincia,
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert(textStatus + ": " + XMLHttpRequest.responseText);
-            }
-        });
+//        $.ajax({
+//            type: "POST",
+//            url: "GcAdmEmergenciaRegistrar.aspx/pr_CargarCboProvincia",
+//            data: params,
+//            contentType: "application/json; charset=utf-8",
+//            dataType: "json",
+//            async: false,
+//            success: CargarProvincia,
+//            error: function (XMLHttpRequest, textStatus, errorThrown) {
+//                alert(textStatus + ": " + XMLHttpRequest.responseText);
+//            }
+//        });
 
-    });
+//    });
 
-    $("#ddlProvincia").change(function () {
-        // armo el objeto que servira de parametro, para ello utilizo una libreria de JSON
-        //este parametro mapeara con el definido en el web service
-        var params = new Object();
-        params.p_Valor = $("#ddlProvincia").val();
-        params = JSON.stringify(params);
+//    $("#ddlProvincia").change(function () {
+//        // armo el objeto que servira de parametro, para ello utilizo una libreria de JSON
+//        //este parametro mapeara con el definido en el web service
+//        var params = new Object();
+//        params.p_Valor = $("#ddlProvincia").val();
+//        params = JSON.stringify(params);
 
-        $.ajax({
-            type: "POST",
-            url: "GcAdmEmergenciaRegistrar.aspx/pr_CargarCboDistrito",
-            data: params,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            async: false,
-            success: CargarDistrito,
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert(textStatus + ": " + XMLHttpRequest.responseText);
-            }
-        });
+//        $.ajax({
+//            type: "POST",
+//            url: "GcAdmEmergenciaRegistrar.aspx/pr_CargarCboDistrito",
+//            data: params,
+//            contentType: "application/json; charset=utf-8",
+//            dataType: "json",
+//            async: false,
+//            success: CargarDistrito,
+//            error: function (XMLHttpRequest, textStatus, errorThrown) {
+//                alert(textStatus + ": " + XMLHttpRequest.responseText);
+//            }
+//        });
 
-    });
+//    });
 
     $("#txtTelefono").keypress(function (event) {
         var nav4 = window.event ? true : false;

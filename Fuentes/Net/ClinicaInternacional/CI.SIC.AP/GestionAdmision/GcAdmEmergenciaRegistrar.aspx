@@ -61,22 +61,31 @@
         <div>
             <asp:Label ID="lblSexo" runat="server" Text="Sexo:"></asp:Label>
             <p><asp:DropDownList ID="ddlSexo" runat="server">
-            <asp:ListItem Text="-Seleccione-" Value="-1"></asp:ListItem>
+           <%-- <asp:ListItem Text="-Seleccione-" Value="-1"></asp:ListItem>
             <asp:ListItem Text="Masculino" Value="1"></asp:ListItem>
-            <asp:ListItem Text="Femenino" Value="0"></asp:ListItem>
+            <asp:ListItem Text="Femenino" Value="0"></asp:ListItem>--%>
             </asp:DropDownList></p> 
         </div>
+
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="Estado Civil:"></asp:Label>
+            <p><asp:DropDownList ID="ddlEstadoCivil" runat="server"></asp:DropDownList>&nbsp&nbsp*</p>
+        </div>
+
         <div>
            <asp:Label ID="lblPais" runat="server" Text="Pais:"></asp:Label>
-           <p><asp:DropDownList ID="ddlPais" runat="server"></asp:DropDownList></p> 
+           <p><asp:DropDownList ID="ddlPais" runat="server" AutoPostBack="true" 
+                   onselectedindexchanged="ddlPais_SelectedIndexChanged"></asp:DropDownList></p> 
         </div>
         <div>
            <asp:Label ID="lblDpto" runat="server" Text="Departamento:"></asp:Label>
-           <p><asp:DropDownList ID="ddlDepartamento" runat="server"><asp:ListItem Text="-Seleccione-" Value="0"></asp:ListItem></asp:DropDownList></p> 
+           <p><asp:DropDownList ID="ddlDepartamento" runat="server" AutoPostBack="true"
+                   onselectedindexchanged="ddlDepartamento_SelectedIndexChanged"><asp:ListItem Text="-Seleccione-" Value="0"></asp:ListItem></asp:DropDownList></p> 
         </div>
         <div>
            <asp:Label ID="lblProvincia" runat="server" Text="Provincia:"></asp:Label>
-           <p><asp:DropDownList ID="ddlProvincia" runat="server"><asp:ListItem Text="-Seleccione-" Value="0"></asp:ListItem></asp:DropDownList></p> 
+           <p><asp:DropDownList ID="ddlProvincia" AutoPostBack="true" runat="server" 
+                   onselectedindexchanged="ddlProvincia_SelectedIndexChanged"><asp:ListItem Text="-Seleccione-" Value="0"></asp:ListItem></asp:DropDownList></p> 
         </div>
         <div>
            <asp:Label ID="lblDistrito" runat="server" Text="Distrito:"></asp:Label>
