@@ -18,7 +18,7 @@ public partial class GestionAdmision_GcAdmEmergenciaRegistrar : System.Web.UI.Pa
     }
     
     public void pDataInicial() {
-        pr_CargarCboEstadoCivil();
+        //pr_CargarCboEstadoCivil();
         pr_CargarCboTipoDocumento();
         pr_CargarCboPais();
         pr_CargarCboSexo();
@@ -46,9 +46,9 @@ public partial class GestionAdmision_GcAdmEmergenciaRegistrar : System.Web.UI.Pa
               txtTelefono.Text = oPacienteBE.TelefonoDomicilio;
               ddlPais.SelectedValue = oPacienteBE.ID_Pais.ToString();
 
-              if (oPacienteBE.ID_EstadoCivil != 0){
-                  ddlEstadoCivil.SelectedValue = oPacienteBE.ID_EstadoCivil.ToString();
-              }
+              //if (oPacienteBE.ID_EstadoCivil != 0){
+              //    ddlEstadoCivil.SelectedValue = oPacienteBE.ID_EstadoCivil.ToString();
+              //}
 
               if (ddlPais.SelectedValue != "") {
                   pr_CargarCboDpto(ddlPais.SelectedValue);
@@ -76,13 +76,13 @@ public partial class GestionAdmision_GcAdmEmergenciaRegistrar : System.Web.UI.Pa
     
     }
 
-    private void pr_CargarCboEstadoCivil()
-    {
-        ddlEstadoCivil.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("50", "");
-        ddlEstadoCivil.DataTextField = "MAS_DesCorta";
-        ddlEstadoCivil.DataValueField = "MAS_CodCampo";
-        ddlEstadoCivil.DataBind();
-    }
+    //private void pr_CargarCboEstadoCivil()
+    //{
+    //    ddlEstadoCivil.DataSource = BL_MaestroTablas.Instancia.fn_ListarUbiGEO("50", "");
+    //    ddlEstadoCivil.DataTextField = "MAS_DesCorta";
+    //    ddlEstadoCivil.DataValueField = "MAS_CodCampo";
+    //    ddlEstadoCivil.DataBind();
+    //}
 
 
         /// <summary>
@@ -196,6 +196,7 @@ public partial class GestionAdmision_GcAdmEmergenciaRegistrar : System.Web.UI.Pa
             objValores.Add("Provincia", ddlProvincia.SelectedValue);
             objValores.Add("Distrito", ddDistrito.SelectedValue);
             objValores.Add("Observacion", txtObservacion.Text);
+            objValores.Add("Observacion", txtObservacion.Text);
             string vmensaje = "";
 
             if (strPacienteId == null)
@@ -220,6 +221,10 @@ public partial class GestionAdmision_GcAdmEmergenciaRegistrar : System.Web.UI.Pa
                 objPacienteBE.ID_Provincia = Int32.Parse(ddlProvincia.SelectedValue);
                 objPacienteBE.ID_Distrito = Int32.Parse(ddDistrito.SelectedValue);
                 objPacienteBE.Observacion = txtObservacion.Text.Trim();
+
+                //if (ddlEstadoCivil.SelectedValue != "") {
+                //    objPacienteBE.ID_EstadoCivil = Int32.Parse(ddlEstadoCivil.SelectedValue);
+                //}                              
                 
                 BL_Paciente.Instancia.fn_ActualizarPaciente(objPacienteBE);
 
