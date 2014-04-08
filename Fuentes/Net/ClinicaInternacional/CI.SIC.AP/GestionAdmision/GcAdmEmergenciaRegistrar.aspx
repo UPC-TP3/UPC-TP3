@@ -1,4 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Plantilla.master" AutoEventWireup="true" EnableEventValidation="false" ClientIDMode="Static" CodeFile="GcAdmEmergenciaRegistrar.aspx.cs" Inherits="GestionAdmision_GcAdmEmergenciaRegistrar" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ext" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <script language="javascript" type="text/javascript" src="../js/jquery-1.7.1.js" ></script>
     <script language="javascript" type="text/javascript" src="GcAdmEmergenciaRegistrar.js" ></script>
@@ -49,6 +52,13 @@
         <div>
           <asp:Label ID="lblFechaNac" runat="server" Text="Fecha de Nacimiento:"></asp:Label>
         <p><asp:TextBox ID="txtFechaNac"  MaxLength="10"  runat="server" ></asp:TextBox>
+
+        <ext:MaskedEditExtender ID="meeFecIngreso" runat="server" TargetControlID="txtFechaNac"
+                                        Mask="99/99/9999" MessageValidatorTip="true" MaskType="Date" ErrorTooltipEnabled="True"
+                                        CultureName="es-PE" />
+                                    <ext:CalendarExtender ID="txtFechaNac_CalendarExtender" runat="server" TargetControlID="txtFechaNac"
+                                        Format="dd/MM/yyyy" PopupPosition="BottomLeft" />
+
         
          <asp:RequiredFieldValidator ValidationGroup="vgEmergencia" ID="rfvFechaNacimiento" runat="server" ErrorMessage="Ingresar una Fecha Nacimiento" Text="*" ControlToValidate="txtFechaNac"></asp:RequiredFieldValidator>
            
